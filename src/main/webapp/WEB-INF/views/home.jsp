@@ -2,16 +2,6 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-		<p>Home</p>
-		<p>Home</p>
-		<p>Home</p>
-	
-		<p>Home</p>
-		
-		<p>Home</p>
-		<p>Home</p>
-		<p>Home</p>
-		<p>Home</p>
-		<p>Home</p>
+<%@ include file="/WEB-INF/views/main_page/main_page_body.jsp" %>
 		
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
