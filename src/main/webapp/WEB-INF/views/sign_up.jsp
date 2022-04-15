@@ -181,7 +181,7 @@
     <div id="sign_up_wrap">
         
         <!--content wrapper -->
-        <div id="wrapper" style="background-color: #faf9f6; height: 67rem;">
+        <div id="wrapper" style="background-color: #faf9f6; height: 67rem;" novalidate>
             <div class="text-center pt-5"><span style="font-size: 30px; font-family: 'MinSans-Regular';">회원가입<span></div>
             <!-- content-->
             <div id="content">
@@ -190,7 +190,7 @@
                  <div>
                     <h3 class="join_title"><label for="email">이메일</label></h3>
                     <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
+                        <input type="email" id="email" class="int" maxlength="100" placeholder="선택입력">
                     </span>
                     <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
                 </div>
@@ -201,7 +201,7 @@
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="text" id="pswd1" class="int" maxlength="20">
+                        <input type="password" id="pswd1" class="int" maxlength="20">
                         <span id="alertTxt">사용불가</span>
                         <img src="${pageContext.request.contextPath}/resources/pngs/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
                     </span>
@@ -212,7 +212,7 @@
                 <div>
                     <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                     <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20">
+                        <input type="password" id="pswd2" class="int" maxlength="20">
                         <img src="${pageContext.request.contextPath}/resources/pngs/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
                     </span>
                     <span class="error_next_box"></span>
