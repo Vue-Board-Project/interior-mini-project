@@ -80,12 +80,12 @@
 
                         <%@ include  file="/WEB-INF/views/common/find_password.jsp"%>
                         
-                    <a id="main_header_signUp" href="#">
+                    <a id="main_header_signUp" href="${pageContext.request.contextPath}">
                         <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
                         <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
                     </a>
                     
-                    <a id="main_header_cart" href="#">
+                    <a id="main_header_cart" href="${pageContext.request.contextPath}">
                         <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
                         <span id="main_header_cart_text" class="main_header_text">장바구니</span>
                     </a>
