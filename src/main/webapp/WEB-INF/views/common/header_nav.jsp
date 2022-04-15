@@ -108,7 +108,7 @@
                     color: white;
                 }
                 .main_header_nav_dropdown_content a:hover {
-                    background-color: #ddd;
+                    background-color: #d5d5d8;
                     color: black;
                 }
                 .main_header_nav_dropdown:hover .main_header_nav_dropdown_content {
