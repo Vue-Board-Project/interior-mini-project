@@ -1,38 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
     <style>
-      html {
-      height: 100%;
-      }
-
-      body {
-          margin: 0;
-          height: 100%;
-          background: #f5f6f7;
-          font-family: 'MinSans-Regular'; 
-      }
-      #logo {
-          width: 240px;
-          height: 44px;
-          cursor: pointer;
-      }
-
-      #header {
-          padding-top: 62px;
-          padding-bottom: 20px;
-          text-align: center;
-      }
-      #wrapper {
-          position: relative;
-          height: 100%;
-      }
-
-      #content {
-          position: absolute;
-          left: 50%;
-          transform: translate(-50%);
-          width: 700px;
-      }
-
       /* 입력폼 */
 
       input:focus {
@@ -184,7 +151,7 @@
         <div id="wrapper" style="background-color: #faf9f6; height: 67rem;" novalidate>
             <div class="text-center pt-5"><span style="font-size: 30px; font-family: 'MinSans-Regular';">회원가입<span></div>
             <!-- content-->
-            <div id="content">
+            <div id="content" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;">
 
                  <!-- EMAIL -->
                  <div>

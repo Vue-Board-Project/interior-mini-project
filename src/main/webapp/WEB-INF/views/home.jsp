@@ -2,6 +2,6 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<%@ include file="/WEB-INF/views/model_dental/model_dental_detail1.jsp" %>
+<%@ include file="/WEB-INF/views/model_dental/model_dental_detail3.jsp" %>
 		
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

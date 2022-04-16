@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<div id="model_dental_wrap" class="d-flex flex-column" style="background-color: #faf9f6; height: 245rem; font-family: 'MinSans-Regular';">
+<div id="model_dental_wrap" class="d-flex flex-column" style="background-color: #faf9f6; height: 260rem; font-family: 'MinSans-Regular';">
         <div id="model_dental_main_img" class="text-center"><img class="vw-100" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/1.PNG"/></div>
         <div id="model_dental_summary" style="background-color: #d5d5d8; margin: 3rem auto; border-radius: 50px;">
             <div class="d-flex justify-content-center pt-4 mr-5 ml-5" style="color: #272723;">
