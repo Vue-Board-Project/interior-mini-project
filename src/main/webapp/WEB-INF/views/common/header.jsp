@@ -2,42 +2,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+      <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+      <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+ <!--src에 있는 파일을 불러와서 여기 넣고 시작하겠다!-->
+    <title> 오스템 임플란트 </title>
+      
+    
+    <style>
+      @font-face {
+          font-family: 'MinSans-Medium';
+          src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+      }
 
-<link rel="stylesheet" href="/webapp/resources/css/app.css" />
+
+      #osstem_title{
+        width : 100%;
+        height : 215px;
+        padding : 0.5%;
+        background-color: #F58B54;
+      }
+
+
+      #serviceInfo{
+        margin: 0 auto;
+        clear: both;
+        border: 1px solid #F58B54;
+        border-radius: 25px;
+        width: 1200px;
+      }
+         
+      .card-body{
+        background-color: #F9F5F0;
+        width : 100%;
+        padding :0%;
+      }
+
+
+    
+      
+        
+        
+        
+    </style>
 </head>
 <body>
-	<div class="d-flex flex-column vh-100">
-		<nav class="bg-dark navbar navbar-dark font-weight-bold ">
-			<a class="navbar-brand" href="#"> 
-				<%-- <img src="${pageContext.request.contextPath}/resources/images/logo-spring.png" width="30" height="30" class="d-inline-block align-top" > --%>
-				<img src="<%=request.getContextPath() %>/resources/images/logo-spring.png" width="30" height="30" class="d-inline-block align-top" > 
-				
-				Spring
-			</a>
-			<div>
-				<a href="#" class="btn btn-success btn-small">로그인</a>
-			</div>	
-		</nav>
-		<div class="container-fluid flex-grow-1">
-			<div class="row h-100">
-				<div class="col-md-4 bg-dark p-3">
-					<div class="h-100 d-flex flex-column">
-						<div class="flex-grow-1" style="height: 0px; overflow-y: auto; overflow-x: hidden; ">
-							<%@ include file="/WEB-INF/views/common/menu.jsp" %>
-						</div>
-					</div>
-					
-					
-				</div>
-				<div class="col-md-8">
-					<div class="h-100 d-flex flex-column">
-						<div class="flex-grow-1 pr-3" style="height: 0px; overflow-y: auto; overflow-x: auto;">
-						
-				
+    <div class="card">
+      <div id= "osstem_title" class="card-header" style="text-align : center;">
+         헤더
+         <!--  <img id = "sweetdreampic" src="images\osstem_square.png" alt="ImgForPic">-->
+      </div>

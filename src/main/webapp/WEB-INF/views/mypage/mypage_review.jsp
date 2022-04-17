@@ -1,7 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
+
 <div class="review_section">
 		<div class = "header_section">
-          	상품 후기
+          <div class="text">장비 후기</div>
+          	<span class="sub_text">장비들의 후기를 남기거나 확인할 수 있습니다.</span>
+          	<hr>
          </div>
           
      	<div class="content_section">
@@ -9,18 +15,15 @@
 		     	<div clas = "mypage_review_tab_menu">
 		     	  <ul class="mypage_review_tab">
 				    <li class="is_on">
-				      <a href="#tab1" id = "before_review" class="btn">작성 가능 후기</a>
-				      <div id="tab1" class="cont">작성 가능한 후기가 없습니다.</div>
+				      <a href="beforeReview" id = "before_review" class="btn">작성 가능 후기</a>
+				      <div id="mypage_review_tab_available" class="cont">작성 가능한 후기가 없습니다.</div>
 				    </li>
 				    <li>
-				      <a href="#tab2" id = "after_review" class="btn">작성 완료 후기</a>
-				      <div id="tab2" class="cont">작성 완료한 후기가 없습니다.</div>
+				      <a href="afterReview" id = "after_review" class="btn">작성 완료 후기</a>
+				      <div id="mypage_review_tab_finished" class="cont">작성 완료한 후기가 없습니다.</div>
 				    </li>
 				  </ul>
 				  </div>
-			  <div class = "wrap">
-				
-		</div>
 </div>
 
 <style>
@@ -45,6 +48,8 @@
      
      .mypage_review_tab_menu{
      	position : relative;
+     	display: flex;
+     	flex-direction: row; 
      }
      
      .mypage_review_tab_menu .mypage_review_tab{
@@ -108,3 +113,4 @@
 </script>
 
 
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

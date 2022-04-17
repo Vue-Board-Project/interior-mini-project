@@ -7,6 +7,7 @@
 		<div class = "header_section">
           <div class="text">견적 신청</div>
           <span class="sub_text">신청 내역을 보여드립니다.</span>
+          <hr>
          </div>
           
      	<div class="content_section">
@@ -29,10 +30,10 @@
         
     .counseling_section{
           position: relative;
-          background: #F9F5F0;
+          background: #faf9f6;
           min-height: 100vh;
           top: 0;
-          left: 250px;
+          left: 249px;
           width: calc(100% - 250px);
           transition: all 0.5s ease;
           z-index: 2;
@@ -40,10 +41,13 @@
            
     .content_section {
     	border: 1px solid #F58B54;
-    	background-image : url("/webapp/resources/images/osstem_interior_02.png");
+    	background-image : url("${pageContext.request.contextPath}/resources/images/mypage_osstem_interior_logo.png");
+    	background-size: cover;
+		background-repeat: no-repeat;
     	color : #fff;
     	
-    }
+	}
+    	
     
     .content_section .info_button{
         position: relative;
@@ -56,6 +60,7 @@
 	    transition: 0.25s;
 	    position : static;
 	    float : right;
+	    margin-right : 1%;
     }
         
 </style>
@@ -63,7 +68,7 @@
 <script>
 	function info_popup() {
 		console.log("팝업창 링크 안연결되는 거 해결하기.");
-		window.open("/mypage/myinfo_counsel_popup.jsp", "counsel_info", "width=500, height=800, left=100, top=50"); 
+		window.open("${pageContext.request.contextPath}/mypage/myinfo_counsel_popup.jsp", "counsel_info", "width=500, height=800, left=100, top=50"); 
 	}
 	
 	

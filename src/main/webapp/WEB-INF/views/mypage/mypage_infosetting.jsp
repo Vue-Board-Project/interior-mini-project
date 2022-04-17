@@ -1,4 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
+
 <div class="setting_section">
 		<div class = "header_section">
           	개인정보 수정
@@ -20,5 +24,5 @@
         
 </style>
 
-
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

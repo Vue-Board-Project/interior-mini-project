@@ -85,6 +85,14 @@
      </li>
      <hr>
      <li>
+       <a href="/springframework-mini-project/mypage/mypage_interior_progress">
+       <!-- onclick시 각 링크로 연결하기 -->
+         <i class='bx bx-conversation'></i>
+         <span id = "list_interior_progress" class="links_name">인테리어 진행내역</span>
+       </a>
+     </li>
+     <hr>
+     <li>
       <a href="/springframework-mini-project/mypage/mypage_infosetting">
         <i class='bx bx-face'></i>
         <span id = "list_setting" class="links_name">개인정보 수정</span>
@@ -99,7 +107,7 @@
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="/springframework-mini-project/mypage/mypage_review">
        <i class='bx bx-home-smile'></i>
         <span id = "mypage_review" class="links_name">리뷰 관리</span>
         <hr>

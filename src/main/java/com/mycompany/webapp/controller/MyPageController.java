@@ -40,4 +40,15 @@ public class MyPageController {
 		return "/mypage/mypage_interior_report";
 	}
 
+	
+	@RequestMapping("/mypage/mypage_interior_progress")
+	public String mypageInteriorProgress() {
+		return "/mypage/mypage_interior_progress";
+	}
+	
+	@RequestMapping("/mypage/mypage_review")
+	public String mypageReview() {
+		return "/mypage/mypage_review";
+	}
+	
 }
