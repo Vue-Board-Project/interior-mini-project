@@ -10,7 +10,15 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
-
+	<link href="${pageContext.request.contextPath}/resources/css/cssHeaderAd.css" rel="stylesheet" type="text/css">
+	<script src="${pageContext.request.contextPath}/resources/js/jsHeaderAd.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/cssHeader.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/cssHeaderNav.css" rel="stylesheet" type="text/css">
+	<script src="${pageContext.request.contextPath}/resources/js/jsHeaderNav.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/cssFooter.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
+	<script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
     <style>
         @font-face {
             font-family: 'MinSans-Regular';
@@ -91,53 +99,5 @@
                     </a>
                 </div>
             </div>
-            <style>
-                #main_header{
-                    background-color: #ca5c0d; 
-                    height: 100px; 
-                    position: relative;
-                }
-                #main_header_logo{
-                    position: absolute; 
-                    top: 50%; 
-                    left: 50%; 
-                    transform: translate(-50%, -50%);
-                }
-                #main_header_logo_img{
-                    height: 60px;
-                }
-                #main_header_img{
-                    font-family: 'MinSans-Regular'; 
-                    font-size: 5px; 
-                    padding: 31px;
-                }
-                #login_popup_open{
-                    text-decoration:none; 
-                    background-color: #ca5c0d;
-                    color: #fef8d4; 
-                    margin-right: 10px;
-                }
-                #main_header_login_text{
-                    margin-left: 5px;
-                }
-                #main_header_signUp{
-                    text-decoration:none; 
-                    color: #fef8d4;
-                    margin-right: 10px;
-                }
-                #main_header_signUp_text{
-                    margin-left: 5px;
-                }
-                #main_header_cart{
-                    text-decoration:none; 
-                    color: #fef8d4;
-                }
-                #main_header_cart_text{
-                    margin-left: 5px;
-                }
-                .main_header_text{
-                    font-size: 12px;
-                }
-            </style>
             <%@include file="/WEB-INF/views/common/header_nav.jsp" %>
         </header>	

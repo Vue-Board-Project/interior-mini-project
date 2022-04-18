@@ -28,27 +28,7 @@
                      <input type="submit" class="btn" style="background-color: #ca5c0d; color: #faf9f6; width: 270px;" value="로그인하기"/>
                  </div>
          
-                 <div class="hr_sect"><p>가입하기</p></div>
-                 <style>
-                     #login_popup_wrap .btn:focus { box-shadow: none; }
-                     .hr_sect {
-                         display: flex;
-                         align-items: center;
-                         color: #a9a9a9;
-                         font-size: 12px;
-                         margin: 20px 0px;
-                     }
-                     .hr_sect::before,
-                     .hr_sect::after {
-                         content: "";
-                         flex-grow: 1;
-                         background: #a9a9a9;
-                         height: 1px;
-                         font-size: 0px;
-                         line-height: 0px;
-                         margin: 0px 16px;
-                     }
-                 </style>
+                 <div class="login_hr_sect"><p>가입하기</p></div>
          
                  <a href="loginSignUp" class="ml-3 btn" style="font-size: 16px; border: none; outline: none; background-color: #ca5c0d; color: #faf9f6; height: 38px; width: 270px; border-radius: 3px;">계정 만들기</a>
              </form>
@@ -58,24 +38,4 @@
      <button id="login_popup_close" class="m-2" style="border: none; outline: none; background-color: #faf9f6; position:absolute; top:0; right:0;"><img src="${pageContext.request.contextPath}/resources/pngs/popup_delete_icon.png"/></button>
  </div>
  <div id="main_header_mask" style="width:100%; height:100%; position:fixed; background:rgba(0,0,0,0.7) repeat; top:0; left:0; z-index:999; display:none;"></div>
- <script>
-     $(document).ready(function(){
-     $("#login_popup_open").click(function(){
-     $("#login_popup_wrap").css("display", "block");
-     $("#main_header_mask").css("display", "block");
-     });
-     });
- </script>
-     
- <script> 
-     $(document).ready(function(){ 
-     $("#login_popup_open").click(function(){ 
-     $("#login_popup_wrap").css("display", "block"); 
-     $("#main_header_mask").css("display", "block"); 
-     }); 
-     $("#login_popup_close").click(function(){ 
-     $("#login_popup_wrap").css("display", "none"); 
-     $("#main_header_mask").css("display", "none"); 
-     }); 
-     }); 
- </script>
+

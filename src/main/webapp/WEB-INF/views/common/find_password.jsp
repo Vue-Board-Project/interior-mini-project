@@ -27,25 +27,4 @@
         <button id="find_pw_popup_close" class="m-2" style="border: none; outline: none; background-color: #faf9f6; position:absolute; top:0; right:0;"><img src="${pageContext.request.contextPath}/resources/pngs/popup_delete_icon.png"/></button>
     </div>
     <div id="main_header_mask2" style="width:100%; height:100%; position:fixed; background:rgba(0,0,0,0.7) repeat; top:0; left:0; z-index:999; display:none;"></div>
-    <script>
-        $(document).ready(function(){
-        $("#find_pw_open").click(function(){
-        $("#find_pw_popup_wrap").css("display", "block");
-        $("#main_header_mask2").css("display", "block");
-        });
-        });
-    </script>
-        
-    <script> 
-        $(document).ready(function(){ 
-        $("#find_pw_open").click(function(){ 
-        $("#login_popup_wrap").css("display", "block"); 
-        $("#main_header_mask2").css("display", "block"); 
-        }); 
-        $("#find_pw_popup_close").click(function(){ 
-        $("#find_pw_popup_wrap").css("display", "none"); 
-        $("#main_header_mask2").css("display", "none"); 
-        }); 
-        }); 
-    </script>
 </div>

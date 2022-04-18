@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+ #main_header_ad{
+     background-color: #272723; 
+     height: 70px; 
+     position: relative;
+ }
+ #main_header_ad_text{
+     font-family: 'MinSans-Regular'; 
+     height: 60px; 
+     overflow-y: auto; 
+     overflow-x: hidden; 
+     position: absolute; 
+     top: 50%; 
+     left: 50%; 
+     transform: translate(-50%, -50%);
+ }
+ #main_header_ad_text1{
+     font-size: 5px; 
+     line-height: 1.5;
+ }
+ #main_header_ad_text2{
+     font-size: 15px; 
+     line-height: 1.5;
+ }
+ #main_header_ad_text3{
+     font-size: 11px; 
+     line-height: 1.5;
+ }
