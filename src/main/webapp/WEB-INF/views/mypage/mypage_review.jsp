@@ -7,23 +7,56 @@
 		<div class = "header_section">
           <div class="text">장비 후기</div>
           	<span class="sub_text">장비들의 후기를 남기거나 확인할 수 있습니다.</span>
-          	<hr>
+          <hr width = 90%>
          </div>
+         
+         <div id = "mypage_review_date_selection" class="btn-group btn-group-toggle" data-toggle="buttons">
+			  <label class="btn btn-secondary active">
+			    <input type="radio" name="options" id="orderlist_today" autocomplete="off" checked> 오늘
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="orderlist_1month" autocomplete="off"> 1개월
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="orderlist_3month" autocomplete="off"> 3개월
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="orderlist_6month" autocomplete="off"> 6개월
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="orderlist_1year" autocomplete="off"> 1년
+			  </label>
+			  <label class="btn btn-secondary">
+			    <input type="radio" name="options" id="orderlist_date_all" autocomplete="off"> 전체
+			  </label>
+			</div>
+			
+          <hr width = 90%>
           
      	<div class="content_section">
 	     	<div class = "wrap">
 		     	<div clas = "mypage_review_tab_menu">
 		     	  <ul class="mypage_review_tab">
 				    <li class="is_on">
-				      <a href="beforeReview" id = "before_review" class="btn">작성 가능 후기</a>
-				      <div id="mypage_review_tab_available" class="cont">작성 가능한 후기가 없습니다.</div>
+				      <a href="beforeReview" id = "before_review" class="btn col-md-6">작성 가능 후기</a>
 				    </li>
 				    <li>
-				      <a href="afterReview" id = "after_review" class="btn">작성 완료 후기</a>
-				      <div id="mypage_review_tab_finished" class="cont">작성 완료한 후기가 없습니다.</div>
+				      <a href="afterReview" id = "after_review" class="btn col-md-6">작성 완료 후기</a>
 				    </li>
 				  </ul>
+				  
+				   <div id="mypage_review_tab_available" class="cont">
+				      작성 가능한 후기가 없습니다.
+				      <ul class = "mypage_review_list_before"></ul>
+				    </div>
+				    <div id="mypage_review_tab_finished" class="cont">
+				    	작성 완료한 후기가 없습니다.
+				    	 <ul class = "mypage_review_list_after"></ul>
+				    </div>
+				      
+				      
 				  </div>
+		</div>
 </div>
 
 <style>
@@ -37,7 +70,7 @@
         
     .review_section{
           position: relative;
-          background: #F9F5F0;
+          background: #faf9f6;
           min-height: 100vh;
           top: 0;
           left: 250px;
@@ -46,11 +79,20 @@
           z-index: 2;
      }
      
-     .mypage_review_tab_menu{
+     /*리뷰 작성 두 탭을 담은 container(ul 의 클래스명) */
+     .mypage_review_tab{
      	position : relative;
      	display: flex;
      	flex-direction: row; 
+     	list-style: none; 
+     	justify-content: space-around;
      }
+     
+    /*   .mypage_review_tab li{
+      		height : 40%;
+      		border : 1px solid #e8e8db;
+      } */
+     
      
      .mypage_review_tab_menu .mypage_review_tab{
      	overflow : hidden;
@@ -89,11 +131,10 @@
       
       }
       
-      
-     
-     
-     
-        
+      #mypage_review_date_selection{
+     	left : 5%;
+     }
+
 </style>
 
 <script>
