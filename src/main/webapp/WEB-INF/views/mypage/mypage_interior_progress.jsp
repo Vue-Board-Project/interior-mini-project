@@ -7,7 +7,7 @@
 		<div class = "header_section">
 			<div class="text">인테리어 진행내역</div>
           	<span class="sub_text">인테리어 진행 내역을 조회합니다.</span>
-          	<hr>
+          	<hr width = 90%>
          </div>
           
      	<div class="content_section">
@@ -43,7 +43,7 @@
      					<img src = "${pageContext.request.contextPath}/resources/images/mypage_interior_step4.jpg" alt = "전기 설치 및 도배공사">
      				</button>
      				<div class = "mypage_interior_step_text">
-     				전기 설치 및 도배 공사
+     				도배 공사
      				</div>
      			</div>
      			<div id = "mypage_interior_step5">
@@ -183,6 +183,7 @@
         #interior_progress_content{
         	position : relative; 
         	margin-top : 210px;
+        	margin-left : 5%;
         	padding : auto;
         	width : 90%;
         	height : 150%;
@@ -259,7 +260,6 @@
         .mypage_interior_progress_downloadform{
         	/*background-color : #d5d5d8;*/
         }
-        
         
 </style>
 
