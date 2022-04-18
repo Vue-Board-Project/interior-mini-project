@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
 <div class="floating blind mt-3" align="right" style="position: fixed;">
     <div class="d-flex flex-column mb-4">
         <p><span style="color: #ff7513;">비슷한 스타일</span> 추천</p>
@@ -60,5 +61,4 @@
   
     
 });
-
 </script>         

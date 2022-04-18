@@ -80,7 +80,7 @@
 
                         <%@ include  file="/WEB-INF/views/common/find_password.jsp"%>
                         
-                    <a id="main_header_signUp" href="${pageContext.request.contextPath}">
+                    <a id="main_header_signUp" href="mainSignUp">
                         <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
                         <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
                     </a>
