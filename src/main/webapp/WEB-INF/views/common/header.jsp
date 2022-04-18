@@ -18,6 +18,10 @@
 	<link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
 	<script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/cssSignUp.css" rel="stylesheet" type="text/css">
+	<%-- <script src="${pageContext.request.contextPath}/resources/js/jsSignUp.js"></script> --%>
+	<!-- 주소찾기 daum API -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <style>
         @font-face {
             font-family: 'MinSans-Regular';
@@ -25,37 +29,7 @@
             font-weight: normal;
             font-style: normal;
         }
-        /* @media screen and (max-width: 600px) {
-            .main_header_nav_dropdown_group a:not(:first-child), .main_header_nav_dropdown .main_header_nav_dropbtn {
-                display: none;
-            }
-            .main_header_nav_dropdown_group a.main_header_nav_icon {
-                float: right;
-                display: block;
-                text-decoration: none;
-            }
-        }
-        @media screen and (max-width: 600px) {
-            .main_header_nav_dropdown_group.responsive {position: relative;}
-            .main_header_nav_dropdown_group.responsive .main_header_nav_icon {
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
-            .main_header_nav_dropdown_group.responsive a {
-                float: none;
-                display: block;
-                text-align: left;
-            }
-            .main_header_nav_dropdown_group.responsive .main_header_nav_dropdown {float: none;}
-            .main_header_nav_dropdown_group.responsive .main_header_nav_dropdown_content {position: relative;}
-            .main_header_nav_dropdown_group.responsive .main_header_nav_dropdown .main_header_nav_dropbtn {
-                display: block;
-                width: 100%;
-                text-align: left;
-            }
-        }  */
-
+       
         #main_wrapper{
             margin: 0px; 
             padding: 0px;
