@@ -149,7 +149,7 @@
     <div id="sign_up_wrap">
         
         <!--content wrapper -->
-        <div id="wrapper" style="background-color: #faf9f6; height: 67rem;" novalidate>
+        <div id="wrapper" style="background-color: #faf9f6; height: 80rem;" novalidate>
             <div class="text-center pt-5"><span style="font-size: 30px; font-family: 'MinSans-Regular';">회원가입<span></div>
             <!-- content-->
             <div id="content" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;">
@@ -260,7 +260,24 @@
                     </span>
                     <span class="error_next_box"></span>    
                 </div>
-
+                
+                <!-- MOBILE -->
+                <div>
+                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                    <span class="box int_mobile">
+                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>
+                    <span class="error_next_box"></span>    
+                </div>
+                
+                <!-- MOBILE -->
+                <div>
+                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                    <span class="box int_mobile">
+                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>
+                    <span class="error_next_box"></span>    
+                </div>
 
                 <!-- JOIN BTN-->
                 <div class="btn_area">

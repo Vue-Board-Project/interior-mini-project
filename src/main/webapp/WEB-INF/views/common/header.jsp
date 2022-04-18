@@ -14,7 +14,6 @@
 	<script src="${pageContext.request.contextPath}/resources/js/jsHeaderAd.js"></script>
 	<link href="${pageContext.request.contextPath}/resources/css/cssHeader.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/cssHeaderNav.css" rel="stylesheet" type="text/css">
-	<script src="${pageContext.request.contextPath}/resources/js/jsHeaderNav.js"></script>
 	<link href="${pageContext.request.contextPath}/resources/css/cssFooter.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
 	<script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
@@ -26,7 +25,7 @@
             font-weight: normal;
             font-style: normal;
         }
-        @media screen and (max-width: 600px) {
+        /* @media screen and (max-width: 600px) {
             .main_header_nav_dropdown_group a:not(:first-child), .main_header_nav_dropdown .main_header_nav_dropbtn {
                 display: none;
             }
@@ -55,7 +54,7 @@
                 width: 100%;
                 text-align: left;
             }
-        }
+        }  */
 
         #main_wrapper{
             margin: 0px; 
