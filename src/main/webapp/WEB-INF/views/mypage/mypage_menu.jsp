@@ -7,7 +7,7 @@
 	}
 	
 	/*  마이페이지 사이드바  */
-      .sidebar_mypage{
+      #sidebar_mypage{
         position: fixed;
         left: 0;
         height: 100%;
@@ -24,17 +24,20 @@
       	border : 1px solid #ca5c0d;
       }
       
-      .links_name{
-          pointer-events: none;
-          text-decoration:none !important;
+      #sidebar_mypage .mypage_list .mypage_list_element .links_name {
+		  pointer-events: none;
           color: #272723;
           font-size: 20px;
           font-weight: 400;
           white-space: nowrap;
           pointer-events: none;
-
-      }
+	}
       
+      .mypage_menubar_link{
+      	 text-decoration:none !important;
+      
+      }
+
       .mypage_list li{
       		list-style: none;
       		 margin: 20px 0;
@@ -56,61 +59,57 @@
         	padding-top : 1%;
         	padding-left: 5%;
         } 
-        
-        /*중앙 배열 하는 법 */
-        .sidebar_mypage .mypage_list .mypage_menubar_hr{
-        	width : 140px;
-        }
  
 </style>
 
- <div class="sidebar_mypage">
-   <ul class="mypage_list">
-     <li>
-       <a href="/springframework-mini-project/mypage/mypage_counseling">
+ <div id="sidebar_mypage" class = "mx-auto text-center">
+   <div class="mypage_list">
+   
+     <div class = "mypage_list_element">
+       <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_counseling">
        <!-- onclick시 각 링크로 연결하기 -->
          <span id = "list_counseling" class="links_name">상담 내역</span>
        </a>
-     </li>
+     </div>
      <hr class = "mypage_menubar_hr">
-     <li>
-       <a href="/springframework-mini-project/mypage/mypage_interior_progress">
+     <div class = "mypage_list_element">
+       <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_interior_progress">
        <!-- onclick시 각 링크로 연결하기 -->
          <span id = "list_interior_progress" class="links_name">인테리어 진행내역</span>
        </a>
-     </li>
+     </div>
      <hr class = "mypage_menubar_hr">
-     <li>
-      <a href="/springframework-mini-project/mypage/mypage_infosetting">
+     <div class = "mypage_list_element">
+      <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_infosetting">
         <span id = "list_setting" class="links_name">개인정보 수정</span> 
       </a>
-    </li>
+    </div>
      <hr class = "mypage_menubar_hr">
-    <li>
-      <a href="/springframework-mini-project/mypage/mypage_orderlist">
+    <div class = "mypage_list_element">
+      <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_orderlist">
         <span id = "mypage_orderList" class="links_name">구매 내역</span>
       </a>
-    </li>
+    </div>
      <hr class = "mypage_menubar_hr">
-    <li>
-      <a href="/springframework-mini-project/mypage/mypage_review">
+    <div class = "mypage_list_element">
+      <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_review">
         <span id = "mypage_review" class="links_name">리뷰 관리</span>
       </a>
-    </li>
+    </div>
     <hr class = "mypage_menubar_hr">
-    <li>
-      <a href="#">
+    <div class = "mypage_list_element">
+      <a class = "mypage_menubar_link" href="#">
         <span id="interior_report" class="links_name">인테리어 현황</span>
-       
       </a>
-    </li>
+    </div>
      <hr class = "mypage_menubar_hr">
-    <li>
-      <a href="#">
+    <div class = "mypage_list_element">
+      <a class = "mypage_menubar_link" href="#">
         <span class="links_name">장바구니</span>
       </a>
-    </li>
-   </ul>
+    </div>
+    <hr style = "visibility: hidden">
+   </div>
  </div>
  
         

@@ -17,7 +17,7 @@
 
 #mypage_interior_report_section{
         	form :active;
-        	color : #F58B54;
+        	color : #ca5c0d;
         	font-weight: 800;
         }
          

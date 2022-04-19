@@ -35,15 +35,15 @@
           
      	<div class="content_section">
 	     	<div class = "wrap">
-		     	<div clas = "mypage_review_tab_menu">
-		     	  <ul class="mypage_review_tab">
-				    <li class="is_on">
+		     	<div class = "mypage_review_tab_menu">
+				    <div class = "mypage_review_tab_menu_element">
 				      <a href="beforeReview" id = "before_review" class="btn col-md-6">작성 가능 후기</a>
-				    </li>
-				    <li>
+				    </div>
+				    <div class = "mypage_review_tab_menu_element">
 				      <a href="afterReview" id = "after_review" class="btn col-md-6">작성 완료 후기</a>
-				    </li>
-				  </ul>
+				    </div>
+				 </div>
+				  
 				  
 				   <div id="mypage_review_tab_available" class="cont">
 				      작성 가능한 후기가 없습니다.
@@ -80,11 +80,10 @@
      }
      
      /*리뷰 작성 두 탭을 담은 container(ul 의 클래스명) */
-     .mypage_review_tab{
+     .mypage_review_tab_menu{
      	position : relative;
      	display: flex;
-     	flex-direction: row; 
-     	list-style: none; 
+     	flex-direction: row;  
      	justify-content: space-around;
      }
      

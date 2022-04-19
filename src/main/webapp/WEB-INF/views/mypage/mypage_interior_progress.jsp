@@ -136,9 +136,9 @@
 
 <style>
 
-		#list_interior_progress{
+		#sidebar_mypage .mypage_list #list_interior_progress{
         	form :active;
-        	color : #F58B54;
+        	color : #ca5c0d;
         	font-weight: 800;
         }
         

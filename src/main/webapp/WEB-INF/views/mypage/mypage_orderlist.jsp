@@ -62,7 +62,7 @@
 
 <style>
 
-	#mypage_orderList{
+	#sidebar_mypage .mypage_list #mypage_orderList{
         	form :active;
         	color : #ca5c0d;
         	font-weight: 800;

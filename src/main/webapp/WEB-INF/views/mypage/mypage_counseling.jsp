@@ -7,24 +7,24 @@
 		<div class = "header_section">
           <div class="text">견적 신청</div>
           <span class="sub_text">신청 내역을 보여드립니다.</span>
-          <hr>
+          <hr width = 90%>
          </div>
           
      	<div class="content_section">
      	
-			<h4><b>서울 성북구 35평형 아파트 인테리어</b><br>
-			인테리어를 신청하셨습니다.</h4>
-			
-			<i id = "mascot_cat" class='bx bxs-cat'></i>
-			<button class = "info_button" onclick = "info_popup()">견적신청 내용</button>
+	     	<div class = "mypage_counseling_history">
+				<h4><b>서울 성북구 35평형 아파트 인테리어</b><br>
+				인테리어를 신청하셨습니다.</h4>
+				<button class = "info_button" onclick = "info_popup()">견적신청 내용</button>
+			</div>
 		</div>
 </div>
 
 <style>
 
-	#list_counseling{
+	#sidebar_mypage .mypage_list #list_counseling{
         	form :active;
-        	color : #F58B54;
+        	color : #ca5c0d;
         	font-weight: 800;
         }
         
@@ -39,13 +39,16 @@
           z-index: 2;
      }
            
-    .content_section {
-    	border: 1px solid #F58B54;
+	.mypage_counseling_history{
+		padding-left : 5%;
+		padding-top : 5%;
+		border: 1px solid #F58B54;
     	background-image : url("${pageContext.request.contextPath}/resources/images/mypage_osstem_interior_logo.png");
     	background-size: cover;
 		background-repeat: no-repeat;
+		width : 95%;
+		height : 90%;
     	color : #fff;
-    	
 	}
     	
     
