@@ -1,4 +1,4 @@
-<%@ page  contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 
 <footer id="main_footer_wrap">
             <div id="main_footer" class="text-center h-100">
@@ -16,5 +16,9 @@
         </footer>
         <%@ include  file="/WEB-INF/views/common/scroll.jsp"%>
         </div>
+        
+      </div>
+    </div>
+   
 </body>
 </html>

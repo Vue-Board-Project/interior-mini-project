@@ -36,12 +36,6 @@
         }
     </style>
 </head>
-<!-- 
-    주황 #ca5c0d
-    진회색 #272723
-    그레이베이지 #faf9f6
-    베이지 #fef8d4
- -->
 <body>
     <div id="main_wrapper" class="d-flex flex-column">
         <header id="main_header_wrap">
