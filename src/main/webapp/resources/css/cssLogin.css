@@ -1,0 +1,19 @@
+@charset "UTF-8";
+ #login_popup_wrap .btn:focus { box-shadow: none; }
+.login_hr_sect {
+    display: flex;
+    align-items: center;
+    color: #a9a9a9;
+    font-size: 12px;
+    margin: 20px 0px;
+}
+.login_hr_sect::before,
+.login_hr_sect::after {
+    content: "";
+    flex-grow: 1;
+    background: #a9a9a9;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 16px;
+}

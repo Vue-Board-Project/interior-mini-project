@@ -1,0 +1,27 @@
+@charset "UTF-8";
+#main_footer_wrap{
+    background-color: #e8e8db; 
+    height: 240px;
+}
+#main_footer{
+    position: relative;
+}
+#main_footer_img{
+    padding-top: 170px;
+}
+#main_footer_img_png{
+    height: 60px;
+}
+#main_footer_text{
+    color: #272723; 
+    font-family: 'MinSans-Regular'; 
+    font-size: 15px; 
+    line-height: 1.2; 
+    height: 140px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    position: absolute; 
+    top: 45%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
