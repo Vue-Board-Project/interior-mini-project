@@ -10,18 +10,18 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
-	<link href="${pageContext.request.contextPath}/resources/css/cssHeaderAd.css" rel="stylesheet" type="text/css">
-	<script src="${pageContext.request.contextPath}/resources/js/jsHeaderAd.js"></script>
-	<link href="${pageContext.request.contextPath}/resources/css/cssHeader.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/cssHeaderNav.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/cssFooter.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
-	<script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
-	<link href="${pageContext.request.contextPath}/resources/css/cssSignUp.css" rel="stylesheet" type="text/css">
-	<%-- <script src="${pageContext.request.contextPath}/resources/js/jsSignUp.js"></script> --%>
-	<!-- 주소찾기 daum API -->
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   <link href="${pageContext.request.contextPath}/resources/css/cssHeaderAd.css" rel="stylesheet" type="text/css">
+   <script src="${pageContext.request.contextPath}/resources/js/jsHeaderAd.js"></script>
+   <link href="${pageContext.request.contextPath}/resources/css/cssHeader.css" rel="stylesheet" type="text/css">
+   <link href="${pageContext.request.contextPath}/resources/css/cssHeaderNav.css" rel="stylesheet" type="text/css">
+   <link href="${pageContext.request.contextPath}/resources/css/cssFooter.css" rel="stylesheet" type="text/css">
+   <link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
+   <script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
+   <link href="${pageContext.request.contextPath}/resources/css/cssSignUp.css" rel="stylesheet" type="text/css">
+   <%-- <script src="${pageContext.request.contextPath}/resources/js/jsSignUp.js"></script> --%>
+   <!-- 주소찾기 daum API -->
+   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <style>
         @font-face {
             font-family: 'MinSans-Regular';
@@ -36,6 +36,12 @@
         }
     </style>
 </head>
+<!-- 
+    주황 #ca5c0d
+    진회색 #272723
+    그레이베이지 #faf9f6
+    베이지 #fef8d4
+ -->
 <body>
     <div id="main_wrapper" class="d-flex flex-column">
         <header id="main_header_wrap">
@@ -67,4 +73,4 @@
                 </div>
             </div>
             <%@include file="/WEB-INF/views/common/header_nav.jsp" %>
-        </header>	
+        </header>   
