@@ -2,32 +2,120 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<main id="main_content_wrap" class="text-center" style="background-color: #faf9f6; height: 157rem; font-family: 'MinSans-Regular'; ">
+<main id="main_content_wrap" class="text-center" style="background-color: #faf9f6; font-family: 'MinSans-Regular'; ">
  <section id="main_content_video_name" class="mt-5">
        <h2>O'Molaire Osstem</h2>
        <p>치과에 최적화된 인테리어로 고객의 눈높이에 맞는 맞춤제안을 제공합니다.</p>
    </section>
-   <section class="pt-3">
+   <section class="pt-3 pb-5">
        <div>
            <iframe width="850" height="500" src="https://www.youtube.com/embed/I_XEXqWZPBQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
        </div>
    </section>
-   <section>
-       <div>
-           <ul></ul>
-       </div>
-   </section>
-   <section class="pt-5">
-       <div>
+   <section  class="d-flex flex-column text-center mt-5 mb-5">
            <h2>Osstem Medical Equipment</h2>
            <p>오스템 치과장비</p>
-           <div><img src="${pageContext.request.contextPath}/resources/pngs/portfolio.PNG"/></div>
-       </div>
-       <ul></ul>
+           <%-- <div><img src="${pageContext.request.contextPath}/resources/pngs/portfolio.PNG"/></div> --%>
+           <div class="d-flex" style=" margin:0 auto;">
+	           <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;"> 
+	               <a href="#" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">mansik</small>
+	               </a>
+	           </div>
+	           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+	               <a href="portfolioDentalDeatail2" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">manok</small>
+	               </a>
+	           </div>
+	           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+	               <a href="#" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">manbok</small>
+	               </a>
+	           </div>
+           </div>
+           <div class="d-flex" style=" margin:0 auto;">
+	           <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;"> 
+	               <a href="#" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">mansik</small>
+	               </a>
+	           </div>
+	           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+	               <a href="portfolioDentalDeatail2" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">manok</small>
+	               </a>
+	           </div>
+	           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+	               <a href="#" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">manbok</small>
+	               </a>
+	           </div>
+           </div>
    </section>
-   <section>
+   <section class="d-flex flex-column text-center mt-5 mb-5">
+       <h2>O'Molaire Osstem Interior</h2>
+       <p>오스템 인테리어</p>
+       <div class="d-flex" style=" margin:0 auto;">
+           <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;"> 
+               <a href="#" style="text-decoration: none; color: black;">
+                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
+                   <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
+                   <small class="d-block" style="line-height: 1;">mansik</small>
+               </a>
+           </div>
+           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+               <a href="portfolioDentalDeatail2" style="text-decoration: none; color: black;">
+                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
+                   <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
+                   <small class="d-block" style="line-height: 1;">manok</small>
+               </a>
+           </div>
+           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+               <a href="#" style="text-decoration: none; color: black;">
+                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
+                   <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
+                   <small class="d-block" style="line-height: 1;">manbok</small>
+               </a>
+           </div>
+       </div>
+    <div class="d-flex" style=" margin:0 auto;">
+	           <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;"> 
+	               <a href="#" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">mansik</small>
+	               </a>
+	           </div>
+	           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+	               <a href="portfolioDentalDeatail2" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">manok</small>
+	               </a>
+	           </div>
+	           <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 300px;">
+	               <a href="#" style="text-decoration: none; color: black;">
+	                   <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
+	                   <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
+	                   <small class="d-block" style="line-height: 1;">manbok</small>
+	               </a>
+	           </div>
+           </div>
+    </section>
+    <section class="pb-5 pt-5">
        <p style="font-size: 30px;">오스템 광고글, 오스템 이야기 같은것들</p>
        <div><img src="${pageContext.request.contextPath}/resources/pngs/benefit.png"/></div>
-    </section>
+    </section> 
 </main>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -44,17 +44,17 @@ body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
 
 
 #wrapper{
-  width:600px;
+  width:900px;
   margin:50px auto;
-  height:400px;
+  height:600px;
   position:relative;
   color:#fff;
   text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
 }
 
 #slider_wrap{
-  width:600px;
-  height:400px;
+  width:900px;
+  height:600px;
   position:relative;
   overflow:hidden;
 }
@@ -71,8 +71,8 @@ body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
 #slider_wrap ul#slider li{
   float:left;
   position:relative;
-  width:600px;
-  height:400px; 
+  width:900px;
+  height:600px; 
 }
 
 #slider_wrap ul#slider li > div{

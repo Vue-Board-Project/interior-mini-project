@@ -12,8 +12,8 @@
 <div class="main_header_nav_dropdown">
     <a class="btn main_header_nav_dropbtn" style=" border-radius: 0px;">인테리어</a>
     <div class="main_header_nav_dropdown_content">
-      <a href="#">포트폴리오</a>
-      <a href="#">모델치과</a>
+      <a href="goPortfolioDental">포트폴리오</a>
+      <a href="goModelDental">모델치과</a>
     </div>
 </div>   
 <div class="main_header_nav_dropdown">
