@@ -18,6 +18,7 @@
    <link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
    <script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
+   <script src="https://kit.fontawesome.com/6bc10c935c.js" crossorigin="anonymous"></script>
 <%--    <link href="${pageContext.request.contextPath}/resources/css/cssSignUp.css" rel="stylesheet" type="text/css"> --%>
    <%-- <script src="${pageContext.request.contextPath}/resources/js/jsSignUp.js"></script> --%>
    <link href="${pageContext.request.contextPath}/resources/css/cssModelDentalDetail2.css" rel="stylesheet" type="text/css">

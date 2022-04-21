@@ -13,7 +13,9 @@
                 <p style="color: #272723;">화이트 베이스와 블랙 포인트가 들어간 모던 치과 인테리어</p>
             </div>
         </div>
-        <div class="text-center mb-5"><a class="btn" style="background-color: #ca5c0d; color: white;">이 컨셉으로 상담신청</a></div>
+        <div class="text-center mb-5">
+        	<a class="btn" style="background-color: #ca5c0d; color: white;" href="interior_consult/quick_consultation">이 컨셉으로 상담신청</a>
+        </div>
         <div id="model_dental_content" class="text-center">
             <div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_1.PNG"/></div>

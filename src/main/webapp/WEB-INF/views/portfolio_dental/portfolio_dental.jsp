@@ -232,14 +232,14 @@
        		<div class="ml-3 text-left" style="font-size:14px; color:#7c7c7c;"><p style="line-height: 0; margin:0; padding:0;">전체 <span>9</span></p></div>
             <div class="d-flex" style=" margin:0 auto;">
                 <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);"> 
-                    <a href="#" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
                 <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="portfolioDentalDeatail2" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>
@@ -255,21 +255,21 @@
             </div>
             <div class="d-flex" style=" margin:0 auto;">
                 <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);"> 
-                    <a href="#" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
                 <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="#" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>
                     </a>
                 </div>
                 <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="#" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manbok</small>
@@ -278,21 +278,21 @@
             </div>
             <div class="d-flex" style=" margin:0 auto;">
                 <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);"> 
-                    <a href="#" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
                 <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="#" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>
                     </a>
                 </div>
                 <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="#" style="text-decoration: none; color: black;">
+                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
                         <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manbok</small>

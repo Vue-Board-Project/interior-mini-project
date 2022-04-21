@@ -14,7 +14,7 @@
         <a href="#"><img style="width: 10rem;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/waiting_room.jpg"/></a>
 
     </div>
-    <div class=""><a class="btn" style="width: 10rem; background-color: #ca5c0d; color: white; font-size:15px;">이 컨셉으로 상담신청</a></div>
+    <div class=""><a href="${pageContext.request.contextPath}/interior_consult/quick_consultation" class="btn" style="width: 10rem; background-color: #ca5c0d; color: white; font-size:15px;">이 컨셉으로 상담신청</a></div>
 </div>
 <style>
 .abs {

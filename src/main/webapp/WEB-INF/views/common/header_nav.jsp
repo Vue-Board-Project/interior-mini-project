@@ -12,8 +12,9 @@
 <div class="main_header_nav_dropdown">
     <a class="btn main_header_nav_dropbtn" style=" border-radius: 0px;">인테리어</a>
     <div class="main_header_nav_dropdown_content">
-      <a href="goPortfolioDental">포트폴리오</a>
-      <a href="goModelDental">모델치과</a>
+      <a href="${pageContext.request.contextPath}/goPortfolioDental">포트폴리오</a>
+      <a href="${pageContext.request.contextPath}/goModelDental">모델치과</a>
+      <a href="${pageContext.request.contextPath}/interior_consult/remodeling_price">인테리어 견적</a>
     </div>
 </div>   
 <div class="main_header_nav_dropdown">
@@ -23,7 +24,7 @@
     </div>
 </div> 
 <div class="main_header_nav_btn_group text-center">
-    <div id="main_header_nav_interior_btn"><a class="btn main_header_nav_btn">인테리어 상담</a></div>
+    <div id="main_header_nav_interior_btn"><a class="btn main_header_nav_btn" href="${pageContext.request.contextPath}/interior_consult/quick_consultation">인테리어 상담</a></div>
 </div> 
 <div class="main_header_nav_btn_group text-center">
     <div id="main_header_nav_equipment_btn"><a class="btn main_header_nav_btn"><span>장비상담</span></a></div>

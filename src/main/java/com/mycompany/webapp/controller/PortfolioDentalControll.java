@@ -19,8 +19,8 @@ public class PortfolioDentalControll {
 		log.info("실행");
 		return "portfolio_dental/portfolio_dental";
 	}
-	@RequestMapping("/portfolioDentalDeatail2")
-	public String portfolioDentalDeatail2() {
+	@RequestMapping("/portfolioDentalDeatail3")
+	public String portfolioDentalDeatail3() {
 		log.info("실행");
 		return "portfolio_dental/portfolio_dental_detail3";
 	}

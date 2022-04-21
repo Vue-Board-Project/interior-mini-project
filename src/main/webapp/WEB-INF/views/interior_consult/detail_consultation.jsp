@@ -670,7 +670,7 @@
                                 </div>
                                 <div style="width: 90%;" class="mx-auto text-center" >
                                     <button class="btn mr-3 add_detail_consult_start_btn" style="width: 30%; height: 50px;">이전</button>
-                                    <button class="btn quick_consult_finish_btn" style="width: 60%; height: 50px;">빠른상담신청</button>
+                                    <button class="btn quick_consult_finish_btn" style="width: 60%; height: 50px;">상담신청</button>
                                 </div>    
                             </div>
                            

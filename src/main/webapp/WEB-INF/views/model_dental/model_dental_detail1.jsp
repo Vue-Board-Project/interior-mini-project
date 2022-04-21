@@ -12,7 +12,7 @@
                 <p style="color: #272723;">화이트 톤의 모던 치과 인테리어</p>
             </div>
         </div>
-        <div class="text-center mb-5"><a class="btn" style="background-color: #ca5c0d; color: white;">이 컨셉으로 상담신청</a></div>
+        <div class="text-center mb-5"><a class="btn" style="background-color: #ca5c0d; color: white;" href="${pageContext.request.contextPath}/interior_consult/quick_consultation">이 컨셉으로 상담신청</a></div>
         <div id="model_dental_content" class="text-center">
             <div id="model_dental_waiting_room">
                 <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/2.PNG" style="width: 60%;"/></div>

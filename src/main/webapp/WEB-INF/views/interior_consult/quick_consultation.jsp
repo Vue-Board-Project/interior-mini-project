@@ -349,7 +349,8 @@
                        <button class="btn" onclick="js:consultation_second_interior_btn()" id="consultation_second_interior_btn">다음</button>
                    </section>
                    <section id="quick_consult_finish_btn_wrap" class="text-center" style="width: 100%; height: 100%;padding-bottom: 6rem;">
-                       <button class="btn mr-3 add_detail_consult_start_btn" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" >더 상세한 상담 신청</button>
+                       <a class="btn mr-3 add_detail_consult_start_btn pt-3" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" 
+                       			href="${pageContext.request.contextPath}/interior_consult/detail_consultation">더 상세한 상담 신청</a>
                        <button class="btn quick_consult_finish_btn" id="quick_consult_finish_btn" style=" width: 220px; height: 70px;">빠른상담신청</button>  
                    </section>
                </div>
