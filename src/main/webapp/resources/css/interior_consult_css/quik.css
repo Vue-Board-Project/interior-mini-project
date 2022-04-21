@@ -1,0 +1,79 @@
+/*
+++색상
+
+헤더 주황 #ca5c0d
+광고 진회색 #272723
+풋터 연회색 #e8e8db
+배경색 그레이베이지 #faf9f6
+로고 배경 베이지 #fef8d4
+*/
+@font-face {
+    font-family: 'MinSans-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MinSans-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MinSans-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MinSans-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/*상담 전 주의사항 css*/
+#read_precautions{
+    width: 80%;
+}
+#read_precau_title{
+    font-family: 'MinSans-Medium';
+    padding-bottom: 30px;
+
+}
+#read_precau_text{
+    font-family: 'MinSans-Light';
+    color: #272723;
+    font-size: 1em;
+}
+#raed_precau_text_highlight{
+    font-family: 'MinSans-Medium';
+    font-size: 1.3em;
+}
+#read_precau_info{
+    background-color: #e8e8db;
+    font-family: 'MinSans-Regular';
+    letter-spacing: 0.2px;
+    line-height: 180%;
+}
+#read_precau_btn{
+    background-color: #ca5c0d; 
+    margin-left: 120px; 
+    color: white;
+    font-family: 'MinSans-Regular';
+}
+
+/*뒤로와 다음단계 css*/
+#consultation_first_back_btn{
+    width: 10rem; 
+    height: 5rem;
+    font-family: 'MinSans-Medium'; 
+    font-size: 25px;
+}
+#consultation_second_interior_btn{
+    width: 20rem; 
+    height: 5rem; 
+    font-family: 'MinSans-Medium'; 
+    font-size: 30px; 
+    background-color: #ca5c0d; 
+    color: white;
+}
