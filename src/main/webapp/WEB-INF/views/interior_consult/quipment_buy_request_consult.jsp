@@ -138,7 +138,7 @@
                                             <div style="display: inline-block; width: 90%; height: 100px;">
                                                 <div style="display: flex;">
                                                     <div style="display: inline-block; width: 30%;" class="p-2">
-                                                        <img src="./images/cleaner.jpg" width="150px" height="110px" class="mt-2">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/cleaner.jpg" width="150px" height="110px" class="mt-2">
                                                     </div>
                                                     <div style="display: inline-block; width: 40%; height: 100px;" class="ml-3 mt-2">
                                                         <div style="font-family: 'MinSans-Medium';" class="mb-2">
@@ -175,7 +175,7 @@
                                             <div style="display: inline-block; width: 90%; height: 100px;">
                                                 <div style="display: flex;">
                                                     <div style="display: inline-block; width: 30%;" class="p-2">
-                                                        <img src="./images/cleaner.jpg" width="150px" height="110px" class="mt-2">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/cleaner.jpg" width="150px" height="110px" class="mt-2">
                                                     </div>
                                                     <div style="display: inline-block; width: 40%; height: 100px;" class="ml-3 mt-2">
                                                         <div style="font-family: 'MinSans-Medium';" class="mb-2">

@@ -83,7 +83,7 @@
                                            <input type="checkbox" name="fruit" value="apple">
                                            <span style="border-top-left-radius: 10px;">
                                                <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="./images/treatmentRoom.png" width="100px">
+                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="100px">
                                                </div>
                                                진료실
                                            </span>
@@ -92,7 +92,7 @@
                                            <input type="checkbox" name="fruit" value="apple">
                                            <span>
                                                <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="./images/xrayRoom.png" width="100px">
+                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="100px">
                                                </div>
                                                X-ray실
                                            </span>
@@ -101,7 +101,7 @@
                                            <input type="checkbox" name="fruit" value="apple">
                                            <span style="border-top-right-radius: 10px;">
                                                <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="./images/direcotorRoom.png" width="100px">
+                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="100px">
                                                </div>
                                                원장실
                                            </span>
@@ -113,7 +113,7 @@
                                            <input type="checkbox" name="fruit" value="apple">
                                            <span style="border-bottom-left-radius: 10px;">
                                                <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="./images/consultinfRoom.png" width="100px">
+                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="100px">
                                                </div>
                                                상담실
                                            </span>
@@ -122,7 +122,7 @@
                                            <input type="checkbox" name="fruit" value="apple">
                                            <span >
                                                <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="./images/equipmentRoom.png" width="100px">
+                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="100px">
                                                </div>
                                                기계실
                                            </span>
@@ -131,7 +131,7 @@
                                            <input type="checkbox" name="fruit" value="apple">
                                            <span style="border-bottom-right-radius: 10px;">
                                                <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="./images/restRoom.png" width="100px">
+                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="100px">
                                                </div>
                                                화장실
                                            </span>
@@ -154,7 +154,7 @@
                                    <label class="test_obj">
                                        <input type="radio" name="fruit" value="apple">
                                        <span style="border-top-left-radius: 10px;">
-                                           <img src="./images/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                            모던
                                        </span>
                                    </label>
@@ -162,7 +162,7 @@
                                    <label class="test_obj">
                                        <input type="radio" name="fruit" value="banana">
                                        <span>
-                                           <img src="./images/chic.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/chic.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                            시크
                                        </span>
                                    </label>
@@ -170,7 +170,7 @@
                                    <label class="test_obj">
                                        <input type="radio" name="fruit" value="lemon">
                                        <span style="border-top-right-radius: 10px;">
-                                           <img src="./images/northEurope.jpg"  class="mx-auto  mt-3 mb-2 qcri2_img">
+                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/northEurope.jpg"  class="mx-auto  mt-3 mb-2 qcri2_img">
                                            북유럽
                                        </span>
                                    </label>
@@ -179,7 +179,7 @@
                                    <label class="test_obj">
                                        <input type="radio" name="fruit" value="apple">
                                        <span style="border-bottom-left-radius: 10px;">
-                                           <img src="./images/natural.jpg"  class="mx-auto mt-3 mb-2 qcri2_img">
+                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/natural.jpg"  class="mx-auto mt-3 mb-2 qcri2_img">
                                            내추럴
                                        </span>
                                    </label>
@@ -187,7 +187,7 @@
                                    <label class="test_obj">
                                        <input type="radio" name="fruit" value="banana">
                                        <span>
-                                           <img src="./images/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                            미니멀
                                        </span>
                                    </label>
@@ -195,7 +195,7 @@
                                    <label class="test_obj">
                                        <input type="radio" name="fruit" value="lemon">
                                        <span style="border-bottom-right-radius: 10px;">
-                                           <img src="./images/other.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/other.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                            기타
                                        </span>
                                    </label>

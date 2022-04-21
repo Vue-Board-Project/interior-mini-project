@@ -42,7 +42,7 @@
                                                             <input type="checkbox" name="fruit" value="apple">
                                                             <span style="border-top-left-radius: 10px;">
                                                                 <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                                    <img src="./images/treatmentRoom.png" width="100px">
+                                                                    <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="100px">
                                                                 </div>
                                                                 진료실
                                                             </span>
@@ -51,7 +51,7 @@
                                                             <input type="checkbox" name="fruit" value="apple">
                                                             <span>
                                                                 <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                                    <img src="./images/xrayRoom.png" width="100px">
+                                                                    <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="100px">
                                                                 </div>
                                                                 X-ray실
                                                             </span>
@@ -60,7 +60,7 @@
                                                             <input type="checkbox" name="fruit" value="apple">
                                                             <span style="border-top-right-radius: 10px;">
                                                                 <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                                    <img src="./images/direcotorRoom.png" width="100px">
+                                                                    <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="100px">
                                                                 </div>
                                                                 원장실
                                                             </span>
@@ -72,7 +72,7 @@
                                                             <input type="checkbox" name="fruit" value="apple">
                                                             <span style="border-bottom-left-radius: 10px;">
                                                                 <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                                    <img src="./images/consultinfRoom.png" width="100px">
+                                                                    <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="100px">
                                                                 </div>
                                                                 상담실
                                                             </span>
@@ -81,7 +81,7 @@
                                                             <input type="checkbox" name="fruit" value="apple">
                                                             <span >
                                                                 <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                                    <img src="./images/equipmentRoom.png" width="100px">
+                                                                    <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="100px">
                                                                 </div>
                                                                 기계실
                                                             </span>
@@ -90,7 +90,7 @@
                                                             <input type="checkbox" name="fruit" value="apple">
                                                             <span style="border-bottom-right-radius: 10px;">
                                                                 <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                                    <img src="./images/restRoom.png" width="100px">
+                                                                    <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="100px">
                                                                 </div>
                                                                 화장실
                                                             </span>
