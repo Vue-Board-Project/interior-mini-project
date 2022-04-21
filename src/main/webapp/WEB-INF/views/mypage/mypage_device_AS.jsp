@@ -15,12 +15,12 @@
 	<div class="content_section">
 		<div id = "mypage_device_AS_header" style = "margin-top : 100px;">
 			<h2>출장서비스 예약 완료</h2>
-			<hr> 
+			<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none"> 
 			
 			
 			<div class = "mypage_device_AS_check_info">
-				<img class = "mypage_device_AS_check_info_img" src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_visit.png" />
-				<div class = "mypage_device_AS_info_text">출장 서비스 예약이 완료되었습니다. <br> 오스템은 고객의 만족을 위해 최선을 다합니다.</div>
+				<img class = "mypage_device_AS_check_info_img" src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_visit.png" style = "margin-left : 50px" />
+				<div class = "mypage_device_AS_info_text"><b>출장 서비스 예약이 완료되었습니다.</b> <br> 오스템은 고객의 만족을 위해 최선을 다합니다.</div>
 			</div>
 			
 			
@@ -28,7 +28,7 @@
 		
 		<div id = "mypage_device_AS_reservation">
 			<div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2>예약 정보</h2></div>
-			<hr>
+			<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none" >
 			
 			<div id = "mypage_device_AS_reservation_content">
 				
@@ -80,7 +80,7 @@
 		
 		<div id = "mypage_device_AS_customer">
 			<div id = "mypage_device_AS_customer_title"><h2>고객 정보</h2></div>
-			<hr>
+			<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
 			
 			<div id = "mypage_device_AS_reservation_content">
 				
@@ -102,18 +102,38 @@
 			</div>
 		</div>
 		
-		<div id = "mypage_device_AS_footer">
-			<button class="btn btn-primary btn-lg" style = "left : 600px; top : 100px;">확인</button>
+		<div id = "mypage_device_AS_footer" class="text-center">
+			<button id = "mypage_device_AS_button" class="btn btn-primary btn-lg">확인</button>
 		</div>
 		
-		<div id = "mypage_device_AS_warning"></div>
+		<div id = "mypage_device_AS_warning">
+			<div id = "warning_header">
+				<img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_warning_logo.png" style = "width : 20px; height : 20px; margin : 20px;"/>
+				<div style = "margin-top : 20px;"><b>주의사항</b></div>
+			</div>
+			<div id = "warning_content" style = "margin-left : 10px;">
+				<ul>
+					<li>진행사항 확인의 경우 전화번호와 접수번호로 조회하실 수 있습니다</li>
+					<li>천재지변, 침수, 파손 및 자재가 없을 경우 서비스가 다소 지연될 수 있습니다.</li>
+					<li>센터 방문시 엔지니어가 바뀔 수 있습니다.</li>
+				</ul>
+			</div>
+		</div>
 	
 	</div>
 </div>
 </div>
 
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
 
 <style>
+
+#sidebar_mypage .mypage_list #mypage_AS{
+        	form :active;
+        	color : #ca5c0d;
+        	font-weight: 800;
+}
 
 .mypage_device_AS_check_info{
 	display: flex;
@@ -122,10 +142,12 @@
  	height : 150px;
  	border : 1px solid #ca5c0d;
  	background-color :  #e8e8db;
+ 	top : 50px;
+ 	border-radius: 10px;
 }
 
 .mypage_device_AS_check_info .mypage_device_AS_info_text {
-	padding : auto;
+	margin : auto;
 }
 
 
@@ -152,14 +174,13 @@
  
  #mypage_device_AS_reservation{
  	width : 800px;
- 	height : 1000px;
+ 	height : 600px;
  
  }
  
  #mypage_device_AS_reservation_content .reservation_number{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -167,14 +188,12 @@
   #mypage_device_AS_reservation_content .reservation_number .reservation_number_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
- 	padding : auto;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .reservation_number .reservation_number_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
@@ -182,7 +201,6 @@
  #mypage_device_AS_reservation_content .service_type{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -190,14 +208,12 @@
   #mypage_device_AS_reservation_content .service_type .service_type_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
- 	padding : auto;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .service_type .service_type_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
@@ -206,7 +222,6 @@
  #mypage_device_AS_reservation_content .request_date{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -214,20 +229,18 @@
   #mypage_device_AS_reservation_content .request_date .request_date_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .request_date .request_date_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
   #mypage_device_AS_reservation_content .visit_date{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -235,13 +248,12 @@
   #mypage_device_AS_reservation_content .visit_date .visit_date_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .visit_date .visit_date_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
@@ -250,7 +262,6 @@
    #mypage_device_AS_reservation_content .product_name{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -258,20 +269,18 @@
   #mypage_device_AS_reservation_content .product_name .product_name_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .product_name .product_name_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
     #mypage_device_AS_reservation_content .product_code_name{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -279,20 +288,18 @@
   #mypage_device_AS_reservation_content .product_code_name .product_code_name_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .product_code_name .product_code_name_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
      #mypage_device_AS_reservation_content .product_symptom{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -300,13 +307,12 @@
   #mypage_device_AS_reservation_content .product_symptom .product_symptom_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .product_symptom .product_symptom_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
@@ -314,7 +320,6 @@
 #mypage_device_AS_reservation_content .product_symptom_detail{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -322,13 +327,12 @@
   #mypage_device_AS_reservation_content .product_symptom_detail .product_symptom_detail_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_reservation_content .product_symptom_detail .product_symptom_detail_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
@@ -337,13 +341,12 @@
  
  /*customer */
  #mypage_device_AS_customer{
- 	top : 0px;
+ 	top : 100px;
  }
  
  #mypage_device_AS_customer  #mypage_device_AS_reservation_content  .customer_name{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -351,13 +354,12 @@
   #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_name .customer_name_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_name .customer_name_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
@@ -365,7 +367,6 @@
   #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_phone_number{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -373,13 +374,12 @@
   #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_phone_number .customer_phone_number_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_phone_number .customer_phone_number_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
@@ -387,7 +387,6 @@
    #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_address{
  	width : 1400px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  	display: flex;
  	flex-direction: row;
  }
@@ -395,26 +394,40 @@
   #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_address .customer_address_title{
  	width : 300px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
+ 	text-align: center;
  }
  
  #mypage_device_AS_customer #mypage_device_AS_reservation_content .customer_address .customer_address_content{
  	width : 1100px;
  	height : 60px;
- 	border : 1px solid #ca5c0d;
  }
  
  
  #mypage_device_AS_footer {
  	width : 1100px;
  	height : 100px;
+ 	
+ 	
  }
  
+  #mypage_device_AS_footer #mypage_device_AS_button {
+  	top : 100px;
+  }
  
+ #mypage_device_AS_warning {
+ 	width : 1400px;
+ 	height : 215px;
+ 	border : 1px solid #ca5c0d;
+ 	background-color :  #e8e8db;
+ 	border-radius: 10px;
+ }
  
+  
+ #mypage_device_AS_warning #warning_header {
+	 display: flex;
+ 	flex-direction: row;
  
- 
- 
+ }
  
  
 	
