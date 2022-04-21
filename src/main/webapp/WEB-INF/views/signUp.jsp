@@ -3,7 +3,7 @@
  <div id="sign_up_wrap">
           
           <!--content wrapper -->
-          <div id="wrapper" style="background-color: #faf9f6; height: 90rem;  font-family: 'MinSans-Regular';" novalidate>
+          <div id="sign_up_wrapper" style="background-color: #faf9f6; height: 90rem;  font-family: 'MinSans-Regular';" novalidate>
               <div class="text-center pt-5"><span style="font-size: 30px; font-family: 'MinSans-Regular';">회원가입</span></div>
               <!-- content-->
               <form method="post" action="join" id="content" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;">
@@ -107,7 +107,7 @@
               </form> 
           </div> 
       </div>
-     <script>
+<script>
       function findAddr(){
           new daum.Postcode({
               oncomplete: function(data) {
