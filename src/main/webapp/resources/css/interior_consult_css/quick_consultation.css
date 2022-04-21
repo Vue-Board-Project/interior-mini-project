@@ -1,0 +1,232 @@
+/*
+++색상
+
+헤더 주황 #ca5c0d
+광고 진회색 #272723
+풋터 연회색 #e8e8db
+배경색 그레이베이지 #faf9f6
+로고 배경 베이지 #fef8d4
+*/
+/*빠른상담 display*/
+#read_precautions{
+    /* display: none; */
+}
+#first_quick_consultation{
+    display: none;
+}
+
+#quick_consultation_rotation1{
+    /* display: none; */
+}
+#quick_consultation_rotation2{
+    display: none;
+}
+#quick_consultation_rotation3{
+    display: none;
+}
+#quick_consultation_rotation4{
+    display: none;
+}
+#remodeling_consult_Room_wrapping{
+    display: none;
+}
+#quick_consult_finish_btn_wrap{
+    display: none;
+}
+
+
+/*첫번째 빠른 상담 전체 div*/
+#first_quick_consultation{
+    width: 60%; 
+    background-color:#faf9f6; 
+    padding: 100px 0 200px 0;
+}
+#first_choice_new_update_btn_group{
+    width: 100%;
+    margin: 50px 0; 
+    font-family: 'MinSans-Medium';
+
+}
+/*상태 바 css*/
+.status{
+    height: 12px;
+    width: 90%;
+    background-color: #e8e8db;
+    
+}
+.statusbar{
+    height: 100%;
+    background-color:#ca5c0d ;
+    border-radius: 20px;
+    width: 25%;
+}
+/* 선택 라디오 버튼 버튼 형식으로 변경하는 css */
+.first_quick_new_update_btn_group {
+box-sizing: border-box;
+font-size: 0;
+display: flex;
+flex-flow: row nowrap;
+justify-content: center;
+align-items: stretch;
+}
+.first_quick_new_update_btn_group input {
+width: 0;
+height: 0;
+position: absolute;
+left: -9999px;
+}
+.first_quick_new_update_btn_group input + label {
+font-family: 'MinSans-Medium';
+color: #272723;
+margin: 0;
+padding: 1.3rem 3rem;
+box-sizing: border-box;
+position: relative;
+display: inline-block;
+border: solid 1px #DDD;
+background-color: #FFF;
+font-size: 1.2rem;
+line-height: 140%;
+text-align: center;
+box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+.first_quick_new_update_btn_group input + label:first-of-type {/* 첫번째 요소에 주는 라운드*/
+border-radius: 6px 0 0 6px;
+border-right: none;
+}
+.first_quick_new_update_btn_group input + label:last-of-type {/* 끝 요소에 주는 라운드 */
+border-radius: 0 6px 6px 0;
+border-left: none;
+}
+.first_quick_new_update_btn_group input:hover + label { /* 마우스 올렸을 때 */ 
+border-color: #213140;
+}
+.first_quick_new_update_btn_group input:checked + label { /* 선택시 */
+background-color:  #ca5c0d;
+color: #FFF;
+/* box-shadow: 0 0 10px rgba(102, 179, 251, 0.5); */
+border-color:  #ca5c0d;
+z-index: 1;
+}
+.first_quick_new_update_btn_group input:focus + label {
+outline: dotted 1px #CCC;
+outline-offset: 0.45rem;
+}
+
+/*second 화면 css*/
+.test_obj{
+    margin: 0;
+}
+.test_obj input[type="radio"] {
+    display: none;
+}
+
+.test_obj input[type="radio"] + span {
+    width: 180px;
+    height: 160px;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'MinSans-Medium';
+
+}
+
+.test_obj input[type="radio"]:checked + span {
+    width: 180px;
+    height: 160px;
+    background-color: #ca5c0d;
+    color: white;
+}
+.test_obj input[type="radio"]:checked + span>img{
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.qcri2_img{
+    display: block;
+    width: 150px;
+    height: 100px;
+}
+
+/*상담 시간 라디오 버튼 css*/
+.conult-reservation_time_wrap{
+    margin: 0;
+}
+.conult-reservation_time_wrap input[type="radio"] {
+    display: none;
+}
+
+.conult-reservation_time_wrap input[type="radio"] + span {
+    width: 60px;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 15px;
+    padding-top: 2px;
+    margin-right: 15px;
+    font-family: 'MinSans-Bold';
+
+}
+
+.conult-reservation_time_wrap input[type="radio"]:checked + span {
+    width: 60px;
+    height: 30px;
+    background-color: #ca5c0d;
+    border: 1px solid #ca5c0d;
+    color: white;
+}
+
+/*리모델링 시공공간 체크박스 css && 디테일신청 시공공간 체크 박스*/
+.remodeling_consult_Room{
+    margin: 0;
+}
+.remodeling_consult_Room input[type="checkbox"] {
+    display: none;
+}
+
+.remodeling_consult_Room input[type="checkbox"] + span {
+    width: 180px;
+    height: 150px;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'MinSans-Medium';
+}
+
+.remodeling_consult_Room input[type="checkbox"]:checked + span {
+    width: 180px;
+    height: 150px;
+    background-color: #ca5c0d;
+    color: white;
+}
+
+.remodeling_consult_Room input[type="checkbox"]:checked + span>div{
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+/*마지막 순서 상담 버튼 css && 디테일신청 상담 버튼*/
+.quick_consult_finish_btn{
+    border-radius: 30px;  
+    font-size: 20px; 
+    color: white; 
+    background-color: #ca5c0d; 
+    font-family: 'MinSans-Bold';
+}
+.add_detail_consult_start_btn{
+    border-radius: 30px; 
+    font-size: 20px; 
+    background-color: white; 
+    color: #ca5c0d; 
+    border: 2px solid #ca5c0d; 
+    font-family: 'MinSans-Bold';
+}

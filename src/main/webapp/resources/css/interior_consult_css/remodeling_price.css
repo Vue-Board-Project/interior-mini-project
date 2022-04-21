@@ -1,0 +1,62 @@
+.remodeling_price_quote_main_radio_btn{
+    list-style: none ;
+    width: 100%;
+    padding: 40px 0 0 0;
+    font-family: 'MinSans-Medium';
+}
+.remodeling_price_quote_main_radio_btn li{
+    height: 70px;
+}
+
+.total_remodeling_price_coment_wrap {
+    
+}
+
+.total_remodeling_price_coment_wrap li{
+    margin-bottom: 30px;
+    font-family: 'MinSans-Regular';
+    color: #272723
+}
+
+/*리모델링 체크박스 버튼 css*/
+.detail_consult_main_radio_btn_csswrap{
+    margin: 0;
+}
+.detail_consult_main_radio_btn_csswrap input[type="checkbox"] {
+    display: none;
+}
+
+.detail_consult_main_radio_btn_csswrap input[type="checkbox"] + span {
+    height: 50px;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    padding-top: 10px;
+    font-family: 'MinSans-Regular';
+}
+
+.detail_consult_main_radio_btn_csswrap input[type="checkbox"]:checked + span {
+    height: 50px;
+    background-color: #ca5c0d;
+    color: white;
+}
+
+/* 리모델링 견적 display none*/
+#rpajcall{
+    /* display: none; */
+}
+#rpajcpapering{
+    display: none;
+}
+#rpajcwaiting{
+    display: none;
+}
+#rpajctreatment{
+    display: none;
+}
+#rpajcdisinfection{
+    display: none; 
+}

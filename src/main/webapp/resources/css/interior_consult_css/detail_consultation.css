@@ -1,0 +1,83 @@
+/*색상 선택 라디오 버튼 css*/
+.detail_interior_color_choie{
+    margin: 0;
+}
+.detail_interior_color_choie input[type="radio"] {
+    display: none;
+}
+
+.detail_interior_color_choie input[type="radio"] + span {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+    
+
+}
+
+.detail_interior_color_choie input[type="radio"]:checked + span {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ca5c0d;;
+}
+
+/*인테리어 디테일 상담신청 어사이드 바*/
+.detail_consult_aside_ul{
+    list-style: none ;
+    width: 100%;
+    padding: 40px 0 0 0;
+    font-family: 'MinSans-Medium';
+    
+}
+#dcajcwaiting, #dcajctreatment, #dcajcdisinfection, #dcajcmachine{
+    display: none;
+}
+.detail_consult_aside_jsonci_class[value="all"]{
+    color: #ca5c0d;
+}
+
+/*기본 디테일 상담 라디오 버튼 css*/
+.detail_consult_main_radio_btn_csswrap{
+    margin: 0;
+}
+.detail_consult_main_radio_btn_csswrap input[type="radio"] {
+    display: none;
+}
+
+.detail_consult_main_radio_btn_csswrap input[type="radio"] + span {
+    height: 50px;
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    padding-top: 10px;
+    font-family: 'MinSans-Regular';
+}
+
+.detail_consult_main_radio_btn_csswrap input[type="radio"]:checked + span {
+    height: 50px;
+    background-color: #ca5c0d;
+    color: white;
+}
+
+/*버튼 width만 따로 css 줘야함*/
+.waiting_flooring{
+    width: 180px;
+}
+.waiting_light{
+    width: 271px;
+}
+.waiting_papering{
+    width: 180px;
+}
+.waiting_furniture{
+    width: 271px;
+}
+.wating_choice_title{
+    font-family: 'MinSans-Medium';
+}
