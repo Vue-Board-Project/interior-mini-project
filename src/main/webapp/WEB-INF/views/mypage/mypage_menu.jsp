@@ -99,7 +99,7 @@
     <hr class = "mypage_menubar_hr">
     <div class = "mypage_list_element">
       <a class = "mypage_menubar_link" href="#">
-        <span class="links_name">장바구니</span>
+        <span class="links_name">장비 AS 조회</span>
       </a>
     </div>
     <hr style = "visibility: hidden">
