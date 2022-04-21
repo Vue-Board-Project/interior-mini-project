@@ -124,7 +124,7 @@
 	          top: 0;
 	          left: 249px;
 	          width: calc(100% - 250px);
-	          transition: all 0.5s ease;
+	         
 	        
         }
         

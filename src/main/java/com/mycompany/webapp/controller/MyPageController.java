@@ -56,4 +56,9 @@ public class MyPageController {
 		return "/mypage/mypage_popup_practice";
 	}
 	
+	
+	@RequestMapping("/mypage/device_AS")
+	public String mypageDeviceAS() {
+		return "/mypage/mypage_device_AS";
+	}
 }
