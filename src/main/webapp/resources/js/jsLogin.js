@@ -1,9 +1,9 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 	 $("#login_popup_open").click(function(){
 	 $("#login_popup_wrap").css("display", "block");
 	 $("#main_header_mask").css("display", "block");
 	});
-});
+});*/
 $(document).ready(function(){ 
 	 $("#login_popup_open").click(function(){ 
 		 $("#login_popup_wrap").css("display", "block"); 
