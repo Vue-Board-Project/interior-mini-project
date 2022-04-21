@@ -14,7 +14,7 @@
         width: 250px;
         padding: 3px 14px; 
         top : 217px;
-        z-index: 99;
+       /* z-index: 99; */
         background: #faf9f6;
       }
 
@@ -97,12 +97,6 @@
       </a>
     </div>
     <hr class = "mypage_menubar_hr">
-    <div class = "mypage_list_element">
-      <a class = "mypage_menubar_link" href="#">
-        <span id="interior_report" class="links_name">인테리어 현황</span>
-      </a>
-    </div>
-     <hr class = "mypage_menubar_hr">
     <div class = "mypage_list_element">
       <a class = "mypage_menubar_link" href="#">
         <span class="links_name">장바구니</span>

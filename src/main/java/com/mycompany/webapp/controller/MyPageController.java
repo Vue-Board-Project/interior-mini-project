@@ -51,4 +51,9 @@ public class MyPageController {
 		return "/mypage/mypage_review";
 	}
 	
+	@RequestMapping("/mypage/popupSample")
+	public String mypagePopupSample() {
+		return "/mypage/mypage_popup_practice";
+	}
+	
 }
