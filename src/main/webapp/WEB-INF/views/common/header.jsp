@@ -18,8 +18,9 @@
    <link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
    <script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
-   <link href="${pageContext.request.contextPath}/resources/css/cssSignUp.css" rel="stylesheet" type="text/css">
+<%--    <link href="${pageContext.request.contextPath}/resources/css/cssSignUp.css" rel="stylesheet" type="text/css"> --%>
    <%-- <script src="${pageContext.request.contextPath}/resources/js/jsSignUp.js"></script> --%>
+   <link href="${pageContext.request.contextPath}/resources/css/cssModelDentalDetail2.css" rel="stylesheet" type="text/css">
    <!-- 주소찾기 daum API -->
    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <style>
