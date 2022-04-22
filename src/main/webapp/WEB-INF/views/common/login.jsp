@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<div id="login_popup_wrap" style="background:#faf9f6; border: solid 1px #666666; position:fixed; z-index:9999; display:none; top: 0px; right: 0px;">
+<div id="login_popup_wrap" style="background:#faf9f6; border: solid 1px #666666; position:fixed; z-index:9999; top: 0px; right: -400px;">
      <div id="login_popup_content1" style="width:400px; text-align: center;">
          <div id="login_wrapper" class="d-flex flex-column float-right vh-100 p-5" style="font-family: 'MinSans-Regular'; width: 400px; background-color: #faf9f6;">
              <div class="d-flex ml-3 mb-4">

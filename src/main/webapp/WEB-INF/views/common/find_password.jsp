@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<div id="find_pw_popup_wrap" class="vh-100" style="background:#faf9f6; border: solid 1px #666666; position:fixed; z-index:9999; display:none; top: 0px; right: 0px;">
+<div id="find_pw_popup_wrap" class="vh-100" style="background:#faf9f6; border: solid 1px #666666; position:fixed; z-index:9999; top: 0px; right: -400px;">
         <div id="find_pw_popup_content" style="width:400px; text-align: center;">
             <div id="find_pw_wrapper" class="d-flex flex-column float-right vh-100 p-5" style="font-family: 'MinSans-Regular'; width: 400px; background-color: #faf9f6;">
                 <div class="d-flex ml-3 mb-4">
