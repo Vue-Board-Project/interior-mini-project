@@ -77,6 +77,7 @@
       		 margin: 20px 0;
       }
 
+		/* 이건 메뉴용 아님 */
 		.header_section .text{
 	          display: inline-block;
 	          color: #321313;
@@ -97,8 +98,7 @@
 </style>
 
  <div id="sidebar_mypage" class = "mx-auto text-center">
-   <div class="mypage_list">
-   
+   <div class="mypage_list">  
      <div class = "mypage_list_element">
        <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_counseling">
        <!-- onclick시 각 링크로 연결하기 -->
