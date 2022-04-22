@@ -153,14 +153,9 @@
 
 
 #mypage_device_AS_jsp{
-	 z-index: 1;
 	background: #faf9f6;
 }
 
- /*풋터 위로 */
- #main_footer_wrap {
- 	 z-index: 2;
- } 
  
  #mypage_device_AS_jsp_content{
  	   position: relative;
