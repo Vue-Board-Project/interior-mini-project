@@ -192,6 +192,11 @@
     	z-index: 4;
     	
     }
+    
+    #mypage_review_jsp {
+    	
+    	 background-color: #faf9f6;
+    }
 	
 </style>
 
