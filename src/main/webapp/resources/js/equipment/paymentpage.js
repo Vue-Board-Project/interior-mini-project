@@ -87,3 +87,14 @@
                 }
             }).open();
         }
+        
+         $(document).ready(function(){ 
+         $("#next_page_go_to_payment_step3").click(function(){ 
+                      $(".layer_popup").css("display", "block"); 
+                      $(".dimmed").css("display", "block"); 
+                      }); 
+            /*$(".btn_close").click(function(){ 
+                $(".layer_popup").css("display", "none"); 
+                $(".dimmed").css("display", "none"); 
+                }); */
+            }); 

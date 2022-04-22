@@ -6,7 +6,9 @@
         <p id="main_header_ad_text3" class="m-0">치과에 최적화된 인테리어로 고객의 눈높이에 맞는 맞춤제안을 제공합니다.</p>
     </div>
     <div id="main_header_ad_delete" align="right" class="p-2">
-        <button id="main_header_ad_close" style="border: none; outline: none; background-color: #272723;"><img src="${pageContext.request.contextPath}/resources/pngs/main_header_ad_delete_icon.png"/></button>
+        <button id="main_header_ad_close" style="border: none; outline: none; background-color: #272723;">
+        <img src="${pageContext.request.contextPath}/resources/pngs/main_header_ad_delete_icon.png"/>
+        </button>
     </div>
 </div>
 

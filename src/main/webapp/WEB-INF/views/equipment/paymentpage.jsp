@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/paymentpage.css" rel="stylesheet" type="text/css"/>
-	<div id="paymentpage_wrapper">
+   <div id="paymentpage_wrapper">
         <div id="paymentpage_content">
             <div id="payment_step1_title" class="fontcolor525253">
                 <p>STEP01</p>
@@ -115,12 +115,45 @@
                 </div>
                 <div id="step3_bt_list">
                     <a id="back_page_go_to_payment_step2" class="btn" onclick="payment_backstep2()">이전 페이지</a>
-                    <a id="next_page_go_to_payment_step3" class="btn" href="${pageContext.request.contextPath}/equipment/paymentsuccess">결제</a>
+                    <a id="next_page_go_to_payment_step3" class="btn">결제</a>
                 </div>
                 
             </div>
+        
+    <div class="content"></div>
+        <div id="paymentsuccess_popup" class="layer_popup" style="font-family: 'MinSans-Regular'; display:none"> 
+            <div class="layer">
+                <div class="text_area text-center">
+                    <p style="font-size: 30px;"> 구매가 정상적으로 완료되었습니다 </p>
+                    <div class="popup_content d-flex text-center" >
+                        <div class="pt-3" style="background-color: #e8e8db; flex-grow: 1;">
+                            <p>주문번호</p>
+                            <p>462379937</p>
+                        </div>
+                        <div align = "right" class="pt-4 pr-5" style="background-color: #faf9f6; flex-grow: 3;">
+                            <div>
+                                <span>총 결제 금액</span>
+                                <span>5,193,000</span>
+                                <span>원</span>
+                            </div>
+                            <div class="mt-1" style="color: #7e7d7d; font-size: 14px;"><p>신용카드<span>(신한 일시불)</span></p></div>
+                        </div>
+                    </div>
+                    <p style="font-size: 11px;">자세한 구매내역 확인 및 문자발송, 배송지 변경 등의 서비스는 우측 상단의 마이페이지>구매내역에서 이용 가능합니다.</p>
+                </div>
+                <div class="btn_area text-center"> 
+                    <a href="${pageContext.request.contextPath}/mypage/mypage_orderlist" class="btn btn_payment" style="background: gray; width: 20%; border: none; outline: none; color: white; box-shadow: none;">구매 내역 확인</a>
+                    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main" class="btn btn_shop" style="background: #ca5c0d; width: 20%; border: none; outline: none; color: white; box-shadow: none;">쇼핑 계속하기</a> 
+                    <a href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase" class="btn btn_cart" style="background: #ca5c0d; width: 20%; border: none; outline: none; color: white; box-shadow: none;">카트보기</a> 
+                </div> 
+                <a class="btn btn_close"  href="${pageContext.request.contextPath}/">CLOSE</a> 
+            </div> 
+            <div class="dimmed"></div>
+      </div>
+  
         </div>
-	<script src="${pageContext.request.contextPath}/resources/js/equipment/paymentpage.js"></script>
+        
+   <script src="${pageContext.request.contextPath}/resources/js/equipment/paymentpage.js"></script>
 </div>
         
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
