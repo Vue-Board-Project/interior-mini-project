@@ -39,14 +39,14 @@
 	     		<div class = "prouducts">
 	     		<!-- 각 제품 요소들 -->
 	  				<div class = "productsList">
-	  					<span class = "product_image">
+	  					<div class = "product_image">
 	  						<a href = "#">
 	  							<img class = "mypage_productlist_images" src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg" width = 200px; height = 200px/>
 	  						</a>
-	  					</span>
-	  					<span class = "product_info_name">제품 1</span>
-	  					<span class = "product_info_price">가격 : 123456 Won</span>
-	  					<span class = "product_deliver_status">배송 중</span>
+	  					</div>
+		  					<div class = "product_info_name">제품 1</div>
+		  					<div class = "product_info_price">가격 : 123456 Won</div>
+		  					<div class = "product_deliver_status">배송 중</div>
 	  				</div>
 	  				<div class = "productsList">
 	  					<span class = "product_image">
@@ -78,16 +78,16 @@
           min-height: 100vh;
           top: 0;
           left: 249px;
-          width: calc(100% - 250px);
-          transition: all 0.5s ease;
-          
+          width: calc(100% - 250px);   
      }
      
       .productsList {
       		position : relative;
+      		width : 1000px;
+      		height : 250px;
       		border : 1px solid #ca5c0d;
+      		background-color : #fff;
       		display: flex;
-      		flex-wrap: wrap;
 			flex-direction: row; 
 			border-radius : 5px;
       }
@@ -110,9 +110,9 @@
      .productsList .product_info_name {
       		position : absolute;
       		top: 5%;
-    		left: 50%;
+    		left: 10%;
       		font-size : 25px;
-      		font-weight : 600;
+      		font-family: 'MinSans-Bold';
       		/*padding-top : 10px;*/
   			 
       } 
@@ -139,14 +139,9 @@
      }
      
      
-     /*풋터 위로 */
-    #main_footer_wrap {
-    	 z-index: 2;
-    } 
-    
+
     /*화면 */
     #mypage_orderlist_jsp {
-    	z-index: 1;
     	background: #faf9f6;
     }
         

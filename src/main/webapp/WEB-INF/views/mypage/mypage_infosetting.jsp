@@ -122,15 +122,9 @@
       }
       
       #mypage_infosetting_jsp {
-      	 z-index: 1;
       	 background: #faf9f6;
       }
       
-     /*풋터 위로 */
-    #main_footer_wrap {
-    	 z-index: 2;
-    } 
-    
         
         
 </style>

@@ -34,19 +34,20 @@
 	    font-style: normal;
 	}
 	/*사이드바 움직이면 밑에 흰 배경 보여서 전체 화면에 한번 색 깔음.*/
-	.card{
+	
+	/*.card{
 		background: #faf9f6;
-	}
+	}*/
 	
 	/*  마이페이지 사이드바  */
+	
       #sidebar_mypage{
         position: fixed;
         left: 0;
-        height: 100%;
+        height: 40%;
         width: 250px;
         padding: 3px 14px; 
         top : 217px;
-       /* z-index: 99; */
         background: #faf9f6;
       }
 
@@ -56,7 +57,7 @@
       	border : 1px solid #ca5c0d;
       }
       
-      #sidebar_mypage .mypage_list .mypage_list_element .links_name {
+    #sidebar_mypage .mypage_list .mypage_list_element .links_name {
 		  pointer-events: none;
           color: #272723;
           font-size: 20px;

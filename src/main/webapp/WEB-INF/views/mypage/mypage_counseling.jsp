@@ -45,7 +45,6 @@
           top: 0;
           left: 249px;
           width: calc(100% - 250px);
-          z-index: 1;
      }
            
 	.mypage_counseling_history{
@@ -74,10 +73,6 @@
 	    margin-right : 3%;
     }
     
-    /*풋터 위로 */
-    #main_footer_wrap {
-    	 z-index: 2;
-    } 
     
     /*팝업 선택시 회색 레이어 */
     #mypage_counseling_mask{

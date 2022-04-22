@@ -183,15 +183,6 @@
 	}
 	
 	
-	 /*풋터 위로 */
-    #main_footer_wrap {
-    	 z-index: 2;
-    } 
-    
-    #mypage_review_jsp{
-    	z-index: 1;
-    	background: #faf9f6;
-    }
     
     #mypage_review_mask{
     	z-index: 3;

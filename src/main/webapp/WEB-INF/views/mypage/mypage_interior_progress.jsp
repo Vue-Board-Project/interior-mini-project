@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<div id = mypage_interior_progress_jsp">
+<div id = "mypage_interior_progress_jsp">
 	<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
 	
 	<div class="mypage_interior_progress_section">
@@ -97,7 +97,7 @@
 				<div id = "interior_progress_step6" class = "interior_progress_result_content">
 					<h2>최종 확인</h2>
 					<article>
-						최종 파일은 다음과 같습니다~ 블라블라블라블라블라 
+						최종 파일은 다음과 같습니다. 
 					</article>
 					<a href="${pageContext.request.contextPath}/resources/images/test.pdf" download="" class= "mypage_interior_progress_downloadform">최종 파일</a>
 					
@@ -117,7 +117,6 @@
         
       
        .mypage_interior_progress_section{
-        
 	         position: relative;
 	          background: #faf9f6;
 	          min-height: 100vh;
@@ -129,14 +128,8 @@
         }
         
         #mypage_interior_progress_jsp{
-        	  z-index: 1;
         	  background: #faf9f6;
         }
-        
-        /*풋터 위로 */
-	    #main_footer_wrap {
-	    	 z-index: 2;
-	    } 
 
         
        #mypage_interior_steps{
@@ -145,8 +138,6 @@
        		display: flex;
        		flex-direction: row; 
        		justify-content: space-evenly;
-			
-			/*flex-wrap: wrap;*/
        }
        
          .mypage_interior_progressbar_images{
@@ -168,9 +159,7 @@
         	margin-top : 140px;
         	margin-left : 5%;
         	padding : auto;
-        	/*각 버튼과 크기 맞출경우*/
         	width : 90%; 
-        	
         	height : 150%;
         	background-color : #e8e8db;
         }
@@ -221,6 +210,8 @@
         	height : 280px;
         	border : 1px solid #ca5c0d;
         	overflow : scroll;
+        	background-color : #fff;
+        	border-radius : 3%;
         }
         
         .interior_progress_step_image_content{
@@ -232,7 +223,8 @@
         	height : 280px;
         	border : 1px solid #ca5c0d;
         	overflow : scroll;
-        	
+        	background-color : #fff;
+        	border-radius : 3%;
         }
         
         .interior_progress_step_image_content img{
@@ -241,11 +233,7 @@
 			width : 90%;
         }
         
-        /*다운로드 형식 만들기*/
-        .mypage_interior_progress_downloadform{
-        	/*background-color : #d5d5d8;*/
-        }
-        
+
 </style>
 
 <script>
