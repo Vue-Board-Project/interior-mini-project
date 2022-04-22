@@ -66,6 +66,7 @@
  		height : 100%;
  		width : 100%;
  		background-color : #faf9f6;
+ 		padding : 5%;
  		
  	
  	}
@@ -80,7 +81,8 @@
  	}
  	
  	#mypage_counsel_popup_infomations {
- 		margin-top : 40px;
+ 		 margin-top : 40px;
+ 		 padding : 5px;
  		 list-style:none;
  	}
  	
@@ -101,7 +103,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_name .popup_info_name_content{
@@ -121,7 +122,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_phone_num .popup_info_phone_num_content{
@@ -145,7 +145,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_space_type .popup_info_space_type_content{
@@ -167,7 +166,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_width .popup_info_width_content{
@@ -187,7 +185,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_budget .popup_info_budget_content{
@@ -208,7 +205,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_spot .popup_info_spot_content{
@@ -229,7 +225,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_worker .popup_info_worker_content{
@@ -250,7 +245,6 @@
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
- 	text-align: center;
  }
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_visit_date .popup_info_visit_date_content{
