@@ -7,8 +7,8 @@
     </div>
     <div id="main_header_ad_delete" align="right" class="p-2">
         <button id="main_header_ad_close" style="border: none; outline: none; background-color: #272723;">
-        <%-- <img src="${pageContext.request.contextPath}/resources/images/main_header_ad_delete_icon.png"/> --%>
-        <span style="color: white;">X</span>
+       <img src="${pageContext.request.contextPath}/resources/images/main_header_ad_delete_icon2.png" height="30px"/>
+        <!-- <span style="color: white;">X</span> -->
         </button>
     </div>
 </div>
