@@ -1,6 +1,38 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <style>
+	@font-face {
+	    font-family: 'MinSans-Bold';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+		@font-face {
+	    font-family: 'MinSans-Medium';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+	@font-face {
+	    font-family: 'MinSans-Regular';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Regular.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	@font-face {
+	    font-family: 'MinSans-Light';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Light.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	@font-face {
+	    font-family: 'MinSans-Thin';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Thin.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
 	/*사이드바 움직이면 밑에 흰 배경 보여서 전체 화면에 한번 색 깔음.*/
 	.card{
 		background: #faf9f6;
@@ -14,7 +46,7 @@
         width: 250px;
         padding: 3px 14px; 
         top : 217px;
-        z-index: 99;
+       /* z-index: 99; */
         background: #faf9f6;
       }
 
@@ -31,6 +63,8 @@
           font-weight: 400;
           white-space: nowrap;
           pointer-events: none;
+          font-family: 'MinSans-Medium';
+          
 	}
       
       .mypage_menubar_link{
@@ -43,6 +77,7 @@
       		 margin: 20px 0;
       }
 
+		/* 이건 메뉴용 아님 */
 		.header_section .text{
 	          display: inline-block;
 	          color: #321313;
@@ -63,8 +98,7 @@
 </style>
 
  <div id="sidebar_mypage" class = "mx-auto text-center">
-   <div class="mypage_list">
-   
+   <div class="mypage_list">  
      <div class = "mypage_list_element">
        <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_counseling">
        <!-- onclick시 각 링크로 연결하기 -->
@@ -98,14 +132,8 @@
     </div>
     <hr class = "mypage_menubar_hr">
     <div class = "mypage_list_element">
-      <a class = "mypage_menubar_link" href="#">
-        <span id="interior_report" class="links_name">인테리어 현황</span>
-      </a>
-    </div>
-     <hr class = "mypage_menubar_hr">
-    <div class = "mypage_list_element">
-      <a class = "mypage_menubar_link" href="#">
-        <span class="links_name">장바구니</span>
+      <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/device_AS">
+        <span id = "mypage_AS" class="links_name">장비 AS 조회</span>
       </a>
     </div>
     <hr style = "visibility: hidden">

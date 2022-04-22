@@ -1,64 +1,68 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
 
-<div class="orderlist_section">
-         <div class = "header_section">
-          <div class="text">주문 내역</div>
-          <span class="sub_text">지난 주문 내역을 조회합니다.</span>
-          <hr width = 90%>
-         </div>
-         
-         <div id = "mypage_orderlist_date_selection" class="btn-group btn-group-toggle" data-toggle="buttons">
-			  <label class="btn btn-secondary active">
-			    <input type="radio" name="options" id="orderlist_today" autocomplete="off" checked> 오늘
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="orderlist_1month" autocomplete="off"> 1개월
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="orderlist_3month" autocomplete="off"> 3개월
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="orderlist_6month" autocomplete="off"> 6개월
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="orderlist_1year" autocomplete="off"> 1년
-			  </label>
-			  <label class="btn btn-secondary">
-			    <input type="radio" name="options" id="orderlist_date_all" autocomplete="off"> 전체
-			  </label>
+<div id = "mypage_orderlist_jsp">
+	<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
+	
+	<div class="orderlist_section">
+	         <div class = "header_section">
+	          <div class="text">주문 내역</div>
+	          <span class="sub_text">지난 주문 내역을 조회합니다.</span>
+	          <hr width = 90%>
+	         </div>
+	         
+	         <div id = "mypage_orderlist_date_selection" class="btn-group btn-group-toggle" data-toggle="buttons">
+				  <label class="btn btn-secondary active">
+				    <input type="radio" name="options" id="orderlist_today" autocomplete="off" checked> 오늘
+				  </label>
+				  <label class="btn btn-secondary">
+				    <input type="radio" name="options" id="orderlist_1month" autocomplete="off"> 1개월
+				  </label>
+				  <label class="btn btn-secondary">
+				    <input type="radio" name="options" id="orderlist_3month" autocomplete="off"> 3개월
+				  </label>
+				  <label class="btn btn-secondary">
+				    <input type="radio" name="options" id="orderlist_6month" autocomplete="off"> 6개월
+				  </label>
+				  <label class="btn btn-secondary">
+				    <input type="radio" name="options" id="orderlist_1year" autocomplete="off"> 1년
+				  </label>
+				  <label class="btn btn-secondary">
+				    <input type="radio" name="options" id="orderlist_date_all" autocomplete="off"> 전체
+				  </label>
+				</div>
+				
+	          <hr width = 90%>
+	          
+	     	<div class="content_section">
+	     	<!-- 재품 받기 -->
+	     		<div class = "prouducts">
+	     		<!-- 각 제품 요소들 -->
+	  				<div class = "productsList">
+	  					<span class = "product_image">
+	  						<a href = "#">
+	  							<img class = "mypage_productlist_images" src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg" width = 200px; height = 200px/>
+	  						</a>
+	  					</span>
+	  					<span class = "product_info_name">제품 1</span>
+	  					<span class = "product_info_price">가격 : 123456 Won</span>
+	  					<span class = "product_deliver_status">배송 중</span>
+	  				</div>
+	  				<div class = "productsList">
+	  					<span class = "product_image">
+	  						<a href = "#">
+	  							<img class = "mypage_productlist_images" src = "${pageContext.request.contextPath}/resources/images/mypage/denall_sample1.png" width = 200px; height = 200px/>
+	  						</a>
+	  					</span>
+	  					<span class = "product_info_name">제품 2</span>
+	  					<span class = "product_info_price">가격 : 789000 Won</span>
+	  					<span class = "product_deliver_status">배송 중</span>
+	  				</div>
+	     		</div>		
 			</div>
-			
-          <hr width = 90%>
-          
-     	<div class="content_section">
-     	<!-- 재품 받기 -->
-     		<div class = "prouducts">
-     		<!-- 각 제품 요소들 -->
-  				<div class = "productsList">
-  					<span class = "product_image">
-  						<a href = "#">
-  							<img class = "mypage_productlist_images" src = "${pageContext.request.contextPath}/resources/images/chair.jpg" width = 200px; height = 200px/>
-  						</a>
-  					</span>
-  					<span class = "product_info_name">제품 1</span>
-  					<span class = "product_info_price">가격 : 123456 Won</span>
-  					<span class = "product_deliver_status">배송 중</span>
-  				</div>
-  				<div class = "productsList">
-  					<span class = "product_image">
-  						<a href = "#">
-  							<img class = "mypage_productlist_images" src = "${pageContext.request.contextPath}/resources/images/denall_sample1.png" width = 200px; height = 200px/>
-  						</a>
-  					</span>
-  					<span class = "product_info_name">제품 2</span>
-  					<span class = "product_info_price">가격 : 789000 Won</span>
-  					<span class = "product_deliver_status">배송 중</span>
-  				</div>
-     		</div>		
-		</div>
+	</div>
 </div>
+
 
 <style>
 
@@ -76,7 +80,7 @@
           left: 249px;
           width: calc(100% - 250px);
           transition: all 0.5s ease;
-          z-index: 2;
+          
      }
      
       .productsList {
@@ -129,16 +133,29 @@
       		color : #ca5c0d;
       }
       
-	     /*기간 선택하는 버튼*/
-	     
+	     /*기간 선택하는 버튼*/    
      #mypage_orderlist_date_selection{
      	left : 5%;
      }
+     
+     
+     /*풋터 위로 */
+    #main_footer_wrap {
+    	 z-index: 2;
+    } 
+    
+    /*화면 */
+    #mypage_orderlist_jsp {
+    	z-index: 1;
+    	background: #faf9f6;
+    }
         
 </style>
 
 <script>
-//DB 연동은 나중에
+//DB 연결 나중에
+	
+</script>
 
 </script>
 
