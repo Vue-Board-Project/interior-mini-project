@@ -7,7 +7,7 @@
     </div>
     <div id="main_header_ad_delete" align="right" class="p-2">
         <button id="main_header_ad_close" style="border: none; outline: none; background-color: #272723;">
-        <img src="${pageContext.request.contextPath}/resources/pngs/main_header_ad_delete_icon.png"/>
+        <img src="${pageContext.request.contextPath}/resources/images/main_header_ad_delete_icon.png"/>
         </button>
     </div>
 </div>
