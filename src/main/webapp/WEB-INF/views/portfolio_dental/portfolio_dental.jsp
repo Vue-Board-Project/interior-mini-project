@@ -1,15 +1,31 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
     <style>
-
+		.portfolio_dental_content_img{
+			width: 350px; height: 200px;
+		}
+		.portfolio_dental_content{
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			width: 350px;
+		}
+		.portfolio_dental_content_a{
+			text-decoration: none; color: black;
+		}
+		.portfolio_dental_content_a:hover{
+			text-decoration: none; color: black;
+		}
         .dropbtn {
         background-color: #f1f1f1;
         color: black;
-        padding: 10px;
         margin-right: 5px;
         font-size: 14px;
         border: none;
         border-radius: 10px;
+        height: 30px;
+        }
+        
+        .dropbtn_img{
+        margin-bottom: 5px;
         }
 
         .dropdown {
@@ -88,9 +104,11 @@
         }
      	.dental_model_field_choice input[type="checkbox"] + span {
             display: inline-block;
-            border: 1px solid #f1f1f1;
+            /* border: 1px solid black;
+            border-radius : 10px; */
             cursor: pointer;
-            font-size: 14px;
+            font-size: 14px; 
+            
         }
         .detail_interior_color_choie input[type="checkbox"]:checked + span {
             width: 20px;
@@ -98,61 +116,63 @@
             border: 3px solid #ca5c0d;
         }
         .dental_model_field_choice input[type="checkbox"]:checked + span {
-            border: 2px solid #ca5c0d;
-            border-radius : 10px;
+           /*  border: 2px solid #ca5c0d;
+            border-radius : 10px; */
+            color: #ca5c0d;
+            font-weight: bold;
         }
     </style>
 <div id="dental_model_wrap" style="margin: 0 auto; width: 996px; font-family: 'MinSans-Regular';">
         <div id="dental_model_filter_group" class="m-3 text-left">
             <div class="dropdown">
-              <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">정렬</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+              <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">정렬</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
               <div class="dropdown-content">
                 <div class="p-2 d-flex flex-column">
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="new">
-		                <span class="mr-2">최신순</span>
+		                <span class="ml-2">최신순</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="popular">
-		                <span class="mr-2">인기순</span>
+		                <span class="ml-2">인기순</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="past">
-		                <span class="mr-2">과거순</span>
+		                <span class="ml-2">과거순</span>
 		            </label>
 			     </div>
               </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">스타일</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">스타일</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
                 <div class="dropdown-content">
 
                   <div class="p-2 d-flex flex-column">
 		            <label class="dental_model_field_choice">
-		                <input type="checkbox" name="sort" value="new">
-		                <span class="mr-2">모던</span>
+		                <input type="checkbox" name="style" value="new">
+		                <span class="ml-2">모던</span>
 		            </label>
 		            <label class="dental_model_field_choice">
-		                <input type="checkbox" name="sort" value="popular">
-		                <span class="mr-2">시크</span>
+		                <input type="checkbox" name="style" value="popular">
+		                <span class="ml-2">시크</span>
 		            </label>
 		            <label class="dental_model_field_choice">
-		                <input type="checkbox" name="sort" value="past">
-		                <span class="mr-2">네추럴</span>
+		                <input type="checkbox" name="style" value="past">
+		                <span class="ml-2">네추럴</span>
 		            </label>
 		            <label class="dental_model_field_choice">
-		                <input type="checkbox" name="sort" value="popular">
-		                <span class="mr-2">미니멀</span>
+		                <input type="checkbox" name="style" value="popular">
+		                <span class="ml-2">미니멀</span>
 		            </label>
 		            <label class="dental_model_field_choice">
-		                <input type="checkbox" name="sort" value="past">
-		                <span class="mr-2">북유럽</span>
+		                <input type="checkbox" name="style" value="past">
+		                <span class="ml-2">북유럽</span>
 		            </label>
 			     </div>
                 </div>
               </div>
               <div class="dropdown">
-                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">컬러</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">컬러</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
                 <div class="dropdown-content">
 	                <div class="dental_model_color_choice p-2" style="display: flex;">
 			            <label class="detail_interior_color_choie">
@@ -209,91 +229,110 @@
                 </div>
               </div>
               <div class="dropdown">
-                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">분야</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">분야</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
                 <div class="dropdown-content">
                   <div class="p-2 d-flex flex-column">
 			            <label class="dental_model_field_choice">
 			                <input type="checkbox" name="field" value="normal">
-			                <span class="mr-2">일반치과</span>
+			                <span class="ml-2">일반치과</span>
 			            </label>
 			            <label class="dental_model_field_choice">
 			                <input type="checkbox" name="field" value="infant">
-			                <span class="mr-2">소아치과</span>
+			                <span class="ml-2">소아치과</span>
 			            </label>
 			            <label class="dental_model_field_choice">
 			                <input type="checkbox" name="field" value="special">
-			                <span class="mr-2">특수치과</span>
+			                <span class="ml-2">특수치과</span>
 			            </label>
 			       </div>
                 </div>
               </div>
         </div>
-        <div class="d-flex flex-column text-center mt-5 mb-5">
+	   <!--    <div id="selected" style="font-size: 12px; background-color: #ca5c0d; border-radius: 5px;" class="ml-2"></div>
+             <script>
+             var onSelectedSorts = function () {
+           	    var s = '';
+           	    var checkboxs = document.getElementsByName("sort");
+
+           	    for (var i = 0; i < checkboxs.length; i++) {
+           	      var c = checkboxs.item(i);
+           	      if (c.checked == true) {
+           	        if (s) {
+           	          s += ', ';
+           	        }
+           	        s += c.parentNode.innerText.trim();
+           	      }
+           	    }
+
+           	    document.getElementById('selected').innerText = s;
+           	  }
+             </script> -->
+        <div class="text-center mt-5 mb-5">
        		<div class="ml-3 text-left" style="font-size:14px; color:#7c7c7c;"><p style="line-height: 0; margin:0; padding:0;">전체 <span>9</span></p></div>
-            <div class="d-flex" style=" margin:0 auto;">
-                <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);"> 
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
+            <div class="d-flex" style=" margin:0 auto; width: 1146px;">
+                <div class="m-3 pb-3 portfolio_dental_content"> 
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
-                <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
+                <div class="m-3 pb-3 portfolio_dental_content">
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>
                     </a>
                 </div>
-                <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="#" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
+                <div class="m-3 pb-3 portfolio_dental_content">
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg"/>
                         <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manbok</small>
                     </a>
                 </div>
             </div>
-            <div class="d-flex" style=" margin:0 auto;">
-                <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);"> 
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
+            <div class="d-flex" style=" margin:0 auto; width: 1146px;">
+                <div class="m-3 pb-3 portfolio_dental_content"> 
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
-                <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
+                <div class="m-3 pb-3 portfolio_dental_content">
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>
                     </a>
                 </div>
-                <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
+                <div class="m-3 pb-3 portfolio_dental_content">
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg"/>
                         <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manbok</small>
                     </a>
                 </div>
             </div>
-            <div class="d-flex" style=" margin:0 auto;">
-                <div class="m-3 pb-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);"> 
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px;"/>
+            <div class="d-flex" style=" margin:0 auto; width: 1146px;">
+                <div class="m-3 pb-3 portfolio_dental_content"> 
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
-                <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px;"/>
+                <div class="m-3 pb-3 portfolio_dental_content">
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>
                     </a>
                 </div>
-                <div class="m-3" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                    <a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-                        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg" style="width: 300px; height: 200px;"/>
+                <div class="m-3 pb-3 portfolio_dental_content">
+                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
+                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/treatment_room2.jpg"/>
                         <b class="mt-3" style="line-height: 3;">편안한 분위기의 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manbok</small>
                     </a>

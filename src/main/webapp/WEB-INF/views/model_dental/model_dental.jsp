@@ -4,13 +4,15 @@
 	.dropbtn {
         background-color: #f1f1f1;
         color: black;
-        padding: 10px;
         margin-right: 5px;
         font-size: 14px;
         border: none;
         border-radius: 10px;
+        height: 30px;
         }
-
+.dropbtn_img{
+        margin-bottom: 5px;
+        }
         .dropdown {
         position: relative;
         display: inline-block;
@@ -87,9 +89,10 @@
         }
      	.dental_model_field_choice input[type="checkbox"] + span {
             display: inline-block;
-            border: 1px solid #f1f1f1;
+            /* border: 1px solid black;
+            border-radius : 10px; */
             cursor: pointer;
-            font-size: 14px;
+            font-size: 14px; 
         }
         .detail_interior_color_choice input[type="checkbox"]:checked + span {
             width: 20px;
@@ -97,61 +100,61 @@
             border: 3px solid #ca5c0d;
         }
         .dental_model_field_choice input[type="checkbox"]:checked + span {
-            border: 2px solid #ca5c0d;
-            border-radius : 10px;
+			color: #ca5c0d;
+            font-weight: bold;
         }
 </style>
 <div id="dental_model_wrap" style="margin: 0 auto; width: 996px; font-family: 'MinSans-Regular';">
         <div id="dental_model_filter_group" class="m-3 text-left">
             <div class="dropdown">
-              <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">정렬</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+              <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">정렬</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
               <div class="dropdown-content">
                 <div class="p-2 d-flex flex-column">
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="new">
-		                <span class="mr-2">최신순</span>
+		                <span class="ml-2">최신순</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="popular">
-		                <span class="mr-2">인기순</span>
+		                <span class="ml-2">인기순</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="past">
-		                <span class="mr-2">과거순</span>
+		                <span class="ml-2">과거순</span>
 		            </label>
 			     </div>
               </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">스타일</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">스타일</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
                 <div class="dropdown-content">
 
                   <div class="p-2 d-flex flex-column">
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="new">
-		                <span class="mr-2">모던</span>
+		                <span class="ml-2">모던</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="popular">
-		                <span class="mr-2">시크</span>
+		                <span class="ml-2">시크</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="past">
-		                <span class="mr-2">네추럴</span>
+		                <span class="ml-2">네추럴</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="popular">
-		                <span class="mr-2">미니멀</span>
+		                <span class="ml-2">미니멀</span>
 		            </label>
 		            <label class="dental_model_field_choice">
 		                <input type="checkbox" name="sort" value="past">
-		                <span class="mr-2">북유럽</span>
+		                <span class="ml-2">북유럽</span>
 		            </label>
 			     </div>
                 </div>
               </div>
               <div class="dropdown">
-                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">컬러</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">컬러</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
                 <div class="dropdown-content">
 	                <div class="dental_model_color_choice p-2" style="display: flex;">
 			            <label class="detail_interior_color_choice">
@@ -208,20 +211,20 @@
                 </div>
               </div>
               <div class="dropdown">
-                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">분야</span><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
+                <button class="dropbtn"><span style="color: #7c7c7c;" class="mr-2">분야</span><img class="dropbtn_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/dental_model_detail_dropdown_icon.png" style="width: 12px;"/></button>
                 <div class="dropdown-content">
                   <div class="p-2 d-flex flex-column">
 			            <label class="dental_model_field_choice">
 			                <input type="checkbox" name="field" value="normal">
-			                <span class="mr-2">일반치과</span>
+			                <span class="ml-2">일반치과</span>
 			            </label>
 			            <label class="dental_model_field_choice">
 			                <input type="checkbox" name="field" value="infant">
-			                <span class="mr-2">소아치과</span>
+			                <span class="ml-2">소아치과</span>
 			            </label>
 			            <label class="dental_model_field_choice">
 			                <input type="checkbox" name="field" value="special">
-			                <span class="mr-2">특수치과</span>
+			                <span class="ml-2">특수치과</span>
 			            </label>
 			       </div>
                 </div>
