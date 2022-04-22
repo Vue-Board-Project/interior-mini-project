@@ -165,10 +165,12 @@
         /*내용 적을 곳 */
         #interior_progress_content{
         	position : relative; 
-        	margin-top : 210px;
+        	margin-top : 140px;
         	margin-left : 5%;
         	padding : auto;
-        	width : 90%;
+        	/*각 버튼과 크기 맞출경우*/
+        	width : 90%; 
+        	
         	height : 150%;
         	background-color : #e8e8db;
         }
