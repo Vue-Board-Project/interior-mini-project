@@ -1,0 +1,154 @@
+@font-face {
+          font-family: "MinSans-Medium";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "MinSans-Black";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Black.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+		#dentalequipmentmain_wrapper{
+			font-family: "MinSans-Medium";
+            font-size: 20px;
+            background-color: #faf9f6;
+		}
+        #eq_main_image_list{
+            float: center;
+        }
+        .eq_main_image{
+            margin-top: 200px;
+            width: 28%;
+            height: 500px;
+            overflow: hidden;
+        }
+        #eq_main_image1{
+            margin-left: 9%;
+        }
+
+        #dentalequipmentmain_content{
+            margin-top: 150px;
+            margin-bottom: 100px;
+            
+        }
+        #makeline{
+            border-bottom: 1px solid #ccc;
+            width: 1200px;
+            margin-bottom: 100px;
+        }
+        #dentalequipmentmain_left{
+            float: left;
+            width: 24%;
+        }
+        #dentalequipmentmain_left .dropdown-button {
+			background-color: #ca5c0d;
+            color: #faf9f6;
+            padding-top: 20px;
+            padding-bottom: 20px;
+			border: none;
+            width: 280px;
+		}
+		#dentalequipmentmain_left .dropdown {
+			float: right;
+			display: inline-block;
+		}
+		#dentalequipmentmain_left .dropdown-content {
+			display: none;
+			min-width: 75px;
+			padding: 5px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            width: 280px;
+		}
+		#dentalequipmentmain_left .dropdown-content a {
+			color: black;
+			padding: 8px;
+			text-decoration: none;
+			display: block;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+		}
+		#dentalequipmentmain_left .dropdown-content a:hover { 
+            background-color: #CD853F; 
+        }
+		#dentalequipmentmain_left .dropdown:hover .dropdown-content { 
+            display: block; 
+            
+        }
+		#dentalequipmentmain_left .dropdown:hover .dropdown-button { 
+            background-color: #CD853F; 
+        }
+        .dropdown-content-element{
+            
+        }
+        #dentalequipmentmain_right{
+            float: right;
+            width: 75%;
+        }
+        #best_product_content{
+            font-size: 30px;
+            font-family: "MinSans-Black";
+        }
+        #eq_list1{
+            display: flex;
+            margin-bottom: 100px;
+        }
+        #eq_list1 .card{
+            width: 350px;
+            height: 600px;
+            border: none;
+            text-align: left;
+            margin-left: 50px;
+        }
+        #eq_list1 .card:hover{
+            
+        }
+        #eq_list2{
+            display: flex;
+            margin-bottom: 100px;
+        }
+        #eq_list3{
+            display: flex;
+            margin-bottom: 100px;
+        }
+        #eq_list3 .card{
+            width: 350px;
+            height: 600px;
+            border: none;
+            text-align: left;
+            margin-left: 50px;
+        }
+        #eq_list2 .card{
+            width: 350px;
+            height: 600px;
+            border: none;
+            text-align: left;
+            margin-left: 50px;
+        }
+        #eq_list_content1_element1{
+            font-size: 30px;
+            font-family: "MinSans-Black";
+        }
+        #eq_list_content1_element2{
+            font-size: 15px;
+        }
+        #eq_list_content1_element3{
+            padding-top: 10px;
+        }
+        #eq_list_content1_image{
+            width: 250px;
+            height: 350px;
+            margin-left: 50px;
+        }
+        #eq_best_icon{
+            width: 30px;
+            margin-right: 20px;
+            margin-bottom: 15px;
+        }
+        #eq_price_icon{
+            width: 40px;
+        }

@@ -1,0 +1,129 @@
+ @font-face {
+          font-family: "MinSans-Medium";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "MinSans-Black";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Black.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        #paymentpage_wrapper{
+            font-family: "MinSans-Medium";
+            font-size: 20px;
+            background-color: #faf9f6;
+        }
+        #pxup_line{
+            background-color: #333;
+            height: 2px;
+        }
+
+        #paymentpage_content{
+            margin-top: 150px;
+            margin-left: 15%;
+            width: 70%;
+        }
+        #makeline{
+            border-bottom: 1px solid #ccc;
+            width: 400px;
+            margin-bottom: 150px;
+        }
+        .fontcolorccc{
+            color: #ccc;
+            font-size: 13pt;
+        }
+        .fontcolor525253{
+            color: #525253;
+            font-size: 13pt;
+            font-family: "MinSans-Black";
+        }
+        #payment_step1_title{
+            float: left;
+            text-align: center;
+            margin-right: 100px;
+            font-size: 17pt;
+        }
+        #payment_step2_title{
+            float: left;
+            text-align: center;
+            margin-right: 100px;
+            font-size: 17pt;
+            color: #99999b;
+        }
+        #payment_step3_title{
+            float: left;
+            text-align: center;
+            margin-right: 100px;
+            font-size: 17pt;
+            color: #99999b;
+        }
+        #paymentpage_content_left{
+            clear: both;
+            float: left;
+            width: 65%;  
+            margin-bottom: 150px;
+        }
+
+        #paymentpage_content_right{
+            float: right;
+            width: 30%;
+            background-color: #f3f0ef;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+        #paymentpage_content_right .btn{
+            background-color: #ca5c0d;
+            color: #ffffff;
+            width: 200px;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
+        
+        #payment_step2{
+            display: none;
+        }
+        #payment_step3{
+            display: none;
+        }
+        #step2_bt_list{
+            display: none;
+        }
+        #step3_bt_list{
+            display: none;
+        }
+        #payment_step1 input{
+            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            padding-left: 20px;
+        }
+        #payment_step2 input{
+            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            padding-left: 20px;
+        }
+
+        #card_payment{
+            margin-top: 50px;
+            width: 600px;
+            padding: 30px;
+            margin-left: 150px;
+            border: 1px #ccc solid;
+            border-radius: 20px;
+            background-color: #f7f4f4;
+        }
+        #card_payment input{
+            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            padding-left: 20px;
+        }

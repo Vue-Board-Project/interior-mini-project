@@ -1,0 +1,147 @@
+@font-face {
+          font-family: "MinSans-Medium";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "MinSans-Black";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Black.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        #customer_service_wrapper{
+            font-family: "MinSans-Medium";
+            font-size: 20px;
+            background-color: #faf9f6;
+        }
+
+        #makeline{
+            border-bottom: 1px solid #ccc;
+            width: 1200px;
+            margin-bottom: 150px;
+        }
+        #customer_service_content{
+            
+        }
+        #customer_service_first{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        } 
+        #customer_service_c1{
+            font-family: MinSans-Black;
+            font-size: 40px;
+            margin-top: 150px;
+            margin-bottom: 100px;
+            width: 1000px;
+            height: 100px;
+            text-align: center;
+
+        }
+        #board_information_list{
+            display: flex;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        #board_information_list1{
+            width: 250px;
+            margin-right: 40px;
+        }
+        #board_information_list2{
+            width: 250px;
+            margin-right: 40px;
+        }
+        #board_information_list3{
+            width: 250px;
+            margin-right: 40px;
+        }
+        #board_information_list4{
+            width: 250px;
+        }
+        #board_information_list1_image{
+            width: 100px;
+            margin-left: 80px;
+            margin-top: 20px;
+        }
+        #customer_service_second{
+            
+        }
+        #customer_service_second_table{
+            border-collapse: collapse;
+            line-height: 5;
+        }
+        #customer_service_second_table_head{
+
+        }
+        #customer_service_second_table_body{
+
+        }
+        .customer_service_second_table_tr{
+
+        }
+        #customer_service_wrapper th{
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            color: #ffffff;
+            border-bottom: 3px solid e9e5e3;
+        }
+        #customer_service_wrapper th{
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            color: #ffffff;
+            border-bottom: 3px solid #e9e5e3;
+        }
+        #customer_service_wrapper th{
+            text-align: center;
+            width: 100px;
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+            background: #f1ba92;
+        }
+
+        #customer_service_wrapper td{
+            width: 1000px;
+            text-align: left;
+            padding: 10px;
+            padding-left: 40px;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+        }
+        #customer_service_third{
+            display: none;
+        }
+        #customer_service_third_table{
+            border-collapse: collapse;
+            line-height: 5;
+        }
+        
+        
+        #customer_service_fourth{
+            display: none;
+        }
+
+        #customer_service_fourth_table{
+            border-collapse: collapse;
+            line-height: 5;
+        }
+        
+        #customer_service_fifth{
+            display: none;
+        }
+        #customer_service_fifth_table{
+            border-collapse: collapse;
+            line-height: 5;
+        }
+       
+        #downimage{
+            width: 90px;
+        }

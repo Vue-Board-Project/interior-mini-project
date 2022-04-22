@@ -1,0 +1,147 @@
+@font-face {
+          font-family: "MinSans-Medium";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "MinSans-Black";
+          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Black.woff")
+            format("woff");
+          font-weight: normal;
+          font-style: normal;
+        }
+        #k3chair_content{
+            margin-top: 150px;
+            margin-bottom: 100px;
+            display: flex;
+            font-family: "MinSans-Medium";
+            font-size: 20px;
+            background-color: #faf9f6;
+        }
+        #makeline{
+            border-bottom: 1px solid #ccc;
+            width: 1300px;
+            margin-bottom: 150px;
+        }
+        #k3chair_main{
+
+        }
+        #k3chair_main_left{
+          
+
+        }
+        #k3chair_main_right{
+            padding-top: 2%;
+            padding-left: 3%;
+            padding-right: 3%;
+            float: right;
+            width: 30%;
+            margin-left: 200px;
+            background-color: white;
+        }
+        #chair03_main_image{
+            margin-left: 300px;
+            width: 800px;
+            height: 600px;
+        }
+        #icon_dentist{
+            width: 50px;
+            margin-left: 15px;
+            margin-bottom: 10px;
+
+        }
+        #k3chair_main_content1{
+            font-size: 2rem;
+            font-family: "MinSans-Black";
+        }
+        #k3chair_main_content2{
+            font-size: 0.8rem;
+            margin-top:20px;
+            margin-bottom: 30px;
+        }
+        #k3chair_main_content3{
+            
+        }
+        #colorcheck{
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+        #colorcheck label{
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+        #colorcheck_black{
+            accent-color: black;
+        }
+        #colorcheck_blue{
+            
+        }
+        #colorcheck_red{
+            accent-color: red;
+        }
+        #colorcheck_purple{
+            accent-color: purple;
+        }
+        #colorcheck_green{
+            accent-color: green;
+        }
+        #k3chair_main_content4{
+            
+        }
+        #count_up_down{
+            width: 50px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #able_delivery_loaction{
+            text-align: center;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+        #btn_able_delivery_loaction{
+            width: 20px;
+        }
+        #able_delivery_loaction_info{
+            color: darkgrey;
+            display: none;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        #k3chair_main_content6 .tootip-content{
+            visibility: hidden;
+			width: 220px;
+			background-color: orange;
+			padding: 0;
+			color: white;
+			text-align: center;
+			position: absolute;
+			z-index: 1;
+			top: -15px;
+			left: 105%;
+        }
+        #able_delivery_loaction:hover .tooltip-content { 
+            visibility: visible; 
+        }
+        #k3chair_main_right .btn-light{
+            background-color: #ca5c0d;
+            color: white;
+            width: 100px;
+            height: 50px;
+            padding-top: 15px;
+            font-size: 15px;
+            margin-top: 30px;
+        }
+        #k3chair_main_right .btn-light:hover{
+            background-color: white;
+            color: black;
+        }
+        #btn_go_cart{
+            margin-left: 130px;
+        }
+        #btn_go_counseling{
+
+        }
