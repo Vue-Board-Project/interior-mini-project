@@ -44,7 +44,7 @@
       #sidebar_mypage{
         position: fixed;
         left: 0;
-        height: 80%;
+        height: 40%;
         width: 250px;
         padding: 3px 14px; 
         top : 217px;

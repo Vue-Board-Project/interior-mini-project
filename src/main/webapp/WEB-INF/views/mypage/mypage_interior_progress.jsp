@@ -210,6 +210,8 @@
         	height : 280px;
         	border : 1px solid #ca5c0d;
         	overflow : scroll;
+        	background-color : #fff;
+        	border-radius : 3%;
         }
         
         .interior_progress_step_image_content{
@@ -221,7 +223,8 @@
         	height : 280px;
         	border : 1px solid #ca5c0d;
         	overflow : scroll;
-        	
+        	background-color : #fff;
+        	border-radius : 3%;
         }
         
         .interior_progress_step_image_content img{
