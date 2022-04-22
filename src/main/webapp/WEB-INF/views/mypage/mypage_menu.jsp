@@ -33,18 +33,13 @@
 	    font-weight: normal;
 	    font-style: normal;
 	}
-	/*사이드바 움직이면 밑에 흰 배경 보여서 전체 화면에 한번 색 깔음.*/
-	
-	/*.card{
-		background: #faf9f6;
-	}*/
 	
 	/*  마이페이지 사이드바  */
 	
       #sidebar_mypage{
         position: fixed;
         left: 0;
-        height: 40%;
+        height: 400px;
         width: 250px;
         padding: 3px 14px; 
         top : 217px;
@@ -54,8 +49,13 @@
 
  	.mypage_list{
      	position: relative;
-      	border : 1px solid #ca5c0d;
+      	
       }
+      
+    #sidebar_mypage .mypage_list .mypage_list_element {
+    	height : 50px;   
+       
+    }
       
     #sidebar_mypage .mypage_list .mypage_list_element .links_name {
 		  pointer-events: none;
@@ -65,6 +65,8 @@
           white-space: nowrap;
           pointer-events: none;
           font-family: 'MinSans-Medium';
+          
+          
           
 	}
       
@@ -95,7 +97,7 @@
         	padding-top : 1%;
         	padding-left: 5%;
         } 
- 
+        
 </style>
 
  <div id="sidebar_mypage" class = "mx-auto text-center">
@@ -106,38 +108,38 @@
          <span id = "list_counseling" class="links_name">상담 내역</span>
        </a>
      </div>
-     <hr class = "mypage_menubar_hr">
+     <!-- <hr class = "mypage_menubar_hr"> -->
      <div class = "mypage_list_element">
        <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_interior_progress">
        <!-- onclick시 각 링크로 연결하기 -->
          <span id = "list_interior_progress" class="links_name">인테리어 진행내역</span>
        </a>
      </div>
-     <hr class = "mypage_menubar_hr">
+  <!--    <hr class = "mypage_menubar_hr"> -->
      <div class = "mypage_list_element">
       <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_infosetting">
         <span id = "list_setting" class="links_name">개인정보 수정</span> 
       </a>
     </div>
-     <hr class = "mypage_menubar_hr">
+   <!--   <hr class = "mypage_menubar_hr"> -->
     <div class = "mypage_list_element">
       <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_orderlist">
         <span id = "mypage_orderList" class="links_name">구매 내역</span>
       </a>
     </div>
-     <hr class = "mypage_menubar_hr">
+     <!-- <hr class = "mypage_menubar_hr"> -->
     <div class = "mypage_list_element">
       <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_review">
         <span id = "mypage_review" class="links_name">리뷰 관리</span>
       </a>
     </div>
-    <hr class = "mypage_menubar_hr">
+    <!-- <hr class = "mypage_menubar_hr"> -->
     <div class = "mypage_list_element">
       <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/device_AS">
-        <span id = "mypage_AS" class="links_name">장비 AS 조회</span>
+        <span id = "mypage_AS" class="links_name" style = "margin-bottom : 50px">장비 AS 조회</span>
       </a>
     </div>
-    <hr style = "visibility: hidden">
+   <!--  <hr style = "visibility: hidden"> -->
    </div>
  </div>
  

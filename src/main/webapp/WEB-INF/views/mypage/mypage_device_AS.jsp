@@ -108,10 +108,10 @@
 		
 		<div id = "mypage_device_AS_warning">
 			<div id = "warning_header">
-				<img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_warning_logo.png" style = "width : 20px; height : 20px; margin : 20px;"/>
+				<img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_warning_logo.png" style = "width : 20px; height : 20px; margin : 30px;"/>
 				<div style = "margin-top : 20px;"><b>주의사항</b></div>
 			</div>
-			<div id = "warning_content" style = "margin-left : 10px;">
+			<div id = "warning_content" style = "margin-left : 10px; margin-top : 20px; ">
 				<ul>
 					<li>진행사항 확인의 경우 전화번호와 접수번호로 조회하실 수 있습니다</li>
 					<li>천재지변, 침수, 파손 및 자재가 없을 경우 서비스가 다소 지연될 수 있습니다.</li>
@@ -140,7 +140,6 @@
  	flex-direction: row;
  	width : 1400px;
  	height : 150px;
- 	border : 1px solid #ca5c0d;
  	background-color :  #e8e8db;
  	top : 50px;
  	border-radius: 10px;
@@ -412,7 +411,6 @@
  #mypage_device_AS_warning {
  	width : 1400px;
  	height : 215px;
- 	border : 1px solid #ca5c0d;
  	background-color :  #e8e8db;
  	border-radius: 10px;
  }

@@ -142,14 +142,14 @@
        
          .mypage_interior_progressbar_images{
         	width : 150px;
-        	height : 150px;
+        	height : 180px;
         	border : none;
-        	background : #faf9f6;
+        	background : #fff;
         }
         
          .mypage_interior_progressbar_images img{
-        	width : 150px;
-        	height : 150px;
+        	width : 100px;
+        	height : 100px;
         	padding : auto;
         }
 
@@ -161,7 +161,7 @@
         	padding : auto;
         	width : 90%; 
         	height : 150%;
-        	background-color : #e8e8db;
+        	background-color : #fff;
         }
         
         #interior_progress_step2{
@@ -187,7 +187,7 @@
         /*각 절차 이미지 밑에 한글 설명*/
         .mypage_interior_step_text{
         	text-align: center;
-        	background-color : #e8e8db;
+        	background-color : #fff;
         	color : #272723;
         	width : 150px;
         	margin-left : 3%;
