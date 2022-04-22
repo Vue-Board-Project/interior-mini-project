@@ -26,15 +26,17 @@
                     <p id="best_product_content">베스트 상품</p> 
                     <div id="makeline">　</div>
                     <div id="eq_list1"><!--베스트 상품-->
-                        <div id="eq_list_content1" class="card">
-                            <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair1.jpeg" class="card-img-top">
-                            <div class="card-body">
-                                <p id="eq_list_content1_element1" class="card-text"><img id="eq_best_icon"src="${pageContext.request.contextPath}/resources/subinimage/popularity.png"/>k3 chair</p>
-                                <hr/>
-                                <p id="eq_list_content1_element2" class="card-text">우수한 성능, 수려한 디자인을 갖춘 오스템 임플란트만의 유니트 체어</p>
-                                <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
-                            </div>
-                        </div>
+                    	<a href="${pageContext.request.contextPath}/equipment/equipment_k3chair_detail">
+	                        <div id="eq_list_content1" class="card">
+	                            <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair1.jpeg" class="card-img-top">
+	                            <div class="card-body">
+	                                <p id="eq_list_content1_element1" class="card-text"><img id="eq_best_icon"src="${pageContext.request.contextPath}/resources/subinimage/popularity.png"/>k3 chair</p>
+	                                <hr/>
+	                                <p id="eq_list_content1_element2" class="card-text">우수한 성능, 수려한 디자인을 갖춘 오스템 임플란트만의 유니트 체어</p>
+	                                <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
+	                            </div>
+	                        </div>
+                      	</a>
                         <div id="eq_list_content2" class="card">
                             <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/DentalScanner1.jpg" class="card-img-top">
                             <div class="card-body">

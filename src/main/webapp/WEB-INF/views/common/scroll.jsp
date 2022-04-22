@@ -6,7 +6,7 @@
              <a href="#"><img src="${pageContext.request.contextPath}/resources/pngs/scroll_kakao_icon.png" style="width: 40px;"/></a>
          </div>
          <div style="position: fixed; bottom: 62px; right: 30px;">
-             <a href="#"><img src="${pageContext.request.contextPath}/resources/pngs/scroll_as_icon.png" style="width: 40px;"/></a>
+             <a href="${pageContext.request.contextPath}/equipment/AfterService"><img src="${pageContext.request.contextPath}/resources/pngs/scroll_as_icon.png" style="width: 40px;"/></a>
          </div>
      </div>
      <div>

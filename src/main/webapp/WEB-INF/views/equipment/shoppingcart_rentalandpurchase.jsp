@@ -101,7 +101,7 @@
                 <p>월별 금액 <a >69,000 원</a></p>
                 <p class="fontcolor525253">할인 적용 금액 없음</p>
                 <hr>
-                <a id="next_page_go_to_payment" href="http://127.0.0.1:5500/PaymentPage.html" class="btn">다음 페이지</a>
+                <a id="next_page_go_to_payment" href="${pageContext.request.contextPath}/equipment/paymentpage" class="btn">다음 단계</a>
             </div>
         </div>
     <script src="${pageContext.request.contextPath}/resources/js/equipment/afterService.js"></script>

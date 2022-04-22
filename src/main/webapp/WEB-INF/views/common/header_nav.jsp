@@ -4,9 +4,9 @@
     <div class="main_header_nav_dropdown">
       <a class="btn main_header_nav_dropbtn" style=" border-radius: 0px;">치과장비</a>
   <div class="main_header_nav_dropdown_content">
-    <a href="#">유니트 체어</a>
-    <a href="#">X-ray</a>
-    <a href="#">멸균기</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">유니트 체어</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">X-ray</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">멸균기</a>
   </div>
 </div> 
 <div class="main_header_nav_dropdown">
@@ -20,14 +20,14 @@
 <div class="main_header_nav_dropdown">
     <a class="btn main_header_nav_dropbtn" style=" border-radius: 0px;">고객센터</a>
     <div class="main_header_nav_dropdown_content">
-      <a href="#">공지사항</a>
+      <a href="${pageContext.request.contextPath}/equipment/CustomerService">공지사항</a>
     </div>
 </div> 
 <div class="main_header_nav_btn_group text-center">
     <div id="main_header_nav_interior_btn"><a class="btn main_header_nav_btn" href="${pageContext.request.contextPath}/interior_consult/quick_consultation">인테리어 상담</a></div>
 </div> 
 <div class="main_header_nav_btn_group text-center">
-    <div id="main_header_nav_equipment_btn"><a class="btn main_header_nav_btn"><span>장비상담</span></a></div>
+    <div id="main_header_nav_equipment_btn"><a class="btn main_header_nav_btn" href="${pageContext.request.contextPath}/interior_consult/quipment_buy_request_consult"><span>장비상담</span></a></div>
 </div> 
 <a href="javascript:void(0);" class="main_header_nav_icon h-100" onclick="myFunction()">☰</a>
     </div>

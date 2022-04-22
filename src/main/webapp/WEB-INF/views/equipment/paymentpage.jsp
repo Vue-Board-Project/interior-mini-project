@@ -115,7 +115,7 @@
                 </div>
                 <div id="step3_bt_list">
                     <a id="back_page_go_to_payment_step2" class="btn" onclick="payment_backstep2()">이전 페이지</a>
-                    <a id="next_page_go_to_payment_step3" class="btn" href="http://127.0.0.1:5500/PaymentSuccess.html">결제</a>
+                    <a id="next_page_go_to_payment_step3" class="btn" href="${pageContext.request.contextPath}/equipment/paymentsuccess">결제</a>
                 </div>
                 
             </div>
