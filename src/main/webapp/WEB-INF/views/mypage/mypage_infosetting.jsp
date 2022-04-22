@@ -23,7 +23,7 @@
 	  
 	                   <!-- EMAIL -->
 	                   <div>
-	                      <h3 class="join_title"><label for="email">이메일</label></h3>
+	                      <h3><label for="email">이메일</label></h3>
 	                      <span class="box int_email" style = "background-color : #d5d5d8">
 	                          <input type="email" id="email" disabled class="int" maxlength="100" placeholder = "hbh0604@naver.com"  style = "background-color : #d5d5d8">
 	                      </span>
@@ -34,7 +34,7 @@
 	  
 	                  <!-- PW1 -->
 	                  <div>
-	                      <h3 class="join_title"><label for="pswd1">비밀번호<span class="ml-1" style="color: red;">*</span></label></h3>
+	                      <h3><label for="pswd1">비밀번호<span class="ml-1" style="color: red;">*</span></label></h3>
 	                      <span class="box int_pass">
 	                          <input type="password" id="pswd1" class="int" maxlength="20" required>
 	                          <span id="alertTxt">사용불가</span>
@@ -45,7 +45,7 @@
 	  
 	                  <!-- PW2 -->
 	                  <div>
-	                      <h3 class="join_title"><label for="pswd2">비밀번호 재확인<span class="ml-1" style="color: red;">*</span></label></h3>
+	                      <h3><label for="pswd2">비밀번호 재확인<span class="ml-1" style="color: red;">*</span></label></h3>
 	                      <span class="box int_pass_check">
 	                          <input type="password" id="pswd2" class="int" maxlength="20" required>
 	                          <img src="${pageContext.request.contextPath}/resources/pngs/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
@@ -55,7 +55,7 @@
 	  
 	                  <!-- NAME -->
 	                  <div>
-	                      <h3 class="join_title"><label for="name">이름</label></h3>
+	                      <h3><label for="name">이름</label></h3>
 	                      <span class="box int_name" style = "background-color : #d5d5d8">
 	                          <input type="text" disabled id="name" class="int" maxlength="20" placeholder = "한보현"  style = "background-color : #d5d5d8">
 	                      </span>
@@ -64,7 +64,7 @@
 	  
 	                  <!-- MOBILE -->
 	                  <div>
-	                      <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+	                      <h3><label for="phoneNo">휴대전화</label></h3>
 	                      <span class="box int_mobile"  style = "background-color : #d5d5d8">
 	                          <input type="tel" disabled id="mobile"  class="int" maxlength="16" placeholder="010-6472-4876"  style = "background-color : #d5d5d8">
 	                      </span>
@@ -73,7 +73,7 @@
 	                  
 	                  <!-- 주소 입력 -->
 	                   <div class="userInput">
-	                        <h3 class="join_title"><label for="phoneNo">주소</label></h3>
+	                        <h3><label for="phoneNo">주소</label></h3>
 	                        <input style="width: 49.07%; height: 51px; border: solid 1px #dadada; margin-right: 1%; padding: 10px 14px 10px 14px;" id="member_post"  type="text" placeholder="우편번호" readonly onclick="findAddr()"/>
 	                        <input style="width: 49.3%; height: 51px; border: solid 1px #dadada;  padding: 10px 14px 10px 14px;" id="member_addr" type="text" placeholder="도로명 주소" readonly/> <br>
 	                        <input style="width: 100%; height: 51px; border: solid 1px #dadada; margin-top: 1%;  padding: 10px 14px 10px 14px;" type="text" placeholder="상세 주소"/>
@@ -81,7 +81,7 @@
 	
 	                   <!-- 사업자 번호 입력 -->
 	                   <div class="userInput">
-	                        <h3 class="join_title"><label for="phoneNo">사업자번호</label></h3>
+	                        <h3><label for="phoneNo">사업자번호</label></h3>
 	                        <span class="box int_crn"  style = "background-color : #d5d5d8">
 	                            <input type="text" disabled id="crn" class="int" maxlength="10" placeholder="1234565"  style = "background-color : #d5d5d8"/>
 	                        </span>
