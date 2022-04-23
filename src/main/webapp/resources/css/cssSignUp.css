@@ -1,19 +1,19 @@
 @charset "UTF-8";
 /* 입력폼 */
   
-        input:focus {
+        #sign_up_wrap input:focus {
             outline: none;
         }
   
   
-        h3 {
+        #sign_up_wrap h3 {
             margin: 19px 0 8px;
             font-size: 14px;
             font-weight: 700;
         }
   
   
-        .box {
+        #sign_up_wrap .box {
             display: block;
             width: 100%;
             height: 51px;
@@ -23,7 +23,7 @@
             position: relative;
         }
   
-        .int {
+        #sign_up_wrap .int {
             display: block;
             position: relative;
             width: 100%;
@@ -33,19 +33,19 @@
             font-size: 15px;
         }
   
-        input {
+        #sign_up_wrap input {
           font-family: 'MinSans-Regular';     
         }
   
-        .box.int_pass {
+        #sign_up_wrap .box.int_pass {
             padding-right: 40px;
         }
   
-        .box.int_pass_check {
+        #sign_up_wrap .box.int_pass_check {
             padding-right: 40px;
         }
   
-        .step_url {
+        #sign_up_wrap .step_url {
             /*@naver.com*/
             position: absolute;
             top: 16px;
@@ -54,7 +54,7 @@
             color: #8e8e8e;
         }
   
-        .pswdImg {
+        #sign_up_wrap .pswdImg {
             width: 18px;
             height: 20px;
             display: inline-block;
@@ -63,20 +63,6 @@
             right: 16px;
             margin-top: -10px;
             cursor: pointer;
-        }
-  
-        select {
-            width: 100%;
-            height: 29px;
-            font-size: 15px;
-            background: #fff url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
-            background-size: 20px 8px;
-            -webkit-appearance: none;
-            display: inline-block;
-            text-align: start;
-            border: none;
-            cursor: default;
-            font-family: 'MinSans-Regular'; 
         }
   
         /* 에러메세지 */
@@ -99,7 +85,7 @@
   
         /* 버튼 */
   
-        .btn_area {
+        #sign_up_wrap .btn_area {
             margin: 50px 0 91px;
         }
   
