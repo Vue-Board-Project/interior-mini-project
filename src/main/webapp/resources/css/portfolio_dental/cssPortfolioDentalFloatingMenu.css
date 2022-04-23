@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.abs {
+  position: absolute;
+  top: 0px;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0px;
+}
+
+.blind {
+  display: none;
+}
+
+.floating {
+  width: 100%;
+  padding-right: 10%;
+}

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<link href="${pageContext.request.contextPath}/resources/css/portfolio_dental/cssPortfolioDentalFloatingMenu.css" rel="stylesheet" type="text/css">
 <div class="floating blind mt-3" align="right" style="position: fixed;">
     <div class="d-flex flex-column mb-4">
         <p class="mr-1" style="font-size:20px;"><span style="color: #ff7513;">비슷한 스타일</span> 추천</p>
@@ -16,49 +16,4 @@
     </div>
     <div class=""><a href="${pageContext.request.contextPath}/interior_consult/quick_consultation" class="btn" style="width: 10rem; background-color: #ca5c0d; color: white; font-size:15px;">이 컨셉으로 상담신청</a></div>
 </div>
-<style>
-.abs {
-  position: absolute;
-  top: 0px;
-}
-
-.fixed {
-  position: fixed;
-  bottom: 0px;
-}
-
-.blind {
-  display: none;
-}
-
-.floating {
-  width: 100%;
-  padding-right: 10%;
-}
-       
-</style>
-<script>
- $(window).scroll( function () {
- 
- var
-   floater = $('.floating'),  
-  startPoint = 1050,
-    scrollPoint = parseInt( $(window).scrollTop() + parseInt( window.innerHeight ) ),
-  endPoint = parseInt( $('.floating').outerHeight() ),
-  limit = $('.floating').outerHeight();
-      
-  if(0 <= parseInt( scrollPoint ) && parseInt( scrollPoint ) < parseInt( startPoint ) ) {
-    floater.addClass('blind');
-  } else if ( parseInt( startPoint ) < parseInt( scrollPoint ) && parseInt( scrollPoint ) < parseInt( endPoint ) ){ 
-    floater.removeClass('blind');
-    floater.removeClass('abs');
-    floater.addClass('fixed');
-  } else {
-    floater.removeClass('blind');
-    floater.removeClass('fixed');
-    floater.addClass('abs');
-  }
-  
-    
-});
-</script>         
+ <script src="${pageContext.request.contextPath}/resources/js/portfolio_dental/jsPortfolioDentalFloatingMenu.js"></script>
