@@ -1,0 +1,127 @@
+@charset "UTF-8";
+/* #portfolio_model_wrap{margin: 0 auto; width: 996px; font-family: 'MinSans-Regular';}
+.portfolio_dental_content_cnt{font-size:14px; color:#7c7c7c;}
+.portfolio_dental_content_cnt_p{line-height: 0; margin:0; padding:0;}
+.portfolio_dental_content_wrap{margin:0 auto; width: 1146px;}
+.portfolio_dental_content_b{line-height: 3;}
+.portfolio_dental_content_sm{line-height: 1;}
+.portfolio_dental_content_img{
+			width: 350px; height: 200px;
+		}
+		.portfolio_dental_content{
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			width: 350px;
+		}
+		.portfolio_dental_content_a{
+			text-decoration: none; color: black;
+		}
+		.portfolio_dental_content_a:hover{
+			text-decoration: none; color: black;
+		} */
+        .dropbtn {
+        background-color: #f1f1f1;
+        color: black;
+        margin-right: 5px;
+        font-size: 14px;
+        border: none;
+        border-radius: 10px;
+        height: 30px;
+        }
+        
+        .dropbtn_img{
+        margin-bottom: 5px;
+        }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 10px;
+        }
+        
+        .dental_model_color_choice{
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 10px;
+        }
+
+        .dropdown-content .dropdown_content_top {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        }
+        
+        .dropdown-content .dropdown_content_mid {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content .dropdown_content_bottom {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+        /* .dropdown:hover .dental_model_color_choice {display: block;} */
+        
+        .detail_interior_color_choie{
+            margin: 0;
+        }
+        .detail_interior_color_choie input[type="checkbox"] {
+            display: none;
+        }
+        .dental_model_field_choice input[type="checkbox"] {
+        	display: none;
+        }
+     
+        .detail_interior_color_choie input[type="checkbox"] + span {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border: 1px solid #f1f1f1;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+     	.dental_model_field_choice input[type="checkbox"] + span {
+            display: inline-block;
+            /* border: 1px solid black;
+            border-radius : 10px; */
+            cursor: pointer;
+            font-size: 14px; 
+            
+        }
+        .detail_interior_color_choie input[type="checkbox"]:checked + span {
+            width: 20px;
+            height: 20px;
+            border: 3px solid #ca5c0d;
+        }
+        .dental_model_field_choice input[type="checkbox"]:checked + span {
+           /*  border: 2px solid #ca5c0d;
+            border-radius : 10px; */
+            color: #ca5c0d;
+            font-weight: bold;
+        }
