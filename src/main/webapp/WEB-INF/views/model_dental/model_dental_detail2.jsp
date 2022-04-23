@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<link href="${pageContext.request.contextPath}/resources/css/cssModelDentalDetail2.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/model_dental/cssModelDentalDetail2.css" rel="stylesheet" type="text/css">
 <div id="model_dental_wrap" class="d-flex flex-column" style="background-color: #faf9f6; font-family: 'MinSans-Regular';">
         <div id="model_dental_main_img" class="text-center"><img class="vw-100" style="height: 450px;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_main.png"/></div>
         <div id="model_dental_summary" style="background-color: #d5d5d8; margin: 3rem auto; border-radius: 50px;">
@@ -67,10 +67,10 @@
             </div>
         </div>
     </div>
-    <style>
+   <!--  <style>
     	.model_dental_summary_img{ height: 45px; }
     	.model_dental_content_img{  width: 850px; }
     	.model_dental_content_p{ width: 850px; margin: 0 auto; }
 
-    </style>
+    </style> -->
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
