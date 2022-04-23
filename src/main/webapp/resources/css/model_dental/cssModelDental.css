@@ -1,0 +1,10 @@
+@charset "UTF-8";
+#model_dental_wrap{margin: 0 auto; width: 996px; font-family: 'MinSans-Regular';}
+.model_dental_cnt{font-size:14px; color:#7c7c7c;}
+.model_dental_cnt_p{line-height: 0; margin:0; padding:0;}
+.model_dental_content{margin:0 auto;}
+.model_dental_content_a{text-decoration: none; color: black;}
+.model_dental_content_a:hover{text-decoration: none; color: black;}
+.model_dental_content_img{width: 300px; height: 200px; border-radius: 10px;}
+.model_dental_content_b{line-height: 3;}
+.model_dental_contenst_sm{line-height: 1;}
