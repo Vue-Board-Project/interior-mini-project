@@ -1,5 +1,5 @@
 @charset "UTF-8";
-#portfolio_dental_wrap{border: 1px solid #b3b39f; margin: 0 auto; width: 60%;}
+#portfolio_dental_wrap{ margin: 0 auto; width: 60%;}
 #portfolio_dental_summary{background-color: #d5d5d8; margin: 3rem auto; border-radius: 50px; width: 70%;}
 .portfolio_dental_summary_img{height: 30px;}
 .portfolio_dental_content_title{margin-left: 120px;}

@@ -2,7 +2,7 @@
  
  var
    floater = $('.floating'),  
-  startPoint = 1050,
+  startPoint = 1500,
     scrollPoint = parseInt( $(window).scrollTop() + parseInt( window.innerHeight ) ),
   endPoint = parseInt( $('.floating').outerHeight() ),
   limit = $('.floating').outerHeight();

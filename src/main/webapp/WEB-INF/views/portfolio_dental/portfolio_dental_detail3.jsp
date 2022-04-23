@@ -1,10 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/portfolio_dental/cssPortfolioDentalDetail3.css" rel="stylesheet" type="text/css">
+        <div id="model_dental_main_img" class="text-center"><img class="vw-100" style="height: 450px;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/portfolio_dental_ad.PNG"/></div>
 <div class="d-flex pt-5" style="background-color: #faf9f6;  font-family: 'MinSans-Regular';">
 	<%@ include file="/WEB-INF/views/portfolio_dental/portfolio_dental_floating_menu.jsp" %>
         <div class="d-flex flex-column vw-100">
-            <div id="portfolio_dental_wrap" class="mb-5">
+            <div id="portfolio_dental_wrap" class="mb-5" style=" background-color: white;">
                 <%@ include file="/WEB-INF/views/portfolio_dental/portfolio_dental_detail_slide.jsp" %>
                 <div id="portfolio_dental_summary">
                     <div class="d-flex justify-content-center pt-4 pb-2 mr-5 ml-5" style="color: #272723;">

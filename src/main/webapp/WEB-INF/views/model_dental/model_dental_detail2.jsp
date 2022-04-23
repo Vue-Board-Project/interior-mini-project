@@ -11,7 +11,7 @@
             </div>
             <hr style="width:90%;height:2px;border:none;background-color:#b3b39f;"/>
             <div class="text-center">
-                <p style="color: #272723;">화이트 베이스와 블랙 포인트가 들어간 모던 치과 인테리어</p>
+                <p style="color: #272723; font-weight: bold">화이트 베이스와 블랙 포인트가 들어간 모던 치과 인테리어</p>
             </div>
         </div>
         <div class="text-center mb-5">
