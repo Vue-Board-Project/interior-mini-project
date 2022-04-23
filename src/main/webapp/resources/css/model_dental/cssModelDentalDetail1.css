@@ -1,0 +1,13 @@
+@charset "UTF-8";
+#model_dental_wrap{background-color: #faf9f6; font-family: 'MinSans-Regular';}
+#model_dental_main_img{height: 450px;}
+#model_dental_summary{background-color: #d5d5d8; margin: 3rem auto; border-radius: 50px;}
+.model_dental_summary_img{height: 45px;}
+.model_dental_detail_btn{background-color: #ca5c0d; color: white; box-shadow: none;}
+.model_dental_content_img{width: 60%;}
+.model_dental_content_p{width: 60%; margin: 0 auto;}
+
+
+
+
+
