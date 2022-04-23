@@ -18,36 +18,38 @@
                 </div>
                 <div id="model_dental_content" class="text-center pt-5">
                     <div>
+                    	<div align="left" style="margin-left: 120px;"><b style="font-size: 20px">입구</b></div>
                         <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_1.PNG" style="width:900px;"/></div>
-                        <p class="mb-5" style="font-weight: bold; font-size: 20px;">[입구]</p>
                         <p class="mb-5" style="width: 80%; margin: 0 auto; padding-bottom: 100px;">치과 입구 모습입니다.
                             입구는 블랙톤으로 무게감있게 연출했습니다.</p>
                     </div>
                     <div>
+                    	<div align="left" style="margin-left: 120px;"><b style="font-size: 20px">치과 내부</b></div>
                         <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_2.PNG" style="width:900px;"/></div>
-                        <p class="mb-5" style="font-weight: bold; font-size: 20px;">[치과 내부]</p>
                         <p class="mb-5" style="width: 80%; margin: 0 auto; padding-bottom: 100px;">치과 내부 모습입니다.
                             화이트톤을 기반으로 청결한 이미지를 중점적으로 연출했습니다</p>
                     </div>
                     <div id="model_dental_waiting_room">
+                	    <div align="left" style="margin-left: 120px;"><b style="font-size: 20px">진료실</b></div>
                         <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_3.PNG" style="width:900px;"/></div>
                         <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 900px;"/></div>
-                        <p class="mb-5" style="font-weight: bold; font-size: 20px;">[진료실]</p>
                         <p class="mb-5" style="width: 80%; margin: 0 auto; padding-bottom: 100px;">진료실 내부 모습입니다.
                             화이트와 블랙의 대비감을 이용해 더 널어 보이게 연출했습니다.</p>
                     </div>
                     <div id="model_dental_X-ray_room">
+            	        <div align="left" style="margin-left: 120px;"><b style="font-size: 20px">X-ray실</b></div>
                         <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_4.PNG" style="width: 900px;"/></div>
-                        <p class="mb-5" style="font-weight: bold; font-size: 20px;">[X-ray실]</p>
                         <p class="mb-5" style="width: 80%; margin: 0 auto; padding-bottom: 100px;">X-ray촬영실은 블랙으로 포인트를 주었습니다.</p>
                     </div>
                     <div id="model_dental_makeup_corner">
+                    	<div align="left" style="margin-left: 120px;"><b style="font-size: 20px">특진실</b></div>
                         <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_5.PNG" style="width: 900px;"/></div>
                         <p class="mb-5" style="font-weight: bold; font-size: 20px;">[특진실]</p>
                         <p class="mb-5" style="width: 80%; margin: 0 auto; padding-bottom: 100px;">VIP를 위한 특진실 내부 모습입니다.
                             그레이톤 벽에 치과와 관련된 그래픽을 넣어 포인트를 주었습니다.</p>
                     </div>
                     <div id="model_dental_doctor_room">
+               		    <div align="left" style="margin-left: 120px;"><b style="font-size: 20px">상담실</b></div>
                         <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_7.PNG" style="width: 900px;"/></div>
                         <p class="mb-5" style="font-weight: bold; font-size: 20px;">[상담실]</p>
                         <p style="width: 900px; margin: 0 auto; padding-bottom: 100px;">상담실입니다.
