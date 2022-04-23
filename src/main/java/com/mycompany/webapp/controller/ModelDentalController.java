@@ -25,4 +25,10 @@ public class ModelDentalController {
 		log.info("실행");
 		return "model_dental/model_dental_detail2";
 	}
+	
+	@RequestMapping("/modelDentalDetail1")
+	public String modelDentalDetail1() {
+		log.info("실행");
+		return "model_dental/model_dental_detail1";
+	}
 }

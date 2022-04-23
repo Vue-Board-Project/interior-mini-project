@@ -234,7 +234,7 @@
         <div class="ml-3 text-left" style="font-size:14px; color:#7c7c7c;"><p style="line-height: 0; margin:0; padding:0;">전체 <span>9</span></p></div>
             <div class="d-flex" style=" margin:0 auto;">
                 <div class="m-3"> 
-                    <a class="model_dental_content_a" href="#" style="text-decoration: none; color: black;">
+                    <a class="model_dental_content_a" href="modelDentalDetail1" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px; border-radius: 10px;"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
@@ -257,14 +257,14 @@
             </div>
             <div class="d-flex" style=" margin:0 auto;">
                 <div class="m-3"> 
-                    <a class="model_dental_content_a" href="#" style="text-decoration: none; color: black;">
+                    <a class="model_dental_content_a" href="modelDentalDetail1" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px; border-radius: 10px;"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
                 <div class="m-3">
-                    <a class="model_dental_content_a" href="#" style="text-decoration: none; color: black;">
+                    <a class="model_dental_content_a" href="modelDentalDetail2" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px; border-radius: 10px;"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>
@@ -280,14 +280,14 @@
             </div>
             <div class="d-flex" style=" margin:0 auto;">
                 <div class="m-3"> 
-                    <a class="model_dental_content_a" href="#" style="text-decoration: none; color: black;">
+                    <a class="model_dental_content_a" href="modelDentalDetail1" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg" style="width: 300px; height: 200px; border-radius: 10px;"/>
                         <b class="mt-3" style="line-height: 3;">화이트 톤의 자연친화적인 인테리어</b>
                         <small class="d-block" style="line-height: 1;">mansik</small>
                     </a>
                 </div>
                 <div class="m-3">
-                    <a class="model_dental_content_a" href="#" style="text-decoration: none; color: black;">
+                    <a class="model_dental_content_a" href="modelDentalDetail2" style="text-decoration: none; color: black;">
                         <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 300px; height: 200px; border-radius: 10px;"/>
                         <b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
                         <small class="d-block" style="line-height: 1;">manok</small>

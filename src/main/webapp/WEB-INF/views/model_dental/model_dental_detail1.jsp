@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<div id="model_dental_wrap" class="d-flex flex-column" style="background-color: #faf9f6; height: 260rem; font-family: 'MinSans-Regular';">
-        <div id="model_dental_main_img" class="text-center"><img class="vw-100" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/1.PNG"/></div>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<div id="model_dental_wrap" class="d-flex flex-column" style="background-color: #faf9f6; font-family: 'MinSans-Regular';">
+        <div id="model_dental_main_img" class="text-center"><img class="vw-100" style="height: 450px;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/1.PNG"/></div>
         <div id="model_dental_summary" style="background-color: #d5d5d8; margin: 3rem auto; border-radius: 50px;">
             <div class="d-flex justify-content-center pt-4 mr-5 ml-5" style="color: #272723;">
                 <div class="mr-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/icons/free-icon-building-188379.png" style="height: 45px;"/><strong class="ml-3">모델치과</strong></div>
@@ -12,7 +13,7 @@
                 <p style="color: #272723;">화이트 톤의 모던 치과 인테리어</p>
             </div>
         </div>
-        <div class="text-center mb-5"><a class="btn" style="background-color: #ca5c0d; color: white;" href="${pageContext.request.contextPath}/interior_consult/quick_consultation">이 컨셉으로 상담신청</a></div>
+        <div class="text-center mb-5"><a class="btn" style="background-color: #ca5c0d; color: white; box-shadow: none;"  href="interior_consult/quick_consultation">이 컨셉으로 상담신청</a></div>
         <div id="model_dental_content" class="text-center">
             <div id="model_dental_waiting_room">
                 <div class="mb-5"><img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/2.PNG" style="width: 60%;"/></div>
@@ -36,3 +37,4 @@
             </div>
         </div>
     </div>
+    <%@ include file="/WEB-INF/views/common/footer.jsp" %>
