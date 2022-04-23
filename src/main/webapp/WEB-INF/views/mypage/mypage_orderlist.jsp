@@ -6,8 +6,8 @@
 	
 	<div class="orderlist_section">
 	         <div class = "header_section">
-	          <div class="text">주문 내역</div>
-	          <span class="sub_text">지난 주문 내역을 조회합니다.</span>
+	          <div class="text">구매 내역</div>
+	          <span class="sub_text">지난 구문 내역을 조회합니다.</span>
 	          <hr width = 90%>
 	         </div>
 	         
@@ -30,34 +30,35 @@
 				  <label class="btn btn-secondary">
 				    <input type="radio" name="options" id="orderlist_date_all" autocomplete="off"> 전체
 				  </label>
-				</div>
-				
-	          <hr width = 90%>
+			</div>
 	          
 	     	<div class="content_section">
 	     	<!-- 재품 받기 -->
 	     		<div class = "prouducts">
 	     		<!-- 각 제품 요소들 -->
-	  				<div class = "productsList">
-	  					<div class = "product_image">
-	  						<a href = "#">
-	  							<img class = "mypage_productlist_images" src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg" width = 200px; height = 200px/>
-	  						</a>
-	  					</div>
-		  					<div class = "product_info_name">제품 1</div>
-		  					<div class = "product_info_price">가격 : 123456 Won</div>
-		  					<div class = "product_deliver_status">배송 중</div>
-	  				</div>
-	  				<div class = "productsList">
-	  					<span class = "product_image">
-	  						<a href = "#">
-	  							<img class = "mypage_productlist_images" src = "${pageContext.request.contextPath}/resources/images/mypage/denall_sample1.png" width = 200px; height = 200px/>
-	  						</a>
-	  					</span>
-	  					<span class = "product_info_name">제품 2</span>
-	  					<span class = "product_info_price">가격 : 789000 Won</span>
-	  					<span class = "product_deliver_status">배송 중</span>
-	  				</div>
+	     			<div class= "product_list_element">
+	     				<div class = "element_img_slot">
+	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/images/mypage/Tetric_N_Bond_VIVAPEN.png" />
+	     				</div>
+	     				<div class = "element_title">Tetric N Bond VIVAPEN</div>
+	     				<div class = "element_price">
+		     				<div class = "element_price_money">110,000</div>
+		     				<span class = "element_price_unit">원</span>  
+	     				</div>
+	     				<div class = "element_delivery_status">배송중</div>
+	     			</div>
+	     			<div class= "product_list_element">
+	     				<div class = "element_img_slot">
+	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/images/mypage/A_OSS_VIAL TYPE.png" />
+	     				</div>
+	     				<div class = "element_title">A OSS VIAL TYPE(SW)</div>
+	     				<div class = "element_price">
+		     				<div class = "element_price_money">320,000</div>
+		     				<span class = "element_price_unit">원</span>  
+	     				</div>
+	     				<div class = "element_delivery_status">배송완료</div>
+	     			</div>
+	  				
 	     		</div>		
 			</div>
 	</div>
@@ -81,59 +82,74 @@
           width: calc(100% - 250px);   
      }
      
-      .productsList {
+     .prouducts {
+     	
+     
+     }
+     
+      .product_list_element {
       		position : relative;
-      		width : 1000px;
-      		height : 250px;
-      		border : 1px solid #ca5c0d;
+      		width : 1100px;
+      		height : 150px;
+      		border-bottom : 1px solid #ccc;
       		background-color : #fff;
       		display: flex;
 			flex-direction: row; 
-			border-radius : 5px;
       }
      
-      .productsList .product_image {
-      		position: relative;
-      		object-fit: cover;
-      		border-radius : 20px;
-      		
+      .product_list_element .element_img {
+      		width : 80px;
+      		height : 120px;
+      		margin-top :15px;
+      		margin-left : 30px;
+      		border : 1px solid #ccc;
       		
       	}
-      
-     .mypage_productlist_images{
-     		padding-left : 20px;
-     		padding-bottom : 10px;
-     		padding-top : 5px;
+     .product_list_element .element_title {
+     
+     		font-family: 'MinSans-Medium';
+     		font-size : 1.5rem;
+     		margin-left : 20px;
+     		margin-top : 15px;
+     }
+     
+     .product_list_element .element_price{
+     	position : absolute;
+     	margin-left : 130px;
+     	margin-top : 60px;
+     	display: flex;
+		flex-direction: row; 
+     
+     }
+     
+     .product_list_element .element_price .element_price_money{
+      	font-family: 'MinSans-Regular';
+      	font-size : 1rem;
      
      }
 
-     .productsList .product_info_name {
-      		position : absolute;
-      		top: 5%;
-    		left: 10%;
-      		font-size : 25px;
-      		font-family: 'MinSans-Bold';
-      		/*padding-top : 10px;*/
-  			 
-      } 
-         
-      .productsList .product_info_price {
-      		position : absolute;
-      		font-weight : 400;
-  			align-items: right;
-  			top : 60%;
-  			right : 5%;
-      }
-          
-       .productsList .product_deliver_status{
-      		position : absolute;
-      		font-weight : 200px;
-      		top : 80%;
-  			right : 5%;
-      		color : #ca5c0d;
-      }
-      
-	     /*기간 선택하는 버튼*/    
+	 .product_list_element .element_price .element_price_unit{
+      	font-family: 'MinSans-Regular';
+      	margin-top : 5px;
+      	margin-left : 2px;
+      	font-size : 0.8rem;
+     
+     }
+     
+    .product_list_element .element_delivery_status {
+    	position : absolute;
+    	font-family: 'MinSans-Thin';
+    	margin-left : 600px;
+    	margin-top : 120px;
+    	font-size : 1rem;
+    	width : 80px;
+    	height : 1rem + 10px;
+    	border : 1px solid #ccc;
+    	text-align : center;
+    
+    }
+
+    /*기간 선택하는 버튼*/    
      #mypage_orderlist_date_selection{
      	left : 5%;
      }
