@@ -1,0 +1,56 @@
+/*하단 내용 div 숨기기*/
+#misb_off_interview{
+    /* display: none; */
+}
+#misb_design{
+    display: none;
+}
+#misb_contract{
+    display: none;
+}
+#misb_currentSituation{
+    display: none;
+}
+#misb_complete{
+    display: none;
+}
+#misb_afterService{
+    display: none;
+}
+
+/*인테리어 단계별 section 관리*/
+.mypage_interior_step_btn{
+    display: inline-block; 
+    width: 222px; 
+    height: 150px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid black;
+}
+.mypage_interior_step_btn[title="off_interview"]{
+    background-color: white;
+	border-top: 1px solid black; 
+    border-left: 1px solid black; 
+    border-right: 1px solid black;
+    border-bottom: none;
+}
+.misbtn_button{
+    width: 100%;  
+    height: 150px;
+}
+.misbtn_button_p{
+    font-family: 'MinSans-Medium'; 
+    font-size: 20px;
+}
+
+/*단계별 div 내부 겹치는 css*/
+.misbc_calender_wrap{
+    display: flex; 
+    width: 90%;
+}
+
+/*첨부 파일 div css*/
+.mypage_interior_add_file_div{
+    width: 500px; display: flex; 
+    justify-content: space-between; 
+    background-color: #f1f1f1;
+}
