@@ -1,4 +1,8 @@
 @charset "UTF-8";
 .model_dental_summary_img{ height: 45px; }
 .model_dental_content_img{  width: 850px; }
-.model_dental_content_p{ width: 850px; margin: 0 auto; }
+.model_dental_content_p{ width: 850px; margin: 0 auto; margin-bottom: 100px;}
+.model_dental_content_text{margin-left: 530px;}
+.model_dental_content_b{font-size: 20px;}
+.model_dental_detail_button{background-color: #ca5c0d; color: white; box-shadow: none;}
+.model_dental_detail_button:hover{background-color: #ca5c0d; color: white; box-shadow: none;}

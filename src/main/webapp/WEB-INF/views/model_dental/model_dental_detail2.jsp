@@ -15,51 +15,39 @@
             </div>
         </div>
         <div class="text-center mb-5">
-        	<a class="btn" style="background-color: #ca5c0d; color: white; box-shadow: none;" href="interior_consult/quick_consultation">이 컨셉으로 상담신청</a>
+        	<a class="btn model_dental_detail_button" href="interior_consult/quick_consultation">이 컨셉으로 상담신청</a>
         </div>
-        <div id="model_dental_content" class="text-center" style="width:  width: 850px;">
+        <div id="model_dental_content" class="text-center">
             <div>
-            	<div align="left" style="margin-left: 530px;"><b style="font-size: 20px">입구</b></div>
-            	<!-- <div class="greyRule mb-3" style="margin-left: 580px; background: #272723;width: 780px;height: 1px;"><hr style="display: none"/></div> -->
+            	<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">입구</b></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_1.PNG"/></div>
-                <!-- <p class="mb-5">[입구]</p> -->
-                <p class="model_dental_content_p" style="margin-bottom: 100px">치과 입구 모습입니다. 입구는 블랙톤으로 무게감있게 연출했습니다.</p>
+                <p class="model_dental_content_p">치과 입구 모습입니다. 입구는 블랙톤으로 무게감있게 연출했습니다.</p>
             </div>
             <div>
-            	<div align="left" style="margin-left: 530px;"><b style="font-size: 20px">치과 내부</b></div>
-            	<!-- <div class="greyRule mb-3" style="margin-left: 625px; background: #272723;width: 750px;height: 1px;"><hr style="display: none"/></div> -->
+            	<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">치과 내부</b></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_2.PNG"/></div>
-                <!-- <p class="mb-5">[치과 내부]</p> -->
-                <p class="model_dental_content_p" style="margin-bottom: 100px">치과 내부 모습입니다. 화이트톤을 기반으로 청결한 이미지를 중점적으로 연출했습니다</p>
+                <p class="model_dental_content_p">치과 내부 모습입니다. 화이트톤을 기반으로 청결한 이미지를 중점적으로 연출했습니다</p>
             </div>
             <div id="model_dental_waiting_room">
-           		<div align="left" style="margin-left: 530px;"><b style="font-size: 20px">진료실</b></div>
-            	<!-- <div class="greyRule mb-3" style="margin-left: 595px; background: #272723;width: 775px;height: 1px;"><hr style="display: none"/></div> -->
+           		<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">진료실</b></div>
                 <div class="mb-3"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_3.PNG"/></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG"/></div>
-               <!--  <p class="mb-5">[진료실]</p> -->
-                <p class="model_dental_content_p" style="margin-bottom: 100px">진료실 내부 모습입니다. 화이트와 블랙의 대비감을 이용해 더 널어 보이게 연출했습니다.</p>
+                <p class="model_dental_content_p">진료실 내부 모습입니다. 화이트와 블랙의 대비감을 이용해 더 널어 보이게 연출했습니다.</p>
             </div>
             <div id="model_dental_X-ray_room">
-            	<div align="left" style="margin-left: 530px;"><b style="font-size: 20px">X-ray실</b></div>
-            	<!-- <div class="greyRule mb-3" style="margin-left: 580px; background: #272723;width: 780px;height: 1px;"><hr style="display: none"/></div> -->
+            	<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">X-ray실</b></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_4.PNG"/></div>
-               <!--  <p class="mb-5">[X-ray실]</p> -->
-                <p class="model_dental_content_p" style="margin-bottom: 100px">X-ray촬영실은 블랙으로 포인트를 주었습니다.</p>
+                <p class="model_dental_content_p">X-ray촬영실은 블랙으로 포인트를 주었습니다.</p>
             </div>
             <div id="model_dental_makeup_corner">
-            	<div align="left" style="margin-left: 530px;"><b style="font-size: 20px">특진실</b></div>
-            	<!-- <div class="greyRule mb-3" style="margin-left: 630px; background: #272723;width: 740px;height: 1px;"><hr style="display: none"/></div> -->
+            	<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">특진실</b></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_5.PNG"/></div>
-               <!--  <p>[특진실]</p> -->
-                <p class="model_dental_content_p" style="margin-bottom: 100px">VIP를 위한 특진실 내부 모습입니다. 그레이톤 벽에 치과와 관련된 그래픽을 넣어 포인트를 주었습니다.</p>
+                <p class="model_dental_content_p">VIP를 위한 특진실 내부 모습입니다. 그레이톤 벽에 치과와 관련된 그래픽을 넣어 포인트를 주었습니다.</p>
             </div>
             <div id="model_dental_doctor_room">
-            	<div align="left" style="margin-left: 530px;"><b style="font-size: 20px">상담실</b></div>
-            <!-- 	<div class="greyRule mb-3" style="margin-left: 570px; background: #272723;width: 780px;height: 1px;"><hr style="display: none"/></div> -->
+            	<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">상담실</b></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_7.PNG"/></div>
-             <!--    <p>[상담실]</p> -->
-                <p class="model_dental_content_p" style="margin-bottom: 100px">상담실입니다. 벽을 유리로 시공해 시각적으로 더 넓어 보이는 느낌을 주었습니다.</p>
+                <p class="model_dental_content_p">상담실입니다. 벽을 유리로 시공해 시각적으로 더 넓어 보이는 느낌을 주었습니다.</p>
             </div>
             <div style="margin-bottom: 100px">
             	<p> 오몰레어 오스템의 깔끔한 치과 인테리어였습니다.</p>
@@ -67,10 +55,4 @@
             </div>
         </div>
     </div>
-   <!--  <style>
-    	.model_dental_summary_img{ height: 45px; }
-    	.model_dental_content_img{  width: 850px; }
-    	.model_dental_content_p{ width: 850px; margin: 0 auto; }
-
-    </style> -->
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
