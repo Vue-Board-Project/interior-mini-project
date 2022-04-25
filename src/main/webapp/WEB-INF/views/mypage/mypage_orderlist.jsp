@@ -31,7 +31,7 @@
 				    <input type="radio" name="options" id="orderlist_date_all" autocomplete="off"> 전체
 				  </label>
 			</div>
-	          
+	           <hr width = 90%>
 	     	<div class="content_section">
 	     	<!-- 재품 받기 -->
 	     		<div class = "prouducts">
