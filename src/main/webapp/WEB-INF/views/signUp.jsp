@@ -53,9 +53,9 @@
   
                   <!-- MOBILE -->
                   <div>
-                      <h3 class="join_title"><label for="phoneNo">휴대전화<span class="ml-1" style="color: red;">*</span></label></h3>
+                      <h3 class="join_title"><label for="phoneNo">대표번호<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_mobile">
-                          <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력" required>
+                          <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력(-는 빼고 입력해주세요)" required>
                       </span>
                       <span class="error_next_box"></span>    
                   </div>

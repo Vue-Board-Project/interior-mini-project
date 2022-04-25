@@ -120,7 +120,7 @@ function findAddr(){
       }
     
       function checkPhoneNum() {
-          var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
+          var isPhoneNum = /^([0-9]{2,3})([0-9]{3,4})([0-9]{4})$/;
     
           if(mobile.value === "") {
               error[4].innerHTML = "필수 정보입니다.";
