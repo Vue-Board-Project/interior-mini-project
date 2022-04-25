@@ -1,6 +1,114 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<style>
+    .consult_finish_pop-layer .consult_finish_pop-container {
+        padding: 20px 25px;
+      }
+    
+      .consult_finish_pop-layer .btn-r {
+        width: 100%;
+        margin: 10px 0 20px;
+        padding-top: 10px;
+        border-top: 1px solid #DDD;
+        text-align: center;
+      }
+      .consult_finish_title{
+        height: 200px; padding-top: 100px;
+      }
+      .consult_finish_pop-layer {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 410px;
+        height: auto;
+        background-color: #fff;
+        z-index: 10;
+        border-radius: 5px;
+      }
+      
+      .consult_finish_dim-layer {
+        display: none;
+        position: fixed;
+        _position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+      }
+      
+      .consult_finish_dim-layer .dimBg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: .5;
+        filter: alpha(opacity=50);
+      }
+      
+      .consult_finish_dim-layer .consult_finish_pop-layer {
+        display: block;
+      }
+      
+      a.btn-layerClose {
+        display: inline-block;
+        background-color: #272723;
+        font-size: 15px;
+        color: #fff;
+      }
+      
+      a.btn-layerClose:hover {
+        background-color: #ca5c0d;
+        color: #fff;
+      }
+</style>
 <main style="background-color: #faf9f6">
+    <div class="consult_finish_dim-layer">
+        <div class="dimBg"></div>
+        <div id="consult_finish_btnss" class="consult_finish_pop-layer">
+            <div class="consult_finish_pop-container">
+                <!--content //-->
+                <div class="text-center consult_finish_title">
+                    <h5 style="color: black;">상담 신청이 완료되었습니다.</h5>
+                </div>
+                <div class="btn-r">
+                    <a href="${pageContext.request.contextPath}/" class="btn-layerClose btn">Close</a>
+                </div>
+                <!--// content-->
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function quick_consult_finish_btn(el){
+            var $el = $(el);    //레이어의 id를 $el 변수에 저장
+            $('.consult_finish_dim-layer').fadeIn();
+    
+            var $elWidth = ~~($el.outerWidth()),
+                $elHeight = ~~($el.outerHeight()),
+                docWidth = $(document).width(),
+                docHeight = $(document).height();
+    
+            // 화면의 중앙에 레이어를 띄운다.
+            if ($elHeight < docHeight || $elWidth < docWidth) {
+                $el.css({
+                    marginTop: -$elHeight /2,
+                    marginLeft: -$elWidth/2
+                })
+            } else {
+                $el.css({top: 0, left: 0});
+            }
+    
+            $('.layer .dimBg').click(function(){
+                $('.consult_finish_dim-layer').fadeOut();
+                return false;
+            });
+    
+        } 
+    </script>
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/cssHeader.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quik.css" rel="stylesheet" type="text/css"/>
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quick_consultation.css" rel="stylesheet" type="text/css"/>
@@ -670,12 +778,11 @@
                                 </div>
                                 <div style="width: 90%;" class="mx-auto text-center" >
                                     <button class="btn mr-3 add_detail_consult_start_btn" style="width: 30%; height: 50px;">이전</button>
-                                    <button class="btn quick_consult_finish_btn" style="width: 60%; height: 50px;">상담신청</button>
+                                    <button class="btn quick_consult_finish_btn" onclick="js:quick_consult_finish_btn('#consult_finish_btnss')" style="width: 60%; height: 50px;">상담신청</button>
                                 </div>    
                             </div>
                            
                         </section>
-                        
                     </div>
                 </div>
             </article>
