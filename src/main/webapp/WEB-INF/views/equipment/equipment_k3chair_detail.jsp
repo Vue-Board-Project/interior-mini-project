@@ -184,9 +184,7 @@
               transition: all 0.3s cubic-bezier(1,.01,.32,1); 
             }
             </style>
-            <script>
-             
-            </script>
+
             
     </div>
     <div id="k3chair_main_right">
