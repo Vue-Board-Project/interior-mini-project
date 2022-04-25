@@ -73,7 +73,7 @@
             float: right;
             width: 30%;
             background-color: #f3f0ef;
-            border-radius: 20px;
+            border-radius: 10px;
             padding: 40px;
             margin-top: 50px;
         }
@@ -99,14 +99,14 @@
         }
         #payment_step1 input{
             margin-bottom: 20px;
-            border-radius: 20px;
+            border-radius: 10px;
             border: 1px solid #ccc;
             padding: 5px;
             padding-left: 20px;
         }
         #payment_step2 input{
             margin-bottom: 20px;
-            border-radius: 20px;
+            border-radius: 10px;
             border: 1px solid #ccc;
             padding: 5px;
             padding-left: 20px;
@@ -118,44 +118,21 @@
             padding: 30px;
             margin-left: 150px;
             border: 1px #ccc solid;
-            border-radius: 20px;
+            border-radius: 10px;
             background-color: #f7f4f4;
         }
         #card_payment input{
             margin-bottom: 20px;
-            border-radius: 20px;
+            border-radius: 10px;
             border: 1px solid #ccc;
             padding: 5px;
             padding-left: 20px;
         }
-         @font-face {
-          font-family: "MinSans-Medium";
-          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff")
-            format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
-        @font-face {
-          font-family: "MinSans-Black";
-          src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Black.woff")
-            format("woff");
-          font-weight: normal;
-          font-style: normal;
-        }
         
-        #pxup_line{
-            background-color: #333;
-            height: 2px;
-        }
-        #makeline{
-            border-bottom: 1px solid #ccc;
-            width: 400px;
-            margin-bottom: 150px;
-        }
         /* 전체 컨텐츠 길이 */ 
             /* .content{ height: 3000px; } */
             /* 전체를 감싸고 있는 div에 fixed 부여 함으로 써 content의 길이가 길어져도 dimmed가 배경에 100% 깔릴 수 있게 함 */ 
-            .layer_popup{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; } 
+            #paymentsuccess_popup .layer_popup{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; } 
             /* absolute / margin 을 통한 화면 정중앙 정렬 및 디자인*/ 
             #paymentsuccess_popup .layer{ 
                 width: 50%; 
