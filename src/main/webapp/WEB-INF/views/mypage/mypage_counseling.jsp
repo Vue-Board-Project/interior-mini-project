@@ -50,13 +50,14 @@
 	.mypage_counseling_history{
 		padding-left : 5%;
 		padding-top : 5%;
-		border: 1px solid #F58B54;
+		border: 1px solid #ccc;
     	background-image : url("${pageContext.request.contextPath}/resources/images/mypage/mypage_osstem_interior_logo.png");
     	background-size: cover;
 		background-repeat: no-repeat;
 		width : 95%;
 		height : 95%;
     	color : #fff;
+    	border-radius : 5%;
 	}
     	
     /*견적신청 내용 버튼*/
