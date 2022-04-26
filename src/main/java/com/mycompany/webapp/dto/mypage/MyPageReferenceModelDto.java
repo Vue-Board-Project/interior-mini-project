@@ -1,4 +1,4 @@
-package com.mycompany.webapp.dto;
+package com.mycompany.webapp.dto.mypage;
 
 import lombok.Data;
 

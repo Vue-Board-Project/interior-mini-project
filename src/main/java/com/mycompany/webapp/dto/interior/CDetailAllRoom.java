@@ -1,4 +1,4 @@
-package com.mycompany.webapp.dto;
+package com.mycompany.webapp.dto.interior;
 
 public class CDetailAllRoom {
 	private String allRoomSection;//원하는 공간

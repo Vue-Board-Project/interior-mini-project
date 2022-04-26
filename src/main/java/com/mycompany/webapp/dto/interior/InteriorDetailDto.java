@@ -1,4 +1,4 @@
-package com.mycompany.webapp.dto;
+package com.mycompany.webapp.dto.interior;
 
 import org.springframework.web.multipart.MultipartFile;
 
