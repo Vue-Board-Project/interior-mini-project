@@ -3,7 +3,7 @@ package com.mycompany.webapp.dto.interior;
 import java.sql.Date;
 
 import lombok.Data;
-
+//기본 상담 테이블
 @Data
 public class MainConsultDto {
 	private int consultNo;//접수번호
