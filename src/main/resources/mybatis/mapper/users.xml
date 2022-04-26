@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                 
+<mapper namespace="com.mycompany.webapp.dao.mybatis.UsersDao">
+	<insert id="insert" parameterType="users">
+		INSERT INTO users
+		(email, password, name, phone, postcode, address, address_detail, crn)
+		VALUES(#{email}, #{password}, #{name}, #{phone}, #{postcode}, #{address}, #{address_detail}, #{crn})
+	</insert>
+	
+	<select id="selectByEmail" parameterType="string" resultType="users">
+		SELECT email, password, name, phone, postcode, address, address_detail, crn
+		FROM users
+		WHERE email = #{email}
+	</select>
+</mapper>
