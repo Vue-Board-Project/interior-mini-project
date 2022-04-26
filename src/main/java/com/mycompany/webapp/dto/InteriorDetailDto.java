@@ -1,4 +1,4 @@
-package com.mycompany.webapp.bonobonodto;
+package com.mycompany.webapp.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 

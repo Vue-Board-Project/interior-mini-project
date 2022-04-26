@@ -1,4 +1,4 @@
-package pororydto;
+package com.mycompany.webapp.dto;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package pororydto;
+package com.mycompany.webapp.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
