@@ -7,7 +7,7 @@ import com.mycompany.webapp.dto.UsersDto;
 import lombok.Data;
 
 @Data
-public class ProductConsult {
+public class ProductConsultDto {
 	private int pcNo;//장비상담접수번호
 	private String pcPurpose;//상담목적
 	private boolean pc_product_remove;//장비제거
