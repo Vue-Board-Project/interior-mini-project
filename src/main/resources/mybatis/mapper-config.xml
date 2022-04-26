@@ -11,5 +11,16 @@
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.ConsultDetailDto" alias="ConsultDetail"/>
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.MainConsultDto" alias="MainConsult"/>
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.ConsultRemodelingDto" alias="ConsultRemodeling"/>
+	    	
+	    	<!-- 한보현 추가 -->
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDetailDto" alias="interiorDetail"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDto" alias="interior"/>
+	    	
+	    	
+	    	 <!-- mypage -->
+		    <typeAlias type="com.mycompany.webapp.dto.mypage.MyPageInteriorProgressDto" alias="mpProgress"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.MyPageInteriorProgressFileDto" alias="mpProgressFile"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.MyPageReferenceModelDto" alias="mPreference"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.MyPageSolutionDto" alias="mpSolution"/>
 	  </typeAliases>
 </configuration> 
