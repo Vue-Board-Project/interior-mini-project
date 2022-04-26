@@ -1,5 +1,4 @@
- 
- @font-face {
+        @font-face {
           font-family: "MinSans-Medium";
           src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff")
             format("woff");
@@ -110,80 +109,20 @@
             border: 1px solid #ccc;
             padding: 5px;
             padding-left: 20px;
-        }
-
+}
         #card_payment{
             margin-top: 50px;
             width: 600px;
             padding: 30px;
             margin-left: 150px;
             border: 1px #ccc solid;
-            border-radius: 10px;
+            border-radius: 20px;
             background-color: #f7f4f4;
         }
         #card_payment input{
             margin-bottom: 20px;
-            border-radius: 10px;
+            border-radius: 20px;
             border: 1px solid #ccc;
             padding: 5px;
             padding-left: 20px;
         }
-        
-        /* 전체 컨텐츠 길이 */ 
-            /* .content{ height: 3000px; } */
-            /* 전체를 감싸고 있는 div에 fixed 부여 함으로 써 content의 길이가 길어져도 dimmed가 배경에 100% 깔릴 수 있게 함 */ 
-            #paymentsuccess_popup .layer_popup{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; } 
-            /* absolute / margin 을 통한 화면 정중앙 정렬 및 디자인*/ 
-            #paymentsuccess_popup .layer{ 
-                width: 50%; 
-                height: 50%; 
-                background-color: #fff; 
-                border: 1px solid #e5e5e5; 
-                position: absolute; 
-                top: 0; 
-                left: 0; 
-                bottom: 0; 
-                right: 0; 
-                margin: auto; 
-                border-radius: 5px; 
-                box-shadow: 0 0 10px -4px; } 
-            /* 전체 글 부분 패딩값 조절 */ 
-            #paymentsuccess_popup .text_area{ padding: 50px 30px 0; } 
-            /* 텍스트 부분 스타일 */ 
-            #paymentsuccess_popup .text_area > #paymentsuccess_popup p{ font-size: 17px; line-height: 1.5; text-align: justify; } 
-            /* 버튼 table로 넓이 조절 */ 
-            #paymentsuccess_popup .btn_area{ padding: 30px;} 
-            /* 버튼 디자인 및 table-cell로 넓이 조절 */ 
-            #paymentsuccess_popup .btn_area > #paymentsuccess_popup a{ 
-                border: 1px solid; 
-                padding: 13px 18px; 
-                color: #fff; 
-                font-size: 18px; 
-                background-color: gray; 
-                margin-right: 2.5%; 
-                cursor: pointer; 
-                box-shadow: 0px 0px 8px -5px #000; } 
-            /* twitter 넓이 / 색상 */ 
-            #paymentsuccess_popup .btn_area > #paymentsuccess_popup .btn_shop{ 
-                background-color: #ca5c0d; } 
-            /* Dribbble 넓이 / 색상 */ 
-            #paymentsuccess_popup .btn_area > #paymentsuccess_popup .btn_cart{ 
-                background-color: #ca5c0d;
-                margin: 0; } 
-            /* 닫기 버튼 디자인 및 위치 조절*/ 
-            #paymentsuccess_popup .btn_close{ 
-                border: none; 
-                font-size: 15px; 
-                width: 80px; 
-                height: 25px; 
-                background: transparent; 
-                position: absolute; 
-                top: 10px; right: 10px; 
-                cursor: pointer; 
-                font-weight: bold; } 
-            /* 딤드 처리 */ 
-            #paymentsuccess_popup .dimmed{ 
-                background-color: rgba(0, 0, 0, 0.3); 
-                position: absolute; 
-                left: 0; right: 0; top: 0; bottom: 0; z-index: -1; }
-        
