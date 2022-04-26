@@ -1,0 +1,9 @@
+package com.mycompany.webapp.dto;
+
+import lombok.Data;
+
+@Data
+public class MyPageReferenceModelDto {
+	//private int consultN;	//접수번호(FK, PK)
+	//private int ino;		//게시글번호(FK, PK)
+}

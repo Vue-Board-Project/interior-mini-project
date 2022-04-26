@@ -15,8 +15,8 @@
 	     	<div class="content_section">
 	     	
 		     	<div class = "mypage_counseling_history">
-					<h4><b>서울 성북구 35평형 아파트 인테리어</b><br>
-					인테리어를 신청하셨습니다.</h4>
+					<h4><b><span>모던한</span> 스타일의</b><br>
+					치과 인테리어를 신청하셨습니다.</h4>
 					<button class = "info_button" id = "mypage_counseling_button">견적신청 내용</button>
 				</div>
 			</div>
@@ -57,7 +57,7 @@
 		width : 95%;
 		height : 95%;
     	color : #fff;
-    	border-radius : 5%;
+    	border-radius : 20px;
 	}
     	
     /*견적신청 내용 버튼*/
@@ -69,7 +69,7 @@
 	    border-radius: 15px;
 	    text-decoration: none;
 	    font-weight: 600;
-	    transition: 0.25s;
+	    /* transition: 0.25s; */
 	    float : right;
 	    margin-right : 3%;
     }
