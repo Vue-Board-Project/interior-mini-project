@@ -54,7 +54,7 @@
                             </div>
                         </a>
                         
-                        <a id="go_k5chair" href="#" class="gotolink">
+                        <a id="go_k5chair" href="${pageContext.request.contextPath}/equipment/equipment_k5chair_detail"class="gotolink">
                             <div id="eq_list_content2" class="card">
                                 <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair1.jpeg" class="card-img-top">
                                 <div class="card-body">

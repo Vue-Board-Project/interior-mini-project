@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<link href="${pageContext.request.contextPath}/resources/css/equipment/equipment_k3chair_detail.css" rel="stylesheet" type="text/css"/>
-<div id="k3chair_content"><!-- 대표 이미지 설정-->
+<link href="${pageContext.request.contextPath}/resources/css/equipment/equipment_k5chair_detail.css" rel="stylesheet" type="text/css"/>
+<div id="k5chair_content"><!-- 대표 이미지 설정-->
 
-    <div id="k3chair_main_left" style="margin-left: 250px;">
+    <div id="k5chair_main_left" style="margin-left: 250px;">
         <div id="wrapper">
             <div id="slider_wrap">
               <ul id="slider">
@@ -187,14 +187,14 @@
 
             
     </div>
-    <div id="k3chair_main_right">
+    <div id="k5chair_main_right">
         <div>
-            <P id="k3chair_main_content1">k3 chair <img id="icon_dentist" src="${pageContext.request.contextPath}/resources/subinimage/doctor.png"/></P>
+            <P id="k5chair_main_content1">k5 chair <img id="icon_dentist" src="${pageContext.request.contextPath}/resources/subinimage/doctor.png"/></P>
             <hr/>
-            <p id="k3chair_main_content2">우수한 성능, 수려한 디자인을 갖춘 오스템 임플란트만의 유니트 체어<br/>
+            <p id="k5chair_main_content2">우수한 성능, 수려한 디자인을 갖춘 오스템 임플란트만의 유니트 체어<br/>
                 High Quality 옵션, 고품질, 고성능, 편의성 최대
             </p>
-            <p id="k3chair_main_content3">색상
+            <p id="k5chair_main_content3">색상
                 <div id="colorcheck">
                     <label for="default1">검정 </label><input name="default1" type="radio" checked id="colorcheck_black">
                     <label for="default2">파랑 </label><input name="default1" type="radio" id="colorcheck_blue">
@@ -203,7 +203,7 @@
                     <label for="default5">초록 </label><input name="default1" type="radio" id="colorcheck_green">
                 </div>
               </div></p>
-            <p id="k3chair_main_content4">
+            <p id="k5chair_main_content4">
                 <form name='form'>
                     <table>
                      <tr>
@@ -223,11 +223,11 @@
                     </table>
                 </form>
             </p>
-            <p id="k3chair_main_content5">배송 가능 지역 <a id="table_button1" class="btn btn-leght" onclick="showcontent()"><img id="btn_able_delivery_loaction" src="${pageContext.request.contextPath}/resources/subinimage/down.png"></a></p>
+            <p id="k5chair_main_content5">배송 가능 지역 <a id="table_button1" class="btn btn-leght" onclick="showcontent()"><img id="btn_able_delivery_loaction" src="${pageContext.request.contextPath}/resources/subinimage/down.png"></a></p>
                 <div id="able_delivery_loaction_info">- 서울, 경기, 인천, 부산, 울산, 광주, 세종, 대전, 대구<hr/>이외의 지역, 제주 및 도서 산간 지역은 배송 비용 및 설치비가 추가될 수 있으며, 배송이 불가할 수 있습니다. 
                     정확한 안내를 원하시는 경우 상담 신청을 하시길 바랍니다.</div>
                     <div class="tooltip">
-                        <p id="k3chair_main_content6">판매가<button id="able_delivery_loaction" type="button" class="btn btn-outline-secondary">?</button>
+                        <p id="k5chair_main_content6">판매가<button id="able_delivery_loaction" type="button" class="btn btn-outline-secondary">?</button>
                         <div class="tooltip-content">
                             <p>내용 보여줘</p>
                         </div>
@@ -235,7 +235,8 @@
             </p>
             <hr>
             <p>
-                <a id="btn_go_counseling" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/paymentpage">상담</a>
+                <a id="btn_go_cart" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase">장바구니</a>
+                <a id="btn_go_counseling" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/paymentpage">구매</a>
             </p>     
         </div>
     </div>
@@ -243,6 +244,6 @@
         <a></a>
 
     </div>
-    <script src="${pageContext.request.contextPath}/resources/js/equipment/equipment_k3chair_detail.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/equipment/equipment_k5chair_detail.js"></script>
 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

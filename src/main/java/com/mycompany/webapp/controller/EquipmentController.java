@@ -19,6 +19,10 @@ public class EquipmentController {
 	public String equipment_k3chair_detail() {
 		return "/equipment/equipment_k3chair_detail";//view 이름만 전달
 	}
+	@RequestMapping( "/equipment/equipment_k5chair_detail")
+	public String equipment_k5chair_detail() {
+		return "/equipment/equipment_k5chair_detail";//view 이름만 전달
+	}
 	@RequestMapping( "/equipment/dental_equipment_main")
 	public String dental_equipment_main() {
 		return "/equipment/dental_equipment_main";//view 이름만 전달
