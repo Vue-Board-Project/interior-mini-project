@@ -11,6 +11,7 @@
 		<config>src/main/resources/spring/dispatcher/component_scan.xml</config>
 		<config>src/main/resources/spring/dispatcher/viewresolver.xml</config>
 		<config>src/main/resources/spring/root/component_scan.xml</config>
+		<config>src/main/resources/spring/root/datasource.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
