@@ -21,7 +21,7 @@ public class LoginAndLogoutController {
 	@Resource
 	private UsersService usersService;
 	
-	//로그인
+	/*//로그인
 	@PostMapping("/login")
 	public String login(UsersDto users, HttpSession session, Model model) {
 		LoginResult result = usersService.login(users);
@@ -43,6 +43,6 @@ public class LoginAndLogoutController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("sessionEmail");
 		return "redirect:/";
-	}
+	}*/
 	
 }

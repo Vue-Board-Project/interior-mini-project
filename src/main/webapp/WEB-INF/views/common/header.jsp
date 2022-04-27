@@ -83,18 +83,18 @@
 
                         <%@ include  file="/WEB-INF/views/common/find_password.jsp"%>
                         
-                        <c:if test="${sessionEmail == null}">
+                        <sec:authorize access="isAnonymous()">
 		                    <a id="main_header_signUp" class="btn" href="${pageContext.request.contextPath}/mainSignUp" style="border: none; outline: none;">
 		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
 		                        <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
 		                    </a>
-                        </c:if>
-                        <c:if test="${sessionEmail != null}">
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
 		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/device_AS" style="border: none; outline: none;">
 		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
 		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
 		                    </a>
-                        </c:if>
+                        </sec:authorize>
 	                    <a id="main_header_cart" class="btn" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase" style="border: none; outline: none;">
 	                        <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
 	                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
