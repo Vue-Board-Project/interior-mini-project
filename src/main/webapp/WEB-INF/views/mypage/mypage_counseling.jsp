@@ -19,10 +19,12 @@
 
 	     	
 	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_interior.jsp" %>
+	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_remodeling.jsp" %>
+	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_AS.jsp" %>
 	     	
 			</div>
 		</div>
-			<%@ include file="/WEB-INF/views/mypage/myinfo_counsel_popup.jsp" %>
+			
 			
 
 </div>
@@ -48,18 +50,7 @@
           width: calc(100% - 250px);
      }
            
-	.mypage_counseling_history{
-		padding-left : 5%;
-		padding-top : 5%;
-		border: 1px solid #ccc;
-    	background-image : url("${pageContext.request.contextPath}/resources/images/mypage/mypage_osstem_interior_logo.png");
-    	background-size: cover;
-		background-repeat: no-repeat;
-		width : 95%;
-		height : 95%;
-    	color : #fff;
-    	border-radius : 20px;
-	}
+	
     	
     /*견적신청 내용 버튼*/
     .content_section .info_button{
