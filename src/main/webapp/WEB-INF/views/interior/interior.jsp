@@ -12,13 +12,42 @@
 				Form 태그를 이용한 FileUpload
 			</div>
 			<div class="card-body">
-				<form method="post" action="interiordataupload">
-					<div class="form-group">
-						<label for="title">File Title</label> 
-						<input type="text" class="form-control" id="title" name="title" placeholder="제목">
+				<form method="post" action="interiordataupload" modelAttribute="interiorDto">
+				  	<div class="form-group">
+						<label for="type">interior type</label>
+						<select class="form-control" name="itype">
+							<option value="portfolio">Portfolio</option>
+							<option value="model">Model</option>
+						</select>
 					</div>
 					<div class="form-group">
-						<label for="desc">File Description</label> 
+						<label for="style">interior style</label> 
+						<input type="text" class="form-control" id="desc" name="desc" placeholder="설명">
+					</div>
+					<div class="form-group">
+			           <label class="">
+			               <input type="radio" name="sort" value="new">
+			               <span class="ml-2">모던</span>
+			           </label>
+			           <label class="">
+			               <input type="radio" name="sort" value="popular">
+			               <span class="ml-2">시크</span>
+			           </label>
+			           <label class="">
+			               <input type="radio" name="sort" value="past">
+			               <span class="ml-2">네추럴</span>
+			           </label>
+			           <label class="">
+			               <input type="radio" name="sort" value="popular">
+			               <span class="ml-2">미니멀</span>
+			           </label>
+			           <label class="">
+			               <input type="radio" name="sort" value="past">
+			               <span class="ml-2">북유럽</span>
+			           </label>
+				    </div>
+					<div class="form-group">
+						<label for="style">interior style</label> 
 						<input type="text" class="form-control" id="desc" name="desc" placeholder="설명">
 					</div>
 					<div class="form-group">
@@ -26,10 +55,6 @@
 					    <!-- multiple="multiple" 파일 여러개 올릴수 있음 -->
 					    <input type="file" class="form-control-file" id="attach" name="attach">
 				  	</div>
-				  	<!-- <div class="form-group">
-					    <label for="attach">Example file input</label>
-					    <input type="file" class="form-control-file" id="attach2" name="attach2">
-				  	</div> -->
 				  	<button class="btn btn-info btn-sm">Form 파일 업로드</button>
 				  	<a href="javascript:fileupload()" class="btn btn-info btn-sm">AJAX 파일 업로드</a>
 				</form>

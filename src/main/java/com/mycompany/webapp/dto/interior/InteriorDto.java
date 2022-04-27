@@ -16,5 +16,8 @@ public class InteriorDto {
 	private String dtype; //치과 유형(소아치과, 종합치과, ...)
 	private String darea; //평수
 	private String isummary; //인테리어&포폴 게시글 제목(요약)
-	private MultipartFile interiroAttach;
+	private String imImgPath; //인테리어 전체창 메인 이미지 파일 path
+	/*private String pattachsname;
+	private String pattachtype;*/
+	private MultipartFile iMainImg;//인테리어 전체창 메인 이미지 파일 BLOB
 }
