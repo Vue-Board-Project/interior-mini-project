@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dto.interior;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -14,4 +16,5 @@ public class InteriorDto {
 	private String dtype; //치과 유형(소아치과, 종합치과, ...)
 	private String darea; //평수
 	private String isummary; //인테리어&포폴 게시글 제목(요약)
+	private MultipartFile interiroAttach;
 }
