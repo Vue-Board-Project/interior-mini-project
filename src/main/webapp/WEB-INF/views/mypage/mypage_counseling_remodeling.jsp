@@ -3,7 +3,7 @@
 <div class = "mypage_remodeling_history">
 		<h4><b><span>name</span></b>님의 <br>
 			치과 리모델링 신청 내역입니다.</h4>
-		<button class = "info_button" id = "mypage_counseling_button">확인하기</button>
+		<button class = "info_button" id = "mypage_remodeling_button">확인하기</button>
 </div>
 
 <style>
@@ -23,3 +23,6 @@
 	}
 
 </style>
+
+<%@ include file="/WEB-INF/views/mypage/mypage_remodeling_popup.jsp" %>
+<script src="${pageContext.request.contextPath}/resources/js/mypage/mypage_consult_remodeling.js"></script>

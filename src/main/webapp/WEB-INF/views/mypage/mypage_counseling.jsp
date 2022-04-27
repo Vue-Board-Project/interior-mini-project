@@ -67,15 +67,7 @@
     }
     
     
-    /*팝업 선택시 회색 레이어 */
-    #mypage_counseling_mask{
-    	 z-index: 3;
-    }
-    
-    .mypage_popup_wrap {
-    	z-index: 4; 
-    }
-    
+   
 
     
         
