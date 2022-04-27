@@ -1,12 +1,13 @@
 
 //첫번째 페이지 리모델링 인테리어 버튼 선택
-$("input:radio[name=choose_purpose_of_consultation]").click(function()
+$("input:radio[name=consultType]").click(function()
 {
     if(document.getElementById('choose_purpose_new').checked){//신규 인테리어 선택시
         document.querySelector("#remodeling_consult_Room_wrapping").style.display = "none";
         
     }else if(document.getElementById('choose_purpose_update').checked){//리모델링 선택시
         document.querySelector("#remodeling_consult_Room_wrapping").style.display = "block";
+        $("#add_detail_consult_start_btn").hide();
     }
 })
 
@@ -76,7 +77,7 @@ function consultation_second_interior_btn(){//다음
     if($("#quick_consultation_rotation1").css("display") == "block"){//첫번째 디스플레이 block인 상태
         if( $('#choose_purpose_update').is(":checked")){//리모델링이 선택된 상태
             //다음 버튼 막기
-            var checked = $('input[name="quick_consult_remodeling_chro"]:checked');
+            var checked = $('input[name="consultRoomList"]:checked');
             if ( !checked.length ) {
                 $(".qcrc_border").css("border","2px solid red");
             }else{
@@ -88,8 +89,8 @@ function consultation_second_interior_btn(){//다음
             nextStepOk();
         }
     }else if($("#quick_consultation_rotation2").css("display") == "block"){
-        var qiuk_consult_style_checked =  $('input[name="qiuk_consult_style"]:checked');
-        var choie_Corporation_term_checked = $('input[name="choie_Corporation_term"]:checked');
+        var qiuk_consult_style_checked =  $('input[name="consultInteriorStyle"]:checked');
+        var choie_Corporation_term_checked = $('input[name="constructionDate"]:checked');
         if(qiuk_consult_style_checked.length &&choie_Corporation_term_checked.length){//둘다 라디오 선택시
             nextStepOk();
         }else{
@@ -109,7 +110,7 @@ function consultation_second_interior_btn(){//다음
         
     }else if($("#quick_consultation_rotation3").css("display") == "block"){
         var consult_date = $("#consult_date").val();
-        var conult_reservation_time = $("input[name='conult-reservation_time']:checked");
+        var conult_reservation_time = $("input[name='consultTime']:checked");
 
         if(consult_date.length && conult_reservation_time.length ){
             nextStepOk();
@@ -176,7 +177,7 @@ function nextStepOk(){
 
 
 //3단계 시간 미작성 다음 버튼 처리 전 라디오 버튼 눌렀을 때 
-$('input[type=radio][name=conult-reservation_time]').change(function() {
+$('input[type=radio][name=consultTime]').change(function() {
         
     $(".crs_time_span").css("background-color","white");
     $(".crs_time_span").css("color","black");
@@ -186,26 +187,13 @@ $('input[type=radio][name=conult-reservation_time]').change(function() {
 $("#qcf_button").click(function(){
     var address = $("#consult_address").val();//주소
     var address_detail = $("#consult_address_detail").val();//상세주소
-    var name = $("#qc_name").val();
-    var phone = $("#qu_phone").val();
     var check = $("#consult_checkpri").is(":checked");
     if(address.trim().length != 0 && address_detail.trim().length != 0){
-        if(name.trim().length != 0 && phone.trim().length != 0 && check == true ){//모두 잘 받았다 submit!
+        if( check == true ){//모두 잘 받았다 submit!
             console.log("보내랏");
             $("#quik_consult_send_form").submit();
         }else{//전화번호나 사용자 이름이 공백임
-            if(name.trim().length == 0){//이름 공백
-                $("#qc_name").css("border", "2px solid red");
-            }else{
-                $("#qc_name").css("border", "1px solid lightgray");
-            }
 
-            if(phone.trim().length == 0){//전화번호 공백
-                $("#qu_phone").css("border", "2px solid red");
-            }else{
-                $("#qu_phone").css("border", "1px solid lightgray");
-            }
-            
             if(check == false){
                 $("#consult_checkpri_input").css("color", "red");
             }else{  

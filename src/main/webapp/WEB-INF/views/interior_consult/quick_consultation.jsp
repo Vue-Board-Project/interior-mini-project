@@ -25,7 +25,7 @@
            </article>
            <article id="first_quick_consultation" class="mx-auto">
                <div class="bg-white rounded" style="width: 100%;">
-                   <form action="#" id="quik_consult_send_form">
+                   <form method="post" action="quickConsultRequest" id="quik_consult_send_form">
                         <!-- 진행 정도 상태 바 : 바뀌지 x -->
                         <div>
                             <div class="pt-4" style="height: 80px;">
@@ -39,9 +39,9 @@
                         <section class="mx-auto" style="width: 80%;" id="quick_consultation_rotation1">
                             <div class="mx-auto text-center" style="width: 100%;">
                                 <div class="first_quick_new_update_btn_group ">
-                                    <input type="radio" name="choose_purpose_of_consultation"  id="choose_purpose_new" checked="checked" />
+                                    <input type="radio" name="consultType"  id="choose_purpose_new" checked="checked" value="1"  />
                                     <label for="choose_purpose_new">신규 인테리어 상담신청</label>
-                                    <input type="radio" name="choose_purpose_of_consultation"  id="choose_purpose_update" />
+                                    <input type="radio" name="consultType"  id="choose_purpose_update" value="2" />
                                     <label for="choose_purpose_update">리모델링 상담신청</label>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                         (공급면적 기준)
                                     </div>
                                     <div>
-                                        <select class="form-control" style="font-family: 'MinSans-Light'; font-size: 20px; height: 60px;">
+                                        <select class="form-control" style="font-family: 'MinSans-Light'; font-size: 20px; height: 60px;" name="consultAcreage">
                                             <option value="면적" disabled>면적</option>
                                             <option value="1">3m² (1평)</option>
                                             <option value="2">6m² (2평)</option>
@@ -81,7 +81,7 @@
                                     <div>
                                         <div style="display: flex;">
                                             <label class="remodeling_consult_Room">
-                                                <input type="checkbox" name="quick_consult_remodeling_chro" value="treatment">
+                                                <input type="checkbox" name="consultRoomList" value="treatment">
                                                 <span class="qcrc_border" style="border-top-left-radius: 10px;">
                                                     <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
                                                         <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="100px">
@@ -90,7 +90,7 @@
                                                 </span>
                                             </label>
                                             <label class="remodeling_consult_Room">
-                                                <input type="checkbox" name="quick_consult_remodeling_chro" value="xray">
+                                                <input type="checkbox" name="consultRoomList" value="xray">
                                                 <span class="qcrc_border">
                                                     <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
                                                         <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="100px">
@@ -99,7 +99,7 @@
                                                 </span>
                                             </label>
                                             <label class="remodeling_consult_Room">
-                                                <input type="checkbox" name="quick_consult_remodeling_chro" value="owner">
+                                                <input type="checkbox" name="consultRoomList" value="owner">
                                                 <span class="qcrc_border" style="border-top-right-radius: 10px;">
                                                     <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
                                                         <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="100px">
@@ -111,7 +111,7 @@
                     
                                         <div style="display: flex;">
                                             <label class="remodeling_consult_Room">
-                                                <input type="checkbox" name="quick_consult_remodeling_chro" value="consult">
+                                                <input type="checkbox" name="consultRoomList" value="consult">
                                                 <span class="qcrc_border" style="border-bottom-left-radius: 10px;">
                                                     <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
                                                         <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="100px">
@@ -120,7 +120,7 @@
                                                 </span>
                                             </label>
                                             <label class="remodeling_consult_Room">
-                                                <input type="checkbox" name="quick_consult_remodeling_chro" value="equipment">
+                                                <input type="checkbox" name="consultRoomList" value="equipment">
                                                 <span class="qcrc_border" >
                                                     <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
                                                         <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="100px">
@@ -129,7 +129,7 @@
                                                 </span>
                                             </label>
                                             <label class="remodeling_consult_Room">
-                                                <input type="checkbox" name="quick_consult_remodeling_chro" value="bath">
+                                                <input type="checkbox" name="consultRoomList" value="bath">
                                                 <span class="qcrc_border" style="border-bottom-right-radius: 10px;">
                                                     <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
                                                         <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="100px">
@@ -152,7 +152,7 @@
                                 <div>
                                     <div style="display:flex;">
                                         <label class="test_obj">
-                                            <input type="radio" name="qiuk_consult_style" value="mordern">
+                                            <input type="radio" name="consultInteriorStyle" value="mordern">
                                             <span class="qiuk_consult_style_s" style="border-top-left-radius: 10px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                                 모던
@@ -160,7 +160,7 @@
                                         </label>
                                             
                                         <label class="test_obj">
-                                            <input type="radio" name="qiuk_consult_style" value="sick">
+                                            <input type="radio" name="consultInteriorStyle" value="sick">
                                             <span class="qiuk_consult_style_s">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/chic.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                                 시크
@@ -168,7 +168,7 @@
                                         </label>
                                             
                                         <label class="test_obj">
-                                            <input type="radio" name="qiuk_consult_style" value="northeurope">
+                                            <input type="radio" name="consultInteriorStyle" value="northeurope">
                                             <span class="qiuk_consult_style_s" style="border-top-right-radius: 10px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/northEurope.jpg"  class="mx-auto  mt-3 mb-2 qcri2_img">
                                                 북유럽
@@ -177,7 +177,7 @@
                                     </div>                            
                                     <div style="display: flex;">
                                         <label class="test_obj">
-                                            <input type="radio" name="qiuk_consult_style" value="nature">
+                                            <input type="radio" name="consultInteriorStyle" value="nature">
                                             <span class="qiuk_consult_style_s" style="border-bottom-left-radius: 10px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/natural.jpg"  class="mx-auto mt-3 mb-2 qcri2_img">
                                                 내추럴
@@ -185,7 +185,7 @@
                                         </label>
                                             
                                         <label class="test_obj">
-                                            <input type="radio" name="qiuk_consult_style" value="minimal">
+                                            <input type="radio" name="consultInteriorStyle" value="minimal">
                                             <span class="qiuk_consult_style_s">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                                 미니멀
@@ -209,10 +209,10 @@
                                 </div> 
                                 <div>
                                     <div class="mb-5 ml-2" style="font-family: 'MinSans-Light';">
-                                        <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  2주 ~ 1달 이내</div>
-                                        <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  1달 ~ 2달 이내</div>
-                                        <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  2달 ~ 3달 이내</div>
-                                        <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  3달 이후</div>
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value="2주~1달 이내"/>  2주 ~ 1달 이내</div>
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value="1달~2달 이내" />  1달 ~ 2달 이내</div>
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value=" 2달~3달 이내"/>  2달 ~ 3달 이내</div>
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value="3달 후"/>  3달 이후</div>
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
                                     <div>
                                         <p>예약일</p>
                                         <div>
-                                            <input type="date" class="form-control" id="consult_date" style="width: 90%;"/>
+                                            <input type="date" class="form-control" id="consult_date" style="width: 90%;" name="consultDate"/>
                                         </div>
                                         <div style="width: 100%;" class="mt-4 mb-5">
                                             <div class="rounded" style="width: 90%; height: 140px; background-color: #e8e8db; font-family: 'MinSans-Regular';">
@@ -236,15 +236,15 @@
                                                     <div class="ml-3" style="display: flex; align-items: center; height: 70px; width: 90%;">
                                                         <p class="mr-3 pt-3" style="display: inline-block;">오전</p>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="am1">
+                                                            <input type="radio" name="consultTime" value="am1">
                                                             <span class="crs_time_span"> 09:10 </span>
                                                         </label>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="am2">
+                                                            <input type="radio" name="consultTime" value="am2">
                                                             <span class="crs_time_span"> 10:10 </span>
                                                         </label>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="am3">
+                                                            <input type="radio" name="consultTime" value="am3">
                                                             <span class="crs_time_span"> 11:10 </span>
                                                         </label>
                                                     </div>
@@ -252,23 +252,23 @@
                                                     <div class="ml-3" style="display: flex;align-items: center; height: 70px; width: 90%; border-top: 1px solid #272723;">
                                                         <p class="mr-3 pt-3" style="display: inline-block;">오후</p>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="pm1">
+                                                            <input type="radio" name="consultTime" value="pm1">
                                                             <span class="crs_time_span"> 13:10 </span>
                                                         </label>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="pm2">
+                                                            <input type="radio" name="consultTime" value="pm2">
                                                             <span class="crs_time_span"> 14:10 </span>
                                                         </label>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="pm3">
+                                                            <input type="radio" name="consultTime" value="pm3">
                                                             <span class="crs_time_span"> 15:10 </span>
                                                         </label>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="pm4">
+                                                            <input type="radio" name="consultTime" value="pm4">
                                                             <span class="crs_time_span"> 16:10 </span>
                                                         </label>
                                                         <label class="conult-reservation_time_wrap">
-                                                            <input type="radio" name="conult-reservation_time" value="pm5">
+                                                            <input type="radio" name="consultTime" value="pm5">
                                                             <span class="crs_time_span"> 17:10 </span>
                                                         </label>
                                                     </div>
@@ -287,7 +287,7 @@
                                     <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">(선택사항)</span> 
                                 </div>
                                 <div>
-                                    <textarea class="p-2" style="width: 500px; height: 150px;" cols="30" rows="5" placeholder="기타 문의사항을 남겨주시면 원활한 상담이 가능합니다."></textarea>
+                                    <textarea class="p-2" style="width: 500px; height: 150px;" cols="30" rows="5" placeholder="기타 문의사항을 남겨주시면 원활한 상담이 가능합니다." name="consultRequest"></textarea>
                                 </div> 
                             </div>
                         </section>
@@ -300,11 +300,11 @@
                                 </div> 
                                 <div class="mb-5 mt-1">
                                     <div style="display: flex;">
-                                        <input type="text" class="form-control mr-2" style="width: 350px; display: inline-block;" readonly id="consult_address">
+                                        <input type="text" class="form-control mr-2" style="width: 350px; display: inline-block;" readonly id="consult_address" name="consultAddress">
                                         <button type="button" class="btn btn-secondary" style="display:inline-block; width: 150px;" onclick="js:consult_address_input()">주소찾기</button>
                                     </div>
                                     <div class="mt-2">
-                                        <input id="consult_address_detail" type="test" class="form-control" style="width: 507px" placeholder="상세 주소"/>
+                                        <input id="consult_address_detail" type="test" class="form-control" style="width: 507px" placeholder="상세 주소" name="consultAddressDetail" />
                                     </div>
                                 </div>
                             </div>
@@ -315,10 +315,10 @@
                                 </div> 
                                 <div>
                                     <div>
-                                        <input type="test" class="form-control" style="width: 507px" placeholder="이름" id="qc_name"/>
+                                        <input type="test" class="form-control" style="width: 507px" id="qc_name" readonly/>
                                     </div>
                                     <div class="mt-3 mb-5" style="font-family: 'MinSans-Medium';">
-                                        <input type="text" class="form-control" style="width: 507px;" id="qu_phone" placeholder="치과 대표번호[ - 제외 ]" />
+                                        <input type="text" class="form-control" style="width: 507px;" id="qu_phone"  readonly/>
                                         
                                     </div>
                                 </div>
@@ -347,9 +347,9 @@
 
 
                         <section id="quick_consult_finish_btn_wrap" class="text-center" style="width: 100%; height: 100%;padding-bottom: 6rem;">
-                            <a class="btn mr-3 add_detail_consult_start_btn pt-3" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" 
+                                 <a class="btn mr-3 add_detail_consult_start_btn pt-3" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" 
                                         href="${pageContext.request.contextPath}/interior_consult/detail_consultation">더 상세한 상담 신청</a>
-                            <input type="button" id="qcf_button"  class="btn quick_consult_finish_btn" style=" width: 220px; height: 70px;" value="빠른상담신청"> 
+                           <input type="button" id="qcf_button"  class="btn quick_consult_finish_btn" style=" width: 220px; height: 70px;" value="빠른상담신청"> 
                         </section>
                     </form>
            </article>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.webapp.dao.mybatis.ConsultDao">
+	<!-- 인테리어 기본 상담신청 insert -->
+	<insert id="insertMainConsult" parameterType="MainConsult">
+		<selectKey keyProperty="consultNo" resultType="int" order="BEFORE">
+	         select CONSULT_SEQUENCE.nextval from dual
+	    </selectKey>
+	    <if test="ino == 0">
+	    	INSERT INTO main_consult
+		(consult_no, consult_acreage, consult_interior_style, consult_request,
+			consult_date, consult_address, email, ino, construction_date, consult_time, consult_address_detail, consult_type)
+		values(
+				#{consultNo}, 
+				#{consultAcreage}, 
+				#{consultInteriorStyle}, 
+				#{consultRequest, jdbcType=VARCHAR},
+				#{consultDate},
+				#{consultAddress},
+				#{email},
+				null, 
+				#{constructionDate},
+				#{consultTime},
+				#{consultAddressDetail},
+				#{consultType})
+	    </if>
+	     <if test="ino != 0">
+	     	INSERT INTO main_consult
+		(consult_no, consult_acreage, consult_interior_style, consult_request,
+			consult_date, consult_address, email, ino, construction_date, consult_time, consult_address_detail, consult_type)
+		values(
+				#{consultNo}, 
+				#{consultAcreage}, 
+				#{consultInteriorStyle}, 
+				#{consultRequest, jdbcType=VARCHAR},
+				#{consultDate},
+				#{consultAddress},
+				#{email},
+				#{ino}, 
+				#{constructionDate},
+				#{consultTime},
+				#{consultAddressDetail},
+				#{consultType})
+	     </if>
+		
+	</insert>
+	<!-- 인테리어 상담이 리모델링일 경우 공간 선택 insert -->
+	<insert id="insertRemodelingConsult" parameterType="ConsultRemodeling">
+		INSERT INTO consult_remodeling
+		values(#{consultNo}, #{consultRoom})
+	</insert>
+	
+	
+</mapper>
+
