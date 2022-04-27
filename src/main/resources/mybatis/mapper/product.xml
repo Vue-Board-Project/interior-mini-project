@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.mybatis.ProductDao">
+	<!--상품 추가 테스트용(추후 주석 처리 예정)-->
+	<insert id="insertproduct" parameterType="product">
+		<if test="mainImage==null">
+			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCTI_HITS, 
+			PRODUCT_SALES_VOLUME, PRODUCT_COLOR, REVIEW_COUNT, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE)
+			values(#{modelNumber}, #{productName}, 0, SYSDATE, #{productQuantity}, 0, 
+			0, 'black', 0, #{category}, null, NULL, NULL)
+		</if>
+		<if test="mainImage!=null">
+			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCTI_HITS, 
+			PRODUCT_SALES_VOLUME, PRODUCT_COLOR, REVIEW_COUNT, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE)
+			values(#{modelNumber}, #{productName}, 0, SYSDATE, #{productQuantity}, 0, 
+			0, 'black', 0, #{category}, #{pattachoname}, #{pattachsname}, #{pattachtype})
+		</if>
+		
+	</insert>
+
+</mapper>

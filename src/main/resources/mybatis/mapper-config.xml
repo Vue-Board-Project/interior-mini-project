@@ -9,5 +9,6 @@
 	   <typeAliases>
 	    	<typeAlias type="com.mycompany.webapp.dto.product.ProductConsultDetailDto" alias="productConsultDetail"/>
 	    	<typeAlias type="com.mycompany.webapp.dto.product.ProductConsultDto" alias="productConsult"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.product.ProductDto" alias="product"/>
 	  </typeAliases>
 </configuration> 

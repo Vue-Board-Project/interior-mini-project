@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/dental_equipment_main.css" rel="stylesheet" type="text/css"/>
 <div id="dentalequipmentmain_wrapper">
+
         <div id="eq_main_image_list" class="eq_slider">
             <input type="radio" name="slide" id="slide1" checked>
             <input type="radio" name="slide" id="slide2">
