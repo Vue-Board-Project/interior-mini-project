@@ -17,19 +17,20 @@ public class UsersService {
 	public enum JoinResult{
 		SUCCESS, FAIL, DUPLICATED
 	}
+
 	
-	public enum LoginResult{
-		SUCCESS, FAIL_MID, FAIL_MPASSWORD, FAIL
-	}
-	
-	//?
 	@Resource
 	private UsersDao usersDao;
 	
 	//회원가입
 	public JoinResult join(UsersDto users) {
+		log.info("실행");
 		UsersDto dbUsers = usersDao.selectByEmail(users.getEmail());
 		if(dbUsers == null) {
+			log.info("null값인 경우 실행");
+			log.info(users.getEmail());
+			log.info(users.getPassword());
+			log.info(users.getCrn());
 			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 			users.setPassword(passwordEncoder.encode(users.getPassword()));
 			int result = usersDao.insert(users);

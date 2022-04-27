@@ -3,10 +3,14 @@ package com.mycompany.webapp.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.service.UsersService;
@@ -32,20 +36,16 @@ public class SignUpController {
 		return "signUp";
 	}
 	
-	@PostMapping("/join")
-	public String join(HttpServletRequest request) {
-		log.info(request);
-		return "home";
-	}
-	
 	@Resource
 	private UsersService usersService;
 	
 	//회원가입
 	@RequestMapping("/join")
 	public String join(UsersDto users, Model model) {
+		log.info(users.getPassword());
+		log.info(users.getEmail());
+		log.info(users.getPhone());
 		log.info("join running");
-		
 		//회원 가입 처리
 		JoinResult jr = usersService.join(users);
 		if(jr == JoinResult.SUCCESS) {

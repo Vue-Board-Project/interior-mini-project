@@ -10,12 +10,12 @@ function findAddr(){
                   var roadAddr = data.roadAddress; // 도로명 주소 변수
                   var jibunAddr = data.jibunAddress; // 지번 주소 변수
                   // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                  document.getElementById('member_post').value = data.zonecode;
+                  document.getElementById('postcode').value = data.zonecode;
                   if(roadAddr !== ''){
-                      document.getElementById("member_addr").value = roadAddr;
+                      document.getElementById("address").value = roadAddr;
                   } 
                   else if(jibunAddr !== ''){
-                      document.getElementById("member_addr").value = jibunAddr;
+                      document.getElementById("address").value = jibunAddr;
                   }
               }
           }).open();
@@ -25,7 +25,7 @@ function findAddr(){
 
       var email = document.querySelector('#email');
     
-      var pw1 = document.querySelector('#pswd1');
+      var pw1 = document.querySelector('#password');
       var pwMsg = document.querySelector('#alertTxt');
       var pwImg1 = document.querySelector('#pswd1_img1');
     
@@ -35,7 +35,7 @@ function findAddr(){
     
       var userName = document.querySelector('#name');
     
-      var mobile = document.querySelector('#mobile');
+      var mobile = document.querySelector('#phone');
     
       var error = document.querySelectorAll('.error_next_box');
 

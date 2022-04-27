@@ -6,7 +6,7 @@
 	<insert id="insert" parameterType="users">
 		INSERT INTO users
 		(email, password, name, phone, postcode, address, address_detail, crn)
-		VALUES(#{email}, #{password}, #{name}, #{phone}, #{postcode}, #{address}, #{address_detail}, #{crn})
+		VALUES (#{email}, #{password}, #{name}, #{phone}, #{postcode}, #{address}, #{addressDetail}, #{crn})
 	</insert>
 	
 	<select id="selectByEmail" parameterType="string" resultType="users">

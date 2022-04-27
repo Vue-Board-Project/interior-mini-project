@@ -14,7 +14,7 @@
                    <div>
                       <h3 class="join_title"><label for="email">이메일<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_email">
-                          <input type="email" id="email" class="int" maxlength="100" required>
+                          <input type="email" id="email" name="email" class="int" maxlength="100" required>
                       </span>
                       <span class="error_next_box"></span>    
                   </div>
@@ -25,7 +25,7 @@
                   <div>
                       <h3 class="join_title"><label for="pswd1">비밀번호<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_pass">
-                          <input type="password" id="pswd1" class="int" maxlength="20" required>
+                          <input type="password" id="password" name="password" class="int" maxlength="20" required>
                           <span id="alertTxt"></span>
                           <img src="${pageContext.request.contextPath}/resources/pngs/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
                       </span>
@@ -36,7 +36,7 @@
                   <div>
                       <h3 class="join_title"><label for="pswd2">비밀번호 재확인<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_pass_check">
-                          <input type="password" id="pswd2" class="int" maxlength="20" required>
+                          <input type="password" id="pswd2" name="pswd2" class="int" maxlength="20" required>
                           <img src="${pageContext.request.contextPath}/resources/pngs/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
                       </span>
                       <span class="error_next_box"></span>
@@ -46,7 +46,7 @@
                   <div>
                       <h3 class="join_title"><label for="name">이름<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_name">
-                          <input type="text" id="name" class="int" maxlength="20" required>
+                          <input type="text" id="name" name="name" class="int" maxlength="20" required>
                       </span>
                       <span class="error_next_box"></span>
                   </div>
@@ -55,7 +55,7 @@
                   <div>
                       <h3 class="join_title"><label for="phoneNo">대표번호<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_mobile">
-                          <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력(-는 빼고 입력해주세요)" required>
+                          <input type="tel" id="phone" name="phone" class="int" maxlength="16" placeholder="전화번호 입력(-는 빼고 입력해주세요)" required>
                       </span>
                       <span class="error_next_box"></span>    
                   </div>
@@ -63,16 +63,16 @@
                   <!-- 주소 입력 -->
                    <div class="userInput">
                         <h3 class="join_title"><label for="phoneNo">주소</label></h3>
-                        <input style="width: 49.07%; height: 51px; border: solid 1px #dadada; margin-right: 1%; padding: 10px 14px 10px 14px;" id="member_post"  type="text" placeholder="우편번호" readonly onclick="findAddr()"/>
-                        <input style="width: 49.3%; height: 51px; border: solid 1px #dadada;  padding: 10px 14px 10px 14px;" id="member_addr" type="text" placeholder="도로명 주소" readonly/> <br>
-                        <input style="width: 100%; height: 51px; border: solid 1px #dadada; margin-top: 1%;  padding: 10px 14px 10px 14px;" type="text" placeholder="상세 주소"/>
+                        <input style="width: 49.07%; height: 51px; border: solid 1px #dadada; margin-right: 1%; padding: 10px 14px 10px 14px;" id="postcode" name="postcode"  type="text" placeholder="우편번호" readonly onclick="findAddr()"/>
+                        <input style="width: 49.3%; height: 51px; border: solid 1px #dadada;  padding: 10px 14px 10px 14px;" id="address" name="address" type="text" placeholder="도로명 주소" readonly/> <br>
+                        <input style="width: 100%; height: 51px; border: solid 1px #dadada; margin-top: 1%;  padding: 10px 14px 10px 14px;" id="addressDetail" name="addressDetail" type="text" placeholder="상세 주소"/>
                    </div>
 
                    <!-- 사업자 번호 입력 -->
                    <div class="userInput">
-                        <h3 class="join_title"><label for="phoneNo">사업자번호</label></h3>
+                        <h3 class="join_title"><label for="phoneNo">사업자번호<span class="ml-1" style="color: red;">*</span></label></h3>
                         <span class="box int_crn">
-                            <input type="text" id="crn" class="int" maxlength="10" placeholder="사업자번호 입력(-는 빼고 입력해주세요)"/>
+                            <input type="text" id="crn" name="crn" class="int" maxlength="10" placeholder="사업자번호 입력(-는 빼고 입력해주세요)"/>
                         </span>
                         <span class="error_next_box"></span>   
                     </div>
@@ -104,7 +104,7 @@
                             </label>
                         </diV>
                     </div>
-                  <input class="btn btn_area" type="submit" id="btnJoin" value="가입하기"/>
+                  <button class="btn btn_area" type="submit" id="btnJoin">가입하기</button>
                   
               </form> 
           </div> 
