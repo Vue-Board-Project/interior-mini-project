@@ -6,14 +6,14 @@
 		<if test="mainImage==null">
 			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCTI_HITS, 
 			PRODUCT_SALES_VOLUME, PRODUCT_COLOR, REVIEW_COUNT, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE)
-			values(#{modelNumber}, #{productName}, 0, SYSDATE, #{productQuantity}, 0, 
-			0, 'black', 0, #{category}, null, NULL, NULL)
+			values(#{modelNumber}, #{productName}, #{price}, SYSDATE, #{productQuantity}, 0, 
+			0, #{productColor}, 0, #{category}, null, NULL, NULL)
 		</if>
 		<if test="mainImage!=null">
 			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCTI_HITS, 
 			PRODUCT_SALES_VOLUME, PRODUCT_COLOR, REVIEW_COUNT, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE)
-			values(#{modelNumber}, #{productName}, 0, SYSDATE, #{productQuantity}, 0, 
-			0, 'black', 0, #{category}, #{pattachoname}, #{pattachsname}, #{pattachtype})
+			values(#{modelNumber}, #{productName}, #{price}, SYSDATE, #{productQuantity}, 0, 
+			0, #{productColor}, 0, #{category}, #{pattachoname}, #{pattachsname}, #{pattachtype})
 		</if>
 		
 	</insert>

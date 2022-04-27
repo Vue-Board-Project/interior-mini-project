@@ -19,8 +19,16 @@
 				<textarea id="productName" name="productName" class="form-control"></textarea>
 			</div>
 			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">price</span></div>
+				<textarea id="price" name="price" class="form-control"></textarea>
+			</div>
+			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">productQuantity</span></div>
 				<textarea id="productQuantity" name="productQuantity" class="form-control"></textarea>
+			</div>
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">color</span></div>
+				<textarea id="productColor" name="productColor" class="form-control"></textarea>
 			</div>
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">category</span></div>
