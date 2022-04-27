@@ -5,12 +5,12 @@
 <mapper namespace="com.mycompany.webapp.dao.mybatis.UsersDao">
 	<insert id="insert" parameterType="users">
 		INSERT INTO users
-		(email, password, name, phone, postcode, address, address_detail, crn)
-		VALUES (#{email}, #{password}, #{name}, #{phone}, #{postcode}, #{address}, #{addressDetail}, #{crn})
+		(email, password, name, phone, postcode, address, address_detail, crn, role)
+		VALUES (#{email}, #{password}, #{name}, #{phone}, #{postcode}, #{address}, #{addressDetail}, #{crn}, 'USER')
 	</insert>
 	
 	<select id="selectByEmail" parameterType="string" resultType="users">
-		SELECT email, password, name, phone, postcode, address, address_detail, crn
+		SELECT email, password, name, phone, postcode, address, address_detail, crn, role
 		FROM users
 		WHERE email = #{email}
 	</select>

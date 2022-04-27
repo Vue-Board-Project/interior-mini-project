@@ -60,17 +60,25 @@
                 </a>
                 <div id="main_header_img">
                     <div id="main_header_login_wrap" style="display: inline;">
+                    
 	                    <c:if test="${sessionEmail == null}">
-	                        <button id="login_popup_open" style="border: none; outline: none;">
-	                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
-	                            <span id="main_header_login_text" class="main_header_text">로그인</span>
-	                        </button>
+		                    <sec:authorize access="isAnonymous()">
+		                        <a id="login_popup_open" style="border: none; outline: none;">
+		                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
+		                            <span id="main_header_login_text" class="main_header_text">로그인</span>
+		                        </a>
+		                    </sec:authorize>
 	                    </c:if>
+	                    
 	                    <c:if test="${sessionEmail != null}">
-	                  	    <a id="logout" href="logout" style="border: none; outline: none;">
-	                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
-	                            <span id="main_header_logout_text" class="main_header_text">로그아웃</span>
-	                        </a>
+	                    	<%-- 사이트간 요청 위조 방지가 활성화되어 있을 경우 --%>   
+		                    <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline-block">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		                  	    <a id="logout" href="logout" style="border: none; outline: none;">
+		                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
+		                            <span id="main_header_logout_text" class="main_header_text">로그아웃</span>
+		                        </a>
+		                    </form>
 	                    </c:if>
                         
                         <%@ include  file="/WEB-INF/views/common/login.jsp"%>

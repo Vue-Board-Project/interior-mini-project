@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	
+	<!-- 인증이 필요없는 요청 경로 설정, ** : 아래에 있는 폴더 모두 -->
+	<security:http pattern="/resources/**" security="none"/>
+	
+	<!-- 보안 필터 체인 설정 -->
+	<security:http>
+
+		<!-- 로그인 성공,실패할때에 내가 실행하고 싶은 요청이 있을떄 원하는 코드 실행하기 위해서 -->
+		<security:form-login 
+		login-page="/"
+		username-parameter="email"
+		password-parameter="password"
+		login-processing-url="/login"
+		authentication-success-handler-ref="authenticationSuccessHandler"
+        authentication-failure-handler-ref="authenticationFailureHandler"/>
+		
+		<!-- 로그인 로그아웃은 시큐리티가 관리 -->
+		<!-- 로그아웃 설정 -->
+		<security:logout
+		logout-url="/logout"
+		success-handler-ref="logoutSuccessHandler"/>
+		
+		<!-- 사이트간 요청 위조 방지 비활성화 -->
+		<security:csrf disabled="true"/>
+		
+		<!-- 요청 url 권한 설정, 요청 권한 가로채서 체크, 로그인되어있다면 접근 허용 -->
+		<security:intercept-url pattern="/**" access="isAuthenticated()"/>
+		
+		<!-- 보안 필터 내부에는 있지만 로그인 인증은 필요없음 -->
+		<security:intercept-url pattern="/**" access="permitAll"/>
+		
+	    <!-- 로그인 중복 방지를 위한 설정 -->
+        <security:session-management>
+           <!-- 최종 로그인을 유효하게 만들기 -->
+           <!-- 
+	         max-sessions: 최대 로그인 수
+	         error-if-maximum-exceeded="true": 다른 곳에서 로그인을 할 수 없음
+	         expired-url: 인증이 무료화된 사용자가 이동하는 페이지
+	         -->
+           <security:concurrency-control max-sessions="1"
+                                  error-if-maximum-exceeded="false"
+                                  expired-url="/"/>
+        </security:session-management>
+	</security:http>
+	
+	<!-- 인증 관리자 설정(아이디와 패스워드를 DB와 비교해서 로그인 처리 관리) -->
+    <security:authentication-manager>
+       <security:authentication-provider ref="daoAuthenticationProvider"/>
+    </security:authentication-manager>
+	
+	<!-- 인증 제공자 설정 및 사용자 정보 가져오기 -->
+	<bean id="daoAuthenticationProvider"
+         class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+       <property name="userDetailsService" ref="securityUserDetailsService"/>
+       <property name="authoritiesMapper" ref="roleHierarchyAuthoritiesMapper"/>
+    </bean>
+    
+    <!-- 권한 계층 설정 -->
+    <bean id="roleHierarchyAuthoritiesMapper"
+         class="org.springframework.security.access.hierarchicalroles.RoleHierarchyAuthoritiesMapper">
+       <constructor-arg ref="roleHierarchyImpl"/>
+    </bean>   
+    <bean id="roleHierarchyImpl" 
+         class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
+       <property name="hierarchy">
+          <value>
+             USER
+          </value>
+       </property>
+    </bean>  
+    
+    <!-- 로그인 성공 핸들러, false 기본요청 경로로 다이렉트 -->
+	<bean id="authenticationSuccessHandler" class="com.mycompany.webapp.security.AuthenticationSuccessHandler">
+		<property name="alwaysUseDefaultTargetUrl" value="false"></property>
+		<property name="defaultTargetUrl" value="/"></property>
+	</bean>
+	<!-- 로그인 실패 핸들러, false 기본요청 경로로 다이렉트 -->
+	<bean id="authenticationFailureHandler" class="com.mycompany.webapp.security.AuthenticationFailureHandler">
+		<property name="defaultFailureUrl" value="/"></property>
+	</bean>
+	<!-- 로그아웃 핸들러, false 기본요청 경로로 다이렉트 -->
+	<bean id="logoutSuccessHandler" class="com.mycompany.webapp.security.LogoutSuccessHandler">
+		<property name="defaultTargetUrl" value="/"></property>
+	</bean>
+</beans>

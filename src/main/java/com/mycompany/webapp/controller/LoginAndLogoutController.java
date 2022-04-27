@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.service.UsersService;
@@ -21,7 +21,8 @@ public class LoginAndLogoutController {
 	@Resource
 	private UsersService usersService;
 	
-	@RequestMapping("/login")
+	//로그인
+	@PostMapping("/login")
 	public String login(UsersDto users, HttpSession session, Model model) {
 		LoginResult result = usersService.login(users);
 		if(result == LoginResult.SUCCESS) {
@@ -36,6 +37,7 @@ public class LoginAndLogoutController {
 		}
 	}
 	
+	//로그아웃
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("sessionEmail");

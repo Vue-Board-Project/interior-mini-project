@@ -39,8 +39,8 @@ public class SignUpController {
 	@Resource
 	private UsersService usersService;
 	
-	//회원가입
-	@RequestMapping("/join")
+	//회원가입 인풋 데이터 디비에 저장
+	@PostMapping("/join")
 	public String join(UsersDto users, Model model) {
 		log.info(users.getPassword());
 		log.info(users.getEmail());
