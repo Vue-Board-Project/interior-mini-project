@@ -12,10 +12,10 @@ function findAddr(){
                   // 우편번호와 주소 정보를 해당 필드에 넣는다.
                   document.getElementById('postcode').value = data.zonecode;
                   if(roadAddr !== ''){
-                      document.getElementById("address").value = roadAddr;
+                      document.getElementById('address').value = roadAddr;
                   } 
                   else if(jibunAddr !== ''){
-                      document.getElementById("address").value = jibunAddr;
+                      document.getElementById('address').value = jibunAddr;
                   }
               }
           }).open();

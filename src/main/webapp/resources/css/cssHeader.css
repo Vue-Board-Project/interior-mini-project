@@ -27,6 +27,9 @@
 #main_header_login_text{
     margin-left: 5px;
 }
+#main_header_logout_text{
+	margin-left: 5px;
+}
 #main_header_signUp{
     text-decoration:none; 
     color: #fef8d4;
@@ -35,12 +38,23 @@
 #main_header_signUp_text{
     margin-left: 5px;
 }
+#main_header_mypage_text{
+	margin-left: 5px;
+}
 #main_header_cart{
     text-decoration:none; 
     color: #fef8d4;
 }
 #main_header_cart_text{
     margin-left: 5px;
+}
+#mypage{
+	text-decoration:none; 
+    color: #fef8d4;
+}
+#logout{
+	text-decoration:none; 
+    color: #fef8d4;
 }
 .main_header_text{
     font-size: 12px;

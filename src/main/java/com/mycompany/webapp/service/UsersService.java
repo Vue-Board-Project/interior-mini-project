@@ -17,6 +17,10 @@ public class UsersService {
 	public enum JoinResult{
 		SUCCESS, FAIL, DUPLICATED
 	}
+	
+	public enum LoginResult{
+		SUCCESS, FAIL_EMAIL, FAIL_PASSWORD, FAIL
+	}
 
 	
 	@Resource
@@ -37,6 +41,20 @@ public class UsersService {
 			return JoinResult.SUCCESS;
 		} else {
 			return JoinResult.DUPLICATED;
+		}
+	}
+	
+	public LoginResult login(UsersDto users) {
+		UsersDto dbUsers = usersDao.selectByEmail(users.getEmail());
+		if(dbUsers == null) {
+			return LoginResult.FAIL_EMAIL;
+		} else {
+			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			if(passwordEncoder.matches(users.getPassword(), dbUsers.getPassword())) {
+				return LoginResult.SUCCESS;
+			} else {
+				return LoginResult.FAIL_PASSWORD;
+			}
 		}
 	}
 }

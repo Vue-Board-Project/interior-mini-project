@@ -1,4 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,24 +60,39 @@
                 </a>
                 <div id="main_header_img">
                     <div id="main_header_login_wrap" style="display: inline;">
-                        <button id="login_popup_open" style="border: none; outline: none;">
-                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
-                            <span id="main_header_login_text" class="main_header_text">로그인</span>
-                        </button>
+	                    <c:if test="${sessionEmail == null}">
+	                        <button id="login_popup_open" style="border: none; outline: none;">
+	                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
+	                            <span id="main_header_login_text" class="main_header_text">로그인</span>
+	                        </button>
+	                    </c:if>
+	                    <c:if test="${sessionEmail != null}">
+	                  	    <a id="logout" href="logout" style="border: none; outline: none;">
+	                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
+	                            <span id="main_header_logout_text" class="main_header_text">로그아웃</span>
+	                        </a>
+	                    </c:if>
                         
                         <%@ include  file="/WEB-INF/views/common/login.jsp"%>
 
                         <%@ include  file="/WEB-INF/views/common/find_password.jsp"%>
                         
-                    <a id="main_header_signUp" href="${pageContext.request.contextPath}/mainSignUp">
-                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
-                        <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
-                    </a>
-                    
-                    <a id="main_header_cart" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase">
-                        <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
-                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
-                    </a>
+                        <c:if test="${sessionEmail == null}">
+		                    <a id="main_header_signUp" href="${pageContext.request.contextPath}/mainSignUp">
+		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
+		                        <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
+		                    </a>
+                        </c:if>
+                        <c:if test="${sessionEmail != null}">
+		                    <a id="mypage" href="${pageContext.request.contextPath}/mypage">
+		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
+		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
+		                    </a>
+                        </c:if>
+	                    <a id="main_header_cart" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase">
+	                        <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
+	                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
+	                    </a>
                 </div>
             </div>
             <%@include file="/WEB-INF/views/common/header_nav.jsp" %>
