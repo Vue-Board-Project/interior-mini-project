@@ -51,10 +51,12 @@
 #mypage{
 	text-decoration:none; 
     color: #fef8d4;
+    margin-right: 10px;
 }
 #logout{
 	text-decoration:none; 
     color: #fef8d4;
+    margin-right: 10px;
 }
 .main_header_text{
     font-size: 12px;

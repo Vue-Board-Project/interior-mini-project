@@ -84,7 +84,7 @@
 		                    </a>
                         </c:if>
                         <c:if test="${sessionEmail != null}">
-		                    <a id="mypage" href="${pageContext.request.contextPath}/mypage">
+		                    <a id="mypage" href="${pageContext.request.contextPath}/mypage/device_AS">
 		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
 		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
 		                    </a>
