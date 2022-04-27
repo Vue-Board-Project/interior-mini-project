@@ -1,5 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
+<style>
+	#sidebar_mypage .mypage_list #list_setting{
+        	form :active;
+        	color : #ca5c0d;
+        	font-weight: 800;
+	}
+
+</style>
+
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/mypage/cssMypageInfoSetting.css" rel="stylesheet" type="text/css">
 <div style="background-color: #faf9f6; font-family: 'MinSans-Regular';">

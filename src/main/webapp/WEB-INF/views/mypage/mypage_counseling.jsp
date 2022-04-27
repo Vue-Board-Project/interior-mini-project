@@ -13,12 +13,13 @@
 	         </div>
 	          
 	     	<div class="content_section">
+	     	<!-- 각 조건문을 위한 항목 설정 -->
+	     	<jsp:useBean id="now" class="java.util.Date" />
+			<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
+
 	     	
-		     	<div class = "mypage_counseling_history">
-					<h4><b><span>모던한</span> 스타일의</b><br>
-					치과 인테리어를 신청하셨습니다.</h4>
-					<button class = "info_button" id = "mypage_counseling_button">견적신청 내용</button>
-				</div>
+	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_interior.jsp" %>
+	     	
 			</div>
 		</div>
 			<%@ include file="/WEB-INF/views/mypage/myinfo_counsel_popup.jsp" %>
@@ -88,24 +89,6 @@
     
         
 </style>
-
-<script>
-$(document).ready(function(){
-	 $("#mypage_counseling_button").click(function(){
-	 $(".mypage_popup_wrap").css("display", "block");
-	 $("#mypage_counseling_mask").css("display", "block");
-	});
-});
-
-$(document).ready(function(){
-	 $("#mypage_counseling_popup_close").click(function(){
-	 $(".mypage_popup_wrap").css("display", "none");
-	 $("#mypage_counseling_mask").css("display", "none");
-	});
-});
-	
-	
-</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

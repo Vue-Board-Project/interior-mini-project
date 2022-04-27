@@ -13,18 +13,47 @@
 	          	<hr width = 90%>
 	</div>
 	<div class="content_section">
-		<div id = "mypage_device_AS_header" style = "margin-top : 100px;">
-			<h2>출장서비스 예약 완료</h2>
-			<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none"> 
+	<!-- 장비 AS 내역 확인 -->
+		<table class="table table-sm table-bordered">
+			<tr>
+				<th style="width:30px">접수번호</th>
+				<th style="width:300px">제품명</th>
+				<th style="width:70px">날짜</th>
+			</tr>
 			
+			<c:forEach var="board" items="${boards}">
+				<tr>
+					<td>${board.bno}</td>
+					<td><a href="boardDetail?bno=${board.bno}">${board.btitle}</a></td>
+					<td><fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd"/></td>
+				</tr>
+			</c:forEach>
 			
-			<div class = "mypage_device_AS_check_info">
-				<img class = "mypage_device_AS_check_info_img" src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_visit.png" style = "margin-left : 50px" />
-				<div class = "mypage_device_AS_info_text"><b>출장 서비스 예약이 완료되었습니다.</b> <br> 오스템은 고객의 만족을 위해 최선을 다합니다.</div>
-			</div>
-			
-			
-		</div>
+			<tr>
+				<td colspan="4" class="text-center">
+					<div>
+						<a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=1">처음</a>
+						<c:if test="${pager.groupNo>1}">
+							<a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.startPageNo-1}">이전</a>
+						</c:if>
+						
+						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+							<c:if test="${pager.pageNo != i}">
+								<a class="btn btn-outline-success btn-sm" href="boardList?pageNo=${i}">${i}</a>
+							</c:if>
+							<c:if test="${pager.pageNo == i}">
+								<a class="btn btn-danger btn-sm" href="boardList?pageNo=${i}">${i}</a>
+							</c:if>
+						</c:forEach>
+						
+						<c:if test="${pager.groupNo<pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.endPageNo+1}">다음</a>
+						</c:if>
+						<a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=${pager.totalPageNo}">맨끝</a>
+					</div>
+				</td>
+			</tr>
+		</table>
 		
 		<div id = "mypage_device_AS_reservation">
 			<div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2>예약 정보</h2></div>

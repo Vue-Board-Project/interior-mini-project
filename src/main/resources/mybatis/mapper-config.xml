@@ -18,9 +18,9 @@
 	    	
 	    	
 	    	 <!-- mypage -->
-		    <typeAlias type="com.mycompany.webapp.dto.mypage.MyPageInteriorProgressDto" alias="mpProgress"/>
-	      	<typeAlias type="com.mycompany.webapp.dto.mypage.MyPageInteriorProgressFileDto" alias="mpProgressFile"/>
-	      	<typeAlias type="com.mycompany.webapp.dto.mypage.MyPageReferenceModelDto" alias="mPreference"/>
-	      	<typeAlias type="com.mycompany.webapp.dto.mypage.MyPageSolutionDto" alias="mpSolution"/>
+		    <typeAlias type="com.mycompany.webapp.dto.mypage.InteriorProgressDto" alias="mpProgress"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.InteriorProgressFileDto" alias="mpProgressFile"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.ReferenceModelDto" alias="mPreference"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.SolutionDto" alias="mpSolution"/>
 	  </typeAliases>
 </configuration> 

@@ -21,7 +21,7 @@
 							<section class="text-center mypage_interior_step_btn" title="off_interview">
 								<button class="btn shadow-none misbtn_button"onclick="mypage_interior_step_btn('off_interview')">
 									<div class="p-2">
-										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step5.png" height="80px" >
+										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step1.png" height="80px" >
 									</div>
 									<p style="font-family: 'MinSans-Medium'; font-size: 20px;">현장상담</p>
 								</button>
@@ -31,7 +31,7 @@
 								class="text-center mypage_interior_step_btn" title="design">
 								<button class="btn shadow-none misbtn_button" onclick="mypage_interior_step_btn('design')" >
 									<div class="p-2">
-										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step5.png" height="80px" >
+										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step2.png" height="80px" >
 									</div>
 									<p class="misbtn_button_p">설계</p>
 								</button>
@@ -40,7 +40,7 @@
 							<section class="text-center mypage_interior_step_btn" title="contract">
 								<button class="btn shadow-none misbtn_button" onclick="mypage_interior_step_btn('contract')">
 									<div class="p-2">
-										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step5.png" height="80px" >
+										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step3.png" height="80px" >
 									</div>
 									<p class="misbtn_button_p">계약</p>
 								</button>
@@ -48,7 +48,7 @@
 							<section class="text-center pb-2 mypage_interior_step_btn" title="currentSituation">
 								<button class="btn shadow-none misbtn_button" onclick="mypage_interior_step_btn('currentSituation')">
 									<div class="p-2">
-										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step5.png" height="80px" >
+										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step4.png" height="80px" >
 									</div>
 									<p class="misbtn_button_p">공사현황</p>
 								</button>
@@ -65,7 +65,7 @@
 							<section class="text-center mypage_interior_step_btn" title="afterService">
 								<button class="btn shadow-none misbtn_button" onclick="mypage_interior_step_btn('afterService')">
 									<div class="p-2">
-										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step5.png" height="80px" >
+										<img src="${pageContext.request.contextPath}/resources/images/mypage/interior_progress_step6.png" height="80px" >
 									</div>
 									<p class="misbtn_button_p">사후관리</p>
 								</button>
@@ -93,13 +93,13 @@
 								<table class="table table-bordered mx-auto" style="width: 90%;">
 									<tr>
 										<td style="background-color: #f1f1f1;">
-											치과형태
+											접수번호
 										</td>
 										<td>
 											테스트
 										</td>
 										<td style="background-color: #f1f1f1;">
-											시공범위
+											이름
 										</td>
 										<td>
 											테스트
@@ -107,27 +107,13 @@
 									</tr>
 									<tr>
 										<td  style="background-color: #f1f1f1;">
-											테스트
+											평수
 										</td>
 										<td>
 											테스트
 										</td>
 										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-									</tr>
-									<tr>
-										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-										<td  style="background-color: #f1f1f1;">
-											테스트
+											스타일
 										</td>
 										<td>
 											테스트
@@ -202,13 +188,13 @@
 								<table class="table table-bordered mx-auto" style="width: 90%;">
 									<tr>
 										<td style="background-color: #f1f1f1;">
-											치과형태
+											접수번호
 										</td>
 										<td>
 											테스트
 										</td>
 										<td style="background-color: #f1f1f1;">
-											시공범위
+											이름
 										</td>
 										<td>
 											테스트
@@ -216,27 +202,13 @@
 									</tr>
 									<tr>
 										<td  style="background-color: #f1f1f1;">
-											테스트
+											평수
 										</td>
 										<td>
 											테스트
 										</td>
 										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-									</tr>
-									<tr>
-										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-										<td  style="background-color: #f1f1f1;">
-											테스트
+											스타일
 										</td>
 										<td>
 											테스트
@@ -289,13 +261,13 @@
 								<table class="table table-bordered mx-auto" style="width: 90%;">
 									<tr>
 										<td style="background-color: #f1f1f1;">
-											치과형태
+											접수번호
 										</td>
 										<td>
 											테스트
 										</td>
 										<td style="background-color: #f1f1f1;">
-											시공범위
+											이름
 										</td>
 										<td>
 											테스트
@@ -303,27 +275,13 @@
 									</tr>
 									<tr>
 										<td  style="background-color: #f1f1f1;">
-											테스트
+											평수
 										</td>
 										<td>
 											테스트
 										</td>
 										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-									</tr>
-									<tr>
-										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-										<td  style="background-color: #f1f1f1;">
-											테스트
+											스타일
 										</td>
 										<td>
 											테스트
@@ -419,13 +377,13 @@
 								<table class="table table-bordered mx-auto" style="width: 90%;">
 									<tr>
 										<td style="background-color: #f1f1f1;">
-											치과형태
+											접수번호
 										</td>
 										<td>
 											테스트
 										</td>
 										<td style="background-color: #f1f1f1;">
-											시공범위
+											이름
 										</td>
 										<td>
 											테스트
@@ -433,27 +391,13 @@
 									</tr>
 									<tr>
 										<td  style="background-color: #f1f1f1;">
-											테스트
+											평수
 										</td>
 										<td>
 											테스트
 										</td>
 										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-									</tr>
-									<tr>
-										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-										<td  style="background-color: #f1f1f1;">
-											테스트
+											스타일
 										</td>
 										<td>
 											테스트
@@ -506,13 +450,13 @@
 								<table class="table table-bordered mx-auto" style="width: 90%;">
 									<tr>
 										<td style="background-color: #f1f1f1;">
-											치과형태
+											접수번호
 										</td>
 										<td>
 											테스트
 										</td>
 										<td style="background-color: #f1f1f1;">
-											시공범위
+											이름
 										</td>
 										<td>
 											테스트
@@ -520,27 +464,13 @@
 									</tr>
 									<tr>
 										<td  style="background-color: #f1f1f1;">
-											테스트
+											평수
 										</td>
 										<td>
 											테스트
 										</td>
 										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-									</tr>
-									<tr>
-										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-										<td  style="background-color: #f1f1f1;">
-											테스트
+											스타일
 										</td>
 										<td>
 											테스트
@@ -604,13 +534,13 @@
 								<table class="table table-bordered mx-auto" style="width: 90%;">
 									<tr>
 										<td style="background-color: #f1f1f1;">
-											치과형태
+											접수번호
 										</td>
 										<td>
 											테스트
 										</td>
 										<td style="background-color: #f1f1f1;">
-											시공범위
+											이름
 										</td>
 										<td>
 											테스트
@@ -618,27 +548,13 @@
 									</tr>
 									<tr>
 										<td  style="background-color: #f1f1f1;">
-											테스트
+											평수
 										</td>
 										<td>
 											테스트
 										</td>
 										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-									</tr>
-									<tr>
-										<td  style="background-color: #f1f1f1;">
-											테스트
-										</td>
-										<td>
-											테스트
-										</td>
-										<td  style="background-color: #f1f1f1;">
-											테스트
+											스타일
 										</td>
 										<td>
 											테스트
