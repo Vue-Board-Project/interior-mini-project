@@ -30,7 +30,7 @@
          
                  <div class="login_hr_sect"><p>가입하기</p></div>
          
-                 <a href="loginSignUp" class="ml-3 btn" style="font-size: 16px; border: none; outline: none; background-color: #ca5c0d; color: #faf9f6; height: 38px; width: 270px; border-radius: 3px;">계정 만들기</a>
+                 <a href="loginSignUp" class="btn" style="font-size: 16px; border: none; outline: none; background-color: #ca5c0d; color: #faf9f6; height: 38px; width: 270px; border-radius: 3px;">계정 만들기</a>
             </div>
          </div>
 

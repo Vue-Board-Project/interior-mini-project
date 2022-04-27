@@ -6,27 +6,25 @@
  <div id="sign_up_wrap">
           
           <!--content wrapper -->
-          <div id="sign_up_wrapper" style="background-color: #faf9f6; height: 100rem;  font-family: 'MinSans-Regular';" novalidate>
+          <div id="sign_up_wrapper" style="background-color: #faf9f6; height: 100rem;  font-family: 'MinSans-Regular';" >
               <div class="text-center pt-5"><span style="font-size: 30px; font-family: 'MinSans-Regular';">회원가입</span></div>
               <!-- content-->
-              <form method="post" action="join" id="content" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;">
+              <form method="post" action="join" id="content" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;" novalidate>
   
                    <!-- EMAIL -->
                    <div>
                       <h3 class="join_title"><label for="email">이메일<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_email">
-                          <input type="email" id="email" name="email" class="int" maxlength="100" required>
+                          <input type="email" id="email2" name="email" class="int" maxlength="100" required>
                       </span>
                       <span class="error_next_box"></span>    
                   </div>
-  
-                  
   
                   <!-- PW1 -->
                   <div>
                       <h3 class="join_title"><label for="pswd1">비밀번호<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_pass">
-                          <input type="password" id="password" name="password" class="int" maxlength="20" required>
+                          <input type="password" id="password2" name="password" class="int" maxlength="20" required>
                           <span id="alertTxt"></span>
                           <img src="${pageContext.request.contextPath}/resources/pngs/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
                       </span>

@@ -26,6 +26,7 @@ public class LoginAndLogoutController {
 	public String login(UsersDto users, HttpSession session, Model model) {
 		LoginResult result = usersService.login(users);
 		if(result == LoginResult.SUCCESS) {
+			log.info("로그인 성공");
 			session.setAttribute("sessionEmail", users.getEmail());
 			return "redirect:/";
 		} else if(result == LoginResult.FAIL_EMAIL) {
@@ -43,4 +44,5 @@ public class LoginAndLogoutController {
 		session.removeAttribute("sessionEmail");
 		return "redirect:/";
 	}
+	
 }

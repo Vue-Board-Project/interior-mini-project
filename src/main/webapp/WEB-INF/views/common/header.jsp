@@ -61,43 +61,41 @@
                 <div id="main_header_img">
                     <div id="main_header_login_wrap" style="display: inline;">
                     
-	                    <c:if test="${sessionEmail == null}">
-		                    <sec:authorize access="isAnonymous()">
-		                        <a id="login_popup_open" style="border: none; outline: none;">
-		                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
-		                            <span id="main_header_login_text" class="main_header_text">로그인</span>
-		                        </a>
-		                    </sec:authorize>
-	                    </c:if>
-	                    
-	                    <c:if test="${sessionEmail != null}">
-	                    	<%-- 사이트간 요청 위조 방지가 활성화되어 있을 경우 --%>   
+	                    <sec:authorize access="isAnonymous()">
+	                        <a id="login_popup_open" class="btn" style="border: none; outline: none;">
+	                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
+	                            <span id="main_header_login_text" class="main_header_text">로그인</span>
+	                        </a>
+	                    </sec:authorize>
+
+                    	<sec:authorize access="isAuthenticated()">
+                    		<%-- 사이트간 요청 위조 방지가 활성화되어 있을 경우 --%>   
 		                    <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline-block">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		                  	    <a id="logout" href="logout" style="border: none; outline: none;">
+		                  	    <a id="logout" href="logout" class="btn" style="border: none; outline: none;">
 		                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
 		                            <span id="main_header_logout_text" class="main_header_text">로그아웃</span>
 		                        </a>
 		                    </form>
-	                    </c:if>
+                    	</sec:authorize>  
                         
                         <%@ include  file="/WEB-INF/views/common/login.jsp"%>
 
                         <%@ include  file="/WEB-INF/views/common/find_password.jsp"%>
                         
                         <c:if test="${sessionEmail == null}">
-		                    <a id="main_header_signUp" href="${pageContext.request.contextPath}/mainSignUp">
+		                    <a id="main_header_signUp" class="btn" href="${pageContext.request.contextPath}/mainSignUp" style="border: none; outline: none;">
 		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
 		                        <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
 		                    </a>
                         </c:if>
                         <c:if test="${sessionEmail != null}">
-		                    <a id="mypage" href="${pageContext.request.contextPath}/mypage/device_AS">
+		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/device_AS" style="border: none; outline: none;">
 		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
 		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
 		                    </a>
                         </c:if>
-	                    <a id="main_header_cart" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase">
+	                    <a id="main_header_cart" class="btn" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase" style="border: none; outline: none;">
 	                        <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
 	                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
 	                    </a>
