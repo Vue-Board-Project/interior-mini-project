@@ -176,11 +176,7 @@ outline-offset: 0.45rem;
 }
 
 .conult-reservation_time_wrap input[type="radio"]:checked + span {
-    width: 60px;
-    height: 30px;
-    background-color: #ca5c0d;
-    border: 1px solid #ca5c0d;
-    color: white;
+    border: 3px solid #ca5c0d;
 }
 
 /*리모델링 시공공간 체크박스 css && 디테일신청 시공공간 체크 박스*/
