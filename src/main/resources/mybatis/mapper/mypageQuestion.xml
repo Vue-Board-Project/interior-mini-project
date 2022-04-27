@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+             
+<mapper namespace="com.mycompany.webapp.dao.mybatis.MypageCounselingDao">
+
+	<resultMap id = "selectMypageCounselingData" type = "dto.UsersDto">
+		<result column = "email" property = "email" />
+		<result column = "name" property = "name" />
+		<result column = "phone" property = "phone" />
+		<association property="MAIN_CONSULT" javaType="dto.interior.MainConsultDto">
+			<result column = "CONSULT_NO" property = "consultNo" />
+			<result column = "CONSULT_ACREAGE" property = "consultAcreage" />
+			<result column = "CONSULT_INTERIOR_STYLE" property = "consultInteriorStyle" />
+			<result column = "consult_address" property = "consult_address" />
+			<result column = "CONSULT_DATE" property = "date" /> <!-- 이 파트 아직 미정 -->
+		</association>
+	</resultMap>
+	
+<!-- 상담내역과 창을 띄우기 위함. -->    
+	<select id = "mypageCounseling" parameterType = ""  resultMap="selectMypageCounselingData">
+		select 
+		       mc.CONSULT_NO, mc.CONSULT_ACREAGE, mc.CONSULT_INTERIOR_STYLE, mc.consult_address, mc.CONSULT_DATE, 
+		       u.email, u.name, u.phone,
+		       rm.consult_no, rm.CONSULT_ROOM, 
+		       af.scheduled_service_date
+		from MAIN_CONSULT mc, USERS u, CONSULT_REMODELING rm, AFTERSERVICE af
+		where mc.email = u.email and u.email = af.email or rm.consult_no = mc.CONSULT_NO;
+	</select>
+
+	
+	
+</mapper>

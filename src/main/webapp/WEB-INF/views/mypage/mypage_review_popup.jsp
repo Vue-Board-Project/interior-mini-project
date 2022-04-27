@@ -50,17 +50,17 @@
 	 			</div>
 	 		</div> -->
 	 		
-	 	<form id="review_write_form" method="post" action="" enctype="multipart/form-data">
+	 	<form id="mypageReviewForm" method="post" action="mypageReview" enctype="multipart/form-data">
 			<div class = "mypage_review_popup_user_title">
 				<div class="input-group">
 					<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
-					<input id="review_title" type="text" name="review_title" class="form-control">
+					<textarea id="review_title" type="text" name="reviewTitle" class="form-control"></textarea>
 				</div>
 			</div>
 			<div class = "mypage_review_popup_user_content">
 				<div class="input-group">
 					<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
-					<textarea id="review_content" name="review_content" class="form-control"></textarea>
+					<textarea id="review_content" type="text" name="reviewContent" class="form-control"></textarea>
 				</div>
 			</div>
 			<div class = "mypage_review_popup_image_input">
@@ -71,14 +71,15 @@
 							<img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_plus.png" style = "width : 30px; height : 30px; margin-top : 25px; margin-left : 25px;"/>
 						</label>
 						<!-- multiple(다중 이미지 받아들이기) 삭제함 -->
-						<input id="review_img_attach" type="file" name="review_img_attach" class="form-control" onchange= "setReviewPhoto(event)" >
+						<input id="review_img_attach" type="file" name="reviewFile" class="form-control" onchange= "setReviewPhoto(event)" >
 						<div class = "review_image_container"></div>
 					</div>
 				</div>
 			</div>
+			<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg">작성하기</button>
 		</form>
 	 		</div>
-	 			<button id = "mypage_review_popup_button" class="btn btn-primary btn-lg">작성하기</button>
+	 			
 	 </div>
 	 
 </div>
@@ -154,7 +155,7 @@
  	}
  	
  	
- 	.mypage_review_popup #review_write_form{
+ 	.mypage_review_popup #mypageReviewForm{
  		width : 500px;
  		height : 496px;
  		
@@ -162,12 +163,12 @@
  	
  	
  	
- 	.mypage_review_popup #review_write_form .mypage_review_popup_user_content{ 
+ 	.mypage_review_popup #mypageReviewForm .mypage_review_popup_user_content{ 
  		height : 372px;
  	
  	}
  	
- 	.mypage_review_popup #review_write_form #review_content{ 
+ 	.mypage_review_popup #mypageReviewForm #review_content{ 
  		height : 372px;
  	
  	}

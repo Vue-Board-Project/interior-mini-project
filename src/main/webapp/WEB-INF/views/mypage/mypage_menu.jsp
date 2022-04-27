@@ -129,7 +129,7 @@
     </div>
      <!-- <hr class = "mypage_menubar_hr"> -->
     <div class = "mypage_list_element">
-      <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_review">
+      <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypageReview">
         <span id = "mypage_review" class="links_name">리뷰 관리</span>
       </a>
     </div>
