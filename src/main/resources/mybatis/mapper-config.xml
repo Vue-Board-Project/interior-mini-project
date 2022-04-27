@@ -12,6 +12,8 @@
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.MainConsultDto" alias="MainConsult"/>
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.ConsultRemodelingDto" alias="ConsultRemodeling"/>
 	    	
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDto" alias="Interior"/>
+	    	
 	    	<!-- 한보현 추가 -->
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDetailDto" alias="interiorDetail"/>
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDto" alias="interior"/>
