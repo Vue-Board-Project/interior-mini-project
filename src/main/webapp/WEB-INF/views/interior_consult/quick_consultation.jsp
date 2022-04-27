@@ -193,7 +193,7 @@
                                         </label>
                                             
                                         <label class="test_obj">
-                                            <input type="radio" name="qiuk_consult_style" value="other">
+                                            <input type="radio" name="consultInteriorStyle" value="other">
                                             <span class="qiuk_consult_style_s" style="border-bottom-right-radius: 10px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/other.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
                                                 기타
@@ -341,8 +341,8 @@
                         </section>
                             <!-- 내용 진행 바 : 바뀌지 x -->
                         <section id="quick_consult_road_btn_wrap" class="text-center" style="width: 100%; height: 100%; padding-bottom: 6rem;" >
-                            <button type="button" class="btn btn-light mr-3" onclick="consultation_first_back_btn()" id="cf_back_btn" >다음</button>
-                            <button type="button" class="btn" onclick="consultation_second_interior_btn()" id="cs_interior_btn">뒤로</button>
+                            <button type="button" class="btn btn-light mr-3" onclick="consultation_first_back_btn()" id="cf_back_btn" >뒤로</button>
+                            <button type="button" class="btn" onclick="consultation_second_interior_btn()" id="cs_interior_btn">다음</button>
                         </section>
 
 

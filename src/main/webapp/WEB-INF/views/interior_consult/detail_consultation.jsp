@@ -1,5 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quik.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quick_consultation.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/detail_consultation.css" rel="stylesheet" type="text/css"/> 
+<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quipment_buy_request_consult.css" rel="stylesheet" type="text/css" /> 
+<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/remodeling_price.css" rel="stylesheet" type="text/css"/>
 <style>
     .consult_finish_pop-layer .consult_finish_pop-container {
         padding: 20px 25px;
@@ -109,12 +114,7 @@
     
         } 
     </script>
-	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/cssHeader.css" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quik.css" rel="stylesheet" type="text/css"/>
-	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quick_consultation.css" rel="stylesheet" type="text/css"/>
-	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/detail_consultation.css" rel="stylesheet" type="text/css"/> 
-	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quipment_buy_request_consult.css" rel="stylesheet" type="text/css" /> 
-	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/remodeling_price.css" rel="stylesheet" type="text/css"/>
+	
         <div class="container">
             <article  class="mx-auto" style="width: 100%; background-color: #faf9f6; padding: 100px 0 200px 0;">
                 <div class="bg-white rounded" style="width: 100%;">
@@ -455,18 +455,24 @@
                                         <div class="mb-5">
                                             <p class="wating_choice_title">조명</p>
                                             <div style="display: flex;">
-                                                <label class="detail_consult_main_radio_btn_csswrap">
-                                                    <input type="radio" name="waiting_light" value="allLight">
-                                                    <span style="border-radius: 10px 0 0 10px;" class="waiting_light">
-                                                        전체 교체
+                                                <label class="remodeling_light">
+                                                    <input type="radio" name="watingLight" value="실링라이트">
+                                                    <span style="border-radius: 10px 0 0 10px;">
+                                                        <div class="mx-auto bg-white mt-2 mb-1" style="height: 120px; width: 220px;">
+                                                            <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/sling.jpg" width="220px" height="120px">
+                                                        </div>
+                                                        실링라이트
                                                     </span>
                                                 </label>
-                                                <label class="detail_consult_main_radio_btn_csswrap">
-                                                    <input type="radio" name="waiting_light" value="partLight">
-                                                    <span style="border-radius: 0 10px 10px 0;" class="waiting_light">
-                                                        부분 교체
+                                                <label class="remodeling_light">
+                                                    <input type="radio" name="watingLight" value="다운라이트">
+                                                    <span style="border-radius: 0 10px 10px 0;">
+                                                        <div class="mx-auto bg-white mt-2 mb-1" style="height: 120px; width: 220px;">
+                                                            <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/down.jpg" width="220px" height="120px">
+                                                        </div>
+                                                        다운라이트
                                                     </span>
-                                                </label>   
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="mb-5">
@@ -557,18 +563,24 @@
                                         <div class="mb-5">
                                             <p class="wating_choice_title">조명</p>
                                             <div style="display: flex;">
-                                                <label class="detail_consult_main_radio_btn_csswrap">
-                                                    <input type="radio" name="treatment_light" value="allLight">
-                                                    <span style="border-radius: 10px 0 0 10px;" class="waiting_light">
-                                                        전체 교체
+                                                <label class="remodeling_light">
+                                                    <input type="radio" name="watingLight" value="실링라이트">
+                                                    <span style="border-radius: 10px 0 0 10px;">
+                                                        <div class="mx-auto bg-white mt-2 mb-1" style="height: 120px; width: 220px;">
+                                                            <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/sling.jpg" width="220px" height="120px">
+                                                        </div>
+                                                        실링라이트
                                                     </span>
                                                 </label>
-                                                <label class="detail_consult_main_radio_btn_csswrap">
-                                                    <input type="radio" name="treatment_light" value="partLight">
-                                                    <span style="border-radius: 0 10px 10px 0;" class="waiting_light">
-                                                        부분 교체
+                                                <label class="remodeling_light">
+                                                    <input type="radio" name="watingLight" value="다운라이트">
+                                                    <span style="border-radius: 0 10px 10px 0;">
+                                                        <div class="mx-auto bg-white mt-2 mb-1" style="height: 120px; width: 220px;">
+                                                            <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/down.jpg" width="220px" height="120px">
+                                                        </div>
+                                                        다운라이트
                                                     </span>
-                                                </label>   
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="mb-5">
@@ -721,18 +733,24 @@
                                         <div class="mb-5">
                                             <p class="wating_choice_title">조명</p>
                                             <div style="display: flex;">
-                                                <label class="detail_consult_main_radio_btn_csswrap">
-                                                    <input type="radio" name="machine_light" value="allLight">
-                                                    <span style="border-radius: 10px 0 0 10px;" class="waiting_light">
-                                                        전체 교체
+                                                <label class="remodeling_light">
+                                                    <input type="radio" name="watingLight" value="실링라이트">
+                                                    <span style="border-radius: 10px 0 0 10px;">
+                                                        <div class="mx-auto bg-white mt-2 mb-1" style="height: 120px; width: 220px;">
+                                                            <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/sling.jpg" width="220px" height="120px"/>
+                                                        </div>
+                                                        실링라이트
                                                     </span>
                                                 </label>
-                                                <label class="detail_consult_main_radio_btn_csswrap">
-                                                    <input type="radio" name="machine_light" value="partLight">
-                                                    <span style="border-radius: 0 10px 10px 0;" class="waiting_light">
-                                                        부분 교체
+                                                <label class="remodeling_light">
+                                                    <input type="radio" name="watingLight" value="다운라이트">
+                                                    <span style="border-radius: 0 10px 10px 0;">
+                                                        <div class="mx-auto bg-white mt-2 mb-1" style="height: 120px; width: 220px;">
+                                                            <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/down.jpg" width="220px" height="120px"/>
+                                                        </div>
+                                                        다운라이트
                                                     </span>
-                                                </label>   
+                                                </label>
                                             </div>
                                         </div>
                                         <div>
