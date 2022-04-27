@@ -24,5 +24,6 @@
 	      	<typeAlias type="com.mycompany.webapp.dto.mypage.InteriorProgressFileDto" alias="mpProgressFile"/>
 	      	<typeAlias type="com.mycompany.webapp.dto.mypage.ReferenceModelDto" alias="mPreference"/> 
 	      	<typeAlias type="com.mycompany.webapp.dto.mypage.SolutionDto" alias="mpSolution"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.ReviewDto" alias="mReview"/>
 	  </typeAliases>
 </configuration> 

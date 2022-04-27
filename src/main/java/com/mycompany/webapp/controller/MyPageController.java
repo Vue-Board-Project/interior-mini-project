@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -80,6 +81,10 @@ public class MyPageController {
 		log.info("작동확인");
 		log.info(review.getReviewTitle());
 		log.info(review.getReviewContent());
+		review.setEmail("gvhv@dgfv.sad");
+		review.setModelNumber("uc0001gre");
+		mypageService.insertReview(review);
+		
 		return "redirect:/";
 	}
 	
