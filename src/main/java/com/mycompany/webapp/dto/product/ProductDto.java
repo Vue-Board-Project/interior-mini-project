@@ -18,6 +18,7 @@ public class ProductDto {
 	private String productColor;//색상
 	private int reviewCount;//리뷰수
 	private String category;//카테고리
+	private String productIntro;
 	private String pattachoname;
 	private String pattachsname;
 	private String pattachtype;
