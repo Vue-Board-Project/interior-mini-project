@@ -34,15 +34,8 @@
 			</div>
 			<div class = "mypage_review_popup_image_input">
 				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text">사진 첨부</span></div>
-					<div id = "review_img_slot">
-						<label for = "review_img_attach" >
-							<img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_plus.png" style = "width : 30px; height : 30px; margin-top : 25px; margin-left : 25px;"/>
-						</label>
-						<!-- multiple(다중 이미지 받아들이기) 삭제함 -->
-						<input id="review_img_attach" type="file" name="reviewFile" class="form-control" onchange= "setReviewPhoto(event)" >
-						<div class = "review_image_container"></div>
-					</div>
+						<div class="input-group-prepend"><span class="input-group-text">사진 첨부</span></div>
+					 	<input type="file" class="form-control" id="attach" name="attach"> <!-- DB연결될 때 name적기 -->
 				</div>
 			</div>
 			<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg" style = "margin-top : 40px; margin-left :200px;">작성하기</button>
@@ -148,12 +141,15 @@
  	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_image_input{
  		width : 500px;
  		height : 124px;
+ 		display: flex;
+ 		flex-direction: row;
  	}
  	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_image_input #review_img_slot{
+/*  input 형태 바꾸면서 필요 없어짐 (나중에 할 것.)  	
+.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_image_input #review_img_slot{
  		height : 124px;
  		
- 	}
+ 	} */
  	
  	
  /* 	
@@ -166,7 +162,7 @@
  	
  	/*파일 선택하기 버튼 대신 + 버튼으로 바꾸기 */
  	
- 	.mypage_review_popup_image_input input[type="file"] {
+ 	/* .mypage_review_popup_image_input input[type="file"] {
 		overflow: hidden;
 		display : none;
 	}
@@ -177,7 +173,7 @@
 	 width : 80px;
 	 height : 80px;
 
-}
+} */
  	/* 
  	
  	
