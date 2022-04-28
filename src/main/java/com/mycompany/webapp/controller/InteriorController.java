@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,19 +120,21 @@ public class InteriorController {
 	private InteriorService interiorService;
 	
 	@PostMapping("/interiorDataUpload")
-	public String interiorDataUpload(InteriorDto interior) {
+	public String interiorDataUpload(InteriorDto interior) throws IllegalStateException, IOException {
 		  log.info(interior.getIno());
 		  log.info(interior.getItype());
 		  log.info(interior.getIsummary());
-		
+		  
+		  log.info(interior.getImImgPath());
 		  log.info(interior.getIMainImg().getOriginalFilename());
 		  if (!interior.getIMainImg().isEmpty()) {
+			  log.info("너.. 뭐 돼..?");
 			  interior.setImImgPath(interior.getIMainImg().getOriginalFilename());
 			  	/*product.setPattachtype(product.getMainImage().getContentType());
 				product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());*/
-				/*File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
+				File file = new File("C:/Temp/InteriorPhotos" + interior.getImImgPath());
 				interior.getIMainImg().transferTo(file);
-				interiorService;  */    }
-		return "interior/interior";
+				interiorService.insertInterior(interior);    }
+		 return "interior/interior";
 	}
 }

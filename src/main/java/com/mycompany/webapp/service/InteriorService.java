@@ -16,8 +16,7 @@ public class InteriorService {//인테리어 서비스
 	@Resource
 	private InteriorDao interiorDao;
 	
-	/*public int insertInterior(InteriorDto interior) {
+	public void insertInterior(InteriorDto interior) {
 		interiorDao.insertInterior(interior);
-		return interior;
-	}*/
+	}
 }
