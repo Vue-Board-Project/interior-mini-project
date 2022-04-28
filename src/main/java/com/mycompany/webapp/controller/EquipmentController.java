@@ -3,17 +3,16 @@ package com.mycompany.webapp.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mycompany.webapp.dao.mybatis.ProductDao;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
 
@@ -46,16 +45,29 @@ public class EquipmentController {
 		return "/equipment/equipment_k5chair_detail";// view 이름만 전달
 	}
 
-	@RequestMapping("/equipment/dental_equipment_main")
-	public String dental_equipment_main() {
-		return "/equipment/dental_equipment_main";// view 이름만 전달
+	@GetMapping("/equipment/dental_equipment_main")//겟
+	public String dental_equipment_main(Model model) {
+		//List<ProductDto> chairList=productService.selectchairlist();
+		//ModelAndView mav=new ModelAndView();
+		//Map<String, Object> map=new HashMap<>();
+		//map.put("chairList", chairList);
+		//mav.setViewName("/equipment/dental_equipment_main");
+		//mav.addObject("map", map);
+		List<ProductDto> chairList=productService.selectchairlist();
+		for(ProductDto p : chairList) {
+			log.info("뭐 있어 : " + p.getProductName());
+		}
+		
+		model.addAttribute("chairList",chairList) ;
+		return "/equipment/dental_equipment_main";
 	}
 
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
 	public String productAdd() {
 		log.info("되냐");
-		return "/equipment/productAdd";
+		return "selectchairlist";
+		
 	}
 
 	// product 데이터 추가
@@ -75,7 +87,8 @@ public class EquipmentController {
 			product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());
 			File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
 			product.getMainImage().transferTo(file);
-			productService.insertproduct(product);		}
+			productService.insertproduct(product);			
+		}
 
 		return "redirect:/equipment/productAdd";
 	}

@@ -1,5 +1,7 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -17,7 +19,10 @@ public class ProductService {
 	private ProductDao productDao;
 	
 	public void insertproduct(ProductDto product){
-
 		productDao.insertproduct(product);
+	}
+	
+	public List<ProductDto> selectchairlist() {
+		return productDao.selectchairlist();
 	}
 }

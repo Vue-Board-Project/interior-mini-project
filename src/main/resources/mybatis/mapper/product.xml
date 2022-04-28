@@ -4,7 +4,7 @@
 	<!--상품 추가 테스트용(추후 주석 처리 예정)-->
 	<insert id="insertproduct" parameterType="product">
 		<if test="mainImage==null">
-			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCTI_HITS, 
+			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCT_HITS, 
 			PRODUCT_SALES_VOLUME, PRODUCT_COLOR, REVIEW_COUNT, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE)
 			values(#{modelNumber}, #{productName}, #{price}, SYSDATE, #{productQuantity}, 0, 
 			0, #{productColor}, 0, #{category}, null, NULL, NULL)
@@ -15,7 +15,13 @@
 			values(#{modelNumber}, #{productName}, #{price}, SYSDATE, #{productQuantity}, 0, 
 			0, #{productColor}, 0, #{category}, #{pattachoname}, #{pattachsname}, #{pattachtype})
 		</if>
-		
 	</insert>
+	<!-- 유니트 체어 상품 전체 리스트 불러오기 -->
+	<select id="selectchairlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
+		select product_name as productName, product_intro as productIntro
+		from product
+		where CATEGORY='unitchair'
+		order by REGISTRATION_DATE
+	</select>
 
 </mapper>
