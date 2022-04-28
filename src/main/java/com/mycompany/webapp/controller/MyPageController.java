@@ -1,16 +1,20 @@
 package com.mycompany.webapp.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.service.MypageService;
 
@@ -29,21 +33,8 @@ public class MyPageController {
 	 }
 	 
 	 @Resource private MypageService mypageService;
-	 
-	/*
-	 * @Resource private MypageService mypageService;
-	 * 
-	 * @GetMapping("/mypage/mypage_counseling") public String
-	 * mypageCounseling(String email) { log.info("구매내역");
-	 * 
-	 * return "mypage/mypage_counseling";//view 이름만 전달 }
-	 */
 	
-	@RequestMapping("/myinfo_counsel_popup")
-	public String mypagePopup() {
-		
-		return "mypage/myinfo_counsel_popup";
-	}
+	
 	
 	@RequestMapping("/mypage_infosetting")
 	public String mypageInfosetting() {
@@ -81,7 +72,8 @@ public class MyPageController {
 		log.info("작동확인");
 		log.info(review.getReviewTitle());
 		log.info(review.getReviewContent());
-		review.setEmail("gvhv@dgfv.sad");
+		review.setEmail("'gvhv@dgfv.sad'");
+		review.setPurchaseNumber(1);
 		review.setModelNumber("uc0001gre");
 		mypageService.insertReview(review);
 		

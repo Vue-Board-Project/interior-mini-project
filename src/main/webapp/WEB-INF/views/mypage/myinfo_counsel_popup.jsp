@@ -51,11 +51,11 @@
  <style>
  	 /*팝업 선택시 회색 레이어 */
     #mypage_counseling_mask{
-    	 z-index: 3;
+    	 z-index: 99;
     }
     
     .mypage_interior_popup_wrap {
-    	z-index: 4; 
+    	z-index: 100; 
     }
  
  	.mypage_interior_popup_wrap {
