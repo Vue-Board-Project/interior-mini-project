@@ -4,7 +4,7 @@
 <div id="portfolio_model_wrap" style="margin: 0 auto; width: 996px; font-family: 'MinSans-Regular';">
         <%@ include file="/WEB-INF/views/portfolio_dental/portfolio_dental_filter.jsp" %>
         <div class="text-center mt-5 mb-5">
-       		<div class="ml-3 text-left portfolio_dental_content_cnt"><p class="portfolio_dental_content_cnt_p">전체 <span>${com.mycompany.webapp.dao.mybatis.interiorCnt}</span></p></div>
+       		<div class="ml-3 text-left portfolio_dental_content_cnt"><p class="portfolio_dental_content_cnt_p">전체 <span>${interior.interiorCnt}</span></p></div>
             <%-- <div class="d-flex portfolio_dental_content_wrap">
                 <div class="m-3 pb-3 portfolio_dental_content"> 
                     <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
