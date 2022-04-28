@@ -42,7 +42,7 @@
                     <p id="best_product_content">BEST ITEM</p>
                     
                     <div id="makeline">　</div>
-                    <div id="eq_list1"><!--베스트 상품-->
+                    <div id="eq_list1" class="eq_list"><!--베스트 상품-->
                         <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_k3chair_detail" class="gotolink">
                             <div id="eq_list_content1" class="card">
                                 <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair03.jpg" class="card-img-top">
@@ -83,7 +83,7 @@
                     <p id="best_product_content">전체 상품</p> 
                     <p id="product_filter"><a>인기순</a>　　|　　<a>조회순</a> 　　| 　　<a>리뷰순</a> 　　| 　　<a>최신 등록순</a></p> 
                     <div id="makeline">　</div>
-                    <div id="eq_list2"><!--신규 상품-->
+                    <div id="eq_list2" class="eq_list"><!--신규 상품-->
                     
 					<c:forEach var="chair" items="${chairList}" begin="0" end="2">
                         <a id="go_k3chair" href="#" class="gotolink">
@@ -123,7 +123,7 @@
                         </a> --%>
                         </c:forEach>
                     </div>
-                    <div id="eq_list3">
+                    <div id="eq_list3" class="eq_list">
                     <c:forEach var="chair" items="${chairList}" begin="3" end="5">
                         <a id="go_k3chair" href="#" class="gotolink">
                             <div id="eq_list_content1" class="card">
@@ -139,8 +139,24 @@
                         </a>
                     </c:forEach>
                     </div>
-                    <div id="eq_list4">
-                    <c:forEach var="chair" items="${chairList}" begin="3" end="5">
+                    <div id="eq_list4" class="eq_list">
+                    <c:forEach var="chair" items="${chairList}" begin="6" end="8">
+                        <a id="go_k3chair" href="#" class="gotolink">
+                            <div id="eq_list_content1" class="card">
+                                <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair03.jpg" class="card-img-top">
+                                <div class="card-body">
+                                    <p id="eq_list_content1_element1" class="card-text"><img id="eq_best_icon"
+                                    src="${pageContext.request.contextPath}/resources/subinimage/popularity.png"/>${chair.productName}</p>
+                                    <hr/>
+                                    <p id="eq_list_content1_element2" class="card-text">${chair.productIntro}</p>
+                                    <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
+                                </div>
+                            </div>
+                        </a>
+                    </c:forEach>
+                    </div>
+                    <div id="eq_list5" class="eq_list">
+                    <c:forEach var="chair" items="${chairList}" begin="9" end="10">
                         <a id="go_k3chair" href="#" class="gotolink">
                             <div id="eq_list_content1" class="card">
                                 <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair03.jpg" class="card-img-top">

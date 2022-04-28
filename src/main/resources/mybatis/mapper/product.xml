@@ -21,7 +21,7 @@
 		select product_name as productName, product_intro as productIntro
 		from product
 		where CATEGORY='unitchair'
-		order by REGISTRATION_DATE
+		order by REGISTRATION_DATE desc
 	</select>
 
 </mapper>
