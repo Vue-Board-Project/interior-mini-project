@@ -10,4 +10,5 @@ import com.mycompany.webapp.dto.interior.InteriorDto;
 public interface InteriorDao {
 	public int insertInterior(InteriorDto interior);
 	public List<InteriorDto> interiorList();
+	public int interiorCnt();
 }

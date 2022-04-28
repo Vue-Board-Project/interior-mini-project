@@ -13,7 +13,11 @@
 	
 	<select id="interiorList" resultType="Interior">
 		SELECT isummary
-		FROM interior ORDER BY ino
+		FROM interior WHERE itype='portfolio' ORDER BY ino
+	</select>
+	
+	<select id="interiorCnt" resultType="int">
+		SELECT count(*) AS cnt FROM interior WHERE itype='portfolio'
 	</select>
 </mapper>
 

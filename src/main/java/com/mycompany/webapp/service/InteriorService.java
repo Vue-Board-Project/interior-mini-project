@@ -31,6 +31,10 @@ public class InteriorService {//인테리어 서비스
 		return interiorDao2.interiorList();
 	}
 	
+	public int interiorCnt() {
+		return interiorDao.interiorCnt();
+	}
+	
 	
 	
 	

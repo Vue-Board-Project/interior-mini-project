@@ -29,4 +29,10 @@ public class InteriorDaoImpl implements InteriorDao{
 		return sqlSession.selectList("com.mycompany.webapp.dao.mybatis.InteriorDao.interiorList");
 	}
 
+	@Override
+	public int interiorCnt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

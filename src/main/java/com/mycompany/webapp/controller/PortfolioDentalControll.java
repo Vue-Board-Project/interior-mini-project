@@ -32,9 +32,9 @@ public class PortfolioDentalControll {
 		log.info("interiorListDownload 실행");
 		
 		List<InteriorDto> interiorList=interiorService.interiorList();
-		for(InteriorDto s : interiorList) {
+		/*for(InteriorDto s : interiorList) {
 			log.info(s.getIsummary());
-		}
+		}*/
 		model.addAttribute("interiorList",interiorList) ;
 		return "portfolio_dental/portfolio_dental";
 	}
