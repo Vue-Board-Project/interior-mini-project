@@ -3,6 +3,25 @@
                  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.mybatis.InteriorDao">
 	<!-- 모델, 포폴 전체창 insert -->
-	<insert id=""></insert>
+	<insert id="insertInterior" parameterType="Interior">
+		<selectKey keyProperty="ino" resultType="int" order="BEFORE">
+	         select INO_SEQUENCE.nextval from dual
+	    </selectKey>
+	    INSERT INTO interior
+		(ino, itype, ihits, istyle,
+			all_color, wcolor, fcolor, dtype, darea, isummary, im_img_path)
+		values(
+				#{ino}, 
+				#{itype}, 
+				0, 
+				#{istyle},
+				#{allColor},
+				#{wcolor},
+				#{fcolor},
+				#{dtype}, 
+				#{darea},
+				#{isummary},
+				#{imImgPath})
+	</insert>
 </mapper>
 

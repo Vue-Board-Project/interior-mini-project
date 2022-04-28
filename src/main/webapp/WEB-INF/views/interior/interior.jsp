@@ -42,6 +42,10 @@
 		      <label for="isummary">Summary</label>
 		      <form:input class="form-control" path="isummary"/>
 		  </div>
+		  <div class="input-group">
+		      <label for="iMainImg">iMainImg</label>
+              <input id="mainImage" type="file" name="mainImage" class="form-control">
+          </div>
 		  <button type="submit" class="btn btn-primary btn-sm">제출</button>
 		</form:form>
 	</div>

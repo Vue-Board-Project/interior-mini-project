@@ -1,14 +1,20 @@
 package com.mycompany.webapp.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.interior.InteriorDto;
+import com.mycompany.webapp.service.ConsultService;
+import com.mycompany.webapp.service.InteriorService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -107,5 +113,25 @@ public class InteriorController {
 	      interiors.setItype("normal");
 	      
 	      return "interior/interior";
+	}
+	
+	@Resource // 인테리어 서비스 객체
+	private InteriorService interiorService;
+	
+	@PostMapping("/interiorDataUpload")
+	public String interiorDataUpload(InteriorDto interior) {
+		  log.info(interior.getIno());
+		  log.info(interior.getItype());
+		  log.info(interior.getIsummary());
+		
+		  log.info(interior.getIMainImg().getOriginalFilename());
+		  if (!interior.getIMainImg().isEmpty()) {
+			  interior.setImImgPath(interior.getIMainImg().getOriginalFilename());
+			  	/*product.setPattachtype(product.getMainImage().getContentType());
+				product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());*/
+				/*File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
+				interior.getIMainImg().transferTo(file);
+				interiorService;  */    }
+		return "interior/interior";
 	}
 }
