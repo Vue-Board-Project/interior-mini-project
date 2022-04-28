@@ -12,7 +12,7 @@
 <div class="main_header_nav_dropdown">
     <a class="btn main_header_nav_dropbtn" style=" border-radius: 0px;">인테리어</a>
     <div class="main_header_nav_dropdown_content">
-      <a href="${pageContext.request.contextPath}/goPortfolioDental">포트폴리오</a>
+      <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental">포트폴리오</a>
       <a href="${pageContext.request.contextPath}/goModelDental">모델치과</a>
       <a href="${pageContext.request.contextPath}/interior_consult/remodeling_price">인테리어 견적</a>
     </div>

@@ -135,6 +135,16 @@ public class InteriorController {
 				File file = new File("C:/Temp/InteriorPhotos" + interior.getImImgPath());
 				interior.getIMainImg().transferTo(file);
 				interiorService.insertInterior(interior);    }
-		 return "interior/interior";
+		 return "redirect:/interior";
 	}
+	
+	/*@RequestMapping("/portfolio_dental")
+	public void interiorList(int ino, Model model) {
+		log.info("interiorListDownload 실행");
+		
+		List<InteriorDto> list = null;
+		list = interiorService.interiorList(ino);
+		
+		model.addAttribute("interiorList",list);
+	}*/
 }

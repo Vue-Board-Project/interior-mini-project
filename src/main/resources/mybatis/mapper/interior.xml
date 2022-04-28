@@ -7,21 +7,13 @@
 		<selectKey keyProperty="ino" resultType="int" order="BEFORE">
 	         select INO_SEQUENCE.nextval from dual
 	    </selectKey>
-	    INSERT INTO interior
-		(ino, itype, ihits, istyle,
-			all_color, wcolor, fcolor, dtype, darea, isummary, im_img_path)
-		values(
-				#{ino}, 
-				#{itype}, 
-				0, 
-				#{istyle},
-				#{allColor},
-				#{wcolor},
-				#{fcolor},
-				#{dtype}, 
-				#{darea},
-				#{isummary},
-				#{imImgPath})
+	    INSERT INTO interior (ino, itype, ihits, istyle, all_color, wcolor, fcolor, dtype, darea, isummary, im_img_path)
+		values (#{ino}, #{itype}, 0, #{istyle}, #{allColor}, #{wcolor}, #{fcolor}, #{dtype}, #{darea}, #{isummary}, #{imImgPath})
 	</insert>
+	
+	<select id="interiorList" resultType="Interior">
+		SELECT isummary
+		FROM interior ORDER BY ino
+	</select>
 </mapper>
 
