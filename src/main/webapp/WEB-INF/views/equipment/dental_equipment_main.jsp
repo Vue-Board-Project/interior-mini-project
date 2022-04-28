@@ -88,7 +88,8 @@
 					<c:forEach var="chair" items="${chairList}" begin="0" end="2">
                         <a id="go_k3chair" href="#" class="gotolink">
                             <div id="eq_list_content1" class="card">
-                                <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair03.jpg" class="card-img-top">
+                                <%-- <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair03.jpg" class="card-img-top"> --%>
+                                <span id="eq_list_content1_image" class="card-img-top">${chair.mainImage}</span>
                                 <div class="card-body">
                                     <p id="eq_list_content1_element1" class="card-text"><img id="eq_best_icon"
                                     src="${pageContext.request.contextPath}/resources/subinimage/popularity.png"/>${chair.productName}</p>
