@@ -36,9 +36,13 @@ public class ProductDaoImpl implements ProductDao{
 		sqlSession.update("sqlSession", hmap);
 	}
 	@Override
+	public String sort() {
+		return sort();
+	}
+	/*@Override
 	public Map<String, Object> getByteImage(){
 		return sqlSession.selectOne("sqlSession.getByteImage");
-	}
+	}*/
 
 	
 	

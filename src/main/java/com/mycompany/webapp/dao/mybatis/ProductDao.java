@@ -13,5 +13,6 @@ public interface ProductDao {
 	public List<ProductDto> selectchairlist();
 	public void saveImage(Map<String, Object> hmap);
 	//public Map<String, Object> getByteImage(Map<String, Object> imap);
-	public Map<String, Object> getByteImage();
+	//public Map<String, Object> getByteImage();
+	public String sort();
 }

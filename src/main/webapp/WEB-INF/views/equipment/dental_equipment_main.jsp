@@ -78,17 +78,19 @@
                             </div>
                         </a>
                     </div><div id="eq_list2">
-                        
+                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
                     </div>
                     <p id="best_product_content">전체 상품</p> 
-                    <p id="product_filter"><a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?order_by=view desc">인기순</a>　　|　　<a>조회순</a> 　　| 　　<a>리뷰순</a> 　　| 　　<a>최신 등록순</a></p> 
+                    <p id="product_filter">
+                    	<a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?=salesCount">인기순</a>　　|　　<a>조회순</a> 　　| 　　<a>리뷰순</a> 　　| 　　<a>최신 등록순</a>
+                    </p> 
                     <div id="makeline">　</div>
                     <div id="eq_list2" class="eq_list"><!--신규 상품-->
                     
 					<c:forEach var="chair" items="${chairList}" begin="0" end="2">
                         <a id="go_k3chair" href="#" class="gotolink">
                             <div id="eq_list_content1" class="card">
-                                <img id="eq_list_content1_image"src="${imgSrc}" class="card-img-top">
+                                <img id="eq_list_content1_image"src="" class="card-img-top">
                                 <div class="card-body">
                                     <p id="eq_list_content1_element1" class="card-text"><img id="eq_best_icon"
                                     src="${pageContext.request.contextPath}/resources/subinimage/popularity.png"/>${chair.productName}</p>

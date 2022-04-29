@@ -24,4 +24,5 @@ public class ProductDto {
 	private String pattachsname;
 	private String pattachtype;
 	private MultipartFile mainimage;//메인 이미지 파일 BLOB
+	private String sort;//상품 정렬
 }

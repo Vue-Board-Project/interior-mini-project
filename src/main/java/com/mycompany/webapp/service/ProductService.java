@@ -28,9 +28,12 @@ public class ProductService {
 	public List<ProductDto> selectchairlist() {
 		return productDao.selectchairlist();
 	}
-	public Map<String, Object> getByteImage(){
-		return productDao.getByteImage();
+	public String sort() {
+		return productDao.sort();
 	}
+	/*public Map<String, Object> getByteImage(){
+		return productDao.getByteImage();
+	}*/
 	
 	
 }

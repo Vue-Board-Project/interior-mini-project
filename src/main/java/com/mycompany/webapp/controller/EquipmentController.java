@@ -1,7 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import java.io.IOException;
-import java.util.Base64;
+import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,17 +10,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
@@ -64,17 +60,22 @@ public class EquipmentController {
 	    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
 	}*/
 	@RequestMapping("/equipment/dental_equipment_main")//겟
-	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, HttpServletRequest request,HttpServletResponse response, ModelMap modelmap, Model model) {
+	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, HttpServletRequest request,
+			HttpServletResponse response, ModelMap modelmap, Model model, ProductDto product) {
 		List<ProductDto> chairList=productService.selectchairlist();
 		model.addAttribute("chairList",chairList);
-		
-		Map<String,Object> resultMap = productService.getByteImage(); 
+		UriComponentsBuilder builder= UriComponentsBuilder.fromPath("?").queryParam("sort", product.getSort());
+		log.info(product.getSort());
+		String param=product.getSort();
+		//log.info(sort);
+		//String sort=product.getSort();
+		/*Map<String,Object> resultMap = productService.getByteImage(); 
 		
 		byte[] arr = (byte[]) resultMap.get("getByteImage");
 		log.info("바이트"+arr);
 		String getimageToString = Base64.getEncoder().encodeToString(arr);
 		
-		modelmap.addAttribute("imgSrc",getimageToString);
+		modelmap.addAttribute("imgSrc",getimageToString);*/
 
 		/*Map<String, Object> chairmap = productService.getByteImage();
 		byte[] imageContent = (byte[]) chairmap.get("mainimage");
@@ -83,9 +84,6 @@ public class EquipmentController {
 		
 		model.addAttribute("chairmap",new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK));*/
 		return "/equipment/dental_equipment_main";
-	}@RequestMapping("/equipment/content")
-	public String content() {
-		return "/equipment/content";
 	}
 	/*@RequestMapping("/getByteImage")
 	public ResponseEntity<byte[]> getByteImage() {
@@ -108,7 +106,7 @@ public class EquipmentController {
 
 	// product 데이터 추가
 	@PostMapping("/equipment/productAdd")
-	public String productAdd(ProductDto product, SqlSession sqlSession) throws IOException {
+	public String productAdd(ProductDto product) throws IOException {
 		log.info("되냐1");
 
 		/*log.info(product.getModelNumber());
