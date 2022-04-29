@@ -1,28 +1,35 @@
-function findAddr(){
-  new daum.Postcode({
-      oncomplete: function(data) {
-          
-          console.log(data);
-          
-          // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-          // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-          // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-          var roadAddr = data.roadAddress; // 도로명 주소 변수
-          var jibunAddr = data.jibunAddress; // 지번 주소 변수
-          // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          document.getElementById('postcode').value = data.zonecode;
-          if(roadAddr !== ''){
-              document.getElementById('address').value = roadAddr;
-          } 
-          else if(jibunAddr !== ''){
-              document.getElementById('address').value = jibunAddr;
-          }
-      }
-  }).open();
- }
+  /*변수 선언*/
 
+  var email = document.querySelector('#email2');
+  console.log(email);
 
+  var pw1 = document.querySelector('#password2');
+  var pwMsg = document.querySelector('#alertTxt');
+  var pwImg1 = document.querySelector('#pswd1_img1');
+
+  var pw2 = document.querySelector('#pswd2');
+  console.log(pw2);
+  
+  var pwImg2 = document.querySelector('#pswd2_img1');
+  var pwMsgArea = document.querySelector('.int_pass');
+
+  var userName = document.querySelector('#name');
+
+  var mobile = document.querySelector('#phone');
+
+  var error = document.querySelectorAll('.error_next_box');
+
+  var crn = document.querySelector('#crn');
     
+    
+  /*이벤트 핸들러 연결*/
+  email.addEventListener("focusout", isEmailCorrect);
+  pw1.addEventListener("focusout", checkPw);
+  pw2.addEventListener("focusout", comparePw);
+  userName.addEventListener("focusout", checkName);
+  mobile.addEventListener("focusout", checkPhoneNum);
+  crn.addEventListener("focusout", checkCRN);
+ 
   /*콜백 함수*/
 
   function isEmailCorrect() {
@@ -142,6 +149,29 @@ function findAddr(){
 
   }
   
+  function findAddr(){
+  new daum.Postcode({
+      oncomplete: function(data) {
+          
+          console.log(data);
+          
+          // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+          // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+          // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+          var roadAddr = data.roadAddress; // 도로명 주소 변수
+          var jibunAddr = data.jibunAddress; // 지번 주소 변수
+          // 우편번호와 주소 정보를 해당 필드에 넣는다.
+          document.getElementById('postcode').value = data.zonecode;
+          if(roadAddr !== ''){
+              document.getElementById('address').value = roadAddr;
+          } 
+          else if(jibunAddr !== ''){
+              document.getElementById('address').value = jibunAddr;
+          }
+      }
+  }).open();
+ }
+  
   /*개인정보 동의*/
   const agreeChkAll = document.querySelector('input[name=agree_all]');
     agreeChkAll.addEventListener('change', (e) => {
@@ -151,34 +181,3 @@ function findAddr(){
 	    }
 	});
 	
-  /*변수 선언*/
-
-  var email = document.querySelector('#email2');
-  console.log(email);
-
-  var pw1 = document.querySelector('#password2');
-  var pwMsg = document.querySelector('#alertTxt');
-  var pwImg1 = document.querySelector('#pswd1_img1');
-
-  var pw2 = document.querySelector('#pswd2');
-  console.log(pw2);
-  
-  var pwImg2 = document.querySelector('#pswd2_img1');
-  var pwMsgArea = document.querySelector('.int_pass');
-
-  var userName = document.querySelector('#name');
-
-  var mobile = document.querySelector('#phone');
-
-  var error = document.querySelectorAll('.error_next_box');
-
-  var crn = document.querySelector('#crn');
-    
-    
-  /*이벤트 핸들러 연결*/
-  email.addEventListener("focusout", isEmailCorrect);
-  pw1.addEventListener("focusout", checkPw);
-  pw2.addEventListener("focusout", comparePw);
-  userName.addEventListener("focusout", checkName);
-  mobile.addEventListener("focusout", checkPhoneNum);
-  crn.addEventListener("focusout", checkCRN);
