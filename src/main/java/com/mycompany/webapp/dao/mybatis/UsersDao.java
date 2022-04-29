@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dao.mybatis;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +20,7 @@ public interface UsersDao {
 	
 	//selectByEmail
 	public UsersDto selectByEmail(String email);
+	
+	//updatePW
+	public int updatePW(UsersDto users) throws Exception;
 }
