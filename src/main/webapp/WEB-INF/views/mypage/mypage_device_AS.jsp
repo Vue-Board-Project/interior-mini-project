@@ -8,7 +8,7 @@
 	
 	
 	<div class = "header_section">
-				<div class="text">장비 AS</div>
+				<div class="text">장비 AS 조회</div>
 	          	<span class="sub_text">장비 AS 내역을 조회합니다.</span>
 	          	<hr width = 90%>
 	</div>
@@ -21,120 +21,113 @@
 				<th style="width:70px">날짜</th>
 			</tr>
 			
-			<c:forEach var="board" items="${boards}">
+			<c:forEach var="asList" items="${asList}">
 				<tr>
-					<td>${board.bno}</td>
-					<td><a href="boardDetail?bno=${board.bno}">${board.btitle}</a></td>
-					<td><fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd"/></td>
+					<td>${asList.receiptNumber}</td>
+					<td><a href="device_AS?receiptNo=${asList.receiptNumber}">${asList.productName}</a></td>
+					<td><fmt:formatDate value="${asList.applicationDate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
 			
 			<tr>
 				<td colspan="4" class="text-center">
 					<div>
-						<a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=1">처음</a>
+						<a class="btn btn-outline-primary btn-sm" href="device_AS?pageNo=1">처음</a>
 						<c:if test="${pager.groupNo>1}">
-							<a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.startPageNo-1}">이전</a>
+							<a class="btn btn-outline-info btn-sm" href="device_AS?pageNo=${pager.startPageNo-1}">이전</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 							<c:if test="${pager.pageNo != i}">
-								<a class="btn btn-outline-success btn-sm" href="boardList?pageNo=${i}">${i}</a>
+								<a class="btn btn-outline-success btn-sm" href="device_AS?pageNo=${i}">${i}</a>
 							</c:if>
 							<c:if test="${pager.pageNo == i}">
-								<a class="btn btn-danger btn-sm" href="boardList?pageNo=${i}">${i}</a>
+								<a class="btn btn-danger btn-sm" href="device_AS?pageNo=${i}">${i}</a>
 							</c:if>
 						</c:forEach>
 						
 						<c:if test="${pager.groupNo<pager.totalGroupNo}">
-							<a class="btn btn-outline-info btn-sm" href="boardList?pageNo=${pager.endPageNo+1}">다음</a>
+							<a class="btn btn-outline-info btn-sm" href="device_AS?pageNo=${pager.endPageNo+1}">다음</a>
 						</c:if>
-						<a class="btn btn-outline-primary btn-sm" href="boardList?pageNo=${pager.totalPageNo}">맨끝</a>
+						<a class="btn btn-outline-primary btn-sm" href="device_AS?pageNo=${pager.totalPageNo}">맨끝</a>
 					</div>
 				</td>
 			</tr>
 		</table>
 		
-		<div id = "mypage_device_AS_reservation">
-			<div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2>예약 정보</h2></div>
-			<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none" >
-			
-			<div id = "mypage_device_AS_reservation_content">
+		<div class = "mypage_device_AS_detail_slot">
+			<div id = "mypage_device_AS_reservation">
+				<div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2>예약 정보</h2></div>
+				<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none" >
 				
-				<div class = "reservation_number">
-					<div class = "reservation_number_title">접수번호</div>
-					<div class = "reservation_number_content">202204221234</div>
+				<div id = "mypage_device_AS_reservation_content">
+					
+					<div class = "reservation_number">
+						<div class = "reservation_number_title">접수번호</div>
+						<div class = "reservation_number_content">${asInfo.receiptNumber}</div>
+					</div>
+					
+					<div class = "request_date">
+						<div class = "request_date_title">접수일</div>
+						<div class = "request_date_content">${asInfo.applicationDate}</div>
+					</div>
+					
+					<div class = "visit_date">
+						<div class = "visit_date_title">서비스 예정일</div>
+						<div class = "visit_date_content">${asInfo.scheduledServiceDate}</div>
+					</div>
+				
+					<div class = "product_name">
+						<div class = "product_name_title">제품명</div>
+						<div class = "product_name_content">${asInfo.productName}</div>
+					</div>
+					
+					<div class = "product_code_name">
+						<div class = "product_code_name_title">모델명</div>
+						<div class = "product_code_name_content">${asInfo.stringModelNumber}</div>
+					</div>
+					
+					<div class = "product_symptom">
+						<div class = "product_symptom_title">고장증상</div>
+						<div class = "product_symptom_content">${asInfo.basicSymptoms}</div>
+					</div>
+					
+					<div class = "product_symptom_detail">
+						<div class = "product_symptom_detail_title">상세증상</div>
+						<div class = "product_symptom_detail_content">${asInfo.detailedSymptoms}</div>
+					</div>
+					
+					
+				
 				</div>
-				
-				<div class = "service_type">
-					<div class = "service_type_title">서비스 구분</div>
-					<div class = "service_type_content">출장서비스 예약</div>
-				</div>
-				
-				<div class = "request_date">
-					<div class = "request_date_title">접수일</div>
-					<div class = "request_date_content">2022년 4월 21일</div>
-				</div>
-				
-				<div class = "visit_date">
-					<div class = "visit_date_title">서비스 예정일</div>
-					<div class = "visit_date_content">2022년 5월 6일</div>
-				</div>
-			
-				<div class = "product_name">
-					<div class = "product_name_title">제품명</div>
-					<div class = "product_name_content">유니트 체어</div>
-				</div>
-				
-				<div class = "product_code_name">
-					<div class = "product_code_name_title">모델명</div>
-					<div class = "product_code_name_content">OSSTEM-CHAIR2021</div>
-				</div>
-				
-				<div class = "product_symptom">
-					<div class = "product_symptom_title">고장증상</div>
-					<div class = "product_symptom_content">제품 외부 관련</div>
-				</div>
-				
-				<div class = "product_symptom_detail">
-					<div class = "product_symptom_detail_title">상세증상</div>
-					<div class = "product_symptom_detail_content">제품이 누수된 것 같습니다.</div>
-				</div>
-				
-				
-			
 			</div>
-		</div>
-		
-		
-		<div id = "mypage_device_AS_customer">
-			<div id = "mypage_device_AS_customer_title"><h2>고객 정보</h2></div>
-			<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
 			
-			<div id = "mypage_device_AS_reservation_content">
-				
-				<div class = "customer_name">
-					<div class = "customer_name_title">고객명</div>
-					<div class = "customer_name_content">홍수빈</div>
-				</div>
-				
-				<div class = "customer_phone_number">
-					<div class = "customer_phone_number_title">전화번호</div>
-					<div class = "customer_phone_number_content">010-6472-4876</div>
-				</div>
-				
-				<div class = "customer_address">
-					<div class = "customer_address_title">주소</div>
-					<div class = "customer_address_content">서울시 서초구 IT 벤처타워 12층</div>
-				</div>
 			
+			<div id = "mypage_device_AS_customer">
+				<div id = "mypage_device_AS_customer_title"><h2>고객 정보</h2></div>
+				<hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
+				
+				<div id = "mypage_device_AS_reservation_content">
+					
+					<div class = "customer_name">
+						<div class = "customer_name_title">고객명</div>
+						<div class = "customer_name_content">${asInfo.user.name}</div>
+					</div>
+					
+					<div class = "customer_phone_number">
+						<div class = "customer_phone_number_title">전화번호</div>
+						<div class = "customer_phone_number_content">${asInfo.user.phone}</div>
+					</div>
+					
+					<div class = "customer_address">
+						<div class = "customer_address_title">주소</div>
+						<div class = "customer_address_content">${asInfo.user.address}</div>
+					</div>
+				
+				</div>
 			</div>
+			
 		</div>
-		
-		<div id = "mypage_device_AS_footer" class="text-center">
-			<button id = "mypage_device_AS_button" class="btn btn-primary btn-lg">확인</button>
-		</div>
-		
 		<div id = "mypage_device_AS_warning">
 			<div id = "warning_header">
 				<img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_warning_logo.png" style = "width : 20px; height : 20px; margin : 30px;"/>

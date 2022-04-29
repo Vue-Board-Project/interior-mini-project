@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
+import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.service.MypageService;
 
 import lombok.extern.log4j.Log4j2;
@@ -25,7 +27,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class MyPageController {
 	
-	
+	/****첫 창 상담창 *****/
 	 @RequestMapping("/mypage_counseling") 
 	 public String mypageCounseling(){ 
 		 log.info("구매내역");
@@ -33,7 +35,14 @@ public class MyPageController {
 	 }
 	 
 	 @Resource private MypageService mypageService;
-	
+	 
+	 @GetMapping("/mypage_counseling") 
+	 public String mypageCounselingFront(String email, Model model){ 
+		 email = "gvhv@dgfv.sad";
+		 UsersDto user = mypageService.getUserName(email);
+		 model.addAttribute("user", user);
+		 return "mypage/mypage_counseling";
+	 }
 	
 	
 	@RequestMapping("/mypage_infosetting")
@@ -59,14 +68,15 @@ public class MyPageController {
 	public String mypageInteriorProgress() {
 		return "/mypage/mypage_interior_progress";
 	}
+	
+	
+	
 	@RequestMapping("/mypageReview")
 	public String mypageReviewPage() {
 		
 		return "/mypage/mypage_review";
 	}
 	
-	//@PostMapping("/mypage/mypage_review")
-	//@RequestMapping(value = "/mypage/mypage_review", method = RequestMethod.POST)
 	@PostMapping("/mypageReview")
 	public String mypageReview(ReviewDto review){
 		log.info("작동확인");
@@ -85,9 +95,48 @@ public class MyPageController {
 		return "/mypage/mypage_popup_practice";
 	}
 	
-	
+	/* 장비 AS 창 */
 	@RequestMapping("/device_AS")
 	public String mypageDeviceAS() {
 		return "/mypage/mypage_device_AS";
 	}
+	
+	
+	@GetMapping("/device_AS")
+	   public String mypageDeviceASList(
+			   @RequestParam(defaultValue = "1") int pageNo, 
+			   @RequestParam(defaultValue = "10") int receiptNo, Model model) {
+		
+		   int totalAsNum = mypageService.getTotalDeviceAsListNum();
+		   Pager pager = new Pager(5, 5, totalAsNum, pageNo);
+		   model.addAttribute("pager", pager);
+		   log.info("as 내역 : " + totalAsNum);
+		   log.info("pageNo 입력 : "  + pageNo);
+		   
+		   List<AfterServiceDto> asList = mypageService.getASList(pager);
+		   model.addAttribute("asList", asList);
+		   
+		   log.info("receiptNo 입력 : "  + receiptNo);
+		   AfterServiceDto asInfo = mypageService.getAsInfoDetail(receiptNo);
+		   model.addAttribute("asInfo", asInfo);
+			 
+		   return "/mypage/mypage_device_AS";
+		   //내용 출력
+		   
+		   
+		   /*
+		    * 가장 최근의 일을 출력하도록 설계했으나 현재 null 오류가 계속 나서 클릭 이전엔 빈칸으로 남겨두도록 함.
+		    * 수정시 최근의 값을 가져오도록 코드 짜기.
+		    */
+		  
+		   //디바이스 AS 내용 
+		   /*
+		   if(receiptNo == 0) {
+			   log.info("AS 창 내 확인");
+			   receiptNo = mypageService.getLatestAsNumber();
+		   }*/
+		   
+	   }
+	
+	
 }

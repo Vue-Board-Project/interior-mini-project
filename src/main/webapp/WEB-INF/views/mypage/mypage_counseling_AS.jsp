@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <div class = "mypage_as_history">
-		<h4><b><span>name</span>님의</b><br>
+		<h4><b><span>${user.name}</span>님의</b><br>
 			AS 신청 내역입니다.</h4>
 		<button class = "info_button" id = "mypage_counseling_button" onclick="location.href='/springframework-mini-project/mypage/device_AS' ">확인하기</button>
 </div>

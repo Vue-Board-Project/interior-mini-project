@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.mybatis.MypageDao">
+	<!--상품 추가 테스트용(추후 주석 처리 예정)-->
+	<insert id="insertReview" parameterType="mReview">
+		
+		insert into
+	    review(
+	        email, PURCHASE_NUMBER, MODEL_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, REVIEW_FILE
+			)
+	    values(
+	        ${email}, 1, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, null
+        )
+	
+	</insert>
+	
+	<select id="selectUserName" parameterType="string" resultType="users">
+		SELECT email, name
+		FROM users
+		WHERE email = #{email}
+	</select>
+	
+	<select id="deviceCount" resultType="int">
+		SELECT count(*) FROM AFTERSERVICE
+	</select>
+	
+	<select id="selectByAsPage" parameterType="pager" resultType="asList">
+		<![CDATA[ SELECT rnum, receiptNumber, productName, EMAIL, applicationDate
+		    from(
+		    	SELECT ROWNUM as rnum, receiptNumber, productName, EMAIL, applicationDate
+			    FROM (
+				        SELECT RECEIPT_NUMBER as receiptNumber, PRODUCT_NAME as productName,  EMAIL, APPLICATION_DATE as applicationDate
+				        from AFTERSERVICE
+				        ORDER BY RECEIPT_NUMBER DESC
+			     )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >= #{startRowNo} ]]>
+	</select>
+
+	<select id="latestAsNumber" parameterType="integer" resultType="asList">
+	   select RECEIPT_NUMBER from
+			(
+			    SELECT RECEIPT_NUMBER FROM AFTERSERVICE 
+			    ORDER BY RECEIPT_NUMBER DESC  
+			)   
+		WHERE ROWNUM = 1 
+	</select>
+	
+<resultMap id = "seleceASWithUserResultMap" type = "asList">
+			<result column = "RECEIPT_NUMBER" property = "receiptNumber" />
+			<result column = "APPLICATION_DATE" property = "applicationDate" />
+			<result column = "SCHEDULED_SERVICE_DATE" property = "scheduledServiceDate" />
+			<result column = "PRODUCT_NAME" property = "productName" />
+			<result column = "MODEL_NUMBER" property = "stringModelNumber" />
+			<result column = "BASIC_SYMPTOMS" property = "basicSymptoms" />
+			<result column = "DETAILED_SYMPTOMS" property = "detailedSymptoms" />
+			<association property="user" javaType="users">
+				<result column = "NAME" property = "name" />
+				<result column = "PHONE" property = "phone" />
+				<result column = "EMAIL" property = "email" />
+				<result column = "ADDRESS" property = "address" />
+			</association>
+	</resultMap>
+<!-- 수정 필수!!!! 하나로 합쳐야 함!!!! 시작 -->
+	<select id="getAsInfoDetail" parameterType="int" resultMap="seleceASWithUserResultMap">
+		select 
+		   RECEIPT_NUMBER, APPLICATION_DATE, SCHEDULED_SERVICE_DATE, PRODUCT_NAME, MODEL_NUMBER,
+		   BASIC_SYMPTOMS, DETAILED_SYMPTOMS,
+		   u.NAME,  u.EMAIL, u.phone, u.ADDRESS
+		FROM AFTERSERVICE a, USERS u
+		WHERE a.EMAIL = u.EMAIL and RECEIPT_NUMBER = #{receiptNo}
+	</select>
+	
+	<!-- 수정 필수!!!! 하나로 합쳐야 함!!!!끌  -->
+</mapper>
