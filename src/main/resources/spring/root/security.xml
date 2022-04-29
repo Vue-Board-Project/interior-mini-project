@@ -80,14 +80,17 @@
     
     <!-- 로그인 성공 핸들러, false 기본요청 경로로 다이렉트 -->
 	<bean id="authenticationSuccessHandler" class="com.mycompany.webapp.security.AuthenticationSuccessHandler">
-		<property name="alwaysUseDefaultTargetUrl" value="false"></property>
+		<!-- name="alwaysUseDefaultTargetUrl" value="true"
+				true : defaultTargetUrl로 리다이렉트
+				false : 요청경로로 리다이렉트 -->
+		<property name="alwaysUseDefaultTargetUrl" value="true"></property>
 		<property name="defaultTargetUrl" value="/"></property>
 	</bean>
-	<!-- 로그인 실패 핸들러, false 기본요청 경로로 다이렉트 -->
+	<!-- 로그인 실패 핸들러, false 기본요청 경로로 리다이렉트 -->
 	<bean id="authenticationFailureHandler" class="com.mycompany.webapp.security.AuthenticationFailureHandler">
 		<property name="defaultFailureUrl" value="/"></property>
 	</bean>
-	<!-- 로그아웃 핸들러, false 기본요청 경로로 다이렉트 -->
+	<!-- 로그아웃 핸들러, false 기본요청 경로로 리다이렉트 -->
 	<bean id="logoutSuccessHandler" class="com.mycompany.webapp.security.LogoutSuccessHandler">
 		<property name="defaultTargetUrl" value="/"></property>
 	</bean>

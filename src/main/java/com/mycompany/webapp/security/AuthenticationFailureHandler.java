@@ -24,7 +24,7 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
 			AuthenticationException exception) 
 			throws IOException, ServletException {
 		logger.info("실행");
-		exception.printStackTrace();
+		/*exception.printStackTrace();*/
 		super.onAuthenticationFailure(request, response, exception);
 	}
 }

@@ -8,7 +8,15 @@
              </div>
          
              <div>
+             	 <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+					<div id="failLogin" class="alert alert-danger mb-2" role="alert">
+						<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
+						 	아이디 또는 비밀번호가 틀립니다.
+					 	</c:if>
+					 </div> 
+				 </c:if>
                  <form method="post" action="login">
+                 	<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
                      <div class="form-group"  style="width: 286px;">
                          <label for="email" class="ml-3" style="font-size: 12px;">이메일</label>
                          <div class="ml-3"><input type="text" class="form-control" id="email" name="email"/></div>
@@ -24,10 +32,14 @@
 
 	         
 	                 <div class="text-center">
-	                     <input type="submit" class="btn" style="background-color: #ca5c0d; color: #faf9f6; width: 270px;" value="로그인하기"/>
+	                     <input type="submit" class="btn" style="background-color: #ca5c0d; color: #faf9f6; width: 270px;" value="로그인하기" onclick="loginAjax()"/>
 	                 </div>
                  </form>
-         
+         		 <!-- <script type="text/javascript">
+         		 	function loginAjax() {
+						
+					}
+         		 </script> -->
          
                  <div class="login_hr_sect"><p>가입하기</p></div>
          
