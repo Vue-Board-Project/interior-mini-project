@@ -70,17 +70,18 @@ public class UsersService {
 	}*/
 	
 	//이메일 발송
-	public void sendmail(UsersDto users, String div) {
+	public void sendmail(UsersDto users, String div, String rpw) {
 		log.info(users.getEmail());
+		log.info(users.getName());
 		// Mail Server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.gmail.com"; //네이버 이용시 smtp.naver.com
-		String hostSMTPid = "서버 이메일 주소(보내는 사람 이메일 주소)";
-		String hostSMTPpwd = "서버 이메일 비번(보내는 사람 이메일 비번)";
+		String hostSMTPid = "o.molaire99@gmail.com";
+		String hostSMTPpwd = "Omolaire123";
 
 		// 보내는 사람 EMail, 제목, 내용
-		String fromEmail = "보내는 사람 이메일주소(받는 사람 이메일에 표시됨)";
-		String fromName = "프로젝트이름 또는 보내는 사람 이름";
+		String fromEmail = "o.molaire99@gmail.com";
+		String fromName = "오몰레어";
 		String subject = "";
 		String msg = "";
 
@@ -90,7 +91,7 @@ public class UsersService {
 			msg += "<h3 style='color: blue;'>";
 			msg += users.getName() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
 			msg += "<p>임시 비밀번호 : ";
-			msg += users.getPassword() + "</p></div>";
+			msg += rpw + "</p></div>";
 		}
 
 		// 받는 사람 E-Mail 주소
@@ -127,17 +128,23 @@ public class UsersService {
 			out.print("등록되지 않은 이메일입니다.");
 			out.close();
 		} else {
+			UsersDto usersDto = usersDao.selectByEmail(users.getEmail());
+			log.info(usersDto.getName());
 			log.info("임시 비밀번호 생성");
 			// 임시 비밀번호 생성
 			String pw = "";
 			for (int i = 0; i < 12; i++) {
 				pw += (char) ((Math.random() * 26) + 97);
 			}
-			users.setPassword(pw);
+			//암호화 되기전 비번
+			String realPW = pw; 
+			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			users.setPassword(passwordEncoder.encode(realPW));
+			//users.setPassword(pw);
 			// 비밀번호 변경
 			usersDao2.updatePW(users);
 			// 비밀번호 변경 메일 발송
-			sendmail(users, "findPassword");
+			sendmail(usersDto, "findPassword", realPW);
 
 			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
 			out.close();

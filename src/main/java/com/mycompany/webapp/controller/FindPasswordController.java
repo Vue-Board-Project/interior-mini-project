@@ -25,12 +25,13 @@ public class FindPasswordController {
 	public String findPassword(UsersDto users, HttpServletResponse response) {
 		log.info("실행");
 		log.info(users.getEmail());
+		log.info(users.getName());
 		try {
 			usersService.findPW(response, users);
-			return "redirect:/";
+			return "home";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "redirect:/";
+			return "home";
 		}
 	}
 }
