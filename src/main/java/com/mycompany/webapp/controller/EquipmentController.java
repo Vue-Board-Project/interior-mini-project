@@ -1,17 +1,26 @@
 package com.mycompany.webapp.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
@@ -45,50 +54,85 @@ public class EquipmentController {
 		return "/equipment/equipment_k5chair_detail";// view 이름만 전달
 	}
 
-	@GetMapping("/equipment/dental_equipment_main")//겟
-	public String dental_equipment_main(Model model) {
-		//List<ProductDto> chairList=productService.selectchairlist();
-		//ModelAndView mav=new ModelAndView();
-		//Map<String, Object> map=new HashMap<>();
-		//map.put("chairList", chairList);
-		//mav.setViewName("/equipment/dental_equipment_main");
-		//mav.addObject("map", map);
+	/*@RequestMapping("/equipment/dental_equipment_main")
+	public ResponseEntity<byte[]> getByteImage() {
+		log.info("살아있냐");
+		Map<String, Object> chairmap = productService.getByteImage();
+	    byte[] imageContent = (byte[]) chairmap.get("mainimage");
+	    final HttpHeaders headers = new HttpHeaders();
+	    headers.setContentType(MediaType.IMAGE_PNG);
+	    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+	}*/
+	@RequestMapping("/equipment/dental_equipment_main")//겟
+	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, HttpServletRequest request,HttpServletResponse response, ModelMap modelmap, Model model) {
 		List<ProductDto> chairList=productService.selectchairlist();
-		for(ProductDto p : chairList) {
-			log.info("뭐 있어 : " + p.getProductName());
-		}
+		model.addAttribute("chairList",chairList);
 		
-		model.addAttribute("chairList",chairList) ;
+		Map<String,Object> resultMap = productService.getByteImage(); 
+		
+		byte[] arr = (byte[]) resultMap.get("getByteImage");
+		log.info("바이트"+arr);
+		String getimageToString = Base64.getEncoder().encodeToString(arr);
+		
+		modelmap.addAttribute("imgSrc",getimageToString);
+
+		/*Map<String, Object> chairmap = productService.getByteImage();
+		byte[] imageContent = (byte[]) chairmap.get("mainimage");
+		final HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.IMAGE_PNG);
+		
+		model.addAttribute("chairmap",new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK));*/
 		return "/equipment/dental_equipment_main";
+	}@RequestMapping("/equipment/content")
+	public String content() {
+		return "/equipment/content";
 	}
+	/*@RequestMapping("/getByteImage")
+	public ResponseEntity<byte[]> getByteImage() {
+		Map<String, Object> map = productService.getByteImage();
+	       byte[] imageContent = (byte[]) map.get("mainimage");
+	       final HttpHeaders headers = new HttpHeaders();
+	       headers.setContentType(MediaType.IMAGE_PNG);
+	       return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
+	}
+	*/
+	
 
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
 	public String productAdd() {
 		log.info("되냐");
-		return "selectchairlist";
+		return "/equipment/productAdd";
 		
 	}
 
 	// product 데이터 추가
 	@PostMapping("/equipment/productAdd")
-	public String productAdd(ProductDto product) throws IOException {
+	public String productAdd(ProductDto product, SqlSession sqlSession) throws IOException {
 		log.info("되냐1");
 
-		log.info(product.getModelNumber());
+		/*log.info(product.getModelNumber());
 		log.info(product.getProductName());
 		log.info(product.getProductQuantity());
 		log.info(product.getCategory());
-
-		log.info(product.getMainImage().getOriginalFilename());
-		if (!product.getMainImage().isEmpty()) {
-			product.setPattachoname(product.getMainImage().getOriginalFilename());
-			product.setPattachtype(product.getMainImage().getContentType());
-			product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());
-			File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
-			product.getMainImage().transferTo(file);
-			productService.insertproduct(product);			
+		
+				log.info(product.getMainImage().getOriginalFilename());
+				if (!product.getMainImage().isEmpty()) {
+					product.setPattachoname(product.getMainImage().getOriginalFilename());
+					product.setPattachtype(product.getMainImage().getContentType());
+					product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());
+					File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
+					product.getMainImage().transferTo(file);
+					productService.insertproduct(product);			
+				}*/
+		try {
+				Map<String, Object> hmap=new HashMap<String, Object>();
+				hmap.put("mainImage", product.getMainimage().getBytes());
+				productService.saveImage(hmap);
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
+
 
 		return "redirect:/equipment/productAdd";
 	}

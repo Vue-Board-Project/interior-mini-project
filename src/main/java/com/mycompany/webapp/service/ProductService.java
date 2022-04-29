@@ -1,6 +1,7 @@
 package com.mycompany.webapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -21,8 +22,15 @@ public class ProductService {
 	public void insertproduct(ProductDto product){
 		productDao.insertproduct(product);
 	}
-	
+	public void saveImage(Map<String, Object> hmap) {
+		productDao.saveImage(hmap);
+	}
 	public List<ProductDto> selectchairlist() {
 		return productDao.selectchairlist();
 	}
+	public Map<String, Object> getByteImage(){
+		return productDao.getByteImage();
+	}
+	
+	
 }

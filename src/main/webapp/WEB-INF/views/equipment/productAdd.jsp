@@ -45,5 +45,9 @@
 			</div>
 		</form>
 	</div>
+	<form action="productAdd" enctype="multipart/form-data" method="post">
+		<input type="file" name="mainImage"/>
+		<input type="submit" value="이미지 저장"/>
+	</form>
 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

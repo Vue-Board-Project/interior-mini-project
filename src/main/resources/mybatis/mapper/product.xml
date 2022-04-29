@@ -16,6 +16,9 @@
 			0, #{productColor}, 0, #{category}, #{pattachoname}, #{pattachsname}, #{pattachtype})
 		</if>
 	</insert>
+	<update id="saveImage" parameterType="java.util.Map">
+		UPDATE product SET MAINIMAGE=#{mainImage} WHERE MODEL_NUMBER='uc0002red'
+	</update>
 	<!-- 유니트 체어 상품 전체 리스트 불러오기 -->
 	<select id="selectchairlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
 		select product_name as productName, product_intro as productIntro, pattachoname, pattachsname, pattachtype
@@ -23,5 +26,12 @@
 		where CATEGORY='unitchair'
 		order by REGISTRATION_DATE desc
 	</select>
-
+	<resultMap id="reusltImage" type="java.util.Map">
+		<result column="mainimage" property="getByteImage" jdbcType="BLOB" javaType="[B"></result>
+	</resultMap>
+	<select id="getByteImage" resultType="java.util.Map" parameterType="java.util.Map" resultMap="reusltImage">
+		select MAINIMAGE
+		from product
+		where rownum=1
+	</select>
 </mapper>

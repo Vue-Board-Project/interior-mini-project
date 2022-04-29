@@ -1,6 +1,7 @@
 package com.mycompany.webapp.dto.product;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,5 +23,5 @@ public class ProductDto {
 	private String pattachoname;
 	private String pattachsname;
 	private String pattachtype;
-	private MultipartFile mainImage;//메인 이미지 파일 BLOB
+	private MultipartFile mainimage;//메인 이미지 파일 BLOB
 }

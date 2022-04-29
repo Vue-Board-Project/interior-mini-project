@@ -30,7 +30,7 @@
                     <div class="dropdown">
                         <button class="dropdown-button">Category</button>
                         <div class="dropdown-content">
-                            <a class="dropdown-content-element" href="">유니트 체어</a>
+                            <a class="dropdown-content-element" href="#">유니트 체어</a>
                             <a class="dropdown-content-element" href="#">대형 영상 장비</a>
                             <a class="dropdown-content-element" href="#">멸균 및 세척기</a>
                             <a class="dropdown-content-element" href="#">소형 영상 장비</a>
@@ -81,15 +81,14 @@
                         
                     </div>
                     <p id="best_product_content">전체 상품</p> 
-                    <p id="product_filter"><a>인기순</a>　　|　　<a>조회순</a> 　　| 　　<a>리뷰순</a> 　　| 　　<a>최신 등록순</a></p> 
+                    <p id="product_filter"><a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?order_by=view desc">인기순</a>　　|　　<a>조회순</a> 　　| 　　<a>리뷰순</a> 　　| 　　<a>최신 등록순</a></p> 
                     <div id="makeline">　</div>
                     <div id="eq_list2" class="eq_list"><!--신규 상품-->
                     
 					<c:forEach var="chair" items="${chairList}" begin="0" end="2">
                         <a id="go_k3chair" href="#" class="gotolink">
                             <div id="eq_list_content1" class="card">
-                                <%-- <img id="eq_list_content1_image"src="${pageContext.request.contextPath}/resources/subinimage/chair03.jpg" class="card-img-top"> --%>
-                                <span id="eq_list_content1_image" class="card-img-top">${chair.mainImage}</span>
+                                <img id="eq_list_content1_image"src="${imgSrc}" class="card-img-top">
                                 <div class="card-body">
                                     <p id="eq_list_content1_element1" class="card-text"><img id="eq_best_icon"
                                     src="${pageContext.request.contextPath}/resources/subinimage/popularity.png"/>${chair.productName}</p>
@@ -122,6 +121,7 @@
                                 </div>
                             </div>
                         </a> --%>
+                        	<%-- </c:forEach> --%>
                         </c:forEach>
                     </div>
                     <div id="eq_list3" class="eq_list">
