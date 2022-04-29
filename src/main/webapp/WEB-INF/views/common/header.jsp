@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomepageMain</title>
+    <title>O'Molaire</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -72,7 +72,7 @@
                     		<%-- 사이트간 요청 위조 방지가 활성화되어 있을 경우 --%>   
 		                    <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline-block">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		                  	    <a id="logout" href="logout" class="btn" style="border: none; outline: none;">
+		                  	    <a id="logout" href="logout" class="btn" style="border: none; outline: none; box-shadow: none;">
 		                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
 		                            <span id="main_header_logout_text" class="main_header_text">로그아웃</span>
 		                        </a>
@@ -84,21 +84,23 @@
                         <%@ include  file="/WEB-INF/views/common/find_password.jsp"%>
                         
                         <sec:authorize access="isAnonymous()">
-		                    <a id="main_header_signUp" class="btn" href="${pageContext.request.contextPath}/mainSignUp" style="border: none; outline: none;">
+		                    <a id="main_header_signUp" class="btn" href="${pageContext.request.contextPath}/mainSignUp" style="border: none; outline: none; box-shadow: none;">
 		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
 		                        <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
 		                    </a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
-		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/device_AS" style="border: none; outline: none;">
+		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/device_AS" style="border: none; outline: none; box-shadow: none;">
 		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
 		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
 		                    </a>
                         </sec:authorize>
-	                    <a id="main_header_cart" class="btn" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase" style="border: none; outline: none;">
-	                        <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
-	                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
-	                    </a>
+                        <sec:authorize access="isAuthenticated()">
+		                    <a id="main_header_cart" class="btn" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase" style="border: none; outline: none; box-shadow: none;">
+		                        <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
+		                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
+		                    </a>
+	                    </sec:authorize>
                 </div>
             </div>
             <%@include file="/WEB-INF/views/common/header_nav.jsp" %>

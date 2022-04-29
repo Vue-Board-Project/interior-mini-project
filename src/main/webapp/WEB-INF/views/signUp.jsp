@@ -8,6 +8,11 @@
           <!--content wrapper -->
           <div id="sign_up_wrapper" style="background-color: #faf9f6; height: 100rem;  font-family: 'MinSans-Regular';" >
               <div class="text-center pt-5"><span style="font-size: 30px; font-family: 'MinSans-Regular';">회원가입</span></div>
+              <c:if test="${error != null}">
+				  <div class="alert alert-danger mb-2 mt-3" style="width: 37%; margin: 0 auto;" role="alert">
+				    ${error}
+				  </div>			
+			  </c:if>
               <!-- content-->
               <form method="post" action="join" id="content" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;" novalidate>
   
