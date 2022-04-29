@@ -11,7 +11,7 @@
 		<property name="username" value="chicolate1"></property><!-- 사용자 이름 -->
 		<property name="password" value="kosa12345"></property><!-- 비밀번호 -->
 		<property name="initialSize" value="2"></property><!-- 커넥션 초기 개수 -->
-		<property name="maxTotal" value="3"></property><!-- 최대 커넥션 수 -->
+		<property name="maxTotal" value="4"></property><!-- 최대 커넥션 수 -->
 		<property name="maxIdle" value="2"></property><!-- 커넥션 일 안하면 2개만 남기고 제거 -->
 	</bean>
 

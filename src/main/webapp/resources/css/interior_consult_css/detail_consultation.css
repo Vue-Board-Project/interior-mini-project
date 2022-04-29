@@ -35,6 +35,10 @@
 #dcajcwaiting, #dcajctreatment, #dcajcdisinfection, #dcajcmachine{
     display: none;
 }
+
+.detail_consult_aside_jsonci_class{
+    padding: 0;
+}
 .detail_consult_aside_jsonci_class[value="all"]{
     color: #ca5c0d;
 }
@@ -113,3 +117,7 @@
 .remodeling_light input[type="radio"]:checked + span>div{
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
+
+
+
+

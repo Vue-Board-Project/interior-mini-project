@@ -14,7 +14,7 @@
 	
 	$(document).ready(function(){
 		 $(review_button).click(function(){
-			 console.log("plz work...");
+			 
 		 $("#mypage_review_mask").css("display", "block");
 		 $(".mypage_popup_wrap").css("display", "block");
 		});
@@ -33,7 +33,8 @@ function setReviewPhoto(event) {
 			var reader = new FileReader(); 
 			
 			reader.onload = function(event) { 
-				var img = document.createElement("img");
+				let img = document.createElement("img");
+                
 				img.setAttribute("src", event.target.result); 
 				document.querySelector("div.review_image_container").appendChild(img); 
 			}; 
