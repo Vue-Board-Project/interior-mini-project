@@ -1,9 +1,43 @@
+function checkAll() {
+	console.log("~~~~~~~~~");
+    if(isEmailCorrect()==false){
+		console.log("11");
+		return false;
+	} else if(checkPw()==false){
+		console.log("22");
+		return false;
+	} else if(comparePw()==false){
+		console.log("33");
+		return false;
+	} else if(checkName()==false){
+		console.log("44");
+		return false;
+	} else if(checkPhoneNum()==false){
+		console.log("55");
+		return false;
+	} else if(checkCRN()==false){
+		console.log("66");
+		return false;
+	} else if($("input:checked[id='check1']").is(":checked")==false){
+		console.log("77");
+		return false;
+	} else if($("input:checked[id='check2']").is(":checked")==false){
+		console.log("88");
+		return false;
+	} else if($("input:checked[id='check3']").is(":checked")==false){
+		console.log("99");
+		return false;
+	}
+	console.log("~~~~~111111~~~~");
+	return true;
+}
+
   /*변수 선언*/
 
-  var email = document.querySelector('#email2');
+  var email = document.querySelector('#email333');
   console.log(email);
 
-  var pw1 = document.querySelector('#password2');
+  var pw1 = document.querySelector('#password333');
   var pwMsg = document.querySelector('#alertTxt');
   var pwImg1 = document.querySelector('#pswd1_img1');
 
@@ -38,11 +72,14 @@
       if(email.value === ""){ 
           error[0].innerHTML = "필수 정보입니다.";
           error[0].style.display = "block";
+          return false;
       } else if(!emailPattern.test(email.value)) {
           error[0].innerHTML = "이메일을 다시 확인해주세요.";
           error[0].style.display = "block";
+          return false;
       } else {
           error[0].style.display = "none"; 
+          return true;
       }
 
   }
@@ -53,6 +90,7 @@
       if(pw1.value === "") {
           error[1].innerHTML = "필수 정보입니다.";
           error[1].style.display = "block";
+          return false;
       } else if(!pwPattern.test(pw1.value)) {
           error[1].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
           pwMsg.innerHTML = "사용불가";
@@ -60,12 +98,14 @@
           error[1].style.display = "block";
           pwMsg.style.display = "block";
           pwImg1.src = "/springframework-mini-project/resources/pngs/m_icon_not_use.png";
+          return false;
       } else {
           error[1].style.display = "none";
           pwMsg.innerHTML = "안전";
           pwMsg.style.display = "block";
           pwMsg.style.color = "#03c75a";
           pwImg1.src = "/springframework-mini-project/resources/pngs/m_icon_safe.png";
+          return true;
       }
   }
 
@@ -74,15 +114,18 @@
       if(pw2.value === pw1.value && pw2.value != "") {
           pwImg2.src = "/springframework-mini-project/resources/pngs/m_icon_check_enable.png";
           error[2].style.display = "none";
+          return true;
       } else if(pw2.value !== pw1.value) {
           pwImg2.src = "/springframework-mini-project/resources/pngs/m_icon_check_disable.png";
           error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
           error[2].style.display = "block";
+          return false;
       } 
 
       if(pw2.value === "") {
           error[2].innerHTML = "필수 정보입니다.";
           error[2].style.display = "block";
+          return false;
       }
   }
 
@@ -91,11 +134,14 @@
       if(userName.value === "") {
           error[3].innerHTML = "필수 정보입니다.";
           error[3].style.display = "block";
+          return false;
       } else if(!namePattern.test(userName.value) || userName.value.indexOf(" ") > -1) {
           error[3].innerHTML = "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
           error[3].style.display = "block";
+          return false;
       } else {
           error[3].style.display = "none";
+          return true;
       }
   }
 
@@ -105,11 +151,14 @@
       if(mobile.value === "") {
           error[4].innerHTML = "필수 정보입니다.";
           error[4].style.display = "block";
+          return false;
       } else if(!isPhoneNum.test(mobile.value)) {
           error[4].innerHTML = "형식에 맞지 않는 번호입니다.";
           error[4].style.display = "block";
+          return false;
       } else {
           error[4].style.display = "none";
+          return true;
       }
   }
 
@@ -137,14 +186,17 @@
           console.log(checkSum);
           if(Math.floor(valueMap[9]) === ((10-(checkSum%10))%10)){
               error[5].style.display = "none";
+              return true;
           } else {
               error[5].innerHTML = "형식에 맞지 않는 번호입니다.";
               error[5].style.display = "block";
+              return false;
           }
       } else {
           console.log("10no");
           error[5].innerHTML = "형식에 맞지 않는 번호입니다.";
           error[5].style.display = "block";
+          return false;
       }
 
   }
@@ -180,4 +232,4 @@
 	    	agreeChk[i].checked = e.target.checked;
 	    }
 	});
-	
+

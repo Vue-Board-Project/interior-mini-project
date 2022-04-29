@@ -14,13 +14,13 @@
 				  </div>			
 			  </c:if>
               <!-- content-->
-              <form method="post" action="join" id="content" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;" novalidate>
+              <form method="post" action="join" onsubmit="return checkAll()" style="position: absolute; left: 50%; transform: translate(-50%); width: 700px;" novalidate>
   
                    <!-- EMAIL -->
                    <div>
                       <h3 class="join_title"><label for="email">이메일<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_email">
-                          <input type="email" id="email2" name="email" class="int" maxlength="100" required>
+                          <input type="email" id="email333" name="email" class="int" maxlength="100">
                       </span>
                       <span class="error_next_box"></span>    
                   </div>
@@ -29,7 +29,7 @@
                   <div>
                       <h3 class="join_title"><label for="pswd1">비밀번호<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_pass">
-                          <input type="password" id="password2" name="password" class="int" maxlength="20" required>
+                          <input type="password" id="password333" name="password" class="int" maxlength="20">
                           <span id="alertTxt"></span>
                           <img src="${pageContext.request.contextPath}/resources/pngs/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
                       </span>
@@ -50,7 +50,7 @@
                   <div>
                       <h3 class="join_title"><label for="name">이름<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_name">
-                          <input type="text" id="name" name="name" class="int" maxlength="20" required>
+                          <input type="text" id="name" name="name" class="int" maxlength="20">
                       </span>
                       <span class="error_next_box"></span>
                   </div>
@@ -59,7 +59,7 @@
                   <div>
                       <h3 class="join_title"><label for="phoneNo">대표번호<span class="ml-1" style="color: red;">*</span></label></h3>
                       <span class="box int_mobile">
-                          <input type="tel" id="phone" name="phone" class="int" maxlength="16" placeholder="전화번호 입력(-는 빼고 입력해주세요)" required>
+                          <input type="tel" id="phone" name="phone" class="int" maxlength="16" placeholder="전화번호 입력(-는 빼고 입력해주세요)">
                       </span>
                       <span class="error_next_box"></span>    
                   </div>
@@ -91,15 +91,15 @@
                         </label>
                         <diV class="p-4" style="background-color: #f5f5f5;">
                             <label for="agree" class="d-block">
-                                <input type="checkbox" name="agree" value="1">
+                                <input id="check1" type="checkbox" name="agree" value="1">
                                 <span style="font-size: 16px;">이용약관 동의<strong>(필수)</strong></span>
                             </label>
                             <label for="agree" class="d-block">
-                                <input type="checkbox" name="agree" value="2">
+                                <input id="check2" type="checkbox" name="agree" value="2">
                                 <span style="font-size: 16px;">개인정보 수집, 이용 동의<strong>(필수)</strong></span>
                             </label>
                             <label for="agree" class="d-block">
-                                <input type="checkbox" name="agree" value="3">
+                                <input id="check3" type="checkbox" name="agree" value="3">
                                 <span style="font-size: 16px;">개인정보 이용 동의<strong>(필수)</strong></span>
                             </label>
                             <label for="agree" class="d-block">
@@ -108,7 +108,7 @@
                             </label>
                         </diV>
                     </div>
-                  <button class="btn btn_area" type="submit" id="btnJoin">가입하기</button>
+                  <button type="submit" class="btn btn_area" id="btnJoin" style="box-shadow: none;">가입하기</button>
                   
               </form> 
           </div> 
