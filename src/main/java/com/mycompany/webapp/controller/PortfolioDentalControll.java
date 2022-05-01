@@ -35,7 +35,9 @@ public class PortfolioDentalControll {
 		/*for(InteriorDto s : interiorList) {
 			log.info(s.getIsummary());
 		}*/
+		int cnt = interiorService.interiorCnt();
 		model.addAttribute("interiorList",interiorList) ;
+		model.addAttribute("cnt",cnt);
 		return "portfolio_dental/portfolio_dental";
 	}
 	@RequestMapping("/portfolioDentalDeatail3")

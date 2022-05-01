@@ -23,6 +23,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class InteriorController {
 	
+	@Resource // 인테리어 서비스 객체
+	private InteriorService interiorService;
+	
 	@RequestMapping("/interior")
 	public String interior() {
 		
@@ -110,14 +113,8 @@ public class InteriorController {
 	      DentalType.add("special");
 	      model.addAttribute("DentalType", DentalType);   
 	      
-	      //기본 선택 항목을 설정
-	      interiors.setItype("normal");
-	      
 	      return "interior/interior";
 	}
-	
-	@Resource // 인테리어 서비스 객체
-	private InteriorService interiorService;
 	
 	@PostMapping("/interiorDataUpload")
 	public String interiorDataUpload(InteriorDto interior) throws IllegalStateException, IOException {
