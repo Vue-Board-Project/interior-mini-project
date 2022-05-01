@@ -40,7 +40,6 @@
                 </div>
                 <div id="dentalequipmentmain_right">
                     <p id="best_product_content">BEST ITEM</p>
-                    
                     <div id="makeline">　</div>
                     <div id="eq_list1" class="eq_list"><!--베스트 상품-->
                     <c:forEach var="bestchair" items="${bestchairList}" begin="0" end="2">
@@ -57,10 +56,9 @@
                         </a>
                     </c:forEach>
 
-                    </div><div id="eq_list2">
-                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
                     </div>
-                    <p id="best_product_content" >전체 상품</p> 
+                    
+                     
                     <form id="product_filter" action="Sort" method="get">
                     	<input type="hidden"
                     	name="sort" value="1"></input><input class="btn btn-link-dark" type="submit" value="인기순"/>　　|　　
@@ -72,9 +70,11 @@
                     	name="sort" value="4">최신 등록순</a>
                     </form> 
                     <div id="makeline">　</div>
-                    <div id="eq_list2" class="eq_list"><!--신규 상품-->
                     
-					<c:forEach var="chair" items="${chairList}">
+                    <p id="best_product_content" >전체 상품</p>
+					<div id="eq_list2" class="eq_list"><!--전체 상품-->
+                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
+                    <c:forEach var="chair" items="${chairList}">
                         <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_${chair.productName}_detail" class="gotolink">
                             <div id="eq_list_content1" class="card">
                                 <img id="eq_list_content1_image"src="" class="card-img-top">
@@ -87,11 +87,9 @@
                             </div>
                         </a>
                     </c:forEach>
-
-                    
-
-                </div>
+                  </div>
             </div>
+        </div>
 <script src="${pageContext.request.contextPath}/resources/js/equipment/dental_equipment_main.js"></script>
     </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

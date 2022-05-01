@@ -113,9 +113,12 @@
         } */
 		.eq_list{
             display:flex;
-            flex-wrap: wrap;
             margin-bottom: 100px;
-            height: 70%
+
+        }
+        #eq_list2{
+        	display:flex;
+            flex-wrap: wrap;
         }
         .eq_list .card{
             width: 300px;
