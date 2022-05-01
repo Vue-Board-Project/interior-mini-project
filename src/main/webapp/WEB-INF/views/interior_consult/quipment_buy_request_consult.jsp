@@ -138,7 +138,7 @@
                                             <div style="display: inline-block; width: 90%; height: 100px;">
                                                 <div style="display: flex;">
                                                     <div style="display: inline-block; width: 30%;" class="p-2">
-                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/cleaner.jpg" width="150px" height="110px" class="mt-2">
+                                                        <img class="productConsultImg" width="150px" height="110px" class="mt-2">
                                                     </div>
                                                     <div style="display: inline-block; width: 40%; height: 100px;" class="ml-3 mt-2">
                                                         <div style="font-family: 'MinSans-Medium';" class="mb-2">
@@ -159,8 +159,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-    
+                                                </div>    
                                             </div>
                                             <div  style="display: inline-block; width: 10%;height: 100px;" class="text-right">
                                                 <button class="btn"><i class="fa-solid fa-xmark"></i></button>
@@ -169,43 +168,45 @@
                                     </div>
                                     
                                 </div>
-                                <div style="width: 100%;" id="stepthree_height">
-                                    <div class="border mb-4 bg-white" style="width: 95%; height: 160px;">
-                                        <div style="display: flex;">
-                                            <div style="display: inline-block; width: 90%; height: 100px;">
-                                                <div style="display: flex;">
-                                                    <div style="display: inline-block; width: 30%;" class="p-2">
-                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/cleaner.jpg" width="150px" height="110px" class="mt-2">
-                                                    </div>
-                                                    <div style="display: inline-block; width: 40%; height: 100px;" class="ml-3 mt-2">
-                                                        <div style="font-family: 'MinSans-Medium';" class="mb-2">
-                                                            <span style="font-size: 20px;">한신 멸균기</span><br/>
-                                                            model1
-                                                        </div>
-                                                        <div style="display: flex;">
-                                                            <div style="display: inline-block;" class="mr-2">색상:</div> 
-                                                            <div style="display: inline-block; width: 20px; height: 20px;background-color: cornflowerblue; border-radius: 10px;" class="mt-1"></div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="mt-3">
-                                                                <div class="border rounded" style="width: 90px; height: 30px; display: flex;">
-                                                                    <div style="display: inline-block;"><button class="pb-1" style="width: 30px; height: 30px; border-radius: 5px; background-color: #ca5c0d; color: white; border: 0;">+</button></div>
-                                                                    <div style="display: inline-block; width: 30px;" class="text-center"><span >1</span></div>
-                                                                    <div style="display: inline-block;"><button  class="pb-1" style="width: 30px; height: 30px; border-radius: 5px; background-color: #ca5c0d; color: white; border: 0;">-</button></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-    
-                                            </div>
-                                            <div  style="display: inline-block; width: 10%;height: 100px;" class="text-right">
-                                                <button class="btn"><i class="fa-solid fa-xmark"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
+                               <c:forEach var="image" items="${images}" > 
+	                                <div style="width: 100%;" id="stepthree_height">
+	                                    <div class="border mb-4 bg-white" style="width: 95%; height: 160px;">
+	                                        <div style="display: flex;">
+	                                            <div style="display: inline-block; width: 90%; height: 100px;">
+	                                                <div style="display: flex;">
+	                                                    <div style="display: inline-block; width: 30%;" class="p-2">
+	                                                        <img src="data:image/png;base64;${image}" width="150px" height="110px" class="mt-2">
+	                                                    </div>
+	                                                    <div style="display: inline-block; width: 40%; height: 100px;" class="ml-3 mt-2">
+	                                                        <div style="font-family: 'MinSans-Medium';" class="mb-2">
+	                                                            <span style="font-size: 20px;">한신 멸균기</span><br/>
+	                                                            model1
+	                                                        </div>
+	                                                        <div style="display: flex;">
+	                                                            <div style="display: inline-block;" class="mr-2">색상:</div> 
+	                                                            <div style="display: inline-block; width: 20px; height: 20px;background-color: cornflowerblue; border-radius: 10px;" class="mt-1"></div>
+	                                                        </div>
+	                                                        <div>
+	                                                            <div class="mt-3">
+	                                                                <div class="border rounded" style="width: 90px; height: 30px; display: flex;">
+	                                                                    <div style="display: inline-block;"><button class="pb-1" style="width: 30px; height: 30px; border-radius: 5px; background-color: #ca5c0d; color: white; border: 0;">+</button></div>
+	                                                                    <div style="display: inline-block; width: 30px;" class="text-center"><span >1</span></div>
+	                                                                    <div style="display: inline-block;"><button  class="pb-1" style="width: 30px; height: 30px; border-radius: 5px; background-color: #ca5c0d; color: white; border: 0;">-</button></div>
+	                                                                </div>
+	                                                            </div>
+	                                                        </div>
+	                                                    </div>
+	                                                </div>
+	    
+	                                            </div>
+	                                            <div  style="display: inline-block; width: 10%;height: 100px;" class="text-right">
+	                                                <button class="btn"><i class="fa-solid fa-xmark"></i></button>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    
+	                                </div>
+                                </c:forEach>
 
                             </div>
                             
