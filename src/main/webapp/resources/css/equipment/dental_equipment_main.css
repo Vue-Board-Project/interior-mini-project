@@ -58,7 +58,6 @@
 			display: inline-block;
 		}
 		.dropdown-content {
-			display: none;
 			min-width: 75px;
 			padding: 5px;
 			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -94,7 +93,7 @@
             font-size: 30px;
             font-family: "MinSans-Black";
         }
-        #eq_list1{
+        /* #eq_list1{
             display: flex;
             margin-bottom: 100px;
         }
@@ -111,16 +110,26 @@
             border: none;
             text-align: left;
             margin-left: 50px;
+        } */
+		.eq_list{
+            display: flex;
+            margin-bottom: 100px;
         }
-
-        #eq_list2{
+        .eq_list .card{
+            width: 300px;
+            height: 550px;
+            border: none;
+            text-align: left;
+            margin-left: 50px;
+        }
+        /* #eq_list2{
             display: flex;
             margin-bottom: 100px;
         }
         #eq_list3{
             display: flex;
             margin-bottom: 100px;
-        }
+        } */
         
         .gotolink{
             text-decoration: none;
@@ -144,10 +153,10 @@
         #eq_list_content1{
             
         }
-        #eq_list_content1_element1{
+        /* #eq_list_content1_element1{
             font-size: 30px;
             font-family: "MinSans-Black";
-        }
+        } */
         #eq_list_content1_element2{
             font-size: 15px;
         }

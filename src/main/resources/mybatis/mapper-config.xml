@@ -16,7 +16,6 @@
 	    	
 	    	<!-- 한보현 추가 -->
 	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDetailDto" alias="interiorDetail"/>
-	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDto" alias="interior"/>
 	    	
 	    	
 	    	 <!-- mypage -->
@@ -28,10 +27,9 @@
 	      	
 	      	<typeAlias type="com.mycompany.webapp.dto.product.AfterServiceDto" alias="asList"/>
 	      	<typeAlias type="com.mycompany.webapp.dto.Pager" alias="pager"/>
-	      	
-	      	<!--마이페이지 위해 다른 브랜치의 것들을 불러옴.. 한보현 시작-->
-	      	<typeAlias type="com.mycompany.webapp.dto.UsersDto" alias="users"/>  
-	      	<typeAlias type="com.mycompany.webapp.dto.product.ProductDto" alias="product"/> 
-	    	<!-- USERDTO 써야 해서 잠깐 데려왔다. 한보현 끝-->
+
+	    	<typeAlias type="com.mycompany.webapp.dto.product.ProductConsultDetailDto" alias="productConsultDetail"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.product.ProductConsultDto" alias="productConsult"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.product.ProductDto" alias="product"/>
 	  </typeAliases>
 </configuration> 

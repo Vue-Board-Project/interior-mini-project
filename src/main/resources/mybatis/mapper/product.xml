@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.mybatis.ProductDao">
+	<!--상품 추가 테스트용(추후 주석 처리 예정)-->
+	<insert id="insertproduct" parameterType="product">
+		<if test="mainImage==null">
+			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCT_HITS, 
+			PRODUCT_SALES_VOLUME, PRODUCT_COLOR, REVIEW_COUNT, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE)
+			values(#{modelNumber}, #{productName}, #{price}, SYSDATE, #{productQuantity}, 0, 
+			0, #{productColor}, 0, #{category}, null, NULL, NULL)
+		</if>
+		<if test="mainImage!=null">
+			insert into product(MODEL_NUMBER, PRODUCT_NAME, PRICE, REGISTRATION_DATE, PRODUCT_QUANTITY, PRODUCTI_HITS, 
+			PRODUCT_SALES_VOLUME, PRODUCT_COLOR, REVIEW_COUNT, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE)
+			values(#{modelNumber}, #{productName}, #{price}, SYSDATE, #{productQuantity}, 0, 
+			0, #{productColor}, 0, #{category}, #{pattachoname}, #{pattachsname}, #{pattachtype})
+		</if>
+	</insert>
+	<update id="saveImage" parameterType="java.util.Map">
+		UPDATE product SET MAINIMAGE=#{mainImage} WHERE MODEL_NUMBER='uc0002red'
+	</update>
+	<!-- 유니트 체어 상품 전체 리스트 불러오기 -->
+	<select id="selectchairlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
+		select product_name as productName, product_intro as productIntro
+		from product
+		where CATEGORY='unitchair'
+		order by REGISTRATION_DATE desc
+		<!-- <include refid="sort" /> -->
+	</select>
+	
+	<sql id="sort">
+		<if test="'salesCount'.equals(sort)">
+			ORDER BY PRODUCT_SALES_VOLUME DESC
+		</if>
+		<if test="sort == 'viewCount'">
+			ORDER BY PRODUCT_HITS DESC
+		</if>
+		<if test="sort == 'reviewCount'">
+			ORDER BY REVIEW_COUNT DESC
+		</if>
+		<!-- <if test="sort==time">
+			order by REGISTRATION_DATE desc
+		</if> -->
+		<if test="sort==null" >
+			order by REGISTRATION_DATE desc
+		</if>
+	</sql>
+	
+	<resultMap id="reusltImage" type="java.util.Map">
+		<result column="mainimage" property="getByteImage" jdbcType="BLOB" javaType="[B"></result>
+	</resultMap>
+	<select id="getByteImage" resultType="java.util.Map" parameterType="java.util.Map" resultMap="reusltImage">
+		select MAINIMAGE
+		from product
+		where rownum=1
+	</select>
+</mapper>

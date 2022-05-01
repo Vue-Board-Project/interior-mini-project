@@ -36,7 +36,6 @@
          <!-- 임시 파일로 저장해야할 파일의 크기 지정(요청 처리가 끝나면 임시 파일 삭제) -->
          <file-size-threshold>1024</file-size-threshold>
       </multipart-config>
-		
 	</servlet>
 	<!-- 클라이언트가 http://localhost:8080/webapp/... 이런 URL로 요청할 경우 DispatcherServlet 처리 -->
 	<servlet-mapping>
