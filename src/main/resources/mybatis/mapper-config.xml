@@ -28,6 +28,8 @@
 	      	
 	      	<typeAlias type="com.mycompany.webapp.dto.product.AfterServiceDto" alias="asList"/>
 	      	<typeAlias type="com.mycompany.webapp.dto.Pager" alias="pager"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.product.PurchaseDto" alias="purchase"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.product.PurchaseDetailDto" alias="pDetail"/>
 	      	
 	      	<!--마이페이지 위해 다른 브랜치의 것들을 불러옴.. 한보현 시작-->
 	      	<typeAlias type="com.mycompany.webapp.dto.UsersDto" alias="users"/>  

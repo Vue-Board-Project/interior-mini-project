@@ -33,32 +33,55 @@
 			</div>
 	           <hr width = 90%>
 	     	<div class="content_section">
+	     	
 	     	<!-- 재품 받기 -->
 	     		<div class = "prouducts">
-	     		<!-- 각 제품 요소들 -->
+	     		
+	     		<c:forEach var="orderList" items="${orderList}">
+	     		 <!-- 각 제품 요소들 -->
 	     			<div class= "product_list_element">
 	     				<div class = "element_img_slot">
-	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/images/mypage/Tetric_N_Bond_VIVAPEN.png" />
+	     					<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_orderlist.png" />
+	     					</a> 
 	     				</div>
-	     				<div class = "element_title">Tetric N Bond VIVAPEN</div>
+	     				<div class = "element_title_explain">구매번호</div>
+	     				<<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+	     				<div class = "element_title">${orderList.purchaseNumber}</div>
+	     				</a> 
 	     				<div class = "element_price">
-		     				<div class = "element_price_money">110,000</div>
+		     				<div class = "element_price_money">금액 : ${orderList.paymentAmount}</div>
 		     				<span class = "element_price_unit">원</span>  
 	     				</div>
+	     				<div class = "element_date">날짜 :  ${orderList.purchaseDate}</div>
 	     				<div class = "element_delivery_status">배송중</div>
-	     			</div>
-	     			<div class= "product_list_element">
-	     				<div class = "element_img_slot">
-	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/images/mypage/A_OSS_VIAL TYPE.png" />
-	     				</div>
-	     				<div class = "element_title">A OSS VIAL TYPE(SW)</div>
-	     				<div class = "element_price">
-		     				<div class = "element_price_money">320,000</div>
-		     				<span class = "element_price_unit">원</span>  
-	     				</div>
-	     				<div class = "element_delivery_status">배송완료</div>
-	     			</div>
-	  				
+	     			</div>	
+	     		</c:forEach> 
+	     			<div colspan="4" class="text-center">
+						<div>
+							<a class="btn btn-outline-primary btn-sm" href="mypage_orderlist?pageNo=1">처음</a>
+							<c:if test="${pager.groupNo>1}">
+								<a class="btn btn-outline-info btn-sm" href="mypage_orderlist?pageNo=${pager.startPageNo-1}">이전</a>
+							</c:if>
+							
+							<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+								<c:if test="${pager.pageNo != i}">
+									<a class="btn btn-outline-success btn-sm" href="mypage_orderlist?pageNo=${i}">${i}</a>
+								</c:if>
+								<c:if test="${pager.pageNo == i}">
+									<a class="btn btn-danger btn-sm" href="mypage_orderlist?pageNo=${i}">${i}</a>
+								</c:if>
+							</c:forEach>
+							
+							<c:if test="${pager.groupNo<pager.totalGroupNo}">
+								<a class="btn btn-outline-info btn-sm" href="mypage_orderlist?pageNo=${pager.endPageNo+1}">다음</a>
+							</c:if>
+							<a class="btn btn-outline-primary btn-sm" href="mypage_orderlist?pageNo=${pager.totalPageNo}">맨끝</a>
+						</div>
+					</div>
+	     		
+	     		
+	     		
 	     		</div>		
 			</div>
 	</div>
@@ -102,15 +125,21 @@
       		height : 120px;
       		margin-top :15px;
       		margin-left : 30px;
-      		border : 1px solid #ccc;
       		
       	}
+      .product_list_element	.element_title_explain{
+      		position : absolute;
+     		margin-left : 130px;
+     		margin-top : 5px;
+      		font-family: 'MinSans-Regular';
+      		font-size : 1rem;
+      }
      .product_list_element .element_title {
-     
+     		position : absolute;
+     		margin-left : 130px;
+     		margin-top : 20px;
      		font-family: 'MinSans-Medium';
      		font-size : 1.5rem;
-     		margin-left : 20px;
-     		margin-top : 15px;
      }
      
      .product_list_element .element_price{
@@ -134,6 +163,16 @@
       	margin-left : 2px;
       	font-size : 0.8rem;
      
+     }
+     
+      .prouducts .product_list_element .element_date{
+      	position : absolute;
+      	font-family: 'MinSans-Regular';
+      	width : 200px;
+      	height : 2rem;
+      	font-size : 1rem;
+     	margin-left : 130px;
+     	margin-top : 100px;
      }
      
     .product_list_element .element_delivery_status {
