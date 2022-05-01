@@ -21,29 +21,51 @@
 	</update>
 	<!-- 유니트 체어 상품 전체 리스트 불러오기 -->
 	<select id="selectchairlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
+		select product_name as productName, product_intro as productIntro, category
+		from product
+		<include refid='category'></include>
+		order by REGISTRATION_DATE desc
+	</select>
+	<!--베스트 상품 3순위-->
+	<select id="selectbestlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
+		select product_name as productName, product_intro as productIntro, category
+		from product
+		where CATEGORY='unitchair'
+		order by PRODUCT_SALES_VOLUME desc
+	</select>
+	
+	<select id="soltsalesCount" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
+		select product_name as productName, product_intro as productIntro
+		from product
+		where CATEGORY='unitchair' and rownum le 3
+		ORDER BY PRODUCT_SALES_VOLUME DESC
+	</select>
+	<select id="soltviewCount" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
+		select product_name as productName, product_intro as productIntro
+		from product
+		where CATEGORY='unitchair'
+		ORDER BY PRODUCT_HITS DESC
+	</select>
+	<select id="soltreviewCount" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
+		select product_name as productName, product_intro as productIntro
+		from product
+		where CATEGORY='unitchair'
+		ORDER BY REVIEW_COUNT DESC
+	</select>
+	<select id="solttime" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
 		select product_name as productName, product_intro as productIntro
 		from product
 		where CATEGORY='unitchair'
 		order by REGISTRATION_DATE desc
-		<!-- <include refid="sort" /> -->
 	</select>
-	
-	<sql id="sort">
-		<if test="'salesCount'.equals(sort)">
-			ORDER BY PRODUCT_SALES_VOLUME DESC
-		</if>
-		<if test="sort == 'viewCount'">
-			ORDER BY PRODUCT_HITS DESC
-		</if>
-		<if test="sort == 'reviewCount'">
-			ORDER BY REVIEW_COUNT DESC
-		</if>
-		<!-- <if test="sort==time">
-			order by REGISTRATION_DATE desc
+	<sql id="category">
+		<!-- <if test="category == null">
+			'unitchair'
 		</if> -->
-		<if test="sort==null" >
-			order by REGISTRATION_DATE desc
+		<if test="category == 'unitchair'">
+			where CATEGORY='unitchair'
 		</if>
+		
 	</sql>
 	
 	<resultMap id="reusltImage" type="java.util.Map">

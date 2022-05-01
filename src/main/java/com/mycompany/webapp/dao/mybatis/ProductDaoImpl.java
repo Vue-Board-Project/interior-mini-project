@@ -14,8 +14,8 @@ import com.mycompany.webapp.dto.product.ProductDto;
 
 @Mapper
 public class ProductDaoImpl implements ProductDao{
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
+	/*@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;*/
 	
 	@Resource
 	private SqlSession sqlSession;
@@ -23,7 +23,7 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<ProductDto> selectchairlist() {
 		
-		return sqlSessionTemplate.selectList("product.selectchairlist");
+		return sqlSession.selectList("product.selectchairlist");
 	}
 
 	@Override
@@ -36,8 +36,24 @@ public class ProductDaoImpl implements ProductDao{
 		sqlSession.update("sqlSession", hmap);
 	}
 	@Override
-	public String sort() {
-		return sort();
+	public List<ProductDto> soltsalesCount(){
+		return sqlSession.selectList("product.soltsalesCount");
+	}
+	@Override
+	public List<ProductDto> soltviewCount(){
+		return sqlSession.selectList("product.soltviewCount");
+	}
+	@Override
+	public List<ProductDto> soltreviewCount(){
+		return sqlSession.selectList("product.soltreviewCount");
+	}
+	@Override
+	public List<ProductDto> solttime(){
+		return sqlSession.selectList("product.solttime");
+	}
+	@Override
+	public List<ProductDto> selectbestlist(){
+		return sqlSession.selectList("product.selectbestlist");
 	}
 	/*@Override
 	public Map<String, Object> getByteImage(){

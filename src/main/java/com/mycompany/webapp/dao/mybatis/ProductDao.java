@@ -14,5 +14,11 @@ public interface ProductDao {
 	public void saveImage(Map<String, Object> hmap);
 	//public Map<String, Object> getByteImage(Map<String, Object> imap);
 	//public Map<String, Object> getByteImage();
-	public String sort();
+	
+	//정렬 해 보려고 추가 했어용
+	public List<ProductDto> soltsalesCount();
+	public List<ProductDto> soltviewCount();
+	public List<ProductDto> soltreviewCount();
+	public List<ProductDto> solttime();
+	public List<ProductDto> selectbestlist();
 }
