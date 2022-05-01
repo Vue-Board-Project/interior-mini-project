@@ -12,5 +12,6 @@ public class UsersDto {
 	private String address; //주소
 	private String addressDetail; //상세주소
 	private String crn; //사업자등록번호
+	private String role; //권한
 	
 }

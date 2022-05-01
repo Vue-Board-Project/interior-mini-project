@@ -7,11 +7,19 @@
                  <h3>로그인</h3>
              </div>
          
-             <form>
-                 <form action="#">
+             <div>
+             	 <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+					<div id="failLogin" class="alert alert-danger mb-2" role="alert">
+						<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
+						 	아이디 또는 비밀번호가 틀립니다.
+					 	</c:if>
+					 </div> 
+				 </c:if>
+                 <form method="post" action="login">
+                 	<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
                      <div class="form-group"  style="width: 286px;">
-                         <label for="u-email" class="ml-3" style="font-size: 12px;">이메일</label>
-                         <div class="ml-3"><input type="text" class="form-control" id="u-email" name="u-email"/></div>
+                         <label for="email" class="ml-3" style="font-size: 12px;">이메일</label>
+                         <div class="ml-3"><input type="text" class="form-control" id="email" name="email"/></div>
                          <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
                      </div>
          
@@ -20,18 +28,23 @@
                          <div class="ml-3"><input type="password" class="form-control" id="password" name="password"/></div>
                          <!-- <small id="passwordHelp" class="form-text text-muted">알파벳 대소문자, 숫자를 혼용해서 8~16자</small> -->
                      </div>
+	            	 <div class="text-right mb-3 mr-3"><button type="button" id="find_pw_open" style="border: none; outline: none; background-color: #faf9f6; color: #a9a9a9;"><small>비밀번호를 잊으셨나요?</small></button></div>
+
+	         
+	                 <div class="text-center">
+	                     <input type="submit" class="btn" style="background-color: #ca5c0d; color: #faf9f6; width: 270px;" value="로그인하기" onclick="loginAjax()"/>
+	                 </div>
                  </form>
-         
-                 <div class="text-right mb-3 mr-3"><button id="find_pw_open" style="border: none; outline: none; background-color: #faf9f6; color: #a9a9a9;"><small>비밀번호를 잊으셨나요?</small></button></div>
-         
-                 <div class="text-center">
-                     <input type="submit" class="btn" style="background-color: #ca5c0d; color: #faf9f6; width: 270px;" value="로그인하기"/>
-                 </div>
+         		 <!-- <script type="text/javascript">
+         		 	function loginAjax() {
+						
+					}
+         		 </script> -->
          
                  <div class="login_hr_sect"><p>가입하기</p></div>
          
-                 <a href="loginSignUp" class="ml-3 btn" style="font-size: 16px; border: none; outline: none; background-color: #ca5c0d; color: #faf9f6; height: 38px; width: 270px; border-radius: 3px;">계정 만들기</a>
-             </form>
+                 <a href="loginSignUp" class="btn" style="font-size: 16px; border: none; outline: none; background-color: #ca5c0d; color: #faf9f6; height: 38px; width: 270px; border-radius: 3px;">계정 만들기</a>
+            </div>
          </div>
 
      </div>
