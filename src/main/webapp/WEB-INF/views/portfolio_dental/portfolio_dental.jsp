@@ -8,7 +8,7 @@
     			<p class="portfolio_dental_content_cnt_p">전체 <c:out value="${cnt}"></c:out></p>
     		</div>        	
             <section>
-	            <ul class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
+	            <ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
 		            <c:forEach items="${interiorList}" var="list">
 		            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px;"> 
 		                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
