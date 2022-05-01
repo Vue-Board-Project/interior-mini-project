@@ -122,11 +122,13 @@
      
      /*각 탭 버튼 활성화하기*/
      #mypage_review_button_before{
+     	margin-top : 10px;
      	border : 1px solid #e8e8db;
      	background-color : #fff;
      }
      
      #mypage_review_button_after{
+     	margin-top : 10px;
      	border : 1px solid #e8e8db;
      	background-color : #fff;
      }

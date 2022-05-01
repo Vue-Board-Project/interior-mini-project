@@ -7,6 +7,31 @@
 <!-- 루트 태그(엘리먼트) -->  
 <configuration>
 	   <typeAliases>
-	    
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.CDetailAllRoomDto" alias="CDetailAllRoom"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.ConsultDetailDto" alias="ConsultDetail"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.MainConsultDto" alias="MainConsult"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.ConsultRemodelingDto" alias="ConsultRemodeling"/>
+	    	
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDto" alias="Interior"/>
+	    	
+	    	<!-- 한보현 추가 -->
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDetailDto" alias="interiorDetail"/>
+	    	<typeAlias type="com.mycompany.webapp.dto.interior.InteriorDto" alias="interior"/>
+	    	
+	    	
+	    	 <!-- mypage -->
+		    <typeAlias type="com.mycompany.webapp.dto.mypage.InteriorProgressDto" alias="mpProgress"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.InteriorProgressFileDto" alias="mpProgressFile"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.ReferenceModelDto" alias="mPreference"/> 
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.SolutionDto" alias="mpSolution"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.mypage.ReviewDto" alias="mReview"/>
+	      	
+	      	<typeAlias type="com.mycompany.webapp.dto.product.AfterServiceDto" alias="asList"/>
+	      	<typeAlias type="com.mycompany.webapp.dto.Pager" alias="pager"/>
+	      	
+	      	<!--마이페이지 위해 다른 브랜치의 것들을 불러옴.. 한보현 시작-->
+	      	<typeAlias type="com.mycompany.webapp.dto.UsersDto" alias="users"/>  
+	      	<typeAlias type="com.mycompany.webapp.dto.product.ProductDto" alias="product"/> 
+	    	<!-- USERDTO 써야 해서 잠깐 데려왔다. 한보현 끝-->
 	  </typeAliases>
 </configuration> 

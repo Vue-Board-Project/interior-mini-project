@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 
-<div class = "mypage_popup_wrap">
+<div class = "mypage_interior_popup_wrap">
 
 	<button id="mypage_counseling_popup_close" class="m-2">
 	<img src="${pageContext.request.contextPath}/resources/images/mypage/popup_delete_icon.png"/>
@@ -44,12 +44,21 @@
 	 </div>
 	 
 </div>
-<div id="mypage_counseling_mask" style="width:100%; height:100%; position:fixed; background:rgba(0,0,0,0.7) repeat; top:0; left:0;display:none;"></div>
+<div id="mypage_counseling_mask02" style="width:100%; height:100%; position:fixed; background:rgba(0,0,0,0.7) repeat; top:0; left:0;display:none;"></div>
 
   
  
  <style>
- 	.mypage_popup_wrap {
+ 	 /*팝업 선택시 회색 레이어 */
+    #mypage_counseling_mask{
+    	 z-index: 99;
+    }
+    
+    .mypage_interior_popup_wrap {
+    	z-index: 100; 
+    }
+ 
+ 	.mypage_interior_popup_wrap {
  		background:#faf9f6;
  		height : 500px;
  		width : 350px;
@@ -62,7 +71,7 @@
  		
  	}
  	
- 	.mypage_popup_wrap .personal_info {
+ 	.mypage_interior_popup_wrap .personal_info {
  		height : 100%;
  		width : 100%;
  		background-color : #faf9f6;
@@ -86,7 +95,7 @@
  		 list-style:none;
  	}
  	
- 	.mypage_popup_wrap .personal_info #mypage_counsel_popup_infomations li{
+ 	.mypage_interior_popup_wrap .personal_info #mypage_counsel_popup_infomations li{
  		font-size = 2.4em;
  	}
  	

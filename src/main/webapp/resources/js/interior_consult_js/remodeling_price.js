@@ -15,3 +15,9 @@ function remodeling_price_aside_btn(nowvalue){
 
     });
 }
+
+
+$("#acreageRange").change(function(){
+    $("#acreageResult").text($("#acreageRange").val());
+    console.log($("#acreageRange").val());
+});

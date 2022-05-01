@@ -25,337 +25,333 @@
            </article>
            <article id="first_quick_consultation" class="mx-auto">
                <div class="bg-white rounded" style="width: 100%;">
-                   <!-- 진행 정도 상태 바 : 바뀌지 x -->
-                   <div>
-                       <div class="pt-4" style="height: 80px;">
-                           <div class="status mx-auto rounded-lg">
-                               <div class="statusbar"></div>
-                           </div>
-                           
-                       </div>
-                   </div>
-                   <!-- 진행 내용 부분 : 부분1-->
-                   <section class="mx-auto" style="width: 80%;" id="quick_consultation_rotation1">
-                       <div class="mx-auto text-center" style="width: 100%;">
-                           <div class="first_quick_new_update_btn_group ">
-                               <input type="radio" name="choose_purpose_of_consultation"  id="choose_purpose_new" checked="checked" />
-                               <label for="choose_purpose_new">신규 인테리어 상담신청</label>
-                               <input type="radio" name="choose_purpose_of_consultation"  id="choose_purpose_update" />
-                               <label for="choose_purpose_update">리모델링 상담신청</label>
-                           </div>
-                       </div>
-                       <div class="mx-auto" style="margin: 80px 0;">
-                           <div style="margin-bottom: 30px;" >
-                               <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px;">
-                                   시공할 공간의 사이즈는 몇평인가요?<br/>
-                                   (공급면적 기준)
-                               </div>
-                               <div>
-                                   <select class="form-control" style="font-family: 'MinSans-Light'; font-size: 20px; height: 60px;">
-                                       <option value disabled>면적</option>
-                                       <option value="1">3m² (1평)</option>
-                                       <option value="2">6m² (2평)</option>
-                                       <option value="3">9m² (3평)</option>
-                                       <option value="4">13m² (4평)</option>
-                                       <option value="5">16m² (5평)</option>
-                                       <option value="6">19m² (6평)</option>
-                                       <option value="7">23m² (7평)</option>
-                                       <option value="8">26m² (8평)</option>
-                                       <option value="9">29m² (0평)</option>
-                                       <option value="10">33m² (10평)</option>
+                   <form method="post" action="quickConsultRequest" id="quik_consult_send_form">
+                        <!-- 진행 정도 상태 바 : 바뀌지 x -->
+                        <div>
+                            <div class="pt-4" style="height: 80px;">
+                                <div class="status mx-auto rounded-lg">
+                                    <div class="statusbar"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- 진행 내용 부분 : 부분1-->
+                        <section class="mx-auto" style="width: 80%;" id="quick_consultation_rotation1">
+                            <div class="mx-auto text-center" style="width: 100%;">
+                                <div class="first_quick_new_update_btn_group ">
+                                    <input type="radio" name="consultType"  id="choose_purpose_new" checked="checked" value="1"  />
+                                    <label for="choose_purpose_new">신규 인테리어 상담신청</label>
+                                    <input type="radio" name="consultType"  id="choose_purpose_update" value="2" />
+                                    <label for="choose_purpose_update">리모델링 상담신청</label>
+                                </div>
+                            </div>
+                            <div class="mx-auto" style="margin: 80px 0;">
+                                <div style="margin-bottom: 30px;" >
+                                    <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px;">
+                                        시공할 공간의 사이즈는 몇평인가요?<br/>
+                                        (공급면적 기준)
+                                    </div>
+                                    <div>
+                                        <select class="form-control" style="font-family: 'MinSans-Light'; font-size: 20px; height: 60px;" name="consultAcreage">
+                                            <option value="면적" disabled>면적</option>
+                                            <option value="1">3m² (1평)</option>
+                                            <option value="2">6m² (2평)</option>
+                                            <option value="3">9m² (3평)</option>
+                                            <option value="4">13m² (4평)</option>
+                                            <option value="5">16m² (5평)</option>
+                                            <option value="6">19m² (6평)</option>
+                                            <option value="7">23m² (7평)</option>
+                                            <option value="8">26m² (8평)</option>
+                                            <option value="9">29m² (0평)</option>
+                                            <option value="10">33m² (10평)</option>
 
-                                   </select>
-                               </div>   
-                           </div>
-                           <div class="bg-light rounded m-2 mx-auto" style="width:100%; font-family: 'MinSans-Regular'; padding: 20px 30px; font-size: 1.3rem;">
-                             <p><i class="fa-solid fa-circle-info"></i>   3㎡(1평)부터 1평 단위로 입력이 가능합니다.</p>  
-                           </div>
-                       </div>
-                       <div class="mb-5" id="remodeling_consult_Room_wrapping">
-                           <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
-                               원하는 시공을 모두 골라주세요.<br/>
-                               <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">시공분야는 전문가와 조율 가능합니다.[ 리모델링 용 ]</span> 
-                           </div>
-                           <div>
-                               <div>
-                                   <div style="display: flex;">
-                                       <label class="remodeling_consult_Room">
-                                           <input type="checkbox" name="fruit" value="apple">
-                                           <span style="border-top-left-radius: 10px;">
-                                               <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="100px">
-                                               </div>
-                                               진료실
-                                           </span>
-                                       </label>
-                                       <label class="remodeling_consult_Room">
-                                           <input type="checkbox" name="fruit" value="apple">
-                                           <span>
-                                               <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="100px">
-                                               </div>
-                                               X-ray실
-                                           </span>
-                                       </label>
-                                       <label class="remodeling_consult_Room">
-                                           <input type="checkbox" name="fruit" value="apple">
-                                           <span style="border-top-right-radius: 10px;">
-                                               <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="100px">
-                                               </div>
-                                               원장실
-                                           </span>
-                                       </label>
-                                   </div>
-               
-                                   <div style="display: flex;">
-                                       <label class="remodeling_consult_Room">
-                                           <input type="checkbox" name="fruit" value="apple">
-                                           <span style="border-bottom-left-radius: 10px;">
-                                               <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="100px">
-                                               </div>
-                                               상담실
-                                           </span>
-                                       </label>
-                                       <label class="remodeling_consult_Room">
-                                           <input type="checkbox" name="fruit" value="apple">
-                                           <span >
-                                               <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="100px">
-                                               </div>
-                                               기계실
-                                           </span>
-                                       </label>
-                                       <label class="remodeling_consult_Room">
-                                           <input type="checkbox" name="fruit" value="apple">
-                                           <span style="border-bottom-right-radius: 10px;">
-                                               <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
-                                                   <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="100px">
-                                               </div>
-                                               화장실
-                                           </span>
-                                       </label>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </section>
+                                        </select>
+                                    </div>   
+                                </div>
+                                <div class="bg-light rounded m-2 mx-auto" style="width:100%; font-family: 'MinSans-Regular'; padding: 20px 30px; font-size: 1.3rem;">
+                                    <p><i class="fa-solid fa-circle-info"></i>   3㎡(1평)부터 1평 단위로 입력이 가능합니다.</p>  
+                                </div>
+                            </div>
+                            <div class="mb-5" id="remodeling_consult_Room_wrapping">
+                                <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
+                                    원하는 시공을 모두 골라주세요.<br/>
+                                    <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">시공분야는 전문가와 조율 가능합니다.[ 리모델링 용 ]</span> 
+                                </div>
+                                <div>
+                                    <div>
+                                        <div style="display: flex;">
+                                            <label class="remodeling_consult_Room">
+                                                <input type="checkbox" name="consultRoomList" value="treatment">
+                                                <span class="qcrc_border" style="border-top-left-radius: 10px;">
+                                                    <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="100px">
+                                                    </div>
+                                                    진료실
+                                                </span>
+                                            </label>
+                                            <label class="remodeling_consult_Room">
+                                                <input type="checkbox" name="consultRoomList" value="xray">
+                                                <span class="qcrc_border">
+                                                    <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="100px">
+                                                    </div>
+                                                    X-ray실
+                                                </span>
+                                            </label>
+                                            <label class="remodeling_consult_Room">
+                                                <input type="checkbox" name="consultRoomList" value="owner">
+                                                <span class="qcrc_border" style="border-top-right-radius: 10px;">
+                                                    <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="100px">
+                                                    </div>
+                                                    원장실
+                                                </span>
+                                            </label>
+                                        </div>
+                    
+                                        <div style="display: flex;">
+                                            <label class="remodeling_consult_Room">
+                                                <input type="checkbox" name="consultRoomList" value="consult">
+                                                <span class="qcrc_border" style="border-bottom-left-radius: 10px;">
+                                                    <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="100px">
+                                                    </div>
+                                                    상담실
+                                                </span>
+                                            </label>
+                                            <label class="remodeling_consult_Room">
+                                                <input type="checkbox" name="consultRoomList" value="equipment">
+                                                <span class="qcrc_border" >
+                                                    <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="100px">
+                                                    </div>
+                                                    기계실
+                                                </span>
+                                            </label>
+                                            <label class="remodeling_consult_Room">
+                                                <input type="checkbox" name="consultRoomList" value="bath">
+                                                <span class="qcrc_border" style="border-bottom-right-radius: 10px;">
+                                                    <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
+                                                        <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="100px">
+                                                    </div>
+                                                    화장실
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- 진행 내용 부분 : 부분 2-1 -->
+                        <section class="mx-auto" style="width: 80%;"  id="quick_consultation_rotation2">
+                            <div style="margin-bottom: 30px;" >
+                                <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px;">
+                                    원하는 스타일이 있으신가요?<br/>
+                                    (참고용 이미지)
+                                </div>
+                                <div>
+                                    <div style="display:flex;">
+                                        <label class="test_obj">
+                                            <input type="radio" name="consultInteriorStyle" value="mordern">
+                                            <span class="qiuk_consult_style_s" style="border-top-left-radius: 10px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                                모던
+                                            </span>
+                                        </label>
+                                            
+                                        <label class="test_obj">
+                                            <input type="radio" name="consultInteriorStyle" value="sick">
+                                            <span class="qiuk_consult_style_s">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/chic.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                                시크
+                                            </span>
+                                        </label>
+                                            
+                                        <label class="test_obj">
+                                            <input type="radio" name="consultInteriorStyle" value="northeurope">
+                                            <span class="qiuk_consult_style_s" style="border-top-right-radius: 10px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/northEurope.jpg"  class="mx-auto  mt-3 mb-2 qcri2_img">
+                                                북유럽
+                                            </span>
+                                        </label>
+                                    </div>                            
+                                    <div style="display: flex;">
+                                        <label class="test_obj">
+                                            <input type="radio" name="consultInteriorStyle" value="nature">
+                                            <span class="qiuk_consult_style_s" style="border-bottom-left-radius: 10px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/natural.jpg"  class="mx-auto mt-3 mb-2 qcri2_img">
+                                                내추럴
+                                            </span>
+                                        </label>
+                                            
+                                        <label class="test_obj">
+                                            <input type="radio" name="consultInteriorStyle" value="minimal">
+                                            <span class="qiuk_consult_style_s">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                                미니멀
+                                            </span>
+                                        </label>
+                                            
+                                        <label class="test_obj">
+                                            <input type="radio" name="consultInteriorStyle" value="other">
+                                            <span class="qiuk_consult_style_s" style="border-bottom-right-radius: 10px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/other.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
+                                                기타
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div>
+                                <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
+                                    언제 시공이 시작되길 원하시나요?<br/>
+                                    <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">오늘을 기준으로 공사 시작 희망 일정을 선택해주세요.<b class="choie_Corporation_term_b" style="color: red;"></b></span> 
+                                </div> 
+                                <div>
+                                    <div class="mb-5 ml-2" style="font-family: 'MinSans-Light';">
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value="2주~1달 이내"/>  2주 ~ 1달 이내</div>
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value="1달~2달 이내" />  1달 ~ 2달 이내</div>
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value=" 2달~3달 이내"/>  2달 ~ 3달 이내</div>
+                                        <div class="mb-2"><input type="radio" name="constructionDate" value="3달 후"/>  3달 이후</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- 진행 내용 부분 : 부분 2-2 -->
+                        <section class="mx-auto" style="width: 80%;"  id="quick_consultation_rotation3">
+                            <div>
+                                <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
+                                    상담 가능한 날짜와 시간을 선택해주세요.<br/>
+                                    <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">상담 진행이 많을 경우 정확한 시간은 변경 될 수 있습니다.</span> 
+                                </div>
+                                <div>
+                                    <div>
+                                        <p>예약일</p>
+                                        <div>
+                                            <input type="date" class="form-control" id="consult_date" style="width: 90%;" name="consultDate"/>
+                                        </div>
+                                        <div style="width: 100%;" class="mt-4 mb-5">
+                                            <div class="rounded" style="width: 90%; height: 140px; background-color: #e8e8db; font-family: 'MinSans-Regular';">
+                                                <div>
+                                                    <div class="ml-3" style="display: flex; align-items: center; height: 70px; width: 90%;">
+                                                        <p class="mr-3 pt-3" style="display: inline-block;">오전</p>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="am1">
+                                                            <span class="crs_time_span"> 09:10 </span>
+                                                        </label>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="am2">
+                                                            <span class="crs_time_span"> 10:10 </span>
+                                                        </label>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="am3">
+                                                            <span class="crs_time_span"> 11:10 </span>
+                                                        </label>
+                                                    </div>
+                                                    
+                                                    <div class="ml-3" style="display: flex;align-items: center; height: 70px; width: 90%; border-top: 1px solid #272723;">
+                                                        <p class="mr-3 pt-3" style="display: inline-block;">오후</p>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="pm1">
+                                                            <span class="crs_time_span"> 13:10 </span>
+                                                        </label>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="pm2">
+                                                            <span class="crs_time_span"> 14:10 </span>
+                                                        </label>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="pm3">
+                                                            <span class="crs_time_span"> 15:10 </span>
+                                                        </label>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="pm4">
+                                                            <span class="crs_time_span"> 16:10 </span>
+                                                        </label>
+                                                        <label class="conult-reservation_time_wrap">
+                                                            <input type="radio" name="consultTime" value="pm5">
+                                                            <span class="crs_time_span"> 17:10 </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
 
-                   <!-- 진행 내용 부분 : 부분 2-1 -->
-                   <section class="mx-auto" style="width: 80%;"  id="quick_consultation_rotation2">
-                       <div style="margin-bottom: 30px;" >
-                           <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px;">
-                               원하는 스타일이 있으신가요?<br/>
-                               (참고용 이미지)
-                           </div>
-                           <div>
-                               <div style="display:flex;">
-                                   <label class="test_obj">
-                                       <input type="radio" name="fruit" value="apple">
-                                       <span style="border-top-left-radius: 10px;">
-                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
-                                           모던
-                                       </span>
-                                   </label>
-                                    
-                                   <label class="test_obj">
-                                       <input type="radio" name="fruit" value="banana">
-                                       <span>
-                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/chic.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
-                                           시크
-                                       </span>
-                                   </label>
-                                    
-                                   <label class="test_obj">
-                                       <input type="radio" name="fruit" value="lemon">
-                                       <span style="border-top-right-radius: 10px;">
-                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/northEurope.jpg"  class="mx-auto  mt-3 mb-2 qcri2_img">
-                                           북유럽
-                                       </span>
-                                   </label>
-                               </div>                            
-                               <div style="display: flex;">
-                                   <label class="test_obj">
-                                       <input type="radio" name="fruit" value="apple">
-                                       <span style="border-bottom-left-radius: 10px;">
-                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/natural.jpg"  class="mx-auto mt-3 mb-2 qcri2_img">
-                                           내추럴
-                                       </span>
-                                   </label>
-                                    
-                                   <label class="test_obj">
-                                       <input type="radio" name="fruit" value="banana">
-                                       <span>
-                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/minimal.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
-                                           미니멀
-                                       </span>
-                                   </label>
-                                    
-                                   <label class="test_obj">
-                                       <input type="radio" name="fruit" value="lemon">
-                                       <span style="border-bottom-right-radius: 10px;">
-                                           <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/other.jpg" class="mx-auto mt-3 mb-2 qcri2_img">
-                                           기타
-                                       </span>
-                                   </label>
-                               </div>
-                           </div> 
-                       </div>
-                       <div>
-                           <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
-                               언제 시공이 시작되길 원하시나요?<br/>
-                               <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">오늘을 기준으로 공사 시작 희망 일정을 선택해주세요.</span> 
-                           </div> 
-                           <div>
-                               <div class="mb-5 ml-2" style="font-family: 'MinSans-Light';">
-                                   <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  2주 ~ 1달 이내</div>
-                                   <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  1달 ~ 2달 이내</div>
-                                   <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  2달 ~ 3달 이내</div>
-                                   <div class="mb-2"><input type="radio" name="choie_Corporation_term"/>  3달 이후</div>
-                               </div>
-                           </div>
-                       </div>
-                   </section>
-                   <!-- 진행 내용 부분 : 부분 2-2 -->
-                   <section class="mx-auto" style="width: 80%;"  id="quick_consultation_rotation3">
-                       <div>
-                           <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
-                               상담 가능한 날짜와 시간을 선택해주세요.<br/>
-                               <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">상담 진행이 많을 경우 정확한 시간은 변경 될 수 있습니다.</span> 
-                           </div>
-                           <div>
-                               <div>
-                                   <p>예약일</p>
-                                   <div>
-                                       <input type="date" class="form-control" id="consult_date" style="width: 90%;"/>
-                                   </div>
-                                   <div style="width: 100%;" class="mt-4 mb-5">
-                                       <div class="rounded" style="width: 90%; height: 140px; background-color: #e8e8db; font-family: 'MinSans-Regular';">
-                                           <div>
-                                               <div class="ml-3" style="display: flex; align-items: center; height: 70px; width: 90%;">
-                                                   <p class="mr-3 pt-3" style="display: inline-block;">오전</p>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time" value="am1">
-                                                       <span> 09:10 </span>
-                                                   </label>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time" value="am2">
-                                                       <span> 10:10 </span>
-                                                   </label>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time_wrap" value="am3">
-                                                       <span> 11:10 </span>
-                                                   </label>
-                                               </div>
-                                               
-                                               <div class="ml-3" style="display: flex;align-items: center; height: 70px; width: 90%; border-top: 1px solid #272723;">
-                                                   <p class="mr-3 pt-3" style="display: inline-block;">오후</p>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time" value="pm1">
-                                                       <span> 13:10 </span>
-                                                   </label>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time" value="pm2">
-                                                       <span> 14:10 </span>
-                                                   </label>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time" value="pm3">
-                                                       <span> 15:10 </span>
-                                                   </label>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time" value="pm3">
-                                                       <span> 16:10 </span>
-                                                   </label>
-                                                   <label class="conult-reservation_time_wrap">
-                                                       <input type="radio" name="conult-reservation_time" value="pm3">
-                                                       <span> 17:10 </span>
-                                                   </label>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="mb-5">
+                                <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
+                                    전달사항.<br/>
+                                    <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">(선택사항)</span> 
+                                </div>
+                                <div>
+                                    <textarea class="p-2" style="width: 500px; height: 150px;" cols="30" rows="5" placeholder="기타 문의사항을 남겨주시면 원활한 상담이 가능합니다." name="consultRequest"></textarea>
+                                </div> 
+                            </div>
+                        </section>
+                        <!-- 진행 내용 부분 : 부분 2-3 -->
+                        <section class="mx-auto" style="width: 80%;"  id="quick_consultation_rotation4">
+                            <div>
+                                <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
+                                    시공할 곳의 주소를 알려주세요.<br/>
+                                    <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">정확한 치과 주소가 필요합니다.</span> 
+                                </div> 
+                                <div class="mb-5 mt-1">
+                                    <div style="display: flex;">
+                                        <input type="text" class="form-control mr-2" style="width: 350px; display: inline-block;" readonly id="consult_address" name="consultAddress">
+                                        <button type="button" class="btn btn-secondary" style="display:inline-block; width: 150px;" onclick="js:consult_address_input()">주소찾기</button>
+                                    </div>
+                                    <div class="mt-2">
+                                        <input id="consult_address_detail" type="test" class="form-control" style="width: 507px" placeholder="상세 주소" name="consultAddressDetail" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                    <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
+                                    성함과 대표 번호를 입력해 주세요.<br/>
+                                    <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">상담 가능한 번호를 입력해주세요.</span> 
+                                </div> 
+                                <div>
+                                    <div>
+                                        <input type="test" class="form-control" style="width: 507px" id="qc_name" readonly/>
+                                    </div>
+                                    <div class="mt-3 mb-5" style="font-family: 'MinSans-Medium';">
+                                        <input type="text" class="form-control" style="width: 507px;" id="qu_phone"  readonly/>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="mb-1" style="border-top: 2px solid #e8e8db;">
+                                    <div style="display: flex;" class="m-3">
+                                        <span class="mr-2" style="display: inline-block;"><input type="checkbox" style="width: 30px; height: 30px;" id="consult_checkAll"/></span>
+                                        <span style="display: inline-block; font-family: 'MinSans-Bold'; color: #ca5c0d; font-weight: bold; font-size: 20px;">모두 동의합니다</span>
+                                    </div>
+                                </div>
+                                <div class="mb-5" style="border-top: 1px solid #e8e8db;">
+                                    <div style="display: flex;" class="m-3">
+                                        <span class="mr-2" style="display: inline-block;"><input type="checkbox" style="width: 20px; height: 20px;" id="consult_checkpri"/></span>
+                                        <span style="display: inline-block; font-family: 'MinSans-Regular';" id="consult_checkpri_input">개인정보 수집 및 이용 동의(필수)</span>
+                                    </div>
+                                </div>
+                            <div>
+                                
+                            </div>
+                        </section>
+                            <!-- 내용 진행 바 : 바뀌지 x -->
+                        <section id="quick_consult_road_btn_wrap" class="text-center" style="width: 100%; height: 100%; padding-bottom: 6rem;" >
+                            <button type="button" class="btn btn-light mr-3" onclick="consultation_first_back_btn()" id="cf_back_btn" >뒤로</button>
+                            <button type="button" class="btn" onclick="consultation_second_interior_btn()" id="cs_interior_btn">다음</button>
+                        </section>
 
-                               </div>
-                           </div> 
-                       </div>
-                       <div class="mb-5">
-                           <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
-                               전달사항.<br/>
-                               <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">(선택사항)</span> 
-                           </div>
-                           <div>
-                               <textarea class="p-2" style="width: 500px; height: 150px;" cols="30" rows="5" placeholder="기타 문의사항을 남겨주시면 원활한 상담이 가능합니다."></textarea>
-                           </div> 
-                       </div>
-                   </section>
-                   <!-- 진행 내용 부분 : 부분 2-3 -->
-                   <section class="mx-auto" style="width: 80%;"  id="quick_consultation_rotation4">
-                       <div>
-                           <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
-                               시공할 곳의 주소를 알려주세요.<br/>
-                               <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">정확한 치과 주소가 필요합니다.</span> 
-                           </div> 
-                           <div class="mb-5 mt-1">
-                               <div style="display: flex;">
-                                   <input type="text" class="form-control mr-2" style="width: 350px; display: inline-block;" readonly>
-                                   <button class="btn btn-info" style="display:inline-block; width: 150px;">주소찾기</button>
-                               </div>
-                               <div class="mt-2">
-                                   <input type="test" class="form-control" style="width: 507px" placeholder="상세 주소"/>
-                               </div>
-                           </div>
-                       </div>
-                       <div>
-                            <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
-                               성함과 대표 번호를 입력해 주세요.<br/>
-                               <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">상담 가능한 번호를 입력해주세요.</span> 
-                           </div> 
-                           <div>
-                               <div>
-                                   <input type="test" class="form-control" style="width: 507px" placeholder="이름"/>
-                               </div>
-                               <div class="mt-3 mb-5" style="display: flex; font-family: 'MinSans-Medium';">
-                                   <span class="mr-2" style="display: inline-block;"><input type="text" class="form-control"style="width: 120px;" /></span>
-                                   <span class="mr-2" style="display: inline-block; font-size: 15px; font-weight: bold;">_</span>
-                                   <span class="mr-2" style="display: inline-block;"><input type="text" class="form-control"style="width: 120px;"/></span>
-                                   <span class="mr-2" style="display: inline-block; font-size: 15px; font-weight: bold;">_</span>
-                                   <span cl style="display: inline-block;"><input type="text" class="form-control"style="width: 120px;"/></span>
-                                   
-                               </div>
-                           </div>
-                       </div>
-                           <div class="mb-1" style="border-top: 2px solid #e8e8db;">
-                               <div style="display: flex;" class="m-3">
-                                   <span class="mr-2" style="display: inline-block;"><input type="checkbox" style="width: 30px; height: 30px;"/></span>
-                                   <span style="display: inline-block; font-family: 'MinSans-Bold'; color: #ca5c0d; font-weight: bold; font-size: 20px;">모두 동의합니다</span>
-                               </div>
-                           </div>
-                           <div class="mb-5" style="border-top: 1px solid #e8e8db;">
-                               <div style="display: flex;" class="m-3">
-                                   <span class="mr-2" style="display: inline-block;"><input type="checkbox" style="width: 20px; height: 20px;"/></span>
-                                   <span style="display: inline-block; font-family: 'MinSans-Regular';">개인정보 수집 및 이용 동의(필수)</span>
-                               </div>
-                           </div>
-                       <div>
-                           
-                       </div>
-                   </section>
-                    <!-- 내용 진행 바 : 바뀌지 x -->
-                   <section id="quick_consult_road_btn_wrap" class="text-center" style="width: 100%; height: 100%; padding-bottom: 6rem;" >
-                       <button class="btn btn-light mr-3" onclick="js:consultation_first_back_btn()" id="consultation_first_back_btn">뒤로</button>
-                       <button class="btn" onclick="js:consultation_second_interior_btn()" id="consultation_second_interior_btn">다음</button>
-                   </section>
-                   <section id="quick_consult_finish_btn_wrap" class="text-center" style="width: 100%; height: 100%;padding-bottom: 6rem;">
-                       <a class="btn mr-3 add_detail_consult_start_btn pt-3" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" 
-                       			href="${pageContext.request.contextPath}/interior_consult/detail_consultation">더 상세한 상담 신청</a>
-                       <button class="btn quick_consult_finish_btn" id="quick_consult_finish_btn" style=" width: 220px; height: 70px;">빠른상담신청</button>  
-                   </section>
-               </div>
-              
 
+                        <section id="quick_consult_finish_btn_wrap" class="text-center" style="width: 100%; height: 100%;padding-bottom: 6rem;">
+                                 <a class="btn mr-3 add_detail_consult_start_btn pt-3" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" 
+                                        href="${pageContext.request.contextPath}/interior_consult/detail_consultation">더 상세한 상담 신청</a>
+                           <input type="button" id="qcf_button"  class="btn quick_consult_finish_btn" style=" width: 220px; height: 70px;" value="빠른상담신청"> 
+                        </section>
+                    </form>
            </article>
 
        </div>

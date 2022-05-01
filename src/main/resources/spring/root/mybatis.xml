@@ -9,7 +9,9 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis/mapper-config.xml" />
-		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" />
+		<!-- 한보현 잠시 실행 위해 주석처리 해둠 -->
+		 <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" /> 
+
 	</bean>
 	<!-- 프로그램 방식으로 사용하기 위한 설정 -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">

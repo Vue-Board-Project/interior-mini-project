@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
-public class MyPageInteriorProgressDto {
+public class InteriorProgressDto {
 	/*
 	 *  P : plan, 설계
 	 *  C : construction, 공사
@@ -15,7 +15,7 @@ public class MyPageInteriorProgressDto {
 	 */
 	//private int consultNo; //PK(FK)
 	//private String email; //FK
-	private Date pExpectedFinDate;	//설계 완료 예정 날짜 
+	private Date pExpectedDate;	//설계 완료 예정 날짜 
 	private String pFeedback;	//설계 피드백 clob 형태이므로 
 	private Date eExpectedDate;		//계약 예정 날짜
 	private String eUserRequest;		//계약유저요청사항

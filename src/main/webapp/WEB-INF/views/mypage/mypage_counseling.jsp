@@ -13,15 +13,18 @@
 	         </div>
 	          
 	     	<div class="content_section">
+	     	<!-- 각 조건문을 위한 항목 설정 -->
+	     	<jsp:useBean id="now" class="java.util.Date" />
+			<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
+
 	     	
-		     	<div class = "mypage_counseling_history">
-					<h4><b><span>모던한</span> 스타일의</b><br>
-					치과 인테리어를 신청하셨습니다.</h4>
-					<button class = "info_button" id = "mypage_counseling_button">견적신청 내용</button>
-				</div>
+	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_interior.jsp" %>
+	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_remodeling.jsp" %>
+	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_AS.jsp" %>
+	     	
 			</div>
 		</div>
-			<%@ include file="/WEB-INF/views/mypage/myinfo_counsel_popup.jsp" %>
+			
 			
 
 </div>
@@ -47,18 +50,7 @@
           width: calc(100% - 250px);
      }
            
-	.mypage_counseling_history{
-		padding-left : 5%;
-		padding-top : 5%;
-		border: 1px solid #ccc;
-    	background-image : url("${pageContext.request.contextPath}/resources/images/mypage/mypage_osstem_interior_logo.png");
-    	background-size: cover;
-		background-repeat: no-repeat;
-		width : 95%;
-		height : 95%;
-    	color : #fff;
-    	border-radius : 20px;
-	}
+	
     	
     /*견적신청 내용 버튼*/
     .content_section .info_button{
@@ -75,37 +67,11 @@
     }
     
     
-    /*팝업 선택시 회색 레이어 */
-    #mypage_counseling_mask{
-    	 z-index: 3;
-    }
-    
-    .mypage_popup_wrap {
-    	z-index: 4; 
-    }
-    
+   
 
     
         
 </style>
-
-<script>
-$(document).ready(function(){
-	 $("#mypage_counseling_button").click(function(){
-	 $(".mypage_popup_wrap").css("display", "block");
-	 $("#mypage_counseling_mask").css("display", "block");
-	});
-});
-
-$(document).ready(function(){
-	 $("#mypage_counseling_popup_close").click(function(){
-	 $(".mypage_popup_wrap").css("display", "none");
-	 $("#mypage_counseling_mask").css("display", "none");
-	});
-});
-	
-	
-</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

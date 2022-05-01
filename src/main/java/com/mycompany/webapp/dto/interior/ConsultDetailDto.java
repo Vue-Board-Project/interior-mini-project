@@ -1,7 +1,7 @@
 package com.mycompany.webapp.dto.interior;
 
 import lombok.Data;
-
+//상세 인테리어 TABLE
 @Data
 public class ConsultDetailDto {
 	private MainConsultDto mainConsultDto;//접수번호 가져오기

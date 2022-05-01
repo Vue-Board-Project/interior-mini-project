@@ -7,7 +7,7 @@
 	<div class="orderlist_section">
 	         <div class = "header_section">
 	          <div class="text">구매 내역</div>
-	          <span class="sub_text">지난 구문 내역을 조회합니다.</span>
+	          <span class="sub_text">지난 구매 내역을 조회합니다.</span>
 	          <hr width = 90%>
 	         </div>
 	         

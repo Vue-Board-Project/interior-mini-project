@@ -20,8 +20,8 @@
                         </ul> 
                     </div>
                 </section>
-                <section style="display: inline-block; width: 85%; padding-top: 40px;;" class="border">
-                    <!-- 어사이드 따라서 변할 부분 -->
+                <section style="display: inline-block; width: 85%; padding-top: 40px;;" class="border" id="includeRemodeling">
+                     <!-- 어사이드 따라서 변할 부분 -->
                     <!-- 종합 -->
                     <div style="width: 80%;" class="mx-auto" id="rpajcall">
                         <!-- 종합 설명 부분 -->
@@ -1082,7 +1082,7 @@
                                 </label>   
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </section>
             </article>
         </div>
