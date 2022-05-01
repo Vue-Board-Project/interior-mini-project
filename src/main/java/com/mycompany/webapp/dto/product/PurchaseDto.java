@@ -2,6 +2,8 @@ package com.mycompany.webapp.dto.product;
 
 import java.util.Date;
 
+import com.mycompany.webapp.dto.UsersDto;
+
 import lombok.Data;
 @Data
 public class PurchaseDto {
@@ -11,5 +13,6 @@ public class PurchaseDto {
 	private String paymentMethod;//결제방법
 	private int purchaseQuantity;//개수
 	private String deliveryManagement;//배송관리
-	//private String email;//이메일 (외래키)
+	private UsersDto email;//이메일 (외래키)
+	private String stringEmail;
 }

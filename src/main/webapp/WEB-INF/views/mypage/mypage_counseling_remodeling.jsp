@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <div class = "mypage_remodeling_history">
-		<h4><b><span>name</span></b>님의 <br>
+		<h4><b><span>${user.name}</span></b>님의 <br>
 			치과 리모델링 신청 내역입니다.</h4>
 		<button class = "info_button" id = "mypage_remodeling_button">확인하기</button>
 </div>

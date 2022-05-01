@@ -2,17 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.mybatis.MypageDao">
 	<!--상품 추가 테스트용(추후 주석 처리 예정)-->
-	<insert id="insertReview" parameterType="mReview">
-		
-		insert into
-	    review(
-	        email, PURCHASE_NUMBER, MODEL_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, REVIEW_FILE
-			)
-	    values(
-	        ${email}, 1, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, null
-        )
 	
-	</insert>
 	
 	<select id="selectUserName" parameterType="string" resultType="users">
 		SELECT email, name
@@ -45,6 +35,68 @@
 		WHERE ROWNUM = 1 
 	</select>
 	
+	<!-- 구매내역 첫 창 띄우는 창 -->
+	<select id = "getTotalOrderListNum" parameterType="string" resultType="int">
+		select count(*) 
+			from purchase 
+		WHERE email = #{email}
+	</select>
+	
+	
+	<select id = "getPurchaseList" parameterType="pager" resultType="purchase">
+		<![CDATA[  
+		SELECT rnum, purchaseNumber, purchaseDate, email, deliveryManagement
+		    from(
+		    	SELECT ROWNUM as rnum, purchaseNumber, purchaseDate, email, deliveryManagement
+			    FROM (
+				        SELECT PURCHASE_NUMBER as purchaseNumber, PURCHASE_DATE as purchaseDate, 
+                                email, DELIVERY_MANAGEMENT as deliveryManagement
+				        from purchase
+                        where email = #{stringEmail}
+				        ORDER BY purchaseNumber DESC 
+			     )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >= #{startRowNo} 
+		]]>
+	</select>
+	
+	<!-- 구매내역 디테일 창 -->
+	<resultMap id = "selecePurDetailWithProduct" type = "pDetail">
+			<result column = "PURCHASE_NUMBER" property = "intPurchaseNumber" /> 
+			<result column = "MODEL_NUMBER" property = "stringModelNumber" />
+			<result column = "MODEL_PURCHASE_QUANTITY" property = "modelPurchaseQuantity" />
+			<result column = "DETAIL_PRICE" property = "detailPrice" />
+			<association property="product" javaType="product">
+				<result column = "PRODUCT_NAME" property = "productName" />
+				<!-- <result column = "MAINIMAGE" property = "mainImage" /> -->
+			</association>
+	</resultMap>
+	
+	
+	<select id = "getTotalOrderDetailNum" parameterType="int" resultType="int">
+		 select count(*) 
+			from purchase_detail prd, product p
+		WHERE prd.MODEL_NUMBER = p.MODEL_NUMBER and PURCHASE_NUMBER = #{purchaseNumber}
+	</select>
+	
+	<select id="getOrderDetailList" parameterType="pager" resultMap="selecePurDetailWithProduct">
+		<![CDATA[  
+		SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, PRODUCT_NAME
+		    from(
+		        SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, PRODUCT_NAME
+		        FROM (
+		               select 
+		               		PURCHASE_NUMBER, pd.MODEL_NUMBER,
+					     	MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, 
+					        PRODUCT_NAME
+					   from purchase_detail pd, product p
+					   where pd.MODEL_NUMBER = p.MODEL_NUMBER and PURCHASE_NUMBER = #{intPurchaseNumber}
+					   ORDER BY PURCHASE_NUMBER DESC 
+		         )  WHERE ROWNUM <= #{endRowNo} 
+		)WHERE rnum >=  #{startRowNo}
+		]]> 
+	</select>
+	
+	
 <resultMap id = "seleceASWithUserResultMap" type = "asList">
 			<result column = "RECEIPT_NUMBER" property = "receiptNumber" />
 			<result column = "APPLICATION_DATE" property = "applicationDate" />
@@ -71,4 +123,104 @@
 	</select>
 	
 	<!-- 수정 필수!!!! 하나로 합쳐야 함!!!!끌  -->
+	
+	
+	<!-- 리뷰 관리 창 -->
+	<!-- 리뷰 입력 창 -->
+	<insert id="insertReview" parameterType="mReview">
+		insert into
+	    review(
+	        email, PURCHASE_NUMBER, MODEL_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, REVIEW_FILE
+			)
+	    values(
+	        ${email}, ${purchaseNumber}, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, null
+        )
+	</insert>
+	
+	<!-- 리뷰 작성 이전 창 -->
+	<select id="getTotalReviewBeforeNum" parameterType="string" resultType="int">
+		select  count(*)
+		from purchase p, review r, product d
+			where p.email = #{email} and  
+			r.model_number = d.model_number and
+			r.PURCHASE_NUMBER != p.PURCHASE_NUMBER
+	</select>
+	
+	<resultMap id = "seleceReviewWithPurandProd" type = "mReview">
+			<result column = "PURCHASE_NUMBER" property = "purchaseNumber" />
+			<result column = "MODEL_NUMBER" property = "modelNumber" />
+			<result column = "EMAIL" property = "email" />
+			<association property="purchase" javaType="purchase">
+				<result column = "PURCHASE_DATE" property = "purchaseDate" />
+				<result column = "DELIVERY_MANAGEMENT" property = "deliveryManagement" />
+				<result column = "PURCHASE_QUANTITY" property = "purchaseQuantity" />
+				<result column = "PAYMENT_AMOUNT" property = "paymentAmount" />
+			</association>
+			<association property="product" javaType="product">
+				<result column = "product_name" property = "productName" />
+			</association>
+	</resultMap>
+	
+	<select id="getReviewBeforeList" parameterType="pager" resultMap="seleceReviewWithPurandProd">
+		select  p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, PAYMENT_AMOUNT, 
+	      	 p.PURCHASE_QUANTITY, r.model_number,
+           	 d.product_name
+		from purchase p, review r, product d
+		where p.email = #{stringEmail} and  
+			DELIVERY_MANAGEMENT = '배송완료' and
+			r.model_number = d.model_number and
+			r.PURCHASE_NUMBER != p.PURCHASE_NUMBER
+	</select>
+	
+	<!-- 리뷰 작성 이후 창 getTotalReviewAfterNum getReviewAfterList-->
+	<select id="getTotalReviewAfterNum" parameterType="string" resultType="int">
+		select  count(*)
+		from purchase p, review r, product d
+			where p.email = #{email} and  
+			r.model_number = d.model_number and
+			r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+	</select>
+	
+	<select id="getReviewAfterList" parameterType="pager" resultType="mReview">
+		select  r.PURCHASE_NUMBER as purchaseNumber, p.email, 
+			r.model_number as modelNumber, REVIEW_TITLE as reviewTitle, REVIEW_CONTENT as reviewContent, 
+			REVIEW_WRITE_DATE as reviewWriteDate, d.product_name as stringProductName 
+		from purchase p, review r, product d
+		where p.email = #{stringEmail} and 
+			r.model_number = d.model_number and
+			r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+	</select>
+	
+	
+	<!-- 
+	리뷰 안 쓴(후기써야하는) 목록
+	select p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, 
+	       p.PURCHASE_QUANTITY,
+	       r.REVIEW_WRITE_DATE
+	from purchase p, review r
+	where p.email = 'gvhv@dgfv.sad' and  
+	r.PURCHASE_NUMBER != p.PURCHASE_NUMBER; 
+	
+	select  p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, 
+	       p.PURCHASE_QUANTITY, r.model_number, r.REVIEW_WRITE_DATE,
+           d.product_name
+from purchase p, review r, product d
+where p.email = 'gvhv@dgfv.sad' and  
+ 밑에 코드 건드리는 거 아님 
+r.model_number = d.model_number and
+리뷰 유무는 밑 코드만 쓰세요
+r.PURCHASE_NUMBER != p.PURCHASE_NUMBER; 
+	
+	리뷰 쓴 목록
+	select p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, 
+	       p.PURCHASE_QUANTITY,
+	       r.REVIEW_WRITE_DATE
+	from purchase p, review r
+	where p.email = 'gvhv@dgfv.sad' and  
+	r.PURCHASE_NUMBER != p.PURCHASE_NUMBER; 
+	
+	
+	
+	
+	 -->
 </mapper>

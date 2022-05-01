@@ -22,7 +22,7 @@ public class PortfolioDentalControll {
 	private InteriorService interiorService;
 	
 	@RequestMapping("/portfolio_dental")
-	public String modelDental() {
+	public String modelDental(InteriorDto interiors, Model model) {
 		log.info("실행");
 		return "portfolio_dental/portfolio_dental";
 	}
@@ -35,7 +35,9 @@ public class PortfolioDentalControll {
 		/*for(InteriorDto s : interiorList) {
 			log.info(s.getIsummary());
 		}*/
+		int cnt = interiorService.interiorCnt();
 		model.addAttribute("interiorList",interiorList) ;
+		model.addAttribute("cnt",cnt);
 		return "portfolio_dental/portfolio_dental";
 	}
 	@RequestMapping("/portfolioDentalDeatail3")

@@ -1,5 +1,8 @@
 package com.mycompany.webapp.dto;
 
+import com.mycompany.webapp.dto.product.PurchaseDetailDto;
+import com.mycompany.webapp.dto.product.PurchaseDto;
+
 import lombok.Data;
 
 @Data
@@ -17,6 +20,10 @@ public class Pager {
 	private int startRowIndex;	//페이지의 시작 행 인덱스(0, ..., n-1) for mysql
 	private int endRowNo;		//페이지의 마지막 행 번호
 	private int endRowIndex;	//페이지의 마지막 행 인덱스
+	private UsersDto email;
+	private String stringEmail;
+	private PurchaseDto purchaseNumber;
+	private int intPurchaseNumber;
 
 	public Pager(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {
 		this.rowsPerPage = rowsPerPage;
@@ -42,6 +49,59 @@ public class Pager {
 		endRowNo = pageNo * rowsPerPage;
 		endRowIndex = endRowNo - 1; 
 	}
+	
+	public Pager(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo, String stringEmail) {
+		this.rowsPerPage = rowsPerPage;
+		this.pagesPerGroup = pagesPerGroup;
+		this.totalRows = totalRows;
+		this.pageNo = pageNo;
+		this.stringEmail = stringEmail;
+
+		totalPageNo = totalRows / rowsPerPage;
+		if(totalRows % rowsPerPage != 0) totalPageNo++;
+		
+		totalGroupNo = totalPageNo / pagesPerGroup;
+		if(totalPageNo % pagesPerGroup != 0) totalGroupNo++;
+		
+		groupNo = (pageNo - 1) / pagesPerGroup + 1;
+		
+		startPageNo = (groupNo-1) * pagesPerGroup + 1;
+		
+		endPageNo = startPageNo + pagesPerGroup - 1;
+		if(groupNo == totalGroupNo) endPageNo = totalPageNo;
+		
+		startRowNo = (pageNo - 1) * rowsPerPage + 1;
+		startRowIndex = startRowNo - 1;
+		endRowNo = pageNo * rowsPerPage;
+		endRowIndex = endRowNo - 1; 
+	}
+	
+	public Pager(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo, int intPurchaseNumber) {
+		this.rowsPerPage = rowsPerPage;
+		this.pagesPerGroup = pagesPerGroup;
+		this.totalRows = totalRows;
+		this.pageNo = pageNo;
+		this.intPurchaseNumber = intPurchaseNumber;
+
+		totalPageNo = totalRows / rowsPerPage;
+		if(totalRows % rowsPerPage != 0) totalPageNo++;
+		
+		totalGroupNo = totalPageNo / pagesPerGroup;
+		if(totalPageNo % pagesPerGroup != 0) totalGroupNo++;
+		
+		groupNo = (pageNo - 1) / pagesPerGroup + 1;
+		
+		startPageNo = (groupNo-1) * pagesPerGroup + 1;
+		
+		endPageNo = startPageNo + pagesPerGroup - 1;
+		if(groupNo == totalGroupNo) endPageNo = totalPageNo;
+		
+		startRowNo = (pageNo - 1) * rowsPerPage + 1;
+		startRowIndex = startRowNo - 1;
+		endRowNo = pageNo * rowsPerPage;
+		endRowIndex = endRowNo - 1; 
+	}
+	
 }
 
 

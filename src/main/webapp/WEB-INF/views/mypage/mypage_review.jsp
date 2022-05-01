@@ -49,33 +49,44 @@
 					  <div class = "mypage_review_contents_menu">
 						   <div id="mypage_review_tab_available" class="tabmenu_content ">
 						      <!-- <div id = "mypage_review_tab_available_null">작성 가능한 후기가 없습니다.</div> -->
-						      
+						     
+						     
+						      <c:forEach var="reviewBefore" items="${reviewBefore}">
 						      <div class = "mypage_review_before_element">
 						      	<div class = "image_slot">
-						      		<img class = "mypage_review_product_img" src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg"></img>
+						      		<img class = "mypage_review_product_img" src = ""></img>
 						      	</div>
-						      	<div class = "mypage_review_product_title">유니트 체어</div>
-						      	<div class = "mypage_review_product_number">13 개</div>
-						      	<div class = "mypage_review_product_date">22년 4월 1일 배송완료</div>
+						      	<div class = "mypage_review_product_title">제품명 : ${reviewBefore.product.productName}</div>
+						      	<div class = "mypage_review_model_name">모델명 : ${reviewBefore.modelNumber}</div>
+						      	<div class = "mypage_review_product_number">갯수 : ${reviewBefore.purchase.paymentAmount} 개</div>
+						      	<div class = "mypage_review_product_date">${reviewBefore.purchase.purchaseDate}</div>
 						      	<div class = "mypage_review_product_button">
+						      	<a href="mypageReview/insertReview?purchaseNumber=${reviewBefore.purchaseNumber}">
 						      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button">후기 쓰기</button>
+						      	</a>
 						      	</div>
 						      </div>
-						      
+						      </c:forEach>
+						    
+						    
 						    </div>
 						    <div id="mypage_review_tab_finished" class="tabmenu_content">
 						    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
+						    	 <c:forEach var="reviewAfter" items="${reviewAfter}">
 						    	<div class = "mypage_user_review_element">
-					    			<div class = "user_product_title">유니트 체어</div>
+					    			<div class = "user_product_title">${reviewAfter.stringProductName}
+					    			<span class = "user_product_modelName">모델명 : ${reviewAfter.modelNumber}</span>
+					    			</div>
 						    		<div class = "user_review_contents">
-						    			<div class = "user_review_title">성능 좋고 합리적인 가격의 기기</div>
-						    			<div class = "user_product_bought_date">22.05.05 작성</div>
+						    			<div class = "user_review_title">${reviewAfter.reviewTitle}</div>
+						    			<div class = "user_product_bought_date">${reviewAfter.reviewWriteDate}</div>
 						    			<div class = "user_review_image">
 						    				<img src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg"></img>
 						    			</div>
-						    			<div class = "user_review_text">성능이 아주 좋습니다.</div>
+						    			<div class = "user_review_text">${reviewAfter.reviewContent}</div>
 						    		</div>
 						    	</div>
+						    	</c:forEach>
 						    </div>
 					    </div>
 					      
@@ -171,6 +182,17 @@
      	
      }
     
+    .mypage_review_before_element .mypage_review_model_name{
+    	font-family: 'MinSans-Medium';
+    	position : absolute;
+    	font-size : 1rem;
+    	width : 300px;
+    	height : 50px;
+    	margin-top : 100px;
+    	margin-left : 300px;
+    }
+    
+    
     .mypage_review_before_element .mypage_review_product_number{
     	font-family: 'MinSans-Medium';
     	position : absolute;
@@ -223,6 +245,11 @@
       		padding-top : 10px;
       		font-size : 1.5rem;
       		border-bottom : 1px solid #ccc;  
+      }
+      
+      .mypage_user_review_element .user_product_title .user_product_modelName{
+      		font-family: 'MinSans-Regular';
+      		font-size : 1rem;
       }
       
       .mypage_user_review_element .user_review_contents {

@@ -47,10 +47,10 @@
 		
 	</insert>
  <!-- 인테리어 상담이 리모델링일 경우 공간 선택 insert -->
-	<!-- <insert id="insertRemodelingConsult" parameterType="ConsultRemodeling">
+	<insert id="insertRemodelingConsult" parameterType="ConsultRemodeling">
 		INSERT INTO consult_remodeling
 		values(#{consultNo}, #{consultRoom})
-	</insert>  -->
+	</insert>  
 	
 	
 </mapper>

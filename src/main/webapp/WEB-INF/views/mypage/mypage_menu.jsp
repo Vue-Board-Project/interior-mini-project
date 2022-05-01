@@ -80,7 +80,7 @@
       		 margin: 20px 0;
       }
 
-		/* 이건 메뉴용 아님 */
+		/* 마이페이지 제목 형식 통일을 위한 코드. 수정시 보현에게 연락 꼭 해야 함. 시작 */
 		.header_section .text{
 	          display: inline-block;
 	          color: #321313;
@@ -97,6 +97,8 @@
         	padding-top : 1%;
         	padding-left: 5%;
         } 
+        
+        /* 마이페이지 제목 형식 통일을 위한 코드. 수정시 보현에게 연락 꼭 해야 함. 끝 */
         
 </style>
 

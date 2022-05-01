@@ -1,20 +1,17 @@
 @charset "UTF-8";
-#portfolio_model_wrap{margin: 0 auto; width: 996px; font-family: 'MinSans-Regular';}
+#portfolio_model_wrap{margin: 0 auto; font-family: 'MinSans-Regular';}
 .portfolio_dental_content_cnt{font-size:14px; color:#7c7c7c;}
 .portfolio_dental_content_cnt_p{line-height: 0; margin:0; padding:0;}
-.portfolio_dental_content_wrap{margin:0 auto; width: 1146px;}
 .portfolio_dental_content_b{line-height: 3;}
 .portfolio_dental_content_sm{line-height: 1;}
-.portfolio_dental_content_img{
-			width: 350px; height: 200px;
-		}
-		.portfolio_dental_content{
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			width: 350px;
-		}
-		.portfolio_dental_content_a{
-			text-decoration: none; color: black;
-		}
-		.portfolio_dental_content_a:hover{
-			text-decoration: none; color: black;
-		}
+.portfolio_dental_content_img{width: 350px; height: 200px;}
+.portfolio_dental_content{
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width: 350px;
+}
+.portfolio_dental_content_a{
+	text-decoration: none; color: black;
+}
+.portfolio_dental_content_a:hover{
+	text-decoration: none; color: black;
+}
