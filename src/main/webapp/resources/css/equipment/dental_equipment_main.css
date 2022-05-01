@@ -112,8 +112,13 @@
             margin-left: 50px;
         } */
 		.eq_list{
-            display: flex;
+            display:flex;
             margin-bottom: 100px;
+
+        }
+        #eq_list2{
+        	display:flex;
+            flex-wrap: wrap;
         }
         .eq_list .card{
             width: 300px;
@@ -138,6 +143,7 @@
             background-color: #ffffff;
             box-shadow: 2px 3px 5px 0px #ccc;
             margin-right: 40px;
+            
         }
         .gotolink:hover{
             text-decoration: none;
@@ -151,12 +157,12 @@
             
         }
         #eq_list_content1{
-            
+
         }
-        /* #eq_list_content1_element1{
+        #eq_list_content1_element1{
             font-size: 30px;
             font-family: "MinSans-Black";
-        } */
+        }
         #eq_list_content1_element2{
             font-size: 15px;
         }

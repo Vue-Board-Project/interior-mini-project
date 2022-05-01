@@ -1,22 +1,19 @@
 package com.mycompany.webapp.controller;
 
 import java.io.IOException;
-import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
@@ -60,13 +57,16 @@ public class EquipmentController {
 	    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
 	}*/
 	@RequestMapping("/equipment/dental_equipment_main")//겟
-	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, HttpServletRequest request,
-			HttpServletResponse response, ModelMap modelmap, Model model, ProductDto product) {
-		List<ProductDto> chairList=productService.selectchairlist();
-		model.addAttribute("chairList",chairList);
-		UriComponentsBuilder builder= UriComponentsBuilder.fromPath("?").queryParam("sort", product.getSort());
-		log.info(product.getSort());
-		String param=product.getSort();
+	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, 
+			 ModelMap modelmap, Model model) {
+	
+			List<ProductDto> chairList=productService.selectchairlist();
+			List<ProductDto> bestchairList=productService.selectbestlist();
+			
+			model.addAttribute("chairList",chairList);
+			model.addAttribute("bestchairList",bestchairList);
+
+
 		//log.info(sort);
 		//String sort=product.getSort();
 		/*Map<String,Object> resultMap = productService.getByteImage(); 
@@ -75,7 +75,7 @@ public class EquipmentController {
 		log.info("바이트"+arr);
 		String getimageToString = Base64.getEncoder().encodeToString(arr);
 		
-		modelmap.addAttribute("imgSrc",getimageToString);*/
+		modelmap.addAttribute("imgSrc",getimageToString);
 
 		/*Map<String, Object> chairmap = productService.getByteImage();
 		byte[] imageContent = (byte[]) chairmap.get("mainimage");
@@ -85,6 +85,7 @@ public class EquipmentController {
 		model.addAttribute("chairmap",new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK));*/
 		return "/equipment/dental_equipment_main";
 	}
+	
 	/*@RequestMapping("/getByteImage")
 	public ResponseEntity<byte[]> getByteImage() {
 		Map<String, Object> map = productService.getByteImage();
@@ -94,8 +95,13 @@ public class EquipmentController {
 	       return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
 	}
 	*/
+	@GetMapping("Sort")
+		public String Sort(Model model, @RequestParam int sort){
+			List<ProductDto> pList=productService.sort(sort);
+			model.addAttribute("pList", pList);
+			return "/equipment/dental_equipment_main";
+	}
 	
-
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
 	public String productAdd() {
