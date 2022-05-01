@@ -235,7 +235,7 @@
             </p>
             <hr>
             <p>
-                <a id="btn_go_counseling" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/paymentpage">상담</a>
+                <a id="btn_go_counseling" class="btn btn-light" href="${pageContext.request.contextPath}/interior_consult/quipment_buy_request_consult?modelName=uc0001gre">상담</a>
             </p>     
         </div>
     </div>
