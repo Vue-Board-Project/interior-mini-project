@@ -29,6 +29,10 @@ public class UsersService {
 	public enum LoginResult{
 		SUCCESS, FAIL_EMAIL, FAIL_PASSWORD, FAIL
 	}
+	
+	public enum FindPWResult{
+		SUCCESS, FAIL
+	}
 
 	
 	@Resource(name="usersDao")
@@ -117,7 +121,7 @@ public class UsersService {
 	}
 	
 	//비밀번호 찾기
-	public void findPW(HttpServletResponse response, UsersDto users) throws Exception {
+	public FindPWResult findPW(HttpServletResponse response, UsersDto users) throws Exception {
 		log.info("실행");
 		log.info(users.getEmail());
 		response.setContentType("text/html;charset=utf-8");
@@ -125,8 +129,9 @@ public class UsersService {
 		// 가입된 이메일이 없으면
 		if(usersDao.selectByEmail(users.getEmail()) == null) {
 			log.info("등록되지 않은 이메일입니다.");
-			out.print("등록되지 않은 이메일입니다.");
-			out.close();
+			return FindPWResult.FAIL;
+			//out.print("등록되지 않은 이메일입니다.");
+			//out.close();
 		} else {
 			UsersDto usersDto = usersDao.selectByEmail(users.getEmail());
 			log.info(usersDto.getName());
@@ -146,8 +151,9 @@ public class UsersService {
 			// 비밀번호 변경 메일 발송
 			sendmail(usersDto, "findPassword", realPW);
 
-			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
-			out.close();
+			//out.print("이메일로 임시 비밀번호를 발송하였습니다.");
+			//out.close();
+			return FindPWResult.SUCCESS;
 		}
 	}
 	

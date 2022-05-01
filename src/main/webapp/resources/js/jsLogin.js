@@ -1,8 +1,8 @@
 
 $(document).ready(function(){ 
 	 if($("#failLogin").text()!=""){
-		$("#main_header_mask").fadeIn(100);
-		$("#login_popup_wrap").animate({right: "0"}, 350);
+		$("#main_header_mask").fadeIn(0);
+		$("#login_popup_wrap").animate({right: "0"}, 0);
 	}
 	 $("#login_popup_open").click(function(){ 
 		 $("#main_header_mask").fadeIn(100);

@@ -51,11 +51,11 @@ public class SignUpController {
 		if(jr == JoinResult.SUCCESS) {
 			return "redirect:/";
 		} else if(jr ==JoinResult.DUPLICATED) {
-			model.addAttribute("error", "중복된 아이디가 있습니다.");
-			return "signUp";
+			model.addAttribute("error", "중복된 이메일이 있습니다.");
+			return "redirect:/signUp";
 		} else {
 			model.addAttribute("error", "회원 가입이 실패되었습니다. 다시 시도해 주세요.");
-			return "signUp";
+			return "redirect:/signUp";
 		}
 	}
 }

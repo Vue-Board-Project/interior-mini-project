@@ -5,7 +5,11 @@
                 <div class="d-flex ml-3 mb-4">
                     <h3>비밀번호를 잊으셨나요?</h3>
                 </div>
-            
+            	<c:if test="${errorPW != null}">
+				    <div id="failFindPW" class="alert alert-danger mb-2 mt-3" style="width: 270px; margin: 0 auto; font-size: 12px;" role="alert">
+				      ${errorPW}
+				    </div>			
+			    </c:if>
                 <form method="post" action="findPassword">
                     <div class="form-group"  style="width: 286px;">
                         <label for="u-email" class="ml-3" style="font-size: 12px;">이메일</label>
