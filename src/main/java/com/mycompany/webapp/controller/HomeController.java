@@ -16,8 +16,14 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@RequestMapping( "/")
+	@RequestMapping("/")
 	public String home() {
+		logger.info("실행");
+		
+		return "home";//view 이름만 전달
+	}
+	@RequestMapping("/home")
+	public String goHome() {
 		logger.info("실행");
 		
 		return "home";//view 이름만 전달

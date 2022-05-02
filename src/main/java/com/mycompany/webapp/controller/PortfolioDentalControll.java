@@ -33,7 +33,7 @@ public class PortfolioDentalControll {
 		return "portfolio_dental/portfolio_dental";
 	}
 	
-	@RequestMapping("/portfolio_dental/portfolio_dental")
+	@RequestMapping("/goPortfolioDental")
 	public String goPortfolioDental(Model model) {
 		log.info("interiorListDownload 실행");
 		

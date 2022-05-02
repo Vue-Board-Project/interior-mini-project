@@ -41,7 +41,7 @@ public class FindPasswordController {
 				out.println("<script>alert('이메일로 임시 비밀번호를 발송하였습니다.'); location.href=''; </script>");
 				out.flush();
 				out.close();
-				return "redirect:/";
+				return "home";
 			}
 			
 		} catch (Exception e) {
