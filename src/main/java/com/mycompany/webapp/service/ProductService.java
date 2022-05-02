@@ -56,6 +56,10 @@ public class ProductService {
 		return pList;
 		
 	}
+	//상세보기
+	public ProductDto detailProduct(String modelNumber) {
+		return productDao.selectDetailProduct(modelNumber);
+	}
 	/*public Map<String, Object> getByteImage(){
 		return productDao.getByteImage();
 	}*/

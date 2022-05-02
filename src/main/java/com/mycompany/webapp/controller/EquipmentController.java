@@ -1,15 +1,21 @@
 package com.mycompany.webapp.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,20 +48,14 @@ public class EquipmentController {
 		return "/equipment/equipment_k3chair_detail";// view 이름만 전달
 	}
 
-	@RequestMapping("/equipment/equipment_k5chair_detail")
-	public String equipment_k5chair_detail() {
-		return "/equipment/equipment_k5chair_detail";// view 이름만 전달
+	@RequestMapping("/equipment/equipment_detail")
+	public String equipment_k5chair_detail(String modelNumber, Model model) {
+		ProductDto detailProduct=productService.detailProduct(modelNumber);
+		model.addAttribute("detailProduct", detailProduct);
+		log.info(modelNumber);
+		return "/equipment/equipment_detail";
 	}
 
-	/*@RequestMapping("/equipment/dental_equipment_main")
-	public ResponseEntity<byte[]> getByteImage() {
-		log.info("살아있냐");
-		Map<String, Object> chairmap = productService.getByteImage();
-	    byte[] imageContent = (byte[]) chairmap.get("mainimage");
-	    final HttpHeaders headers = new HttpHeaders();
-	    headers.setContentType(MediaType.IMAGE_PNG);
-	    return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
-	}*/
 	@RequestMapping("/equipment/dental_equipment_main")//겟
 	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, 
 			 ModelMap modelmap, Model model) {
@@ -155,4 +155,27 @@ public class EquipmentController {
 	public String shoppingcart_rentalandpurchase() {
 		return "/equipment/shoppingcart_rentalandpurchase";// view 이름만 전달
 	}
+	
+	@GetMapping("/equipment/display")
+	   public ResponseEntity<byte[]> getImage(String fileName) {
+	      // 반환 타입 : ResponseEntity 객체를 통해 body에 byte [] 데이터를 보내 / 파라미터 : '파일 경로' + '파일
+	      // 이름'을 전달받아
+	      log.info(" getImage()..........");
+	      File file = new File("c:\\Temp\\product\\"+ fileName);
+	      ResponseEntity<byte[]> result = null;
+
+	      try {
+
+	         HttpHeaders header = new HttpHeaders();
+	         header.add("Content-type", Files.probeContentType(file.toPath()));// 대상 파일의 MIME TYPE을 부여
+	         // 대상 이미지 파일, header 객체, 상태 코드를 인자 값으로 부여한 생성자를 통해 ResponseEntity 객체를 생성하여 앞서
+	         // 선언한 ResponseEntity 참조 변수에 대입
+	         result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+	         // 대상 파일을 복사하여 Byte 배열로 반환해주는 클래스
+
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      }
+	      return result;
+	   }
 }
