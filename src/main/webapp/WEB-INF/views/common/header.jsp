@@ -31,6 +31,10 @@
    
    <!-- 주소찾기 daum API -->
    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   
+   <!-- 예쁜 alter 사용 -->
+   <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+   
     <style>
         @font-face {
             font-family: 'MinSans-Regular';
