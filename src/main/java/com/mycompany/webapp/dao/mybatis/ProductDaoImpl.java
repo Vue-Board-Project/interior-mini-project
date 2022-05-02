@@ -55,6 +55,10 @@ public class ProductDaoImpl implements ProductDao{
 	public List<ProductDto> selectbestlist(){
 		return sqlSession.selectList("product.selectbestlist");
 	}
+	@Override//상세보기
+	public ProductDto selectDetailProduct(String modelNumber) {
+		return sqlSession.selectOne("product.detailProduct", modelNumber);
+	}
 	/*@Override
 	public Map<String, Object> getByteImage(){
 		return sqlSession.selectOne("sqlSession.getByteImage");

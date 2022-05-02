@@ -21,4 +21,7 @@ public interface ProductDao {
 	public List<ProductDto> soltreviewCount();
 	public List<ProductDto> solttime();
 	public List<ProductDto> selectbestlist();
+	
+	//상세보기
+	public ProductDto selectDetailProduct(String modelNumber);
 }

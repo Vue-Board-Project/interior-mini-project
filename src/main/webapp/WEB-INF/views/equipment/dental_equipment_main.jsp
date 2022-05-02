@@ -30,11 +30,11 @@
                     <div class="dropdown">
                         <button class="dropdown-button">Category</button>
                         <div class="dropdown-content">
-                            <a class="dropdown-content-element" href="${pageContext.request.contextPath}/equipment/dental_equimpent_chair">유니트 체어</a>
-                            <a class="dropdown-content-element" href="#">대형 영상 장비</a>
-                            <a class="dropdown-content-element" href="#">멸균 및 세척기</a>
-                            <a class="dropdown-content-element" href="#">소형 영상 장비</a>
-                            <a class="dropdown-content-element" href="#">기타 장비</a>
+                            <input type="button" class="dropdown-content-element" name="category" value="유니트 체어" href="${pageContext.request.contextPath}/equipment/dental_equimpent_chair"/>
+                            <input type="button" class="dropdown-content-element" name="category" value="대형 영상 장비" href="#"/>
+                            <input type="button" class="dropdown-content-element" name="category" value="멸균 및 세척기" href="#"/>
+                            <input type="button" class="dropdown-content-element" name="category" value="소형 영상 장비" href="#"/>
+                            <input type="button" class="dropdown-content-element" name="category" value="기타 장비" href="#"/>
                         </div>
                     </div>
                 </div>
@@ -57,6 +57,7 @@
                     </c:forEach>
 
                     </div>
+
                     
                      
                     <form id="product_filter" action="Sort" method="get">
@@ -75,9 +76,9 @@
 					<div id="eq_list2" class="eq_list"><!--전체 상품-->
                         <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
                     <c:forEach var="chair" items="${chairList}">
-                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_${chair.productName}_detail" class="gotolink">
+                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="gotolink">
                             <div id="eq_list_content1" class="card">
-                                <img id="eq_list_content1_image"src="" class="card-img-top">
+                                <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" class="card-img-top">
                                 <div class="card-body">
                                     <p id="eq_list_content1_element1" class="card-text">${chair.productName}</p>
                                     <hr/>
