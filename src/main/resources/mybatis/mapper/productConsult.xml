@@ -1,15 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.mybatis.ProductConsultDao">
 
-<mapper namespace="com.mycompany.webapp.dao.mybatis.ConsultDao">
-	<select id="getByteImage" resultType="java.util.Map">
-	    SELECT img
-	    FROM img_table
-	</select>
-
-
-
+<resultMap type="product" id="selectProductResult">
+	<result column="MODEL_NUMBER" property="modelNumber"/>
+	<result column="PRODUCT_NAME" property="productName"/>
+	<result column="PRICE" property="price"/>
+	<result column="PRODUCT_COLOR" property="productColor"/>
+	<result column="CATEGORY" property="category"/>
+	<result column="PATTACHONAME" property="pattachoname"/>
+	<result column="PATTACHSNAME" property="pattachsname"/>
+	<result column="PATTACHTYPE" property="pattachtype"/>
 	
-</mapper>
+	<!--  <result column="REGISTRATION_DATE" property="registrationDate"/>
+	 <result column="PRODUCT_QUANTITY" property="productQuantity"/>
+	<result column="PRODUCTI_HITS" property="productHits"/>
+	<result column="PRODUCT_SALES_VOLUME" property="productSalesVolume"/>
+	 <result column="REVIEW_COUNT" property="reviewCount"/> 
+	<result column="PRODUCT_INTRO" property="productIntro"/> 
+	<result column="MAINIMAGE" property="mainimage"/>	 -->
+</resultMap>
 
+	<select id="selectProduct" parameterType="string" resultMap="selectProductResult">
+		select MODEL_NUMBER, PRODUCT_NAME, PRICE , PRODUCT_COLOR, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE from product 
+			where MODEL_NUMBER = #{modelNumber}
+	</select>
+</mapper>
