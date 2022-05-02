@@ -16,6 +16,21 @@
 		FROM interior WHERE itype='portfolio' ORDER BY ino
 	</select>
 	
+	<select id="interiorListNew" resultType="Interior">
+		SELECT isummary
+		FROM interior WHERE itype='portfolio' ORDER BY ino DESC
+	</select>
+	
+	<select id="interiorListPast" resultType="Interior">
+		SELECT isummary
+		FROM interior WHERE itype='portfolio' ORDER BY ino ASC
+	</select>
+	
+	<select id="interiorListPopular" resultType="Interior">
+		SELECT isummary
+		FROM interior WHERE itype='portfolio' ORDER BY ihits DESC
+	</select>
+	
 	<select id="interiorCnt" resultType="int">
 		SELECT count(*) AS cnt FROM interior WHERE itype='portfolio'
 	</select>
