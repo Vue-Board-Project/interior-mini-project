@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,18 +53,23 @@ public class PortfolioDentalControll {
 		return "portfolio_dental/portfolio_dental_detail3";
 	}
 	
-	@GetMapping("/portfolio_dental/sortVal")
-	public void postSort(@RequestParam("sort") String sort, Model model) {
-		log.info(sort);
-		if(sort == "new") {
+	/*@GetMapping("/sortVal")
+	public void postSort(@RequestParam("sort") String sort, Model model, HttpServletResponse response) {
+		response.setContentType("application/json; charset=UTF-8");
+		JSONObject jsonObject = new JSONObject();
+		if(sort.equals("new")) {
+			log.info("new");
 			List<InteriorDto> interiorListNew=interiorService.interiorListNew();
-			model.addAttribute("interiorListNew",interiorListNew) ;
-		} else if(sort =="popular") {
+			
+			//model.addAttribute("interiorListNew",interiorListNew) ;
+		} else if(sort.equals("popular")) {
+			log.info("popular");
 			List<InteriorDto> interiorListPast=interiorService.interiorListPast();
-			model.addAttribute("interiorListPast",interiorListPast) ;
-		} else if(sort == "past") {
+			//model.addAttribute("interiorList",interiorListPast) ;
+		} else if(sort.equals("past")) {
+			log.info("past");
 			List<InteriorDto> interiorListPopular=interiorService.interiorListPopular();
-			model.addAttribute("interiorListPopular",interiorListPopular) ;
+			//model.addAttribute("interiorList",interiorListPopular);
 		}
-	}
+	}*/
 }
