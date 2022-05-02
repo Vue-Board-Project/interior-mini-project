@@ -73,7 +73,7 @@
                     		<%-- 사이트간 요청 위조 방지가 활성화되어 있을 경우 --%>   
 		                    <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline-block">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		                  	    <a id="logout" href="logout" class="btn" style="border: none; outline: none; box-shadow: none;">
+		                  	    <a id="logout" href="${pageContext.request.contextPath}/logout" class="btn" style="border: none; outline: none; box-shadow: none;">
 		                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
 		                            <span id="main_header_logout_text" class="main_header_text">로그아웃</span>
 		                        </a>

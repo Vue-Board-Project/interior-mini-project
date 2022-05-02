@@ -15,7 +15,7 @@
 					 	</c:if>
 					 </div> 
 				 </c:if>
-                 <form method="post" action="login">
+                 <form method="post" action="${pageContext.request.contextPath}/login">
                  	<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
                      <div class="form-group"  style="width: 286px;">
                          <label for="email" class="ml-3" style="font-size: 12px;">이메일</label>
@@ -32,14 +32,9 @@
 
 	         
 	                 <div class="text-center">
-	                     <input type="submit" class="btn" style="background-color: #ca5c0d; color: #faf9f6; width: 270px;" value="로그인하기" onclick="loginAjax()"/>
+	                     <input type="submit" class="btn" style="background-color: #ca5c0d; color: #faf9f6; width: 270px;" value="로그인하기"/>
 	                 </div>
                  </form>
-         		 <!-- <script type="text/javascript">
-         		 	function loginAjax() {
-						
-					}
-         		 </script> -->
          
                  <div class="login_hr_sect"><p>가입하기</p></div>
          

@@ -33,7 +33,7 @@
 		<security:intercept-url pattern="/**" access="isAuthenticated()"/>
 		
 		<!-- 로그인 안되어있을 때 -->
-		<security:intercept-url pattern="/" access="isAnonymous()"/>
+		<!-- <security:intercept-url pattern="/**" access="isAnonymous()"/> -->
 		
 		<!-- 보안 필터 내부에는 있지만 로그인 인증은 필요없음 -->
 		<security:intercept-url pattern="/**" access="permitAll"/>
@@ -83,7 +83,7 @@
 		<!-- name="alwaysUseDefaultTargetUrl" value="true"
 				true : defaultTargetUrl로 리다이렉트
 				false : 요청경로로 리다이렉트 -->
-		<property name="alwaysUseDefaultTargetUrl" value="true"></property>
+		<property name="alwaysUseDefaultTargetUrl" value="false"></property>
 		<property name="defaultTargetUrl" value="/"></property>
 	</bean>
 	<!-- 로그인 실패 핸들러, false 기본요청 경로로 리다이렉트 -->
