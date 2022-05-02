@@ -143,7 +143,7 @@
                                                     <div style="display: inline-block; width: 40%; height: 100px;" class="ml-3 mt-2">
                                                         <div style="font-family: 'MinSans-Medium';" class="mb-2">
                                                             <span style="font-size: 20px;">한신 멸균기</span><br/>
-                                                            model1
+                                                           model1
                                                         </div>
                                                         <div style="display: flex;">
                                                             <div style="display: inline-block;" class="mr-2">색상:</div> 
@@ -168,19 +168,20 @@
                                     </div>
                                     
                                 </div>
-                               <c:forEach var="image" items="${images}" > 
+                               <c:forEach var="product" items="${products}" > 
 	                                <div style="width: 100%;" id="stepthree_height">
 	                                    <div class="border mb-4 bg-white" style="width: 95%; height: 160px;">
 	                                        <div style="display: flex;">
 	                                            <div style="display: inline-block; width: 90%; height: 100px;">
 	                                                <div style="display: flex;">
-	                                                    <div style="display: inline-block; width: 30%;" class="p-2">
-	                                                        <img src="data:image/png;base64;${image}" width="150px" height="110px" class="mt-2">
+	                                                    <div style="display: inline-block; width: 30%;" class="p-2 product_consult_img">
+	                                                 
+                                                            <img src="/springframework-mini-project/interior_consult/display?fileName=${product.pattachoname}"width="150px" height="110px" class="mt-2">  
 	                                                    </div>
 	                                                    <div style="display: inline-block; width: 40%; height: 100px;" class="ml-3 mt-2">
 	                                                        <div style="font-family: 'MinSans-Medium';" class="mb-2">
-	                                                            <span style="font-size: 20px;">한신 멸균기</span><br/>
-	                                                            model1
+	                                                            <span style="font-size: 20px;">${product.productName}</span><br/>
+	                                                            ${product.modelNumber}
 	                                                        </div>
 	                                                        <div style="display: flex;">
 	                                                            <div style="display: inline-block;" class="mr-2">색상:</div> 
