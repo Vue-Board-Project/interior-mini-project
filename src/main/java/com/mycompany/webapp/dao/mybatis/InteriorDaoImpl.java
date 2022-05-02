@@ -33,23 +33,16 @@ public class InteriorDaoImpl implements InteriorDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	//포폴 최신순 리스트
-	@Override
-	public List<InteriorDto> interiorListNew() {
-		return sqlSession.selectList("com.mycompany.webapp.dao.mybatis.InteriorDao.interiorListNew");
-	}
-	
-	//포폴 과거순 리스트
+
 	@Override
 	public List<InteriorDto> interiorListPast() {
 		return sqlSession.selectList("com.mycompany.webapp.dao.mybatis.InteriorDao.interiorListPast");
 	}
 
-	//포폴 인기순 리스트
 	@Override
 	public List<InteriorDto> interiorListPopular() {
 		return sqlSession.selectList("com.mycompany.webapp.dao.mybatis.InteriorDao.interiorListPopular");
 	}
+	
 
 }

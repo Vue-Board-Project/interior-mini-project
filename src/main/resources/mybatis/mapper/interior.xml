@@ -11,24 +11,35 @@
 		values (#{ino}, #{itype}, 0, #{istyle}, #{allColor}, #{wcolor}, #{fcolor}, #{dtype}, #{darea}, #{isummary}, #{imImgPath})
 	</insert>
 	
+	<!-- <sql id="sort">
+		<if test="sort ==''">
+			order by ino
+		</if>
+		<if test="sort =='new'">
+			order by ino
+		</if>
+		<if test="sort =='past'">
+			order by ino desc
+		</if>
+		<if test="sort =='popular'">
+			order by ihits desc
+		</if>
+	</sql> -->
+	
 	<select id="interiorList" resultType="Interior">
 		SELECT isummary
-		FROM interior WHERE itype='portfolio' ORDER BY ino
-	</select>
-	
-	<select id="interiorListNew" resultType="Interior">
-		SELECT isummary
-		FROM interior WHERE itype='portfolio' ORDER BY ino DESC
+		FROM interior WHERE itype='portfolio' order by ino desc
+<!-- 		<include refid="sort"/> -->
 	</select>
 	
 	<select id="interiorListPast" resultType="Interior">
 		SELECT isummary
-		FROM interior WHERE itype='portfolio' ORDER BY ino ASC
+		FROM interior WHERE itype='portfolio' order by ino asc
 	</select>
 	
 	<select id="interiorListPopular" resultType="Interior">
 		SELECT isummary
-		FROM interior WHERE itype='portfolio' ORDER BY ihits DESC
+		FROM interior WHERE itype='portfolio' order by ihits desc
 	</select>
 	
 	<select id="interiorCnt" resultType="int">

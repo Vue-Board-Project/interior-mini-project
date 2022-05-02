@@ -1,11 +1,14 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,19 +37,74 @@ public class PortfolioDentalControll {
 		return "portfolio_dental/portfolio_dental";
 	}
 	
-	@RequestMapping("/goPortfolioDental")
-	public String goPortfolioDental(Model model) {
+	@GetMapping(value="/goPortfolioDental", produces = "application/json; charset=UTF-8")
+	public String goPortfolioDental(Model model, @RequestParam(value="sort", required=false) String sort, HttpServletResponse response) throws IOException {
 		log.info("interiorListDownload 실행");
-		
-		List<InteriorDto> interiorList=interiorService.interiorList();
-		/*for(InteriorDto s : interiorList) {
-			log.info(s.getIsummary());
-		}*/
+		/*log.info(sort);*/
+		if(sort==null) {
+			log.info("null~~~~~~~~~~~~~~~~~~~");
+			List<InteriorDto> interiorList=interiorService.interiorList();
+			model.addAttribute("interiorList",interiorList);
+			for(InteriorDto s : interiorList) {
+				log.info(s.getIsummary());
+			}
+		}  else if(sort.equals("popular")) {
+			log.info("popular~~~~~~~~~~~~~~~~~~~");
+			List<InteriorDto> interiorList = interiorService.interiorListPopular();
+			JSONArray jsonArray = new JSONArray();
+			for(InteriorDto s : interiorList) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("isummary",s.getIsummary());
+				jsonArray.put(jsonObject);
+			}
+			log.info(jsonArray);
+			String json = jsonArray.toString();
+			response.setContentType("application/json; charset=UTF-8");
+			//출력스트림 얻어냄
+	        PrintWriter pw = response.getWriter();
+	        pw.write(json); //pw.println(json); 써도 됨
+	        pw.flush();
+	        pw.close();
+		}  else if(sort.equals("past")) {
+			log.info("past~~~~~~~~~~~~~~~~~~~");
+			List<InteriorDto> interiorList=interiorService.interiorListPast();
+			JSONArray jsonArray = new JSONArray();
+			for(InteriorDto s : interiorList) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("isummary",s.getIsummary());
+				jsonArray.put(jsonObject);
+			}
+			log.info(jsonArray);
+			String json = jsonArray.toString();
+			response.setContentType("application/json; charset=UTF-8");
+			//출력스트림 얻어냄
+	        PrintWriter pw = response.getWriter();
+	        pw.write(json); //pw.println(json); 써도 됨
+	        pw.flush();
+	        pw.close();
+		} else if(sort.equals("new")) {
+			log.info("new~~~~~~~~~~~~~~~~~~~");
+			List<InteriorDto> interiorList=interiorService.interiorList();
+			JSONArray jsonArray = new JSONArray();
+			for(InteriorDto s : interiorList) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("isummary",s.getIsummary());
+				jsonArray.put(jsonObject);
+			}
+			log.info(jsonArray);
+			String json = jsonArray.toString();
+			response.setContentType("application/json; charset=UTF-8");
+			//출력스트림 얻어냄
+	        PrintWriter pw = response.getWriter();
+	        pw.write(json); //pw.println(json); 써도 됨
+	        pw.flush();
+	        pw.close();
+		}
 		int cnt = interiorService.interiorCnt();
-		model.addAttribute("interiorList",interiorList) ;
 		model.addAttribute("cnt",cnt);
 		return "portfolio_dental/portfolio_dental";
 	}
+	
 	@RequestMapping("/portfolioDentalDeatail3")
 	public String portfolioDentalDeatail3() {
 		log.info("실행");
@@ -71,5 +129,11 @@ public class PortfolioDentalControll {
 			List<InteriorDto> interiorListPopular=interiorService.interiorListPopular();
 			//model.addAttribute("interiorList",interiorListPopular);
 		}
+	}*/
+	
+	/*@PostMapping("/sortVal")
+	public String sortVal(@RequestParam("sort")String sort) {
+		log.info(sort);
+		return "portfolio_dental/portfolio_dental";
 	}*/
 }

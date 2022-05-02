@@ -6,7 +6,7 @@
               <div class="dropdown-content">
                 <div class="p-2 d-flex flex-column">
 		            <label class="dental_model_field_choice">
-		                <input type="radio" name="sort" value="new">
+		                <input type="radio" name="sort" value="new" checked="checked">
 		                <span class="ml-2">최신순</span>
 		            </label>
 		            <label class="dental_model_field_choice">
