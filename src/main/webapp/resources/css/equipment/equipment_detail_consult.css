@@ -12,7 +12,7 @@
           font-weight: normal;
           font-style: normal;
         }
-        #eq_detail_content{
+        #eq_detail_c_content{
             margin-top: 150px;
             margin-bottom: 100px;
             display: flex;
@@ -25,14 +25,14 @@
             width: 1300px;
             margin-bottom: 150px;
         }
-        #eq_detail_main{
+        #eq_detail_c_main{
 
         }
-        #eq_detail_main_left{
+        #eq_detail_c_main_left{
           
 
         }
-        #eq_detail_main_right{
+        #eq_detail_c_main_right{
             padding-top: 2%;
             padding-left: 3%;
             padding-right: 3%;
@@ -52,16 +52,16 @@
             margin-bottom: 10px;
 
         }
-        #eq_detail_main_content1{
+        #eq_detail_c_main_content1{
             font-size: 2rem;
             font-family: "MinSans-Black";
         }
-        #eq_detail_main_content2{
+        #eq_detail_c_main_content2{
             font-size: 0.8rem;
             margin-top:20px;
             margin-bottom: 30px;
         }
-        #eq_detail_main_content3{
+        #eq_detail_c_main_content3{
             
         }
         #colorcheck{
@@ -89,7 +89,7 @@
         #colorcheck_green{
             accent-color: green;
         }
-        #eq_detail_main_content4{
+        #eq_detail_c_main_content4{
             
         }
         #count_up_down{
@@ -111,7 +111,7 @@
             font-size: 15px;
             margin-bottom: 20px;
         }
-        #eq_detail_main_content6 .tootip-content{
+        #eq_detail_c_main_content6 .tootip-content{
             visibility: hidden;
 			width: 220px;
 			background-color: orange;
@@ -126,7 +126,7 @@
         #able_delivery_loaction:hover .tooltip-content { 
             visibility: visible; 
         }
-        #eq_detail_main_right .btn-light{
+        #eq_detail_c_main_right .btn-light{
             background-color: #ca5c0d;
             color: white;
             width: 100px;
@@ -135,18 +135,13 @@
             font-size: 15px;
             margin-top: 30px;
         }
-        #eq_detail_main_right .btn-light:hover{
+        #eq_detail_c_main_right .btn-light:hover{
             background-color: white;
             color: black;
-        }
-        #btn_go_cart{
-            margin-left: 130px;
         }
         #btn_go_counseling{
 
         }
-        
-        
         /*GLOBALS*/
             *{margin:0; padding:0; list-style:none;}
             a{text-decoration:none; color:#666;}
@@ -154,7 +149,7 @@
             body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
             
             
-            #eq_detail_main_left #wrapper{
+            #eq_detail_c_main_left #wrapper{
               width:900px;
               margin:50px auto;
               height:600px;
@@ -163,14 +158,14 @@
               text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
             }
             
-            #eq_detail_main_left #slider_wrap{
+            #eq_detail_c_main_left #slider_wrap{
               width:900px;
               height:600px;
               position:relative;
               overflow:hidden;
             }
             
-            #eq_detail_main_left #slider_wrap ul#slider{
+            #eq_detail_c_main_left #slider_wrap ul#slider{
               width:100%;
               height:100%;
               
@@ -179,30 +174,30 @@
               left:0;   
             }
             
-           #eq_detail_main_left #slider_wrap ul#slider li{
+            #eq_detail_c_main_left #slider_wrap ul#slider li{
               float:left;
               position:relative;
               width:900px;
               height:600px; 
             }
             
-            #eq_detail_main_left #slider_wrap ul#slider li > div{
+            #eq_detail_c_main_left #slider_wrap ul#slider li > div{
               position:absolute;
               top:20px;
               left:35px;  
             }
             
-            #eq_detail_main_left #slider_wrap ul#slider li > div h3{
+            #eq_detail_c_main_left #slider_wrap ul#slider li > div h3{
               font-size:36px;
               text-transform:uppercase; 
             }
             
-           #eq_detail_main_left #slider_wrap ul#slider li > div span{
+            #eq_detail_c_main_left #slider_wrap ul#slider li > div span{
               font-family: Neucha, Arial, sans serif;
               font-size:21px;
             }
             
-            #eq_detail_main_left #slider_wrap ul#slider li img{
+            #eq_detail_c_main_left #slider_wrap ul#slider li img{
               display:block;
               width:100%;
               height: 100%;
@@ -210,7 +205,7 @@
             
             
             /*btns*/
-            #eq_detail_main_left .btns{
+            #eq_detail_c_main_left .btns{
               position:absolute;
               width:50px;
               height:60px;
@@ -235,25 +230,25 @@
               transition: all 0.1s ease;
             }
             
-            #eq_detail_main_left .btns:hover{
+            #eq_detail_c_main_left .btns:hover{
               background:rgba(0,0,0,0.3); 
             }
             
-            #eq_detail_main_left #next{right:-50px; border-radius:7px 0px 0px 7px;}
-            #eq_detail_main_left #previous{left:-50px; border-radius:0px 7px 7px 7px;}
-            #eq_detail_main_left #counter{
+            #eq_detail_c_main_left #next{right:-50px; border-radius:7px 0px 0px 7px;}
+            #eq_detail_c_main_left #previous{left:-50px; border-radius:0px 7px 7px 7px;}
+            #eq_detail_c_main_left #counter{
               top: 30px; 
               right:35px; 
               width:auto;
               position:absolute;
             }
             
-            #eq_detail_main_left #slider_wrap.active #next{right:0px;}
-            #eq_detail_main_left #slider_wrap.active #previous{left:0px;}
+            #slider_wrap.active #next{right:0px;}
+            #slider_wrap.active #previous{left:0px;}
             
             
             /*bar*/
-            #eq_detail_main_left #pagination_wrap{
+            #pagination_wrap{
               min-width:20px;
               margin-top:350px;
               margin-left: auto; 
@@ -263,7 +258,7 @@
               text-align:center;
             }
             
-            #eq_detail_main_left #pagination_wrap ul {
+            #pagination_wrap ul {
               width:100%;
             }
             

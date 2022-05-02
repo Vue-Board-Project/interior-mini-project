@@ -3,7 +3,7 @@ package com.mycompany.webapp.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -43,13 +43,15 @@ public class EquipmentController {
 		return "/equipment/CustomerService";// view 이름만 전달
 	}
 
-	@RequestMapping("/equipment/equipment_k3chair_detail")
-	public String equipment_k3chair_detail() {
-		return "/equipment/equipment_k3chair_detail";// view 이름만 전달
+	@RequestMapping("/equipment/equipment_detail_consult")
+	public String equipment_detail_consult(String modelNumber, Model model) {
+		ProductDto detailProduct=productService.detailProduct(modelNumber);
+		model.addAttribute("detailProduct", detailProduct);
+		return "/equipment/equipment_detail_consult";// view 이름만 전달
 	}
 
 	@RequestMapping("/equipment/equipment_detail")
-	public String equipment_k5chair_detail(String modelNumber, Model model) {
+	public String equipment_detail(String modelNumber, Model model) {
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
 		log.info(modelNumber);
@@ -115,27 +117,27 @@ public class EquipmentController {
 	public String productAdd(ProductDto product) throws IOException {
 		log.info("되냐1");
 
-		/*log.info(product.getModelNumber());
+		log.info(product.getModelNumber());
 		log.info(product.getProductName());
 		log.info(product.getProductQuantity());
 		log.info(product.getCategory());
 		
-				log.info(product.getMainImage().getOriginalFilename());
-				if (!product.getMainImage().isEmpty()) {
-					product.setPattachoname(product.getMainImage().getOriginalFilename());
-					product.setPattachtype(product.getMainImage().getContentType());
+				log.info(product.getMainimage().getOriginalFilename());
+				if (!product.getMainimage().isEmpty()) {
+					product.setPattachoname(product.getMainimage().getOriginalFilename());
+					product.setPattachtype(product.getMainimage().getContentType());
 					product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());
 					File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
-					product.getMainImage().transferTo(file);
+					product.getMainimage().transferTo(file);
 					productService.insertproduct(product);			
+				}
+				/*try {
+						Map<String, Object> hmap=new HashMap<String, Object>();
+						hmap.put("mainImage", product.getMainimage().getBytes());
+						productService.saveImage(hmap);
+				}catch(Exception e) {
+					e.printStackTrace();
 				}*/
-		try {
-				Map<String, Object> hmap=new HashMap<String, Object>();
-				hmap.put("mainImage", product.getMainimage().getBytes());
-				productService.saveImage(hmap);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
 
 
 		return "redirect:/equipment/productAdd";
