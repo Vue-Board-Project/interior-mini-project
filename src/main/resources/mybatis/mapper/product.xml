@@ -69,14 +69,6 @@
 		
 	</sql>
 	
-	<resultMap id="reusltImage" type="java.util.Map">
-		<result column="mainimage" property="getByteImage" jdbcType="BLOB" javaType="[B"></result>
-	</resultMap>
-	<select id="getByteImage" resultType="java.util.Map" parameterType="java.util.Map" resultMap="reusltImage">
-		select MAINIMAGE
-		from product
-		where rownum=1
-	</select>
 	
 	<!--상품 상세보기-->
 	<select id="selectDetailProduct" parameterType="string" resultType="product">
