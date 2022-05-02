@@ -3,10 +3,16 @@ package com.mycompany.webapp.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.webapp.dto.interior.InteriorDto;
@@ -44,5 +50,20 @@ public class PortfolioDentalControll {
 	public String portfolioDentalDeatail3() {
 		log.info("실행");
 		return "portfolio_dental/portfolio_dental_detail3";
+	}
+	
+	@GetMapping("/portfolio_dental/sortVal")
+	public void postSort(@RequestParam("sort") String sort, Model model) {
+		log.info(sort);
+		if(sort == "new") {
+			List<InteriorDto> interiorListNew=interiorService.interiorListNew();
+			model.addAttribute("interiorListNew",interiorListNew) ;
+		} else if(sort =="popular") {
+			List<InteriorDto> interiorListPast=interiorService.interiorListPast();
+			model.addAttribute("interiorListPast",interiorListPast) ;
+		} else if(sort == "past") {
+			List<InteriorDto> interiorListPopular=interiorService.interiorListPopular();
+			model.addAttribute("interiorListPopular",interiorListPopular) ;
+		}
 	}
 }

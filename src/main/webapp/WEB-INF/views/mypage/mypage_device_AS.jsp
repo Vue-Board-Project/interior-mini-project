@@ -10,7 +10,7 @@
    <div class = "header_section">
             <div class="text">장비 AS 조회</div>
                 <span class="sub_text">장비 AS 내역을 조회합니다.</span>
-                <hr width = 90%>
+                <hr style="width : 1400px;">
    </div>
    <div class="content_section">
    <!-- 장비 AS 내역 확인 -->

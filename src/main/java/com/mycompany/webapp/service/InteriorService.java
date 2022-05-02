@@ -31,6 +31,19 @@ public class InteriorService {//인테리어 서비스
 		return interiorDao2.interiorList();
 	}
 	
+	//포폴 최신순
+	public List<InteriorDto> interiorListNew(){
+		return interiorDao2.interiorListNew();
+	}
+	//포폴 과거순
+	public List<InteriorDto> interiorListPast(){
+		return interiorDao2.interiorListPast();
+	}
+	//포폴 인기순
+	public List<InteriorDto> interiorListPopular(){
+		return interiorDao2.interiorListPopular();
+	}
+	
 	public int interiorCnt() {
 		return interiorDao.interiorCnt();
 	}
