@@ -38,17 +38,17 @@ public class PortfolioDentalControll {
 	}
 	
 	@GetMapping(value="/goPortfolioDental", produces = "application/json; charset=UTF-8")
-	public String goPortfolioDental(Model model, @RequestParam(value="sort", required=false) String sort, HttpServletResponse response) throws IOException {
+	public String goPortfolioDental(Model model, @RequestParam(value="sort", required=false) String sort, @RequestParam(value="field", required=false) String field, HttpServletResponse response) throws IOException {
 		log.info("interiorListDownload 실행");
 		/*log.info(sort);*/
+		log.info(field);
 		if(sort==null) {
 			log.info("null~~~~~~~~~~~~~~~~~~~");
 			List<InteriorDto> interiorList=interiorService.interiorList();
 			model.addAttribute("interiorList",interiorList);
-			for(InteriorDto s : interiorList) {
-				log.info(s.getIsummary());
-			}
-		}  else if(sort.equals("popular")) {
+			int cnt = interiorService.interiorCnt();
+			model.addAttribute("cnt",cnt);
+		}  else if(sort.equals("popular")) {//인기순 정렬
 			log.info("popular~~~~~~~~~~~~~~~~~~~");
 			List<InteriorDto> interiorList = interiorService.interiorListPopular();
 			JSONArray jsonArray = new JSONArray();
@@ -57,15 +57,15 @@ public class PortfolioDentalControll {
 				jsonObject.put("isummary",s.getIsummary());
 				jsonArray.put(jsonObject);
 			}
-			log.info(jsonArray);
+			//log.info(jsonArray);
 			String json = jsonArray.toString();
 			response.setContentType("application/json; charset=UTF-8");
 			//출력스트림 얻어냄
 	        PrintWriter pw = response.getWriter();
-	        pw.write(json); //pw.println(json); 써도 됨
+	        pw.write(json);
 	        pw.flush();
 	        pw.close();
-		}  else if(sort.equals("past")) {
+		}  else if(sort.equals("past")) {//과거순 정렬
 			log.info("past~~~~~~~~~~~~~~~~~~~");
 			List<InteriorDto> interiorList=interiorService.interiorListPast();
 			JSONArray jsonArray = new JSONArray();
@@ -74,34 +74,86 @@ public class PortfolioDentalControll {
 				jsonObject.put("isummary",s.getIsummary());
 				jsonArray.put(jsonObject);
 			}
-			log.info(jsonArray);
+			//log.info(jsonArray);
 			String json = jsonArray.toString();
 			response.setContentType("application/json; charset=UTF-8");
 			//출력스트림 얻어냄
 	        PrintWriter pw = response.getWriter();
-	        pw.write(json); //pw.println(json); 써도 됨
+	        pw.write(json);
 	        pw.flush();
 	        pw.close();
-		} else if(sort.equals("new")) {
-			log.info("new~~~~~~~~~~~~~~~~~~~");
-			List<InteriorDto> interiorList=interiorService.interiorList();
-			JSONArray jsonArray = new JSONArray();
-			for(InteriorDto s : interiorList) {
-				JSONObject jsonObject = new JSONObject();
-				jsonObject.put("isummary",s.getIsummary());
-				jsonArray.put(jsonObject);
+		} else if(sort.equals("new")) {//최신순 정렬
+			/*if(field.equals("normal")) {//일반치과
+				log.info("new&&normal~~~~~~~~~~~~~~~~~~~");
+				List<InteriorDto> interiorList=interiorService.interiorList();
+				JSONArray jsonArray = new JSONArray();
+				for(InteriorDto s : interiorList) {
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("isummary",s.getIsummary());
+					jsonArray.put(jsonObject);
+				}
+				//log.info(jsonArray);
+				String json = jsonArray.toString();
+				response.setContentType("application/json; charset=UTF-8");
+				//출력스트림 얻어냄
+				PrintWriter pw = response.getWriter();
+				pw.write(json);
+				pw.flush();
+				pw.close();
+			} else if(field.equals("infant")) {//어린이치과
+				log.info("new&&infant~~~~~~~~~~~~~~~~~~~");
+				List<InteriorDto> interiorList=interiorService.interiorList();
+				JSONArray jsonArray = new JSONArray();
+				for(InteriorDto s : interiorList) {
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("isummary",s.getIsummary());
+					jsonArray.put(jsonObject);
+				}
+				//log.info(jsonArray);
+				String json = jsonArray.toString();
+				response.setContentType("application/json; charset=UTF-8");
+				//출력스트림 얻어냄
+				PrintWriter pw = response.getWriter();
+				pw.write(json);
+				pw.flush();
+				pw.close();
+			} else if(field.equals("special")) {//특수치과
+				log.info("new&&special~~~~~~~~~~~~~~~~~~~");
+				List<InteriorDto> interiorList=interiorService.interiorList();
+				JSONArray jsonArray = new JSONArray();
+				for(InteriorDto s : interiorList) {
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("isummary",s.getIsummary());
+					jsonArray.put(jsonObject);
+				}
+				//log.info(jsonArray);
+				String json = jsonArray.toString();
+				response.setContentType("application/json; charset=UTF-8");
+				//출력스트림 얻어냄
+				PrintWriter pw = response.getWriter();
+				pw.write(json);
+				pw.flush();
+				pw.close();
+			} else {*/
+				log.info("new~~~~~~~~~~~~~~~~~~~");
+				List<InteriorDto> interiorList=interiorService.interiorList();
+				JSONArray jsonArray = new JSONArray();
+				for(InteriorDto s : interiorList) {
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("isummary",s.getIsummary());
+					jsonArray.put(jsonObject);
+				}
+				//log.info(jsonArray);
+				String json = jsonArray.toString();
+				response.setContentType("application/json; charset=UTF-8");
+				//출력스트림 얻어냄
+				PrintWriter pw = response.getWriter();
+				pw.write(json);
+				pw.flush();
+				pw.close();				
 			}
-			log.info(jsonArray);
-			String json = jsonArray.toString();
-			response.setContentType("application/json; charset=UTF-8");
-			//출력스트림 얻어냄
-	        PrintWriter pw = response.getWriter();
-	        pw.write(json); //pw.println(json); 써도 됨
-	        pw.flush();
-	        pw.close();
-		}
-		int cnt = interiorService.interiorCnt();
-		model.addAttribute("cnt",cnt);
+		//}
+
 		return "portfolio_dental/portfolio_dental";
 	}
 	

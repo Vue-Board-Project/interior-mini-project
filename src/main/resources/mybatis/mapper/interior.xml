@@ -26,10 +26,26 @@
 		</if>
 	</sql> -->
 	
+	<!-- <sql id="dtype">
+		<if test="dtype ==''">
+		</if>
+		<if test="dtype =='normal'">
+			and dtype='normal'
+		</if>
+		<if test="dtype =='infant'">
+			and dtype='infant'
+		</if>
+		<if test="dtype =='special'">
+			and dtype='special'
+		</if>
+	</sql> -->
+	
 	<select id="interiorList" resultType="Interior">
 		SELECT isummary
-		FROM interior WHERE itype='portfolio' order by ino desc
-<!-- 		<include refid="sort"/> -->
+		FROM interior WHERE itype='portfolio' 
+ 		<!-- <include refid="dtype"/> -->
+		order by ino desc
+ 		<!-- <include refid="sort"/> -->
 	</select>
 	
 	<select id="interiorListPast" resultType="Interior">
