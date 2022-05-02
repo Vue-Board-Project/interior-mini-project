@@ -61,7 +61,7 @@
 						      	<div class = "mypage_review_product_number">갯수 : ${reviewBefore.purchase.paymentAmount} 개</div>
 						      	<div class = "mypage_review_product_date">${reviewBefore.purchase.purchaseDate}</div>
 						      	<div class = "mypage_review_product_button">
-						      	<a href="mypageReview/insertReview?purchaseNumber=${reviewBefore.purchaseNumber}">
+						      	<a href="mypageReview?purchaseNumber=${reviewBefore.purchaseNumber}">
 						      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button">후기 쓰기</button>
 						      	</a>
 						      	</div>
@@ -128,6 +128,7 @@
      	display: flex;
      	flex-direction: row;  
      	height : 50px;
+     	margin-top : 0px;
      	/*justify-content: space-around;*/
      }
      

@@ -24,18 +24,18 @@
 	         	<div class = "popup_info_width_title">평형</div>
 	            <div class = "popup_info_width_content">35 평</div>
 	         </div>
-	         <div class = "popup_info_budget">
+	         <!-- <div class = "popup_info_budget">
 	         	<div class = "popup_info_budget_title">예산</div>
 	            <div class = "popup_info_budget_content">3억 2천</div>
-	         </div>
+	         </div> -->
 	         <div  class = "popup_info_spot">
 	         	<div class = "popup_info_spot_title">공사지역</div>
 	            <div class = "popup_info_spot_content">아파트 상가 내</div>
 	         </div>
-	         <div  class = "popup_info_worker">
+	         <!-- <div  class = "popup_info_worker">
 	         	<div class = "popup_info_worker_title">담당자</div>
 	            <div class = "popup_info_worker_content">홍수빈</div>
-	         </div>
+	         </div> -->
 	         <div  class = "popup_info_visit_date">
 	         	<div class = "popup_info_visit_date_title">방문예정일</div>
 	            <div class = "popup_info_visit_date_content">2022-05-27</div>

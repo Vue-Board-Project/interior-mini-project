@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
@@ -41,10 +45,17 @@ public class MyPageController {
 	 @Resource private MypageService mypageService;
 	 
 	 @GetMapping("/mypage_counseling") 
-	 public String mypageCounselingFront(String email, Model model){ 
-		 email = "gvhv@dgfv.sad";
+	 public String mypageCounselingFront(Authentication authentication, Model model){ 
+		 String email = authentication.getName();
 		 UsersDto user = mypageService.getUserName(email);
+		 
+		 //인테리어 상담 내역 부분
+		 //int totalInteriorCounseling = mypageService.getTotalInteriorCounseling(email);
+		 
+		 
 		 model.addAttribute("user", user);
+		 
+		 
 		 return "mypage/mypage_counseling";
 	 }
 	
@@ -63,9 +74,14 @@ public class MyPageController {
 	}
 	
 	 @GetMapping("/mypage_orderlist") 
-	 public String mypageOrderListFront(String email, 
+	 public String mypageOrderListFront(String email, Authentication authentication,
 			 							@RequestParam(defaultValue = "1") int pageNo, Model model){ 
 		 email = "gvhv@dgfv.sad";
+		 //이메일 주소 가져오는 코드
+		 
+		 String email1 = authentication.getName();
+		 log.info("email1 : " + email1);
+		 
 		 int totalOrderNum = mypageService.getTotalOrderListNum(email);
 		 
 		 Pager pager = new Pager(4, 4, totalOrderNum, pageNo, email);
@@ -120,6 +136,7 @@ public class MyPageController {
 		
 		return "/mypage/mypage_review";
 	}
+	
 	
 	//@GetMapping("/mypageReview") 
 	@RequestMapping(value = "/mypageReview", method = {RequestMethod.GET, RequestMethod.POST})
