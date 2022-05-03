@@ -3,7 +3,7 @@
 <div class="floating blind mt-3" align="right" style="position: fixed;">
     <div class="d-flex flex-column mb-4">
         <p class="mr-1" style="font-size:20px;"><span style="color: #ff7513;">비슷한 스타일</span> 추천</p>
-        <c:forEach items="${recommandStyleList}" var="styleList" begin="1" end="2">
+        <c:forEach items="${recommandStyleList}" var="styleList" begin="0" end="1">
         	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${styleList.ino}"
         	 class="portfolio_dental_content_a">
         		<img style="width: 10rem;" src="/springframework-mini-project/portfolio_dental/display?fileName=${styleList.imImgPath}"/>
@@ -16,7 +16,7 @@
 
     <div class="d-flex flex-column mb-4">
         <p class="mr-2" style="font-size:20px;"><span style="color: #ff7513;">비슷한 평수</span> 추천</p>
-        <c:forEach items="${recommandAreaList}" var="areaList" begin="1" end="2">
+        <c:forEach items="${recommandAreaList}" var="areaList" begin="0" end="1">
         	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${areaList.ino}"
         	 class="portfolio_dental_content_a">
         	 	<img style="width: 10rem;" src="/springframework-mini-project/portfolio_dental/display?fileName=${areaList.imImgPath}"/>
