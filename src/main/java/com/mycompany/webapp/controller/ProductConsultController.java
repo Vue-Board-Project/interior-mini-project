@@ -25,9 +25,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.product.ProductConsultDetailDto;
+import com.mycompany.webapp.dto.product.ProductConsultDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ConsultService;
+import com.mycompany.webapp.service.ProductConsultService;
+import com.mycompany.webapp.service.UsersService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -39,6 +43,10 @@ public class ProductConsultController {
 	
 	@Resource // 상담 서비스 객체
 	private ConsultService consultService;
+	
+	@Resource//장비 상담 서비스 객체 
+	private ProductConsultService productConsultService;
+	
 	
 	
 	//장비 세션을 위한 세션 생성 메소드
@@ -83,13 +91,20 @@ public class ProductConsultController {
 		
 	}
 	
-	//장비 구매 상담 창으로 이동
-	@GetMapping("/product_buy_request_consult")
-	public String productBuyRequestConsult(
-			@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList,
-			Model model, Authentication authentication  ) {
+	//장비 세션에서 삭제
+	@PostMapping(value="/productSessionRemove", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public void productSessionRemove(String mNum,
+			@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList, Model model) {
 		
-		String email = authentication.getName(); 
+		log.info(mNum);
+		//해당 모델 세션에서 제거
+		for(int a=0;a<pcdList.size();a++) {
+			if(pcdList.get(a).getModelNumber().equals(mNum)) {
+				pcdList.remove(a);
+			}
+		}
+		
 		
 		//장비 상담 창에 전송해줄 모델들 
 		List<ProductDto> products = new ArrayList<ProductDto>();
@@ -99,14 +114,44 @@ public class ProductConsultController {
 				productDto.setConsultCount(dto.getCount());
 				products.add(productDto);
 			}
-			model.addAttribute("products", products);
-			
 		}
+		model.addAttribute("products", products);
+		model.addAttribute("productConsultForm", pcdList);
+		
+	}
+	
+	
+	
+	//장비 구매 상담 창으로 이동
+	@GetMapping("/product_buy_request_consult")
+	public String productBuyRequestConsult(
+			@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList,
+			Model model, Authentication authentication  ) {
+		
+		String email = authentication.getName(); 
+		UsersDto user = productConsultService.getUser(email);
+		String name = user.getName();
+		String address = user.getAddress();
+		if(address == null) {
+			return "redirect:/mypage/mypage_infosetting";
+		}
+		//장비 상담 창에 전송해줄 모델들 
+		List<ProductDto> products = new ArrayList<ProductDto>();
+		if(pcdList.size() != 0) {
+			for(ProductConsultDetailDto dto : pcdList) {
+				ProductDto productDto = consultService.getProduct(dto.getModelNumber());
+				productDto.setConsultCount(dto.getCount());
+				products.add(productDto);
+			}
+		}
+		model.addAttribute("products", products);
+		model.addAttribute("name", name);
+		model.addAttribute("address", address);
 		
 		
 		return "/interior_consult/quipment_buy_request_consult";
 	}
-	
+	//장비 사진 보여주기
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName) {
 		// 반환 타입 : ResponseEntity 객체를 통해 body에 byte [] 데이터를 보내 / 파라미터 : '파일 경로' + '파일
@@ -130,5 +175,11 @@ public class ProductConsultController {
 		return result;
 	}
 	
+	//장비 상담 신청
+	@PostMapping("sendProductConsultForm")
+	public String sendProductConsultForm(@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList, ProductConsultDto productConsultDto) {
+		
+		return "redirect:/";
+	}
 
 }
