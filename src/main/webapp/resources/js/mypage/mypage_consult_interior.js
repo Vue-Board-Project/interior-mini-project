@@ -10,7 +10,15 @@ $(document).ready(function(){
 	   			contentType: "application/json; charset=UTF-8",  //application/json; charset=utf-8 
          success : function(data) {
 			console.log(data);
-			console.log(data.interiorList.consultAcreage);
+			console.log(data.pager);
+			console.log(data.pager.Pager.totalRows);
+			console.log(data.pager.interiorList);
+			
+			
+			console.log(data.Object.pager);
+			console.log(data.Object.interiorList.consultAcreage);
+			
+			console.log(data.interiorList);
 		},
     	error : function() {
 			console.log("Im hurt");

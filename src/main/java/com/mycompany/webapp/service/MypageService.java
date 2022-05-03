@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.mybatis.MypageDao;
@@ -20,6 +22,7 @@ import lombok.extern.log4j.Log4j2;
 @Service
 @Log4j2
 public class MypageService {
+	
 	
 	@Resource
 	private MypageDao mypageDao;
@@ -120,6 +123,26 @@ public class MypageService {
 	public List<InteriorDto> getMpInteriorList(Pager pager) {
 		// TODO Auto-generated method stub
 		return mypageDao.getMpInteriorList(pager);
+	}
+
+	public UsersDto getMpUserInfo(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getMpUserInfo(email);
+	}
+
+	public int updateUserInfo(UsersDto users) {
+		// TODO Auto-generated method stub
+		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		users.setPassword(passwordEncoder.encode(users.getPassword()));
+		
+		return mypageDao.updateUserInfo(users);
+		
+		
+	}
+
+	public int deleteUserInfo(String email) {
+		return mypageDao.deleteUserInfo(email);
+		
 	}
 
 	

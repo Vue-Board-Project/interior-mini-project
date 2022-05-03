@@ -55,4 +55,10 @@ public interface MypageDao {
 
 	public List<InteriorDto> getMpInteriorList(Pager pager);
 
+	public UsersDto getMpUserInfo(String email);
+
+	public int updateUserInfo(UsersDto users);
+
+	public int deleteUserInfo(String email);
+
 }

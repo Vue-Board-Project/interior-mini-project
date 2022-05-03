@@ -9,10 +9,14 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
@@ -45,7 +50,7 @@ public class MyPageController {
 	 @RequestMapping("/mypage_counseling") 
 	 public String mypageCounseling(){ 
 		 log.info("구매내역");
-		 return "mypage/mypage_counseling";
+		 return "/mypage/mypage_counseling";
 	 }
 	 
 	 @Resource private MypageService mypageService;
@@ -81,7 +86,8 @@ public class MyPageController {
 /* 현재 해야 할 것 : 프론트에서 json 추출*/
 	 @GetMapping(value = "/readInteriorList", produces = "application/json; charset=UTF-8")
 	 @ResponseBody
-	public String InteriorInfoList(@RequestParam(defaultValue = "1") int pageNo, Authentication authentication) throws Exception {
+	public String InteriorInfoList(@RequestParam(defaultValue = "1") int pageNo, Authentication authentication,
+			HttpServletResponse response) throws Exception {
 			
 			log.info("실행");
 			String email = authentication.getName();
@@ -107,12 +113,51 @@ public class MyPageController {
 		}
 	 
 	 
+	 /*개인정보 수정 처음 데이터 읽어오는 코드*/
 	@RequestMapping("/mypage_infosetting")
-	public String mypageInfosetting() {
+	public String mypageInfosetting(Authentication authentication, Model model) {
+		String email = authentication.getName();
+		UsersDto user = mypageService.getMpUserInfo(email);
 		
+		model.addAttribute("user", user);
 		return "mypage/mypage_infosetting";
 	}
-
+	
+	@PostMapping("/mypage_infosetting")
+	public String mypageInfoUpdate(UsersDto users, Model model, Authentication authentication) {
+		users.setEmail(authentication.getName());
+		log.info(users.getPassword());
+		log.info(users.getPostcode());
+		log.info(users.getAddress());
+		log.info(users.getAddressDetail());
+		log.info(users.getEmail());
+		
+		int result = mypageService.updateUserInfo(users);
+		if (result == 0) {
+			model.addAttribute("error", "개인정보 수정에 실패했습니다. 다시 시도해 주세요.");
+			return "redirect:/mypage/mypage_infosetting";
+		}else {
+			return "redirect:/mypage/mypage_infosetting";
+		}
+	}
+	
+	@PostMapping("/mypage_infosetting/delete")
+	public String mypageInfoDelete(Authentication authentication, RedirectAttributes redirectAttr) {
+		log.info("삭제합니다~");
+		String email = authentication.getName();
+		int result = mypageService.deleteUserInfo(email);
+		
+		if(result>0) {
+			redirectAttr.addFlashAttribute("msg", "성공적으로 회원정보를 삭제했습니다.");
+			SecurityContextHolder.clearContext();
+			return "redirect:/";
+		}else {
+			redirectAttr.addFlashAttribute("msg", "회원정보삭제에 실패했습니다.");
+			return "redirect:/";
+		}
+		
+	}
+	
 	/*	구매내역 창	 */
 	@RequestMapping("/mypage_orderlist")
 	public String mypageOrderList() {
@@ -181,8 +226,6 @@ public class MyPageController {
 		return "/mypage/mypage_review";
 	}
 	
-	
-	//@GetMapping("/mypageReview") 
 	@RequestMapping(value = "/mypageReview", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mypageReviewSelectReviews(String email,
 			@RequestParam(defaultValue = "1") int pageNo, Model model){

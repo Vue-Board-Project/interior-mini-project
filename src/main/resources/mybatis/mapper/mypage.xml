@@ -105,12 +105,29 @@
 			)   
 		WHERE ROWNUM = 1 
 	</select>
+	<!-- 개인정보 수정 창 -->
+	<select id = "getMpUserInfo" parameterType="string" resultType="users">
+	select name, email, phone, crn
+	from users
+	where email = #{email}
+	</select>
+	
+	<!-- 개인정보 수정 창 개인정보 업데이트 -->
+	<update id="updateUserInfo" parameterType="users">
+		UPDATE users set password = #{password} where email = #{email}
+	</update>
+	
+	<!-- 개인정보 삭제 -->
+	<delete id = "deleteUserInfo" parameterType = "String">	
+		DELETE FROM users
+		WHERE email = #{email}
+	</delete>
 	
 	<!-- 구매내역 첫 창 띄우는 창 -->
 	<select id = "getTotalOrderListNum" parameterType="string" resultType="int">
-		select count(*) 
-			from purchase 
-		WHERE email = #{email}
+		UPDATE users 
+		set password = #{password}, postcode = #{postcode}, address = #{address}, address_detail = #{addressDetail}  
+		where email = #{email}
 	</select>
 	
 	
