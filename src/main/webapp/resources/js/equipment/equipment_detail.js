@@ -1,9 +1,10 @@
 function addToCart(){
 	if(confirm("상품을 장바구니에 추가하겠습니까?")){
-		document.addForm.submit();//확인
+		document.addCartForm.submit();//확인
+		//location.href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase"
 	}else{
-		document.addForm.reset();//취소
-	}
+		document.addCartForm.reset();//취소
+			}
 	
 }
 

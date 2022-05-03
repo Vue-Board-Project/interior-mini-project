@@ -1,4 +1,25 @@
-
+function test(){
+	$.ajax({
+		type: "GET",
+		url: "/equipment/shoppingcart_rentalandpurchase",
+		data:{
+			email: "${cartList.email}",
+			modelNumber: "${cartList.modelNumber}",
+			productName: "${cartList.productName}",
+			price: "${cartList.price}",
+			productColor: "${cartList.productColor}",
+		},
+		error : function(error) {
+			console.log("error");
+			console.log(email);
+		},
+		success : function(data) {
+			console.log("success");
+			console.log(email);
+		}
+		
+	});
+}
         //전체선택 체크박스
         function selectAll(selectAll)  {
             const checkboxes=document.getElementsByName('purchase_cart_select');
