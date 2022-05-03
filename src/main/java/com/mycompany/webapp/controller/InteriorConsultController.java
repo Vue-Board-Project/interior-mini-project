@@ -20,20 +20,25 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.mycompany.webapp.dao.mybatis.ConsultDao;
 import com.mycompany.webapp.dao.mybatis.ProductConsultDao;
 import com.mycompany.webapp.dao.mybatis.UsersDao;
 import com.mycompany.webapp.dto.UsersDto;
+import com.mycompany.webapp.dto.interior.ConsultDetailDto;
 import com.mycompany.webapp.dto.interior.ConsultRemodelingDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.product.ProductDto;
@@ -46,26 +51,47 @@ import oracle.net.aso.h;
 @Controller
 @RequestMapping("/interior_consult")
 @Log4j2
+@SessionAttributes("mainConsult")
 public class InteriorConsultController {
+	
 
 	@Resource // 상담 서비스 객체
 	private ConsultService consultService;
 	
-	@Resource
+	@Resource //장비 서비스 객체
 	private ProductService productService;
+	
+	//새로운 새션 저장소 객체 생성
+	@ModelAttribute("mainConsult")
+	public MainConsultDto getConsultForm() {
+		log.info("새로운 세션 생성");
+		MainConsultDto mainConsult = new MainConsultDto();
+		return mainConsult;
+	}
+	
 
 	// 인테리어 빠른 상담 페이지 이동
 	@GetMapping("/quick_consultation")
-	public String quickConsultation() {
+	public String quickConsultation(Authentication authentication, Model  model) {
+		
+		//기본 유저 정보
+		String email = authentication.getName();
+		log.info("현재 로그인 유저 : " + email);
+		
+		if(email != null) {
+			UsersDto userDto = consultService.loginUser(email);
+			log.info(userDto.getPhone());
+			model.addAttribute("user", userDto);
+		}
 		return "/interior_consult/quick_consultation";
 	}
 
 	// 빠른 상담만 table에 저장
 	@PostMapping("/quickConsultRequest")
-	public String quickConsultForm(MainConsultDto mainConsultDto) {
-
+	public String quickConsultForm(Authentication authentication,MainConsultDto mainConsultDto) {
+		String email = authentication.getName();
 		log.info(mainConsultDto);
-		mainConsultDto.setEmail("gvhv@dgfv.sad");
+		mainConsultDto.setEmail(email);
 
 		// 기본 상담 서비스
 		int consultNum = consultService.requstQuickConsult(mainConsultDto);
@@ -74,39 +100,51 @@ public class InteriorConsultController {
 			consultService.requestConsultRemodeling(mainConsultDto, consultNum);
 		}
 
-		return "redirect:/interior_consult/quick_consultation";
+		return "redirect:/";
 	}
 
 	// 인테리어 상세 상담 페이지 이동
-	@GetMapping("/detail_consultation")
-	public String detailConsultaion() {
+	@PostMapping("/detail_consultation")
+	public String detailConsultaion(@ModelAttribute("mainConsult") MainConsultDto mainConsult) {
+		
+		log.info("상담일자 : " + mainConsult.getConsultDate());
 		return "/interior_consult/detail_consultation";
 	}
+	
+	//디테일 상담 전송
+	@PostMapping("/detailConsultRequest")
+	public String detailConsultRequest(Authentication authentication,
+			@ModelAttribute("mainConsult") MainConsultDto mainConsult,
+			ConsultDetailDto consultDetailDto, SessionStatus sessionStatus) {
+		//사용자 정보 넣기
+		String email = authentication.getName();
+		mainConsult.setEmail(email);
+		
+		//종합 세부 공간 배열 스트링 처리
+		log.info("디테일 상담 실행");
+		String allsideList = String.join(", ", mainConsult.getAllSideRoom());
+		consultDetailDto.setAllSideRoom(allsideList);
+		log.info(consultDetailDto.getConsultEstimation());
+		
+		
+		consultService.detailConsultTrans(mainConsult, consultDetailDto);
 
+		return "redirect:/interior_consult/consult_result";
+	}
+	
+	//디테일 상담 완료 창 
+	@GetMapping("/consult_result")
+	public String consultResult() {
+		return "/interior_consult/consult_result";
+	}
+	
+	
 	// 리모델링 견적 창 이동
 	@GetMapping("/remodeling_price")
 	public String remodelingPrice() {
 		return "/interior_consult/remodeling_price";
 	}
 	
-	/*//장비 이미지 타입 변환 페이지
-	@GetMapping("/imageInsert")
-	public String goImages() {
-		return "/interior_consult/imageInsert";
-	}
-	//장비 이미지 업데이트
-	@PostMapping("/saveProductImage")
-	public String saveImage(Vo vo) {
-	    try {
-	        Map<String, Object> hmap = new HashMap<String, Object>();
-	        hmap.put("img", vo.getImgFile().getBytes());
-	        productService.saveImage(hmap);  
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	
-		return "redirect:/";
-	}*/
 	
 
 	// 장비상담 페이지 이동

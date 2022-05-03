@@ -3,9 +3,16 @@ package com.mycompany.webapp.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import com.mycompany.webapp.dao.mybatis.ConsultDao;
 import com.mycompany.webapp.dao.mybatis.ProductConsultDao;
+import com.mycompany.webapp.dao.mybatis.UsersDao;
+import com.mycompany.webapp.dto.UsersDto;
+import com.mycompany.webapp.dto.interior.ConsultDetailDto;
 import com.mycompany.webapp.dto.interior.ConsultRemodelingDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.product.ProductDto;
@@ -15,12 +22,26 @@ import lombok.extern.log4j.Log4j2;
 @Service
 @Log4j2
 public class ConsultService {//상담 신청 서비스
-	
 	@Resource
 	private ConsultDao consultDao;//상담 dao
 	
 	@Resource
 	private ProductConsultDao productConsultDao;
+	
+	@Resource
+	private UsersDao usersDao;
+	
+	//상세 상담 추가
+	public void detailConsultTrans(MainConsultDto mainConsultDto, ConsultDetailDto consultDetailDto) {
+		log.info("실행");
+		//빠른 상담
+		consultDao.insertMainConsult(mainConsultDto);
+		
+		log.info("부모키 : " + mainConsultDto.getConsultNo());
+		//상세 상담
+		consultDetailDto.setConsultNo(mainConsultDto.getConsultNo());
+		consultDao.insertDetailConsult(consultDetailDto);
+	}
 	
 	//빠른 상담 
 	public int requstQuickConsult(MainConsultDto mainConsultDto) {
@@ -44,5 +65,11 @@ public class ConsultService {//상담 신청 서비스
 		
 		return productConsultDao.selectProduct(modelNumber);
 	}
+	
+	//현재 로그인 유저 정보 가져오기
+	public UsersDto loginUser(String email) {
+		return usersDao.selectByEmail(email);
+	}
+	
 
 }

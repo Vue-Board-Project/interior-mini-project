@@ -54,23 +54,16 @@
                                     <div>
                                         <select class="form-control" style="font-family: 'MinSans-Light'; font-size: 20px; height: 60px;" name="consultAcreage">
                                             <option value="면적" disabled>면적</option>
-                                            <option value="1">3m² (1평)</option>
-                                            <option value="2">6m² (2평)</option>
-                                            <option value="3">9m² (3평)</option>
-                                            <option value="4">13m² (4평)</option>
-                                            <option value="5">16m² (5평)</option>
-                                            <option value="6">19m² (6평)</option>
-                                            <option value="7">23m² (7평)</option>
-                                            <option value="8">26m² (8평)</option>
-                                            <option value="9">29m² (0평)</option>
-                                            <option value="10">33m² (10평)</option>
-
+                                            <option value="30">30평대</option>
+                                            <option value="50">50평대</option>
+                                            <option value="70">70평대</option>
+                                            <option value="100">100평대</option>
                                         </select>
                                     </div>   
                                 </div>
                                 <div class="bg-light rounded m-2 mx-auto" style="width:100%; font-family: 'MinSans-Regular'; padding: 20px 30px; font-size: 1.3rem;">
-                                    <p><i class="fa-solid fa-circle-info"></i>   3㎡(1평)부터 1평 단위로 입력이 가능합니다.</p>  
-                                </div>
+                                    <p><i class="fa-solid fa-circle-info"></i>상세 상담에서 더 디테일한 평수를 입력할 수 있습니다.</p>  
+                                </div> 
                             </div>
                             <div class="mb-5" id="remodeling_consult_Room_wrapping">
                                 <div style=" font-family: 'MinSans-Bold'; font-size: 25px; padding-bottom: 20px; line-height: 120%;">
@@ -314,13 +307,25 @@
                                     <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">상담 가능한 번호를 입력해주세요.</span> 
                                 </div> 
                                 <div>
-                                    <div>
-                                        <input type="test" class="form-control" style="width: 507px" id="qc_name" readonly/>
+                                <c:if test="${user == null}">
+                                	 <div>
+                                        <input type="text" class="form-control" style="width: 507px" id="qc_name" readonly/>
                                     </div>
                                     <div class="mt-3 mb-5" style="font-family: 'MinSans-Medium';">
                                         <input type="text" class="form-control" style="width: 507px;" id="qu_phone"  readonly/>
                                         
                                     </div>
+                                </c:if>
+                                 <c:if test="${user != null}">
+                                 	<div>
+                                        <input type="text" class="form-control" style="width: 507px" id="qc_name"value="${user.email}" readonly />
+                                    </div>
+                                    <div class="mt-3 mb-5" style="font-family: 'MinSans-Medium';">
+                                        <input type="text" class="form-control" style="width: 507px;" id="qu_phone" value="${user.phone}" readonly />
+                                    </div>
+                                </c:if>
+                                
+                                   
                                 </div>
                             </div>
                                 <div class="mb-1" style="border-top: 2px solid #e8e8db;">
@@ -347,8 +352,7 @@
 
 
                         <section id="quick_consult_finish_btn_wrap" class="text-center" style="width: 100%; height: 100%;padding-bottom: 6rem;">
-                                 <a class="btn mr-3 add_detail_consult_start_btn pt-3" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" 
-                                        href="${pageContext.request.contextPath}/interior_consult/detail_consultation">더 상세한 상담 신청</a>
+                           <input type="button" class="btn mr-3 add_detail_consult_start_btn" id="add_detail_consult_start_btn" style=" width: 220px; height: 70px;" value="더 상세한 상담 신청" onclick='return submit2(this.form);'>
                            <input type="button" id="qcf_button"  class="btn quick_consult_finish_btn" style=" width: 220px; height: 70px;" value="빠른상담신청"> 
                         </section>
                     </form>
