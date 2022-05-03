@@ -90,7 +90,7 @@
                   <!-- 장바구니 테스트용입니당 추후 카테고리 구분되면 지울게용가리 -->
                   <div id="eq_list3" class="eq_list"><!--전체 상품-->
                         <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
-                    <c:forEach var="chair" items="${chairList}" begin="0" end="0">
+                    <c:forEach var="chair" items="${chairList}" begin="0" end="1">
                         <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="gotolink">
                             <div id="eq_list_content1" class="card">
                                 <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" class="card-img-top">
@@ -98,7 +98,7 @@
                                     <p id="eq_list_content1_element1" class="card-text">${chair.productName}</p>
                                     <hr/>
                                     <p id="eq_list_content1_element2" class="card-text">${chair.productIntro}</p>
-                                    <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
+                                    <div id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격　<fmt:formatNumber pattern="###,###,###,###" value="${chair.price}"/>원</div>
                                 </div>
                             </div>
                         </a>
