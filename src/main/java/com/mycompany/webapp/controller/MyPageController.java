@@ -78,7 +78,7 @@ public class MyPageController {
 	 }
 	
 /*	 */
-/* @GetMapping(value = "/readInteriorList") */
+/* 현재 해야 할 것 : 프론트에서 json 추출*/
 	 @GetMapping(value = "/readInteriorList", produces = "application/json; charset=UTF-8")
 	 @ResponseBody
 	public String InteriorInfoList(@RequestParam(defaultValue = "1") int pageNo, Authentication authentication) throws Exception {
