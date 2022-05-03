@@ -90,7 +90,7 @@ public class ProductConsultController {
 			Model model, Authentication authentication  ) {
 		
 		String email = authentication.getName(); 
-		
+		log.info(pcdList);
 		//장비 상담 창에 전송해줄 모델들 
 		List<ProductDto> products = new ArrayList<ProductDto>();
 		if(pcdList.size() != 0) {

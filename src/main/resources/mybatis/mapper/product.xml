@@ -22,6 +22,7 @@
 	<!-- 유니트 체어 상품 전체 리스트 불러오기 -->
 	<select id="selectchairlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
 		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
+		price,
 		PATTACHONAME as pattachoname
 		from product
 		<include refid='category'></include>
