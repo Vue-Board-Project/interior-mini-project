@@ -25,5 +25,11 @@ public interface InteriorDao {
 	//포폴 상세페이지 조회수
 	public int updateCnt(int ino);
 	
+	//상세페이지 같은 스타일 추천
+	public List<InteriorDto> recommendStyle(String istyle);
+	
+	//상세페이지 같은 평수 추천
+	public List<InteriorDto> recommendArea(String darea);
+	
 	public int interiorCnt();
 }

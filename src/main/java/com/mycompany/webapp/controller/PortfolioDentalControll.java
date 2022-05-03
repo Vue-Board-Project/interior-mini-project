@@ -202,6 +202,19 @@ public class PortfolioDentalControll {
 		log.info(ino);
 		InteriorDto interiorDetail = interiorService.detailPortfolio(ino);
 		model.addAttribute("interiorDetail", interiorDetail);
+		
+		List<InteriorDto> recommandStyleList = interiorService.recommendStyle(interiorDetail.getIstyle());
+		model.addAttribute("recommandStyleList", recommandStyleList);
+		for(InteriorDto s :recommandStyleList) {
+			log.info("recommandStyleList : "+s);
+		}
+		
+		List<InteriorDto> recommandAreaList = interiorService.recommendArea(interiorDetail.getDarea());
+		model.addAttribute("recommandAreaList", recommandAreaList);
+		for(InteriorDto s :recommandAreaList) {
+			log.info("recommandAreaList : "+s);
+		}
+		
 		interiorService.updateCnt(ino);
 		return "portfolio_dental/portfolio_dental_detail3";
 	}

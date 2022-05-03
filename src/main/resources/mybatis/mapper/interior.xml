@@ -11,25 +11,11 @@
 		values (#{ino}, #{itype}, 0, #{istyle}, #{allColor}, #{wcolor}, #{fcolor}, #{dtype}, #{darea}, #{isummary}, #{imImgPath})
 	</insert>
 	
+	<!-- 포폴 상세창 -->
 	<select id="detailPortfolio" parameterType="int" resultType="Interior">
 		SELECT itype, istyle, darea, isummary, im_img_path as imImgPath
 		FROM interior WHERE ino = #{ino}
 	</select>
-	
-	<!-- <sql id="sort">
-		<if test="sort ==''">
-			order by ino
-		</if>
-		<if test="sort =='new'">
-			order by ino
-		</if>
-		<if test="sort =='past'">
-			order by ino desc
-		</if>
-		<if test="sort =='popular'">
-			order by ihits desc
-		</if>
-	</sql> -->
 	
 	<!-- <sql id="dtype">
 		<if test="dtype ==''">
@@ -45,30 +31,45 @@
 		</if>
 	</sql> -->
 	
+	<!-- 포폴 최신순 -->
 	<select id="interiorList" resultType="Interior">
 		SELECT ino, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' 
  		<!-- <include refid="dtype"/> -->
 		order by ino desc
- 		<!-- <include refid="sort"/> -->
 	</select>
 	
+	<!-- 포폴 과거순 -->
 	<select id="interiorListPast" resultType="Interior">
 		SELECT ino, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' order by ino asc
 	</select>
 	
+	<!-- 포폴 인기순 -->
 	<select id="interiorListPopular" resultType="Interior">
 		SELECT ino, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' order by ihits desc
 	</select>
 	
+	<!-- 포폴 수 -->
 	<select id="interiorCnt" resultType="int">
 		SELECT count(*) AS cnt FROM interior WHERE itype='portfolio'
 	</select>
 	
+	<!-- 포폴 비숫한 스타일 추천 -->
+	<select id="recommendStyle" resultType="Interior">
+		SELECT ino, im_img_path as imImgPath
+		FROM interior WHERE itype='portfolio' and istyle=#{istyle} order by ihits desc
+	</select>
+	<!-- 포폴 비슷한 평수 추천 -->
+	<select id="recommendArea" resultType="Interior">
+		SELECT ino, im_img_path as imImgPath
+		FROM interior WHERE itype='portfolio' and darea=#{darea} order by ihits desc
+	</select>
+	
+	<!-- 포폴,모델 조회수 -->
 	<update id="updateCnt" parameterType="Interior">
-		UPDATE interior SET ihits = ihits+1 WHERE ino=#{ino}
+		UPDATE interior SET ihits = ihits+1 WHERE ino=#{ino} 
 	</update>
 </mapper>
 
