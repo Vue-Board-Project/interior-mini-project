@@ -30,11 +30,11 @@
                     <div class="dropdown">
                         <button class="dropdown-button">Category</button>
                         <div class="dropdown-content">
-                            <input type="button" class="dropdown-content-element" name="category" value="유니트 체어" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main"/>
-                            <input type="button" class="dropdown-content-element" name="category" value="대형 영상 장비" href="#"/>
-                            <input type="button" class="dropdown-content-element" name="category" value="멸균 및 세척기" href="#"/>
-                            <input type="button" class="dropdown-content-element" name="category" value="소형 영상 장비" href="#"/>
-                            <input type="button" class="dropdown-content-element" name="category" value="기타 장비" href="#"/>
+                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=unitchair">유니트 체어</a>
+                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=largecamera">대형 영상 장비</a>
+                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/testCategory?category=washingmachine">멸균 및 세척기</a>
+                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=smallcamera">소형 영상 장비</a>
+                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=etc">기타 장비</a>
                         </div>
                     </div>
                 </div>
@@ -85,6 +85,25 @@
                             </div>
                         </a>
                     </c:forEach>
+
+                  </div>
+                  <!-- 장바구니 테스트용입니당 추후 카테고리 구분되면 지울게용가리 -->
+                  <div id="eq_list3" class="eq_list"><!--전체 상품-->
+                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
+                    <c:forEach var="chair" items="${chairList}" begin="0" end="0">
+                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="gotolink">
+                            <div id="eq_list_content1" class="card">
+                                <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" class="card-img-top">
+                                <div class="card-body">
+                                    <p id="eq_list_content1_element1" class="card-text">${chair.productName}</p>
+                                    <hr/>
+                                    <p id="eq_list_content1_element2" class="card-text">${chair.productIntro}</p>
+                                    <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
+                                </div>
+                            </div>
+                        </a>
+                    </c:forEach>
+
                   </div>
             </div>
         </div>

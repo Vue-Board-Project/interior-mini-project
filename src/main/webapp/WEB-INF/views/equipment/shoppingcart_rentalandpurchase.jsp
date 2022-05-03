@@ -20,18 +20,29 @@
                         </div>
                         
                         <hr>
-                        <!--다 데이터를 받아와야 하는 부분이라 그냥 텍스트로 다 입력했습니다!-->
+                        
                         <div id="p_cart1" class="p_cart">
-                            <input type='checkbox' name='purchase_cart_select' value='purchase_cart1' checked="chekced"/> 
-                            <div class="media">
-                                <img id="p_cart_el1" class="p_cart_el" src="${pageContext.request.contextPath}/resources/subinimage/dentalCamera.jpg" class="mr-3">
-                                <div  class="media-body">
-                                  <h5 id="cart_product_name1" class="mt-0 mb-1">구강 카메라</h5>
-                                  <p id="cart_product_model_number1" class="fontcolorccc">this is test model number</p>
-                                  <a id="cart_product_price1">1개 　검정 　500,000원</a> 
-                                  <hr style="margin-top: 50px;">
-                                </div>
-                            </div>
+                        <c:choose>
+                        <c:when test="${empty sessionScope.cartList}">
+                        	장바구니에 담긴 상품이 없습니다.
+                        </c:when>
+                        	<c:otherwise>
+		                       <c:forEach items="${sessionScope.productDto.cart.cartList}" var="cartel">
+		                        <input type='checkbox' name='purchase_cart_select' value='purchase_cart1' checked="chekced"/> 
+		                            <div class="media">
+		                                <img id="p_cart_el1" class="p_cart_el" src="${pageContext.request.contextPath}/resources/subinimage/dentalCamera.jpg" class="mr-3">
+		                                <div  class="media-body">
+		                                  <h5 id="cart_product_name1" class="mt-0 mb-1">${cartel.productName}</h5>
+		                                  <p id="cart_product_model_number1" class="fontcolorccc">${cartel.modelNumber}</p>
+		                                  <a id="cart_product_price1">1개 　검정 　500,000원</a> 
+		                                  <hr style="margin-top: 50px;">
+		                                </div>
+		                            </div>
+		                        </c:forEach>
+                        	</c:otherwise>
+                        	
+                        </c:choose>
+
                         </div>
                         <div class="p_cart">
                             <input type='checkbox' name='purchase_cart_select' value='purchase_cart2' checked="chekced"/> 
@@ -47,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="rental_cart_list">
+                <%-- <div id="rental_cart_list">
                     <ul id=""class="nav nav-tabs">
                         <li class="nav-item">
                             <p id="rental_cart_count" class="nav-link active">렌탈(<a style="color: red;">n</a>)</p> <!--n은 나중에 카트 안의 개수 입력 받자구!-->
@@ -85,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --%>
             </div>
             <div id="shoppingCart_content_right">
                 <p style="font-family: MinSans-Black">구매 제품</p>

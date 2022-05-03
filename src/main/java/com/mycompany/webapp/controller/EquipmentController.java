@@ -3,15 +3,20 @@ package com.mycompany.webapp.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -51,13 +56,100 @@ public class EquipmentController {
 	}
 
 	@RequestMapping("/equipment/equipment_detail")
-	public String equipment_detail(String modelNumber, Model model) {
+	public String equipment_detail(String modelNumber, Model model, Authentication authentication
+			, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		//상품 정보 불러오기
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
 		log.info(modelNumber);
+		
+		String email = authentication.getName();	
+		session.setAttribute("email", email);
+		
+		//상품 카트에 담기
+		String product=request.getParameter("modelNumber");
+		ArrayList list=(ArrayList)session.getAttribute("productlist");
+		if(list==null) {
+			list=new ArrayList();
+		}
+		list.add(product);
+		session.setAttribute("productlist", list);
+
+		ProductDto productDto=(ProductDto)session.getAttribute("productdto");
+		String modelNum=request.getParameter("modelNumber");
+		
 		return "/equipment/equipment_detail";
 	}
-
+	
+	@RequestMapping("/equipment/addCart")
+	public String addCart(String modelNumber, Model model, Authentication authentication
+			, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		//상품 정보 불러오기
+		/*ProductDto detailProduct=productService.detailProduct(modelNumber);
+		model.addAttribute("detailProduct", detailProduct);
+		log.info(modelNumber);
+		
+		String email = authentication.getName();	
+		session.setAttribute("email", email);
+		
+		//상품 카트에 담기
+		String product=request.getParameter("modelNumber");
+		ArrayList<ProductDto> list=(ArrayList<ProductDto>) session.getAttribute("cartlist");
+		//첫 상품의 경우 새로운 카트 생성
+		if(list==null) {
+			list=new ArrayList<ProductDto>();
+			session.setAttribute("cartlist", list);
+		}else {
+			session.setAttribute("cartlist", list);
+		}
+		
+		
+		int count=0;
+		//새로운 상품을 담는 경우 해당 상품의 수량을 1개로 처리
+		if(count==0) {
+			ProductDto productnew=new ProductDto();
+			productnew.setProductQuantity(1);
+			list.add(productnew);
+		}
+		//동일한 상품을 담는 경우 해당 상품의 개수를 1개 추가
+		
+		ProductDto productQnt=new ProductDto();
+		for(int i=0;i<list.size(); i++) {
+			productQnt=(ProductDto) list.get(i);
+			if(productQnt.getModelNumber().equals(email)) {
+				count++;
+				int orderQunitity=productQnt.getProductQuantity()+1;
+				productQnt.setProductQuantity(orderQunitity);
+			}
+		}
+		try {
+			response.sendRedirect("/equipment/equipment_detail?modelNumber="+modelNumber);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		return "/equipment/addCart";
+	}
+	@RequestMapping("/equipment/shoppingcart_rentalandpurchase")
+	public String shoppingcart_rentalandpurchase(Authentication authentication, HttpServletRequest request) {
+		HttpSession session=request.getSession(true);
+		/*String cartId = authentication.getName();
+		ArrayList<ProductDto> cartList = (ArrayList<ProductDto>)session.getAttribute("cartlist");
+		//out.print("cartList크기: "+ cartList.size());
+		if(cartList == null){
+			cartList = new ArrayList<ProductDto>();
+			session.setAttribute("cartList", cartList);
+		}
+		log.info(cartList);
+		int sum = 0; 
+		for(int i=0; i<cartList.size(); i++){
+			ProductDto product = cartList.get(i);
+			// 소계 = 가격 * 수량
+			int total = product.getPrice() * product.getProductQuantity();
+			sum = sum + total;
+		}*/
+		return "/equipment/shoppingcart_rentalandpurchase";// view 이름만 전달
+	}
 	@RequestMapping("/equipment/dental_equipment_main")//겟
 	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, 
 			 ModelMap modelmap, Model model) {
@@ -97,13 +189,7 @@ public class EquipmentController {
 	       return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
 	}
 	*/
-	@GetMapping("Sort")
-		public String Sort(Model model, @RequestParam int sort){
-			List<ProductDto> pList=productService.sort(sort);
-			model.addAttribute("pList", pList);
-			return "/equipment/dental_equipment_main";
-	}
-	
+
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
 	public String productAdd() {
@@ -153,10 +239,7 @@ public class EquipmentController {
 		return "/equipment/paymentsuccess";// view 이름만 전달
 	}
 
-	@RequestMapping("/equipment/shoppingcart_rentalandpurchase")
-	public String shoppingcart_rentalandpurchase() {
-		return "/equipment/shoppingcart_rentalandpurchase";// view 이름만 전달
-	}
+	
 	
 	@GetMapping("/equipment/display")
 	   public ResponseEntity<byte[]> getImage(String fileName) {

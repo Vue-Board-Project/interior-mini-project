@@ -1,9 +1,10 @@
 package com.mycompany.webapp.dto.product;
 
 import java.util.Date;
-import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.mycompany.webapp.controller.CartBean;
 
 import lombok.Data;
 
@@ -25,6 +26,14 @@ public class ProductDto {
 	private String pattachtype;
 	private MultipartFile mainimage;//메인 이미지 파일 BLOB
 	private String sort;//상품 정렬
+	private CartBean cart;
+	public CartBean getCart() {
+		// 카트가 없을 때 새로운 카트 생성
+		if (cart == null)
+			cart = new CartBean();
+		// 카트가 있을 때는 기존 cart 리턴
+		return cart;
+	}
 	
 	//장비 상담을 위한 수량
 	private String consultCount;
