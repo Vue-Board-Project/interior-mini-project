@@ -2,17 +2,88 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.mybatis.MypageDao">
 	<!--상품 추가 테스트용(추후 주석 처리 예정)-->
-	
-	
 	<select id="selectUserName" parameterType="string" resultType="users">
 		SELECT email, name
 		FROM users
 		WHERE email = #{email}
 	</select>
 	
+	<select id = "getTotalInteriorCounseling" parameterType="string" resultType="int">
+	select count(*) 
+		from MAIN_CONSULT
+		where CONSULT_TYPE = 1 and EMAIL = #{email}
+	</select>
+	
+	<select id = "getInteriorC" parameterType="string" resultType="Interior">
+	select CONSULT_NO, CONSULT_ACREAGE, CONSULT_INTERIOR_STYLE, CONSULT_REQUEST, CONSULT_DATE, CONSULT_TIME,
+		CONSULT_ADDRESS, CONSULT_TYPE, EMAIL, INO
+		from MAIN_CONSULT
+	where CONSULT_TYPE = 1 and
+	EMAIL = #{email}
+	order by CONSULT_DATE desc
+	</select>
+	
+	<select id = "getTotalRemodelingCounseling" parameterType="string" resultType="int">
+	select count(*) 
+		from MAIN_CONSULT
+		where CONSULT_TYPE = 2 and EMAIL = #{email}
+	</select>
+	
+	
+	<select id = "getTotalASCounseling" parameterType="string" resultType="int">
+	select count(*) 
+		from afterservice
+		where EMAIL =  #{email}
+	</select>
+	
 	<select id="deviceCount" resultType="int">
 		SELECT count(*) FROM AFTERSERVICE
 	</select>
+	
+	<resultMap id = "seleceInteriorWUser" type = "MainConsult">
+			<result column = "CONSULT_NO" property = "consultNo" /> 
+			<result column = "CONSULT_ACREAGE" property = "consultAcreage" />
+			<result column = "CONSULT_INTERIOR_STYLE" property = "consultInteriorStyle" />
+			<result column = "CONSULT_REQUEST" property = "consultRequest" />
+			<result column = "CONSULT_DATE" property = "consultDate" />
+			<result column = "CONSULT_TIME" property = "consultTime" />
+			<result column = "CONSULT_ADDRESS" property = "consultAddress" />
+			<result column = "CONSULT_TYPE" property = "consultType" />
+			<result column = "INO" property = "ino" />
+			<association property="usersDto" javaType="users">
+				<result column = "EMAIL" property = "email" />
+				<result column = "name" property = "name" />
+			</association>
+	</resultMap>
+	
+	<select id="getMpInteriorList" parameterType="pager" resultMap="seleceInteriorWUser">
+	<!-- SELECT 
+	    CONSULT_NO, CONSULT_ACREAGE, CONSULT_INTERIOR_STYLE, CONSULT_REQUEST, CONSULT_DATE, CONSULT_TIME,
+	    CONSULT_ADDRESS, CONSULT_TYPE, m.EMAIL, INO, name
+	    FROM MAIN_CONSULT m, users u
+	    where CONSULT_TYPE = 1 and
+	    m.email = u.email and
+	    m.EMAIL = #{stringEmail}
+	    ORDER BY CONSULT_DATE desc, CONSULT_TIME desc, ROWNUM DESC -->
+	    <![CDATA[
+	    SELECT rnum, CONSULT_NO, CONSULT_ACREAGE, CONSULT_INTERIOR_STYLE, CONSULT_REQUEST, CONSULT_DATE, CONSULT_TIME,
+                        CONSULT_ADDRESS, CONSULT_TYPE, EMAIL, INO, name
+		    from(
+		    	SELECT ROWNUM as rnum, CONSULT_NO, CONSULT_ACREAGE, CONSULT_INTERIOR_STYLE, CONSULT_REQUEST, CONSULT_DATE, CONSULT_TIME,
+                        CONSULT_ADDRESS, CONSULT_TYPE, EMAIL, INO, name
+			    FROM (
+				        SELECT  CONSULT_NO, CONSULT_ACREAGE, CONSULT_INTERIOR_STYLE, CONSULT_REQUEST, CONSULT_DATE, CONSULT_TIME,
+                        CONSULT_ADDRESS, CONSULT_TYPE, m.EMAIL, INO, name
+				       FROM MAIN_CONSULT m, users u
+				       where CONSULT_TYPE = 1 and
+                        m.email = u.email and
+                        m.EMAIL = #{stringEmail}
+                        ORDER BY CONSULT_DATE desc, CONSULT_TIME desc, ROWNUM DESC
+			     )  WHERE ROWNUM <= #{endRowNo}   
+		)WHERE rnum >= #{startRowNo}
+		]]>
+	</select>
+	
 	
 	<select id="selectByAsPage" parameterType="pager" resultType="asList">
 		<![CDATA[ SELECT rnum, receiptNumber, productName, EMAIL, applicationDate

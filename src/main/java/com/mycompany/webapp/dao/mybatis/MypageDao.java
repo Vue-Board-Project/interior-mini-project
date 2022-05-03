@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
+import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
@@ -43,5 +44,15 @@ public interface MypageDao {
 	public int getTotalReviewAfterNum(String email);
 
 	public List<ReviewDto> getReviewAfterList(Pager pager);
+
+	public InteriorDto getInteriorC(String email);
+
+	public int getTotalInteriorCounseling(String email);
+
+	public int getTotalRemodelingCounseling(String email);
+
+	public int getTotalASCounseling(String email);
+
+	public List<InteriorDto> getMpInteriorList(Pager pager);
 
 }

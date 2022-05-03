@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.webapp.dao.mybatis.MypageDao;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
+import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
@@ -95,8 +96,31 @@ public class MypageService {
 		// TODO Auto-generated method stub
 		return mypageDao.getReviewAfterList(pager);
 	}
-	 
 
+	public int getTotalInteriorCounseling(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getTotalInteriorCounseling(email);
+	}
 	
+	public InteriorDto getInteriorC(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getInteriorC(email);
+	}
+
+	public int getTotalRemodelingCounseling(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getTotalRemodelingCounseling(email);
+	}
+
+	public int getTotalASCounseling(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getTotalASCounseling(email);
+	}
+
+	public List<InteriorDto> getMpInteriorList(Pager pager) {
+		// TODO Auto-generated method stub
+		return mypageDao.getMpInteriorList(pager);
+	}
+
 	
 }
