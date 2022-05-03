@@ -3,6 +3,7 @@ package com.mycompany.webapp.dao.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.webapp.dto.interior.InteriorDto;
 
@@ -26,10 +27,10 @@ public interface InteriorDao {
 	public int updateCnt(int ino);
 	
 	//상세페이지 같은 스타일 추천
-	public List<InteriorDto> recommendStyle(String istyle);
+	public List<InteriorDto> recommendStyle(@Param("ino") int ino, @Param("istyle") String istyle);
 	
 	//상세페이지 같은 평수 추천
-	public List<InteriorDto> recommendArea(String darea);
+	public List<InteriorDto> recommendArea(@Param("ino") int ino, @Param("darea") String darea);
 	
 	public int interiorCnt();
 }

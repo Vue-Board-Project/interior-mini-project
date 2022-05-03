@@ -57,13 +57,13 @@ public class InteriorDaoImpl implements InteriorDao{
 	}
 
 	@Override
-	public List<InteriorDto> recommendStyle(String istyle) {
+	public List<InteriorDto> recommendStyle(int ino, String istyle) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<InteriorDto> recommendArea(String darea) {
+	public List<InteriorDto> recommendArea(int ino, String darea) {
 		// TODO Auto-generated method stub
 		return null;
 	}

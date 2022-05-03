@@ -48,13 +48,13 @@ public class InteriorService {//인테리어 서비스
 	}
 	
 	//같은 스타일 추천
-	public List<InteriorDto> recommendStyle(String istyle) {
-		return interiorDao.recommendStyle(istyle);
+	public List<InteriorDto> recommendStyle(int ino, String istyle) {
+		return interiorDao.recommendStyle(ino, istyle);
 	}
 	
 	//같은 평수 추천
-	public List<InteriorDto> recommendArea(String darea) {
-		return interiorDao.recommendArea(darea);
+	public List<InteriorDto> recommendArea(int ino, String darea) {
+		return interiorDao.recommendArea(ino, darea);
 	}
 	
 	//조회수

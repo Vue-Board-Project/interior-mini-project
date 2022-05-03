@@ -197,19 +197,22 @@ public class PortfolioDentalControll {
    }
 	
 	@GetMapping("/portfolio_dental/portfolio_dental_detail")
-	public String portfolioDentalDetail(int ino, Model model) {
+	public String portfolioDentalDetail(@RequestParam("ino") int ino, Model model) {
 		log.info("디테일 가보자고~~~~~~~~~~~~~~~~");
 		log.info(ino);
 		InteriorDto interiorDetail = interiorService.detailPortfolio(ino);
 		model.addAttribute("interiorDetail", interiorDetail);
 		
-		List<InteriorDto> recommandStyleList = interiorService.recommendStyle(interiorDetail.getIstyle());
+		log.info(interiorDetail.getIno());
+		log.info(interiorDetail.getIstyle());
+		log.info(interiorDetail.getDarea());
+		List<InteriorDto> recommandStyleList = interiorService.recommendStyle(ino,interiorDetail.getIstyle());
 		model.addAttribute("recommandStyleList", recommandStyleList);
 		for(InteriorDto s :recommandStyleList) {
 			log.info("recommandStyleList : "+s);
 		}
 		
-		List<InteriorDto> recommandAreaList = interiorService.recommendArea(interiorDetail.getDarea());
+		List<InteriorDto> recommandAreaList = interiorService.recommendArea(ino,interiorDetail.getDarea());
 		model.addAttribute("recommandAreaList", recommandAreaList);
 		for(InteriorDto s :recommandAreaList) {
 			log.info("recommandAreaList : "+s);

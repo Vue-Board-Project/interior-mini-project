@@ -13,7 +13,7 @@
 	
 	<!-- 포폴 상세창 -->
 	<select id="detailPortfolio" parameterType="int" resultType="Interior">
-		SELECT itype, istyle, darea, isummary, im_img_path as imImgPath
+		SELECT ino, itype, istyle, darea, isummary, im_img_path as imImgPath
 		FROM interior WHERE ino = #{ino}
 	</select>
 	
@@ -59,12 +59,12 @@
 	<!-- 포폴 비숫한 스타일 추천 -->
 	<select id="recommendStyle" resultType="Interior">
 		SELECT ino, im_img_path as imImgPath
-		FROM interior WHERE itype='portfolio' and istyle=#{istyle} order by ihits desc
+		FROM interior WHERE itype='portfolio' and ino != #{ino} and istyle=#{istyle} order by ihits desc 
 	</select>
 	<!-- 포폴 비슷한 평수 추천 -->
 	<select id="recommendArea" resultType="Interior">
 		SELECT ino, im_img_path as imImgPath
-		FROM interior WHERE itype='portfolio' and darea=#{darea} order by ihits desc
+		FROM interior WHERE itype='portfolio' and ino != #{ino} and darea=#{darea} order by ihits desc
 	</select>
 	
 	<!-- 포폴,모델 조회수 -->
