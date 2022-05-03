@@ -74,11 +74,18 @@
             margin-left: 20px;
             margin-right: 10px;
         }
+         #colorcheck label{
+            margin-left: 20px;
+            margin-right: 10px;
+        }
         #colorcheck_black{
             accent-color: black;
         }
         #colorcheck_blue{
             
+        }
+        #colorcheck_brown{
+            accent-color: brown;
         }
         #colorcheck_red{
             accent-color: red;
@@ -88,6 +95,15 @@
         }
         #colorcheck_green{
             accent-color: green;
+        }
+        #colorcheck_orange{
+            accent-color: orange;
+        }
+        #colorcheck_darkblue{
+            accent-color: #000080;
+        }
+        #colorcheck_white{
+            accent-color: #ffffff;
         }
         #eq_detail_c_main_content4{
             

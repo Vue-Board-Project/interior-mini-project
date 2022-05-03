@@ -1,9 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%@ page import="com.mycompany.webapp.dto.UsersDto" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String email=request.getParameter("email");
+	session.setAttribute("email", email);
+%>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/equipment_detail.css" rel="stylesheet" type="text/css"/>
 <div id="eq_detail_content"><!-- 대표 이미지 설정-->
-
+<h2>#<%=session.getAttribute("email") %> 세션 저장되는지 아이디 확인하자~</h2>
     <div id="eq_detail_main_left" style="margin-left: 250px;">
         <div id="wrapper">
             <div id="slider_wrap">
@@ -40,11 +45,12 @@
             </p>
             <p id="eq_detail_main_content3">색상
                 <div id="colorcheck">
-                    <label for="default1">검정 </label><input name="default1" type="radio" checked id="colorcheck_black">
+                	<label for="default1">${detailProduct.productColor}</label><input name="default1" type="radio" checked id="colorcheck_${detailProduct.productColor}">
+                    <!-- <label for="default1">검정 </label><input name="default1" type="radio" checked id="colorcheck_black">
                     <label for="default2">파랑 </label><input name="default1" type="radio" id="colorcheck_blue">
                     <label for="default3">빨강 </label><input name="default1" type="radio" id="colorcheck_red">
                     <label for="default4">보라 </label><input name="default1" type="radio" id="colorcheck_purple">
-                    <label for="default5">초록 </label><input name="default1" type="radio" id="colorcheck_green">
+                    <label for="default5">초록 </label><input name="default1" type="radio" id="colorcheck_green"> -->
                 </div>
               </div></p>
             <p id="eq_detail_main_content4">
@@ -79,8 +85,10 @@
             </p>
             <hr>
             <p>
-                <a id="btn_go_cart" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase">장바구니</a>
+            <form name="addForm" method="post" action="addCart.jsp?id=${detailProduct.modelNumber}">
+                <a id="btn_go_cart" onclick="addToCart()" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase">장바구니</a>
                 <a id="btn_go_counseling" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/paymentpage">구매</a>
+            </form>
             </p>     
         </div>
     </div>

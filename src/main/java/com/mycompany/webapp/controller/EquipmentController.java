@@ -8,10 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -21,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
 
@@ -51,7 +56,22 @@ public class EquipmentController {
 	}
 
 	@RequestMapping("/equipment/equipment_detail")
-	public String equipment_detail(String modelNumber, Model model) {
+	public String equipment_detail(String modelNumber, Model model, Authentication authentication
+			, HttpSession session /*HttpServletRequest request, HttpServletResponse response*/) {
+		String email = authentication.getName();	
+		session.setAttribute("email", email);
+		/*session=request.getSession(false);
+		//세션 유무 확인
+		if(session!=null) {
+			UsersDto usersdto=(UsersDto)session.getAttribute("usersDto");
+			//세션에 할당된 값 유무 확인
+			if(usersdto!=null) {
+				//모델명 가져오기
+				String modelNo=request.getParameter("modelNumber");
+				//모델명을 이용해 dto 객체 만들기
+				ProductDto productDto=productDao.getInstance().in
+			}
+		}*/
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
 		log.info(modelNumber);
@@ -97,13 +117,7 @@ public class EquipmentController {
 	       return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
 	}
 	*/
-	@GetMapping("Sort")
-		public String Sort(Model model, @RequestParam int sort){
-			List<ProductDto> pList=productService.sort(sort);
-			model.addAttribute("pList", pList);
-			return "/equipment/dental_equipment_main";
-	}
-	
+
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
 	public String productAdd() {

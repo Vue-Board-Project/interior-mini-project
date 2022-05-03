@@ -37,11 +37,12 @@
             </p>
             <p id="eq_detail_c_main_content3">색상
                 <div id="colorcheck">
-                    <label for="default1">검정 </label><input name="default1" type="radio" checked id="colorcheck_black">
+                <label for="default1">${detailProduct.productColor}</label><input name="default1" type="radio" checked id="colorcheck_${detailProduct.productColor}">
+                    <!-- <label for="default1">검정 </label><input name="default1" type="radio" checked id="colorcheck_black">
                     <label for="default2">파랑 </label><input name="default1" type="radio" id="colorcheck_blue">
                     <label for="default3">빨강 </label><input name="default1" type="radio" id="colorcheck_red">
                     <label for="default4">보라 </label><input name="default1" type="radio" id="colorcheck_purple">
-                    <label for="default5">초록 </label><input name="default1" type="radio" id="colorcheck_green">
+                    <label for="default5">초록 </label><input name="default1" type="radio" id="colorcheck_green"> -->
                 </div>
               </div></p>
             <p id="eq_detail_c_main_content4">
