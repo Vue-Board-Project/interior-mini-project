@@ -19,46 +19,18 @@
                     </div>
                 </div>
                 <div id="portfolio_dental_content" class="text-center pt-5">
-                    <%-- <div>
-                    	<div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">입구</b></div>
-                        <div class="mb-5"><img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_1.PNG"/></div>
-                        <p class="mb-5 portfolio_dental_content_p">치과 입구 모습입니다.
-                            입구는 블랙톤으로 무게감있게 연출했습니다.</p>
-                    </div>
-                    <div>
-                    	<div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">치과 내부</b></div>
-                        <div class="mb-5"><img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_2.PNG"/></div>
-                        <p class="mb-5 portfolio_dental_content_p">치과 내부 모습입니다.
-                            화이트톤을 기반으로 청결한 이미지를 중점적으로 연출했습니다</p>
-                    </div>
-                    <div id="model_dental_waiting_room">
-                	    <div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">진료실</b></div>
-                        <div class="mb-5"><img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_3.PNG"/></div>
-                        <div class="mb-5"><img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG"/></div>
-                        <p class="mb-5 portfolio_dental_content_p">진료실 내부 모습입니다.
-                            화이트와 블랙의 대비감을 이용해 더 널어 보이게 연출했습니다.</p>
-                    </div>
-                    <div id="model_dental_X-ray_room">
-            	        <div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">X-ray실</b></div>
-                        <div class="mb-5"><img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_4.PNG"/></div>
-                        <p class="mb-5 portfolio_dental_content_p">X-ray촬영실은 블랙으로 포인트를 주었습니다.</p>
-                    </div>
-                    <div id="model_dental_makeup_corner">
-                    	<div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">특진실</b></div>
-                        <div class="mb-5"><img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_5.PNG"/></div>
-                        <p class="mb-5 portfolio_dental_content_p">VIP를 위한 특진실 내부 모습입니다.
-                            그레이톤 벽에 치과와 관련된 그래픽을 넣어 포인트를 주었습니다.</p>
-                    </div>
-                    <div id="model_dental_doctor_room">
-               		    <div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">상담실</b></div>
-                        <div class="mb-5"><img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_7.PNG"/></div>
-                        <p class="portfolio_dental_content_p">상담실입니다.
-                            벽을 유리로 시공해 시각적으로 더 넓어 보이는 느낌을 주었습니다.</p>
-                    </div>
+                	<c:forEach items="${interiorDList}" var="dList">
+                		<div>
+                			<div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">${dList.cname}</b></div>
+                       		<div class="mb-5"><img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/display?fileName=${dList.idImgPath}"/></div>
+                        	<p class="mb-5 portfolio_dental_content_p">${dList.dcontent}</p>
+                		</div>
+                	</c:forEach>
+  
                     <div class="mb-5">
                         <p style="width:900px; margin: 0 auto;">오몰레어 오스템의 깔끔한 치과 인테리어였습니다.</p>
                         <p style="width:900px; margin: 0 auto;">다양한 시공사례 구경하시고 오몰레어에서 무료 견적 받아보세요.</p>
-                    </div> --%>
+                    </div> 
                 </div>
             </div>
         </div>

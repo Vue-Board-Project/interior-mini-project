@@ -25,7 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.webapp.dto.interior.InteriorDetailDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
+import com.mycompany.webapp.service.InteriorDetailService;
 import com.mycompany.webapp.service.InteriorService;
 
 import lombok.extern.log4j.Log4j2;
@@ -36,6 +38,9 @@ public class PortfolioDentalControll {
 	
 	@Resource // 인테리어 서비스 객체
 	private InteriorService interiorService;
+	
+	@Resource
+	private InteriorDetailService interiorDetailService;
 	
 	@RequestMapping("/portfolio_dental")
 	public String modelDental(InteriorDto interiors, Model model) {
@@ -196,31 +201,37 @@ public class PortfolioDentalControll {
       return result;
    }
 	
+	
 	@GetMapping("/portfolio_dental/portfolio_dental_detail")
-	public String portfolioDentalDetail(@RequestParam("ino") int ino, Model model) {
+	public String portfolioDentalDetail(@RequestParam("ino") int ino, Model model){
 		log.info("디테일 가보자고~~~~~~~~~~~~~~~~");
 		log.info(ino);
 		InteriorDto interiorDetail = interiorService.detailPortfolio(ino);
 		model.addAttribute("interiorDetail", interiorDetail);
+		
+		List<InteriorDetailDto> interiorDList = interiorDetailService.selectPortfolio(interiorDetail.getIno());
+		for(InteriorDetailDto s :interiorDList) {
+			log.info("interiorDList : "+s);
+		}
+		model.addAttribute("interiorDList",interiorDList);
 		
 		log.info(interiorDetail.getIno());
 		log.info(interiorDetail.getIstyle());
 		log.info(interiorDetail.getDarea());
 		List<InteriorDto> recommandStyleList = interiorService.recommendStyle(ino,interiorDetail.getIstyle());
 		model.addAttribute("recommandStyleList", recommandStyleList);
-		for(InteriorDto s :recommandStyleList) {
+		/*for(InteriorDto s :recommandStyleList) {
 			log.info("recommandStyleList : "+s);
-		}
+		}*/
 		
 		List<InteriorDto> recommandAreaList = interiorService.recommendArea(ino,interiorDetail.getDarea());
 		model.addAttribute("recommandAreaList", recommandAreaList);
-		for(InteriorDto s :recommandAreaList) {
+		/*for(InteriorDto s :recommandAreaList) {
 			log.info("recommandAreaList : "+s);
-		}
+		}*/
 		
 		interiorService.updateCnt(ino);
 		return "portfolio_dental/portfolio_dental_detail3";
-	}
-	   
+	} 
 
 }

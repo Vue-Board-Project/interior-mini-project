@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mycompany.webapp.dao.mybatis.InteriorDetailDao">
+	
+	<!-- 포폴 상세 글 추가 -->
+	<insert id="insertInteriorD" parameterType="InteriorDetail">
+		INSERT INTO interior_detail (id_img_path, ino, cname, dcontent)
+    	values (#{idImgPath}, #{ino}, #{cname}, #{dcontent})
+	</insert>
+	
+	<!-- 포폴 글 꺼내오기 -->
+	<select id="selectPortfolioD" parameterType="int" resultType="InteriorDetail">
+		SELECT id_img_path as idImgPath, cname, dcontent 
+		FROM interior_detail WHERE ino=#{ino} 
+	</select>
+	
+</mapper>
+

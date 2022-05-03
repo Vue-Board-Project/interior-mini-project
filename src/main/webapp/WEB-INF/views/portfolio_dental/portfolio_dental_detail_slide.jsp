@@ -3,25 +3,11 @@
 <div id="wrapper">
 <div id="slider_wrap">
   <ul id="slider">
-    <li>
-        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG">
-    </li>
-    
-    <li>
-        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_4.PNG">
-    </li>
-    
-    <li>
-        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_5.PNG">
-    </li>
-    
-    <li>
-        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_7.PNG">
-    </li>
-    
-    <li>
-        <img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_3.PNG">
-    </li>
+  	<c:forEach items="${interiorDList}" var="dList">
+    	<li>
+       		 <img src="/springframework-mini-project/portfolio_dental/display?fileName=${dList.idImgPath}">
+    	</li>
+    </c:forEach>
   </ul>
   
   <!--controls-->
