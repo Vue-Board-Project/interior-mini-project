@@ -19,5 +19,11 @@ public interface InteriorDao {
 	//포폴 인기순
 	public List<InteriorDto> interiorListPopular();
 	
+	//포폴 상세페이지
+	public InteriorDto detailPortfolio(int ino);
+	
+	//포폴 상세페이지 조회수
+	public int updateCnt(int ino);
+	
 	public int interiorCnt();
 }

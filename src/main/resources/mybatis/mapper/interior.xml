@@ -11,6 +11,11 @@
 		values (#{ino}, #{itype}, 0, #{istyle}, #{allColor}, #{wcolor}, #{fcolor}, #{dtype}, #{darea}, #{isummary}, #{imImgPath})
 	</insert>
 	
+	<select id="detailPortfolio" parameterType="int" resultType="Interior">
+		SELECT itype, istyle, darea, isummary, im_img_path as imImgPath
+		FROM interior WHERE ino = #{ino}
+	</select>
+	
 	<!-- <sql id="sort">
 		<if test="sort ==''">
 			order by ino
@@ -41,7 +46,7 @@
 	</sql> -->
 	
 	<select id="interiorList" resultType="Interior">
-		SELECT isummary
+		SELECT ino, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' 
  		<!-- <include refid="dtype"/> -->
 		order by ino desc
@@ -49,17 +54,21 @@
 	</select>
 	
 	<select id="interiorListPast" resultType="Interior">
-		SELECT isummary
+		SELECT ino, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' order by ino asc
 	</select>
 	
 	<select id="interiorListPopular" resultType="Interior">
-		SELECT isummary
+		SELECT ino, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' order by ihits desc
 	</select>
 	
 	<select id="interiorCnt" resultType="int">
 		SELECT count(*) AS cnt FROM interior WHERE itype='portfolio'
 	</select>
+	
+	<update id="updateCnt" parameterType="Interior">
+		UPDATE interior SET ihits = ihits+1 WHERE ino=#{ino}
+	</update>
 </mapper>
 

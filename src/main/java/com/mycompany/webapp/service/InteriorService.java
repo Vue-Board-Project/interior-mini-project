@@ -39,12 +39,15 @@ public class InteriorService {//인테리어 서비스
 		return interiorDao2.interiorListPopular();
 	}
 	
+	public InteriorDto detailPortfolio(int ino) {
+		return interiorDao.detailPortfolio(ino);
+	}
 	
 	public int interiorCnt() {
 		return interiorDao.interiorCnt();
 	}
 	
-	
-	
-	
+	public int updateCnt(int ino) {
+		return interiorDao.updateCnt(ino);
+	}
 }

@@ -6,5 +6,5 @@
 .model_dental_content_a{text-decoration: none; color: black;}
 .model_dental_content_a:hover{text-decoration: none; color: black;}
 .model_dental_content_img{width: 300px; height: 200px; border-radius: 10px;}
-.model_dental_content_b{line-height: 3;}
+.model_dental_content_b{line-height: 3; width: 300px;}
 .model_dental_contenst_sm{line-height: 1;}

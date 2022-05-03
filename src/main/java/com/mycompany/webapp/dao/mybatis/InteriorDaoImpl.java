@@ -43,6 +43,18 @@ public class InteriorDaoImpl implements InteriorDao{
 	public List<InteriorDto> interiorListPopular() {
 		return sqlSession.selectList("com.mycompany.webapp.dao.mybatis.InteriorDao.interiorListPopular");
 	}
+
+	@Override
+	public InteriorDto detailPortfolio(int ino) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateCnt(int ino) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 }

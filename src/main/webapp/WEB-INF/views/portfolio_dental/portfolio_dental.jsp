@@ -11,9 +11,9 @@
 	            <ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
 		            <c:forEach items="${interiorList}" var="list">
 		            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px;"> 
-		                    <a href="portfolioDentalDeatail3" class="portfolio_dental_content_a">
-		                        <img class="portfolio_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room5.jpg"/>
-		                        <b class="mt-3 portfolio_dental_content_b">${list.isummary}</b>
+		                    <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${list.ino}" class="portfolio_dental_content_a">
+		                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/display?fileName=${list.imImgPath}"/>
+		                        <b class="mt-3 ml-5 mr-5 portfolio_dental_content_b">${list.isummary}</b>
 		                        <small class="d-block portfolio_dental_content_sm">mansik</small>
 		                    </a>
 		                </li>

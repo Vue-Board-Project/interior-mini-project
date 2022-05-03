@@ -129,7 +129,7 @@ public class InteriorController {
 			  interior.setImImgPath(interior.getIMainImg().getOriginalFilename());
 			  	/*product.setPattachtype(product.getMainImage().getContentType());
 				product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());*/
-				File file = new File("C:/Temp/InteriorPhotos" + interior.getImImgPath());
+				File file = new File("C:/Temp/portfolio/" + interior.getImImgPath());
 				interior.getIMainImg().transferTo(file);
 				interiorService.insertInterior(interior);    }
 		 return "redirect:/interior";
