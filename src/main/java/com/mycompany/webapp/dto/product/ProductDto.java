@@ -26,4 +26,7 @@ public class ProductDto {
 	private MultipartFile mainimage;//메인 이미지 파일 BLOB
 	private String sort;//상품 정렬
 	
+	//장비 상담을 위한 수량
+	private String consultCount;
+	
 }

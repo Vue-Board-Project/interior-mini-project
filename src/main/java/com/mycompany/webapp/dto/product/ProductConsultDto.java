@@ -19,4 +19,7 @@ public class ProductConsultDto {
 	private String pc_request;//세부요청사항
 	private UsersDto usersDto;//이메일
 	
+	//체크 여부
+	private String[] wantService;
+	
 }
