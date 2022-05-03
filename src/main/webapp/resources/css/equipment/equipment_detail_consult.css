@@ -249,7 +249,7 @@ text-align:center;
 width:100%;
 }
 
-        }
+        
         #eq_detail_c_main_left{
           
 
@@ -274,7 +274,7 @@ width:100%;
             margin-bottom: 10px;
 
 }
-        }
+        
         #eq_detail_c_main_content1{
             font-size: 2rem;
             font-family: "MinSans-Black";
@@ -379,14 +379,14 @@ width:100%;
             color: black;
         }
         #btn_go_counseling{
-
-#pagination_wrap ul li.active{
-width:12px;
-height:12px;
-top:3px;
-opacity:1;
-box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
-}
+	}
+	#pagination_wrap ul li.active{
+	width:12px;
+	height:12px;
+	top:3px;
+	opacity:1;
+	box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
+	}
 
 /*Header*/
 h1, h2{text-shadow:none; text-align:center;}
