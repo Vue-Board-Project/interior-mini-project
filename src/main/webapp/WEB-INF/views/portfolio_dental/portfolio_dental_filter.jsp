@@ -109,15 +109,15 @@
                 <div class="dropdown-content">
                   <div class="p-2 d-flex flex-column">
 			           <label class="dental_model_field_choice">
-			               <input type="radio" name="field" value="normal">
+			               <input type="checkbox" name="field" value="normal">
 			               <span class="ml-2">일반치과</span>
 			           </label>
 			           <label class="dental_model_field_choice">
-			               <input type="radio" name="field" value="infant">
+			               <input type="checkbox" name="field" value="infant">
 			               <span class="ml-2">소아치과</span>
 			           </label>
 			           <label class="dental_model_field_choice">
-			               <input type="radio" name="field" value="special">
+			               <input type="checkbox" name="field" value="special">
 			               <span class="ml-2">특수치과</span>
 			           </label>
 			       </div>

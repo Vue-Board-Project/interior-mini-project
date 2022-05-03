@@ -2,20 +2,35 @@ $(document).ready(function(){
 	$("input[name='sort'], input[name='style'], input[name='color'], input[name='field']").on("click",function(){
 		var sort = $('input[name="sort"]:checked').val();
         console.log(sort);
+        var styleArrVal = [];
         var style = $('input[name="style"]:checked').each(function(){
-			var styleVal = $(this).val();
-			console.log(styleVal);
+			//var styleVal = $(this).val();
+			//console.log(styleVal);
+			styleArrVal.push($(this).val());
 		})
+		console.log(styleArrVal);
+		var colorArrVal = [];
 		var color = $('input[name="color"]:checked').each(function(){
-			var colorVal = $(this).val();
-			console.log(colorVal);
+			//var colorVal = $(this).val();
+			//console.log(colorVal);
+			colorArrVal.push($(this).val());
 		})
+		console.log(colorArrVal);
+        if($(this).prop('checked')){
+	 
+	     $('input[type="checkbox"][name="field"]').prop('checked',false);
+	 
+	     $(this).prop('checked',true);
+	 
+	    }
 		var field = $('input[name="field"]:checked').val();
         console.log(field);
 		$.ajax({
 			url:"goPortfolioDental",
 			method: "get",
 			data: {sort:sort,
+					styleArr:styleArrVal,
+					colorArr:colorArrVal,
 					field},
 			dataType: "json"
 		}).done((data)=>{
@@ -33,11 +48,4 @@ $(document).ready(function(){
 		});
 		console.log("~~~~~~~~~~~~~~~~~~");
 	});
-/*	$("input[name='style']").on("click",function(){
-		var style = $('input[name="style"]:checked').each(function(){
-			var value = $(this).val();
-		})
-		console.log(value);
-		
-	});*/
 });
