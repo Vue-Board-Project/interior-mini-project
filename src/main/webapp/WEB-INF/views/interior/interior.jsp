@@ -46,6 +46,10 @@
 		      <label for="iMainImg">iMainImg</label>
               <form:input type="file" path="iMainImg" class="form-control"/>
           </div>
+          <div class="input-group">
+		      <label for="mMainImg">mMainImg</label>
+              <form:input type="file" path="mMainImg" class="form-control"/>
+          </div>
 		  <button type="submit" class="btn btn-primary btn-sm">제출</button>
 		</form:form>
 	</div>

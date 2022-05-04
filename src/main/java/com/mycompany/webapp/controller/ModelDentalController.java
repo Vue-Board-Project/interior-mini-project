@@ -88,6 +88,7 @@ public class ModelDentalController {
 		log.info("실행");
 		InteriorDto interiorDetail2 = interiorService.detailPortfolio(ino);
 		model.addAttribute("interiorDetail2", interiorDetail2);
+		log.info(interiorDetail2);
 		
 		List<InteriorDetailDto> interiorDList2 = interiorDetailService.selectPortfolio(interiorDetail2.getIno());
 		for (InteriorDetailDto s : interiorDList2) {
