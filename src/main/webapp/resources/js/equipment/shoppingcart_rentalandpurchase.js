@@ -40,32 +40,58 @@ function removeCartAllSession() {
 		window.location.reload();
 	});
 }
-
+//수량 변경
+//var style = $('input[name="style"]:checked').each(function(){
+function updateCartSession(modelNum){
+	console.log("변경???");
+	var hey=$('input[class="quantity_input"]').val();
+	console.log(hey);
+	$.ajax({
+		url:"/springframework-mini-project/cartSessionUpdate",
+		data:{
+			modelNum:modelNum,
+			hey
+			},
+		method:"post"
+	}).done(() => {
+		window.location.reload();
+	});
+}
 //금액 합계 구하기$(document).ready(function()
 function priceSum(){
 	var sum=0;
-	
+	var quaAll=0;
 	var count=$(".cartcheck").length;
+	var count2=$(".quantity_input").length;
 	for(var i=0; i<count; i++){
 		if($(".cartcheck")[i].checked==true){
 			if(isNaN($(".cartcheck")[i].value)){
 				$(".cartcheck")[i].value=0;
 			}
-			sum+=parseInt($(".cartcheck")[i].value);
 			console.log($(".cartcheck")[i].value);
 		}
-		if(isNaN($("#hey").value)){
-			$("#hey").value=0;	
+		for(var j=0; j<count2; j++){
+			
+			if(i==(j+1)){
+				if(isNaN($(".quantity_input")[j].value)){
+					$(".quntity_input")[j].value=0;	
+				}
+				var qua=parseInt($(".quantity_input")[j].value);
+				console.log($(".quantity_input")[j].value);
+				sum+=parseInt($(".cartcheck")[i].value*qua);
+				quaAll+=qua;
+			}	
 		}
-		var qua=parseInt($("#hey").value);
-			console.log(qua);
-		}
-		
+	} 
+	console.log(quaAll);
+	console.log(sum);
+	
 	formatsum=sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	$("#total_sum").html(formatsum+"원");
+	$("#total_sum").html(formatsum+"　원");
+	$("#total_quaAll").html(quaAll+"　개");//제품의 총 개수
+	$("#modelCount").html(count2);//모델의 종류
 	
 }
-//fuction
 
 //전체선택 체크박스
 function selectAll(selectAll)  {
@@ -98,11 +124,11 @@ $(document).ready(function(){
 })
 
 //수량 변경 버튼
-$("#qua_plus_btn").on("click", function(){
+$(".qua_plus_btn").on("click", function(){
 	let quantity = $(this).parent("div").find("input").val();
 	$(this).parent("div").find("input").val(++quantity);
 });
-$("#qua_minus_btn").on("click", function(){
+$(".qua_minus_btn").on("click", function(){
 	let quantity = $(this).parent("div").find("input").val();
 	if(quantity > 1){
 		$(this).parent("div").find("input").val(--quantity);		

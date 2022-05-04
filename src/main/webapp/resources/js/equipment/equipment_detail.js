@@ -12,7 +12,7 @@ function cartSession(){
 			$("#cart_verify_result_title").html("장바구니에 상품이 담겼습니다.");
 			cart_layer_popup("#cart_verify_result_btn");
 		} else if(data.result==="wrong") {
-			$("#cart_verify_result_title").html("장바구니에 동일한 상품이 존재합니다.");
+			$("#cart_verify_result_title").html("장바구니에 동일한 상품이 존재합니다. 추가를 원하시는 경우 장바구니에서 개수를 변경해주세요");
 			cart_layer_popup("#cart_verify_result_btn");
 		}
 

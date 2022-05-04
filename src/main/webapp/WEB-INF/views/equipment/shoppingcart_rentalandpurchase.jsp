@@ -10,7 +10,7 @@
                 <div id="purchase_cart_list">
                     <ul id=""class="nav nav-tabs">
                         <li class="nav-item">
-                          <p id="purchase_cart_count" class="nav-link active">구매(<a style="color: red;">n</a>)</p> <!--n은 나중에 카트 안의 개수 입력 받자구!-->
+                          <p id="purchase_cart_count" class="nav-link active">구매(<a id="modelCount" style="color: red;"></a>)</p> <!--n은 나중에 카트 안의 개수 입력 받자구!-->
                         </li>
                     </ul>
                     <div style="background-color: #ffffff;">
@@ -37,12 +37,18 @@
 		                                  <h5 id="cart_product_name1" class="mt-0 mb-1">${cartproduct.productName}</h5>
 		                                  <p id="cart_product_model_number1" class="fontcolorccc">${cartproduct.modelNumber}</p>
 		                                  <div id="cart_product_price1">
-		                                  	<div>
-			                                  	<input id="hey" value="${cartproduct.cartQua}" class="quantity_input"></input>개
-				                                <button id="qua_plus_btn">+</button>
-				                                <button id="qua_minus_btn">-</button>
-		                                  	</div>
-		                                  	<a class="btn" id="qua_modify_btn" data-model="${cartproduct.modelNumber}"> 변경</a>　
+		                                  <div class="countBox">
+								            <button class="qua_minus_btn">-</button>
+											<input style="width: 50px; text-align: center;" id="updateQua" value="${cartproduct.cartQua}" class="quantity_input"></input>
+								            <button class="qua_plus_btn">+</button>
+											<button class="qua_modify_btn" onClick="javascript:updateCartSession('${cartproduct.modelNumber}')" id=""> 변경</button>　
+								          </div>
+		                                  	<%-- <div>
+			                                  	<input id="updateQua" value="${cartproduct.cartQua}" class="quantity_input"></input>개
+				                                <button class="qua_plus_btn">+</button>
+				                                <button class="qua_minus_btn">-</button>
+		                                  	</div> --%>
+		                                  	
 			                                ${cartproduct.productColor} 　
 			                                <fmt:formatNumber pattern="###,###,###,###" value="${cartproduct.price}"/>원
 		                                  </div> 
@@ -61,13 +67,27 @@
                 </div>
             </div>
             <div id="shoppingCart_content_right">
-                <p style="font-family: MinSans-Black">구매 제품</p>
-                <hr id="pxup_line">
-                <p>제품 수 <a>n</a></p>
-                <p>주문 금액 <a id="total_sum"> 원</a></p>
-                <p class="fontcolor525253">할인 적용 금액 없음</p>
-                <hr>
-                <a id="next_page_go_to_payment" href="${pageContext.request.contextPath}/equipment/paymentpage" class="btn">다음 단계</a>
+                <c:choose>
+	            	<c:when test="${empty productList}">
+		            	<p style="font-family: MinSans-Black">담은 제품</p>
+		            	<hr id="pxup_line">
+	            		<p>구매를 원하는 상품을 직접 담아보세요!</p>
+	                    <a id="next_page_go_to_payment" href="${pageContext.request.contextPath}/equipment/dental_equipment_main" class="btn">상품 구경 하러 가기</a>
+	                </c:when>
+	                <c:otherwise>
+		                <p style="font-family: MinSans-Black">주문서</p>
+		                <hr id="pxup_line">
+<%-- 		                <c:forEach items="${productList}" var="cartproduct">
+		                	<p>${cartproduct.productName}</p>
+		                </c:forEach>
+		                 --%>
+		                <p>제품 수 <a id="total_quaAll"></a></p>
+		                <p>주문 금액 <a id="total_sum"></a></p>
+		                <!-- <p class="fontcolor525253">할인 적용 금액 없음</p> -->
+		                <hr>
+		                <a id="next_page_go_to_payment" href="${pageContext.request.contextPath}/equipment/paymentpage" class="btn">다음 단계</a>
+	                </c:otherwise>
+                </c:choose>
             </div>
         </div>
     <script src="${pageContext.request.contextPath}/resources/js/equipment/shoppingcart_rentalandpurchase.js"></script>
