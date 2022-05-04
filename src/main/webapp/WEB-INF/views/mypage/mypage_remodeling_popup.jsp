@@ -6,26 +6,41 @@
 	</button>
 	 <div class = "personal_info">
 	     <div id = "mypage_remodeling_popup_infomations">
-	         <div class = "popup_info_name">
+	          <div class = "popup_info_name">
 	             <div class = "popup_info_name_title">이름</div>
-	             <div class = "popup_info_name_content">한보현</div>
+	             <div class = "popup_info_name_content">${user.name}</div>
 	         </div>
 	         <div class = "popup_info_phone_num">
 	         	<div class = "popup_info_phone_num_title">연락처</div>
-	            <div class = "popup_info_phone_num_content">01064724876</div>
+	            <div class = "popup_info_phone_num_content">${user.phone}</div>
 	         </div>
-	         <div class = "popup_info_space_type">
-	         	<div class = "popup_info_space_type_title">리모델링 공간</div>
-	            <div class = "popup_info_space_type_content">북유럽 스타일 치과</div>
-	         </div>
-	         <div  class = "popup_info_worker">
-	         	<div class = "popup_info_worker_title">담당자</div>
-	            <div class = "popup_info_worker_content">홍수빈</div>
-	         </div>
-	         <div  class = "popup_info_visit_date">
-	         	<div class = "popup_info_visit_date_title">방문예정일</div>
-	            <div class = "popup_info_visit_date_content">2022-05-27</div>
-	         </div>
+		         <div class = "popup_info_space_type">
+		         	<div class = "popup_info_space_type_title">공간유형</div>
+		           <div class = "popup_info_space_type_content">${remodelCon.consultInteriorStyle}</div>
+		         </div>
+		         <div class = "popup_info_width">
+		         	<div class = "popup_info_width_title">평형</div>
+		           <div class = "popup_info_width_content">${remodelCon.consultAcreage} 평</div>
+		         </div>
+		          <div class = "popup_info_request">
+		         	<div class = "popup_info_request_title">요청사항</div>
+		            <div class = "popup_info_request_content">${remodelCon.consultRequest}</div>
+		         </div>
+		         <div class = "popup_info_date">
+		         	<div class = "popup_info_date_title">상담예정일자</div>
+		            <div class = "popup_info_date_content">${remodelCon.consultDate} ${remodelCon.consultTime}</div>
+		         </div>
+		    	 <div class = "popup_info_spot">
+		         	<div class = "popup_info_spot_title">공사지역</div>
+		            <div class = "popup_info_spot_content">${remodelCon.consultAddress}</div>
+		         </div>
+		         <div class = "popup_info_visit_date">
+		         	<div class = "popup_info_visit_date_title">시공일자</div>
+		            <div class = "popup_info_visit_date_content">${remodelCon.constructionDate}</div>
+		         </div> 
+		         <button type="button" class="btn btn-outline-primary" style = "margin-left : 20px;"
+		          onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress'">진행 상세 보기</button>
+		         <button type="button" class="btn btn-outline-secondary">이전 내역 보기</button>
 	     </div>
 	 </div>
 	 
@@ -76,7 +91,7 @@
  	}
  	
  	#mypage_remodeling_popup_infomations {
- 		 margin-top : 40px;
+ 		 margin-top : 20px;
  		 padding : 5px;
  		 list-style:none;
  	}
@@ -150,21 +165,81 @@
  	height : 50px;
  }
  
- 
-   .personal_info #mypage_remodeling_popup_infomations .popup_info_worker{
+  .personal_info #mypage_remodeling_popup_infomations .popup_info_width{
  	width : 350px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
  }
  
- .personal_info #mypage_remodeling_popup_infomations .popup_info_worker .popup_info_worker_title{
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_width .popup_info_width_title{
  	font-family: 'MinSans-Medium';
  	width : 100px;
  	height : 50px;
  }
  
- .personal_info #mypage_remodeling_popup_infomations .popup_info_worker .popup_info_worker_content{
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_width .popup_info_width_content{
+ 	font-family: 'MinSans-Regular';
+ 	width : 250px;
+ 	height : 50px;
+ }
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_request{
+ 	width : 350px;
+ 	height : 50px;
+ 	display: flex;
+ 	flex-direction: row;
+ }
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_date{
+ 	width : 350px;
+ 	height : 50px;
+ 	display: flex;
+ 	flex-direction: row;
+ }
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_date .popup_info_date_title{
+ 	font-family: 'MinSans-Medium';
+ 	width : 100px;
+ 	height : 50px;
+ }
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_date .popup_info_date_content{
+ 	font-family: 'MinSans-Regular';
+ 	width : 250px;
+ 	height : 50px;
+ }
+ 
+ 
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_request .popup_info_request_title{
+ 	font-family: 'MinSans-Medium';
+ 	width : 100px;
+ 	height : 50px;
+ }
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_request .popup_info_request_content{
+ 	font-family: 'MinSans-Regular';
+ 	width : 250px;
+ 	height : 50px;
+ }
+ 
+ 
+ 
+  .personal_info #mypage_remodeling_popup_infomations .popup_info_spot{
+ 	width : 350px;
+ 	height : 50px;
+ 	display: flex;
+ 	flex-direction: row;
+ }
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_spot .popup_info_spot_title{
+ 	font-family: 'MinSans-Medium';
+ 	width : 100px;
+ 	height : 50px;
+ }
+ 
+ .personal_info #mypage_remodeling_popup_infomations .popup_info_spot .popup_info_spot_content{
  	font-family: 'MinSans-Regular';
  	width : 250px;
  	height : 50px;

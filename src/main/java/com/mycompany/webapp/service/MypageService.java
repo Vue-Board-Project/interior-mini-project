@@ -12,6 +12,7 @@ import com.mycompany.webapp.dao.mybatis.MypageDao;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
+import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
@@ -120,9 +121,9 @@ public class MypageService {
 		return mypageDao.getTotalASCounseling(email);
 	}
 
-	public List<InteriorDto> getMpInteriorList(Pager pager) {
+	public MainConsultDto getMpInteriorList(String email) {
 		// TODO Auto-generated method stub
-		return mypageDao.getMpInteriorList(pager);
+		return mypageDao.getMpInteriorList(email);
 	}
 
 	public UsersDto getMpUserInfo(String email) {
@@ -144,6 +145,13 @@ public class MypageService {
 		return mypageDao.deleteUserInfo(email);
 		
 	}
+
+	public MainConsultDto getMpRemodeling(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getMpRemodeling(email);
+	}
+
+
 
 	
 }

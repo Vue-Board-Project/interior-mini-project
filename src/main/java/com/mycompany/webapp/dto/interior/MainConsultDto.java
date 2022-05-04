@@ -27,4 +27,5 @@ public class MainConsultDto {
 	private String consultType;//신규 인테리어 : 1 / 리모델링 : 2
 	
 	private String[] consultRoomList;//종합 리모델링 상탐 체크박스 저장용
+	
 }

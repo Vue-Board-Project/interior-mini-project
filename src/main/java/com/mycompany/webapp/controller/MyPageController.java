@@ -31,6 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
+import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
@@ -43,8 +44,7 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/mypage")
 @Log4j2
 public class MyPageController {
-	int mpinterior = 0;
-	int mpremodeling = 0;
+
 	
 	/****첫 창 상담창 *****/
 	 @RequestMapping("/mypage_counseling") 
@@ -56,34 +56,59 @@ public class MyPageController {
 	 @Resource private MypageService mypageService;
 	 
 	 @GetMapping("/mypage_counseling") 
-	 public String mypageCounselingFront(Authentication authentication, Model model){ 
+	 public String mypageCounselingFront(@RequestParam(defaultValue = "1") int pageNo,
+			 							Authentication authentication, Model model){ 
+		 
 		 String email = authentication.getName();
 		 UsersDto user = mypageService.getUserName(email);
 		 model.addAttribute("user", user);
 		 
+		 
 		 //인테리어 상담 내역 부분
 		 int totalInteriorCounseling = mypageService.getTotalInteriorCounseling(email);
-		 //InteriorDto interiorC = mypageService.getInteriorC(email);
 		 model.addAttribute("interiorChk", totalInteriorCounseling); //0이면 화면에 안 띄움
-		 log.info("chkchkCHECK1111111111111111111111111 : " + totalInteriorCounseling);
-		 mpinterior = totalInteriorCounseling;
+	
+		 if(totalInteriorCounseling != 0) {
+			 MainConsultDto mainConList = mypageService.getMpInteriorList(email); 
+			 model.addAttribute("mainConList", mainConList);
+		 }
+		 
 		 
 		 //리모델링 상담 내역 부분
 		 int totalRemodelingCounseling = mypageService.getTotalRemodelingCounseling(email);
 		 model.addAttribute("remodelingChk", totalRemodelingCounseling);
-		 log.info("chkchkCHECK22222222222222222222222222 : " + totalRemodelingCounseling);
-		 mpremodeling = totalRemodelingCounseling;
+		 
+		 if(totalRemodelingCounseling != 0) {
+			 MainConsultDto remodelCon = mypageService.getMpRemodeling(email);
+			 model.addAttribute("remodelCon", remodelCon);
+		 }
 		 
 		 //AS 진행 내역
 		 int totalASCounseling = mypageService.getTotalASCounseling(email);
 		 model.addAttribute("asChk", totalASCounseling);
-		 log.info("chkchkCHECK333333333333333333333333 : " + totalASCounseling);
 		 
 		 return "mypage/mypage_counseling";
 	 }
+	 /*	 
+	 @GetMapping("/mypage_counseling/selectInteriorInfo") 
+	 public String mypageCounselingEInterior(
+			 @RequestParam(defaultValue = "1") int pageNo, Authentication authentication, Model model){ 
+		 
+		 //String email = authentication.getName();
+		 String email = "gvhv@dgfv.sad";
+		 Pager pager = new Pager(1, 1, mpinterior, pageNo, email);
+		 model.addAttribute("pager", pager);
+		 
+		 List<MainConsultDto> mainConList = mypageService.getMpInteriorList(pager); 
+		 model.addAttribute("mainConList", mainConList);
+		 log.info("111111111111111111111111111111111111mainConList11111111111111111111111111111111111111");
 	
-/*	 */
+		 return "mypage/mypage_counseling";
+	 }
+	*/
+ 
 /* 현재 해야 할 것 : 프론트에서 json 추출*/
+	 /*
 	 @GetMapping(value = "/readInteriorList", produces = "application/json; charset=UTF-8")
 	 @ResponseBody
 	public String InteriorInfoList(@RequestParam(defaultValue = "1") int pageNo, Authentication authentication,
@@ -92,27 +117,24 @@ public class MyPageController {
 			log.info("실행");
 			String email = authentication.getName();
 			Pager pager = new Pager(1, 1, mpinterior, pageNo, email);
-			//받은 파일을 서버 파일 시스템에 저장할 때
-			/*String saveFilename = new Date().getTime() + "-" + dto.getAttach().getOriginalFilename();
-			File file = new File("C:/Temp/uploadfiles/" + dto.getAttach().getOriginalFilename());
-			dto.getAttach().transferTo(file);*/
 			
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("pager", pager);
 			
-			List<InteriorDto> interiorList = mypageService.getMpInteriorList(pager);
+			List<MainConsultDto> mainConList = mypageService.getMpInteriorList(pager); 
 			
-			log.info("mypage Interior List : " + interiorList);
-			jsonObject.put("interiorList", interiorList);
+			log.info("mypage Interior List : " + mainConList);
+			jsonObject.put("mainConList", mainConList);
 			
 			String json = jsonObject.toString();
 			log.info("json TTTTTTTTTTTest : " + json);
 		      
-		    return json;
-			
-		}
+		    return json;		
+		}*/
 	 
 	 
+	 
+	 /***** 		개인정보 수정 창			*******/
 	 /*개인정보 수정 처음 데이터 읽어오는 코드*/
 	@RequestMapping("/mypage_infosetting")
 	public String mypageInfosetting(Authentication authentication, Model model) {
@@ -126,6 +148,7 @@ public class MyPageController {
 	@PostMapping("/mypage_infosetting")
 	public String mypageInfoUpdate(UsersDto users, Model model, Authentication authentication) {
 		users.setEmail(authentication.getName());
+		//users.setEmail("gvhv@dgfv.sad");	//sad 오류 시 복구를 위한 코드
 		log.info(users.getPassword());
 		log.info(users.getPostcode());
 		log.info(users.getAddress());
