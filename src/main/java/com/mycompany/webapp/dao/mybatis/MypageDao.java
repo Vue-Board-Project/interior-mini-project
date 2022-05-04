@@ -64,6 +64,14 @@ public interface MypageDao {
 
 	public MainConsultDto getMpRemodeling(String email);
 
+	public int getTotalUserInteriorList(String email);
+
+	public List<MainConsultDto> getUserInteriorList(Pager pager);
+
+	public int getTotalUserRemodelingList(String email);
+
+	public List<MainConsultDto> getUserRemodelingList(Pager pager);
+
 
 
 }

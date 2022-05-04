@@ -151,6 +151,26 @@ public class MypageService {
 		return mypageDao.getMpRemodeling(email);
 	}
 
+	public int getTotalUserInteriorList(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getTotalUserInteriorList(email);
+	}
+
+	public List<MainConsultDto> getUserInteriorList(Pager pager) {
+		// TODO Auto-generated method stub
+		return mypageDao.getUserInteriorList(pager);
+	}
+
+	public int getTotalUserRemodelingList(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getTotalUserRemodelingList(email);
+	}
+
+	public List<MainConsultDto> getUserRemodelingList(Pager pager) {
+		// TODO Auto-generated method stub
+		return mypageDao.getUserRemodelingList(pager);
+	}
+
 
 
 	

@@ -15,18 +15,18 @@
 	     	<!-- 재품 받기 -->
 	     		<div class = "prouducts">
 	     		
-	     		<c:forEach var="orderList" items="${orderDetail}">    		
+	     		<c:forEach var="orderDetail" items="${orderDetail}">    		
 	     		 <!-- 각 제품 요소들 -->
 	     			<div class= "product_list_element">
 	     				<div class = "element_img_slot">
-	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_orderlist.png" />
+	     					<img class = "element_img" src = "" />
 	     				</div>
-	     				<%-- <div class = "element_product_name">제품 이름 : ${orderDetail.product.productName} </div> --%>
-	     				<%-- <div class = "element_model_name">모델 이름 : ${orderDetail.stringModelNumber} </div> --%>
+	     				<div class = "element_product_name">제품 이름 : ${orderDetail.product.productName} </div>
+	     				<div class = "element_model_name">모델 이름 : ${orderDetail.stringModelNumber} </div>
 	     				<div class = "element_price">
-		     				<%-- <div class = "element_price_money">금액 : ${orderDetail.detailPrice}</div> --%>
+		     				<div class = "element_price_money">금액 : ${orderDetail.detailPrice}</div>
 		     				<span class = "element_price_unit">원</span>  
-		     				<%-- <span class = "element_product_num">개수 :  ${orderDetail.modelPurchaseQuantity}</span> --%>
+		     				<span class = "element_product_num">개수 :  ${orderDetail.modelPurchaseQuantity}</span>
 	     				</div>
 	     				
 	     				<div class = "element_delivery_status">배송중</div>

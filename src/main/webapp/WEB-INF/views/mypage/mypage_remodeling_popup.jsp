@@ -40,7 +40,10 @@
 		         </div> 
 		         <button type="button" class="btn btn-outline-primary" style = "margin-left : 20px;"
 		          onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress'">진행 상세 보기</button>
-		         <button type="button" class="btn btn-outline-secondary">이전 내역 보기</button>
+		       	 <c:if test="${remodelingChk >= 2}">
+		         	<button type="button" class="btn btn-outline-secondary"
+		         	 onclick="location.href='/springframework-mini-project/mypage/mypage_remodeling_list'">>이전 내역 보기</button>
+		         </c:if>
 	     </div>
 	 </div>
 	 

@@ -23,7 +23,7 @@
 	     	<c:if test="${remodelingChk != 0}">
 	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_remodeling.jsp" %>
 	     	</c:if>
-	     	<c:if test="${remodelingChk != 0}">
+	     	<c:if test="${asChk != 0}">
 	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_AS.jsp" %>
 	     	</c:if>
 	     	<c:if test="${interiorChk == 0 && remodelingChk == 0 && remodelingChk == 0}">
