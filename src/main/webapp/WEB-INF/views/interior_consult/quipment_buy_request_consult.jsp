@@ -8,7 +8,7 @@
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quipment_buy_request_consult.css" rel="stylesheet" type="text/css" /> 
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/remodeling_price.css" rel="stylesheet" type="text/css"/>
     <div class="container">
-    <form action="sendProductConsultForm" id="sendPcf">
+    <form action="sendProductConsultForm" id="sendPcf" method="post">
         <div style="display: flex;">
             <section style="display: inline-block; width: 75%;" class="p-4">
                 <!-- 1단계  -->
@@ -74,31 +74,31 @@
                             <div style="width: 100%; height: 60%;">
                                 <div style="display: flex;">  
                                     <label class="detail_consult_main_radio_btn_csswrap mr-3">
-                                        <input type="checkbox" name="wantService" value="change">
+                                        <input type="checkbox" name="wantService" value="pc_product_remove">
                                         <span class="purchase_consultation_purpose rounded ps_span" style="font-size: 18px; ">
                                             장비제거
                                         </span>
                                     </label>  
                                     <label class="detail_consult_main_radio_btn_csswrap mr-3">
-                                        <input type="checkbox" name="wantService" value="remodeling" checked>
+                                        <input type="checkbox" name="wantService" value="pcProduct_install" checked>
                                         <span class="purchase_consultation_purpose rounded ps_span" style="font-size: 18px;">
                                             장비설치
                                         </span>
                                     </label>  
                                     <label class="detail_consult_main_radio_btn_csswrap purchase_consultation_purpose mr-3">
-                                        <input type="checkbox" name="wantService" value="open">
+                                        <input type="checkbox" name="wantService" value="pcElectrical">
                                         <span class="purchase_consultation_purpose rounded ps_span" style="font-size: 18px; ">
                                             전기공사
                                         </span>
                                     </label> 
                                     <label class="detail_consult_main_radio_btn_csswrap purchase_consultation_purpose mr-3">
-                                        <input type="checkbox" name="wantService" value="rental">
+                                        <input type="checkbox" name="wantService" value="pcNetwork">
                                         <span class="purchase_consultation_purpose rounded ps_span" style="font-size: 18px; ">
                                             네트워크 공사
                                         </span>
                                     </label> 
                                     <label class="detail_consult_main_radio_btn_csswrap purchase_consultation_purpose mr-3">
-                                        <input type="checkbox" name="wantService" value="rental">
+                                        <input type="checkbox" name="wantService" value="pcPipe">
                                         <span class="purchase_consultation_purpose rounded ps_span" style="font-size: 18px; ">
                                             배관 공사
                                         </span>
@@ -315,7 +315,7 @@
                                 <c:if test="${fn:length(products) != 0}">
                                     <button class="btn btn-info" 
                                     style="background-color: #ca5c0d; border: 0; width: 180px; font-family: 'MinSans-Bold'; font-size: 18px;"
-                                        onclick="productConsultInsertGO()">상담 신청</button>
+                                        onclick="productConsultInsertGO()" type="button">상담 신청</button>
                                 </c:if>
                                 <c:if test="${fn:length(products) == 0}">
                                     <a class="btn btn-secondary" href="${pageContext.request.contextPath}/equipment/dental_equipment_main">장비 보러가기</a>

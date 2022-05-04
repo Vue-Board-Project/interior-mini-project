@@ -31,6 +31,7 @@ import com.mycompany.webapp.dto.product.ProductConsultDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ConsultService;
 import com.mycompany.webapp.service.ProductConsultService;
+import com.mycompany.webapp.service.ProductConsultService.ProductConsultResult;
 import com.mycompany.webapp.service.UsersService;
 
 import lombok.extern.log4j.Log4j2;
@@ -177,9 +178,40 @@ public class ProductConsultController {
 	
 	//장비 상담 신청
 	@PostMapping("sendProductConsultForm")
-	public String sendProductConsultForm(@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList, ProductConsultDto productConsultDto) {
+	public String sendProductConsultForm(
+			@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList, 
+			ProductConsultDto productConsultDto, Authentication authentication) {
 		
-		return "redirect:/";
+		log.info("추가 요청 사항 : " + productConsultDto.getPcRequest());
+		
+		//유저 정보
+		String email = authentication.getName();
+		productConsultDto.setEmail(email);
+		//장비 서비스 정보
+		String[] list = productConsultDto.getWantService();		
+		for(String s : list) {
+			if(s.equals("pc_product_remove")) productConsultDto.setPc_product_remove(1);
+			else if(s.equals("pcProduct_install")) productConsultDto.setPcProduct_install(1);
+			else if(s.equals("pcElectrical")) productConsultDto.setPcElectrical(1);
+			else if(s.equals("pcNetwork")) productConsultDto.setPcNetwork(1);
+			else if(s.equals("pcPipe")) productConsultDto.setPcPipe(1);
+			
+		}
+		
+		ProductConsultResult pcr = productConsultService.productConsultRequest(productConsultDto, pcdList);
+		if(pcr == ProductConsultResult.FAIL) {
+			return "/interior_consult/quipment_buy_request_consult";
+		}else if(pcr == ProductConsultResult.FAIL_MODEL) {
+			return "/interior_consult/quipment_buy_request_consult";
+		}else {
+			return "redirect:/productConsult/product_consult_result";
+		}
+
+	}
+	
+	@GetMapping("/product_consult_result")
+	public String productConsultResult() {
+		return "/interior_consult/product_consult_result";
 	}
 
 }
