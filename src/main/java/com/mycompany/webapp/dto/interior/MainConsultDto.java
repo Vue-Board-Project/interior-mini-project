@@ -26,7 +26,7 @@ public class MainConsultDto {
 	private String consultAddressDetail;//상세주소
 	private String consultType;//신규 인테리어 : 1 / 리모델링 : 2
 	
-<<<<<<< HEAD
+
 	
 	private String[] consultRoomList;//종합 리모델링 상담 체크박스 저장용 or 디테일 상담 
 	private String[] allSideRoom;//원하는 상세 공간
@@ -43,8 +43,6 @@ public class MainConsultDto {
 	private String disinfectionRoom;//소독실 CLOB
 	private String machineRoom;//기계실 CLOB
 	*/	
-=======
-	private String[] consultRoomList;//종합 리모델링 상탐 체크박스 저장용
+
 	
->>>>>>> refs/remotes/origin/mypage
 }
