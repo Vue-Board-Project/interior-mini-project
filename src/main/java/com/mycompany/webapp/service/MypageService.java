@@ -171,6 +171,11 @@ public class MypageService {
 		return mypageDao.getUserRemodelingList(pager);
 	}
 
+	public MainConsultDto getMainConElement(int selNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getMainConElement(selNum);
+	}
+
 
 
 	

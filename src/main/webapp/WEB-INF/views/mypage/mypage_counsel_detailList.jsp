@@ -28,7 +28,8 @@
          <c:forEach var="userInteriorList" items="${userInteriorList}">
             <tr>
                <td>${userInteriorList.consultNo}</td>
-               <td><a href="mypage_interior_list?consultNo=${userInteriorList.consultNo}" style = "text-decoration : none; color : black;"><b>${userInteriorList.consultInteriorStyle}</b></a></td>
+               <td><a href="javascript:void(0)" onClick="showInteriorPopup(${userInteriorList.consultNo})" style = "text-decoration : none; color : black;">
+               <b>${userInteriorList.consultInteriorStyle}</b></a></td>
                <td><fmt:formatDate value="${userInteriorList.consultDate}" pattern="yyyy-MM-dd"/> ${userInteriorList.consultTime}</td>
             </tr>
          </c:forEach>
@@ -66,7 +67,10 @@
 			
 
 </div>
+<%@ include file="/WEB-INF/views/mypage/myinfo_counsel_detail_popup.jsp" %>
+<%@ include file="/WEB-INF/views/mypage/myinfo_counsel_popup_cover.jsp" %>
 
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 <style>
 
 
@@ -97,10 +101,31 @@
     	border-radius : 20px;
 	}
 
-
-    
         
 </style>
+
+<script>
+
+function showInteriorPopup(number) {
+	 $(".mypage_interior_popup_wrap").css("display", "block");
+	 $("#mypage_counseling_mask02").css("display", "block"); 
+	 
+	 $('input[name=inputNm]').attr('value',number);
+	 ajaxInterior();
+}
+
+$(document).ready(function(){
+	
+	 $("#mypage_counseling_popup_close").click(function(){
+	 $(".mypage_interior_popup_wrap").css("display", "none");
+	 $("#mypage_counseling_mask02").css("display", "none");
+	});
+});
+
+
+
+
+</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

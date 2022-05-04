@@ -157,29 +157,17 @@ public class MyPageController {
 	*/
  
 /* 현재 해야 할 것 : 프론트에서 json 추출*/
-	 /*
-	 @GetMapping(value = "/readInteriorList", produces = "application/json; charset=UTF-8")
-	 @ResponseBody
-	public String InteriorInfoList(@RequestParam(defaultValue = "1") int pageNo, Authentication authentication,
-			HttpServletResponse response) throws Exception {
-			
-			log.info("실행");
-			String email = authentication.getName();
-			Pager pager = new Pager(1, 1, mpinterior, pageNo, email);
-			
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("pager", pager);
-			
-			List<MainConsultDto> mainConList = mypageService.getMpInteriorList(pager); 
-			
-			log.info("mypage Interior List : " + mainConList);
-			jsonObject.put("mainConList", mainConList);
-			
-			String json = jsonObject.toString();
-			log.info("json TTTTTTTTTTTest : " + json);
+	 
+		 @GetMapping(value = "/readInteriorList")
+		public String InteriorInfoList(int selNum, Authentication authentication, Model model) throws Exception {
+
+			MainConsultDto mainCon = mypageService.getMainConElement(selNum); 
+
+			log.info("mypage Interior List : " + mainCon);
+			model.addAttribute("mainCon", mainCon);
 		      
-		    return json;		
-		}*/
+		    return "/mypage/myinfo_counsel_detail_popup";		
+		}
 	 
 	 
 	 

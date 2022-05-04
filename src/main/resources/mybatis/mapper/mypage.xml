@@ -104,6 +104,15 @@
 		 ]]>
 	</select>
 	
+	<!-- 상담내역 개별 읽어오기 -->
+	<select id = "getMainConElement" parameterType= "int" resultType="MainConsult">
+	SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+		    CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+		    CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, INO, CONSTRUCTION_DATE as constructionDate
+	FROM MAIN_CONSULT
+	where CONSULT_NO = #{selNum}
+	</select>
+	
 	<!-- 리모델링내역(과거내역리스트) 창  -->
 	<select id = "getTotalUserRemodelingList" parameterType="string" resultType="int">
 		select count(*) 

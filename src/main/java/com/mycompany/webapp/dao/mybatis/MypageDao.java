@@ -72,6 +72,8 @@ public interface MypageDao {
 
 	public List<MainConsultDto> getUserRemodelingList(Pager pager);
 
+	public MainConsultDto getMainConElement(int selNum);
+
 
 
 }
