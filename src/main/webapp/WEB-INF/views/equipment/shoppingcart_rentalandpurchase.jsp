@@ -16,6 +16,7 @@
                     <div style="background-color: #ffffff;">
                         <div id="cart_all_select1">
                             <input id="" type='checkbox' name='purchase_cart_select' value='selectall' onclick='selectAll(this)' checked="chekced" style="width: 30px;"/> <b>전체 선택</b>
+                            <button type="button" class="btn" onclick="javascript:removeCartAllSession()">전체삭제</button>
                             <br />
                         </div>
                         
@@ -32,12 +33,15 @@
 		                            <div class="media">
 		                                <img id="p_cart_el1" class="p_cart_el" src="${pageContext.request.contextPath}/resources/subinimage/dentalCamera.jpg" class="mr-3">
 		                                <div class="media-body">
+		                                <button type="button" class="btn" onclick="javascript:removeCartSession('${cartproduct.modelNumber}')"><i class="fa-solid fa-xmark"></i></button>
 		                                  <h5 id="cart_product_name1" class="mt-0 mb-1">${cartproduct.productName}</h5>
 		                                  <p id="cart_product_model_number1" class="fontcolorccc">${cartproduct.modelNumber}</p>
 		                                  <a id="cart_product_price1">${cartproduct.cartQua}개 　${cartproduct.productColor} 　<fmt:formatNumber pattern="###,###,###,###" value="${cartproduct.price}"/>원</a> 
 		                                  <hr style="margin-top: 50px;">
 		                                </div>
 		                            </div>
+									
+		                           
 		                        </c:forEach>
                         	</c:otherwise>
                         	
@@ -51,14 +55,14 @@
                 <p style="font-family: MinSans-Black">구매 제품</p>
                 <hr id="pxup_line">
                 <p>제품 수 <a>n</a></p>
-                <p>주문 금액 <a >1,000,000 원</a></p>
+                <p>주문 금액 <a> 원</a></p>
                 <p>결제 예정 금액 <a>1,000,000 원</a></p>
                 <p class="fontcolor525253">할인 적용 금액 없음</p>
                 <hr>
                 <a id="next_page_go_to_payment" href="${pageContext.request.contextPath}/equipment/paymentpage" class="btn">다음 단계</a>
             </div>
         </div>
-    <script src="${pageContext.request.contextPath}/resources/js/equipment/afterService.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/equipment/shoppingcart_rentalandpurchase.js"></script>
 </div>
         
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

@@ -20,6 +20,26 @@ function test(){
 		
 	});
 }
+
+function removeCartSession(modelNum) {
+	$.ajax({
+		url:"/springframework-mini-project/cartSessionRemove",
+		data:{modelNum},
+		method:"post"
+	}).done(() => {
+		window.location.reload();
+	});
+}
+
+function removeCartAllSession() {
+	$.ajax({
+		url:"/springframework-mini-project/cartSessionAllRemove",
+		data:{},
+		method:"post"
+	}).done(() => {
+		window.location.reload();
+	});
+}
         //전체선택 체크박스
         function selectAll(selectAll)  {
             const checkboxes=document.getElementsByName('purchase_cart_select');

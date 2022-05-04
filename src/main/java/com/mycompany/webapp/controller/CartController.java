@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.mycompany.webapp.dto.product.ProductConsultDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
 
@@ -88,5 +89,40 @@ public class CartController {
 		
 		return "/equipment/shoppingcart_rentalandpurchase";
 
+	}
+	
+	//카트에서 제품 삭제
+	@PostMapping(value="/cartSessionRemove", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public void cartSessionRemove(String modelNum,
+			@ModelAttribute("cartForm") List<ProductDto> cartList, Model model) {
+
+		for(int i=0; i<cartList.size(); i++) {
+			if(cartList.get(i).getModelNumber().equals(modelNum)) {
+				cartList.remove(i);
+			}
+		}
+
+		//장비 상담 창에 전송해줄 모델들 
+		List<ProductDto> productList = new ArrayList<ProductDto>();
+		if(cartList.size() != 0) {
+			for(ProductDto dto : cartList) {
+				ProductDto productDto = productService.detailProduct(dto.getModelNumber());
+				productDto.setCartQua(dto.getCartQua());
+				productList.add(productDto);
+			}
+		}
+		model.addAttribute("productList", productList);
+		model.addAttribute("cartForm", cartList);
+		log.info(productList);
+		log.info(cartList);
+		
+	}
+	//카트 전체 삭제
+	@PostMapping(value="/cartSessionAllRemove", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public void cartSessionAllRemove(SessionStatus sessionStatus,
+			@ModelAttribute("cartForm") List<ProductDto> cartList, Model model) {
+		sessionStatus.setComplete();
 	}
 }
