@@ -36,11 +36,12 @@ public class FindPasswordController {
 				model.addAttribute("errorPW", "등록되지 않은 이메일입니다.");
 				return "home";
 			} else {
-				response.setContentType("text/html; charset=UTF-8");
+				/*response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('이메일로 임시 비밀번호를 발송하였습니다.'); location.href=''; </script>");
 				out.flush();
-				out.close();
+				out.close();*/
+				model.addAttribute("successPW", "이메일로 임시 비밀번호를 발송하였습니다.");
 				return "home";
 			}
 			
