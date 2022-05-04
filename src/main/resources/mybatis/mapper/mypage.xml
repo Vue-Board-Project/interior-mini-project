@@ -2,16 +2,136 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.webapp.dao.mybatis.MypageDao">
 	<!--상품 추가 테스트용(추후 주석 처리 예정)-->
-	
-	
 	<select id="selectUserName" parameterType="string" resultType="users">
-		SELECT email, name
+		SELECT PHONE, name
 		FROM users
 		WHERE email = #{email}
 	</select>
 	
+	<select id = "getTotalInteriorCounseling" parameterType="string" resultType="int">
+	select count(*) 
+		from MAIN_CONSULT
+		where CONSULT_TYPE = 1 and EMAIL = #{email}
+	</select>
+	
+	<select id = "getMainConList" parameterType="string" resultType="MainConsult">
+	select CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+	 CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+		CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, m.EMAIL, INO, name as stringName
+		from MAIN_CONSULT m, users u
+	where CONSULT_TYPE = 1 and
+	m.EMAIL = #{email}
+	order by CONSULT_DATE desc
+	</select>
+	
+	<select id = "getTotalRemodelingCounseling" parameterType="string" resultType="int">
+	select count(*) 
+		from MAIN_CONSULT
+		where CONSULT_TYPE = 2 and EMAIL = #{email}
+	</select>
+	
+	
+	<select id = "getTotalASCounseling" parameterType="string" resultType="int">
+	select count(*) 
+		from afterservice
+		where EMAIL =  #{email}
+	</select>
+	
 	<select id="deviceCount" resultType="int">
 		SELECT count(*) FROM AFTERSERVICE
+	</select>
+	
+	<!-- (상담내역창) 인테리어 상담 간단 확인 -->
+	<select id="getMpInteriorList"  parameterType="string" resultType="MainConsult">
+	   select rownum as rnum, consultNo, consultAcreage, consultInteriorStyle,
+		    consultRequest, consultDate, consultTime,
+		    consultAddress, consultType, EMAIL, INO, constructionDate
+		from 
+		( SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+		    CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+		    CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, EMAIL, INO, CONSTRUCTION_DATE as constructionDate
+		   FROM MAIN_CONSULT
+		   where CONSULT_TYPE = 1 and
+		    EMAIL = #{email}
+		    ORDER BY CONSULT_DATE desc, CONSULT_TIME desc )
+		where rownum = 1
+	</select>
+	
+	
+	<!-- (상담내역창) 리모델링 상담 간단 확인 -->
+	<select id="getMpRemodeling"  parameterType="string" resultType="MainConsult">
+	   select rownum as rnum, consultNo, consultAcreage, consultInteriorStyle,
+		    consultRequest, consultDate, consultTime,
+		    consultAddress, consultType, EMAIL, INO, constructionDate
+		from 
+		( SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+		    CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+		    CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, EMAIL, INO, CONSTRUCTION_DATE as constructionDate
+		   FROM MAIN_CONSULT
+		   where CONSULT_TYPE = 2 and
+		    EMAIL = #{email}
+		    ORDER BY CONSULT_DATE desc, CONSULT_TIME desc )
+		where rownum = 1
+	</select>
+	
+	<!-- 상담내역(과거내역리스트) 창  -->
+	<select id = "getTotalUserInteriorList" parameterType="string" resultType="int">
+		select count(*) 
+		from MAIN_CONSULT
+		 where CONSULT_TYPE = 1 and EMAIL = #{email}
+	</select>
+	
+	<select id="getUserInteriorList" parameterType="pager" resultType="MainConsult">
+		<![CDATA[
+		SELECT rnum, consultNo, consultAcreage, consultInteriorStyle,
+		    		consultRequest, consultDate, consultTime,
+		    		consultAddress, consultType, EMAIL, constructionDate
+		    from(
+		    	SELECT ROWNUM as rnum, consultNo, consultAcreage, consultInteriorStyle,
+		    		consultRequest, consultDate, consultTime,
+		    		consultAddress, consultType, EMAIL, constructionDate
+			    FROM (
+						SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, 
+								CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+						    	CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+						    	CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, EMAIL, INO, CONSTRUCTION_DATE as constructionDate
+						FROM MAIN_CONSULT
+						where CONSULT_TYPE = 1 and
+						    	EMAIL = #{stringEmail} 
+						ORDER BY CONSULT_DATE desc, CONSULT_TIME desc
+			     )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >= #{startRowNo}
+		 ]]>
+	</select>
+	
+	<!-- 리모델링내역(과거내역리스트) 창  -->
+	<select id = "getTotalUserRemodelingList" parameterType="string" resultType="int">
+		select count(*) 
+		from MAIN_CONSULT
+		 where CONSULT_TYPE = 2 and EMAIL = #{email}
+	</select>
+	
+	<select id="getUserRemodelingList" parameterType="pager" resultType="MainConsult">
+		<![CDATA[
+		SELECT rnum, consultNo, consultAcreage, consultInteriorStyle,
+		    		consultRequest, consultDate, consultTime,
+		    		consultAddress, consultType, EMAIL, constructionDate
+		    from(
+		    	SELECT ROWNUM as rnum, consultNo, consultAcreage, consultInteriorStyle,
+		    		consultRequest, consultDate, consultTime,
+		    		consultAddress, consultType, EMAIL, constructionDate
+			    FROM (
+						SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, 
+								CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+						    	CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+						    	CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, EMAIL, INO, CONSTRUCTION_DATE as constructionDate
+						FROM MAIN_CONSULT
+						where CONSULT_TYPE = 2 and
+						    	EMAIL = #{stringEmail} 
+						ORDER BY CONSULT_DATE desc, CONSULT_TIME desc
+			     )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >= #{startRowNo}
+		 ]]>
 	</select>
 	
 	<select id="selectByAsPage" parameterType="pager" resultType="asList">
@@ -34,12 +154,30 @@
 			)   
 		WHERE ROWNUM = 1 
 	</select>
+	<!-- 개인정보 수정 창 -->
+	<select id = "getMpUserInfo" parameterType="string" resultType="users">
+	select name, email, phone, crn
+	from users
+	where email = #{email}
+	</select>
+	
+	<!-- 개인정보 수정 창 개인정보 업데이트 -->
+	<update id="updateUserInfo" parameterType="users">
+		UPDATE users 
+		set password = #{password}, POSTCODE = #{postcode}, 
+		ADDRESS = #{address}, ADDRESS_DETAIL = #{addressDetail}
+		where email = #{email}
+	</update>
+	
+	<!-- 개인정보 삭제 -->
+	<delete id = "deleteUserInfo" parameterType = "String">	
+		DELETE FROM users
+		WHERE email = #{email}
+	</delete>
 	
 	<!-- 구매내역 첫 창 띄우는 창 -->
 	<select id = "getTotalOrderListNum" parameterType="string" resultType="int">
-		select count(*) 
-			from purchase 
-		WHERE email = #{email}
+		select count(*) from purchase where EMAIL =  #{email}
 	</select>
 	
 	

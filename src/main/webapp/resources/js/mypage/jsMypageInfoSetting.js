@@ -1,3 +1,27 @@
+$(document).ready(function(){
+	 $(".mypage_user_quit").click(function(){
+	 $(".mypage_popup_wrap").css("display", "block");
+	 $("#mypage_quit_mask").css("display", "block");
+	});	 
+});
+	 
+$(document).ready(function(){
+	 $("#mypage_quit_popup_close").click(function(){
+	 $(".mypage_popup_wrap").css("display", "none");
+	 $("#mypage_quit_mask").css("display", "none");
+	});
+	
+	 $("#mp_close_quit").click(function(){
+	 $(".mypage_popup_wrap").css("display", "none");
+	 $("#mypage_quit_mask").css("display", "none");
+	});
+	
+	$("#mp_confirm_quit").click(function(){
+	 $(".mypage_popup_wrap").css("display", "none");
+	 $("#mypage_quit_mask").css("display", "none");
+	});
+	
+});
 
       function findAddr(){
           new daum.Postcode({
@@ -78,3 +102,15 @@
               error[1].style.display = "block";
           }
       }
+      
+     
+      function deleteUserPost() {
+		console.log("chk Post Working");
+		 let f = document.createElement('form');
+   		 f.setAttribute('method', 'post');
+    	f.setAttribute('action', 'mypage_infosetting/delete');
+    	document.body.appendChild(f);
+    	f.submit();
+
+
+	}

@@ -1,15 +1,22 @@
 package com.mycompany.webapp.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -19,9 +26,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
+import com.mycompany.webapp.dto.interior.InteriorDto;
+import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
@@ -34,55 +44,211 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/mypage")
 @Log4j2
 public class MyPageController {
+
 	
 	/****첫 창 상담창 *****/
 	 @RequestMapping("/mypage_counseling") 
 	 public String mypageCounseling(){ 
 		 log.info("구매내역");
-		 return "mypage/mypage_counseling";
+		 return "/mypage/mypage_counseling";
 	 }
 	 
 	 @Resource private MypageService mypageService;
 	 
 	 @GetMapping("/mypage_counseling") 
-	 public String mypageCounselingFront(Authentication authentication, Model model){ 
+	 public String mypageCounselingFront(@RequestParam(defaultValue = "1") int pageNo,
+			 							Authentication authentication, Model model){ 
+		 
 		 String email = authentication.getName();
 		 UsersDto user = mypageService.getUserName(email);
-		 
-		 //인테리어 상담 내역 부분
-		 //int totalInteriorCounseling = mypageService.getTotalInteriorCounseling(email);
-		 
-		 
 		 model.addAttribute("user", user);
 		 
 		 
+		 //인테리어 상담 내역 부분
+		 int totalInteriorCounseling = mypageService.getTotalInteriorCounseling(email);
+		 model.addAttribute("interiorChk", totalInteriorCounseling); //0이면 화면에 안 띄움
+	
+		 if(totalInteriorCounseling != 0) {
+			 MainConsultDto mainConList = mypageService.getMpInteriorList(email); 
+			 model.addAttribute("mainConList", mainConList);
+		 }
+		 
+		 
+		 //리모델링 상담 내역 부분
+		 int totalRemodelingCounseling = mypageService.getTotalRemodelingCounseling(email);
+		 model.addAttribute("remodelingChk", totalRemodelingCounseling);
+		 
+		 if(totalRemodelingCounseling != 0) {
+			 MainConsultDto remodelCon = mypageService.getMpRemodeling(email);
+			 model.addAttribute("remodelCon", remodelCon);
+		 }
+		 
+		 //AS 진행 내역
+		 int totalASCounseling = mypageService.getTotalASCounseling(email);
+		 model.addAttribute("asChk", totalASCounseling);
+		 
 		 return "mypage/mypage_counseling";
 	 }
+	 
+	 @GetMapping("/mypage_interior_list") 
+	 public String mypageCounselingList(@RequestParam(defaultValue = "1") int pageNo,
+			 							Authentication authentication, Model model){ 
+		 
+		 String email = authentication.getName();
+		 
+		 UsersDto user = mypageService.getUserName(email);
+		 model.addAttribute("user", user);
+		 
+		 int totalUserInteriorList = mypageService.getTotalUserInteriorList(email);
+		 log.info("숫자 읽어오는지 확인 : " + totalUserInteriorList);
+		 
+		 Pager pager = new Pager(8, 4, totalUserInteriorList, pageNo, email);
+		 model.addAttribute("pager", pager);
+		 
+		 List<MainConsultDto> userInteriorList = mypageService.getUserInteriorList(pager);
+		 model.addAttribute("userInteriorList", userInteriorList);
+		 
+		 
+		 return "mypage/mypage_counsel_detailList";
+	 }
+	 
+	 @GetMapping("/mypage_remodeling_list") 
+	 public String mypageRemodelingList(@RequestParam(defaultValue = "1") int pageNo,
+			 							Authentication authentication, Model model){ 
+		 
+		 String email = authentication.getName();
+		 
+		 UsersDto user = mypageService.getUserName(email);
+		 model.addAttribute("user", user);
+		 
+		 int totalUserRemodelingList = mypageService.getTotalUserRemodelingList(email);
+		 log.info("숫자 읽어오는지 확인22 : " + totalUserRemodelingList);
+		 
+			
+		 Pager pager = new Pager(8, 4, totalUserRemodelingList, pageNo, email);
+		 model.addAttribute("pager", pager);
+		 
+		 List<MainConsultDto> userRemodelingList = mypageService.getUserRemodelingList(pager);
+		 model.addAttribute("userRemodelingList", userRemodelingList);
+		 log.info("데이터 읽어오는지 확인: " + userRemodelingList);	 
+		 
+		 
+		 return "mypage/mypage_remodeling_detailList";
+	 }
+	 
+	 
+	 
+	 /*	 
+	 @GetMapping("/mypage_counseling/selectInteriorInfo") 
+	 public String mypageCounselingEInterior(
+			 @RequestParam(defaultValue = "1") int pageNo, Authentication authentication, Model model){ 
+		 
+		 //String email = authentication.getName();
+		 String email = "gvhv@dgfv.sad";
+		 Pager pager = new Pager(1, 1, mpinterior, pageNo, email);
+		 model.addAttribute("pager", pager);
+		 
+		 List<MainConsultDto> mainConList = mypageService.getMpInteriorList(pager); 
+		 model.addAttribute("mainConList", mainConList);
+		 log.info("111111111111111111111111111111111111mainConList11111111111111111111111111111111111111");
 	
-	
+		 return "mypage/mypage_counseling";
+	 }
+	*/
+ 
+/* 현재 해야 할 것 : 프론트에서 json 추출*/
+	 /*
+	 @GetMapping(value = "/readInteriorList", produces = "application/json; charset=UTF-8")
+	 @ResponseBody
+	public String InteriorInfoList(@RequestParam(defaultValue = "1") int pageNo, Authentication authentication,
+			HttpServletResponse response) throws Exception {
+			
+			log.info("실행");
+			String email = authentication.getName();
+			Pager pager = new Pager(1, 1, mpinterior, pageNo, email);
+			
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put("pager", pager);
+			
+			List<MainConsultDto> mainConList = mypageService.getMpInteriorList(pager); 
+			
+			log.info("mypage Interior List : " + mainConList);
+			jsonObject.put("mainConList", mainConList);
+			
+			String json = jsonObject.toString();
+			log.info("json TTTTTTTTTTTest : " + json);
+		      
+		    return json;		
+		}*/
+	 
+	 
+	 
+	 /***** 		개인정보 수정 창			*******/
+	 /*개인정보 수정 처음 데이터 읽어오는 코드*/
 	@RequestMapping("/mypage_infosetting")
-	public String mypageInfosetting() {
+	public String mypageInfosetting(Authentication authentication, Model model) {
+		String email = authentication.getName();
+		UsersDto user = mypageService.getMpUserInfo(email);
 		
+		model.addAttribute("user", user);
 		return "mypage/mypage_infosetting";
 	}
-
-	/*	구매내역 창	 */
+	
+	@PostMapping("/mypage_infosetting")
+	public String mypageInfoUpdate(UsersDto users, Model model, Authentication authentication) {
+		//users.setEmail(authentication.getName());
+		users.setEmail("gvhv@dgfv.sad");	//sad 오류 시 복구를 위한 코드
+		log.info(users.getPassword());
+		log.info(users.getPostcode());
+		log.info(users.getAddress());
+		log.info(users.getAddressDetail());
+		log.info(users.getEmail());
+		
+		int result = mypageService.updateUserInfo(users);
+		if (result == 0) {
+			model.addAttribute("error", "개인정보 수정에 실패했습니다. 다시 시도해 주세요.");
+			return "redirect:/mypage/mypage_infosetting";
+		}else {
+			return "redirect:/mypage/mypage_infosetting";
+		}
+	}
+	
+	
+	
+	@PostMapping("/mypage_infosetting/delete")
+	public String mypageInfoDelete(Authentication authentication, RedirectAttributes redirectAttr) {
+		log.info("삭제합니다~");
+		String email = authentication.getName();
+		int result = mypageService.deleteUserInfo(email);
+		
+		if(result>0) {
+			redirectAttr.addFlashAttribute("msg", "성공적으로 회원정보를 삭제했습니다.");
+			SecurityContextHolder.clearContext();
+			return "redirect:/";
+		}else {
+			redirectAttr.addFlashAttribute("msg", "회원정보삭제에 실패했습니다.");
+			return "redirect:/";
+		}
+		
+	}
+	
+	/*	****	구매내역 창		******	 */
 	@RequestMapping("/mypage_orderlist")
 	public String mypageOrderList() {
 		
 		return "mypage/mypage_orderlist";
 	}
 	
+	
 	 @GetMapping("/mypage_orderlist") 
-	 public String mypageOrderListFront(String email, Authentication authentication,
+	 public String mypageOrderListFront(Authentication authentication,
 			 							@RequestParam(defaultValue = "1") int pageNo, Model model){ 
-		 email = "gvhv@dgfv.sad";
+		 
+		 String email = authentication.getName();
 		 //이메일 주소 가져오는 코드
 		 
-		 String email1 = authentication.getName();
-		 log.info("email1 : " + email1);
-		 
 		 int totalOrderNum = mypageService.getTotalOrderListNum(email);
+		 log.info("구매내역 확인중 : " + totalOrderNum);
 		 
 		 Pager pager = new Pager(4, 4, totalOrderNum, pageNo, email);
 		 model.addAttribute("pager", pager);
@@ -137,8 +303,6 @@ public class MyPageController {
 		return "/mypage/mypage_review";
 	}
 	
-	
-	//@GetMapping("/mypageReview") 
 	@RequestMapping(value = "/mypageReview", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mypageReviewSelectReviews(String email,
 			@RequestParam(defaultValue = "1") int pageNo, Model model){

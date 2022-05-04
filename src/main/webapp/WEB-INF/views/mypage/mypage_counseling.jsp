@@ -17,10 +17,27 @@
 	     	<jsp:useBean id="now" class="java.util.Date" />
 			<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
 
-	     	
-	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_interior.jsp" %>
-	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_remodeling.jsp" %>
-	     	<%@ include file="/WEB-INF/views/mypage/mypage_counseling_AS.jsp" %>
+	     	<c:if test="${interiorChk != 0}">
+	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_interior.jsp" %>
+	     	</c:if>
+	     	<c:if test="${remodelingChk != 0}">
+	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_remodeling.jsp" %>
+	     	</c:if>
+	     	<c:if test="${asChk != 0}">
+	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_AS.jsp" %>
+	     	</c:if>
+	     	<c:if test="${interiorChk == 0 && remodelingChk == 0 && remodelingChk == 0}">
+	     		<div class = "mypage_no_counseling_info">
+		     
+		     		<%-- <div class = "mp_noinfo_logo"><img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_nocounseling_img.png" style = "width : 60px; height : 60px;"></div> --%>
+		     		<div class = "mp_noinfo_title" style = "font-size : 1.5rem; font-family: 'MinSans-Regular'; text-align : center;">상담 내역이 없습니다.</div>
+	     			<div class = "mp_noinfo_content" style = "font-size : 1.5rem; font-family: 'MinSans-Regular'; margin-top :50px; text-align : center;">치과에 최적화된 인테리어로 고객의 눈높이에 맞는 맞춤제안을 제공합니다.</div>	
+		     			<button type="button" class="btn btn-primary btn-lg" style = "margin-top :50px; background-color : #ca5c0d; border : 0; outline : 0; margin-left : 350px; "
+		     			onclick="location.href='/springframework-mini-project/interior_consult/quick_consultation'"> 인테리어 견적 보기 </button>
+		     			<button type="button" class="btn btn-primary btn-lg" style = "margin-top :50px; background-color : #ca5c0d; border : 0; outline : 0; margin-left : 50px; "
+		     			onclick="location.href='/springframework-mini-project/goPortfolioDental'">포트폴리오 구경하기</button>
+	     		</div>
+	     	</c:if>
 	     	
 			</div>
 		</div>
@@ -48,6 +65,11 @@
           top: 0;
           left: 249px;
           width: calc(100% - 250px);
+     }
+     
+     .mypage_no_counseling_info{
+     	width : 1200px;
+     	height : 300px;
      }
            
 	

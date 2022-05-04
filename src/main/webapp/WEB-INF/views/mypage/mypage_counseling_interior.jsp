@@ -4,7 +4,7 @@
 <div class = "mypage_counseling_history">
 		<h4><b><span>${user.name}</span>님의</b><br>
 			치과 인테리어 신청 내역입니다.</h4>
-		<button class = "info_button" id = "mypage_counseling_button">확인하기</button>
+			<button class = "info_button" id = "mypage_counseling_button">확인하기</button>
 </div>
 
 <style>
