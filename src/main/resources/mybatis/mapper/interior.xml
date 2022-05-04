@@ -11,12 +11,6 @@
 		values (#{ino}, #{itype}, 0, #{istyle}, #{allColor}, #{wcolor}, #{fcolor}, #{dtype}, #{darea}, #{isummary}, #{imImgPath})
 	</insert>
 	
-	<!-- 포폴 필터 -->
-	<select id="interiorListTest" resultType="Interior">
-		SELECT ino, isummary, im_img_path as imImgPath
-		FROM interior WHERE itype='portfolio' 
-		order by ino desc
-	</select>
 	
 	<!-- 포폴 상세창 -->
 	<select id="detailPortfolio" parameterType="int" resultType="Interior">
@@ -24,23 +18,57 @@
 		FROM interior WHERE ino = #{ino}
 	</select>
 	
-	<!-- 포폴 최신순 -->
+	<!-- 포폴 필터 -->
+	<select id="interiorFilter" resultType="Interior" parameterType="java.util.HashMap">
+		SELECT ino, isummary, im_img_path as imImgPath
+		FROM interior WHERE itype='portfolio'
+		<choose>
+			<when test="istyle == null">
+			</when>
+			<otherwise>
+				and istyle in
+				<foreach collection="istyle" item ="istyleItem" index="index" separator="," open="(" close=")">
+					#{istyleItem}
+				</foreach>
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="all_color == null">
+			</when>
+			<otherwise>
+				and all_color in
+				<foreach collection="all_color" item ="colorItem" index="index" separator="," open="(" close=")">
+					#{colorItem}
+				</foreach>
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="field == null"></when>
+			<otherwise>
+				and dtype = #{field}
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="sort == null">
+				order by ino desc
+			</when>
+			<when test="sort == 'new'">
+				order by ino desc
+			</when>
+			<when test="sort == 'popular'">
+				order by ihits desc
+			</when>
+			<otherwise>
+			 	order by ino asc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- 포폴 리스트 -->
 	<select id="interiorList" resultType="Interior">
 		SELECT ino, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' 
 		order by ino desc
-	</select>
-	
-	<!-- 포폴 과거순 -->
-	<select id="interiorListPast" resultType="Interior">
-		SELECT ino, isummary, im_img_path as imImgPath
-		FROM interior WHERE itype='portfolio' order by ino asc
-	</select>
-	
-	<!-- 포폴 인기순 -->
-	<select id="interiorListPopular" resultType="Interior">
-		SELECT ino, isummary, im_img_path as imImgPath
-		FROM interior WHERE itype='portfolio' order by ihits desc
 	</select>
 	
 	<!-- 포폴 수 -->

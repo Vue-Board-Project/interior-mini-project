@@ -1,6 +1,7 @@
 package com.mycompany.webapp.dao.mybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -19,6 +20,9 @@ public interface InteriorDao {
 	
 	//포폴 인기순
 	public List<InteriorDto> interiorListPopular();
+	
+	//포폴 필터
+	public List<InteriorDto> interiorFilter(Map<String,Object>param);
 	
 	//포폴 상세페이지
 	public InteriorDto detailPortfolio(int ino);

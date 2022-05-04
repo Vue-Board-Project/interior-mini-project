@@ -1,6 +1,7 @@
 package com.mycompany.webapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -55,6 +56,11 @@ public class InteriorService {//인테리어 서비스
 	//같은 평수 추천
 	public List<InteriorDto> recommendArea(int ino, String darea) {
 		return interiorDao.recommendArea(ino, darea);
+	}
+	
+	//포폴 필터링
+	public List<InteriorDto> interiorFilter(Map<String,Object>param){
+		return interiorDao.interiorFilter(param);
 	}
 	
 	//조회수

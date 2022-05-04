@@ -1,6 +1,7 @@
 package com.mycompany.webapp.dao.mybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,12 @@ public class InteriorDaoImpl implements InteriorDao{
 
 	@Override
 	public List<InteriorDto> recommendArea(int ino, String darea) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InteriorDto> interiorFilter(Map<String,Object>param) {
 		// TODO Auto-generated method stub
 		return null;
 	}
