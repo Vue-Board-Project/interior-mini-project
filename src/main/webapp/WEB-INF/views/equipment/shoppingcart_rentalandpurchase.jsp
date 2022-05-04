@@ -15,7 +15,7 @@
                     </ul>
                     <div style="background-color: #ffffff;">
                         <div id="cart_all_select1">
-                            <input id="" type='checkbox' name='purchase_cart_select' value='selectall' onclick='selectAll(this)' checked="chekced" style="width: 30px;"/> <b>전체 선택</b>
+                            <input id="cartAllCheck" type='checkbox' class="cartcheck" name='purchase_cart_select' value='selectall' onclick='selectAll(this)' checked="chekced" style="width: 30px;"/> <b>전체 선택</b>
                             <button type="button" class="btn" onclick="javascript:removeCartAllSession()">전체삭제</button>
                             <br />
                         </div>
@@ -29,14 +29,23 @@
                         </c:when>
                         	<c:otherwise>
 		                       <c:forEach items="${productList}" var="cartproduct">
-		                        <input type='checkbox' name='purchase_cart_select' value='purchase_cart1' checked="chekced"/> 
+		                        <input class="cartcheck" type='checkbox' name='purchase_cart_select'  onclick='selectcart(this)'value='${cartproduct.price}' checked="chekced"/>    
 		                            <div class="media">
 		                                <img id="p_cart_el1" class="p_cart_el" src="${pageContext.request.contextPath}/resources/subinimage/dentalCamera.jpg" class="mr-3">
 		                                <div class="media-body">
 		                                <button type="button" class="btn" onclick="javascript:removeCartSession('${cartproduct.modelNumber}')"><i class="fa-solid fa-xmark"></i></button>
 		                                  <h5 id="cart_product_name1" class="mt-0 mb-1">${cartproduct.productName}</h5>
 		                                  <p id="cart_product_model_number1" class="fontcolorccc">${cartproduct.modelNumber}</p>
-		                                  <a id="cart_product_price1">${cartproduct.cartQua}개 　${cartproduct.productColor} 　<fmt:formatNumber pattern="###,###,###,###" value="${cartproduct.price}"/>원</a> 
+		                                  <div id="cart_product_price1">
+		                                  	<div>
+			                                  	<input id="hey" value="${cartproduct.cartQua}" class="quantity_input"></input>개
+				                                <button id="qua_plus_btn">+</button>
+				                                <button id="qua_minus_btn">-</button>
+		                                  	</div>
+		                                  	<a class="btn" id="qua_modify_btn" data-model="${cartproduct.modelNumber}"> 변경</a>　
+			                                ${cartproduct.productColor} 　
+			                                <fmt:formatNumber pattern="###,###,###,###" value="${cartproduct.price}"/>원
+		                                  </div> 
 		                                  <hr style="margin-top: 50px;">
 		                                </div>
 		                            </div>
@@ -55,8 +64,7 @@
                 <p style="font-family: MinSans-Black">구매 제품</p>
                 <hr id="pxup_line">
                 <p>제품 수 <a>n</a></p>
-                <p>주문 금액 <a> 원</a></p>
-                <p>결제 예정 금액 <a>1,000,000 원</a></p>
+                <p>주문 금액 <a id="total_sum"> 원</a></p>
                 <p class="fontcolor525253">할인 적용 금액 없음</p>
                 <hr>
                 <a id="next_page_go_to_payment" href="${pageContext.request.contextPath}/equipment/paymentpage" class="btn">다음 단계</a>
