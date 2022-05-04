@@ -12,7 +12,7 @@
 	</insert>
 	
 	
-	<!-- 포폴 상세창 -->
+	<!-- 모델, 포폴 상세창 -->
 	<select id="detailPortfolio" parameterType="int" resultType="Interior">
 		SELECT ino, itype, istyle, darea, isummary, im_img_path as imImgPath
 		FROM interior WHERE ino = #{ino}
@@ -87,6 +87,57 @@
 		FROM interior WHERE itype='portfolio' and ino != #{ino} and darea=#{darea} order by ihits desc
 	</select>
 	
+	<!-- 모델 리스트 -->
+	<select id="modelList" resultType="Interior">
+		SELECT ino, isummary, im_img_path as imImgPath
+		FROM interior WHERE itype='model' 
+		order by ino desc
+	</select>
+	<!-- 모델 필터 -->
+	<select id="modelFilter" resultType="Interior" parameterType="java.util.HashMap">
+		SELECT ino, isummary, im_img_path as imImgPath
+		FROM interior WHERE itype='model'
+		<choose>
+			<when test="istyle == null">
+			</when>
+			<otherwise>
+				and istyle in
+				<foreach collection="istyle" item ="istyleItem" index="index" separator="," open="(" close=")">
+					#{istyleItem}
+				</foreach>
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="all_color == null">
+			</when>
+			<otherwise>
+				and all_color in
+				<foreach collection="all_color" item ="colorItem" index="index" separator="," open="(" close=")">
+					#{colorItem}
+				</foreach>
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="field == null"></when>
+			<otherwise>
+				and dtype = #{field}
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="sort == null">
+				order by ino desc
+			</when>
+			<when test="sort == 'new'">
+				order by ino desc
+			</when>
+			<when test="sort == 'popular'">
+				order by ihits desc
+			</when>
+			<otherwise>
+			 	order by ino asc
+			</otherwise>
+		</choose>
+	</select>
 	<!-- 포폴,모델 조회수 -->
 	<update id="updateCnt" parameterType="Interior">
 		UPDATE interior SET ihits = ihits+1 WHERE ino=#{ino} 

@@ -70,6 +70,18 @@ public class InteriorDaoImpl implements InteriorDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<InteriorDto> modelList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InteriorDto> modelFilter(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

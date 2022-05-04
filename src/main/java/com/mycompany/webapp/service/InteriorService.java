@@ -30,18 +30,18 @@ public class InteriorService {//인테리어 서비스
 	
 	//포폴 최신순
 	public List<InteriorDto> interiorList(){
-		return interiorDao2.interiorList();
+		return interiorDao.interiorList();
 	}
-	
-	//포폴 과거순
-	public List<InteriorDto> interiorListPast(){
-		return interiorDao2.interiorListPast();
-	}
-	
-	//포폴 조회수
-	public List<InteriorDto> interiorListPopular(){
-		return interiorDao2.interiorListPopular();
-	}
+		
+	/*	//포폴 과거순
+		public List<InteriorDto> interiorListPast(){
+			return interiorDao2.interiorListPast();
+		}
+		
+		//포폴 조회수
+		public List<InteriorDto> interiorListPopular(){
+			return interiorDao2.interiorListPopular();
+		}*/
 	
 	//인테리어,포폴 상세창
 	public InteriorDto detailPortfolio(int ino) {
@@ -71,5 +71,13 @@ public class InteriorService {//인테리어 서비스
 	//조회수 업뎃
 	public int updateCnt(int ino) {
 		return interiorDao.updateCnt(ino);
+	}
+
+	public List<InteriorDto> modelList() {
+		return interiorDao.modelList();
+	}
+
+	public List<InteriorDto> modelFilter(Map<String, Object> param) {
+		return interiorDao.modelFilter(param);
 	}
 }

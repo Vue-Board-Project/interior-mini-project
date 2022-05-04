@@ -37,4 +37,7 @@ public interface InteriorDao {
 	public List<InteriorDto> recommendArea(@Param("ino") int ino, @Param("darea") String darea);
 	
 	public int interiorCnt();
+	
+	public List<InteriorDto> modelList();
+	public List<InteriorDto> modelFilter(Map<String, Object> param);
 }

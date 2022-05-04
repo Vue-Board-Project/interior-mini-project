@@ -6,19 +6,27 @@
         <div id="model_dental_summary" style="background-color: #d5d5d8; margin: 3rem auto; border-radius: 50px;">
             <div class="d-flex justify-content-center pt-4 mr-5 ml-5" style="color: #272723;">
                 <div class="mr-5"><img class="model_dental_summary_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/free-icon-building-188379.png"/><strong class="ml-3">모델치과</strong></div>
-                <div class="mr-5"><img class="model_dental_summary_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/premium-icon-house-design-3769340.png"/><strong class="ml-3">100평</strong></div>
-                <div><img class="model_dental_summary_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/premium-icon-interior-design-2400622.png"/><strong class="ml-3">모던스타일</strong></div>
+                <div class="mr-5"><img class="model_dental_summary_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/premium-icon-house-design-3769340.png"/><strong class="ml-3">${interiorDetail2.darea}평</strong></div>
+                <div><img class="model_dental_summary_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/premium-icon-interior-design-2400622.png"/><strong class="ml-3">${interiorDetail2.istyle}</strong></div>
             </div>
             <hr style="width:90%;height:2px;border:none;background-color:#b3b39f;"/>
-            <div class="text-center">
-                <p style="color: #272723; font-weight: bold">화이트 베이스와 블랙 포인트가 들어간 모던 치과 인테리어</p>
+            <div class="text-center pb-2 pt-2" style=" padding-bottom: 100px;">
+                <p style="color: #272723;">${interiorDetail2.isummary}</p>
             </div>
         </div>
+
         <div class="text-center mb-5">
         	<a class="btn model_dental_detail_button" href="interior_consult/quick_consultation">이 컨셉으로 상담신청</a>
         </div>
         <div id="model_dental_content" class="text-center">
-            <div>
+	        <c:forEach items="${interiorDList2}" var="dList">
+           		<div>
+           			<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">${dList.cname}</b></div>
+                  		<div class="mb-5"><img class="model_dental_content_img" src="/springframework-mini-project/portfolio_dental/display?fileName=${dList.idImgPath}"/></div>
+                   	<p class="mb-5 model_dental_content_p">${dList.dcontent}</p>
+           		</div>
+           	</c:forEach>
+        <%--     <div>
             	<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">입구</b></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_1.PNG"/></div>
                 <p class="model_dental_content_p">치과 입구 모습입니다. 입구는 블랙톤으로 무게감있게 연출했습니다.</p>
@@ -48,7 +56,7 @@
             	<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">상담실</b></div>
                 <div class="mb-5"><img class="model_dental_content_img" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_7.PNG"/></div>
                 <p class="model_dental_content_p">상담실입니다. 벽을 유리로 시공해 시각적으로 더 넓어 보이는 느낌을 주었습니다.</p>
-            </div>
+            </div> --%>
             <div style="margin-bottom: 100px">
             	<p> 오몰레어 오스템의 깔끔한 치과 인테리어였습니다.</p>
                 <p>다양한 시공사례 구경하시고 오몰레어에서 무료 견적 받아보세요.</p>
