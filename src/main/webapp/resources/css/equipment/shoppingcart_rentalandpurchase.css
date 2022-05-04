@@ -73,6 +73,21 @@
         #shoppingCart_content_left .p_cart{
             padding: 20px 20px 0px 20px;
         }
+        #shoppingCart_content_right{
+            float: right;
+            width: 30%;
+            background-color: #f3f0ef;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+        #next_page_go_to_payment{
+            background-color: #ca5c0d;
+            color: #ffffff;
+            width: 200px;
+            margin-left: 50px;
+            margin-top: 20px;
+        }
 
 
  
