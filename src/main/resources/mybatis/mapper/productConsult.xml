@@ -20,9 +20,65 @@
 	<result column="PRODUCT_INTRO" property="productIntro"/> 
 	<result column="MAINIMAGE" property="mainimage"/>	 -->
 </resultMap>
-
+	<!-- 장비 모델 하나씩 가져오기 -->
 	<select id="selectProduct" parameterType="string" resultMap="selectProductResult">
 		select MODEL_NUMBER, PRODUCT_NAME, PRICE , PRODUCT_COLOR, CATEGORY, PATTACHONAME, PATTACHSNAME, PATTACHTYPE from product 
 			where MODEL_NUMBER = #{modelNumber}
 	</select>
+	<!-- 기본 장비 상담 insert -->
+	<insert id="insertProductConsult" parameterType="productConsult">
+		<selectKey keyProperty="pcNo" resultType="int" order="BEFORE">
+	         select CONSULT_SEQUENCE.nextval from dual
+	    </selectKey>
+	    <!-- 추가 사항 없을 때  -->
+	    <if test="pcRequest == null">
+		    INSERT INTO PRODUCT_CONSULT
+			(PC_NO, PC_PURPOSE, PC_PRODUCT_REMOVE, PC_PRODUCT_INSTALL, PC_ELECTRICAL, 
+				PC_NETWORK, PC_PIPE, PC_DATE, PC_REQUEST, EMAIL, PC_TIME)
+			VALUES(
+				#{pcNo},
+				#{pcPurpose},
+				#{pc_product_remove},
+				#{pcProduct_install},
+				#{pcElectrical},
+				#{pcNetwork},
+				#{pcPipe},
+				#{pcDate},
+				null,
+				#{email},
+				#{pcTime}
+			)
+	    </if>
+	    <!-- 추가 요청 사항 있을 떄 -->
+	     <if test="pcRequest != null">
+		    INSERT INTO PRODUCT_CONSULT
+			(PC_NO, PC_PURPOSE, PC_PRODUCT_REMOVE, PC_PRODUCT_INSTALL, PC_ELECTRICAL, 
+				PC_NETWORK, PC_PIPE, PC_DATE, PC_REQUEST, EMAIL, PC_TIME)
+			VALUES(
+				#{pcNo},
+				#{pcPurpose},
+				#{pc_product_remove},
+				#{pcProduct_install},
+				#{pcElectrical},
+				#{pcNetwork},
+				#{pcPipe},
+				#{pcDate},
+				#{pcRequest},
+				#{email},
+				#{pcTime}
+			)
+	    </if>
+	</insert>
+	
+	<!-- 장비 모델별로 insert -->
+	<insert id="insertProductConsultModel" parameterType="productConsultDetail">
+		 INSERT INTO PRODUCT_CONSULT_DETAIL
+		 (PC_NO, PC_MCOUNT, MODEL_NUMBER)
+		 values
+		 (
+		 	#{pcNo},
+		 	#{pcMcount},
+		 	#{modelNumber}
+		 )
+	</insert>
 </mapper>

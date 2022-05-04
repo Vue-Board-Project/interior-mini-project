@@ -12,7 +12,7 @@
           font-weight: normal;
           font-style: normal;
         }
-        #k5chair_content{
+        #eq_detail_content{
             margin-top: 150px;
             margin-bottom: 100px;
             display: flex;
@@ -25,14 +25,14 @@
             width: 1300px;
             margin-bottom: 150px;
         }
-        #k5chair_main{
+        #eq_detail_main{
 
         }
-        #k5chair_main_left{
+        #eq_detail_main_left{
           
 
         }
-        #k5chair_main_right{
+        #eq_detail_main_right{
             padding-top: 2%;
             padding-left: 3%;
             padding-right: 3%;
@@ -52,16 +52,16 @@
             margin-bottom: 10px;
 
         }
-        #k5chair_main_content1{
+        #eq_detail_main_content1{
             font-size: 2rem;
             font-family: "MinSans-Black";
         }
-        #k5chair_main_content2{
+        #eq_detail_main_content2{
             font-size: 0.8rem;
             margin-top:20px;
             margin-bottom: 30px;
         }
-        #k5chair_main_content3{
+        #eq_detail_main_content3{
             
         }
         #colorcheck{
@@ -80,6 +80,9 @@
         #colorcheck_blue{
             
         }
+        #colorcheck_brown{
+            accent-color: brown;
+        }
         #colorcheck_red{
             accent-color: red;
         }
@@ -89,7 +92,16 @@
         #colorcheck_green{
             accent-color: green;
         }
-        #k5chair_main_content4{
+        #colorcheck_orange{
+            accent-color: orange;
+        }
+        #colorcheck_darkblue{
+            accent-color: #000080;
+        }
+        #colorcheck_white{
+            accent-color: #ffffff;
+        }
+        #eq_detail_main_content4{
             
         }
         #count_up_down{
@@ -111,7 +123,7 @@
             font-size: 15px;
             margin-bottom: 20px;
         }
-        #k5chair_main_content6 .tootip-content{
+        #eq_detail_main_content6 .tootip-content{
             visibility: hidden;
 			width: 220px;
 			background-color: orange;
@@ -126,7 +138,7 @@
         #able_delivery_loaction:hover .tooltip-content { 
             visibility: visible; 
         }
-        #k5chair_main_right .btn-light{
+        #eq_detail_main_right .btn-light{
             background-color: #ca5c0d;
             color: white;
             width: 100px;
@@ -135,7 +147,7 @@
             font-size: 15px;
             margin-top: 30px;
         }
-        #k5chair_main_right .btn-light:hover{
+        #eq_detail_main_right .btn-light:hover{
             background-color: white;
             color: black;
         }
@@ -154,7 +166,7 @@
             body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
             
             
-            #k5chair_main_left #wrapper{
+            #eq_detail_main_left #wrapper{
               width:900px;
               margin:50px auto;
               height:600px;
@@ -163,14 +175,14 @@
               text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
             }
             
-            #k5chair_main_left #slider_wrap{
+            #eq_detail_main_left #slider_wrap{
               width:900px;
               height:600px;
               position:relative;
               overflow:hidden;
             }
             
-            #k5chair_main_left #slider_wrap ul#slider{
+            #eq_detail_main_left #slider_wrap ul#slider{
               width:100%;
               height:100%;
               
@@ -179,30 +191,30 @@
               left:0;   
             }
             
-           #k5chair_main_left #slider_wrap ul#slider li{
+           #eq_detail_main_left #slider_wrap ul#slider li{
               float:left;
               position:relative;
               width:900px;
               height:600px; 
             }
             
-            #k5chair_main_left #slider_wrap ul#slider li > div{
+            #eq_detail_main_left #slider_wrap ul#slider li > div{
               position:absolute;
               top:20px;
               left:35px;  
             }
             
-            #k5chair_main_left #slider_wrap ul#slider li > div h3{
+            #eq_detail_main_left #slider_wrap ul#slider li > div h3{
               font-size:36px;
               text-transform:uppercase; 
             }
             
-           #k5chair_main_left #slider_wrap ul#slider li > div span{
+           #eq_detail_main_left #slider_wrap ul#slider li > div span{
               font-family: Neucha, Arial, sans serif;
               font-size:21px;
             }
             
-            #k5chair_main_left #slider_wrap ul#slider li img{
+            #eq_detail_main_left #slider_wrap ul#slider li img{
               display:block;
               width:100%;
               height: 100%;
@@ -210,7 +222,7 @@
             
             
             /*btns*/
-            #k5chair_main_left .btns{
+            #eq_detail_main_left .btns{
               position:absolute;
               width:50px;
               height:60px;
@@ -235,25 +247,25 @@
               transition: all 0.1s ease;
             }
             
-            #k5chair_main_left .btns:hover{
+            #eq_detail_main_left .btns:hover{
               background:rgba(0,0,0,0.3); 
             }
             
-            #k5chair_main_left #next{right:-50px; border-radius:7px 0px 0px 7px;}
-            #k5chair_main_left #previous{left:-50px; border-radius:0px 7px 7px 7px;}
-            #k5chair_main_left #counter{
+            #eq_detail_main_left #next{right:-50px; border-radius:7px 0px 0px 7px;}
+            #eq_detail_main_left #previous{left:-50px; border-radius:0px 7px 7px 7px;}
+            #eq_detail_main_left #counter{
               top: 30px; 
               right:35px; 
               width:auto;
               position:absolute;
             }
             
-            #k5chair_main_left #slider_wrap.active #next{right:0px;}
-            #k5chair_main_left #slider_wrap.active #previous{left:0px;}
+            #eq_detail_main_left #slider_wrap.active #next{right:0px;}
+            #eq_detail_main_left #slider_wrap.active #previous{left:0px;}
             
             
             /*bar*/
-            #k5chair_main_left #pagination_wrap{
+            #eq_detail_main_left #pagination_wrap{
               min-width:20px;
               margin-top:350px;
               margin-left: auto; 
@@ -263,7 +275,7 @@
               text-align:center;
             }
             
-            #k5chair_main_left #pagination_wrap ul {
+            #eq_detail_main_left #pagination_wrap ul {
               width:100%;
             }
             
@@ -302,3 +314,74 @@
               -ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
               transition: all 0.3s cubic-bezier(1,.01,.32,1); 
             }
+
+            
+            
+            /* 팝업 */
+.cart_verify_result_pop-layer .cart_verify_result_pop-container {
+  padding-top: 10px;
+}
+
+.cart_verify_result_pop-layer .btn-r {
+  width: 100%;
+  text-align: center;
+}
+.cart_verify_result_title{
+  height: 200px; 
+  padding-top: 40px;
+}
+.cart_verify_result_pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.cart_verify_result_dim-layer {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.cart_verify_result_dim-layer .dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+.cart_verify_result_dim-layer .cart_verify_result_pop-layer {
+  display: block;
+}
+.btn-r{
+  display: flex;
+}
+
+a.cart_verify_result_btn {
+  padding-top: 12px;
+  margin: 0;
+  width: 205px;
+  height: 50px;
+  display: inline-block;
+  background-color: #272723;
+  font-size: 16px;
+  color: #fff;
+}
+
+a.cart_verify_result_btn:hover {
+  color: #fff;
+}

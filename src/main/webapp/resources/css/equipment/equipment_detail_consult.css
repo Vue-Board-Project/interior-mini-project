@@ -1,0 +1,403 @@
+@font-face {
+font-family: "MinSans-Medium";
+src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Medium.woff")
+format("woff");
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: "MinSans-Black";
+src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Black.woff")
+format("woff");
+font-weight: normal;
+font-style: normal;
+}
+#eq_detail_c_content{
+margin-top: 150px;
+margin-bottom: 100px;
+display: flex;
+font-family: "MinSans-Medium";
+font-size: 20px;
+background-color: #faf9f6;
+}
+#makeline{
+border-bottom: 1px solid #ccc;
+width: 1300px;
+margin-bottom: 150px;
+}
+#eq_detail_c_main_right{
+padding-top: 2%;
+padding-left: 3%;
+padding-right: 3%;
+display: inline-block;
+width: 30%;
+margin-left: 200px;
+background-color: white;
+}
+#chair03_main_image{
+margin-left: 300px;
+width: 800px;
+height: 600px;
+}
+#icon_dentist{
+width: 50px;
+margin-left: 15px;
+margin-bottom: 10px;
+
+}
+#eq_detail_c_main_content1{
+font-size: 2rem;
+font-family: "MinSans-Black";
+}
+#eq_detail_c_main_content2{
+font-size: 0.8rem;
+margin-top:20px;
+margin-bottom: 30px;
+}
+#colorcheck{
+border: 1px solid #ccc;
+border-radius: 20px;
+padding-top: 10px;
+padding-left: 10px;
+}
+#colorcheck label{
+margin-left: 20px;
+margin-right: 10px;
+}
+#colorcheck_black{
+accent-color: black;
+}
+#colorcheck_blue{
+
+}
+#colorcheck_red{
+accent-color: red;
+}
+#colorcheck_purple{
+accent-color: purple;
+}
+#colorcheck_green{
+accent-color: green;
+}
+#eq_detail_c_main_content4{
+
+}
+#count_up_down{
+width: 50px;
+margin-left: 20px;
+margin-right: 20px;
+}
+#able_delivery_loaction{
+text-align: center;
+margin-bottom: 10px;
+margin-left: 10px;
+}
+#btn_able_delivery_loaction{
+width: 20px;
+}
+#able_delivery_loaction_info{
+color: darkgrey;
+display: none;
+font-size: 15px;
+margin-bottom: 20px;
+}
+#eq_detail_c_main_content6 .tootip-content{
+visibility: hidden;
+width: 220px;
+background-color: orange;
+padding: 0;
+color: white;
+text-align: center;
+position: absolute;
+z-index: 1;
+top: -15px;
+left: 105%;
+}
+#able_delivery_loaction:hover .tooltip-content { 
+visibility: visible; 
+}
+#eq_detail_c_main_right .btn-light{
+background-color: #ca5c0d;
+color: white;
+width: 100px;
+height: 50px;
+padding-top: 15px;
+font-size: 15px;
+margin-top: 30px;
+}
+#eq_detail_c_main_right .btn-light:hover{
+background-color: white;
+color: black;
+}
+/*GLOBALS*/
+*{margin:0; padding:0; list-style:none;}
+a{text-decoration:none; color:#666;}
+a:hover{color:#1bc1a3;}
+body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
+
+
+#eq_detail_c_main_left #wrapper{
+width:900px;
+margin:50px auto;
+height:600px;
+position:relative;
+color:#fff;
+text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
+}
+
+#eq_detail_c_main_left #slider_wrap{
+width:900px;
+height:600px;
+position:relative;
+overflow:hidden;
+}
+
+#eq_detail_c_main_left #slider_wrap ul#slider{
+width:100%;
+height:100%;
+
+position:absolute;
+top:0;
+left:0;   
+}
+
+#eq_detail_c_main_left #slider_wrap ul#slider li{
+float:left;
+position:relative;
+width:900px;
+height:600px; 
+}
+
+#eq_detail_c_main_left #slider_wrap ul#slider li > div{
+position:absolute;
+top:20px;
+left:35px;  
+}
+
+#eq_detail_c_main_left #slider_wrap ul#slider li > div h3{
+font-size:36px;
+text-transform:uppercase; 
+}
+
+#eq_detail_c_main_left #slider_wrap ul#slider li > div span{
+font-family: Neucha, Arial, sans serif;
+font-size:21px;
+}
+
+#eq_detail_c_main_left #slider_wrap ul#slider li img{
+display:block;
+width:100%;
+height: 100%;
+}
+
+
+/*btns*/
+#eq_detail_c_main_left .btns{
+position:absolute;
+width:50px;
+height:60px;
+top:50%;
+margin-top:-25px;
+line-height:57px;
+text-align:center;
+cursor:pointer; 
+background:rgba(0,0,0,0.1);
+z-index:100;
+
+
+/* -webkit-user-select: none;  
+-moz-user-select: none; 
+-khtml-user-select: none; 
+-ms-user-select: none; */
+
+-webkit-transition: all 0.1s ease;
+-moz-transition: all 0.1s ease;
+-o-transition: all 0.1s ease;
+-ms-transition: all 0.1s ease;
+transition: all 0.1s ease;
+}
+
+#eq_detail_c_main_left .btns:hover{
+background:rgba(0,0,0,0.3); 
+}
+
+#eq_detail_c_main_left #next{right:-50px; border-radius:7px 0px 0px 7px;}
+#eq_detail_c_main_left #previous{left:-50px; border-radius:0px 7px 7px 7px;}
+#eq_detail_c_main_left #counter{
+top: 30px; 
+right:35px; 
+width:auto;
+position:absolute;
+}
+
+#slider_wrap.active #next{right:0px;}
+#slider_wrap.active #previous{left:0px;}
+
+
+/*bar*/
+#pagination_wrap{
+min-width:20px;
+margin-top:350px;
+margin-left: auto; 
+margin-right: auto;
+height:15px;
+position:relative;
+text-align:center;
+}
+
+#pagination_wrap ul {
+width:100%;
+}
+
+        
+        #eq_detail_c_main_left{
+          
+
+        }
+        #eq_detail_c_main_right{
+            padding-top: 2%;
+            padding-left: 3%;
+            padding-right: 3%;
+            float: right;
+            width: 30%;
+            margin-left: 200px;
+            background-color: white;
+        }
+        #chair03_main_image{
+            margin-left: 300px;
+            width: 800px;
+            height: 600px;
+        }
+        #icon_dentist{
+            width: 50px;
+            margin-left: 15px;
+            margin-bottom: 10px;
+
+}
+        
+        #eq_detail_c_main_content1{
+            font-size: 2rem;
+            font-family: "MinSans-Black";
+        }
+        #eq_detail_c_main_content2{
+            font-size: 0.8rem;
+            margin-top:20px;
+            margin-bottom: 30px;
+        }
+        #eq_detail_c_main_content3{
+            
+        }
+        #colorcheck{
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+        #colorcheck label{
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+         #colorcheck label{
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+        #colorcheck_black{
+            accent-color: black;
+        }
+        #colorcheck_blue{
+            
+        }
+        #colorcheck_brown{
+            accent-color: brown;
+        }
+        #colorcheck_red{
+            accent-color: red;
+        }
+        #colorcheck_purple{
+            accent-color: purple;
+        }
+        #colorcheck_green{
+            accent-color: green;
+        }
+        #colorcheck_orange{
+            accent-color: orange;
+        }
+        #colorcheck_darkblue{
+            accent-color: #000080;
+        }
+        #colorcheck_white{
+            accent-color: #ffffff;
+        }
+        #eq_detail_c_main_content4{
+            
+        }
+        #count_up_down{
+            width: 50px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        #able_delivery_loaction{
+            text-align: center;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+        #btn_able_delivery_loaction{
+            width: 20px;
+        }
+        #able_delivery_loaction_info{
+            color: darkgrey;
+            display: none;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        #eq_detail_c_main_content6 .tootip-content{
+            visibility: hidden;
+			width: 220px;
+			background-color: orange;
+			padding: 0;
+			color: white;
+			text-align: center;
+			position: absolute;
+			z-index: 1;
+			top: -15px;
+			left: 105%;
+        }
+        #able_delivery_loaction:hover .tooltip-content { 
+            visibility: visible; 
+        }
+        #eq_detail_c_main_right .btn-light{
+            background-color: #ca5c0d;
+            color: white;
+            width: 100px;
+            height: 50px;
+            padding-top: 15px;
+            font-size: 15px;
+            margin-top: 30px;
+        }
+        #eq_detail_c_main_right .btn-light:hover{
+            background-color: white;
+            color: black;
+        }
+        #btn_go_counseling{
+	}
+	#pagination_wrap ul li.active{
+	width:12px;
+	height:12px;
+	top:3px;
+	opacity:1;
+	box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
+	}
+
+/*Header*/
+h1, h2{text-shadow:none; text-align:center;}
+h1{ color: #666; text-transform:uppercase;  font-size:36px;}
+h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
+
+/*ANIMATION*/
+#slider_wrap ul, #pagination_wrap ul li{
+-webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+-moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+-o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+-ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+transition: all 0.3s cubic-bezier(1,.01,.32,1); 
+}

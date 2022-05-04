@@ -3,23 +3,29 @@ package com.mycompany.webapp.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
@@ -43,19 +49,25 @@ public class EquipmentController {
 		return "/equipment/CustomerService";// view 이름만 전달
 	}
 
-	@RequestMapping("/equipment/equipment_k3chair_detail")
-	public String equipment_k3chair_detail() {
-		return "/equipment/equipment_k3chair_detail";// view 이름만 전달
+	@RequestMapping("/equipment/equipment_detail_consult")
+	public String equipment_detail_consult(String modelNumber, Model model) {
+		ProductDto detailProduct=productService.detailProduct(modelNumber);
+		model.addAttribute("detailProduct", detailProduct);
+		return "/equipment/equipment_detail_consult";// view 이름만 전달
 	}
 
 	@RequestMapping("/equipment/equipment_detail")
-	public String equipment_k5chair_detail(String modelNumber, Model model) {
+	public String equipment_detail(String modelNumber, Model model, Authentication authentication
+			, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		//상품 정보 불러오기
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
 		log.info(modelNumber);
+		
 		return "/equipment/equipment_detail";
 	}
-
+	
+	
 	@RequestMapping("/equipment/dental_equipment_main")//겟
 	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, 
 			 ModelMap modelmap, Model model) {
@@ -95,13 +107,7 @@ public class EquipmentController {
 	       return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
 	}
 	*/
-	@GetMapping("Sort")
-		public String Sort(Model model, @RequestParam int sort){
-			List<ProductDto> pList=productService.sort(sort);
-			model.addAttribute("pList", pList);
-			return "/equipment/dental_equipment_main";
-	}
-	
+
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
 	public String productAdd() {
@@ -115,27 +121,27 @@ public class EquipmentController {
 	public String productAdd(ProductDto product) throws IOException {
 		log.info("되냐1");
 
-		/*log.info(product.getModelNumber());
+		log.info(product.getModelNumber());
 		log.info(product.getProductName());
 		log.info(product.getProductQuantity());
 		log.info(product.getCategory());
 		
-				log.info(product.getMainImage().getOriginalFilename());
-				if (!product.getMainImage().isEmpty()) {
-					product.setPattachoname(product.getMainImage().getOriginalFilename());
-					product.setPattachtype(product.getMainImage().getContentType());
+				log.info(product.getMainimage().getOriginalFilename());
+				if (!product.getMainimage().isEmpty()) {
+					product.setPattachoname(product.getMainimage().getOriginalFilename());
+					product.setPattachtype(product.getMainimage().getContentType());
 					product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());
 					File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
-					product.getMainImage().transferTo(file);
+					product.getMainimage().transferTo(file);
 					productService.insertproduct(product);			
+				}
+				/*try {
+						Map<String, Object> hmap=new HashMap<String, Object>();
+						hmap.put("mainImage", product.getMainimage().getBytes());
+						productService.saveImage(hmap);
+				}catch(Exception e) {
+					e.printStackTrace();
 				}*/
-		try {
-				Map<String, Object> hmap=new HashMap<String, Object>();
-				hmap.put("mainImage", product.getMainimage().getBytes());
-				productService.saveImage(hmap);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
 
 
 		return "redirect:/equipment/productAdd";
@@ -151,10 +157,7 @@ public class EquipmentController {
 		return "/equipment/paymentsuccess";// view 이름만 전달
 	}
 
-	@RequestMapping("/equipment/shoppingcart_rentalandpurchase")
-	public String shoppingcart_rentalandpurchase() {
-		return "/equipment/shoppingcart_rentalandpurchase";// view 이름만 전달
-	}
+	
 	
 	@GetMapping("/equipment/display")
 	   public ResponseEntity<byte[]> getImage(String fileName) {

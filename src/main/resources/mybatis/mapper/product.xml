@@ -17,11 +17,12 @@
 		</if>
 	</insert>
 	<update id="saveImage" parameterType="java.util.Map">
-		UPDATE product SET MAINIMAGE= #{bytes, jdbcType=BLOB, javaType=[B} WHERE MODEL_NUMBER='uc0001gre'
+		UPDATE product SET MAINIMAGE= #{bytes, jdbcType=BLOB, javaType=[B} WHERE MODEL_NUMBER='lc0001whi'
 	</update>
 	<!-- 유니트 체어 상품 전체 리스트 불러오기 -->
 	<select id="selectchairlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
 		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
+		price,
 		PATTACHONAME as pattachoname
 		from product
 		<include refid='category'></include>
@@ -29,9 +30,9 @@
 	</select>
 	<!--베스트 상품 3순위-->
 	<select id="selectbestlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
-		select product_name as productName, product_intro as productIntro, category
+		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category, PATTACHONAME
 		from product
-		where CATEGORY='unitchair'
+		<include refid='category'></include>
 		order by PRODUCT_SALES_VOLUME desc
 	</select>
 	

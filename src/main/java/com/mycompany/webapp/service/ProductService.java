@@ -63,6 +63,9 @@ public class ProductService {
 	/*public Map<String, Object> getByteImage(){
 		return productDao.getByteImage();
 	}*/
-	
+	public ProductDto getProduct(String modelNumber) {
+			
+			return productDao.selectProduct(modelNumber);
+		}
 	
 }

@@ -24,4 +24,7 @@ public interface ProductDao {
 	
 	//상세보기
 	public ProductDto selectDetailProduct(String modelNumber);
+
+	//카트에 담을 장비 선택
+	public ProductDto selectProduct(String modelNumber);
 }

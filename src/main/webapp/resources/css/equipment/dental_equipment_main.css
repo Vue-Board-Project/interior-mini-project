@@ -63,7 +63,7 @@
 			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             width: 200px;
 		}
-		.dropdown-content input {
+		.dropdown-content a {
 			color: black;
 			padding: 8px;
 			text-decoration: none;
@@ -75,7 +75,7 @@
 			width: 190px;
 			background-color: #FAF9F6;
 		}
-		.dropdown-content input:hover { 
+		.dropdown-content a:hover { 
             background-color: #CD853F; 
         }
 		.dropdown:hover .dropdown-content { 
