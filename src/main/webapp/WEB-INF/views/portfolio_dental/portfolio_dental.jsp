@@ -3,9 +3,10 @@
 <link href="${pageContext.request.contextPath}/resources/css/portfolio_dental/cssPortfolioDental.css" rel="stylesheet" type="text/css">
 <div id="portfolio_model_wrap">
         <%@ include file="/WEB-INF/views/portfolio_dental/portfolio_dental_filter.jsp" %>
-        <div class="text-center mt-5 mb-5">
-    		<div class="ml-3 text-left portfolio_dental_content_cnt">
-    			<p class="portfolio_dental_content_cnt_p">전체 <c:out value="${cnt}"></c:out></p>
+        <div class="text-center mt-5 mb-5" id="portfolio_model_filter_content_wrap">
+       
+        	<div class="ml-3 text-left portfolio_dental_content_cnt">
+    			<p class="portfolio_dental_content_cnt_p">전체 <%-- <span>${fn:length(interiorList)}</span> --%><c:out value="${cnt}"></c:out></p>
     		</div>        	
             <section>
 	            <ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
@@ -20,6 +21,7 @@
 		            </c:forEach>
 	            </ul>
             </section> 
+    		
         </div>
     </div>
         <%@ include file="/WEB-INF/views/common/footer.jsp" %>

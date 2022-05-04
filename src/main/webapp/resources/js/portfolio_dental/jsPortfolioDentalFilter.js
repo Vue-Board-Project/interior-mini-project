@@ -36,7 +36,18 @@ $(document).ready(function(){
 					field},
 			dataType: "json"
 		}).done((data)=>{
-			result = '';
+			var cnt=0;
+			for(let item of data){
+				cnt = cnt+1;
+			}
+			console.log(data);
+			console.log(cnt);
+			//result = '<div class="text-center mt-5 mb-5">';
+			result = '<div class="ml-3 text-left portfolio_dental_content_cnt">';
+			result += '<p class="portfolio_dental_content_cnt_p">전체 '+cnt+'</p>';
+			result += '</div>';
+			result += '<section>';
+			result += '<ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">';
 			for(let item of data){
 				console.log(item);
 				result += '<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px;">';
@@ -46,7 +57,10 @@ $(document).ready(function(){
 				result += '<small class="d-block portfolio_dental_content_sm">mansik</small>';
 				result += '</a></li>';
 			}
-			$("#portfolio_dental_content_wrap").html(result);
+			result += '</ul>';
+			result += '</section> ';
+			//result += '</div>';
+			$("#portfolio_model_filter_content_wrap").html(result);
 		});
 		console.log("~~~~~~~~~~~~~~~~~~");
 	});
