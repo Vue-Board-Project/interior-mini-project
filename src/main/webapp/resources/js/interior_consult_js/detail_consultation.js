@@ -8,12 +8,12 @@ class Price{
     //추가시공 
     allRoom(list){
         let roomPriceList = new Map([
-            ['operating' , 1000],
-            ['xray',300],
-            ['owner',100],
-            ['consult',100],
-            ['makeup',150],
-            ['bath',150]
+            ['수술실' , 1000],
+            ['X-ray실',300],
+            ['원장실',100],
+            ['상담실',100],
+            ['메이크업실',150],
+            ['화장실',150]
         ]);
         for(let room of list){
             console.log(room);
@@ -24,9 +24,9 @@ class Price{
     //모든도배
     papering(papp ,roomwide){
         let papplist = new Map([
-            ['silk' , 3],
-            ['paper', 0],
-            ['silkpaper', 1]
+            ['실크' , 3],
+            ['합지', 0],
+            ['실크&합지', 1]
         ]);
         var pappSize = Math.round(this.arce * roomwide);
         this.min = this.min + pappSize*papplist.get(papp);
@@ -36,12 +36,12 @@ class Price{
     //모든바닥
     flooring(floor, roomwide){
         let floorlist = new Map([
-            ['veneer',-2],
-            ['reinforcedfloor',0],
-            ['riverfloor',1],
-            ['solidwoodfloor',10],
-            ['porcelaintile',0],
-            ['naturalmarble',6]
+            ['장판',-2],
+            ['강화마루',0],
+            ['강마루',1],
+            ['원목마루',10],
+            ['포세린타일',0],
+            ['천연대리석',6]
         ]);
         var floorSize = Math.round(this.arce * roomwide);
         this.min = this.min + floorSize*floorlist.get(floor);
@@ -73,10 +73,10 @@ let values = [ ['allRoomTone','wallpaperTone','floorTone'],
                 ["papering","flooring","light","structure","capital"]
                 ];
 
+
 function detail_consult_aside_btn(nowClick){
 
     $(".detail_consult_aside_jsonci_class").each(function(){
-
 
         var value = $(this).val();
         var detailDiv = "#dcajc" + value;
@@ -89,34 +89,84 @@ function detail_consult_aside_btn(nowClick){
         }
     });
 }
+//상세상담 신청 완료버튼
+function detail_consult_finish_btn(){
+    var priceminResult =  $("#priceResultmin").text();
+    if(priceminResult == ""){
+        whereNotCheck();
+        $("#priceResultSpan").text("입력 되지 않은 값이 있습니다.");
+    }else{
+        var watting_all = "도배지는 " +  $("input[name='waiting_papering']:checked").val() + 
+                            " 이고 바닥은 " + $("input[name='waiting_flooring']:checked").val() +" 입니다. 조명은 " +
+                             $("input[name='waiting_light']:checked").val() + 
+                            "이고 가구는 " + $("input[name='waiting_furniture']:checked").val() + "로 할 예정입니다.";
+        var treatment_all = "도배지는 " +  $("input[name='treatment_papering']:checked").val() + 
+                            " 이고 바닥은 " + $("input[name='treatment_flooring']:checked").val() +" 입니다. 조명은 " +
+                             $("input[name='treatment_light']:checked").val() + 
+                            "이고 구조는 " + $("input[name='treatment_structure']:checked").val() + "로 할 예정입니다. 유니트 체어는 "
+                            + $("input[name='treatment_unite']").val() + " 개 설치 부탁드립니다.";
+        var disinfection_all = "창고는 " + $("input[name='disinfection_warehouse_sq']:checked").val() 
+                                + "으로 해주시고 수도는 " + $("input[name='disinfection_capital']:checked").val() + " 예정입니다. 멸균기와 세척기 개수는 "
+                                + $("input[name='disinfection_machin']").val() + " 개 정도로 생각하고 있습니다.";
+        var machine_all =  "도배지는 " +  $("input[name='machine_papering']:checked").val() + 
+                            " 이고 바닥은 " + $("input[name='machine_flooring']:checked").val() +" 입니다. 조명은 " +
+                            $("input[name='machine_light']:checked").val() + 
+                             "이고 수도는 " + $("input[name='machine_capital']:checked").val() + " 예정입니다.";
+        
+                             if($("#addRequestchoice").val() != ""){
+            machine_all += '추가 요청 사항은  "' + $("#addRequestchoice").val() + '" 입니다.';
+        }
 
-// //상담신청 완료 팝업창
-// function quick_consult_finish_btn(el){
+        var pricemin = $("#priceResultmin").text();
+        var pricemax = $("#priceResultmax").text();
+        var estimation =  pricemin + " ~ " +  pricemax + " 만원";
+        
 
-//     var $el = $(el);    //레이어의 id를 $el 변수에 저장
-//     $('.consult_finish_dim-layer').fadeIn();
+        $('#watting_hidden').attr("value",watting_all);
+        $('#treatment_hidden').attr("value",treatment_all);
+        $('#disinfection_hidden').attr("value", disinfection_all);
+        $('#machine_hidden').attr("value",machine_all);
+        $('#estimation_hidden').attr("value",estimation);
+        $("#detailSubmit").submit();
 
-//     var $elWidth = ~~($el.outerWidth()),
-//         $elHeight = ~~($el.outerHeight()),
-//         docWidth = $(document).width(),
-//         docHeight = $(document).height();
+    }
+    
+}
 
-//     // 화면의 중앙에 레이어를 띄운다.
-//     if ($elHeight < docHeight || $elWidth < docWidth) {
-//         $el.css({
-//             marginTop: -$elHeight /2,
-//             marginLeft: -$elWidth/2
-//         })
-//     } else {
-//         $el.css({top: 0, left: 0});
-//     }
+//견적 정보 팝업
+function info_btn(el){
 
-//     $('.layer .dimBg').click(function(){
-//         $('.consult_finish_dim-layer').fadeOut();
-//         return false;
-//     });
+    var $el = $(el);    //레이어의 id를 $el 변수에 저장
+        $('.consult_finish_dim-layer').fadeIn();
 
-// } 
+        var $elWidth = ~~($el.outerWidth()),
+            $elHeight = ~~($el.outerHeight()),
+            docWidth = $(document).width(),
+            docHeight = $(document).height();
+
+        // 화면의 중앙에 레이어를 띄운다.
+        if ($elHeight < docHeight || $elWidth < docWidth) {
+            $el.css({
+                marginTop: -$elHeight /2,
+                marginLeft: -$elWidth/2
+            })
+        } else {
+            $el.css({top: 0, left: 0});
+        }
+
+        $el.find('a.btn-layerClose').click(function(){
+            $('.consult_finish_dim-layer').fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+            return false;
+        });
+
+        $('.layer .dimBg').click(function(){
+            $('.consult_finish_dim-layer').fadeOut();
+            return false;
+        });
+
+    
+    
+} 
 
 //모든 값이 입력되었는지 확인
 function checkAllPonint(where){
@@ -139,7 +189,6 @@ function checkAllPonint(where){
             nowPrice.allRoom(roomList);
         }
         //대기실
-        console.log($("input[name='waiting_papering']:checked").val());
         nowPrice.papering($("input[name='waiting_papering']:checked").val(),0.25);
         nowPrice.flooring($("input[name='waiting_flooring']:checked").val(),0.25);
         nowPrice.light($("input[name='waiting_light']:checked").val(), 0.25);

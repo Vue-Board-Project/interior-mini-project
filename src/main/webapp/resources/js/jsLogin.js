@@ -4,6 +4,10 @@ $(document).ready(function(){
 		$("#main_header_mask").fadeIn(0);
 		$("#login_popup_wrap").animate({right: "0"}, 0);
 	}
+	 if($("#successPW").text()!=""){
+		$("#main_header_mask").fadeIn(0);
+		$("#login_popup_wrap").animate({right: "0"}, 0);
+	}
 	 $("#login_popup_open").click(function(){ 
 		 $("#main_header_mask").fadeIn(100);
 		 $("#login_popup_wrap").animate({right: "0"}, 350);

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mycompany.webapp.dao.mybatis.UsersDao;
 import com.mycompany.webapp.dao.mybatis.UsersDaoImpl;
@@ -121,6 +122,7 @@ public class UsersService {
 	}
 	
 	//비밀번호 찾기
+	//@Transactional
 	public FindPWResult findPW(HttpServletResponse response, UsersDto users) throws Exception {
 		log.info("실행");
 		log.info(users.getEmail());

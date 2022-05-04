@@ -3,17 +3,16 @@ $(document).ready(function() {
 });
 
 //첫번째 페이지 리모델링 인테리어 버튼 선택
-$("input:radio[name=consultType]").click(function()
-{
+$("input:radio[name=consultType]").on("click", function() {
     if(document.getElementById('choose_purpose_new').checked){//신규 인테리어 선택시
         document.querySelector("#remodeling_consult_Room_wrapping").style.display = "none";
+        $("#add_detail_consult_start_btn").show();
         
     }else if(document.getElementById('choose_purpose_update').checked){//리모델링 선택시
         document.querySelector("#remodeling_consult_Room_wrapping").style.display = "block";
         $("#add_detail_consult_start_btn").hide();
     }
-})
-
+});
 
 
 
@@ -227,6 +226,66 @@ $("#qcf_button").click(function(){
     }
 });
 
+//빠른 상담 버튼 클릭하여 submit 
+$("#qcf_button").click(function(){
+    var lastInsertQuick =  lastInsertQuick();
+    if(lastInsertQuick){
+        console.log("빠른 상담 보내랏!");
+        $("#quik_consult_send_form").submit();  
+    }else{
+        nonLastInput();
+    }
+});
+
+//디데일 상담 클릭하여 submit 
+function submit2(frm) {    
+    var lastInsert = lastInsertQuick();
+    if(lastInsert){
+        console.log("상세 상담 보내랏!");
+        frm.action='detail_consultation'; 
+        frm.submit(); 
+        return true; 
+        
+    }else{
+        nonLastInput();
+    }
+
+    
+  } 
+
+//마지막 블럭 유효성 검사
+function lastInsertQuick(){
+    var address = $("#consult_address").val();//주소
+    var address_detail = $("#consult_address_detail").val();//상세주소
+    var check = $("#consult_checkpri").is(":checked");
+    if(address.trim().length != 0 && address_detail.trim().length != 0 && check == true){
+        return true;
+    }else{
+        return false;
+    }
+}
+//마지막 블록 미작성시
+function nonLastInput (){
+    //주소 작성 안함
+    if($("#consult_address").val().trim().length == 0){
+        $("#consult_address").css("border", "2px solid red");
+    }else{
+        $("#consult_address").css("border", "1px solid lightgray");
+    }
+
+    //상세주소 작성 안함
+    if($("#consult_address_detail").val().trim().length == 0){
+        $("#consult_address_detail").css("border", "2px solid red");
+    }else{ 
+        $("#consult_address_detail").css("border", "1px solid lightgray");
+    }
+
+    if($("#consult_checkpri").is(":checked") == false){
+        $("#consult_checkpri_input").css("color", "red");
+    }else{  
+        $("#consult_checkpri_input").css("color", "black");
+    }
+}
 //개인정보 동의 체크박스
 $("#consult_checkAll").change(function(){
     var checked = $(this).prop('checked');

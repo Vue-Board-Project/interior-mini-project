@@ -51,6 +51,16 @@
 		INSERT INTO consult_remodeling
 		values(#{consultNo}, #{consultRoom})
 	</insert>  
+<!-- 디테일 상담 저장  -->
+	<insert id="insertDetailConsult" parameterType="ConsultDetail">
+		INSERT INTO CONSULT_DETAIL 
+		(CONSULT_NO, ALL_SIDE_ROOM, CONSULT_ESTIMATION, ACREAGE, WALLPAPER_TONE, 
+		FLOOR_TONE, ALL_ROOM_TONE, WAITING_ROOM, TREATMENT_ROOM, DISINFECTION_ROOM, MACHINE_ROOM)
+		values(
+			#{consultNo},#{allSideRoom}, #{consultEstimation}, #{acreage}, #{wallpaperTone}, 
+			#{floorTone},#{allRoomTone}, #{waitingRoom}, #{treatmentRoom}, #{disinfectionRoom}, #{machineRoom}
+		)
+	</insert>
 	
 	
 </mapper>

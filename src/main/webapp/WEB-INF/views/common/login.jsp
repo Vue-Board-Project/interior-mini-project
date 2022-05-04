@@ -15,6 +15,11 @@
 					 	</c:if>
 					 </div> 
 				 </c:if>
+				 <c:if test="${successPW != null}">
+				    <div id="successPW" class="alert alert-success mb-2 mt-3" style="width: 270px; margin: 0 auto; font-size: 12px;" role="alert">
+				      ${successPW}
+				    </div>			
+			    </c:if>
                  <form method="post" action="${pageContext.request.contextPath}/login">
                  	<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
                      <div class="form-group"  style="width: 286px;">
