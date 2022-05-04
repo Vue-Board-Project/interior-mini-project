@@ -1,3 +1,6 @@
+$(document).ready(function() {
+	 $('#allloading').hide();
+});
 
 //첫번째 페이지 리모델링 인테리어 버튼 선택
 $("input:radio[name=consultType]").click(function()
@@ -191,7 +194,14 @@ $("#qcf_button").click(function(){
     if(address.trim().length != 0 && address_detail.trim().length != 0){
         if( check == true ){//모두 잘 받았다 submit!
             console.log("보내랏");
-            $("#quik_consult_send_form").submit();
+            $("#quik_consult_send_form").submit(function(){
+    
+			  $('#allloading').show();
+			  return true;
+			  
+			});
+			
+			
         }else{//전화번호나 사용자 이름이 공백임
 
             if(check == false){

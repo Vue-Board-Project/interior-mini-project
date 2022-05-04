@@ -188,8 +188,6 @@ outline-offset: 0.45rem;
 }
 
 .remodeling_consult_Room input[type="checkbox"] + span {
-    width: 180px;
-    height: 150px;
     display: inline-block;
     border: 1px solid #dfdfdf;
     background-color: #ffffff;
@@ -198,10 +196,12 @@ outline-offset: 0.45rem;
     font-size: 20px;
     font-family: 'MinSans-Medium';
 }
-
-.remodeling_consult_Room input[type="checkbox"]:checked + span {
+.quic_rcR  input[type="checkbox"] + span {
     width: 180px;
     height: 150px;
+}
+
+.remodeling_consult_Room input[type="checkbox"]:checked + span {
     background-color: #ca5c0d;
     color: white;
 }

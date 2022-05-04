@@ -8,8 +8,8 @@
     height: 70px;
 }
 
-.total_remodeling_price_coment_wrap {
-    
+.rpajc{
+   font-size: 17px;
 }
 
 .total_remodeling_price_coment_wrap li{
@@ -60,3 +60,26 @@
 #rpajcdisinfection{
     display: none; 
 }
+
+/*와이드 다시 잡기*/
+.price_rcR  input[type="checkbox"] + span {
+    width: 100%;
+    height: 100%;
+}
+.price_rcR {
+    width:33%;
+}
+.remodeling_price_papering{
+    width: 100%;
+}
+.rpmrbc{
+    width: 33%;
+}
+.rpmrbctwo{
+    width: 50%;
+}
+.rp_maginunder{
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
