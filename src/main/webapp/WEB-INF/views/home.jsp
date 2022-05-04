@@ -111,7 +111,7 @@
 	           </div>
            </div>
     </section>
-      <section class="pb-5 pt-5">
+      <section class="pb-5">
        <p style="font-size: 30px;">Special Benefit</p>
        <p>오스템과 함께 인테리어를 시작하세요</p>
        <div style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 1114px;  margin: 0 auto;"><img style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/main_benefit.PNG"/></div>

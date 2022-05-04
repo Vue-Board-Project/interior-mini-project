@@ -122,7 +122,7 @@ public class UsersService {
 	}
 	
 	//비밀번호 찾기
-	//@Transactional
+	@Transactional
 	public FindPWResult findPW(HttpServletResponse response, UsersDto users) throws Exception {
 		log.info("실행");
 		log.info(users.getEmail());
