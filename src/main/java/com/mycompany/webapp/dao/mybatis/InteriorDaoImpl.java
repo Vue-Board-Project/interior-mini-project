@@ -82,6 +82,12 @@ public class InteriorDaoImpl implements InteriorDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<InteriorDto> interiorBestList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
