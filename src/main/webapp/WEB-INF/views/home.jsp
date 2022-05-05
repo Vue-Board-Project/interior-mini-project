@@ -2,8 +2,9 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<main id="main_content_wrap" class="text-center" style="background-color: #faf9f6; font-family: 'MinSans-Regular'; ">
-<div id="model_dental_main_img" class="text-center"><img class="vw-100" style="height: 400px;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/portfolio_dental_ad.PNG"/></div>
+<main id="main_content_wrap" class="text-center" style="background-color: #faf9f6; font-family: 'MinSans-Regular';">
+<div id="model_dental_main_img" class="text-center">
+	<img class="vw-100" style="height: 400px;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/portfolio_dental_ad.PNG"/></div>
    <section  class="d-flex flex-column text-center mt-5 mb-5">
            <h2>Osstem Medical Equipment</h2>
            <p>오스템 치과장비</p>

@@ -1,11 +1,22 @@
 @charset "UTF-8";
+ header { 
+	position: fixed;
+	 top: 0; left: 0; 
+	 width: 100%; height: 215px; 
+	 transition: top 0.2s ease-in-out; 
+	 z-index: 9999;} 
+/* 자바스크립트로 추가될 클래스  */
+ .nav-up { top: -215px; }
+
+ body { padding-top: 215px;} 
+
  #main_header{
     background-color: #ca5c0d; 
     height: 100px; 
     position: relative;
 }
 #main_header_logo{
-    position: absolute; 
+    position: absolute;
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%);

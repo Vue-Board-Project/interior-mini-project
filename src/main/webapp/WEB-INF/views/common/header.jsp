@@ -21,6 +21,7 @@
    <link href="${pageContext.request.contextPath}/resources/css/cssHeaderAd.css" rel="stylesheet" type="text/css">
    <script src="${pageContext.request.contextPath}/resources/js/jsHeaderAd.js"></script>
    <link href="${pageContext.request.contextPath}/resources/css/cssHeader.css" rel="stylesheet" type="text/css">
+   <script src="${pageContext.request.contextPath}/resources/js/jsHeader.js"></script> 
    <link href="${pageContext.request.contextPath}/resources/css/cssHeaderNav.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssFooter.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
@@ -34,7 +35,7 @@
    
    <!-- 예쁜 alter 사용 -->
    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
-   
+
     <style>
         @font-face {
             font-family: 'MinSans-Regular';
@@ -57,7 +58,7 @@
  -->
 <body>
     <div id="main_wrapper" class="d-flex flex-column">
-        <header id="main_header_wrap">
+        <header id="main_header_wrap" class="nav-down">
             <%@ include  file="/WEB-INF/views/common/header_ad.jsp"%>
             <div id="main_header" class="d-flex align-items-center justify-content-end">
                 <a id="main_header_logo" href="${pageContext.request.contextPath}">
