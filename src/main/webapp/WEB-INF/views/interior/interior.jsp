@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %> 
 
 <div class="card m-2">
 	<div class="card-header">
 		interior data upload
 	</div>
 	<div class="card-body">	
-		<form:form method="post" action="interiorDataUpload" enctype="multipart/form-data" modelAttribute="interiorDto">
+		<form:form method="post" action="GointeriorDataUpload" enctype="multipart/form-data" modelAttribute="interiorDto">
 		  <div class="input-group">
 		    <label for="itype">Type</label>
 		    <form:select path="itype" items="${typeList}" class="form-control"/>
@@ -50,7 +50,7 @@
 		      <label for="imMainImg">imMainImg</label>
               <form:input type="file" path="imMainImg" class="form-control"/>
           </div> 
-		  <button type="submit" class="btn btn-primary btn-sm">제출</button>
+          <input type="submit" class="btn btn-primary btn-sm" value="제출"/>
 		</form:form>
 	</div>
 </div>

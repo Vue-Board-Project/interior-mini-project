@@ -103,8 +103,8 @@ public class PortfolioDentalControll {
 		return "portfolio_dental/portfolio_dental_detail3";
 	}
 
-	@GetMapping("/portfolio_dental/display")
-	public ResponseEntity<byte[]> getImage(String fileName) {
+	@GetMapping("/portfolio_dental/portfolioDisplay")
+	public ResponseEntity<byte[]> getImage22(String fileName) {
 		// log.info(" getImage()..........");
 		File file = new File("c:\\Temp\\portfolio\\" + fileName);
 		ResponseEntity<byte[]> result = null;

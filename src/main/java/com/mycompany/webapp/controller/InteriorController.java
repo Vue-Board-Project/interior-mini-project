@@ -26,14 +26,15 @@ public class InteriorController {
 	@Resource // 인테리어 서비스 객체
 	private InteriorService interiorService;
 	
-	@RequestMapping("/interior")
-	public String interior() {
-		
-		return "interior/interior";
-	}
+	/*	@RequestMapping("/interior")
+		public String interior() {
+			log.info("실행");
+			return "interior/interior";
+		}*/
 	
 	@GetMapping("/interior")
 	public String interior2(InteriorDto interiors, Model model) {
+			log.info("실행");
 		  //itype 드롭다운리스트의 항목을 추가할 목적
 	      List<String> typeList = new ArrayList<>();
 	      typeList.add("portfolio");
@@ -116,8 +117,9 @@ public class InteriorController {
 	      return "interior/interior";
 	}
 	
-	@PostMapping("/interiorDataUpload")
+	@PostMapping("/interior/GointeriorDataUpload")
 	public String interiorDataUpload(InteriorDto interior) throws IllegalStateException, IOException {
+		  log.info("너 뭐.. 돼/");
 		  log.info(interior.getIno());
 		  log.info(interior.getItype());
 		  log.info(interior.getIsummary());
@@ -127,21 +129,10 @@ public class InteriorController {
 		  if (!interior.getIMainImg().isEmpty()) {
 			  log.info("너.. 뭐 돼..?");
 			  interior.setImImgPath(interior.getIMainImg().getOriginalFilename());
-			  	/*product.setPattachtype(product.getMainImage().getContentType());
-				product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());*/
 				File file = new File("C:/Temp/portfolio/" + interior.getImImgPath());
 				interior.getIMainImg().transferTo(file);
 				interiorService.insertInterior(interior);    }
-		 return "redirect:/interior";
+		 return "interior/interior";
 	}
 	
-	/*@RequestMapping("/portfolio_dental")
-	public void interiorList(int ino, Model model) {
-		log.info("interiorListDownload 실행");
-		
-		List<InteriorDto> list = null;
-		list = interiorService.interiorList(ino);
-		
-		model.addAttribute("interiorList",list);
-	}*/
 }
