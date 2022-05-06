@@ -18,13 +18,13 @@
 			<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
 
 	     	<c:if test="${interiorChk != 0}">
-	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_interior.jsp" %>
+	     		<%@ include file="/WEB-INF/views/mypage/counseling/mypage_counseling_interior.jsp" %>
 	     	</c:if>
 	     	<c:if test="${remodelingChk != 0}">
-	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_remodeling.jsp" %>
+	     		<%@ include file="/WEB-INF/views/mypage/counseling/mypage_counseling_remodeling.jsp" %>
 	     	</c:if>
 	     	<c:if test="${asChk != 0}">
-	     		<%@ include file="/WEB-INF/views/mypage/mypage_counseling_AS.jsp" %>
+	     		<%@ include file="/WEB-INF/views/mypage/counseling/mypage_counseling_AS.jsp" %>
 	     	</c:if>
 	     	<c:if test="${interiorChk == 0 && remodelingChk == 0 && remodelingChk == 0}">
 	     		<div class = "mypage_no_counseling_info">
@@ -74,25 +74,22 @@
            
 	
     	
-    /*견적신청 내용 버튼*/
-    .content_section .info_button{
-        position: relative;
+     /*견적신청 내용 버튼*/
+  .content_section .info_button{
+   		font-family: 'MinSans-Bold';
+   		color : #272723;
+   		background-color : #fff;
+        position: absolute;
 	    border: none;
 	    display: inline-block;
-	    padding: 15px 30px;
-	    border-radius: 15px;
-	    text-decoration: none;
-	    font-weight: 600;
-	    /* transition: 0.25s; */
-	    float : right;
-	    margin-right : 3%;
+	    border-radius: 10px;
+	    width : 150px;
+	    height : 50px;
+	    margin-left : 60%;
+	    margin-bottom : 8%;
     }
     
-    
-   
-
-    
-        
+       
 </style>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

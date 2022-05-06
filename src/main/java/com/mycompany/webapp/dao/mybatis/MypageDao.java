@@ -8,7 +8,9 @@ import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
+import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
+import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
@@ -73,6 +75,22 @@ public interface MypageDao {
 	public List<MainConsultDto> getUserRemodelingList(Pager pager);
 
 	public MainConsultDto getMainConElement(int selNum);
+
+	public MainConsultDto getremodelingElement(int selNum);
+
+	public InteriorProgressDto getProgressStep(int consultNo);
+
+	public int getLatestInteriorNo(String email);
+
+	public List<SolutionDto> getSolutionList(int consultNo);
+
+	public InteriorProgressDto getProgressStep2(int conNum);
+
+	public InteriorProgressDto getProgressStep3(int conNum);
+
+	public InteriorProgressDto getProgressStep4(int conNum);
+
+	public InteriorProgressDto getProgressStep5(int conNum);
 
 
 

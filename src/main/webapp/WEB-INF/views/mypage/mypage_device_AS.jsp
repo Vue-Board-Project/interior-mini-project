@@ -24,7 +24,7 @@
          <c:forEach var="asList" items="${asList}">
             <tr>
                <td>${asList.receiptNumber}</td>
-               <td><a href="device_AS?receiptNo=${asList.receiptNumber}" style = "text-decoration : none; color : black;"><b>${asList.productName}</b></a></td>
+               <td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black;"><b>${asList.productName}</b></a></td>
                <td><fmt:formatDate value="${asList.applicationDate}" pattern="yyyy-MM-dd"/></td>
             </tr>
          </c:forEach>
@@ -56,7 +56,23 @@
       </table>
       
       <div class = "mypage_device_AS_detail_slot">
-         <div id = "mypage_device_AS_reservation">
+      		<script>
+	       
+		        function ajaxAsDetail(receiptNo){
+					$.ajax({
+			                url : "device_AS/asDetail",
+			                data : {receiptNo},
+			                method: "get"
+			            }).done((data) => {
+			            	console.log("finish?");
+			            	console.log(data);
+							$('.mypage_device_AS_detail_slot').html(data);
+			            });
+		        }
+			</script>
+      
+      
+         <%-- <div id = "mypage_device_AS_reservation">
             <div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2>예약 정보</h2></div>
             <hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
             
@@ -125,7 +141,7 @@
                </div>
             
             </div>
-         </div>
+         </div> --%>
          
       </div>
       <div id = "mypage_device_AS_warning">

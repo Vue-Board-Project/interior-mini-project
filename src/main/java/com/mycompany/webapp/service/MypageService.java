@@ -1,3 +1,5 @@
+
+
 package com.mycompany.webapp.service;
 
 import java.util.List;
@@ -13,7 +15,9 @@ import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
+import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
+import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
@@ -174,6 +178,47 @@ public class MypageService {
 	public MainConsultDto getMainConElement(int selNum) {
 		// TODO Auto-generated method stub
 		return mypageDao.getMainConElement(selNum);
+	}
+
+	public MainConsultDto getremodelingElement(int selNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getremodelingElement(selNum);
+	}
+
+	public InteriorProgressDto getProgressStep(int consultNo) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep(consultNo);
+	}
+
+	public int getLatestInteriorNo(String email) {
+		// TODO Auto-generated method stub
+		return  mypageDao.getLatestInteriorNo(email);
+	}
+
+	public List<SolutionDto> getSolutionList(int consultNo) {
+		// TODO Auto-generated method stub
+		return mypageDao.getSolutionList(consultNo);
+	}
+
+	public InteriorProgressDto getProgressStep2(int conNum) {
+		// TODO Auto-generated method stub
+		log.info("int 형 잘 가고 있나요...??? : " + conNum);
+		return mypageDao.getProgressStep2(conNum);
+	}
+
+	public InteriorProgressDto getProgressStep3(int conNum) {
+		// TODO Auto-generated method stub
+		return  mypageDao.getProgressStep3(conNum);
+	}
+
+	public InteriorProgressDto getProgressStep4(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep4(conNum);
+	}
+
+	public InteriorProgressDto getProgressStep5(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep5(conNum);
 	}
 
 

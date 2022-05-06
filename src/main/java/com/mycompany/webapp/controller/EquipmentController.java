@@ -131,7 +131,7 @@ public class EquipmentController {
 					product.setPattachoname(product.getMainimage().getOriginalFilename());
 					product.setPattachtype(product.getMainimage().getContentType());
 					product.setPattachsname(new Date().getTime() + "-" + product.getPattachoname());
-					File file = new File("C:/osstem/mini_project_subin/" + product.getPattachsname());
+					File file = new File("C:/Temp/product" + product.getPattachsname());
 					product.getMainimage().transferTo(file);
 					productService.insertproduct(product);			
 				}

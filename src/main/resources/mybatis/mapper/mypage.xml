@@ -113,6 +113,14 @@
 	where CONSULT_NO = #{selNum}
 	</select>
 	
+	<!-- 리모델링 내역 개별(팝업창) 읽어오기 -->
+	<select id = "getremodelingElement" parameterType= "int" resultType="MainConsult">
+	SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+		    CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+		    CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, INO, CONSTRUCTION_DATE as constructionDate
+	FROM MAIN_CONSULT
+	where CONSULT_NO = #{selNum}
+	</select>
 	<!-- 리모델링내역(과거내역리스트) 창  -->
 	<select id = "getTotalUserRemodelingList" parameterType="string" resultType="int">
 		select count(*) 
@@ -143,6 +151,60 @@
 		 ]]>
 	</select>
 	
+	<!-- 인테리어 진행내역 getLatestInteriorNo-->
+	<select id="getLatestInteriorNo" parameterType="String" resultType="int">
+	  select consultNo
+		from 
+		( SELECT CONSULT_NO as consultNo
+		   FROM MAIN_CONSULT
+		   where  CONSULT_TYPE = 1 and
+		    EMAIL = #{email}
+		    ORDER BY CONSULT_DATE desc, CONSULT_TIME desc )
+		where rownum = 1
+	</select>
+	
+	<select id="getProgressStep" parameterType="int" resultType="mpProgress">
+	   select m.CONSULT_NO as intConsultNo, m.EMAIL as stringEmail, 
+		   P_EXPECTED_DATE as pexpectedDate, E_EXPECTED_DATE as eexpectedDate,
+		   E_EXPECTED_DATE + (INTERVAL '3' MONTH) as eexpectedFinDate,
+		    C_START_DATE as cstartDate, C_END_DATE as cendDate,
+		     C_END_DATE + (INTERVAL '2' YEAR) as asEndDate,
+	        CONSULT_ACREAGE as acreage, CONSULT_INTERIOR_STYLE as style, CONSULT_REQUEST as request
+		from INTERIOR_PROGRESS i, MAIN_CONSULT m
+		where i.CONSULT_NO = m.CONSULT_NO and
+        	i.CONSULT_NO = #{consultNo}
+	</select>
+	
+	<select id = "getSolutionList" parameterType="int" resultType="mpSolution">
+	select SCONTENT
+	from solution
+	where CONSULT_NO = #{consultNo}
+	</select>
+	
+	<select id = "getProgressStep2" parameterType="int" resultType="mpProgress">
+	select CONSULT_NO, E_EXPECTED_DATE as eexpectedDate, P_USERFEEDBACK as puserFeedback
+	from interior_progress
+	where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getProgressStep3" parameterType="int" resultType="mpProgress">
+		select E_EXPECTED_DATE as eexpectedDate, E_USER_REQUEST as euserRequest
+		from interior_progress
+		where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getProgressStep4" parameterType="int" resultType="mpProgress">
+		select C_MIDDLE_FEEDBACK as cmiddleFeedback
+	    from INTERIOR_PROGRESS
+	    where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getProgressStep5" parameterType="int" resultType="mpProgress">
+		select C_FINISH_FEEDBACK as cfinishFeedback
+	    from INTERIOR_PROGRESS
+	    where CONSULT_NO = #{conNum}
+	</select>
+	
 	<select id="selectByAsPage" parameterType="pager" resultType="asList">
 		<![CDATA[ SELECT rnum, receiptNumber, productName, EMAIL, applicationDate
 		    from(
@@ -163,6 +225,7 @@
 			)   
 		WHERE ROWNUM = 1 
 	</select>
+	
 	<!-- 개인정보 수정 창 -->
 	<select id = "getMpUserInfo" parameterType="string" resultType="users">
 	select name, email, phone, crn
@@ -259,7 +322,8 @@
 				<result column = "ADDRESS" property = "address" />
 			</association>
 	</resultMap>
-<!-- 수정 필수!!!! 하나로 합쳐야 함!!!! 시작 -->
+	
+	
 	<select id="getAsInfoDetail" parameterType="int" resultMap="seleceASWithUserResultMap">
 		select 
 		   RECEIPT_NUMBER, APPLICATION_DATE, SCHEDULED_SERVICE_DATE, PRODUCT_NAME, MODEL_NUMBER,
@@ -268,8 +332,7 @@
 		FROM AFTERSERVICE a, USERS u
 		WHERE a.EMAIL = u.EMAIL and RECEIPT_NUMBER = #{receiptNo}
 	</select>
-	
-	<!-- 수정 필수!!!! 하나로 합쳐야 함!!!!끌  -->
+
 	
 	
 	<!-- 리뷰 관리 창 -->

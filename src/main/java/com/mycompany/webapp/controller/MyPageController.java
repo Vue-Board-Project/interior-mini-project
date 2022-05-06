@@ -32,7 +32,9 @@ import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
+import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
+import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
@@ -87,7 +89,7 @@ public class MyPageController {
 		 int totalASCounseling = mypageService.getTotalASCounseling(email);
 		 model.addAttribute("asChk", totalASCounseling);
 		 
-		 return "mypage/mypage_counseling";
+		 return "mypage/counseling/mypage_counseling";
 	 }
 	 
 	 @GetMapping("/mypage_interior_list") 
@@ -109,7 +111,7 @@ public class MyPageController {
 		 model.addAttribute("userInteriorList", userInteriorList);
 		 
 		 
-		 return "mypage/mypage_counsel_detailList";
+		 return "mypage/counseling/mypage_counsel_detailList";
 	 }
 	 
 	 @GetMapping("/mypage_remodeling_list") 
@@ -133,7 +135,7 @@ public class MyPageController {
 		 log.info("데이터 읽어오는지 확인: " + userRemodelingList);	 
 		 
 		 
-		 return "mypage/mypage_remodeling_detailList";
+		 return "mypage/counseling/mypage_remodeling_detailList";
 	 }
 	 
 	 
@@ -156,21 +158,100 @@ public class MyPageController {
 	 }
 	*/
  
-/* 현재 해야 할 것 : 프론트에서 json 추출*/
-	 
+	 /*인테리어 각 요소(팝업창으로) 읽어오기 */
 		 @GetMapping(value = "/readInteriorList")
-		public String InteriorInfoList(int selNum, Authentication authentication, Model model) throws Exception {
+		public String InteriorInfoList(int selNum, Model model) throws Exception {
 
 			MainConsultDto mainCon = mypageService.getMainConElement(selNum); 
 
 			log.info("mypage Interior List : " + mainCon);
 			model.addAttribute("mainCon", mainCon);
 		      
-		    return "/mypage/myinfo_counsel_detail_popup";		
+		    return "/mypage/counseling/myinfo_counsel_detail_popup";		
 		}
 	 
+		 /*리모델링 각 요소(팝업창으로) 읽어오기 */
+		 @GetMapping(value = "/readRemodelingList")
+		public String selectRemodelingDetail(int selNum, Model model) throws Exception {
+
+			MainConsultDto remodelingCon = mypageService.getremodelingElement(selNum); 
+
+			model.addAttribute("remodelingCon", remodelingCon);
+		      
+		    return "/mypage/counseling/mypage_remodeling_popup_detail";		
+		}
 	 
-	 
+		 
+		 /* 인테리어 진행 내역 */
+		@RequestMapping("/mypage_interior_progress")
+		public String mypageInteriorProgress(@RequestParam(defaultValue = "0") int consultNo,  Authentication authentication, Model model){
+		
+			if (consultNo == 0) {
+				String email = authentication.getName();
+				consultNo = mypageService.getLatestInteriorNo(email);
+			}
+			
+			log.info("consultNo : " + consultNo);
+			
+			InteriorProgressDto progress = mypageService.getProgressStep(consultNo);
+			model.addAttribute("progress", progress);
+			
+			List<SolutionDto> solution = mypageService.getSolutionList(consultNo);
+			model.addAttribute("solution", solution);
+			 
+			return "/mypage/interiorProgress/mypage_interior_progress";
+		}
+		
+		@GetMapping("/step2")
+		public String ajaxInteriorProgressStep2(int conNum, Model model){
+			
+			InteriorProgressDto step2 = mypageService.getProgressStep2(conNum);
+			model.addAttribute("step2", step2);
+			
+			log.info("step2 : " + step2);
+			return "mypage/interiorProgress/interiorProgressStep2";
+		}
+		
+		@GetMapping("/step3")
+		public String ajaxInteriorProgressStep3(int conNum, Model model){
+
+
+			InteriorProgressDto step3 = mypageService.getProgressStep3(conNum);
+			model.addAttribute("step3", step3);
+			log.info("step3 : " + step3);
+			
+			return "mypage/interiorProgress/interiorProgressStep3";
+		}
+		
+		@GetMapping("/step4")
+		public String ajaxInteriorProgressStep4(int conNum, Model model){
+
+			InteriorProgressDto step4 = mypageService.getProgressStep4(conNum);
+			model.addAttribute("step4", step4);
+	
+			
+			return "mypage/interiorProgress/interiorProgressStep4";
+		}
+		
+		@GetMapping("/step5")
+		public String ajaxInteriorProgressStep5(int conNum, Model model){
+
+			InteriorProgressDto step5 = mypageService.getProgressStep5(conNum);
+			model.addAttribute("step5", step5);
+	
+			
+			return "mypage/interiorProgress/interiorProgressStep5";
+		}
+		
+		@RequestMapping("/step6")
+		public String ajaxInteriorProgressStep6(int conNum, Model model){
+
+			return "mypage/interiorProgress/interiorProgressStep5";
+		}
+			
+		 
+		 
+		 
 	 /***** 		개인정보 수정 창			*******/
 	 /*개인정보 수정 처음 데이터 읽어오는 코드*/
 	@RequestMapping("/mypage_infosetting")
@@ -278,11 +359,7 @@ public class MyPageController {
 	}
 
 	
-	@RequestMapping("/mypage_interior_progress")
-	public String mypageInteriorProgress() {
-		return "/mypage/mypage_interior_progress";
-	}
-	
+
 	
 	
 	@RequestMapping("/mypageReview")
@@ -344,10 +421,9 @@ public class MyPageController {
 	}
 	
 	
-	@GetMapping("/device_AS")
+		@GetMapping("/device_AS")
 	   public String mypageDeviceASList(
-			   @RequestParam(defaultValue = "1") int pageNo, 
-			   @RequestParam(defaultValue = "10") int receiptNo, Model model) {
+			   @RequestParam(defaultValue = "1") int pageNo, Model model) {
 		
 		   int totalAsNum = mypageService.getTotalDeviceAsListNum();
 		   Pager pager = new Pager(5, 5, totalAsNum, pageNo);
@@ -358,27 +434,22 @@ public class MyPageController {
 		   List<AfterServiceDto> asList = mypageService.getASList(pager);
 		   model.addAttribute("asList", asList);
 		   
-		   log.info("receiptNo 입력 : "  + receiptNo);
-		   AfterServiceDto asInfo = mypageService.getAsInfoDetail(receiptNo);
-		   model.addAttribute("asInfo", asInfo);
-			 
 		   return "/mypage/mypage_device_AS";
-		   //내용 출력
 		   
+	 }
+		
+		@GetMapping("/device_AS/asDetail")
+		public String mypageAsDetail(int receiptNo, Model model) {
+				
+		 log.info("000000000000000000 00000000 receiptNo 입력 : " + receiptNo);
+		 AfterServiceDto asInfo = mypageService.getAsInfoDetail(receiptNo);
+		 model.addAttribute("asInfo", asInfo);
+				
+		return "/mypage/mypage_As_Detail";
+		}
+		 
 		   
-		   /*
-		    * 가장 최근의 일을 출력하도록 설계했으나 현재 null 오류가 계속 나서 클릭 이전엔 빈칸으로 남겨두도록 함.
-		    * 수정시 최근의 값을 가져오도록 코드 짜기.
-		    */
-		  
-		   //디바이스 AS 내용 
-		   /*
-		   if(receiptNo == 0) {
-			   log.info("AS 창 내 확인");
-			   receiptNo = mypageService.getLatestAsNumber();
-		   }*/
-		   
-	   }
+	   
 	
 	
 }

@@ -24,5 +24,5 @@
 
 </style>
 
-<%@ include file="/WEB-INF/views/mypage/mypage_remodeling_popup.jsp" %>
+<%@ include file="/WEB-INF/views/mypage/counseling/mypage_remodeling_popup.jsp" %>
 <script src="${pageContext.request.contextPath}/resources/js/mypage/mypage_consult_remodeling.js"></script>

@@ -26,12 +26,6 @@
 		            });
 	        }
 				</script>
-		         <button type="button" class="btn btn-outline-primary" style = "margin-left : 20px;"
-		         onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress'">진행 상세 보기</button>
-		         <c:if test="${interiorChk >= 2}">
-		         	<button type="button" class="btn btn-outline-secondary" 
-		         	onclick="location.href='/springframework-mini-project/mypage/mypage_interior_list' ">이전 내역 보기</button>
-		         </c:if>
 	     </div>
 	 </div>
 	 
@@ -276,5 +270,17 @@
  	height : 50px;
  }
  
+ .personal_info #mypage_counsel_popup_infomations #interior_detail_past_btn{
+  	  background-color: #fff;
+	  border: 1px solid #ca5c0d;
+	  color:  #ca5c0d;
+	  margin-top : 100px;
+	  
+	}
+  
+  .personal_info #mypage_counsel_popup_infomations #interior_detail_past_btn:hover {
+	  background-color: #ca5c0d;
+	  color: white;
+   }
  
  </style>

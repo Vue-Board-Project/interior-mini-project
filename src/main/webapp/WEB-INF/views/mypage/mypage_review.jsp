@@ -242,8 +242,10 @@
       		height : 49px;
       		width : 1200px;
       		font-family: 'MinSans-Bold';
-      		padding-left : 50px;
-      		padding-top : 10px;
+      		/* padding-left : 50px;
+      		padding-top : 10px; */
+      		padding : auto;
+      		padding-left : 20px;
       		font-size : 1.5rem;
       		border-bottom : 1px solid #ccc;  
       }
@@ -251,6 +253,7 @@
       .mypage_user_review_element .user_product_title .user_product_modelName{
       		font-family: 'MinSans-Regular';
       		font-size : 1rem;
+      		padding-left : 15px;
       }
       
       .mypage_user_review_element .user_review_contents {

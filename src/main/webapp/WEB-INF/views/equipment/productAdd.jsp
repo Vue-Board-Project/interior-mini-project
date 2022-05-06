@@ -8,7 +8,8 @@
 		새 장비 추가
 	</div>
 	<div class="card-body">
-		<form id="productAddForm" method="post" action="productAdd" enctype="multipart/form-data">
+		<form id="productAddForm" method="post" action="productAdd" enctype="multipart/form-data"
+		modelAttribute="productDto">
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">modelNumber</span></div>
 				<input id="modelNumber" type="text" name="modelNumber" class="form-control">
@@ -45,9 +46,9 @@
 			</div>
 		</form>
 	</div>
-	<form action="productAdd" enctype="multipart/form-data" method="post">
+	<!-- <form action="productAdd" enctype="multipart/form-data" method="post">
 		<input type="file" name="mainImage"/>
 		<input type="submit" value="이미지 저장"/>
-	</form>
+	</form> -->
 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

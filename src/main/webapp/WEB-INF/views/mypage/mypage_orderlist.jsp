@@ -46,7 +46,7 @@
 	     					</a> 
 	     				</div>
 	     				<div class = "element_title_explain">구매번호</div>
-	     				<<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+	     				<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
 	     				<div class = "element_title">${orderList.purchaseNumber}</div>
 	     				</a> 
 	     				<div class = "element_price">

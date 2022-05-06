@@ -40,10 +40,12 @@
 		         	<div class = "popup_info_visit_date_title">시공일자</div>
 		            <div class = "popup_info_visit_date_content">${mainConList.constructionDate}</div>
 		         </div> 
-		         <button type="button" class="btn btn-outline-primary" style = "margin-left : 20px;"
-		         onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress'">진행 상세 보기</button>
+		         <button type="button" class="btn" id = "interior_detail_btn"
+		          style = "margin-left : 30px; font-family: 'MinSans-Bold';"
+		         onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress?consultNo=${mainConList.consultNo}'">진행 상세 보기</button>
 		         <c:if test="${interiorChk >= 2}">
-		         	<button type="button" class="btn btn-outline-secondary" 
+		         	<button type="button" class="btn btn-outline-secondary"  
+		         	style = "font-family: 'MinSans-Bold';"
 		         	onclick="location.href='/springframework-mini-project/mypage/mypage_interior_list' ">이전 내역 보기</button>
 		         </c:if>
 	     </div>
@@ -290,5 +292,16 @@
  	height : 50px;
  }
  
+ /* 최종 버튼 예쁘게 꾸미기 */
+ .personal_info #mypage_counsel_popup_infomations #interior_detail_btn {
+  	  background-color: #fff;
+	  border: 1px solid #ca5c0d;
+	  color:  #ca5c0d;
+	}
+	
+ .personal_info #mypage_counsel_popup_infomations #interior_detail_btn:hover {
+	  background-color: #ca5c0d;
+	  color: white;
+   }
  
  </style>
