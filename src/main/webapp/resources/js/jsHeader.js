@@ -1,10 +1,4 @@
-/*if(adDelete == ""){
-	console.log("광고 있지롱~~~~~~~~");
-	$(header).removeClass('fixed');
-} else {
-	console.log("광고 없지롱~~~~~~~~");
-	$(header).addClass('fixed');
-}*/
+
 $(document).ready(function(){
 	console.log("광고 있지롱~~~~~~~~");
 	$("#main_header_ad_close").on("click", function() {
