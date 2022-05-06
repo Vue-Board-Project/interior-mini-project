@@ -35,7 +35,7 @@
 100% { left: -400%; }
 }
 
-#slide_figure{
+.slide_figure{
   position: relative;
   width: 500%;
   margin: 0;
@@ -49,21 +49,19 @@
 
 </style>
 <main id="main_content_wrap" class="text-center" style="background-color: #faf9f6; font-family: 'MinSans-Regular';">
+   
 	<div id="model_dental_main_img" class="text-center">
 		<img style="height: 400px; width: 100%;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/portfolio_dental_ad.PNG"/>
 	</div> 
+	
 	<section class="mt-5 mb-5">
-       <p style="font-size: 30px;">Special Benefit</p>
-       <p>오스템과 함께 인테리어를 시작하세요</p>
-       <div id="slide" class="oss_img_box" val="1" max="3" style="background-color:white; width: 1114px;  margin: 0 auto; overflow: hidden;">
-         <figure id="slide_figure">
-	        <img id="oss_img1" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_1.jpg">
-	        <img id="oss_img2" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_2.jpg">
-	        <img id="oss_img3" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_3.jpg">
-	        <img id="oss_img1" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_4.jpg">
-		 </figure>	       
-   	   </div>
+ 	  <div class="pb-5 pt-5" style="width: 1114px; margin: 0 auto;">
+     	  <p style="font-size: 30px;">O'Molaire Osstem</p>
+      	  <p>치과 종합 인테리어, 인테리어에 영혼을 불어넣다.</p>
+		  <img style="width: 1114px;" src="${pageContext.request.contextPath}/resources/illustration/art_164915725959_5bbc07.jpg">    
+   	  </div>
    </section>
+   
    <section data-aos="fade-up" data-aos-duration="1500" class="d-flex flex-column text-center mt-5 mb-5">
        <h2>O'Molaire Osstem Interior</h2>
        <p>오스템 인테리어</p>
@@ -106,6 +104,18 @@
 	            </c:forEach>
             </ul>
            </div>
+   </section>
+	<section data-aos="fade-up" data-aos-duration="1500" class="mt-5 mb-5">
+       <p style="font-size: 30px;">Special Benefit</p>
+       <p>오스템과 함께 인테리어를 시작하세요</p>
+       <div id="slide" class="oss_img_box" val="1" max="3" style="background-color:white; width: 1114px;  margin: 0 auto; overflow: hidden;">
+         <figure class="slide_figure">
+	        <img id="oss_img1" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_1.jpg">
+	        <img id="oss_img2" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_2.jpg">
+	        <img id="oss_img3" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_3.jpg">
+	        <img id="oss_img1" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_4.jpg">
+		 </figure>	       
+   	   </div>
    </section>
    <section data-aos="fade-up" data-aos-duration="1500" class="pb-5">
  	  <div class="pb-5 pt-5" style="background-color: white; width: 1114px; margin: 0 auto;">
