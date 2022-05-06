@@ -8,7 +8,8 @@
 /* 자바스크립트로 추가될 클래스  */
  .nav-up { top: -215px; }
 
- body { padding-top: 215px;} 
+.body_class { padding-top: 215px;}
+.body_class2 { padding-top: 145px; }
 
  #main_header{
     background-color: #ca5c0d; 

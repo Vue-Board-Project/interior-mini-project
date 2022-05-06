@@ -1,4 +1,17 @@
-
+/*if(adDelete == ""){
+	console.log("광고 있지롱~~~~~~~~");
+	$(header).removeClass('fixed');
+} else {
+	console.log("광고 없지롱~~~~~~~~");
+	$(header).addClass('fixed');
+}*/
+$(document).ready(function(){
+	console.log("광고 있지롱~~~~~~~~");
+	$("#main_header_ad_close").on("click", function() {
+		$('body').removeClass('body_class').addClass('body_class2');
+		console.log("광고 없지롱~~~~~~~~");
+	});
+});
 // Hide Header on on scroll down
 var didScroll;
 var lastScrollTop = 0;
@@ -23,11 +36,6 @@ setInterval(function() {
 function hasScrolled() {
     var st = $(this).scrollTop();
     
-    /*if(st<215){
-		$(header).removeClass('fixed');
-	} else {
-		$(header).addClass('fixed');
-	}*/
     // Make sure they scroll more than delta
     if(Math.abs(lastScrollTop - st) <= delta)
         return;

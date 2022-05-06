@@ -56,7 +56,7 @@
     그레이베이지 #faf9f6
     베이지 #fef8d4
  -->
-<body>
+<body id="body_id" class="body_class">
     <div id="main_wrapper" class="d-flex flex-column">
         <header id="main_header_wrap" class="nav-down">
 	        <%@ include file="/WEB-INF/views/common/header_ad.jsp"%>
