@@ -1,3 +1,4 @@
+$(window).scroll( function () {
 // Hide Header on on scroll down
 var didScroll;
 var lastScrollTop = 0;
@@ -7,6 +8,7 @@ console.log("didScroll : "+didScroll);
 console.log("lastScrollTop : "+lastScrollTop);
 console.log("delta : "+delta);
 console.log("navbarHeight : "+navbarHeight);
+  
 $(window).scroll(function(event){
     didScroll = true;
 });
@@ -21,6 +23,11 @@ setInterval(function() {
 function hasScrolled() {
     var st = $(this).scrollTop();
     
+    /*if(st<215){
+		$(header).removeClass('fixed');
+	} else {
+		$(header).addClass('fixed');
+	}*/
     // Make sure they scroll more than delta
     if(Math.abs(lastScrollTop - st) <= delta)
         return;
@@ -53,5 +60,5 @@ $(window).scroll(function(){
    } 
 });
 */
-
+});
 

@@ -90,16 +90,16 @@
        </div>
    </section>
   
-    <section data-aos="fade-up" data-aos-duration="1500" class="d-flex flex-column text-center mt-5 mb-5">
+     <section data-aos="fade-up" data-aos-duration="1500" class="d-flex flex-column text-center mt-5 mb-5">
            <h2>Osstem Medical Equipment</h2>
            <p>오스템 치과장비</p>
            <div class="d-flex" style=" margin:0 auto;">
 	           <ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
-	            <c:forEach items="${homeProductList}" var="list" begin="0" end="5">
+	            <c:forEach items="${homeProductList}" var="productList" begin="0" end="5">
 	            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);"> 
-	                    <a href="${pageContext.request.contextPath}/equipment/equipment_detail_consult?modelNumber=${list.modelNumber}" class="portfolio_dental_content_a">
-	                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/equipment/display?fileName=${list.pattachoname}"/>
-	                        <b class="mt-3 ml-5 mr-5 portfolio_dental_content_b">${list.productName}</b>
+	                    <a href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="portfolio_dental_content_a">
+	                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/mainHome/productDisplay?fileName=${productList.pattachoname}"/>
+	                        <b class="mt-3 ml-5 mr-5 portfolio_dental_content_b">${productList.productName}</b>
 	                        <small class="d-block portfolio_dental_content_sm">subin</small>
 	                    </a>
 	                </li>

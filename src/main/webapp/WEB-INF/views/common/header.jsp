@@ -59,7 +59,7 @@
 <body>
     <div id="main_wrapper" class="d-flex flex-column">
         <header id="main_header_wrap" class="nav-down">
-            <%@ include  file="/WEB-INF/views/common/header_ad.jsp"%>
+	        <%@ include file="/WEB-INF/views/common/header_ad.jsp"%>
             <div id="main_header" class="d-flex align-items-center justify-content-end">
                 <a id="main_header_logo" href="${pageContext.request.contextPath}">
                     <img id="main_header_logo_img" src="${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png"/>
