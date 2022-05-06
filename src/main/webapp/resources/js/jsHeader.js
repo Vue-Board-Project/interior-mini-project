@@ -1,4 +1,4 @@
-$(window).scroll( function () {
+
 // Hide Header on on scroll down
 var didScroll;
 var lastScrollTop = 0;
@@ -42,7 +42,7 @@ function hasScrolled() {
         // Scroll Up
         console.log("Scroll Up");
         if(st + $(window).height() < $(document).height()) {
-            $('header').removeClass('nav-up').addClass('nav-down');
+        	$('header').removeClass('nav-up').addClass('nav-down');
         }
     }
     
@@ -60,5 +60,5 @@ $(window).scroll(function(){
    } 
 });
 */
-});
+
 
