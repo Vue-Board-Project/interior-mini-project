@@ -108,7 +108,7 @@
 	<section data-aos="fade-up" data-aos-duration="1500" class="mt-5 mb-5">
        <p style="font-size: 30px;">Special Benefit</p>
        <p>오스템과 함께 인테리어를 시작하세요</p>
-       <div id="slide" class="oss_img_box" val="1" max="3" style="background-color:white; width: 1114px;  margin: 0 auto; overflow: hidden;">
+       <div id="slide" class="oss_img_box" val="0" max="3" style="background-color:white; width: 1114px;  margin: 0 auto; overflow: hidden;">
          <figure class="slide_figure">
 	        <img id="oss_img1" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_1.jpg">
 	        <img id="oss_img2" style="width: 1114px;" src="${pageContext.request.contextPath}/resources/pngs/oss_ad3_2.jpg">
