@@ -15,3 +15,15 @@
 .portfolio_dental_content_a:hover{
 	text-decoration: none; color: black;
 }
+.portfolio_dental_content_img_div{width: 350px; height: 200px;}
+
+
+.portfolio_dental_content img{ transition: 0.3s; }
+.portfolio_dental_content img:hover , .portfolio_dental_content img:focus { 
+  transform: scale(1.1);
+}
+.portfolio_dental_content .portfolio_dental_content_img_div{
+  display: block;
+  width: 350px; height: 200px;
+  overflow: hidden; /* 자손이 현재 요소보다 클때 안보이게 처리 */
+}

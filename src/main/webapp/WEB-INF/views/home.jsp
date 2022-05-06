@@ -1,9 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<!-- AOS 라이브러리 불러오기-->
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <style>
 #portfolio_model_wrap{margin: 0 auto; font-family: 'MinSans-Regular';}
@@ -129,6 +126,5 @@
 	AOS.init({
 	  duration: 1000
 	});
-
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
