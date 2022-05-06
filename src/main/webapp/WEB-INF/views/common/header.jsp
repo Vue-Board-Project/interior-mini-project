@@ -19,14 +19,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
    <link href="${pageContext.request.contextPath}/resources/css/cssHeaderAd.css" rel="stylesheet" type="text/css">
-   <script src="${pageContext.request.contextPath}/resources/js/jsHeaderAd.js"></script>
    <link href="${pageContext.request.contextPath}/resources/css/cssHeader.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssHeaderNav.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssFooter.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
-   <script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
    <link href="${pageContext.request.contextPath}/resources/css/cssFindPassword.css" rel="stylesheet" type="text/css">
-   <script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
    <script src="https://kit.fontawesome.com/6bc10c935c.js" crossorigin="anonymous"></script>
    
    <!-- 주소찾기 daum API -->

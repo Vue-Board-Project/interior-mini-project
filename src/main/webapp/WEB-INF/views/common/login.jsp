@@ -24,14 +24,18 @@
                  	<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
                      <div class="form-group"  style="width: 286px;">
                          <label for="email" class="ml-3" style="font-size: 12px;">이메일</label>
-                         <div class="ml-3"><input type="text" class="form-control" id="email" name="email"/></div>
-                         <!-- <small id="emailHelp" class="form-text text-muted"></small> -->
+                         <div class="ml-3">
+                         	<input type="text" class="form-control" id="email444" name="email"/>
+                        </div>
+                         <span align="left" class="error_next_box444 ml-3" style="color: red;"></span>
                      </div>
          
                      <div class="form-group" style="width: 286px;">
                          <label for="password" class="ml-3"  style="font-size: 12px;">비밀번호</label>
-                         <div class="ml-3"><input type="password" class="form-control" id="password" name="password"/></div>
-                         <!-- <small id="passwordHelp" class="form-text text-muted">알파벳 대소문자, 숫자를 혼용해서 8~16자</small> -->
+                         <div class="ml-3">
+                         	<input type="password" class="form-control" id="password444" name="password"/>
+                         </div>
+                         <span align="left" class="error_next_box444 ml-3" style="color: red;"></span>
                      </div>
 	            	 <div class="text-right mb-3 mr-3"><button type="button" id="find_pw_open" style="border: none; outline: none; background-color: #faf9f6; color: #a9a9a9;"><small>비밀번호를 잊으셨나요?</small></button></div>
 

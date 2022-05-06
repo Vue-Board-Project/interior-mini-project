@@ -17,4 +17,7 @@
         <%@ include  file="/WEB-INF/views/common/scroll.jsp"%>
         </div>
 </body>
+   <script src="${pageContext.request.contextPath}/resources/js/jsHeaderAd.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/jsLogin.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/jsFindPassword.js"></script>
 </html>
