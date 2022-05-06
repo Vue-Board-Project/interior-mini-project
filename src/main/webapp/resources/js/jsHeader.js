@@ -43,9 +43,9 @@ function hasScrolled() {
     } else {
         // Scroll Up
         console.log("Scroll Up");
-        if(st + $(window).height() < $(document).height()) {
-        	$('header').removeClass('nav-up').addClass('nav-down');
-        }
+        $('header').removeClass('nav-up').addClass('nav-down');
+        /*if(st + $(window).height() < $(document).height()) {
+        }*/
     }
     
     lastScrollTop = st;

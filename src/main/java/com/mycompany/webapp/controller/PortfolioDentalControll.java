@@ -74,6 +74,7 @@ public class PortfolioDentalControll {
 			model.addAttribute("interiorList", interiorList);
 			int cnt = interiorService.interiorCnt();
 			model.addAttribute("cnt", cnt);
+			log.info(interiorList);
 		} else {
 			List<InteriorDto> paramList = interiorService.interiorFilter(param);
 			JSONArray jsonArray = new JSONArray();

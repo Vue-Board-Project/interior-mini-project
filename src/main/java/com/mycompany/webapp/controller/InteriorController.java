@@ -118,7 +118,7 @@ public class InteriorController {
 	}
 	
 	@PostMapping("/interior/GointeriorDataUpload")
-	public String interiorDataUpload(InteriorDto interior) throws IllegalStateException, IOException {
+	public String interiorDataUpload(InteriorDto interior) {
 		  log.info("너 뭐.. 돼/");
 		  log.info(interior.getIno());
 		  log.info(interior.getItype());
@@ -130,7 +130,11 @@ public class InteriorController {
 			  log.info("너.. 뭐 돼..?");
 			  interior.setImImgPath(interior.getIMainImg().getOriginalFilename());
 				File file = new File("C:/Temp/portfolio/" + interior.getImImgPath());
-				interior.getIMainImg().transferTo(file);
+				try {
+					interior.getIMainImg().transferTo(file);
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
 				interiorService.insertInterior(interior);    }
 		 return "interior/interior";
 	}
