@@ -9,7 +9,7 @@
          
              <div>
              	 <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
-					<div id="failLogin" class="alert alert-danger mb-2" role="alert">
+					<div id="failLogin" class="alert alert-danger mb-2" style="width: 270px; margin: 0 auto; font-size: 12px;" role="alert">
 						<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
 						 	아이디 또는 비밀번호가 틀립니다.
 					 	</c:if>
