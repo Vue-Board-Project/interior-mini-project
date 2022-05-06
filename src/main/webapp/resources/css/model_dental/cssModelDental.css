@@ -8,9 +8,65 @@
 .model_dental_content_img{width: 300px; height: 200px; border-radius: 10px;}
 .model_dental_content_b{line-height: 3; width: 300px;}
 .model_dental_contenst_sm{line-height: 1;}
+.model_dental_content_img_div{ width: 300px; height: 200px; border-radius: 10px; }
+.model_dental_content_img_div {
+	box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+}
 
-/* CSS변화가 있을때 시간차를 줌 */
-/* .model_dental_content img{ transition: 0.3s; }
-.model_dental_content a:hover img, .model_dental_content a:focus img{ a태그에 마우스를 올렸을 때
-  transform: scale(1.2);
-} */
+.model_dental_content_img_div::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: .5s;
+    border-radius: 10px;
+}
+
+.model_dental_content_img_div .model_dental_content_img_div_content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: none;
+}
+
+.model_dental_content_img_div .model_dental_content_img_div_content::after,
+.model_dental_content_img_div .model_dental_content_img_div_content::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 54%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    width: 0%;
+    height: 0%;
+    border-color: white;
+    border-width: 2px;
+    transition: .5s;
+    z-index : 5;
+}
+
+ .model_dental_content_img_div .model_dental_content_img_div_content::after {
+    height: 100%;
+    border-style: solid none;
+}
+.model_dental_content_img_div .model_dental_content_img_div_content::before {
+    width: 100%;
+    border-style: none solid;
+}
+.model_dental_content_img_div:hover::after {
+    opacity: 1;
+}
+.model_dental_content_img_div:hover .model_dental_content_img_div_content::after,
+.model_dental_content_img_div:hover .model_dental_content_img_div_content::before {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    z-index : 10;
+} 
