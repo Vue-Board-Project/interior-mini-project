@@ -1,7 +1,9 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -20,8 +22,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +38,7 @@ import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
+import com.mycompany.webapp.dto.mypage.InteriorProgressFileDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
@@ -182,6 +188,9 @@ public class MyPageController {
 		}
 	 
 		 
+		 
+		 
+		 
 		 /* 인테리어 진행 내역 */
 		@RequestMapping("/mypage_interior_progress")
 		public String mypageInteriorProgress(@RequestParam(defaultValue = "0") int consultNo,  Authentication authentication, Model model){
@@ -191,10 +200,12 @@ public class MyPageController {
 				consultNo = mypageService.getLatestInteriorNo(email);
 			}
 			
-			log.info("consultNo : " + consultNo);
-			
 			InteriorProgressDto progress = mypageService.getProgressStep(consultNo);
 			model.addAttribute("progress", progress);
+			
+			List<InteriorProgressFileDto> step1File =  mypageService.getStep1Files(consultNo);
+			model.addAttribute("step1File", step1File);
+			log.info("step1 file : " + step1File);
 			
 			List<SolutionDto> solution = mypageService.getSolutionList(consultNo);
 			model.addAttribute("solution", solution);
@@ -208,7 +219,10 @@ public class MyPageController {
 			InteriorProgressDto step2 = mypageService.getProgressStep2(conNum);
 			model.addAttribute("step2", step2);
 			
-			log.info("step2 : " + step2);
+			List<InteriorProgressFileDto> step2File =  mypageService.getStep2Files(conNum);
+			model.addAttribute("step2File", step2File);
+			
+			
 			return "mypage/interiorProgress/interiorProgressStep2";
 		}
 		
@@ -220,6 +234,9 @@ public class MyPageController {
 			model.addAttribute("step3", step3);
 			log.info("step3 : " + step3);
 			
+			List<InteriorProgressFileDto> step3File =  mypageService.getStep3Files(conNum);
+			model.addAttribute("step3File", step3File);
+			
 			return "mypage/interiorProgress/interiorProgressStep3";
 		}
 		
@@ -229,6 +246,8 @@ public class MyPageController {
 			InteriorProgressDto step4 = mypageService.getProgressStep4(conNum);
 			model.addAttribute("step4", step4);
 	
+			List<InteriorProgressFileDto> step4File =  mypageService.getStep4Files(conNum);
+			model.addAttribute("step4File", step4File);
 			
 			return "mypage/interiorProgress/interiorProgressStep4";
 		}
@@ -239,6 +258,8 @@ public class MyPageController {
 			InteriorProgressDto step5 = mypageService.getProgressStep5(conNum);
 			model.addAttribute("step5", step5);
 	
+			List<InteriorProgressFileDto> step5File =  mypageService.getStep5Files(conNum);
+			model.addAttribute("step5File", step5File);
 			
 			return "mypage/interiorProgress/interiorProgressStep5";
 		}
@@ -246,11 +267,58 @@ public class MyPageController {
 		@RequestMapping("/step6")
 		public String ajaxInteriorProgressStep6(int conNum, Model model){
 
-			return "mypage/interiorProgress/interiorProgressStep5";
+			return "mypage/interiorProgress/interiorProgressStep6";
 		}
 			
 		 
-		 
+		//이전 방식
+		@RequestMapping("/mypage_interior_progress/fileList")
+		public String fileList() {
+			
+			log.info("파일을 읽어와야 합니다ㅠㅠ");
+			return "mypageFileListView";
+		}
+		
+		
+		@RequestMapping("/filedownload")
+		public void filedownload(String fileName, HttpServletResponse response, @RequestHeader("User-Agent") String userAgent) throws Exception {
+			//DB에서 가져올 정보
+			String contentType = "application/pdf";
+			String originalFilename = fileName;
+			String saveFilename = fileName;
+			
+			//응답 내용의 데이터 타입을 응답 헤더에 추가
+			response.setContentType(contentType);
+			
+			//다운로드할 파일명을 헤더에 추가
+			if(userAgent.contains("Trident") || userAgent.contains("MSIE")) {
+				//IE 브라우저일 경우
+				originalFilename = URLEncoder.encode(originalFilename, "UTF-8");
+			}else {
+				//크롬, 엣지, 사파리인 경우
+				originalFilename = new String(originalFilename.getBytes("UTF-8"), "ISO-8859-1");
+			}
+			response.setHeader("Content-Disposition", "attachment; filename = \"" + originalFilename + "\"");
+			
+			//파일 데이터를 응답 본문에 실기
+			File file = new File("C:/Temp/mypage/" + saveFilename);
+			if(file.exists()) {
+				FileCopyUtils.copy(new FileInputStream(file), response.getOutputStream());
+			}
+		}
+		
+		
+		/*
+		 * @RequestMapping("/mypage_interior_progress/fileDownload") public String
+		 * fileDownload(@ModelAttribute String fileName,
+		 * 
+		 * @ModelAttribute("userAgent") @RequestHeader("user=Agent") String userAgent) {
+		 * 
+		 * log.info("파일을 읽어와야 합니다22222222222222222ㅠㅠ"); return "mypageFileDownloadView";
+		 * }
+		 */
+		
+		
 		 
 	 /***** 		개인정보 수정 창			*******/
 	 /*개인정보 수정 처음 데이터 읽어오는 코드*/

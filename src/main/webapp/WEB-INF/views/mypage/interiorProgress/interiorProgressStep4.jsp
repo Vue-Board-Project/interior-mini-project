@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 추가요청사항 작성 div  -->
 	<section style="width: 100%;"  class="mb-5">
@@ -20,15 +21,14 @@
 				<h3>첨부파일목록</h3>
 			</div>
 			<div>
+			<c:forEach var="step4File" items="${step4File}">
 				<div class="p-3 mb-2 mypage_interior_add_file_div">
-					<span>확정레이아웃.pdf</span><button class="btn btn-sm btn-secondary">down</button>
+					<span>${step4File.filename}</span>
+					<a href='filedownload?fileName=${step4File.filename}'>
+						<button class="btn btn-sm btn-secondary">down</button>
+					</a>
 				</div>
-				<div class="p-3 mb-2 mypage_interior_add_file_div">
-					<span>확정레이아웃.pdf</span><button class="btn btn-sm btn-secondary">down</button>
-				</div>
-				<div class="p-3 mb-2 mypage_interior_add_file_div">
-					<span>확정레이아웃.pdf</span><button class="btn btn-sm btn-secondary">down</button>
-				</div>
+			</c:forEach>
 			</div>
 		</div>
 	</section>

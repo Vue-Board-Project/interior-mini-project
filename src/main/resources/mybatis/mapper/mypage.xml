@@ -175,6 +175,13 @@
         	i.CONSULT_NO = #{consultNo}
 	</select>
 	
+	<select id = "getStep1Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 1 and 
+		consult_no = #{consultNo}
+	</select>
+	
 	<select id = "getSolutionList" parameterType="int" resultType="mpSolution">
 	select SCONTENT
 	from solution
@@ -187,10 +194,24 @@
 	where CONSULT_NO = #{conNum}
 	</select>
 	
+	<select id = "getStep2Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 2 and 
+		consult_no = #{conNum}
+	</select>
+	
 	<select id = "getProgressStep3" parameterType="int" resultType="mpProgress">
 		select E_EXPECTED_DATE as eexpectedDate, E_USER_REQUEST as euserRequest
 		from interior_progress
 		where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getStep3Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 3 and 
+		consult_no = #{conNum}
 	</select>
 	
 	<select id = "getProgressStep4" parameterType="int" resultType="mpProgress">
@@ -199,10 +220,24 @@
 	    where CONSULT_NO = #{conNum}
 	</select>
 	
+	<select id = "getStep4Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 4 and 
+		consult_no = #{conNum}
+	</select>
+	
 	<select id = "getProgressStep5" parameterType="int" resultType="mpProgress">
 		select C_FINISH_FEEDBACK as cfinishFeedback
 	    from INTERIOR_PROGRESS
 	    where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getStep5Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 5 and 
+		consult_no = #{conNum}
 	</select>
 	
 	<select id="selectByAsPage" parameterType="pager" resultType="asList">

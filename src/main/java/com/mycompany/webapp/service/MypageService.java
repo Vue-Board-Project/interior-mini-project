@@ -16,6 +16,7 @@ import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
+import com.mycompany.webapp.dto.mypage.InteriorProgressFileDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
@@ -189,6 +190,12 @@ public class MypageService {
 		// TODO Auto-generated method stub
 		return mypageDao.getProgressStep(consultNo);
 	}
+	
+	public List<InteriorProgressFileDto> getStep1Files(int consultNo) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep1Files(consultNo);
+	}
+
 
 	public int getLatestInteriorNo(String email) {
 		// TODO Auto-generated method stub
@@ -202,26 +209,47 @@ public class MypageService {
 
 	public InteriorProgressDto getProgressStep2(int conNum) {
 		// TODO Auto-generated method stub
-		log.info("int 형 잘 가고 있나요...??? : " + conNum);
+
 		return mypageDao.getProgressStep2(conNum);
 	}
+	
+	public List<InteriorProgressFileDto> getStep2Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep2Files(conNum);
+	}
+
 
 	public InteriorProgressDto getProgressStep3(int conNum) {
 		// TODO Auto-generated method stub
 		return  mypageDao.getProgressStep3(conNum);
 	}
-
+	
+	public List<InteriorProgressFileDto> getStep3Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep3Files(conNum);
+	}
+	
 	public InteriorProgressDto getProgressStep4(int conNum) {
 		// TODO Auto-generated method stub
 		return mypageDao.getProgressStep4(conNum);
 	}
+	
+	public List<InteriorProgressFileDto> getStep4Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep4Files(conNum);
+	}
+
 
 	public InteriorProgressDto getProgressStep5(int conNum) {
 		// TODO Auto-generated method stub
 		return mypageDao.getProgressStep5(conNum);
 	}
 
+	public List<InteriorProgressFileDto> getStep5Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep5Files(conNum);
+	}
 
-
+	
 	
 }

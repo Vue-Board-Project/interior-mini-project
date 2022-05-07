@@ -277,15 +277,14 @@
 											<h3>첨부파일목록</h3>
 										</div>
 										<div>
-											<div class="p-3 mb-2 mypage_interior_add_file_div">
-												<span>확정레이아웃.pdf</span><button class="btn btn-sm btn-secondary">down</button>
-											</div>
-											<div class="p-3 mb-2 mypage_interior_add_file_div">
-												<span>확정레이아웃.pdf</span><button class="btn btn-sm btn-secondary">down</button>
-											</div>
-											<div class="p-3 mb-2 mypage_interior_add_file_div">
-												<span>확정레이아웃.pdf</span><button class="btn btn-sm btn-secondary">down</button>
-											</div>
+										<c:forEach var="step1File" items="${step1File}">
+												<div class="p-3 mb-2 mypage_interior_add_file_div">
+													<span>${step1File.filename}</span>
+													<a href='filedownload?fileName=${step1File.filename}'>
+														<button class="btn btn-sm btn-secondary">down</button>
+													</a>
+												</div>
+											</c:forEach>
 										</div>
 									</div>
 								</section>
