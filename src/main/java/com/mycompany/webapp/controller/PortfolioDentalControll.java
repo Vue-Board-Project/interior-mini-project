@@ -81,6 +81,9 @@ public class PortfolioDentalControll {
 			for(InteriorDto s : paramList) {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("ino",s.getIno());
+				jsonObject.put("ihits",s.getIhits());
+				jsonObject.put("istyle",s.getIstyle());
+				jsonObject.put("allColor",s.getAllColor());
 				jsonObject.put("isummary",s.getIsummary());
 				jsonObject.put("imImgPath",s.getImImgPath());
 				jsonArray.put(jsonObject);

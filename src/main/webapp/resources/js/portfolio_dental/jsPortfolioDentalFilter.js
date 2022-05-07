@@ -55,8 +55,11 @@ $(document).ready(function(){
 				result += '<div class="portfolio_dental_content_img_div">';
 				result += '<img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName='+item.imImgPath+'"/>';
 				result += '</div>';
+				result += '<div style="position: relative">';
 				result += '<b class="mt-3 portfolio_dental_content_b">'+item.isummary+'</b>';
-				result += '<small class="d-block portfolio_dental_content_sm">mansik</small>';
+				result += '<div style="position:absolute; width: 70px; top: 10px;"><i class="fa-regular fa-heart"></i><span class="ml-1">'+item.ihits+'</span></div>';
+				result += '<small class="d-block portfolio_dental_content_sm"><span># '+item.istyle+'</span> <span># '+item.allColor+'</span></small>';
+				result += '</div>';
 				result += '</a></li>';
 			}
 			result += '</ul>';

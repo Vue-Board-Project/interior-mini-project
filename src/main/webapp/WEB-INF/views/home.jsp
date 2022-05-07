@@ -8,6 +8,7 @@
 .portfolio_dental_content_cnt_p{line-height: 0; margin:0; padding:0;}
 .portfolio_dental_content_b{line-height: 3;}
 .portfolio_dental_content_sm{line-height: 1;}
+.portfolio_dental_content_sm span{background-color: rgba(0,0,0,.2); border-radius: 10px; padding: 0 5px;}
 .portfolio_dental_content_img{width: 350px; height: 200px;}
 .portfolio_dental_content{
 	width: 350px;
@@ -69,7 +70,7 @@
 	                    <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${list.ino}" class="portfolio_dental_content_a">
 	                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${list.imImgPath}"/>
 	                        <b class="mt-3 ml-5 mr-5 portfolio_dental_content_b">${list.isummary}</b>
-	                        <small class="d-block portfolio_dental_content_sm">mansik</small>
+	                        <small class="d-block portfolio_dental_content_sm"><span># ${list.istyle}</span> <span># ${list.allColor}</span></small>
 	                    </a>
 	                </li>
 	            </c:forEach>

@@ -7,7 +7,8 @@
 .model_dental_content_a:hover{text-decoration: none; color: black;}
 .model_dental_content_img{width: 300px; height: 200px; border-radius: 10px;}
 .model_dental_content_b{line-height: 3; width: 300px;}
-.model_dental_contenst_sm{line-height: 1;}
+.model_dental_content_sm{line-height: 1;}
+.model_dental_content_sm span{background-color: rgba(0,0,0,.2); border-radius: 10px; padding: 0 5px;}
 .model_dental_content_img_div{ width: 300px; height: 200px; border-radius: 10px; }
  .model_dental_content_img_div {
 	box-sizing: border-box;

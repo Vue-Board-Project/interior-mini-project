@@ -20,7 +20,7 @@
 	
 	<!-- 포폴 필터 -->
 	<select id="interiorFilter" resultType="Interior" parameterType="java.util.HashMap">
-		SELECT ino, isummary, im_img_path as imImgPath
+		SELECT ino, ihits, istyle, all_color as allColor, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio'
 		<choose>
 			<when test="istyle == null">
@@ -66,14 +66,14 @@
 	
 	<!-- 포폴 리스트 -->
 	<select id="interiorList" resultType="Interior">
-		SELECT ino, isummary, im_img_path as imImgPath
+		SELECT ino, ihits, istyle, all_color as allColor, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' 
 		order by ino desc
 	</select>
 	
 	<!-- 포폴 베스트 리스트 -->
 	<select id="interiorBestList" resultType="Interior">
-		SELECT ino, isummary, im_img_path as imImgPath
+		SELECT ino, istyle, all_color as allColor, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='portfolio' 
 		order by ihits desc
 	</select>
@@ -96,13 +96,13 @@
 	
 	<!-- 모델 리스트 -->
 	<select id="modelList" resultType="Interior">
-		SELECT ino, isummary, im_img_path as imImgPath
+		SELECT ino, ihits, istyle, all_color as allColor, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='model' 
 		order by ino desc
 	</select>
 	<!-- 모델 필터 -->
 	<select id="modelFilter" resultType="Interior" parameterType="java.util.HashMap">
-		SELECT ino, isummary, im_img_path as imImgPath
+		SELECT ino, ihits, istyle, all_color as allColor, isummary, im_img_path as imImgPath
 		FROM interior WHERE itype='model'
 		<choose>
 			<when test="istyle == null">

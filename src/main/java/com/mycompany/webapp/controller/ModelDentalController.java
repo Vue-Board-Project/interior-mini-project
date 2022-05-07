@@ -67,6 +67,9 @@ public class ModelDentalController {
 			for(InteriorDto s : paramList) {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("ino",s.getIno());
+				jsonObject.put("ihits",s.getIhits());
+				jsonObject.put("istyle",s.getIstyle());
+				jsonObject.put("allColor",s.getAllColor());
 				jsonObject.put("isummary",s.getIsummary());
 				jsonObject.put("imImgPath",s.getImImgPath());
 				jsonArray.put(jsonObject);
@@ -95,6 +98,7 @@ public class ModelDentalController {
 			log.info("interiorDList2 : " + s);
 		}
 		model.addAttribute("interiorDList2", interiorDList2);
+		interiorService.updateCnt(ino);
 		return "model_dental/model_dental_detail2";
 	}
 	
