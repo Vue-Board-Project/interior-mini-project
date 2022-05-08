@@ -21,14 +21,16 @@ public class SecurityUserDetails extends User {
 			String address,
 			String addressDetail,
 			String crn,
-			List<GrantedAuthority> mauthorities) {
-		super(email, password, true, true, true, true, mauthorities);
+			List<GrantedAuthority> mauthorities,
+			boolean enabled) {
+		super(email, password, enabled, true, true, true, mauthorities);
 		this.name=name;
 		this.phone=phone;
 		this.postcode=postcode;
 		this.address=address;
 		this.addressDetail=addressDetail;
 		this.crn=crn;
+		
 	}
 	public String getName() {
 		return name;

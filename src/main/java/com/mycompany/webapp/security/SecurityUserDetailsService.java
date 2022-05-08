@@ -45,8 +45,9 @@ public class SecurityUserDetailsService implements UserDetailsService {
 				users.getAddress(),
 				users.getAddressDetail(),
 				users.getCrn(),
-				authorities);
-		
+				authorities,
+				users.isEnabled());
+	
 		return userDetails;
 	}
 }

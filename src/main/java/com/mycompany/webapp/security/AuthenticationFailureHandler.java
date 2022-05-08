@@ -15,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
+import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.service.UsersService;
 
 import lombok.extern.log4j.Log4j2;
@@ -48,15 +49,24 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
 		request.getParameter(email);
 		request.setAttribute(email, email);
 		
-		log.info(request.getParameter(email));
+		//log.info(request.getParameter(email));
 		
 		if(exception instanceof BadCredentialsException) {
-			loginFailureCount(request.getParameter(email));
+			log.info("email: "+request.getParameter(email));
+			UsersDto dbUsers = usersService.selectByEmail(request.getParameter(email));
+			if(dbUsers != null) {
+				loginFailureCount(request.getParameter(email));				
+				log.info("되냐~?");
+			} else {
+				log.info("안뇽ㅎㅎ");
+			}
 		}
+		log.info(exception);
 		/*exception.printStackTrace();*/
 		super.onAuthenticationFailure(request, response, exception);
 	}
 	private void loginFailureCount(String email) {
+		log.info("되냐고~~~?");
 		usersService.countFailure(email);
 		int cnt = usersService.checkFailureCount(email);
 		if(cnt==3) {

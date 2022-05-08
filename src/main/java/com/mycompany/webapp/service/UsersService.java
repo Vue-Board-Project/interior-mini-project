@@ -162,7 +162,7 @@ public class UsersService {
 		usersDao.updateFailureCount(email);
 	}
 
-	public int checkFailureCount(String email) {
+	public Integer checkFailureCount(String email) {
 		return usersDao.checkFailureCount(email);
 	}
 
@@ -176,6 +176,10 @@ public class UsersService {
 
 	public int getIsEnabled(String email) {
 		return usersDao.getIsEnabled(email);
+	}
+	
+	public UsersDto selectByEmail(String email) {
+		return usersDao.selectByEmail(email);
 	}
 	
 }

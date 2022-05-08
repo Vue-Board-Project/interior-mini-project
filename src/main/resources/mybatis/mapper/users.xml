@@ -6,13 +6,13 @@
 	<!-- 회원가입 -->
 	<insert id="insert" parameterType="users">
 		INSERT INTO users
-		(email, password, name, phone, postcode, address, address_detail, crn, role)
-		VALUES (#{email}, #{password}, #{name}, #{phone}, #{postcode}, #{address}, #{addressDetail}, #{crn}, 'USER')
+		(email, password, name, phone, postcode, address, address_detail, crn, role, FAILURE_CNT, enabled)
+		VALUES (#{email}, #{password}, #{name}, #{phone}, #{postcode}, #{address}, #{addressDetail}, #{crn}, 'USER', 0, #{enabled})
 	</insert>
 	
 	<!-- 이메일로 셀렉트 -->
 	<select id="selectByEmail" parameterType="string" resultType="users">
-		SELECT email, password, name, phone, postcode, address, address_detail, crn, role
+		SELECT email, password, name, phone, postcode, address, address_detail, crn, role, FAILURE_CNT as failureCnt, enabled
 		FROM users
 		WHERE email = #{email}
 	</select>
@@ -34,7 +34,7 @@
 	<!-- getIsEnabled -->
 	<select id="getIsEnabled" resultType="Integer">
 			SELECT
-                IS_ENABLED
+                enabled
             FROM
                 users
             WHERE
@@ -61,14 +61,14 @@
             UPDATE
                 users
             SET
-                FAILURE_CNT = 0<!-- , IS_ENABLED = CASE WHEN IS_ENABLED = 0 THEN 1 END -->
+                FAILURE_CNT = 0<!-- , enabled = CASE WHEN IS_ENABLED = 0 THEN 1 END -->
             WHERE
                 email = #{email}
     </update>
 
 	<update id="disabledUsername" parameterType="String" >
 		UPDATE users
-		SET is_enabled = 0
+		SET enabled = 0
 		WHERE email = #{email}
 	</update>
 

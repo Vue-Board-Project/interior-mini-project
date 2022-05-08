@@ -46,6 +46,10 @@ public class SignUpController {
 		log.info(users.getEmail());
 		log.info(users.getPhone());
 		log.info("join running");
+		
+		//활성화 설정
+		users.setEnabled(true);
+		
 		//회원 가입 처리
 		JoinResult jr = usersService.join(users);
 		if(jr == JoinResult.SUCCESS) {

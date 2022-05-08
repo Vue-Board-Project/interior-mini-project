@@ -40,11 +40,12 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
 			Authentication authentication) throws IOException, ServletException {
 		logger.info("실행");
 		
+		log.info(authentication.getName());
 		// IS_ENABLED = 0 일때 예외 발생
-		if(usersService.getIsEnabled(authentication.getName())==0) {
+		/*if(usersService.getIsEnabled(authentication.getName())==0) {
 			log.info(authentication.getName());
 			throw new DisabledException(authentication.getName());
-		}
+		}*/
 		
 		// 로그인 성공시 실패 카운트 초기화 
 		usersService.clearFailureCount(authentication.getName());
