@@ -20,16 +20,16 @@
 	     	
 	   <table class="table table-sm table-bordered" id = "mypage_table_remodeling_list">
          <tr>
-            <th style="width:30px">접수번호</th>
-            <th style="width:270px">스타일</th>
-            <th style="width:70px">상담일자</th>
+            <th style="width:10%; padding-left:10px;">접수번호</th>
+            <th style="width:70%; padding-left:10px;">스타일</th>
+            <th style="width:20%; padding-left:10px;">상담일자</th>
          </tr>
          
          <c:forEach var="userRemodelingList" items="${userRemodelingList}">
             <tr>
-               <td>${userRemodelingList.consultNo}</td>
-               <td><a href="mypage_interior_list?consultNo=${userRemodelingList.consultNo}" style = "text-decoration : none; color : black;"><b>${userRemodelingList.consultInteriorStyle}</b></a></td>
-               <td><fmt:formatDate value="${userRemodelingList.consultDate}" pattern="yyyy-MM-dd"/> ${userRemodelingList.consultTime}</td>
+               <td style="padding-left:10px;">${userRemodelingList.consultNo}</td>
+               <td style="padding-left:10px;"><a href="javascript:void(0)" onClick="showRemodelingPopup(${userRemodelingList.consultNo})" style = "text-decoration : none; color : black;"><b>${userRemodelingList.consultInteriorStyle}</b></a></td>
+               <td style="padding-left:10px;"><fmt:formatDate value="${userRemodelingList.consultDate}" pattern="yyyy-MM-dd"/> ${userRemodelingList.consultTime}</td>
             </tr>
          </c:forEach>
          
@@ -66,7 +66,7 @@
 			
 
 </div>
-
+<%@ include file="/WEB-INF/views/mypage/counseling/mypage_remodeling_popup_cover.jsp" %>
 <style>
 
 
@@ -92,14 +92,41 @@
     	background-image : url("${pageContext.request.contextPath}/resources/images/mypage/mypage_counseling_remodeling.jpg");
     	background-size: cover;
 		background-repeat: no-repeat;
-		width : 95%;
+		width : 96%;
 		height : 95%;
     	color : #fff;
     	border-radius : 20px;
 	}
 
-        
+     
+    #mypage_table_remodeling_list{
+     	width : 96%;
+		margin-top : 30px;
+    }  
 </style>
+
+<script>
+
+function showRemodelingPopup(number) {
+	 $(".mypage_remodeling_popup_wrap").css("display", "block");
+	 $("#mypage_counseling_mask").css("display", "block"); 
+	 
+	 $('input[name=inputNm]').attr('value',number);
+	 ajaxRemodeling();
+}
+
+$(document).ready(function(){
+	
+	 $("#mypage_remodeling_popup_close").click(function(){
+	 $(".mypage_remodeling_popup_wrap").css("display", "none");
+	 $("#mypage_counseling_mask").css("display", "none");
+	});
+});
+
+
+
+
+</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

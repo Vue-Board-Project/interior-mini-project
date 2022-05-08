@@ -104,6 +104,23 @@
 		 ]]>
 	</select>
 	
+	<!-- 상담내역 개별 읽어오기 -->
+	<select id = "getMainConElement" parameterType= "int" resultType="MainConsult">
+	SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+		    CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+		    CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, INO, CONSTRUCTION_DATE as constructionDate
+	FROM MAIN_CONSULT
+	where CONSULT_NO = #{selNum}
+	</select>
+	
+	<!-- 리모델링 내역 개별(팝업창) 읽어오기 -->
+	<select id = "getremodelingElement" parameterType= "int" resultType="MainConsult">
+	SELECT CONSULT_NO as consultNo, CONSULT_ACREAGE as consultAcreage, CONSULT_INTERIOR_STYLE as consultInteriorStyle,
+		    CONSULT_REQUEST as consultRequest, CONSULT_DATE as consultDate, CONSULT_TIME as consultTime,
+		    CONSULT_ADDRESS as consultAddress, CONSULT_TYPE as consultType, INO, CONSTRUCTION_DATE as constructionDate
+	FROM MAIN_CONSULT
+	where CONSULT_NO = #{selNum}
+	</select>
 	<!-- 리모델링내역(과거내역리스트) 창  -->
 	<select id = "getTotalUserRemodelingList" parameterType="string" resultType="int">
 		select count(*) 
@@ -134,6 +151,110 @@
 		 ]]>
 	</select>
 	
+	<!-- 인테리어 진행내역 getLatestInteriorNo-->
+	<select id="getLatestInteriorNo" parameterType="String" resultType="int">
+	  select consultNo
+		from 
+		( SELECT CONSULT_NO as consultNo
+		   FROM MAIN_CONSULT
+		   where  CONSULT_TYPE = 1 and
+		    EMAIL = #{email}
+		    ORDER BY CONSULT_DATE desc, CONSULT_TIME desc )
+		where rownum = 1
+	</select>
+	
+	<select id="getProgressStep" parameterType="int" resultType="mpProgress">
+	   select m.CONSULT_NO as intConsultNo, m.EMAIL as stringEmail, 
+		   P_EXPECTED_DATE as pexpectedDate, E_EXPECTED_DATE as eexpectedDate,
+		   E_EXPECTED_DATE + (INTERVAL '3' MONTH) as eexpectedFinDate,
+		    C_START_DATE as cstartDate, C_END_DATE as cendDate,
+		     C_END_DATE + (INTERVAL '2' YEAR) as asEndDate,
+	        CONSULT_ACREAGE as acreage, CONSULT_INTERIOR_STYLE as style, CONSULT_REQUEST as request,
+	        DENTAL_DRAWING as dentalDrawing
+		from INTERIOR_PROGRESS i, MAIN_CONSULT m
+		where i.CONSULT_NO = m.CONSULT_NO and
+        	i.CONSULT_NO = #{consultNo}
+	</select>
+	
+	<select id = "getStep1Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 1 and 
+		consult_no = #{consultNo}
+	</select>
+	
+	<select id = "getSolutionList" parameterType="int" resultType="mpSolution">
+	select SCONTENT
+	from solution
+	where CONSULT_NO = #{consultNo}
+	</select>
+	
+	<select id = "getProgressStep2" parameterType="int" resultType="mpProgress">
+	select CONSULT_NO, E_EXPECTED_DATE as eexpectedDate, P_USERFEEDBACK as puserFeedback
+	from interior_progress
+	where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getStep2Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 2 and 
+		consult_no = #{conNum}
+	</select>
+	
+	<select id = "getProgressStep3" parameterType="int" resultType="mpProgress">
+		select E_EXPECTED_DATE as eexpectedDate, E_USER_REQUEST as euserRequest
+		from interior_progress
+		where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getStep3Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 3 and 
+		consult_no = #{conNum}
+	</select>
+	
+	<select id = "getPortfolioList" parameterType="int" resultType="mPreference">
+		SELECT r.ino, isummary as stringISummary, im_img_path as stringImImgPath
+		FROM REFERENCE_MODEL r, interior i
+		WHERE r.ino = i.ino and
+		CONSULT_NO =  #{conNum}
+	</select>
+	
+	<select id = "getProgressStep4" parameterType="int" resultType="mpProgress">
+		select C_MIDDLE_FEEDBACK as cmiddleFeedback
+	    from INTERIOR_PROGRESS
+	    where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getStep4Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 4 and 
+		consult_no = #{conNum}
+	</select>
+	
+	<select id = "getProgressStep5" parameterType="int" resultType="mpProgress">
+		select C_FINISH_FEEDBACK as cfinishFeedback
+	    from INTERIOR_PROGRESS
+	    where CONSULT_NO = #{conNum}
+	</select>
+	
+	<select id = "getStep5Files" parameterType="int" resultType="mpProgressFile">
+		select filename 
+		from interior_progress_file
+		where interior_step = 5 and 
+		consult_no = #{conNum}
+	</select>
+	
+	<select id = "getProgressStep6" parameterType="int" resultType="int">
+		select ino 
+		from INTERIOR_PROGRESS 
+		where CONSULT_NO = #{conNum}
+	</select>
+	
+	
 	<select id="selectByAsPage" parameterType="pager" resultType="asList">
 		<![CDATA[ SELECT rnum, receiptNumber, productName, EMAIL, applicationDate
 		    from(
@@ -154,6 +275,7 @@
 			)   
 		WHERE ROWNUM = 1 
 	</select>
+	
 	<!-- 개인정보 수정 창 -->
 	<select id = "getMpUserInfo" parameterType="string" resultType="users">
 	select name, email, phone, crn
@@ -183,12 +305,13 @@
 	
 	<select id = "getPurchaseList" parameterType="pager" resultType="purchase">
 		<![CDATA[  
-		SELECT rnum, purchaseNumber, purchaseDate, email, deliveryManagement
+		SELECT rnum, purchaseNumber, purchaseDate, email, deliveryManagement, paymentAmount, purchaseQuantity
 		    from(
-		    	SELECT ROWNUM as rnum, purchaseNumber, purchaseDate, email, deliveryManagement
+		    	SELECT ROWNUM as rnum, purchaseNumber, purchaseDate, email, deliveryManagement, paymentAmount, purchaseQuantity
 			    FROM (
-				        SELECT PURCHASE_NUMBER as purchaseNumber, PURCHASE_DATE as purchaseDate, 
-                                email, DELIVERY_MANAGEMENT as deliveryManagement
+				        SELECT  PURCHASE_NUMBER as purchaseNumber, PURCHASE_DATE as purchaseDate, 
+                                email, DELIVERY_MANAGEMENT as deliveryManagement,
+                                PAYMENT_AMOUNT as paymentAmount, PURCHASE_QUANTITY as purchaseQuantity
 				        from purchase
                         where email = #{stringEmail}
 				        ORDER BY purchaseNumber DESC 
@@ -250,7 +373,8 @@
 				<result column = "ADDRESS" property = "address" />
 			</association>
 	</resultMap>
-<!-- 수정 필수!!!! 하나로 합쳐야 함!!!! 시작 -->
+	
+	
 	<select id="getAsInfoDetail" parameterType="int" resultMap="seleceASWithUserResultMap">
 		select 
 		   RECEIPT_NUMBER, APPLICATION_DATE, SCHEDULED_SERVICE_DATE, PRODUCT_NAME, MODEL_NUMBER,
@@ -259,8 +383,7 @@
 		FROM AFTERSERVICE a, USERS u
 		WHERE a.EMAIL = u.EMAIL and RECEIPT_NUMBER = #{receiptNo}
 	</select>
-	
-	<!-- 수정 필수!!!! 하나로 합쳐야 함!!!!끌  -->
+
 	
 	
 	<!-- 리뷰 관리 창 -->
@@ -288,11 +411,13 @@
 			<result column = "PURCHASE_NUMBER" property = "purchaseNumber" />
 			<result column = "MODEL_NUMBER" property = "modelNumber" />
 			<result column = "EMAIL" property = "email" />
+			<result column = "REVIEW_TITLE" property = "reviewTitle" />
+			<result column = "REVIEW_CONTENT" property = "email" />
 			<association property="purchase" javaType="purchase">
 				<result column = "PURCHASE_DATE" property = "purchaseDate" />
-				<result column = "DELIVERY_MANAGEMENT" property = "deliveryManagement" />
+				<!-- <result column = "DELIVERY_MANAGEMENT" property = "deliveryManagement" /> -->
 				<result column = "PURCHASE_QUANTITY" property = "purchaseQuantity" />
-				<result column = "PAYMENT_AMOUNT" property = "paymentAmount" />
+				<!-- <result column = "PAYMENT_AMOUNT" property = "paymentAmount" /> -->
 			</association>
 			<association property="product" javaType="product">
 				<result column = "product_name" property = "productName" />
@@ -300,17 +425,22 @@
 	</resultMap>
 	
 	<select id="getReviewBeforeList" parameterType="pager" resultMap="seleceReviewWithPurandProd">
-		select  p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, PAYMENT_AMOUNT, 
-	      	 p.PURCHASE_QUANTITY, r.model_number,
-           	 d.product_name
-		from purchase p, review r, product d
-		where p.email = #{stringEmail} and  
-			DELIVERY_MANAGEMENT = '배송완료' and
-			r.model_number = d.model_number and
-			r.PURCHASE_NUMBER != p.PURCHASE_NUMBER
+	<![CDATA[ 
+	SELECT rnum, PURCHASE_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY
+		    from(
+		    	SELECT ROWNUM as rnum, PURCHASE_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY
+			    FROM (
+                    select p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.PURCHASE_QUANTITY
+					from purchase p, review r
+					where p.email =  #{stringEmail} and  
+						r.PURCHASE_NUMBER != p.PURCHASE_NUMBER AND
+   					 	DELIVERY_MANAGEMENT = '배송완료'
+			     )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >=#{startRowNo}
+		]]>
 	</select>
 	
-	<!-- 리뷰 작성 이후 창 getTotalReviewAfterNum getReviewAfterList-->
+	<!-- 리뷰 작성 이후 창 -->
 	<select id="getTotalReviewAfterNum" parameterType="string" resultType="int">
 		select  count(*)
 		from purchase p, review r, product d
@@ -320,13 +450,21 @@
 	</select>
 	
 	<select id="getReviewAfterList" parameterType="pager" resultType="mReview">
-		select  r.PURCHASE_NUMBER as purchaseNumber, p.email, 
-			r.model_number as modelNumber, REVIEW_TITLE as reviewTitle, REVIEW_CONTENT as reviewContent, 
-			REVIEW_WRITE_DATE as reviewWriteDate, d.product_name as stringProductName 
-		from purchase p, review r, product d
-		where p.email = #{stringEmail} and 
-			r.model_number = d.model_number and
-			r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+		<![CDATA[ 
+	SELECT rnum, modelNumber, stringProductName, reviewTitle, reviewContent
+		    from(
+		    	SELECT ROWNUM as rnum, modelNumber, stringProductName, reviewTitle, reviewContent
+			    FROM (
+                    select d.MODEL_NUMBER as modelNumber, d.product_name as stringProductName,
+					 	r.REVIEW_TITLE as reviewTitle, r.REVIEW_CONTENT as reviewContent
+					from purchase p, review r, product d
+					where p.email = #{stringEmail} and  
+					    DELIVERY_MANAGEMENT = '배송완료' and
+					    r.model_number = d.model_number and
+					    r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+			      )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >=#{startRowNo}
+		]]>
 	</select>
 	
 	

@@ -20,16 +20,17 @@
 	     	
 	   <table class="table table-sm table-bordered" id = "mypage_table_interior_list">
          <tr>
-            <th style="width:30px">접수번호</th>
-            <th style="width:270px">스타일</th>
-            <th style="width:70px">상담일자</th>
+            <th style="width:10%; padding-left:10px;">접수번호</th>
+            <th style="width:70%; padding-left:10px;">스타일</th>
+            <th style="width:20%; padding-left:10px;">상담일자</th>
          </tr>
          
          <c:forEach var="userInteriorList" items="${userInteriorList}">
             <tr>
-               <td>${userInteriorList.consultNo}</td>
-               <td><a href="mypage_interior_list?consultNo=${userInteriorList.consultNo}" style = "text-decoration : none; color : black;"><b>${userInteriorList.consultInteriorStyle}</b></a></td>
-               <td><fmt:formatDate value="${userInteriorList.consultDate}" pattern="yyyy-MM-dd"/> ${userInteriorList.consultTime}</td>
+               <td style="padding-left:10px;">${userInteriorList.consultNo}</td>
+               <td style="padding-left:10px;"><a href="javascript:void(0)" onClick="showInteriorPopup(${userInteriorList.consultNo})" style = "text-decoration : none; color : black;">
+               <b>${userInteriorList.consultInteriorStyle}</b></a></td>
+               <td style="padding-left:10px;"><fmt:formatDate value="${userInteriorList.consultDate}" pattern="yyyy-MM-dd"/> ${userInteriorList.consultTime}</td>
             </tr>
          </c:forEach>
          
@@ -66,7 +67,10 @@
 			
 
 </div>
+<%-- <%@ include file="/WEB-INF/views/mypage/myinfo_counsel_detail_popup.jsp" %> --%>
+<%@ include file="/WEB-INF/views/mypage/counseling/myinfo_counsel_popup_cover.jsp" %>
 
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 <style>
 
 
@@ -91,16 +95,42 @@
     	background-image : url("${pageContext.request.contextPath}/resources/images/mypage/mypage_osstem_interior_logo.png");
     	background-size: cover;
 		background-repeat: no-repeat;
-		width : 95%;
+		width : 96%;
 		height : 95%;
     	color : #fff;
     	border-radius : 20px;
 	}
+	
+	#mypage_table_interior_list {
+		width : 96%;
+		margin-top : 30px;
+	}
 
-
-    
         
 </style>
+
+<script>
+
+function showInteriorPopup(number) {
+	 $(".mypage_interior_popup_wrap").css("display", "block");
+	 $("#mypage_counseling_mask02").css("display", "block"); 
+	 
+	 $('input[name=inputNm]').attr('value',number);
+	 ajaxInterior();
+}
+
+$(document).ready(function(){
+	
+	 $("#mypage_counseling_popup_close").click(function(){
+	 $(".mypage_interior_popup_wrap").css("display", "none");
+	 $("#mypage_counseling_mask02").css("display", "none");
+	});
+});
+
+
+
+
+</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 

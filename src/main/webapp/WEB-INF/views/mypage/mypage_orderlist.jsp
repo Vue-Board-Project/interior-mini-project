@@ -42,18 +42,18 @@
 	     			<div class= "product_list_element">
 	     				<div class = "element_img_slot">
 	     					<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
-	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_orderlist.png" />
+	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png" />
 	     					</a> 
 	     				</div>
 	     				<div class = "element_title_explain">구매번호</div>
-	     				<<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+	     				<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
 	     				<div class = "element_title">${orderList.purchaseNumber}</div>
 	     				</a> 
 	     				<div class = "element_price">
 		     				<div class = "element_price_money">금액 : ${orderList.paymentAmount}</div>
 		     				<span class = "element_price_unit">원</span>  
 	     				</div>
-	     				<div class = "element_date">날짜 :  ${orderList.purchaseDate}</div>
+	     				<div class = "element_date">날짜 :  <fmt:formatDate value="${orderList.purchaseDate}" pattern="yyyy-MM-dd"/></div>
 	     				<div class = "element_delivery_status">배송중</div>
 	     			</div>	
 	     		</c:forEach> 
@@ -121,9 +121,9 @@
       }
      
       .product_list_element .element_img {
-      		width : 80px;
-      		height : 120px;
-      		margin-top :15px;
+      		width : 70px;
+      		height : 50px;
+      		margin-top :40px;
       		margin-left : 30px;
       		
       	}
@@ -159,7 +159,7 @@
 
 	 .product_list_element .element_price .element_price_unit{
       	font-family: 'MinSans-Regular';
-      	margin-top : 5px;
+      	margin-top : 4px;
       	margin-left : 2px;
       	font-size : 0.8rem;
      

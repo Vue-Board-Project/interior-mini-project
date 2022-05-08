@@ -6,44 +6,23 @@
 	</button>
 	 <div class = "personal_info">
 	     <div id = "mypage_remodeling_popup_infomations">
-	          <div class = "popup_info_name">
-	             <div class = "popup_info_name_title">이름</div>
-	             <div class = "popup_info_name_content">${user.name}</div>
-	         </div>
-	         <div class = "popup_info_phone_num">
-	         	<div class = "popup_info_phone_num_title">연락처</div>
-	            <div class = "popup_info_phone_num_content">${user.phone}</div>
-	         </div>
-		         <div class = "popup_info_space_type">
-		         	<div class = "popup_info_space_type_title">공간유형</div>
-		           <div class = "popup_info_space_type_content">${remodelCon.consultInteriorStyle}</div>
-		         </div>
-		         <div class = "popup_info_width">
-		         	<div class = "popup_info_width_title">평형</div>
-		           <div class = "popup_info_width_content">${remodelCon.consultAcreage} 평</div>
-		         </div>
-		          <div class = "popup_info_request">
-		         	<div class = "popup_info_request_title">요청사항</div>
-		            <div class = "popup_info_request_content">${remodelCon.consultRequest}</div>
-		         </div>
-		         <div class = "popup_info_date">
-		         	<div class = "popup_info_date_title">상담예정일자</div>
-		            <div class = "popup_info_date_content">${remodelCon.consultDate} ${remodelCon.consultTime}</div>
-		         </div>
-		    	 <div class = "popup_info_spot">
-		         	<div class = "popup_info_spot_title">공사지역</div>
-		            <div class = "popup_info_spot_content">${remodelCon.consultAddress}</div>
-		         </div>
-		         <div class = "popup_info_visit_date">
-		         	<div class = "popup_info_visit_date_title">시공일자</div>
-		            <div class = "popup_info_visit_date_content">${remodelCon.constructionDate}</div>
-		         </div> 
-		         <button type="button" class="btn btn-outline-primary" style = "margin-left : 20px;"
-		          onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress'">진행 상세 보기</button>
-		       	 <c:if test="${remodelingChk >= 2}">
-		         	<button type="button" class="btn btn-outline-secondary"
-		         	 onclick="location.href='/springframework-mini-project/mypage/mypage_remodeling_list'">>이전 내역 보기</button>
-		         </c:if>
+	         <input type = "hidden" name = "inputNm"/>
+	        <script>
+	       
+	        function ajaxRemodeling(){
+	        	 let selNum =  $('input[name=inputNm]').val();
+				console.log("number is ... " + selNum);
+				$.ajax({
+		                url : "readRemodelingList",
+		                data : {selNum},
+		                method: "get"
+		            }).done((data) => {
+						$('#mypage_remodeling_popup_infomations').html(data);
+		            });
+	        }
+				</script>
+				
+				
 	     </div>
 	 </div>
 	 
@@ -268,5 +247,18 @@
  	height : 50px;
  }
  
+ /* 최종 버튼 예쁘게 꾸미기 */
+ .personal_info #mypage_remodeling_popup_infomations #remodeling_detail_past_btn {
+  	  background-color: #fff;
+	  border: 1px solid #ca5c0d;
+	  color:  #ca5c0d;
+	  margin-top : 100px;
+	  
+	}
+	
+ .personal_info #mypage_remodeling_popup_infomations #remodeling_detail_past_btn:hover {
+	  background-color: #ca5c0d;
+	  color: white;
+   }
  
  </style>

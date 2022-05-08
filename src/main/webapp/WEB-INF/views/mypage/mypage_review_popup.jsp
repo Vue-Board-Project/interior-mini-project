@@ -19,7 +19,7 @@
 	 		</div>
 	 		
 	 		
-	 	<form id="mypageReviewForm" method="post" action="mypageReview" enctype="multipart/form-data">
+	 	<form id="mypageReviewForm" method="post" action="insertReview" enctype="multipart/form-data">
 			<div class = "mypage_review_popup_user_title">
 				<div class="input-group">
 					<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
@@ -35,9 +35,15 @@
 			<div class = "mypage_review_popup_image_input">
 				<div class="input-group">
 						<div class="input-group-prepend"><span class="input-group-text">사진 첨부</span></div>
-					 	<input type="file" class="form-control" id="attach" name="attach"> <!-- DB연결될 때 name적기 -->
+					 	<input type="file" class="form-control" id="attach_img" name="uploadFile"> <!-- DB연결될 때 name적기 -->
 				</div>
 			</div>
+				<div class="input-group">
+					<input type="number" id = "input_purchaseNumber" name = "purchaseNumber"  class="form-control" value = ""></input>
+				</div>
+				<div class="input-group">
+					<input type="text" id = "input_modelNumber" name = "modelNumber"  class="form-control" value = ""></input>
+				</div>
 			<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg" style = "margin-top : 40px; margin-left :200px;">작성하기</button>
 		</form>
 	 		</div>
@@ -46,7 +52,51 @@
 	 
 </div>
 <div id="mypage_review_mask"></div>
-
+<script>
+/* 이미지 업로드 */
+	$("input[type='file']").on("change", function(e){
+		
+		
+		
+		let formData = new FormData();
+		let fileInput = $('input[name="uploadFile"]');
+		let fileList = fileInput[0].files;//FileList 객체에 접근
+		let fileObj = fileList[0];//FileList의 요소로 있는 File 객체에 접근
+		
+		
+		console.log("fileList : " + fileList);
+		console.log("fileObj : " + fileObj);
+		//File 객체에 담긴 데이터가 정말 <input> 태그를 통해 선택한 파일의 데이터가 맞는지를 확인
+		console.log("fileName : " + fileObj.name);
+		console.log("fileSize : " + fileObj.size);
+		console.log("fileType(MimeType) : " + fileObj.type);
+		
+		//<form> 태그와 같은 역할인 FormData객체 생성하여 첨부파일을 FormData에 저장을 하고 FormData 자체를 서버로 전송
+		// key와 추후 추가할 url 매핑 메서드의 매개변수명이 동일
+		formData.append("uploadFile", fileObj);
+		
+		/* //여러게 파일 저장
+		for(let i = 0; i < fileList.length; i++){
+			formData.append("uploadFile", fileList[i]);
+		} */
+		
+		//서버로 파일 전송
+		$.ajax({
+			url: '/springframework-mini-project/mypage/insertImage',
+			//processData, 와 contenttype 속성의 값을 'false'로 해주어야만 첨부파일이 서버로 전송
+	    	processData : false,
+	    	contentType : false,
+	    	data : formData,
+	    	type : 'POST',
+	    	dataType : 'json',
+	    	success : function(result){ //이미지 파일 저장 성공시 값 리턴해오기
+	    		console.log(result);
+	    	},
+	    	error : function(result){
+	    		alert("이미지 파일이 아닙니다.");
+	    	}
+		});
+</script>
 <style>
 
 	.mypage_popup_wrap{
@@ -145,79 +195,7 @@
  		flex-direction: row;
  	}
  	
-/*  input 형태 바꾸면서 필요 없어짐 (나중에 할 것.)  	
-.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_image_input #review_img_slot{
- 		height : 124px;
- 		
- 	} */
- 	
- 	
- /* 	
- 	.mypage_review_popup #review_write_form #review_img_attach{ 
- 		height : 124px; 
- 		background-color : #fff;
-  
- 			
- 	} */
- 	
- 	/*파일 선택하기 버튼 대신 + 버튼으로 바꾸기 */
- 	
- 	/* .mypage_review_popup_image_input input[type="file"] {
-		overflow: hidden;
-		display : none;
-	}
- 	
- 	
- 	.mypage_review_popup_image_input label {
-	 display: inline-block;
-	 width : 80px;
-	 height : 80px;
 
-} */
- 	/* 
- 	
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input{
- 		width : 500px;
- 		height : 558px;
- 		
- 	}
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title{
- 		width : 500px;
- 		height : 62px;
- 		display: flex;
- 		flex-direction: row;
- 		
- 	}
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title .user_title{
- 		width : 80px;
- 		height : 62px;
- 		
- 		margin : auto;
-  	}
-  	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title .user_title_content{
- 		width : 420px;
- 		height : 62px;
- 		
- 	}
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title .user_title_content input{
- 		width : 420px;
- 		height : 62px;
- 	}
- 	
- 	
-/*  	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_content{
- 		width : 500px;
- 		height : 372px;
- 		display: flex;
- 		flex-direction: row;
- 		
- 	}
- 	 */
  	
  	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_content .user_content_content{
  		height : 372px;

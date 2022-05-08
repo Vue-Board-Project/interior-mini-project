@@ -1,3 +1,5 @@
+
+
 package com.mycompany.webapp.service;
 
 import java.util.List;
@@ -13,7 +15,11 @@ import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
+import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
+import com.mycompany.webapp.dto.mypage.InteriorProgressFileDto;
+import com.mycompany.webapp.dto.mypage.ReferenceModelDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
+import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
@@ -88,6 +94,7 @@ public class MypageService {
 
 	public List<ReviewDto> getReviewBeforeList(Pager pager) {
 		// TODO Auto-generated method stub
+		log.info("fiiiii : " + pager);
 		return mypageDao.getReviewBeforeList(pager);
 	}
 
@@ -171,7 +178,92 @@ public class MypageService {
 		return mypageDao.getUserRemodelingList(pager);
 	}
 
+	public MainConsultDto getMainConElement(int selNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getMainConElement(selNum);
+	}
+
+	public MainConsultDto getremodelingElement(int selNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getremodelingElement(selNum);
+	}
+
+	public InteriorProgressDto getProgressStep(int consultNo) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep(consultNo);
+	}
+	
+	public List<InteriorProgressFileDto> getStep1Files(int consultNo) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep1Files(consultNo);
+	}
 
 
+	public int getLatestInteriorNo(String email) {
+		// TODO Auto-generated method stub
+		return  mypageDao.getLatestInteriorNo(email);
+	}
+
+	public List<SolutionDto> getSolutionList(int consultNo) {
+		// TODO Auto-generated method stub
+		return mypageDao.getSolutionList(consultNo);
+	}
+
+	public InteriorProgressDto getProgressStep2(int conNum) {
+		// TODO Auto-generated method stub
+
+		return mypageDao.getProgressStep2(conNum);
+	}
+	
+	public List<InteriorProgressFileDto> getStep2Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep2Files(conNum);
+	}
+
+
+	public InteriorProgressDto getProgressStep3(int conNum) {
+		// TODO Auto-generated method stub
+		return  mypageDao.getProgressStep3(conNum);
+	}
+	
+	public List<InteriorProgressFileDto> getStep3Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep3Files(conNum);
+	}
+	
+	public List<ReferenceModelDto> getPortfolioList(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getPortfolioList(conNum);
+	}
+	
+	public InteriorProgressDto getProgressStep4(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep4(conNum);
+	}
+	
+	public List<InteriorProgressFileDto> getStep4Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep4Files(conNum);
+	}
+
+
+	public InteriorProgressDto getProgressStep5(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep5(conNum);
+	}
+
+	public List<InteriorProgressFileDto> getStep5Files(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getStep5Files(conNum);
+	}
+
+	public int getProgressStep6(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep6(conNum);
+	}
+
+	
+
+	
 	
 }

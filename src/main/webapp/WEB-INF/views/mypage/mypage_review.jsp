@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
@@ -52,24 +53,54 @@
 						     
 						     
 						      <c:forEach var="reviewBefore" items="${reviewBefore}">
-						      <div class = "mypage_review_before_element">
-						      	<div class = "image_slot">
-						      		<img class = "mypage_review_product_img" src = ""></img>
-						      	</div>
-						      	<div class = "mypage_review_product_title">제품명 : ${reviewBefore.product.productName}</div>
-						      	<div class = "mypage_review_model_name">모델명 : ${reviewBefore.modelNumber}</div>
-						      	<div class = "mypage_review_product_number">갯수 : ${reviewBefore.purchase.paymentAmount} 개</div>
-						      	<div class = "mypage_review_product_date">${reviewBefore.purchase.purchaseDate}</div>
-						      	<div class = "mypage_review_product_button">
-						      	<a href="mypageReview?purchaseNumber=${reviewBefore.purchaseNumber}">
-						      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button">후기 쓰기</button>
-						      	</a>
-						      	</div>
-						      </div>
+							      <div class = "mypage_review_before_element">
+							      	<div class = "image_slot">
+							      		<img class = "mypage_review_product_img" src = ""></img>
+							      	</div>
+							      	<div class = "mypage_review_product_title">제품명 : ${reviewBefore.product.productName}</div>
+							      	<div class = "mypage_review_model_name">모델명 : ${reviewBefore.modelNumber}</div>
+							      	<div class = "mypage_review_product_number">갯수 : ${reviewBefore.purchase.paymentAmount} 개</div>
+							      	<div class = "mypage_review_product_date"><fmt:formatDate value="${reviewBefore.purchase.purchaseDate}" pattern="yyyy-MM-dd"/></div>
+							      	<div class = "mypage_review_product_button">  
+							      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button" 
+							      		onClick = "reviewButton(${reviewBefore.purchaseNumber}, '${reviewBefore.modelNumber}')">
+							      		후기 쓰기
+							      		</button>
+							      	
+							      	</div>
+							      </div>
 						      </c:forEach>
+					<table>
+						 <tr>
+				            <td colspan="4" class="text-center">
+				               <div>
+				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=1">처음</a>
+				                  <c:if test="${pager.groupNo>1}">
+				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.startPageNo-1}">이전</a>
+				                  </c:if>
+				                  
+				                  <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+				                     <c:if test="${pager.pageNo != i}">
+				                        <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+				                     </c:if>
+				                     <c:if test="${pager.pageNo == i}">
+				                        <a class="btn btn-danger btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+				                     </c:if>
+				                  </c:forEach>
+				                  
+				                  <c:if test="${pager.groupNo<pager.totalGroupNo}">
+				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.endPageNo+1}">다음</a>
+				                  </c:if>
+				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=${pager.totalPageNo}">맨끝</a>
+				               </div>
+				            </td>
+				         </tr>
+				      </table>
 						    
 						    
 						    </div>
+						    
+						    
 						    <div id="mypage_review_tab_finished" class="tabmenu_content">
 						    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
 						    	 <c:forEach var="reviewAfter" items="${reviewAfter}">
@@ -79,7 +110,7 @@
 					    			</div>
 						    		<div class = "user_review_contents">
 						    			<div class = "user_review_title">${reviewAfter.reviewTitle}</div>
-						    			<div class = "user_product_bought_date">${reviewAfter.reviewWriteDate}</div>
+						    			<div class = "user_product_bought_date"><fmt:formatDate value="${reviewAfter.reviewWriteDate}" pattern="yyyy-MM-dd"/></div>
 						    			<div class = "user_review_image">
 						    				<img src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg"></img>
 						    			</div>
@@ -87,6 +118,33 @@
 						    		</div>
 						    	</div>
 						    	</c:forEach>
+						    	
+						<table>
+						 <tr>
+				            <td colspan="4" class="text-center">
+				               <div>
+				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=1">처음</a>
+				                  <c:if test="${pager.groupNo>1}">
+				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.startPageNo-1}">이전</a>
+				                  </c:if>
+				                  
+				                  <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+				                     <c:if test="${pager.pageNo != i}">
+				                        <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+				                     </c:if>
+				                     <c:if test="${pager.pageNo == i}">
+				                        <a class="btn btn-danger btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+				                     </c:if>
+				                  </c:forEach>
+				                  
+				                  <c:if test="${pager.groupNo<pager.totalGroupNo}">
+				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.endPageNo+1}">다음</a>
+				                  </c:if>
+				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=${pager.totalPageNo}">맨끝</a>
+				               </div>
+				            </td>
+				         </tr>
+				      </table>
 						    </div>
 					    </div>
 					      
@@ -242,8 +300,10 @@
       		height : 49px;
       		width : 1200px;
       		font-family: 'MinSans-Bold';
-      		padding-left : 50px;
-      		padding-top : 10px;
+      		/* padding-left : 50px;
+      		padding-top : 10px; */
+      		padding : auto;
+      		padding-left : 20px;
       		font-size : 1.5rem;
       		border-bottom : 1px solid #ccc;  
       }
@@ -251,6 +311,7 @@
       .mypage_user_review_element .user_product_title .user_product_modelName{
       		font-family: 'MinSans-Regular';
       		font-size : 1rem;
+      		padding-left : 15px;
       }
       
       .mypage_user_review_element .user_review_contents {
@@ -338,7 +399,16 @@
 
 <script>
 
-var review_button = document.getElementsByName("mypage_review_product_button"); 
+function reviewButton(purchaseNumber, modelNumber) {
+	 $("#mypage_review_mask").css("display", "block");
+  	 $(".mypage_popup_wrap").css("display", "block");
+  	 
+  	$('input[name=purchaseNumber]').attr('value', purchaseNumber);
+	$('input[name=modelNumber]').attr('value', modelNumber);
+	
+}
+
+
 
 function mypage_review_avaliable() {
 	$('#mypage_review_tab_available').show();
@@ -350,13 +420,7 @@ function mypage_review_finished() {
 	$('#mypage_review_tab_finished').show();
 }
 
-$(document).ready(function(){
-	 $(review_button).click(function(){
-		 console.log("plz work...");
-	 $("#mypage_review_mask").css("display", "block");
-	 $(".mypage_popup_wrap").css("display", "block");
-	});
-});
+
 
  $(document).ready(function(){
 	 $("#mypage_review_popup_close").click(function(){

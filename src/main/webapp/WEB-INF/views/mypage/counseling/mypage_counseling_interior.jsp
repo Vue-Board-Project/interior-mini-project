@@ -24,5 +24,5 @@
 
 </style>
 
-<%@ include file="/WEB-INF/views/mypage/myinfo_counsel_popup.jsp" %>
+<%@ include file="/WEB-INF/views/mypage/counseling/myinfo_counsel_popup.jsp" %>
 <script src="${pageContext.request.contextPath}/resources/js/mypage/mypage_consult_interior.js"></script>
