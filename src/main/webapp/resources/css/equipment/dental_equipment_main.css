@@ -115,14 +115,16 @@
             margin-left: 50px;
         } */
 		.eq_list{
-            display:flex;
+            display:d-flex;
             margin-bottom: 100px;
-
+			flex-wrap: wrap;
+			width: 1200px;
         }
         #eq_list2{
-        	display:flex;
-            flex-wrap: wrap;
+       		/*display:flex;*/
+            
         }
+
         .eq_list .card{
             width: 300px;
             height: 550px;
@@ -176,6 +178,7 @@
             width: 260px;
             height: 300px;
             margin-left: 20px;
+            margin-top:20px;
         }
         #eq_best_icon{
             width: 30px;

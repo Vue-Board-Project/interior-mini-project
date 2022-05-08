@@ -1,10 +1,11 @@
+//카트 조회
 function test(){
 	$.ajax({
 		type: "GET",
 		url: "/equipment/shoppingcart_rentalandpurchase",
 		data:{
 			email: "${cartList.email}",
-			modelNumber: "${cartList.modelNumber}",
+			modelNum: "${cartList.modelNumber}",
 			productName: "${cartList.productName}",
 			price: "${cartList.price}",
 			productColor: "${cartList.productColor}",
@@ -85,11 +86,11 @@ function priceSum(){
 	} 
 	console.log(quaAll);
 	console.log(sum);
-	
+	$("input[name='sum']").attr("value",sum);
 	formatsum=sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	$("#total_sum").html(formatsum+"　원");
 	$("#total_quaAll").html(quaAll+"　개");//제품의 총 개수
-	$("#modelCount").html(count2);//모델의 종류
+	$("#modelCount").html(count2);//모델 개수
 	
 }
 
@@ -134,3 +135,11 @@ $(".qua_minus_btn").on("click", function(){
 		$(this).parent("div").find("input").val(--quantity);		
 	}
 });
+
+//카트 세션을 구매 창으로 값 전송
+function cartToPayment(){
+	console.log("카트에서 구매로 가고싶어요!");
+	$("#cartToPay").submit();
+	
+	
+}

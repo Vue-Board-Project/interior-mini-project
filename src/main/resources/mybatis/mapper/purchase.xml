@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.webapp.dao.mybatis.PurchaseDao">
+	<resultMap id="selectForCart" type = "purchase">
+			<result column = "payment_amount" property = "paymentAmount" />
+            <result column = "purchase_quantity" property = "purchaseQuantity" />
+         <association property="pDetail" javaType="pDetail">
+            <result column = "model_purchase_quantity" property = "modelPurchaseQuantity" />
+       	 	<result column = "detail_price" property = "detailPrice" />
+         </association>
+         <association property="product" javaType="product">
+         	<result column = "model_number" property = "modelNumber" />
+            <result column = "product_name" property = "productName" />
+            <result column = "price" property = "price" />
+            <result column = "product_Quantity" property = "productQuantity" />
+         </association>
+   </resultMap>
+	<select id="selectPay" parameterType="string" resultMap="selectForCart">
+		   select 
+		pr.model_number
+		, pr.product_name
+		, pr.price
+		, pr.product_Quantity
+		, pu.payment_amount
+		, pu.purchase_quantity
+		, pud.model_purchase_quantity
+		, pud.detail_price
+		from product pr, purchase_detail pud, purchase pu
+		where pr.model_Number=pud.model_Number and
+		pr.model_Number = #{modelNum}
+	</select>
+
+	<!-- 구매 버튼 클릭 시 추가 내용 -->
+	<!-- <insert id="insertPurchaseInfo" parameterType="purchase">
+		insert into purchase(
+			PURCHASE_NUMBER
+			, PURCHASE_DATE
+			, PAYMENT_AMOUNT
+			, PAYMENT_METHOD
+			, PURCHASE_QUANTITY
+			, DELIVERY_MANAGEMENT,
+			, DELIVERY_MESSAGE
+			, EMAIL
+			)
+		values(
+			#{purchaseNumber}
+			, sysdate
+			, #{paymentAmount}
+			, #{paymentMethod}
+			, #{purchaseQuantity}
+			, '배송 준비중'
+			, #{deliveryMessage}
+			, #{email}
+		)
+	</insert>
+	<insert id="insertPurchaseDetailInfo" parameterType="pDetail">
+		insert into PurchaseDetail(
+			PURCHASE_NUMBER
+			, MODEL_NUMBER
+			, MODEL_PURCHASE_QUANTITY
+			, DETAIL_PRICE
+			)
+		values(
+			#{purchaseNumber}
+			, #{modelNumber}
+			, #{modelPurchaseQuantity}
+			, #{detailPrice}
+			)
+	</insert>
+	<update id="updateProductInfo" parameterType="product">
+		update product set 
+			PRODUCT_QUANTITY=PRODUCT_QUANTITY-1
+			, PRODUCT_SALES_VOLUME=PRODUCT_SALES_VOLUME+#{productSalesVolume}
+		where model_Number = #{modelNumber}
+	</update> -->
+</mapper>

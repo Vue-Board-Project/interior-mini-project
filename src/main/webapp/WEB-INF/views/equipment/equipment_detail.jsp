@@ -74,14 +74,16 @@
             </div>
          </div>
             <div id="eq_detail_main_content4">
-                <form name='form'>
+                <form name='form' id="sendQuaToPay" action="detailToPayment" method="POST">
                     <table>
                      <tr>
                         <td>수량</td>
                         <td>
                             <table>
                                 <tr>
-                                    <td><input type='text' name='count' value='1' size='3' readonly style="text-align: center;" id="count_up_down"><td>
+                                    <td><input type='text' name='countQua' value='1' size='3' readonly style="text-align: center;" id="count_up_down"><td>
+                                    <input type="hidden" id="sendModelNumber" name="purchaseModelNumber" value="${detailProduct.modelNumber}"/>
+                                    <input type="hidden" id="sendprice" name="purchasePrice" value="${detailProduct.price}"/>
                                     <td>
                                         <a onclick='javascript_:change(1);'>▲</a><br>
                                         <a onclick='javascript_:change(-1);'>▼</a>
@@ -100,12 +102,8 @@
                   
             <hr>
             <div>
-	            <form >
-	            	<input type="hidden" id="sendModelNumber" value="${detailProduct.modelNumber}">
-	            	<input type="hidden" >
-	            </form>
 	                <a id="btn_go_cart" onclick="javascript_:cartSession()" class="btn btn-light" >장바구니</a>
-	                <a id="btn_go_counseling" class="btn btn-light" href="${pageContext.request.contextPath}/equipment/paymentpage">구매</a>
+	                <a id="btn_go_counseling" class="btn btn-light" onclick="directPurchase()">구매</a>
             </div>     
         
     

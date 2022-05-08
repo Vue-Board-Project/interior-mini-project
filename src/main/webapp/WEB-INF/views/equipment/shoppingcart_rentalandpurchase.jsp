@@ -31,11 +31,12 @@
 		                       <c:forEach items="${productList}" var="cartproduct">
 		                        <input class="cartcheck" type='checkbox' name='purchase_cart_select'  onclick='selectcart(this)'value='${cartproduct.price}' checked="chekced"/>    
 		                            <div class="media">
-		                                <img id="p_cart_el1" class="p_cart_el" src="${pageContext.request.contextPath}/resources/subinimage/dentalCamera.jpg" class="mr-3">
+		                                <img id="p_cart_el1" class="p_cart_el" src="/springframework-mini-project/equipment/display?fileName=${cartproduct.pattachoname}" class="mr-3">
 		                                <div class="media-body">
 		                                <button type="button" class="btn" onclick="javascript:removeCartSession('${cartproduct.modelNumber}')"><i class="fa-solid fa-xmark"></i></button>
 		                                  <h5 id="cart_product_name1" class="mt-0 mb-1">${cartproduct.productName}</h5>
 		                                  <p id="cart_product_model_number1" class="fontcolorccc">${cartproduct.modelNumber}</p>
+		                                  <input type="hidden" class="sendModelNumToPay" value="${cartproduct.modelNumber}"/>
 		                                  <div id="cart_product_price1">
 		                                  <div class="countBox">
 								            <button class="qua_minus_btn">-</button>
@@ -85,8 +86,12 @@
 		                <p>주문 금액 <a id="total_sum"></a></p>
 		                <!-- <p class="fontcolor525253">할인 적용 금액 없음</p> -->
 		                <hr>
-		                <a id="next_page_go_to_payment" href="${pageContext.request.contextPath}/equipment/paymentpage" class="btn">다음 단계</a>
+		                <a onclick="cartToPayment()"id="next_page_go_to_payment" class="btn" href="#">구매 하기</a>
+		                <form action="cartToPayment" id="cartToPay" method="POST">
+		                	<input type="hidden" name="sum"/>
+		                </form>
 	                </c:otherwise>
+	                
                 </c:choose>
             </div>
         </div>

@@ -1,20 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
-        
-
-<div id="as_content">
 <link href="${pageContext.request.contextPath}/resources/css/equipment/afterService.css" rel="stylesheet" type="text/css"/>
+<div id="AfterService_wrapper">
+<div id="as_content">
     <div id="as_product_choice">
-        <p id="as_title1" class="as_title">1. 제품/증상 선택 <button id="btn_my_product" class="btn btn-outline-dark" type="submit">보유 제품 선택</button> 
+        <div id="as_title1" class="as_title">1. 제품/증상 선택 <button id="btn_my_product" class="btn btn-outline-dark" type="submit">보유 제품 선택</button> 
             <a id="red_star"> *</a> <a id="as_title1_content1"> 필수 입력 사항</a>
-        </p>
+        </div>
         <hr id="pxup_line"/>
-        <p>제품 선택<a id="red_star"> *</a> <span class="as_font_color_ccc">아래 제품을 선택해주세요</span></p>
+        <div>제품 선택<a id="red_star"> *</a> <span class="as_font_color_ccc">아래 제품을 선택해주세요</span></div>
         <hr/>
-        <p>모델명 <input id="as_model_input" type="text" value="모델명을 입력해주세요." onFocus="clearText(this)"/><a style="border: 1px solid black; border-radius: 15px;" class="btn btn-light">모델명 확인 방법</a></p>
-        <ul class="as_title1_content2">
+        <div>모델명 <input id="as_model_input" type="text" value="모델명을 입력해주세요." onFocus="clearText(this)"/>
+        	<a id="howToVerifyModel" style="border: 1px solid black; border-radius: 15px;" class="btn btn-light">모델명 확인 방법
+        	<span>모델명은 제품에 부착되어 있는 에너지 효율 등급표 스티커에서 확인할 수 있습니다.</span></a>
+        </div>
+        <ul class="as_title1_content2" style="margin-top: 20px;">
             <li>모델명(코드)를 입력하시면 정확한 수리에 도움이 됩니다.(3자리 이상 입력)</li>
             <li>모델명(코드)가 정확하지 않은 경우 제품을 선택 후 예약을 진행해 주세요.</li>
         </ul>
@@ -38,7 +39,7 @@
                     <p class="as_btn_list_text_el">임플란트 장비</p>
                 </a>
             </div>
-            <div id="as_choice_crown" >
+            <div id="as_choice_cleanning" class="as_btn_list_el">
                 <a href="#" class="as_btn_list_text_el_a">
                     <img id="btn_asSterilizationwasher_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/as_Sterilization_washer.png">    
                     <p class="as_btn_list_text_el">멸균 및 세척기</p>
@@ -231,6 +232,7 @@
                        onclick='alert("예약 정보 확인하는 팝업 창입니당, 레이어 팝업으로 바꿀거야")'/>
             </form>           
         </div>
+    </div>
     </div>
     <script src="${pageContext.request.contextPath}/resources/js/equipment/afterService.js"></script>
 </div>
