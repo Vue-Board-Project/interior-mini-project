@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dto.mypage;
 
+import java.util.Date;
+
 import org.apache.logging.log4j.message.Message;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,8 +17,8 @@ public class ReviewDto {
 	private String modelNumber;
 	private String reviewTitle;
 	private String reviewContent;
-	private String reviewWriteDate;
-	private String write_date;
+	private Date reviewWriteDate;
+	private Date write_date;
 	private MultipartFile reviewFile;
 	private String stringProductName;
 	private PurchaseDto purchase;

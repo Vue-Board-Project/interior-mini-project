@@ -339,17 +339,6 @@ public class MyPageController {
 		}
 		
 		
-		/*
-		 * @RequestMapping("/mypage_interior_progress/fileDownload") public String
-		 * fileDownload(@ModelAttribute String fileName,
-		 * 
-		 * @ModelAttribute("userAgent") @RequestHeader("user=Agent") String userAgent) {
-		 * 
-		 * log.info("파일을 읽어와야 합니다22222222222222222ㅠㅠ"); return "mypageFileDownloadView";
-		 * }
-		 */
-		
-		
 		 
 	 /***** 		개인정보 수정 창			*******/
 	 /*개인정보 수정 처음 데이터 읽어오는 코드*/
@@ -364,8 +353,8 @@ public class MyPageController {
 	
 	@PostMapping("/mypage_infosetting")
 	public String mypageInfoUpdate(UsersDto users, Model model, Authentication authentication) {
-		//users.setEmail(authentication.getName());
-		users.setEmail("gvhv@dgfv.sad");	//sad 오류 시 복구를 위한 코드
+		users.setEmail(authentication.getName());
+		//users.setEmail("gvhv@dgfv.sad");	//sad 오류 시 복구를 위한 코드
 		log.info(users.getPassword());
 		log.info(users.getPostcode());
 		log.info(users.getAddress());
@@ -459,51 +448,37 @@ public class MyPageController {
 	}
 
 	
-
-	
 	
 	@RequestMapping("/mypageReview")
-	public String mypageReviewPage() {
-		
-		return "/mypage/mypage_review";
-	}
-	
-	@RequestMapping(value = "/mypageReview", method = {RequestMethod.GET, RequestMethod.POST})
-	public String mypageReviewSelectReviews(String email,
+	public String mypageReviewSelectReviews(Authentication authentication,
 			@RequestParam(defaultValue = "1") int pageNo, Model model){
-		email = "gvhv@dgfv.sad";
+		
+		 String email = authentication.getName();
 		//리뷰 작성 전
 		int totalReviewBeforeNum = mypageService.getTotalReviewBeforeNum(email);
-		log.info("노래 추천 받습니다 : " + totalReviewBeforeNum);
 		
 		Pager pager = new Pager(4, 4, totalReviewBeforeNum, pageNo, email);
 		model.addAttribute("pager", pager);
 		
 		List<ReviewDto> reviewBefore = mypageService.getReviewBeforeList(pager);
-		log.info("babazooka! : " + reviewBefore);
 		model.addAttribute("reviewBefore", reviewBefore);
 		
 		
 		//리뷰 작성 후
 		int totalReviewAfterNum = mypageService.getTotalReviewAfterNum(email);
-		log.info("아이돌 추천 받습니다 : " + totalReviewAfterNum);
 		pager = new Pager(4, 4, totalReviewAfterNum, pageNo, email);
 		model.addAttribute("pager", pager);
 		
 		List<ReviewDto> reviewAfter = mypageService.getReviewAfterList(pager);
+		log.info("Eroor fix  :  " + reviewAfter);
 		model.addAttribute("reviewAfter", reviewAfter);
-		log.info("AfterReview : " + reviewAfter);
+		
 		return "/mypage/mypage_review";
 	}
 	
-	@RequestMapping(value = "/mypageReview/insertReview", method = RequestMethod.POST)
-	public String mypageReview(ReviewDto review){
-		log.info("작동확인");
-		log.info(review.getReviewTitle());
-		log.info(review.getReviewContent());
-		review.setEmail("'gvhv@dgfv.sad'");
-		review.setPurchaseNumber(1);
-		review.setModelNumber("uc0001gre");
+	@PostMapping("/insertReview")
+	public String mypageReview(ReviewDto review, Authentication authentication){
+		
 		mypageService.insertReview(review);
 			
 		return "redirect:/";

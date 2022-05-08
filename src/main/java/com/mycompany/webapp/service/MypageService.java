@@ -94,6 +94,7 @@ public class MypageService {
 
 	public List<ReviewDto> getReviewBeforeList(Pager pager) {
 		// TODO Auto-generated method stub
+		log.info("fiiiii : " + pager);
 		return mypageDao.getReviewBeforeList(pager);
 	}
 

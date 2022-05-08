@@ -19,7 +19,7 @@
 	 		</div>
 	 		
 	 		
-	 	<form id="mypageReviewForm" method="post" action="mypageReview" enctype="multipart/form-data">
+	 	<form id="mypageReviewForm" method="post" action="insertReview" enctype="multipart/form-data">
 			<div class = "mypage_review_popup_user_title">
 				<div class="input-group">
 					<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
@@ -38,6 +38,12 @@
 					 	<input type="file" class="form-control" id="attach" name="attach"> <!-- DB연결될 때 name적기 -->
 				</div>
 			</div>
+				<div class="input-group">
+					<input type="number" id = "input_purchaseNumber" name = "purchaseNumber"  class="form-control" value = ""></input>
+				</div>
+				<div class="input-group">
+					<input type="text" id = "input_modelNumber" name = "modelNumber"  class="form-control" value = ""></input>
+				</div>
 			<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg" style = "margin-top : 40px; margin-left :200px;">작성하기</button>
 		</form>
 	 		</div>
@@ -145,79 +151,7 @@
  		flex-direction: row;
  	}
  	
-/*  input 형태 바꾸면서 필요 없어짐 (나중에 할 것.)  	
-.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_image_input #review_img_slot{
- 		height : 124px;
- 		
- 	} */
- 	
- 	
- /* 	
- 	.mypage_review_popup #review_write_form #review_img_attach{ 
- 		height : 124px; 
- 		background-color : #fff;
-  
- 			
- 	} */
- 	
- 	/*파일 선택하기 버튼 대신 + 버튼으로 바꾸기 */
- 	
- 	/* .mypage_review_popup_image_input input[type="file"] {
-		overflow: hidden;
-		display : none;
-	}
- 	
- 	
- 	.mypage_review_popup_image_input label {
-	 display: inline-block;
-	 width : 80px;
-	 height : 80px;
 
-} */
- 	/* 
- 	
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input{
- 		width : 500px;
- 		height : 558px;
- 		
- 	}
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title{
- 		width : 500px;
- 		height : 62px;
- 		display: flex;
- 		flex-direction: row;
- 		
- 	}
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title .user_title{
- 		width : 80px;
- 		height : 62px;
- 		
- 		margin : auto;
-  	}
-  	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title .user_title_content{
- 		width : 420px;
- 		height : 62px;
- 		
- 	}
- 	
- 	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_title .user_title_content input{
- 		width : 420px;
- 		height : 62px;
- 	}
- 	
- 	
-/*  	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_content{
- 		width : 500px;
- 		height : 372px;
- 		display: flex;
- 		flex-direction: row;
- 		
- 	}
- 	 */
  	
  	.mypage_review_popup .mypage_review_popup_user_input .mypage_review_popup_user_content .user_content_content{
  		height : 372px;

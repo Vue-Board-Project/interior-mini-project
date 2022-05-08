@@ -404,11 +404,13 @@
 			<result column = "PURCHASE_NUMBER" property = "purchaseNumber" />
 			<result column = "MODEL_NUMBER" property = "modelNumber" />
 			<result column = "EMAIL" property = "email" />
+			<result column = "REVIEW_TITLE" property = "reviewTitle" />
+			<result column = "REVIEW_CONTENT" property = "email" />
 			<association property="purchase" javaType="purchase">
 				<result column = "PURCHASE_DATE" property = "purchaseDate" />
-				<result column = "DELIVERY_MANAGEMENT" property = "deliveryManagement" />
+				<!-- <result column = "DELIVERY_MANAGEMENT" property = "deliveryManagement" /> -->
 				<result column = "PURCHASE_QUANTITY" property = "purchaseQuantity" />
-				<result column = "PAYMENT_AMOUNT" property = "paymentAmount" />
+				<!-- <result column = "PAYMENT_AMOUNT" property = "paymentAmount" /> -->
 			</association>
 			<association property="product" javaType="product">
 				<result column = "product_name" property = "productName" />
@@ -416,14 +418,21 @@
 	</resultMap>
 	
 	<select id="getReviewBeforeList" parameterType="pager" resultMap="seleceReviewWithPurandProd">
-		select  p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, PAYMENT_AMOUNT, 
-	      	 p.PURCHASE_QUANTITY, r.model_number,
-           	 d.product_name
-		from purchase p, review r, product d
-		where p.email = #{stringEmail} and  
-			DELIVERY_MANAGEMENT = '배송완료' and
-			r.model_number = d.model_number and
-			r.PURCHASE_NUMBER != p.PURCHASE_NUMBER
+	<![CDATA[ 
+	SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY, product_name
+		    from(
+		    	SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY, product_name
+			    FROM (
+                    select  p.PURCHASE_NUMBER, d.MODEL_NUMBER, p.email, p.PURCHASE_DATE,
+                         p.PURCHASE_QUANTITY, d.product_name
+                    from purchase p, review r, product d
+                    where p.email = #{stringEmail} and  
+                        DELIVERY_MANAGEMENT = '배송완료' and
+                        r.model_number = d.model_number and
+                        r.PURCHASE_NUMBER is null
+			     )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >=#{startRowNo}
+		]]>
 	</select>
 	
 	<!-- 리뷰 작성 이후 창 getTotalReviewAfterNum getReviewAfterList-->
@@ -436,13 +445,21 @@
 	</select>
 	
 	<select id="getReviewAfterList" parameterType="pager" resultType="mReview">
-		select  r.PURCHASE_NUMBER as purchaseNumber, p.email, 
-			r.model_number as modelNumber, REVIEW_TITLE as reviewTitle, REVIEW_CONTENT as reviewContent, 
-			REVIEW_WRITE_DATE as reviewWriteDate, d.product_name as stringProductName 
-		from purchase p, review r, product d
-		where p.email = #{stringEmail} and 
-			r.model_number = d.model_number and
-			r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+		<![CDATA[ 
+	SELECT rnum, modelNumber, stringProductName, reviewTitle, reviewContent
+		    from(
+		    	SELECT ROWNUM as rnum, modelNumber, stringProductName, reviewTitle, reviewContent
+			    FROM (
+                    select d.MODEL_NUMBER as modelNumber, d.product_name as stringProductName,
+					 	r.REVIEW_TITLE as reviewTitle, r.REVIEW_CONTENT as reviewContent
+					from purchase p, review r, product d
+					where p.email = #{stringEmail} and  
+					    DELIVERY_MANAGEMENT = '배송완료' and
+					    r.model_number = d.model_number and
+					    r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+			      )  WHERE ROWNUM <= #{endRowNo}    
+		)WHERE rnum >=#{startRowNo}
+		]]>
 	</select>
 	
 	
