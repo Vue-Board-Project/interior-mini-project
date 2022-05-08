@@ -19,8 +19,15 @@ function cartSession(){
 	});
 }
 
+//디테일 창에서 바로 구매!
+function directPurchase(){
+	console.log("저는 바로 구매 할겁니다");
+	$("#sendQuaToPay").submit();//폼 전송
+	
+}
+
 function cart_layer_popup(el2){
- 		var $el2 = $(el2);    //레이어의 id를 $el 변수에 저장
+ 		var $el2 = $(el2); 
 		$('.cart_verify_result_dim-layer').fadeIn();
 
 		var $elWidth = ~~($el2.outerWidth()),
@@ -62,9 +69,9 @@ function cart_layer_popup(el2){
 
 function change(num){
     var x  = document.form;
-    var y = Number(x.count.value) + num;
+    var y = Number(x.countQua.value) + num;
     if(y < 1) y = 1;
-    x.count.value = y;
+    x.countQua.value = y;
 }
 function showcontent(){
     if($('#able_delivery_loaction_info').css('display')=='none'){

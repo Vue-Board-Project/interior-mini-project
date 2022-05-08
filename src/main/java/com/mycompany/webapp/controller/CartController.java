@@ -125,4 +125,32 @@ public class CartController {
 			@ModelAttribute("cartForm") List<ProductDto> cartList, Model model) {
 		sessionStatus.setComplete();
 	}
+	
+	//수량 변경
+	@PostMapping(value="/cartSessionUpdate", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public void cartSessionUpdate(String modelNum, String hey,
+			@ModelAttribute("cartForm") List<ProductDto> cartList, Model model) {
+		log.info("hey~~~~"+hey);
+		for(int i=0;i<cartList.size();i++) {
+			if(cartList.get(i).getModelNumber().equals(modelNum)) {
+				cartList.get(i).setCartQua(hey);
+			}
+		}
+		model.addAttribute("cartForm", cartList);
+		log.info(cartList);
+		/*	List<ProductDto> upproductList = new ArrayList<ProductDto>();
+			for(ProductDto dto:cartList) {	
+				if(dto.getModelNumber().equals(modelNum)) {
+					log.info("hey~~~~2");
+					ProductDto productDto = productService.detailProduct(dto.getModelNumber());
+					productDto.setCartQua(hey);
+					cartList.add(productDto);
+				}
+			}
+			log.info("변경 되셨나요?"+ upproductList);
+			model.addAttribute("productList", upproductList);
+			model.addAttribute("cartForm", cartList);*/
+		
+	}
 }

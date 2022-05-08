@@ -4,9 +4,15 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDto {
 	private String modelNumber;//모델명
 	private String productName;//제품명
@@ -28,4 +34,5 @@ public class ProductDto {
 	private String consultCount;
 	//카트에 담을 개수
 	private String cartQua;
+
 }

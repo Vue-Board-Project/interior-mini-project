@@ -2,21 +2,49 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/paymentpage.css" rel="stylesheet" type="text/css"/>
+
+<!-- 구매 완료 시에  -->
+<div class="payment_result_dim-layer">
+	<div class="dimBg"></div>
+	<div id="payment_result_btn" class="payment_result_pop-layer">
+		<div class="payment_result_pop-container">
+			<div class="text-center payment_result_title">
+				<div class="mb-3">
+					<i class="fas fa-tooth fa-4x"></i>
+				</div>
+				<div>
+					<h5
+						style="color: black; font-size: 23px; font-family: 'MinSans-Bold';"
+						id="payment_result_title"></h5>
+				</div>
+			</div>
+			<div class="btn-r">
+				<a
+					href="${pageContext.request.contextPath}/equipment/dental_equipment_main"
+					class="payment_result_btn btn"
+					style="border-radius: 0 0 0 5px; font-family: 'MinSans-Regular';">쇼핑 계속 하기</a> <a
+					href="${pageContext.request.contextPath}/mypage/mypage_orderlist"
+					class="payment_result_btn btn"
+					style="border-radius: 0 0 5px 0; background-color: #ca5c0d; font-family: 'MinSans-Regular';">마이 페이지 확인하기</a>
+			</div>
+		</div>
+	</div>
+</div>
    <div id="paymentpage_wrapper">
         <div id="paymentpage_content">
             <div id="payment_step1_title" class="fontcolor525253">
                 <p>STEP01</p>
-                <p>계약자 정보</p>
+                <p>구매자 정보 입력</p>
                 <p>></p>
             </div>
             <div id="payment_step2_title" class="fontcolor525253">
                 <p>STEP02</p>
-                <p>장비 렌탈</p>
+                <p>구매할 제품 확인</p>
                 <p>></p>
             </div>
             <div id="payment_step3_title" class="fontcolor525253">
                 <p>STEP03</p>
-                <p>장비 구매</p>
+                <p>결제</p>
                 <p></p>
             </div>
             
@@ -24,54 +52,67 @@
                 <hr style="margin-bottom: 50px;">
                 <div id="payment_step1">
                     <div class="d-flex flex-column">
-                        <div class="mb-3"><span style="margin-right: 135px;">성명</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 99px;">생년월일</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 117px;">이메일</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 99px;">전화번호</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 40px;">전화번호 재확인</span><input type="text"/></div>
-                        <div class="mb-3">
-                            <span style="margin-right: 130px;">주소</span>
-                            <input class="checked_user_update_info_adr" id="member_post"  type="text" placeholder="우편번호" readonly onclick="findAddr()"/>
-                            <input class="checked_user_update_info_adr" id="member_addr" type="text" placeholder="도로명 주소" readonly/> <br>
-                            <input class="checked_user_update_info_adr mt-2" style="margin-left: 170px;" type="text" placeholder="상세 주소"/>
-                        </div>
-                        <script>
-                            
-                        </script> 
+                    
+                     <div class="mb-3"><input id="selectUserInfo" onClick="selectUserInfo('${user.name}', '${user.email}', '${user.phone}', '${user.postcode}', '${user.address}', '${user.addressDetail}')" type="checkbox"/><span style="margin-left: 20px;">회원 정보와 동일</span></div>
+                        <form>
+	                        <div class="mb-3"><span style="margin-right: 135px;">성명</span><input type="text" id="purchase_username"/></div>
+	                        <div class="mb-3"><span style="margin-right: 117px;">이메일</span><input type="text" id="purchase_useremail"/></div>
+	                        <div class="mb-3"><span style="margin-right: 99px;">전화번호</span><input type="text" id="purchase_usertel"/></div>
+	                         
+	                        <div class="mb-3">
+	                            <span style="margin-right: 130px;">주소</span>
+	                            <input class="checked_user_update_info_adr"  type="text" placeholder="우편번호" readonly onclick="findAddress()" id="purchase_userpost"/>
+	                            <input class="checked_user_update_info_adr"  type="text" placeholder="도로명 주소" readonly id="purchase_useraddr"/> <br>
+	                            <input class="checked_user_update_info_adr mt-2" style="margin-left: 170px;" type="text" placeholder="상세 주소" id="purchase_userdetaildaar"/>
+	                        </div>
+	                        <div class="mb-3"><span style="margin-right: 40px;">배송 시 요청 사항</span><input name="deliverymessage" type="text" style="width:700px"/></div>
+	                       <%--  <input type="hidden" value="${productList.modelNumber}"/> --%>
+	                    
+						</form>
                     </div>
                 </div>
                 <div id="payment_step2">
-                    <div class="d-flex flex-column">
-                        <div class="mb-3"><input type="checkbox"/><span style="margin-left: 20px;">이전 입력 정보와 동일</span></div>
-
-                        <div class="mb-3"><span style="margin-right: 135px;">성명</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 99px;">생년월일</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 117px;">이메일</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 99px;">전화번호</span><input type="text"/></div>
-                        <div class="mb-3"><span style="margin-right: 40px;">전화번호 재확인</span><input type="text"/></div>
-                        <div class="mb-3">
-                            <span style="margin-right: 130px;">주소</span>
-                            <input class="checked_user_update_info_adr" id="member_post"  type="text" placeholder="우편번호" readonly onclick="findAddr2()"/>
-                            <input class="checked_user_update_info_adr" id="member_addr" type="text" placeholder="도로명 주소" readonly/> <br>
-                            <input class="checked_user_update_info_adr mt-2" style="margin-left: 170px;" type="text" placeholder="상세 주소"/>
+                <div id="purchase_cart_list">
+                    <ul id=""class="nav nav-tabs">
+                        <li class="nav-item">
+                          <p id="purchase_cart_count" class="nav-link active">구매 목록</p>
+                        </li>
+                    </ul>
+                    <div style="background-color: #ffffff;">
+                        <hr>
+                        <div id="purchaseList" class="purchaseList">
+	                       <c:forEach items="${productList}" var="cartproduct">
+	                            <div class="media">
+	                                <img id="purchase_el1" class="purchase_el_" src="/springframework-mini-project/equipment/display?fileName=${cartproduct.pattachoname}" class="mr-3"/>
+	                                <div class="media-body">
+	                                  <h5 id="purchase_product_name1" class="mt-0 mb-1">${cartproduct.productName}</h5>
+	                                  <p id="purchase_model_number1" class="fontcolorccc">${cartproduct.modelNumber}</p>
+	                                  <div id="cart_product_price1">${cartproduct.productColor} 　<fmt:formatNumber pattern="###,###,###,###" value="${cartproduct.price}"/>원</div> 
+	                                  <hr style="margin-top: 50px;">
+	                                </div>
+	                            </div>
+	                        </c:forEach>
                         </div>
-                        <div class="mb-3"><span style="margin-right: 40px;">배송 요청 사항</span><input type="text" style="width:700px"/></div>
-         
                     </div>
+                </div>
+
                 </div>
                 <div id="payment_step3">
                     <div class="d-flex flex-column"> 
-                        <div class="mb-3">결제 수단<span style="margin-right: 90px;"></span>카드<input type="radio" name="payment_method" checked="checked" style="margin-left: 20px; margin-right: 20px;"/>
-                            </span>계좌이체<input type="radio" name="payment_method" style="margin-left: 20px;"/>
-                            <form id="card_payment">
+                        <div class="mb-3">결제 수단<span style="margin-right: 90px;"></span>
+                        카드<input type="radio" name="payment_method" checked="checked" style="margin-left: 20px; margin-right: 20px;"/>
+                            　계좌이체<input type="radio" name="payment_method" style="margin-left: 20px;"/>
+<form method="post" id="card_payment" name="paymentVerify" action="paymentVerify">
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">카드사</label>
-                                  <select class="form-control">
-                                    <option>수빈 은행</option>
-                                    <option>보현 은행</option>
-                                    <option>하현 은행</option>
-                                    <option>보경 은행</option>
+                                  <select name="bank">
+                                  	<option value="수빈 은행">수빈 은행</option>
+                                    <option value="보현 은행">보현 은행</option>
+                                    <option value="하현 은행">하현 은행</option>
+                                    <option value="보경 은행">보경 은행</option>
+                                  
                                   </select>
+                                    
                                 </div>
                                 <div class="form-group">
                                   <label for="input_cardnum">카드 번호</label>
@@ -85,6 +126,16 @@
                                     <li><small>결제 정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능 합니다.</small></li>
                                     <li><small>월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다.</small></li>
                                 </ul>
+                                <c:choose>
+								<c:when test="${empty sum}">
+									<input name="QuantityFin" type="hidden" value="${countQua}"/>
+									<input name="PriceFin" type="hidden" value="${purchasePrice}"/>	
+								</c:when>
+								<c:otherwise>
+									<input name="QuantityFin" type="hidden" value="${fn:length(cartForm)}"/>
+									<input name="PriceFin" type="hidden" value="${sum}"/>
+								</c:otherwise>
+								</c:choose>
                             </form>
                         </div>
                         
@@ -94,20 +145,23 @@
             </div>
 
 
+
             <div id="paymentpage_content_right">
                 <p style="font-family: MinSans-Black">구매 제품</p>
                 <hr id="pxup_line">
-                <p>제품 수 <a>n</a></p>
-                <p>주문 금액 <a >1,000,000 원</a></p>
-                <p>결제 예정 금액 <a>1,000,000 원</a></p>
-                <p class="fontcolor525253">할인 적용 금액 없음</p>
+                <c:choose>
+					<c:when test="${empty sum}">
+						<p>제품 수 <a>${countQua}</a></p>
+	                	<p>주문 금액 <a >${purchasePrice} 원</a></p>
+					</c:when>
+					<c:otherwise>
+						<p>제품 수 <a>${fn:length(cartForm)}</a></p>
+	                	<p>주문 금액 <a >${sum} 원</a></p>
+					</c:otherwise>
+				</c:choose>
+                
                 <hr>
-                <p style="font-family: MinSans-Black; margin-top: 50px;">렌탈 제품</p>
-                <hr id="pxup_line">
-                <p>제품 수 <a>n</a></p>
-                <p>월별 금액 <a >69,000 원</a></p>
-                <p class="fontcolor525253">할인 적용 금액 없음</p>
-                <hr>
+                
                 <a id="next_page_go_to_payment_step1" class="btn" onclick="payment_nextstep1()">다음 페이지</a>
                 <div id="step2_bt_list">
                     <a id="back_page_go_to_payment_step1" class="btn" onclick="payment_backstep1()">이전 페이지</a>
@@ -115,13 +169,13 @@
                 </div>
                 <div id="step3_bt_list">
                     <a id="back_page_go_to_payment_step2" class="btn" onclick="payment_backstep2()">이전 페이지</a>
-                    <a id="next_page_go_to_payment_step3" class="btn">결제</a>
+                    <a id="next_page_go_to_payment_step3" class="btn" onclick="sendPurchaseInfo()">결제</a>
+
                 </div>
                 
             </div>
-        
-    <div class="content"></div>
-        <div id="paymentsuccess_popup" class="layer_popup" style="font-family: 'MinSans-Regular'; display:none"> 
+
+        <%-- <div id="paymentsuccess_popup" class="layer_popup" style="font-family: 'MinSans-Regular'; display:none"> 
             <div class="layer">
                 <div class="text_area text-center">
                     <p style="font-size: 30px;"> 구매가 정상적으로 완료되었습니다 </p>
@@ -149,7 +203,7 @@
                 <a class="btn btn_close"  href="${pageContext.request.contextPath}/">CLOSE</a> 
             </div> 
             <div class="dimmed"></div>
-      </div>
+      </div> --%>
   
         </div>
         

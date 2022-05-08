@@ -71,14 +71,15 @@
         #as_btn_list{
             border: 1px solid #ccc;
             border-radius: 20px;
-            padding: 60px;
+            padding-top: 20px;
+            padding-left: 10px;
             background-color: white;
             margin-bottom: 30px;
         }
-        /* .as_btn_list_el{
+        .as_btn_list_el{
             float: left;
-            
-        } */
+            padding-left: 30px; padding-top:30px
+        } 
         .as_btn_list_image{
             margin-right: 40px;
             border: 1px solid #ccc;
@@ -352,4 +353,38 @@
         .checked_user_update_info_adr{
             height: 36px;
             font-size: 15px;
+        }
+        
+        #howToVerifyModel{
+            position: relative;
+        }
+        #howToVerifyModel span{
+            position: absolute;  
+            background-color: #ccc;
+            width: 300px;
+            color : black;
+            top : -8px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            left: 110%;                    /*중앙배치 : 왼쪽에서 110%위치*/
+            transform: translateX(-0%);  /*중앙배치 : X크기값을 이동*/
+            opacity: 0;                   /*이벤트설정 : 서서히 변하게 함*/
+            transition: 0.5s;   
+            visibility: hidden;          /*특정 요소 접촉시 이벤트 발생*/
+        }
+        #howToVerifyModel span:after {
+            content : '';             
+            position: absolute;     
+            background-color: #ccc;
+            width : 10px;
+            height: 10px;
+            transform: rotate(45deg) translateX(-50%);  
+            bottom: -5px;
+            top : 20px;
+            left: 0%;  /*1. 왼쪽에서 50%위치에 둔다.*/ /*2. 크기값을 50%만큼 이동시켜준다.->항상 중앙에 위치하게됨*/     
+        }
+        #howToVerifyModel:hover span{
+            opacity: 1;
+            visibility: visible;     /*hover시 발생하ㅡㄴ 이벤트*/
         }

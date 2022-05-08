@@ -125,8 +125,7 @@ public class EquipmentController {
 		log.info(product.getProductName());
 		log.info(product.getProductQuantity());
 		log.info(product.getCategory());
-		
-				log.info(product.getMainimage().getOriginalFilename());
+
 				if (!product.getMainimage().isEmpty()) {
 					product.setPattachoname(product.getMainimage().getOriginalFilename());
 					product.setPattachtype(product.getMainimage().getContentType());
@@ -147,10 +146,10 @@ public class EquipmentController {
 		return "redirect:/equipment/productAdd";
 	}
 
-	@RequestMapping("/equipment/paymentpage")
-	public String paymentpage() {
-		return "/equipment/paymentpage";// view 이름만 전달
-	}
+	/*	@RequestMapping("/equipment/paymentpage")
+		public String paymentpage() {
+			return "/equipment/paymentpage";// view 이름만 전달
+		}*/
 
 	@RequestMapping("/equipment/paymentsuccess")
 	public String paymentsuccess() {
