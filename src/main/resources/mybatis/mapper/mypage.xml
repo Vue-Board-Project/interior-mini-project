@@ -248,6 +248,13 @@
 		consult_no = #{conNum}
 	</select>
 	
+	<select id = "getProgressStep6" parameterType="int" resultType="int">
+		select ino 
+		from INTERIOR_PROGRESS 
+		where CONSULT_NO = #{conNum}
+	</select>
+	
+	
 	<select id="selectByAsPage" parameterType="pager" resultType="asList">
 		<![CDATA[ SELECT rnum, receiptNumber, productName, EMAIL, applicationDate
 		    from(
@@ -419,23 +426,21 @@
 	
 	<select id="getReviewBeforeList" parameterType="pager" resultMap="seleceReviewWithPurandProd">
 	<![CDATA[ 
-	SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY, product_name
+	SELECT rnum, PURCHASE_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY
 		    from(
-		    	SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY, product_name
+		    	SELECT ROWNUM as rnum, PURCHASE_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY
 			    FROM (
-                    select  p.PURCHASE_NUMBER, d.MODEL_NUMBER, p.email, p.PURCHASE_DATE,
-                         p.PURCHASE_QUANTITY, d.product_name
-                    from purchase p, review r, product d
-                    where p.email = #{stringEmail} and  
-                        DELIVERY_MANAGEMENT = '배송완료' and
-                        r.model_number = d.model_number and
-                        r.PURCHASE_NUMBER is null
+                    select p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.PURCHASE_QUANTITY
+					from purchase p, review r
+					where p.email =  #{stringEmail} and  
+						r.PURCHASE_NUMBER != p.PURCHASE_NUMBER AND
+   					 	DELIVERY_MANAGEMENT = '배송완료'
 			     )  WHERE ROWNUM <= #{endRowNo}    
 		)WHERE rnum >=#{startRowNo}
 		]]>
 	</select>
 	
-	<!-- 리뷰 작성 이후 창 getTotalReviewAfterNum getReviewAfterList-->
+	<!-- 리뷰 작성 이후 창 -->
 	<select id="getTotalReviewAfterNum" parameterType="string" resultType="int">
 		select  count(*)
 		from purchase p, review r, product d

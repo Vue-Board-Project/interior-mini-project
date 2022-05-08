@@ -257,6 +257,11 @@ public class MypageService {
 		return mypageDao.getStep5Files(conNum);
 	}
 
+	public int getProgressStep6(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep6(conNum);
+	}
+
 	
 
 	

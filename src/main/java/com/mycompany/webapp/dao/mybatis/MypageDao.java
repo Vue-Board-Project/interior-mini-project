@@ -106,6 +106,8 @@ public interface MypageDao {
 
 	public List<InteriorProgressFileDto> getStep5Files(int conNum);
 
+	public int getProgressStep6(int conNum);
+
 	
 
 

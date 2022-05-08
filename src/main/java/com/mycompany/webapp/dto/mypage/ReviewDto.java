@@ -24,5 +24,7 @@ public class ReviewDto {
 	private PurchaseDto purchase;
 	private ProductDto product;
 	
+	private String uploadPath;
+	private String fileName;
 
 }

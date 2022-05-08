@@ -1,16 +1,20 @@
 package com.mycompany.webapp.controller;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,6 +39,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.webapp.dto.Pager;
@@ -50,6 +55,7 @@ import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
 import com.mycompany.webapp.service.MypageService;
+import com.mycompany.webapp.test.AttachImageDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -298,6 +304,10 @@ public class MyPageController {
 		@RequestMapping("/step6")
 		public String ajaxInteriorProgressStep6(int conNum, Model model){
 
+			int step6 =  mypageService.getProgressStep6(conNum);
+			model.addAttribute("step6", step6);
+			log.info("step 6 is ... " + step6);
+			
 			return "mypage/interiorProgress/interiorProgressStep6";
 		}
 			
@@ -476,11 +486,106 @@ public class MyPageController {
 		return "/mypage/mypage_review";
 	}
 	
+	@PostMapping(value = "/insertImage", produces = "application/json; charset=UTF-8;")
+	public ResponseEntity<List<AttachImageDto>> insertImage(MultipartFile[] uploadFile) {
+		
+		log.info("uploadAjaxActionPOST..........");
+		/*  전달 받은 파일이 이미지 인지 아닌지 체크 */
+		for (MultipartFile multipartFile : uploadFile) {
+			File checkfile = new File(multipartFile.getOriginalFilename());
+			String type = null;
+			try {
+				type = Files.probeContentType(checkfile.toPath());
+				log.info("MIME TYPE : " + type);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if (!type.startsWith("image")) {// 이미지가 이닌 경우 400에러 생성
+				List<AttachImageDto> list = null;
+				return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
+
+			}
+		}
+
+		// 파일 제대로 들어왔는지 확인
+		for (MultipartFile multipartFile : uploadFile) {
+			log.info("-----------------------------------------------");
+			log.info("파일 이름 : " + multipartFile.getOriginalFilename());
+			log.info("파일 타입 : " + multipartFile.getContentType());
+			log.info("파일 크기 : " + multipartFile.getSize());
+		}
+
+		// 오늘 날짜의 'yyyy/MM/dd ' 형식의 String 데이터를 얻기
+		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String str = sdf.format(date);
+		String datePath = str.replace("-", File.separator);*/
+
+		// 업로드를 수행하는 url 매핑 메서드(uploadAjaxActionPOST)에 파일을 저장할 기본적 경로
+		String uploadFolder = "C:/Temp/mypage/";
+
+		
+
+		/* 이미저 정보 담는 객체 */
+		List<AttachImageDto> list = new ArrayList<AttachImageDto>();
+
+		for (MultipartFile multipartFile : uploadFile) {
+
+			// 이미지 정보 객체
+			AttachImageDto dto = new AttachImageDto();
+			/* 파일 이름 */
+			String uploadFileName = multipartFile.getOriginalFilename();
+			dto.setFileName(uploadFileName);
+			dto.setUploadPath(uploadFolder);
+			/* uuid 적용 파일 이름 
+			String uuid = UUID.randomUUID().toString();
+			dto.setUuid(uuid);*/
+
+
+			/* 파일 위치, 파일 이름을 합친 File 객체 */
+			File saveFile = new File(uploadFolder, uploadFileName);
+
+			/* 파일 저장 */
+			try {
+				multipartFile.transferTo(saveFile);
+
+				/*썸네일 이미지 만들기 -> 파일 
+				ImageIO: 이미지를 읽어오거나 생성(작성?) 할 수 있도록 도와주는 메서드
+				BufferedImage : 이미지 데이터를 처리하거나 조작에 필요한 값과 메서드를 제공
+				Graphics2D의 : 그림을 그리는데 필요로 한 설정값과 메서드를 제공하는 클래스*/
+				File thumbnailFile = new File(uploadFolder, "s_" + uploadFileName);
+
+				// 원본 이미지 파일을 BufferedImage 타입으로 변경
+				// 1. 도화지 생성
+				BufferedImage bo_image = ImageIO.read(saveFile);
+				// 비율
+				double ratio = 3;
+				// 넓이 높이
+				int width = (int) (bo_image.getWidth() / ratio);
+				int height = (int) (bo_image.getHeight() / ratio);
+				BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);// 개변수로 '넓이',
+																										// '높이', '생성될
+																										// 이미지의 타입'을 작성
+				// 2. 도화지에 그림그리기
+				Graphics2D graphic = bt_image.createGraphics();
+				graphic.drawImage(bo_image, 0, 0, width, height, null);
+				ImageIO.write(bt_image, "jpg", thumbnailFile);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			list.add(dto);
+
+		} // for
+
+		ResponseEntity<List<AttachImageDto>> result = new ResponseEntity<List<AttachImageDto>>(list, HttpStatus.OK);
+		return result;
+	}
+	
 	@PostMapping("/insertReview")
 	public String mypageReview(ReviewDto review, Authentication authentication){
-		
+
 		mypageService.insertReview(review);
-			
 		return "redirect:/";
 	}
 	
