@@ -166,16 +166,16 @@ public class EquipmentController {
 	      log.info(" getImage()..........");
 	      File file = new File("c:\\Temp\\product\\"+ fileName);
 	      ResponseEntity<byte[]> result = null;
-
+	
 	      try {
-
+	
 	         HttpHeaders header = new HttpHeaders();
 	         header.add("Content-type", Files.probeContentType(file.toPath()));// 대상 파일의 MIME TYPE을 부여
 	         // 대상 이미지 파일, header 객체, 상태 코드를 인자 값으로 부여한 생성자를 통해 ResponseEntity 객체를 생성하여 앞서
 	         // 선언한 ResponseEntity 참조 변수에 대입
 	         result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 	         // 대상 파일을 복사하여 Byte 배열로 반환해주는 클래스
-
+	
 	      } catch (IOException e) {
 	         e.printStackTrace();
 	      }

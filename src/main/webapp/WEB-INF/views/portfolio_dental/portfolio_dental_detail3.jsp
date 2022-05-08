@@ -22,7 +22,7 @@
                 	<c:forEach items="${interiorDList}" var="dList">
                 		<div>
                 			<div class="portfolio_dental_content_title" align="left"><b class="portfolio_dental_content_title_b">${dList.cname}</b></div>
-                       		<div class="mb-5"><img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/display?fileName=${dList.idImgPath}"/></div>
+                       		<div class="mb-5"><img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${dList.idImgPath}"/></div>
                         	<p class="mb-5 portfolio_dental_content_p">${dList.dcontent}</p>
                 		</div>
                 	</c:forEach>

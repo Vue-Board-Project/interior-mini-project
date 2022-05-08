@@ -6,6 +6,7 @@
     scrollPoint = parseInt( $(window).scrollTop() + parseInt( window.innerHeight ) ),
   endPoint = parseInt( $('.floating').outerHeight() ),
   limit = $('.floating').outerHeight();
+  //console.log("navbarHeight : "+endPoint);
       
   if(0 <= parseInt( scrollPoint ) && parseInt( scrollPoint ) < parseInt( startPoint ) ) {
     floater.addClass('blind');

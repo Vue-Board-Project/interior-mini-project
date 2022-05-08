@@ -6,7 +6,7 @@
         <c:forEach items="${recommandStyleList}" var="styleList" begin="0" end="1">
         	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${styleList.ino}"
         	 class="portfolio_dental_content_a">
-        		<img style="width: 10rem;" src="/springframework-mini-project/portfolio_dental/display?fileName=${styleList.imImgPath}"/>
+        		<img style="width: 10rem; height: 6rem;" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${styleList.imImgPath}"/>
         	</a>
         </c:forEach>
         <%-- <a href="#" class="mb-1"><img style="width: 10rem;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/3.PNG"/></a>
@@ -19,7 +19,7 @@
         <c:forEach items="${recommandAreaList}" var="areaList" begin="0" end="1">
         	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${areaList.ino}"
         	 class="portfolio_dental_content_a">
-        	 	<img style="width: 10rem;" src="/springframework-mini-project/portfolio_dental/display?fileName=${areaList.imImgPath}"/>
+        	 	<img style="width: 10rem; height: 6rem;" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${areaList.imImgPath}"/>
         	 </a>
         </c:forEach>
         <%-- <a href="#" class="mb-1"><img style="width: 10rem;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/chungchun_waiting_room.jpg"/></a>

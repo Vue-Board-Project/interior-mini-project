@@ -5,7 +5,7 @@
   <ul id="slider">
   	<c:forEach items="${interiorDList}" var="dList">
     	<li>
-       		 <img src="/springframework-mini-project/portfolio_dental/display?fileName=${dList.idImgPath}">
+       		 <img src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${dList.idImgPath}">
     	</li>
     </c:forEach>
   </ul>

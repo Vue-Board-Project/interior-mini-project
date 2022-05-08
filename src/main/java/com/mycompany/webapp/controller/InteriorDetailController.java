@@ -42,7 +42,7 @@ public class InteriorDetailController {
 	      log.info("너.. 뭐 돼..?");
 	      interiorDetailDto.setIdImgPath(interiorDetailDto.getIImg().getOriginalFilename());
   
-	  	File file = new File("C:/Temp/portfolioD/" + interiorDetailDto.getIdImgPath());
+	  	File file = new File("C:/Temp/portfolio/" + interiorDetailDto.getIdImgPath());
 	  	interiorDetailDto.getIImg().transferTo(file);
 	  	interiorDetailService.insertInteriorDetail(interiorDetailDto);  
 	    }

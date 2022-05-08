@@ -74,12 +74,16 @@ public class PortfolioDentalControll {
 			model.addAttribute("interiorList", interiorList);
 			int cnt = interiorService.interiorCnt();
 			model.addAttribute("cnt", cnt);
+			log.info(interiorList);
 		} else {
 			List<InteriorDto> paramList = interiorService.interiorFilter(param);
 			JSONArray jsonArray = new JSONArray();
 			for(InteriorDto s : paramList) {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("ino",s.getIno());
+				jsonObject.put("ihits",s.getIhits());
+				jsonObject.put("istyle",s.getIstyle());
+				jsonObject.put("allColor",s.getAllColor());
 				jsonObject.put("isummary",s.getIsummary());
 				jsonObject.put("imImgPath",s.getImImgPath());
 				jsonArray.put(jsonObject);
@@ -103,8 +107,8 @@ public class PortfolioDentalControll {
 		return "portfolio_dental/portfolio_dental_detail3";
 	}
 
-	@GetMapping("/portfolio_dental/display")
-	public ResponseEntity<byte[]> getImage(String fileName) {
+	@GetMapping("/portfolio_dental/portfolioDisplay")
+	public ResponseEntity<byte[]> getImage22(String fileName) {
 		// log.info(" getImage()..........");
 		File file = new File("c:\\Temp\\portfolio\\" + fileName);
 		ResponseEntity<byte[]> result = null;

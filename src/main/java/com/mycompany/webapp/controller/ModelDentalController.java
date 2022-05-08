@@ -67,6 +67,9 @@ public class ModelDentalController {
 			for(InteriorDto s : paramList) {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("ino",s.getIno());
+				jsonObject.put("ihits",s.getIhits());
+				jsonObject.put("istyle",s.getIstyle());
+				jsonObject.put("allColor",s.getAllColor());
 				jsonObject.put("isummary",s.getIsummary());
 				jsonObject.put("imImgPath",s.getImImgPath());
 				jsonArray.put(jsonObject);
@@ -88,12 +91,14 @@ public class ModelDentalController {
 		log.info("실행");
 		InteriorDto interiorDetail2 = interiorService.detailPortfolio(ino);
 		model.addAttribute("interiorDetail2", interiorDetail2);
+		log.info(interiorDetail2);
 		
 		List<InteriorDetailDto> interiorDList2 = interiorDetailService.selectPortfolio(interiorDetail2.getIno());
 		for (InteriorDetailDto s : interiorDList2) {
 			log.info("interiorDList2 : " + s);
 		}
 		model.addAttribute("interiorDList2", interiorDList2);
+		interiorService.updateCnt(ino);
 		return "model_dental/model_dental_detail2";
 	}
 	

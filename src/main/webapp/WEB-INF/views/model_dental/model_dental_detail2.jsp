@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/model_dental/cssModelDentalDetail2.css" rel="stylesheet" type="text/css">
 <div id="model_dental_wrap" class="d-flex flex-column" style="background-color: #faf9f6; font-family: 'MinSans-Regular';">
-        <div id="model_dental_main_img" class="text-center"><img class="vw-100" style="height: 450px;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_main.png"/></div>
+        <div id="model_dental_main_img" class="text-center"><img class="vw-100" style="height: 450px;" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${interiorDetail2.imMainImg}"/></div>
         <div id="model_dental_summary" style="background-color: #d5d5d8; margin: 3rem auto; border-radius: 50px;">
             <div class="d-flex justify-content-center pt-4 mr-5 ml-5" style="color: #272723;">
                 <div class="mr-5"><img class="model_dental_summary_img" src="${pageContext.request.contextPath}/resources/model_dental_images/icons/free-icon-building-188379.png"/><strong class="ml-3">모델치과</strong></div>
@@ -22,7 +22,7 @@
 	        <c:forEach items="${interiorDList2}" var="dList">
            		<div>
            			<div class="model_dental_content_text" align="left"><b class="model_dental_content_b">${dList.cname}</b></div>
-                  		<div class="mb-5"><img class="model_dental_content_img" src="/springframework-mini-project/portfolio_dental/display?fileName=${dList.idImgPath}"/></div>
+                  		<div class="mb-5"><img class="model_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${dList.idImgPath}"/></div>
                    	<p class="mb-5 model_dental_content_p">${dList.dcontent}</p>
            		</div>
            	</c:forEach>

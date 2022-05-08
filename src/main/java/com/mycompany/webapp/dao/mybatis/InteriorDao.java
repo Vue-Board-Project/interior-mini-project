@@ -40,4 +40,6 @@ public interface InteriorDao {
 	
 	public List<InteriorDto> modelList();
 	public List<InteriorDto> modelFilter(Map<String, Object> param);
+	
+	public List<InteriorDto> interiorBestList();
 }

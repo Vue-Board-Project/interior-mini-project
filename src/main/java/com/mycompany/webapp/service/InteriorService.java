@@ -21,8 +21,8 @@ public class InteriorService {//인테리어 서비스
 	@Resource(name="interiorDao")
 	private InteriorDao interiorDao;
 	
-	@Autowired @Qualifier("interiorDaoImpl")
-	private InteriorDao interiorDao2;
+	/*	@Autowired @Qualifier("interiorDaoImpl")
+		private InteriorDao interiorDao2;*/
 	
 	public void insertInterior(InteriorDto interior) {
 		interiorDao.insertInterior(interior);
@@ -33,16 +33,6 @@ public class InteriorService {//인테리어 서비스
 		return interiorDao.interiorList();
 	}
 		
-	/*	//포폴 과거순
-		public List<InteriorDto> interiorListPast(){
-			return interiorDao2.interiorListPast();
-		}
-		
-		//포폴 조회수
-		public List<InteriorDto> interiorListPopular(){
-			return interiorDao2.interiorListPopular();
-		}*/
-	
 	//인테리어,포폴 상세창
 	public InteriorDto detailPortfolio(int ino) {
 		return interiorDao.detailPortfolio(ino);
@@ -79,5 +69,9 @@ public class InteriorService {//인테리어 서비스
 
 	public List<InteriorDto> modelFilter(Map<String, Object> param) {
 		return interiorDao.modelFilter(param);
+	}
+
+	public List<InteriorDto> interiorBestList() {
+		return interiorDao.interiorBestList();
 	}
 }

@@ -20,6 +20,7 @@
     <!-- <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script> -->
    <link href="${pageContext.request.contextPath}/resources/css/cssHeaderAd.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssHeader.css" rel="stylesheet" type="text/css">
+   <script src="${pageContext.request.contextPath}/resources/js/jsHeader.js"></script> 
    <link href="${pageContext.request.contextPath}/resources/css/cssHeaderNav.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssFooter.css" rel="stylesheet" type="text/css">
    <link href="${pageContext.request.contextPath}/resources/css/cssLogin.css" rel="stylesheet" type="text/css">
@@ -31,7 +32,11 @@
    
    <!-- 예쁜 alter 사용 -->
    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
-   
+
+	<!-- AOS 라이브러리 불러오기-->
+	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <style>
         @font-face {
             font-family: 'MinSans-Regular';
@@ -52,10 +57,10 @@
     그레이베이지 #faf9f6
     베이지 #fef8d4
  -->
-<body>
+<body id="body_id" class="body_class">
     <div id="main_wrapper" class="d-flex flex-column">
-        <header id="main_header_wrap">
-            <%@ include  file="/WEB-INF/views/common/header_ad.jsp"%>
+        <header id="main_header_wrap" class="nav-down">
+	        <%@ include file="/WEB-INF/views/common/header_ad.jsp"%>
             <div id="main_header" class="d-flex align-items-center justify-content-end">
                 <a id="main_header_logo" href="${pageContext.request.contextPath}">
                     <img id="main_header_logo_img" src="${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png"/>

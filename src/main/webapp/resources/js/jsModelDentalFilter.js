@@ -51,10 +51,20 @@ $(document).ready(function(){
 			for(let item of data){
 				console.log(item);
 				result += '<li class="m-3 pb-3 model_dental_content" style="list-style:none; padding-left:0px; width:300px;">';
-				result += '<a href="${pageContext.request.contextPath}/model_dental/model_dental_detail?ino='+item.ino+'" class="model_dental_content_a">';
+				result += '<a style="position: relative" href="${pageContext.request.contextPath}/model_dental/model_dental_detail?ino='+item.ino+'" class="model_dental_content_a">';
+				result += '<div class="model_dental_content_img_div">';
+				result += '<div class="model_dental_content_img_div_content" style="width: 280px; height: 180px; position: relative;">';
 				result += '<img class="model_dental_content_img" src="/springframework-mini-project/model_dental/display?fileName='+item.imImgPath+'"/>';
+				result += '<div class="white_oss_logo_div" style="position: absolute; top: 35%; left: 6%; width: 280px; height: 180px;">';
+				result += '<img src="/springframework-mini-project/resources/pngs/white_logo.png" style=" width: 200px;"/>';
+				result += '</div>';
+				result += '</div>';
+				result += '</div>';
+				result += '<div>';
 				result += '<b class="model_dental_content_b">'+item.isummary+'</b>';
-				result += '<small class="d-block model_dental_content_sm">mansik</small>';
+				result += '<div style="position:absolute; width: 70px; top: 10px;"><i class="fa-regular fa-heart" style="color: white;"></i><span style="color: white;" class="ml-1">'+item.ihits+'</span></div>';
+				result += '<small class="d-block model_dental_content_sm"><span>#'+item.istyle+' </span> <span># '+item.allColor+'</span></small>';
+				result += '</div>';
 				result += '</a></li>';
 			}
 			result += '</ul>';
