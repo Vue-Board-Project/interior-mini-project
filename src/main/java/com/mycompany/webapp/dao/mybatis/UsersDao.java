@@ -23,4 +23,14 @@ public interface UsersDao {
 	
 	//updatePW
 	public int updatePW(UsersDto users) throws Exception;
+
+	public void updateFailureCount(String email);
+
+	public int checkFailureCount(String email);
+
+	public void disabledUsername(String email);
+
+	public void clearFailureCount(String email);//email
+
+	public int getIsEnabled(String email);
 }

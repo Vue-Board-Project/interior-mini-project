@@ -1,4 +1,4 @@
-package com.mycompany.webapp.dao.mybatis;
+/*package com.mycompany.webapp.dao.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +27,22 @@ public class UsersDaoImpl implements UsersDao {
 		return sqlSession.update("com.mycompany.webapp.dao.mybatis.UsersDao.updatePW", users);
 	}
 
-}
+	@Override
+	public void updateFailureCount(String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int checkFailureCount(String email) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void disabledUsername(String email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}*/

@@ -33,11 +33,11 @@ $(document).ready(function(){
           error4[0].innerHTML = "이메일을 입력해주세요.";
           error4[0].style.display = "block";
           return false;
-      } else if(!emailPattern4.test(email.value)) {
+      } /*else if(!emailPattern4.test(email.value)) {
           error4[0].innerHTML = "이메일을 다시 확인해주세요.";
           error4[0].style.display = "block";
           return false;
-      } else {
+      }*/ else {
           error4[0].style.display = "none"; 
           return true;
       }
@@ -50,11 +50,11 @@ $(document).ready(function(){
           error4[1].innerHTML = "비밀번호를 입력해주세요.";
           error4[1].style.display = "block";
           return false;
-      } else if(!pwPattern4.test(pw14.value)) {
+      } /*else if(!pwPattern4.test(pw14.value)) {
           error4[1].innerHTML = "비밀번호 형식과 다릅니다.";
           error4[1].style.display = "block";
           return false;
-      } else {
+      } */else {
           error4[1].style.display = "none";
           return true;
       }

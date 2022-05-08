@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <div id="login_popup_wrap" style="background:#faf9f6; border: solid 1px #666666; position:fixed; z-index:9999; top: 0px; right: -400px;">
      <div id="login_popup_content1" style="width:400px; text-align: center;">
@@ -13,6 +14,12 @@
 						<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
 						 	아이디 또는 비밀번호가 틀립니다.
 					 	</c:if>
+					 	<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'DisabledException'}">
+						 	계정이 비활성화되었습니다. 관리자에게 문의하세요.
+					 	</c:if>
+					 	<c:if test="${fn:contains(SPRING_SECURITY_LAST_EXCEPTION.message, 'principal exceeded')}">
+							인증 횟수가 초과되었습니다.
+						</c:if> 
 					 </div> 
 				 </c:if>
 				 <c:if test="${successPW != null}">
@@ -21,7 +28,7 @@
 				    </div>			
 			    </c:if>
                  <form method="post" action="${pageContext.request.contextPath}/login">
-                 	<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
+                 	 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                      <div class="form-group"  style="width: 286px;">
                          <label for="email" class="ml-3" style="font-size: 12px;">이메일</label>
                          <div class="ml-3">

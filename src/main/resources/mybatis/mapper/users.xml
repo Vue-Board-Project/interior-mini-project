@@ -22,8 +22,54 @@
 		SELECT email FROM users 
 	</select> -->
 	
+	 <select id="checkFailureCount" resultType="Integer">
+            SELECT
+                FAILURE_CNT
+            FROM
+                users
+            WHERE
+                email = #{email}
+    </select>
+	
+	<!-- getIsEnabled -->
+	<select id="getIsEnabled" resultType="Integer">
+			SELECT
+                IS_ENABLED
+            FROM
+                users
+            WHERE
+                email = #{email}
+	</select>
 	<!-- 비밀번호 업데이트 -->
 	<update id="updatePW" parameterType="users">
 		UPDATE users set password = #{password} where email = #{email}
 	</update>
+	
+	<!-- 로그인 실패 횟수 업데이트 -->
+	<update id="updateFailureCount">
+            UPDATE
+                users
+            SET
+                FAILURE_CNT = FAILURE_CNT + 1
+            WHERE
+                email = #{email}
+
+    </update>
+    
+    <!-- 로그인 성공시 실패 횟수 업데이트 -->
+	<update id="clearFailureCount">
+            UPDATE
+                users
+            SET
+                FAILURE_CNT = 0<!-- , IS_ENABLED = CASE WHEN IS_ENABLED = 0 THEN 1 END -->
+            WHERE
+                email = #{email}
+    </update>
+
+	<update id="disabledUsername" parameterType="String" >
+		UPDATE users
+		SET is_enabled = 0
+		WHERE email = #{email}
+	</update>
+
 </mapper>

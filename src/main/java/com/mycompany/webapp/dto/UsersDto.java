@@ -13,5 +13,7 @@ public class UsersDto {
 	private String addressDetail; //상세주소
 	private String crn; //사업자등록번호
 	private String role; //권한
+	private int failureCnt; //로그인 실패 횟수
+	private String isEnabled; //잠긴계정 
 	
 }

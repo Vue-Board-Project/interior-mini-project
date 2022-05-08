@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mycompany.webapp.dao.mybatis.UsersDao;
-import com.mycompany.webapp.dao.mybatis.UsersDaoImpl;
 import com.mycompany.webapp.dto.UsersDto;
 
 import lombok.extern.log4j.Log4j2;
@@ -39,8 +38,8 @@ public class UsersService {
 	@Resource(name="usersDao")
 	private UsersDao usersDao;
 	
-	@Autowired @Qualifier("usersDaoImpl")
-	private UsersDaoImpl usersDao2;
+	/*@Autowired @Qualifier("usersDaoImpl")
+	private UsersDaoImpl usersDao2;*/
 	
 	//회원가입
 	public JoinResult join(UsersDto users) {
@@ -122,7 +121,7 @@ public class UsersService {
 	}
 	
 	//비밀번호 찾기
-	//@Transactional
+	@Transactional
 	public FindPWResult findPW(HttpServletResponse response, UsersDto users) throws Exception {
 		log.info("실행");
 		log.info(users.getEmail());
@@ -149,7 +148,7 @@ public class UsersService {
 			users.setPassword(passwordEncoder.encode(realPW));
 			//users.setPassword(pw);
 			// 비밀번호 변경
-			usersDao2.updatePW(users);
+			usersDao.updatePW(users);
 			// 비밀번호 변경 메일 발송
 			sendmail(usersDto, "findPassword", realPW);
 
@@ -157,6 +156,26 @@ public class UsersService {
 			//out.close();
 			return FindPWResult.SUCCESS;
 		}
+	}
+
+	public void countFailure(String email) {
+		usersDao.updateFailureCount(email);
+	}
+
+	public int checkFailureCount(String email) {
+		return usersDao.checkFailureCount(email);
+	}
+
+	public void disabledUsername(String email) {
+		usersDao.disabledUsername(email);
+	}
+
+	public void clearFailureCount(String email) {//email
+		usersDao.clearFailureCount(email);
+	}
+
+	public int getIsEnabled(String email) {
+		return usersDao.getIsEnabled(email);
 	}
 	
 }
