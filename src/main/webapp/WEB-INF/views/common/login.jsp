@@ -14,7 +14,7 @@
 						<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
 						 	아이디 또는 비밀번호가 틀립니다.
 					 	</c:if>
-					 	<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'DisabledException'}">
+					 	<c:if test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'User is disabled'}">
 						 	계정이 비활성화되었습니다. 관리자에게 문의하세요.
 					 	</c:if>
 					 	<c:if test="${fn:contains(SPRING_SECURITY_LAST_EXCEPTION.message, 'principal exceeded')}">
