@@ -96,6 +96,7 @@ function detail_consult_finish_btn(){
         whereNotCheck();
         $("#priceResultSpan").text("입력 되지 않은 값이 있습니다.");
     }else{
+        $('#detailoading').show();
         var watting_all = "도배지는 " +  $("input[name='waiting_papering']:checked").val() + 
                             " 이고 바닥은 " + $("input[name='waiting_flooring']:checked").val() +" 입니다. 조명은 " +
                              $("input[name='waiting_light']:checked").val() + 
@@ -113,7 +114,7 @@ function detail_consult_finish_btn(){
                             $("input[name='machine_light']:checked").val() + 
                              "이고 수도는 " + $("input[name='machine_capital']:checked").val() + " 예정입니다.";
         
-                             if($("#addRequestchoice").val() != ""){
+        if($("#addRequestchoice").val() != ""){
             machine_all += '추가 요청 사항은  "' + $("#addRequestchoice").val() + '" 입니다.';
         }
 
@@ -128,6 +129,7 @@ function detail_consult_finish_btn(){
         $('#machine_hidden').attr("value",machine_all);
         $('#estimation_hidden').attr("value",estimation);
         $("#detailSubmit").submit();
+        return true;
 
     }
     
@@ -597,4 +599,9 @@ function chageSideRed(side){
     var sideValue = "#"+side+"_i"
     $(sideValue).css("color","white");
 }
+//평수 나타내기
+$("#acreageRange").change(function(){
+    $("#acreageResult").text($("#acreageRange").val());
+    console.log($("#acreageRange").val());
+});
 

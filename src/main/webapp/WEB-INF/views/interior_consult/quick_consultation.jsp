@@ -9,20 +9,20 @@
 <link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/remodeling_price.css" rel="stylesheet" type="text/css"/>
 <%-- 로딩창 --%>
 <style>
-    #loading {
+    #allloading {
       width: 100%;    
       height: 100%;    
       top: 0;    
       left: 0;    
       position: fixed;   
-      display: block;   
+      display: none;   
       opacity: 0.7;   
       background: white;   
       z-index: 99;   
       text-align: center; 
     }
     
-    #loading > img{
+    #allloading > img{
       position: absolute;
       top: 35%;
       left: 40%;

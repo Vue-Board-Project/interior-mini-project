@@ -1,6 +1,3 @@
-$(document).ready(function() {
-	 $('#allloading').hide();
-});
 
 //첫번째 페이지 리모델링 인테리어 버튼 선택
 $("input:radio[name=consultType]").on("click", function() {
@@ -185,6 +182,7 @@ $('input[type=radio][name=consultTime]').change(function() {
     $(".crs_time_span").css("color","black");
 });
 
+/*
 //빠른 상담 버튼 클릭하여 submit 
 $("#qcf_button").click(function(){
     var address = $("#consult_address").val();//주소
@@ -224,21 +222,26 @@ $("#qcf_button").click(function(){
             $("#consult_address_detail").css("border", "1px solid lightgray");
         }
     }
-});
+});*/
 
 //빠른 상담 버튼 클릭하여 submit 
 $("#qcf_button").click(function(){
-    var lastInsertQuick =  lastInsertQuick();
-    if(lastInsertQuick){
+	$('#allloading').show();
+    var lastInsertQ =  lastInsertQuick();
+    if(lastInsertQ){
         console.log("빠른 상담 보내랏!");
-        $("#quik_consult_send_form").submit();  
+        return true; 
+    $("#quik_consult_send_form").submit();
+	 
     }else{
         nonLastInput();
+        $('#allloading').hide();
     }
 });
 
 //디데일 상담 클릭하여 submit 
-function submit2(frm) {    
+function submit2(frm) {
+    $('#allloading').show();    
     var lastInsert = lastInsertQuick();
     if(lastInsert){
         console.log("상세 상담 보내랏!");
@@ -248,6 +251,7 @@ function submit2(frm) {
         
     }else{
         nonLastInput();
+        $('#allloading').hide();
     }
 
     

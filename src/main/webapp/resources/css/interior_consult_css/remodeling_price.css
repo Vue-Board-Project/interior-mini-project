@@ -69,6 +69,7 @@
 .price_rcR {
     width:33%;
 }
+
 .remodeling_price_papering{
     width: 100%;
 }
@@ -81,5 +82,60 @@
 .rp_maginunder{
     margin-bottom: 100px;
     margin-top: 50px;
+}
+
+/*가격 아래 붙어있게 하기*/
+#rPirceResultWrap{
+    position: sticky;
+    bottom:0;
+    width: 100%;
+    text-align: center; 
+    height: 60px; 
+    background-color: #272723;
+    background-color:rgba(0, 0, 0, 0.7);
+    
+}
+
+#RPacreageResult{
+	font-family: 'MinSans-Bold'; 
+	font-size: 20px;
+}
+/*바닥 라디오 버튼*/
+/*리모델링 시공공간 체크박스 css && 디테일신청 시공공간 체크 박스*/
+.remodeling_price_floor{
+    margin: 0;
+}
+.remodeling_price_floor input[type="radio"] {
+    display: none;
+}
+
+.remodeling_price_floor input[type="radio"] + span {
+    display: inline-block;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'MinSans-Medium';
+}
+.quic_rcR  input[type="radio"] + span {
+    width: 180px;
+    height: 150px;
+}
+
+.remodeling_price_floor input[type="radio"]:checked + span {
+    background-color: #ca5c0d;
+    color: white;
+}
+
+.remodeling_price_floor input[type="radio"]:checked + span>div{
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.price_rcF {
+    width:33%;
+}
+.price_rcF  input[type="radio"] + span {
+    width: 100%;
+    height: 100%;
 }
 

@@ -13,14 +13,14 @@
                     <div style="width: 100%;" class="text-right pr-2">
                         <ul class="remodeling_price_quote_main_radio_btn">
                             <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="all" onclick="js:remodeling_price_aside_btn('all')" style="color: #ca5c0d; font-weight: bold; ">종합</button></li>
-                            <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="papering" onclick="js:remodeling_price_aside_btn('papering')">도배</button></li>
-                            <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="waiting" onclick="js:remodeling_price_aside_btn('waiting')">대기실</button></li>
+                            <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="papering" onclick="js:remodeling_price_aside_btn('papering'); rpChagnepaperingPrice()">도배</button></li>
+                            <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="waiting" onclick="js:remodeling_price_aside_btn('waiting'); rpChangeWatingPrice()">대기실</button></li>
                             <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="treatment" onclick="js:remodeling_price_aside_btn('treatment')">진료실</button></li>
                             <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="disinfection" onclick="js:remodeling_price_aside_btn('disinfection')">소독실</button></li>
                         </ul> 
                     </div>
                 </section>
-                <section style="display: inline-block; width: 85%; padding-top: 40px;;" class="border" id="includeRemodeling">
+                <section style="display: inline-block; width: 85%; padding-top: 40px;" class="border" id="includeRemodeling">
                      <!-- 어사이드 따라서 변할 부분 -->
                     <!-- 종합 -->
                     <div style="width: 80%;" class="mx-auto" id="rpajcall">
@@ -50,91 +50,102 @@
                         <!-- 원하는 시공 종류 -->
                         <div class="rp_maginunder" >
                             <div style=" font-family: 'MinSans-Bold'; font-size: 20px; padding-bottom: 20px; line-height: 120%;">
-                                원하는 시공을 모두 골라주세요.<br/>
-                                <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">시공분야는 전문가와 조율 가능합니다.[ 리모델링 용 ]</span> 
+                                원하는 시공을 모두 골라주세요. 
+                                <br/>
+                                <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">시공분야는 전문가와 조율 가능합니다.</span> 
                             </div>
                             <div>
                                 <!--시공정류-->
-                                <div style="display: flex; width: 100%;">
-                                    <label class="remodeling_consult_Room price_rcR wi">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="treatment">
-                                        <span style="border-top-left-radius: 10px;">
-                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
-                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="120px">
-                                            </div>
-                                            진료실
-                                        </span>
-                                    </label>
-                                    <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="xray">
-                                        <span>
-                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
-                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="120px">
-                                            </div>
-                                            X-ray실
-                                        </span>
-                                    </label>
-                                    <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="owner">
-                                        <span style="border-top-right-radius: 10px;">
-                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
-                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="120px">
-                                            </div>
-                                            원장실
-                                        </span>
-                                    </label>
-                                </div>
-            
-                                <div style="display: flex;">
-                                    <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="consult">
-                                        <span style="border-bottom-left-radius: 10px;">
-                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
-                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="120px">
-                                            </div>
-                                            상담실
-                                        </span>
-                                    </label>
-                                    <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="equipment">
-                                        <span >
-                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
-                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="120px">
-                                            </div>
-                                            기계실
-                                        </span>
-                                    </label>
-                                    <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="bath">
-                                        <span style="border-bottom-right-radius: 10px;">
-                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
-                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="120px">
-                                            </div>
-                                            화장실
-                                        </span>
-                                    </label>
-                                </div>
+
+	                                <div style="display: flex; width: 100%;">
+	                                    <label class="remodeling_consult_Room price_rcR wi">
+	                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="treatment">
+	                                        <span style="border-top-left-radius: 10px;" class="rtprc_span">
+	                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
+	                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="120px">
+	                                            </div>
+	                                            진료실
+	                                        </span>
+	                                    </label>
+	                                    <label class="remodeling_consult_Room price_rcR">
+	                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="xray">
+	                                        <span class="rtprc_span">
+	                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
+	                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="120px">
+	                                            </div>
+	                                            X-ray실
+	                                        </span>
+	                                    </label>
+	                                    <label class="remodeling_consult_Room price_rcR">
+	                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="owner">
+	                                        <span style="border-top-right-radius: 10px;" class="rtprc_span">
+	                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
+	                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="120px">
+	                                            </div>
+	                                            원장실
+	                                        </span>
+	                                    </label>
+	                                </div>
+	            
+	                                <div style="display: flex;">
+	                                    <label class="remodeling_consult_Room price_rcR">
+	                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="consult">
+	                                        <span style="border-bottom-left-radius: 10px;" class="rtprc_span">
+	                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
+	                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="120px">
+	                                            </div>
+	                                            상담실
+	                                        </span>
+	                                    </label>
+	                                    <label class="remodeling_consult_Room price_rcR">
+	                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="equipment">
+	                                        <span  class="rtprc_span">
+	                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
+	                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="120px">
+	                                            </div>
+	                                            기계실
+	                                        </span>
+	                                    </label>
+	                                    <label class="remodeling_consult_Room price_rcR">
+	                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="bath">
+	                                        <span style="border-bottom-right-radius: 10px;" class="rtprc_span">
+	                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
+	                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="120px">
+	                                            </div>
+	                                            화장실
+	                                        </span>
+	                                    </label>
+	                                </div>
+                                
                             </div>
                         </div>
                         <!-- 평수 정하기 -->
                         <div class="rp_maginunder">
-                            <div style=" font-family: 'MinSans-Bold'; font-size: 20px; padding-bottom: 20px; line-height: 120%;">
-                                평수-공급면적<br/>
-                                <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">대략적인 평수를 알려주세요</span> 
+                            <div style="display: flex; justify-content: space-between; width: 95%;">
+                                <div style=" font-family: 'MinSans-Bold'; font-size: 20px; padding-bottom: 20px; line-height: 120%; display: inline-block;">
+                                    평수-공급면적<br/>
+                                    <span style="font-size: 15px; color:#272723;font-family: 'MinSans-Regular';">대략적인 평수를 알려주세요</span> 
+                                </div>
+                                <div style="display: inline-block;">
+                                    <span style="color: #80807a; font-size: 18px;" id="RPacreageResult"></span>
+                                </div>
                             </div>
+                            
                             <div style="width: 100%;" class="px-auto">
                                 <div style="width: 95%;">
-                                    <input type="range" class="form-control-range" style="width: 100%;">
+                                    <input type="range" class="remodeling_total_price_arec" style="width: 100%;" min="30" max="100">
                                 </div>
                                 <div style="justify-content: space-between; width: 95%; display:flex;">
-                                    <div style="display: inline-block;">0평</div>
+                                    <div style="display: inline-block;">30평</div>
                                     <div style="display: inline-block;">100평</div>
                                 </div>
                             </div>
                         </div>
                         <!-- 도배 -->
                         <div class="rp_maginunder">
-                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">도배</p>
+                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">
+                            	도배 
+                            </p>
                             <div style="display: flex;" class="mx-auto">
                                 <label class="detail_consult_main_radio_btn_csswrap  rpmrbc" >
                                     <input type="radio" name="remodeling_price_total_papering" value="silk">
@@ -158,7 +169,9 @@
                         </div>
                         <!-- 바닥재 -->
                         <div class="rp_maginunder">
-                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">바닥재</p>
+                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">
+                            	바닥재
+                            </p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
                                     <input type="radio" name="remodeling_price_total_flooring" value="veneer">
@@ -223,19 +236,19 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">전기/조명(다중선택 가능)</p>
                             <div style="display: flex;" class="mx-auto">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="checkbox" name="remodeling_price_total_papering" value="silk">
+                                    <input type="checkbox" name="remodeling_price_total_light" value="silk">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         스위치&콘센트
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="checkbox" name="remodeling_price_total_papering" value="paper">
+                                    <input type="checkbox" name="remodeling_price_total_light" value="paper">
                                     <span class="remodeling_price_papering">
                                         전기배선
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="checkbox" name="remodeling_price_total_papering" value="silkpaper">
+                                    <input type="checkbox" name="remodeling_price_total_light" value="silkpaper">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         조명
                                     </span>
@@ -252,7 +265,7 @@
                                     <h3>도배 견적 계산</h3>
                                 </div>
                                 <div style="display: inline-block; font-family: 'MinSans-Medium';" >
-                                    <button class="btn badge-light"><i class="fa-solid fa-rotate-left"></i>초기화</button>
+                                    <button class="btn badge-light" onclick="paperingReset()"><i class="fa-solid fa-rotate-left"></i>초기화</button>
                                 </div>
                             </div>
                         </div>
@@ -261,19 +274,19 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 벽지를 선택해주세요</p>
                             <div style="display: flex;" class="mx-auto">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_only_papering" value="silk">
+                                    <input type="radio" name="remodeling_price_only_papering" value="실크" class="rp_papering">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         실크
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_only_papering" value="paper">
+                                    <input type="radio" name="remodeling_price_only_papering" value="합지" class="rp_papering">
                                     <span class="remodeling_price_papering">
                                         합지
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_only_papering" value="silkpaper">
+                                    <input type="radio" name="remodeling_price_only_papering" value="믹스" class="rp_papering">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         실크&합지
                                     </span>
@@ -285,19 +298,19 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">벽지 브랜드는 어떤걸 선호하시나요?</p>
                             <div style="display: flex;" class="mx-auto">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_only_papering_brand" value="nobrand">
+                                    <input type="radio" name="remodeling_price_only_papering_brand" value="브랜드" class="rp_papering">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         브랜드
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_only_papering_brand" value="onlybrand">
+                                    <input type="radio" name="remodeling_price_only_papering_brand" value="비브랜드" class="rp_papering">
                                     <span class="remodeling_price_papering">
                                         비브랜드
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_only_papering_brand" value="free">
+                                    <input type="radio" name="remodeling_price_only_papering_brand" value="무관" class="rp_papering">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         무관
                                     </span>
@@ -309,13 +322,13 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 공간 규모가 어떻게 되나요?</p>
                             <div style="display: flex;" class="mb-4">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_only_papering_celling" value="incluedceling">
+                                    <input type="radio" name="remodeling_price_only_papering_celling" value="포함" class="rp_papering">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         천장포함
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_only_papering_celling" value="nonincludeceling">
+                                    <input type="radio" name="remodeling_price_only_papering_celling" value="미포함" class="rp_papering">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         천장미포함
                                     </span>
@@ -324,18 +337,25 @@
                             <div style="width: 100%;" class="px-auto mb-4">
                                 
                                 <div style="width: 100%;">
-                                    <input type="range" class="form-control-range" style="width: 100%;">
+                                    <input type="range" class="form-control-range" style="width: 100%;" class="rp_papering" id="rpPaperArecRange" min="5" max="100">
                                 </div>
                                 <div style="justify-content: space-between; width: 100%; display:flex;">
-                                     <div style="display: inline-block;">0평</div>
+                                     <div style="display: inline-block;"><span id="rpPaperArecResult">0</span>평</div>
                                       <div style="display: inline-block;">100평</div>
                                 </div>
+                                <script type="text/javascript">
+                                	$("#rpPaperArecRange").change(function(){
+                                	    $("#rpPaperArecResult").text($("#rpPaperArecRange").val());                               	   
+                                	    rpChagnepaperingPrice();
+                                	    
+                                	});
+                                </script>
                                
                             </div>
                             <div>
                                 <div style="display: flex; width: 100%;">
                                     <label class="remodeling_consult_Room price_rcR wi">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="treatment">
+                                        <input type="checkbox" name="remodeling_price_only_papering_room" value="진료실" class="rp_papering">
                                         <span style="border-top-left-radius: 10px;">
                                             <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/treatmentRoom.png" width="120px">
@@ -344,7 +364,7 @@
                                         </span>
                                     </label>
                                     <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="xray">
+                                        <input type="checkbox" name="remodeling_price_only_papering_room" value="x-ray" class="rp_papering">
                                         <span>
                                             <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/xrayRoom.png" width="120px">
@@ -353,7 +373,7 @@
                                         </span>
                                     </label>
                                     <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="owner">
+                                        <input type="checkbox" name="remodeling_price_only_papering_room" value="원장실" class="rp_papering">
                                         <span style="border-top-right-radius: 10px;">
                                             <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/direcotorRoom.png" width="120px">
@@ -365,7 +385,7 @@
             
                                 <div style="display: flex;">
                                     <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="consult">
+                                        <input type="checkbox" name="remodeling_price_only_papering_room" value="상담실" class="rp_papering">
                                         <span style="border-bottom-left-radius: 10px;">
                                             <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/consultinfRoom.png" width="120px">
@@ -374,7 +394,7 @@
                                         </span>
                                     </label>
                                     <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="equipment">
+                                        <input type="checkbox" name="remodeling_price_only_papering_room" value="기계실" class="rp_papering">
                                         <span >
                                             <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/equipmentRoom.png" width="120px">
@@ -383,7 +403,7 @@
                                         </span>
                                     </label>
                                     <label class="remodeling_consult_Room price_rcR">
-                                        <input type="checkbox" name="remodeling_total_price_room_choice" value="bath">
+                                        <input type="checkbox" name="remodeling_price_only_papering_room" value="화장실" class="rp_papering">
                                         <span style="border-bottom-right-radius: 10px;">
                                             <div class="mx-auto bg-white mt-3 mb-1" style="width: 140px; height: 120px;">
                                                 <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/restRoom.png" width="120px">
@@ -404,110 +424,135 @@
                                     <h3>대기실 견적 계산</h3>
                                 </div>
                                 <div style="display: inline-block; font-family: 'MinSans-Medium';" >
-                                    <button class="btn badge-light"><i class="fa-solid fa-rotate-left"></i>초기화</button>
+                                    <button class="btn badge-light" onclick="watingReset()"><i class="fa-solid fa-rotate-left"></i>초기화</button>
                                 </div>
                             </div>
                         </div>
+                        <!-- 규모 -->
+                        <div class="rp_maginunder">
+                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 공간 규모가 어떻게 되나요?</p>
+                            <div class="mb-4">
+                                  
+                            <div style="width: 100%;" class="px-auto mb-4">
+                               
+                               <div style="width: 100%;">
+                                   <input type="range" class="form-control-range" style="width: 100%;" class="rp_papering" id="rpWatingArecRange" min="5" max="100">
+                               </div>
+                               <div style="justify-content: space-between; width: 100%; display:flex;">
+                                    <div style="display: inline-block;"><span id="rpWatingArecResult">0</span>평</div>
+                                     	<div style="display: inline-block;">100평</div>
+                               		</div>
+		                               <script type="text/javascript">
+		                               	$("#rpWatingArecRange").change(function(){
+		                               	    $("#rpWatingArecResult").text($("#rpWatingArecRange").val());
+		                               	 rpChangeWatingPrice();
+		                               	});
+		                               </script>
+                              
+                           		</div>
+                            </div>
+                        </div> 
                         <!-- 도배 -->
                         <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 벽지를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_remodeling_price_papering" value="silk">
+                                    <input type="radio" name="remodeling_price_wating_papering" value="실크" class="rp_wating">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         실크
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_remodeling_price_papering" value="paper">
+                                    <input type="radio" name="remodeling_price_wating_papering" value="합지" class="rp_wating">
                                     <span class="remodeling_price_papering">
                                         합지
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_remodeling_price_papering" value="silkpaper">
+                                    <input type="radio" name="remodeling_price_wating_papering" value="믹스" class="rp_wating">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         실크&합지
-                                    </span>
-                                </label>   
+                                    </span> 
+                                </label>     
                             </div>
                         </div>
                         <!-- 바닥 -->
                         <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 바닥 종류를 선택해주세요</p>
-                            <div style="display: flex;">
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_waiting_flooring" value="veneer">
-                                    <span style="border-radius: 10px 0 0 0;" class="remodeling_price_papering">
-                                        장판
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_waiting_flooring" value="reinforcedfloor">
-                                    <span class="remodeling_price_papering">
-                                        강화마루
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_waiting_flooring" value="riverfloor">
-                                    <span style="border-radius: 0 10px 0 0;" class="remodeling_price_papering">
-                                        강마루
-                                    </span>
-                                </label>   
-                            </div>
-                            <div style="display: flex;">
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_waiting_flooring" value="solidwoodfloor">
-                                    <span style="border-radius: 0 0 0 10px;" class="remodeling_price_papering">
-                                        원목마루
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_waiting_flooring" value="porcelaintile">
-                                    <span class="remodeling_price_papering">
-                                        포세린타일
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_waiting_flooring" value="naturalmarble">
-                                    <span style="border-radius: 0 0 10px 0;" class="remodeling_price_papering">
-                                        천연대리석
-                                    </span>
-                                </label>   
-                            </div>
+                            <div style="display: flex; width: 100%;">
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_wating_flooring" value="장판"  class="rp_wating">
+                                        <span style="border-top-left-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/장판.jpg" width="180px;" height="120px">
+                                            </div>
+                                            장판
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_wating_flooring" value="강화마루" class="rp_wating">
+                                        <span>
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/강화마루.jpg" width="180px;" height="120px">
+                                            </div>
+                                            강화마루
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_wating_flooring" value="강마루"  class="rp_wating">
+                                        <span style="border-top-right-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/강마루.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            강마루
+                                        </span>
+                                    </label>
+                                </div>
+            
+                                <div style="display: flex;">
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_wating_flooring" value="원목마루"  class="rp_wating">
+                                        <span style="border-bottom-left-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/원목마루.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            원목마루
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_wating_flooring" value="포세린타일"  class="rp_wating">
+                                        <span >
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/포세린타일.png"  width="180px;" height="120px">
+                                            </div>
+                                            포세린타일
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_wating_flooring" value="천연대리석"  class="rp_wating">
+                                        <span style="border-bottom-right-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/천연대리석.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            천연대리석
+                                        </span>
+                                    </label>
+                                </div>
                         </div>
                          <!-- 조명 -->
                         <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">조명 교체 여부를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_light" value="allLight">
+                                    <input type="radio" name="remodeling_price_waiting_light" value="전체교체" class="rp_wating">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         전체 교체
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_light" value="partLight">
+                                    <input type="radio" name="remodeling_price_waiting_light" value="부분교체" class="rp_wating">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         부분 교체
-                                    </span>
-                                </label>   
-                            </div>
-                        </div>
-                         <!-- 정수기 -->
-                        <div class="rp_maginunder">
-                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">정수기 여부를 선택해주세요</p>
-                            <div style="display: flex;">
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_water" value="yesentrance">
-                                    <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
-                                        있음
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_water" value="noentrance">
-                                    <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
-                                        없음
                                     </span>
                                 </label>   
                             </div>
@@ -517,13 +562,13 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">출입구 리모델링 여부를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_entrance" value="yesentrance">
+                                    <input type="radio" name="remodeling_price_waiting_entrance" value="출입문교체" class="rp_wating">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         교체
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_entrance" value="noentrance">
+                                    <input type="radio" name="remodeling_price_waiting_entrance" value="출입문미교체" class="rp_wating">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         교체 안함
                                     </span>
@@ -535,13 +580,13 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">접수실 변경 여부를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_reception" value="yesreception">
+                                    <input type="radio" name="remodeling_price_waiting_reception" value="접수실변경" class="rp_wating">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         변경
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_reception" value="noreception">
+                                    <input type="radio" name="remodeling_price_waiting_reception" value="접수실미변경" class="rp_wating">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         변경 안함
                                     </span>
@@ -553,31 +598,31 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">놀이방 선택 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_playroom" value="yesplayroom">
+                                    <input type="radio" name="remodeling_price_waiting_playroom" value="놀이방설치" class="rp_wating">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         있음
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo ">
-                                    <input type="radio" name="remodeling_price_waiting_playroom" value="noplayroom">
+                                    <input type="radio" name="remodeling_price_waiting_playroom" value="놀이방미설치" class="rp_wating">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         없음
                                     </span>
                                 </label>   
-                            </div>
+                            </div> 
                         </div>
                         <!-- 가구 -->
                         <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">가구 종류를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_waiting_furniture" value="sofa">
+                                    <input type="radio" name="remodeling_price_waiting_furniture" value="쇼파" class="rp_wating">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         쇼파
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo ">
-                                    <input type="radio" name="remodeling_price_waiting_furniture" value="chair">
+                                    <input type="radio" name="remodeling_price_waiting_furniture" value="의자 " class="rp_wating">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         의자
                                     </span>
@@ -598,24 +643,48 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- 규모 -->
+                        <div class="rp_maginunder">
+                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 공간 규모가 어떻게 되나요?</p>
+                            <div class="mb-4">
+                                  
+                            <div style="width: 100%;" class="px-auto mb-4">
+                               
+                               <div style="width: 100%;">
+                                   <input type="range" class="form-control-range" style="width: 100%;" class="rp_papering" id="rpTreatmentArecRange" min="5" max="100">
+                               </div>
+                               <div style="justify-content: space-between; width: 100%; display:flex;">
+                                    <div style="display: inline-block;"><span id="rpTreatmentArecResult">0</span>평</div>
+                                     	<div style="display: inline-block;">100평</div>
+                               		</div>
+		                               <script type="text/javascript">
+		                               	$("#rpTreatmentArecRange").change(function(){
+		                               	    $("#rpTreatmentArecResult").text($("#rpTreatmentArecRange").val());
+		                               	 rpChangeWatingPrice();
+		                               	});
+		                               </script>
+                              
+                           		</div>
+                            </div>
+                        </div> 
                          <!-- 도배 -->
                          <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 벽지를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_papering" value="silk">
-                                    <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
+                                    <input type="radio" name="remodeling_price_treatment_papering" value="실크">
+                                    <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering" class="rp_treatment">
                                         실크
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_papering" value="paper">
+                                    <input type="radio" name="remodeling_price_treatment_papering" value="합지" class="rp_treatment">
                                     <span class="remodeling_price_papering">
                                         합지
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_papering" value="silkpaper">
+                                    <input type="radio" name="remodeling_price_treatment_papering" value="믹스" class="rp_treatment">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         실크&합지
                                     </span>
@@ -625,59 +694,78 @@
                         <!-- 바닥 -->
                         <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 바닥 종류를 선택해주세요</p>
-                            <div style="display: flex;">
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_flooring" value="veneer">
-                                    <span style="border-radius: 10px 0 0 0;" class="remodeling_price_papering">
-                                        장판
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_flooring" value="reinforcedfloor">
-                                    <span class="remodeling_price_papering">
-                                        강화마루
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_flooring" value="riverfloor">
-                                    <span style="border-radius: 0 10px 0 0;" class="remodeling_price_papering">
-                                        강마루
-                                    </span>
-                                </label>   
-                            </div>
-                            <div style="display: flex;">
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_flooring" value="solidwoodfloor">
-                                    <span style="border-radius: 0 0 0 10px;" class="remodeling_price_papering">
-                                        원목마루
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_flooring" value="porcelaintile">
-                                    <span class="remodeling_price_papering">
-                                        포세린타일
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_flooring" value="naturalmarble">
-                                    <span style="border-radius: 0 0 10px 0;" class="remodeling_price_papering">
-                                        천연대리석
-                                    </span>
-                                </label>   
-                            </div>
+                             <div style="display: flex; width: 100%;">
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_treatment_flooring" value="장판"  class="rp_treatment">
+                                        <span style="border-top-left-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/장판.jpg" width="180px;" height="120px">
+                                            </div>
+                                            장판
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_treatment_flooring" value="강화마루"  class="rp_treatment">
+                                        <span>
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/강화마루.jpg" width="180px;" height="120px">
+                                            </div>
+                                            강화마루
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_treatment_flooring" value="강마루"   class="rp_treatment">
+                                        <span style="border-top-right-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/강마루.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            강마루
+                                        </span>
+                                    </label>
+                                </div>
+            
+                                <div style="display: flex;">
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_treatment_flooring" value="원목마루"   class="rp_treatment">
+                                        <span style="border-bottom-left-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/원목마루.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            원목마루
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_treatment_flooring" value="포세린타일"  class="rp_treatment">
+                                        <span >
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/포세린타일.png"  width="180px;" height="120px">
+                                            </div>
+                                            포세린타일
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_treatment_flooring" value="천연대리석"  class="rp_treatment">
+                                        <span style="border-bottom-right-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/천연대리석.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            천연대리석
+                                        </span>
+                                    </label>
+                                </div>
                         </div>
                          <!-- 조명 -->
                         <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">조명 교체 여부를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_light" value="allLight">
+                                    <input type="radio" name="remodeling_price_treatment_light" value="allLight" class="전체교체" class="rp_treatment">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         전체 교체
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_light" value="partLight">
+                                    <input type="radio" name="remodeling_price_treatment_light" value="partLight" class="부분교체" class="rp_treatment">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         부분 교체
                                     </span>
@@ -689,13 +777,13 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">구조를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_structure" value="Open">
+                                    <input type="radio" name="remodeling_price_treatment_structure" value="Open" class="rp_treatment">
                                     <span style="border-radius: 10px 0 0 0;" class="remodeling_price_papering">
                                         개방형
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_structure" value="semiopenroom">
+                                    <input type="radio" name="remodeling_price_treatment_structure" value="semiopenroom" class="rp_treatment">
                                     <span style="border-radius: 0 10px 0 0;" class="remodeling_price_papering">
                                         반개실형
                                     </span>
@@ -703,13 +791,13 @@
                             </div>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_structure" value="open type">
+                                    <input type="radio" name="remodeling_price_treatment_structure" value="open type" class="rp_treatment">
                                     <span style="border-radius: 0 0 0 10px;" class="remodeling_price_papering">
                                         개실형
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo ">
-                                    <input type="radio" name="remodeling_price_treatment_structure" value="mixed">
+                                    <input type="radio" name="remodeling_price_treatment_structure" value="mixed" class="rp_treatment">
                                     <span style="border-radius: 0 0 10px 0;" class="remodeling_price_papering">
                                         혼용형
                                     </span>
@@ -739,16 +827,14 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">유니트 체어 재설치</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_unitchair" value="yesunitchair">
-                                    <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering                                        포함
-                                    ">
+                                    <input type="radio" name="remodeling_price_treatment_unitchair" value="yesunitchair" class="rp_treatment">
+                                    <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         포함
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_unitchair" value="nounitchair">
-                                    <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering                                        포함
-                                    ">
+                                    <input type="radio" name="remodeling_price_treatment_unitchair" value="nounitchair" class="rp_treatment">
+                                    <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering ">
                                         미포함
                                     </span>
                                 </label>   
@@ -759,19 +845,19 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">유니트 체어 선 설치 방법을 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_unitchair_electric_wire" value="landfill">
+                                    <input type="radio" name="remodeling_price_treatment_unitchair_electric_wire" value="landfill" class="rp_treatment">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         매립
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_unitchair_electric_wire" value="Opening">
+                                    <input type="radio" name="remodeling_price_treatment_unitchair_electric_wire" value="Opening" class="rp_treatment">
                                     <span class="remodeling_price_papering">
                                         개방
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_treatment_unitchair_electric_wire" value="nowire">
+                                    <input type="radio" name="remodeling_price_treatment_unitchair_electric_wire" value="nowire" class="rp_treatment">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         모름
                                     </span>
@@ -1090,9 +1176,19 @@
                 </section>
             </article>
         </div>
-        <div class="pt-3" style="text-align: center; width: 100%; height: 60px; background-color: #272723;background-color:rgba(0, 0, 0, 0.7);">
-            <p style="color: white; font-family: 'MinSans-Medium'; font-size: 20px;" >모든 항목을 선택해주세요</p>
-        </div>
+        <div id="rPirceResultWrap" >
+        	<div class="container" style="height: 100%;">
+        		<div style="width: 100%; height: 100%; display: flex; color: white; justify-content: center;" class="mx-auto" id="rPirceResult">
+        			<div style="color: white; font-family: 'MinSans-Medium'; font-size: 20px;" class="pt-3">모든 값을 입력해주세요.</div>
+        		</div>
+        	</div>
+      </div>  	
+          <!--   -->
+          
+          <!-- <div  style=" display: inline-block; padding:20px 0 0 90px; font-family: 'MinSans-Medium'; font-size: 17px;">리모델링 견적 계산 결과&nbsp;&nbsp;<i class="fas fa-comment-dollar"></i></div>
+        <div  style=" display: inline-block; padding-right: 50px; font-family: 'MinSans-Bold'; font-size: 30px;" class="pt-2">100 ~ 200 만원</div> -->
+            
+        
          <script src="${pageContext.request.contextPath}/resources/js/interior_consult_js/remodeling_price.js"></script>
     </main>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

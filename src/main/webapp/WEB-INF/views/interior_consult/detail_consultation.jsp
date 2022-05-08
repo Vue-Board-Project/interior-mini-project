@@ -79,7 +79,30 @@
     font-family: 'MinSans-Regular';
 }
 
+/*로딩창*/
+#detailoading {
+    width: 100%;    
+    height: 100%;    
+    top: 0;    
+    left: 0;    
+    position: fixed;   
+    display: none;   
+    opacity: 0.7;   
+    background: white;   
+    z-index: 99;   
+    text-align: center; 
+  }
+  
+  #detailoading > img{
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    z-index: 100;
+  }   
 </style>
+<div id="detailoading">
+	<img  src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/load.gif" alt="loading">  
+</div>
 <main style="background-color: #faf9f6">
 
     <div class="consult_finish_dim-layer">
@@ -281,6 +304,7 @@
                                                     </div>
                                                 </div>
                                                 <script>
+                                                    //빠른 상담에서 선택한 평수를 반영
                                                     var min = $("#acreageRange").attr("min");
                                                     console.log(min);
                                                     var minInt = parseInt(min);
