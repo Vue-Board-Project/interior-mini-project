@@ -15,7 +15,7 @@
                             <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="all" onclick="js:remodeling_price_aside_btn('all')" style="color: #ca5c0d; font-weight: bold; ">종합</button></li>
                             <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="papering" onclick="js:remodeling_price_aside_btn('papering'); rpChagnepaperingPrice()">도배</button></li>
                             <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="waiting" onclick="js:remodeling_price_aside_btn('waiting'); rpChangeWatingPrice()">대기실</button></li>
-                            <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="treatment" onclick="js:remodeling_price_aside_btn('treatment')">진료실</button></li>
+                            <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="treatment" onclick="js:remodeling_price_aside_btn('treatment');  rpChangeTreatmentPrice()">진료실</button></li>
                             <li><button class="btn remodeling_price_aside_jsonci_class rpajc" value="disinfection" onclick="js:remodeling_price_aside_btn('disinfection')">소독실</button></li>
                         </ul> 
                     </div>
@@ -639,7 +639,7 @@
                                     <h3>진료실 견적 계산</h3>
                                 </div>
                                 <div style="display: inline-block; font-family: 'MinSans-Medium';" >
-                                    <button class="btn badge-light"><i class="fa-solid fa-rotate-left"></i>초기화</button>
+                                    <button class="btn badge-light" onclick="treatmentReset();"><i class="fa-solid fa-rotate-left"></i>초기화</button>
                                 </div>
                             </div>
                         </div>
@@ -660,7 +660,7 @@
 		                               <script type="text/javascript">
 		                               	$("#rpTreatmentArecRange").change(function(){
 		                               	    $("#rpTreatmentArecResult").text($("#rpTreatmentArecRange").val());
-		                               	 rpChangeWatingPrice();
+		                               	 rpChangeTreatmentPrice()
 		                               	});
 		                               </script>
                               
@@ -759,13 +759,13 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">조명 교체 여부를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_light" value="allLight" class="전체교체" class="rp_treatment">
+                                    <input type="radio" name="remodeling_price_treatment_light" value="전체교체" class="rp_treatment">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         전체 교체
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_treatment_light" value="partLight" class="부분교체" class="rp_treatment">
+                                    <input type="radio" name="remodeling_price_treatment_light" value="부분교체" class="rp_treatment">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         부분 교체
                                     </span>
@@ -874,28 +874,52 @@
                                     <h3>소독실 견적 계산</h3>
                                 </div>
                                 <div style="display: inline-block; font-family: 'MinSans-Medium';" >
-                                    <button class="btn badge-light"><i class="fa-solid fa-rotate-left"></i>초기화</button>
+                                    <button class="btn badge-light" onclick="disinfectionReset();"><i class="fa-solid fa-rotate-left"></i>초기화</button>
                                 </div>
                             </div>
                         </div>
+                         <!-- 규모 -->
+                        <div class="rp_maginunder">
+                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 공간 규모가 어떻게 되나요?</p>
+                            <div class="mb-4">
+                                  
+                            <div style="width: 100%;" class="px-auto mb-4">
+                               
+                               <div style="width: 100%;">
+                                   <input type="range" class="form-control-range" style="width: 100%;" class="rp_papering" id="rpDisinfectionArecRange" min="5" max="100">
+                               </div>
+                               <div style="justify-content: space-between; width: 100%; display:flex;">
+                                    <div style="display: inline-block;"><span id="rpDisinfectionArecResult">0</span>평</div>
+                                     	<div style="display: inline-block;">100평</div>
+                               		</div>
+		                               <script type="text/javascript">
+		                               	$("#rpDisinfectionArecRange").change(function(){
+		                               	    $("#rpDisinfectionArecResult").text($("#rpDisinfectionArecRange").val());
+		                               	 rpChangeDisinfectionPrice();
+		                               	});
+		                               </script>
+                              
+                           		</div>
+                            </div>
+                        </div> 
                          <!-- 도배 -->
                          <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 벽지를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_papering" value="silk">
+                                    <input type="radio" name="remodeling_price_disinfection_papering" value="실크"  class="rp_disinfection">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         실크
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_papering" value="paper">
+                                    <input type="radio" name="remodeling_price_disinfection_papering" value="합지"  class="rp_disinfection">
                                     <span class="remodeling_price_papering">
                                         합지
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_papering" value="silkpaper">
+                                    <input type="radio" name="remodeling_price_disinfection_papering" value="믹스"  class="rp_disinfection">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         실크&합지
                                     </span>
@@ -905,59 +929,78 @@
                          <!-- 바닥 -->
                          <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">시공할 바닥 종류를 선택해주세요</p>
-                            <div style="display: flex;">
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_pricedisinfection_flooring" value="veneer">
-                                    <span style="border-radius: 10px 0 0 0;" class="remodeling_price_papering">
-                                        장판
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_flooring" value="reinforcedfloor">
-                                    <span class="remodeling_price_papering">
-                                        강화마루
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_flooring" value="riverfloor">
-                                    <span style="border-radius: 0 10px 0 0;" class="remodeling_price_papering">
-                                        강마루
-                                    </span>
-                                </label>   
-                            </div>
-                            <div style="display: flex;">
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_flooring" value="solidwoodfloor">
-                                    <span style="border-radius: 0 0 0 10px;" class="remodeling_price_papering">
-                                        원목마루
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_flooring" value="porcelaintile">
-                                    <span class="remodeling_price_papering">
-                                        포세린타일
-                                    </span>
-                                </label>
-                                <label class="detail_consult_main_radio_btn_csswrap rpmrbc">
-                                    <input type="radio" name="remodeling_price_disinfection_flooring" value="naturalmarble">
-                                    <span style="border-radius: 0 0 10px 0;" class="remodeling_price_papering">
-                                        천연대리석
-                                    </span>
-                                </label>   
-                            </div>
+                            <div style="display: flex; width: 100%;">
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_disinfection_flooring" value="장판"  class="rp_disinfection">
+                                        <span style="border-top-left-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/장판.jpg" width="180px;" height="120px">
+                                            </div>
+                                            장판
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_disinfection_flooring" value="강화마루"  class="rp_disinfection">
+                                        <span>
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/강화마루.jpg" width="180px;" height="120px">
+                                            </div>
+                                            강화마루
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_disinfection_flooring" value="강마루"   class="rp_disinfection">
+                                        <span style="border-top-right-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/강마루.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            강마루
+                                        </span>
+                                    </label>
+                                </div>
+            
+                                <div style="display: flex;">
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_disinfection_flooring" value="원목마루"   class="rp_disinfection">
+                                        <span style="border-bottom-left-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/원목마루.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            원목마루
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_disinfection_flooring" value="포세린타일"  class="rp_disinfection">
+                                        <span >
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/포세린타일.png"  width="180px;" height="120px">
+                                            </div>
+                                            포세린타일
+                                        </span>
+                                    </label>
+                                    <label class="remodeling_price_floor price_rcF">
+                                        <input type="radio" name="remodeling_price_disinfection_flooring" value="천연대리석"  class="rp_disinfection">
+                                        <span style="border-bottom-right-radius: 10px;">
+                                            <div class="mx-auto bg-white mt-3 mb-1" style="width: 180px; height: 120px;">
+                                                <img src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/천연대리석.jpg"  width="180px;" height="120px">
+                                            </div>
+                                            천연대리석
+                                        </span>
+                                    </label>
+                                </div>
                         </div>
                          <!-- 조명 -->
                         <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">조명 교체 여부를 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_disinfection_light" value="allLight">
+                                    <input type="radio" name="remodeling_price_disinfection_light" value="전체교체"  class="rp_disinfection">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         전체 교체
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_disinfection_light" value="partLight">
+                                    <input type="radio" name="remodeling_price_disinfection_light" value="부분교체"  class="rp_disinfection">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         부분 교체
                                     </span>
@@ -1011,13 +1054,13 @@
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">건조 방법을 선택해주세요</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="towel">
+                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="수건" class="rp_disinfection">
                                     <span style="border-radius: 10px 0 0 0;" class="remodeling_price_papering">
                                         수건
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="airgun">
+                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="에어건" class="rp_disinfection">
                                     <span style="border-radius: 0 10px 0 0;" class="remodeling_price_papering">
                                         에어건
                                     </span>
@@ -1025,147 +1068,32 @@
                             </div>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="dryer">
+                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="건조기"  class="rp_disinfection">
                                     <span style="border-radius: 0 0 0 10px;" class="remodeling_price_papering">
                                         건조기
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="another">
+                                    <input type="radio" name="remodeling_price_disinfection_dryer" value="그외"  class="rp_disinfection">
                                     <span style="border-radius: 0 0 10px 0;" class="remodeling_price_papering">
                                         그 외
                                     </span>
                                 </label>   
                             </div>
                         </div>
-                        <!-- 청결구역 바닥색 -->
-                        <div class="rp_maginunder">
-                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">청결구역 바닥색을 선택해주세요</p>
-                            <div>
-                                <div style="display: flex;">
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="black">
-                                        <span class="mr-3" style="background-color: black;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="white">
-                                        <span class="mr-3"  style="background-color: white;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="beige">
-                                        <span class="mr-3" style="background-color: beige">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="wheat">
-                                        <span class="mr-3" style="background-color: wheat;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="brown">
-                                        <span class="mr-3" style="background-color: brown;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="red">
-                                        <span class="mr-3" style="background-color: red;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="pink">
-                                        <span class="mr-3" style="background-color: pink;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="yellow">
-                                        <span class="mr-3" style="background-color: yellow;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="lightGreen">
-                                        <span class="mr-3" style="background-color: darkseagreen;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_clean_color" value="lightblue">
-                                        <span class="mr-3" style="background-color: lightblue;">
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 오염구역 바닥색 -->
-                        <div class="rp_maginunder">
-                            <p style="font-family: 'MinSans-Bold'; font-size: 20px;">오염구역 바닥색을 선택해주세요</p>
-                            <div>
-                                <div style="display: flex;">
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="black">
-                                        <span class="mr-3" style="background-color: black;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="white">
-                                        <span class="mr-3"  style="background-color: white;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="beige">
-                                        <span class="mr-3" style="background-color: beige">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="wheat">
-                                        <span class="mr-3" style="background-color: wheat;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="brown">
-                                        <span class="mr-3" style="background-color: brown;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="red">
-                                        <span class="mr-3" style="background-color: red;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="pink">
-                                        <span class="mr-3" style="background-color: pink;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="yellow">
-                                        <span class="mr-3" style="background-color: yellow;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="lightGreen">
-                                        <span class="mr-3" style="background-color: darkseagreen;">
-                                        </span>
-                                    </label>
-                                    <label class="detail_interior_color_choie">
-                                        <input type="radio" name="remodeling_price_disinfection_pollution_color" value="lightblue">
-                                        <span class="mr-3" style="background-color: lightblue;">
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                       
                          <!-- 청결구역, 오염구약 분리 -->
                          <div class="rp_maginunder">
                             <p style="font-family: 'MinSans-Bold'; font-size: 20px;">청결구역, 오염구약 분리</p>
                             <div style="display: flex;">
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="remodeling_price_disinfection_pollution_separation" value="yesseparation">
+                                    <input type="radio" name="remodeling_price_disinfection_pollution_separation" value="분리포함" class="rp_disinfection">
                                     <span style="border-radius: 10px 0 0 10px;" class="remodeling_price_papering">
                                         포함
                                     </span>
                                 </label>
                                 <label class="detail_consult_main_radio_btn_csswrap rpmrbctwo">
-                                    <input type="radio" name="emodeling_price_disinfection_pollution_separation" value="noseparation">
+                                    <input type="radio" name="emodeling_price_disinfection_pollution_separation" value="분리미포함" class="rp_disinfection">
                                     <span style="border-radius: 0 10px 10px 0;" class="remodeling_price_papering">
                                         미포함
                                     </span>

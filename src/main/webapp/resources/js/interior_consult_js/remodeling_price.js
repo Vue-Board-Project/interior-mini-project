@@ -285,7 +285,7 @@ function rpTreatmentChage(){
     let light = $("input[name='remodeling_price_treatment_light']:checked");
     let structure = $("input[name='remodeling_price_treatment_structure']:checked");
     
-    if(TreatmentArec.text() != '0'&& (paper.length || floor.length)){       
+    if(TreatmentArec.text() != '0'&& (paper.length || floor.length || light.length)){       
         return true;
     }else{
         let nopaper = `<div style="color: white; font-family: 'MinSans-Medium'; font-size: 20px;" class="pt-3">아직 입력되지 않은 값이 있습니다.</div> `;
@@ -317,4 +317,54 @@ function treatmentReset(){//도배 리셋버튼
     $(".rp_treatment").prop('checked', false);
     rpTreatmentChage();
 }
+
+
+
+//소독실
+//소독실 가격 계산
+$(".rp_disinfection").on("click", function() {
+    rpChangeDisinfectionPrice();
+});
+
+//진료실 유효성 검사
+function rpDisinfectionChage(){
+    let DisinfectionArec = $("#rpDisinfectionArecResult");
+    let paper = $("input[name='remodeling_price_disinfection_papering']:checked");//도배
+    let floor = $("input[name='remodeling_price_disinfection_flooring']:checked");
+    let light = $("input[name='remodeling_price_disinfection_light']:checked");
+    let structure = $("input[name='remodeling_price_treatment_structure']:checked");
+    
+    if(DisinfectionArec.text() != '0'&& (paper.length || floor.length || light.length)){       
+        return true;
+    }else{
+        let nopaper = `<div style="color: white; font-family: 'MinSans-Medium'; font-size: 20px;" class="pt-3">아직 입력되지 않은 값이 있습니다.</div> `;
+        $("#rPirceResult").html(nopaper);
+        $("#rPirceResult").css("justify-content", "center");
+        return false;
+    }
+}
+
+
+function rpChangeDisinfectionPrice(){
+    let result = rpDisinfectionChage();
+    if(result){
+        let dPrice = new Room($("#rpDisinfectionArecRange").val());
+        dPrice.paperType($("input[name='remodeling_price_disinfection_papering']:checked").val());
+        dPrice.floorType($("input[name='remodeling_price_disinfection_flooring']:checked").val());
+        dPrice.light($("input[name='remodeling_price_disinfection_light']:checked").val());
+
+        min = dPrice.min;
+        max = dPrice.max;
+        minAndMaxResult(min, max);
+        
+    }
+}
+
+
+//진료실 초기화 버튼
+function disinfectionReset(){//도배 리셋버튼
+    $(".rp_disinfection").prop('checked', false);
+    rpDisinfectionChage();
+}
+
 

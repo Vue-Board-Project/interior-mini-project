@@ -100,7 +100,7 @@
                          <div>
                              <div>
                                  <div style="display: flex;">
-                                     <label class="remodeling_consult_Room">
+                                     <label class="remodeling_consult_Room quic_rcR">
                                          <input type="checkbox" name="consultRoomList" value="treatment">
                                          <span class="qcrc_border" style="border-top-left-radius: 10px;">
                                              <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
@@ -109,7 +109,7 @@
                                              진료실
                                          </span>
                                      </label>
-                                     <label class="remodeling_consult_Room">
+                                     <label class="remodeling_consult_Room quic_rcR">
                                          <input type="checkbox" name="consultRoomList" value="xray">
                                          <span class="qcrc_border">
                                              <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
@@ -118,7 +118,7 @@
                                              X-ray실
                                          </span>
                                      </label>
-                                     <label class="remodeling_consult_Room">
+                                     <label class="remodeling_consult_Room quic_rcR">
                                          <input type="checkbox" name="consultRoomList" value="owner">
                                          <span class="qcrc_border" style="border-top-right-radius: 10px;">
                                              <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
@@ -130,7 +130,7 @@
                                  </div>
              
                                  <div style="display: flex;">
-                                     <label class="remodeling_consult_Room">
+                                     <label class="remodeling_consult_Room quic_rcR">
                                          <input type="checkbox" name="consultRoomList" value="consult">
                                          <span class="qcrc_border" style="border-bottom-left-radius: 10px;">
                                              <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
@@ -139,7 +139,7 @@
                                              상담실
                                          </span>
                                      </label>
-                                     <label class="remodeling_consult_Room">
+                                     <label class="remodeling_consult_Room quic_rcR">
                                          <input type="checkbox" name="consultRoomList" value="equipment">
                                          <span class="qcrc_border" >
                                              <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
@@ -148,7 +148,7 @@
                                              기계실
                                          </span>
                                      </label>
-                                     <label class="remodeling_consult_Room">
+                                     <label class="remodeling_consult_Room quic_rcR">
                                          <input type="checkbox" name="consultRoomList" value="bath">
                                          <span class="qcrc_border" style="border-bottom-right-radius: 10px;">
                                              <div class="mx-auto bg-white mt-3" style="width: 120px; height: 100px;">
