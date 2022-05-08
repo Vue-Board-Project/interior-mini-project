@@ -89,6 +89,7 @@
 		                <a onclick="cartToPayment()"id="next_page_go_to_payment" class="btn" href="#">구매 하기</a>
 		                <form action="cartToPayment" id="cartToPay" method="POST">
 		                	<input type="hidden" name="sum"/>
+		                	<input type="hidden" name="quaAll"/>
 		                </form>
 	                </c:otherwise>
 	                

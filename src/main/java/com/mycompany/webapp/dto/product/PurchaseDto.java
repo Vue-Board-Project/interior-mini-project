@@ -7,7 +7,7 @@ import com.mycompany.webapp.dto.UsersDto;
 import lombok.Data;
 @Data
 public class PurchaseDto{
-	private String purchaseNumber;//구매번호
+	private int purchaseNumber;//구매번호
 	private Date purchaseDate;//구매날짜
 	private String paymentAmount;//결제금액
 	private String paymentMethod;//결제방법

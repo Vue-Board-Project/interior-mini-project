@@ -54,7 +54,7 @@
                     <div class="d-flex flex-column">
                     
                      <div class="mb-3"><input id="selectUserInfo" onClick="selectUserInfo('${user.name}', '${user.email}', '${user.phone}', '${user.postcode}', '${user.address}', '${user.addressDetail}')" type="checkbox"/><span style="margin-left: 20px;">회원 정보와 동일</span></div>
-                        <form id="paymentVerify" action="paymentVerify">
+                        <form>
 	                        <div class="mb-3"><span style="margin-right: 135px;">성명</span><input type="text" id="purchase_username"/></div>
 	                        <div class="mb-3"><span style="margin-right: 117px;">이메일</span><input type="text" id="purchase_useremail"/></div>
 	                        <div class="mb-3"><span style="margin-right: 99px;">전화번호</span><input type="text" id="purchase_usertel"/></div>
@@ -65,18 +65,9 @@
 	                            <input class="checked_user_update_info_adr"  type="text" placeholder="도로명 주소" readonly id="purchase_useraddr"/> <br>
 	                            <input class="checked_user_update_info_adr mt-2" style="margin-left: 170px;" type="text" placeholder="상세 주소" id="purchase_userdetaildaar"/>
 	                        </div>
-	                        <div class="mb-3"><span style="margin-right: 40px;">배송 시 요청 사항</span><input type="text" style="width:700px"/></div>
+	                        <div class="mb-3"><span style="margin-right: 40px;">배송 시 요청 사항</span><input name="deliverymessage" type="text" style="width:700px"/></div>
 	                       <%--  <input type="hidden" value="${productList.modelNumber}"/> --%>
-	                    	<c:choose>
-							<c:when test="${empty sum}">
-								<input type="hidden" value="${countQua}"/>
-								<input type="hidden" value="${countQua}"/>	
-							</c:when>
-							<c:otherwise>
-								<input type="hidden" value="${fn:length(cartForm)}"/>
-								<input type="hidden" value="${sum}"/>
-							</c:otherwise>
-							</c:choose>
+	                    
 						</form>
                     </div>
                 </div>
@@ -92,7 +83,7 @@
                         <div id="purchaseList" class="purchaseList">
 	                       <c:forEach items="${productList}" var="cartproduct">
 	                            <div class="media">
-	                                <img id="purchase_el1" class="purchase_el_" src="/springframework-mini-project/equipment/display?fileName=${cartproduct.pattachoname}" class="mr-3" style="width">
+	                                <img id="purchase_el1" class="purchase_el_" src="/springframework-mini-project/equipment/display?fileName=${cartproduct.pattachoname}" class="mr-3"/>
 	                                <div class="media-body">
 	                                  <h5 id="purchase_product_name1" class="mt-0 mb-1">${cartproduct.productName}</h5>
 	                                  <p id="purchase_model_number1" class="fontcolorccc">${cartproduct.modelNumber}</p>
@@ -104,33 +95,24 @@
                         </div>
                     </div>
                 </div>
-                    <%-- <div class="d-flex flex-column">
-                    
-                        장바구니 목록 혹은 구매를 원하는 상품이 출력됩니다
-                        <c:forEach items="${productList}" var="purchaseproduct">
-                        	<div>
-                        		${purchaseproduct.modelNumber}
-                        		${purchaseproduct.productName}
-                        		${purchaseproduct.cartQua}
-                        		${purchaseproduct.price}
-                        		
-                        	</div>
-                        </c:forEach>
-                    </div> --%>
+
                 </div>
                 <div id="payment_step3">
                     <div class="d-flex flex-column"> 
-                        <div class="mb-3">결제 수단<span style="margin-right: 90px;"></span>카드<input type="radio" name="payment_method" checked="checked" style="margin-left: 20px; margin-right: 20px;"/>
-                            </span>계좌이체<input type="radio" name="payment_method" style="margin-left: 20px;"/>
-                            <form id="card_payment">
+                        <div class="mb-3">결제 수단<span style="margin-right: 90px;"></span>
+                        카드<input type="radio" name="payment_method" checked="checked" style="margin-left: 20px; margin-right: 20px;"/>
+                            　계좌이체<input type="radio" name="payment_method" style="margin-left: 20px;"/>
+<form method="post" id="card_payment" name="paymentVerify" action="paymentVerify">
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">카드사</label>
-                                  <select class="form-control">
-                                    <option>수빈 은행</option>
-                                    <option>보현 은행</option>
-                                    <option>하현 은행</option>
-                                    <option>보경 은행</option>
+                                  <select name="bank">
+                                  	<option value="수빈 은행">수빈 은행</option>
+                                    <option value="보현 은행">보현 은행</option>
+                                    <option value="하현 은행">하현 은행</option>
+                                    <option value="보경 은행">보경 은행</option>
+                                  
                                   </select>
+                                    
                                 </div>
                                 <div class="form-group">
                                   <label for="input_cardnum">카드 번호</label>
@@ -144,6 +126,16 @@
                                     <li><small>결제 정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능 합니다.</small></li>
                                     <li><small>월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다.</small></li>
                                 </ul>
+                                <c:choose>
+								<c:when test="${empty sum}">
+									<input name="QuantityFin" type="hidden" value="${countQua}"/>
+									<input name="PriceFin" type="hidden" value="${purchasePrice}"/>	
+								</c:when>
+								<c:otherwise>
+									<input name="QuantityFin" type="hidden" value="${fn:length(cartForm)}"/>
+									<input name="PriceFin" type="hidden" value="${sum}"/>
+								</c:otherwise>
+								</c:choose>
                             </form>
                         </div>
                         

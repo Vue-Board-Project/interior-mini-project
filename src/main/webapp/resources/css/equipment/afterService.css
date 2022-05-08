@@ -355,7 +355,7 @@
             font-size: 15px;
         }
         
-         #howToVerifyModel {
+        #howToVerifyModel{
             position: relative;
         }
         #howToVerifyModel span{
@@ -367,8 +367,8 @@
             text-align: center;
             padding: 10px;
             border-radius: 5px;
-            left: 110%;                    /*중앙배치 : 왼쪽에서 100%위치*/
-            transform: translateX(-0%);  /*중앙배치 : X크기값을 50%만큼 이동*/
+            left: 110%;                    /*중앙배치 : 왼쪽에서 110%위치*/
+            transform: translateX(-0%);  /*중앙배치 : X크기값을 이동*/
             opacity: 0;                   /*이벤트설정 : 서서히 변하게 함*/
             transition: 0.5s;   
             visibility: hidden;          /*특정 요소 접촉시 이벤트 발생*/

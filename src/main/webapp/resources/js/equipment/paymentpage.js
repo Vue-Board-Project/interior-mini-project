@@ -20,8 +20,7 @@ function selectUserInfo(name, email, phone, postcode, address, addressDetail){
 //결제 버튼을 누른다면
 function sendPurchaseInfo(){
 	console.log("결제 정보를 전송합니당");
-	$("#paymentVerify").submit();
-	$("#payment_result_title").html("정상적으로 결제 처리가 되었습니다.");
+	$("#card_payment").submit();
 }
 //step1=>2 넘어가기
 function payment_nextstep1(){

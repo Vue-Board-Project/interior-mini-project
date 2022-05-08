@@ -85,17 +85,34 @@ public class PaymentController {
 		log.info("결제 페이지로 잘 넘어 오셨죠?"+cartList);
 		return "/equipment/paymentpage";
 	}
-	@PostMapping(value="paymentVerify")
-	public String paymentVerify(List<ProductDto> cartList, PurchaseDto purchase,
+	@PostMapping(value="/equipment/paymentVerify")
+	public String paymentVerify(PurchaseDto purchase,
+			String PriceFin, String QuantityFin, String bank, String deliverymessage,
 			Authentication authentication) {
 		log.info("결제를 db에 전송하는게 내 꿈이야");
+		log.info(PriceFin);
+		log.info(QuantityFin);
+		log.info(bank);
+		log.info(deliverymessage);
 		String email=authentication.getName();
-		PurchaseResult presult=purchaseService.PurchaseRequest(cartList, purchase, authentication);
+		
+		int purchseInsert=0;
+		//purchase db insesrt	
+		PurchaseDto purchaseDto=new PurchaseDto();
+		purchaseDto.setStringEmail(email);
+		purchaseDto.setPaymentAmount(PriceFin);//전체 가격
+		purchaseDto.setPaymentMethod(bank);
+		purchaseDto.setPurchaseQuantity(QuantityFin);//전체 구매 개수
+		purchaseDto.setEmail(purchase.getEmail());
+		//purchaseDto.setDeliveryMessage(deliverymessage);
+		purchaseService.insertPurchaseInfo(purchaseDto);
+		/*PurchaseResult presult=purchaseService.PurchaseRequest(cartList, purchase, authentication);
+		
 		if(presult==PurchaseResult.FAIL) {
 			//어디로..... 가야하더라
 		}else {
 			
-		}
-		return "redirect:/equipment/paymentpage";
+		}*/
+		return "/equipment/paymentpage";
 	}
 }

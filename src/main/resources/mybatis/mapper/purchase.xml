@@ -32,15 +32,17 @@
 	</select>
 
 	<!-- 구매 버튼 클릭 시 추가 내용 -->
-	<!-- <insert id="insertPurchaseInfo" parameterType="purchase">
+	<insert id="insertPurchaseInfo" parameterType="purchase">
+		<selectKey keyProperty="purchaseNumber" resultType="int" order="BEFORE">
+	         select PURCHASE_SEQUENCE.nextval from dual
+	    </selectKey>
 		insert into purchase(
-			PURCHASE_NUMBER
+			purchase_Number
 			, PURCHASE_DATE
 			, PAYMENT_AMOUNT
 			, PAYMENT_METHOD
 			, PURCHASE_QUANTITY
-			, DELIVERY_MANAGEMENT,
-			, DELIVERY_MESSAGE
+			, DELIVERY_MANAGEMENT
 			, EMAIL
 			)
 		values(
@@ -50,11 +52,10 @@
 			, #{paymentMethod}
 			, #{purchaseQuantity}
 			, '배송 준비중'
-			, #{deliveryMessage}
-			, #{email}
+			, #{stringEmail}
 		)
 	</insert>
-	<insert id="insertPurchaseDetailInfo" parameterType="pDetail">
+	<!-- <insert id="insertPurchaseDetailInfo" parameterType="pDetail">
 		insert into PurchaseDetail(
 			PURCHASE_NUMBER
 			, MODEL_NUMBER
