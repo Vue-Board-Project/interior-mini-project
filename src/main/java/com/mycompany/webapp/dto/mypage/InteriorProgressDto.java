@@ -25,7 +25,7 @@ public class InteriorProgressDto {
 	private String euserRequest;		//계약유저요청사항
 	private String cmiddleFeedback;	//공사 진행 피드백
 	private String cfinishFeedback;	//공사완료 피드백
-	private MultipartFile dentalDrawing;	//현장상담도면
+	private String dentalDrawing;	//현장상담도면
 	private Date cstartDate;		//공사 진행 시작
 	private Date cendDate;		//공사 진행 끝
 	private InteriorDto ino; 		//FK완성 포폴 게시글 번호

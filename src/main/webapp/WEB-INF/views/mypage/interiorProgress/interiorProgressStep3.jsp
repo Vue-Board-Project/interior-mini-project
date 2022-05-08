@@ -38,7 +38,19 @@
 			<div style="border-bottom: 2px solid #272723; width: 190px;" class="text-center mb-2">
 				<h3>참고 치과 모델</h3>
 			</div>
-			<div class="d-flex" style=" margin:0 auto;">
+			
+			<ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
+		            <c:forEach items="${portfolioList}" var="portfolioList">
+		            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px;"> 
+		                    <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${portfolioList.intIno}" class="portfolio_dental_content_a">
+		                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/display?fileName=${portfolioList.stringImImgPath}"/>
+		                        <b class="mt-3 ml-5 mr-5 portfolio_dental_content_b">${portfolioList.stringISummary}</b>
+		                        <small class="d-block portfolio_dental_content_sm">mansik</small>
+		                    </a>
+		                </li>
+		            </c:forEach>
+	            </ul>
+			<%-- <div class="d-flex" style=" margin:0 auto;">
 				<div class="m-3 text-center" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 350px; height: 300px;">
 					<a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
 						<div>
@@ -71,7 +83,7 @@
 							<small class="d-block" style="line-height: 1;">manok</small>
 						</div>
 					</a>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 	</section>

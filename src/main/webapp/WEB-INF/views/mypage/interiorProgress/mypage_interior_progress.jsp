@@ -194,7 +194,7 @@
 										</div>
 										<div style="display: inline-block; width: 50%; height: 400px" class="border">
 											<div style="width: 100%; height: 400px; display:flex; justify-content:center; align-items:center;">
-												<img src="${pageContext.request.contextPath}/resources/images/mypage/drawing2.jpg" width="500px" class="my-auto">
+												<img src="${pageContext.request.contextPath}/resources/images/mypage/mypageProgress/dentalDrawingSample.png" width="500px" class="my-auto">
 											</div>
 										</div>
 									</div>
@@ -265,7 +265,7 @@
 										</div>
 										<div style="display: inline-block; width: 50%; height: 400px" class="border">
 											<div style="width: 100%; height: 400px; display:flex; justify-content:center; align-items:center;">
-												<img src="${pageContext.request.contextPath}/resources/images/mypage/drawing2.jpg" width="500px" class="my-auto">
+												<img src="/springframework-mini-project/mypage/showImage?fileName=${progress.dentalDrawing}" width="500px" class="my-auto">
 											</div>
 										</div>
 									</div>

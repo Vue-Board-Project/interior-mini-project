@@ -10,6 +10,7 @@ import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressFileDto;
+import com.mycompany.webapp.dto.mypage.ReferenceModelDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
@@ -94,6 +95,8 @@ public interface MypageDao {
 	public InteriorProgressDto getProgressStep3(int conNum);
 	
 	public List<InteriorProgressFileDto> getStep3Files(int conNum);
+	
+	public List<ReferenceModelDto> getPortfolioList(int conNum);
 
 	public InteriorProgressDto getProgressStep4(int conNum);
 	
@@ -103,6 +106,7 @@ public interface MypageDao {
 
 	public List<InteriorProgressFileDto> getStep5Files(int conNum);
 
+	
 
 
 }

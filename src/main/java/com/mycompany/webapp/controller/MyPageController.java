@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.nio.file.Files;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -39,6 +43,7 @@ import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressFileDto;
+import com.mycompany.webapp.dto.mypage.ReferenceModelDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
@@ -213,6 +218,29 @@ public class MyPageController {
 			return "/mypage/interiorProgress/mypage_interior_progress";
 		}
 		
+		@GetMapping("/showImage")
+		   public ResponseEntity<byte[]> getImage(String fileName) {
+		      // 반환 타입 : ResponseEntity 객체를 통해 body에 byte [] 데이터를 보내 / 파라미터 : '파일 경로' + '파일
+		      // 이름'을 전달받아
+		      log.info(" getImage()..........");
+		      File file = new File("C:/Temp/mypage/"+ fileName);
+		      ResponseEntity<byte[]> result = null;
+
+		      try {
+
+		         HttpHeaders header = new HttpHeaders();
+		         header.add("Content-type", Files.probeContentType(file.toPath()));// 대상 파일의 MIME TYPE을 부여
+		         // 대상 이미지 파일, header 객체, 상태 코드를 인자 값으로 부여한 생성자를 통해 ResponseEntity 객체를 생성하여 앞서
+		         // 선언한 ResponseEntity 참조 변수에 대입
+		         result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+		         // 대상 파일을 복사하여 Byte 배열로 반환해주는 클래스
+
+		      } catch (IOException e) {
+		         e.printStackTrace();
+		      }
+		      return result;
+		   }
+		
 		@GetMapping("/step2")
 		public String ajaxInteriorProgressStep2(int conNum, Model model){
 			
@@ -236,6 +264,9 @@ public class MyPageController {
 			
 			List<InteriorProgressFileDto> step3File =  mypageService.getStep3Files(conNum);
 			model.addAttribute("step3File", step3File);
+			
+			List<ReferenceModelDto> portfolioList = mypageService.getPortfolioList(conNum);
+			model.addAttribute("portfolioList", portfolioList);
 			
 			return "mypage/interiorProgress/interiorProgressStep3";
 		}
@@ -391,6 +422,7 @@ public class MyPageController {
 		 model.addAttribute("pager", pager);
 		 
 		 List<PurchaseDto> orderList = mypageService.getPurchaseList(pager);
+		 log.info("prob : " + orderList);
 
 		 model.addAttribute("orderList", orderList);
 		 return "mypage/mypage_orderlist";

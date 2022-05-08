@@ -17,6 +17,7 @@ import com.mycompany.webapp.dto.interior.InteriorDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressDto;
 import com.mycompany.webapp.dto.mypage.InteriorProgressFileDto;
+import com.mycompany.webapp.dto.mypage.ReferenceModelDto;
 import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.mypage.SolutionDto;
 import com.mycompany.webapp.dto.product.AfterServiceDto;
@@ -229,6 +230,11 @@ public class MypageService {
 		return mypageDao.getStep3Files(conNum);
 	}
 	
+	public List<ReferenceModelDto> getPortfolioList(int conNum) {
+		// TODO Auto-generated method stub
+		return mypageDao.getPortfolioList(conNum);
+	}
+	
 	public InteriorProgressDto getProgressStep4(int conNum) {
 		// TODO Auto-generated method stub
 		return mypageDao.getProgressStep4(conNum);
@@ -249,6 +255,8 @@ public class MypageService {
 		// TODO Auto-generated method stub
 		return mypageDao.getStep5Files(conNum);
 	}
+
+	
 
 	
 	

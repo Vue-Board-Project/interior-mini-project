@@ -169,7 +169,8 @@
 		   E_EXPECTED_DATE + (INTERVAL '3' MONTH) as eexpectedFinDate,
 		    C_START_DATE as cstartDate, C_END_DATE as cendDate,
 		     C_END_DATE + (INTERVAL '2' YEAR) as asEndDate,
-	        CONSULT_ACREAGE as acreage, CONSULT_INTERIOR_STYLE as style, CONSULT_REQUEST as request
+	        CONSULT_ACREAGE as acreage, CONSULT_INTERIOR_STYLE as style, CONSULT_REQUEST as request,
+	        DENTAL_DRAWING as dentalDrawing
 		from INTERIOR_PROGRESS i, MAIN_CONSULT m
 		where i.CONSULT_NO = m.CONSULT_NO and
         	i.CONSULT_NO = #{consultNo}
@@ -212,6 +213,13 @@
 		from interior_progress_file
 		where interior_step = 3 and 
 		consult_no = #{conNum}
+	</select>
+	
+	<select id = "getPortfolioList" parameterType="int" resultType="mPreference">
+		SELECT r.ino, isummary as stringISummary, im_img_path as stringImImgPath
+		FROM REFERENCE_MODEL r, interior i
+		WHERE r.ino = i.ino and
+		CONSULT_NO =  #{conNum}
 	</select>
 	
 	<select id = "getProgressStep4" parameterType="int" resultType="mpProgress">
@@ -290,12 +298,13 @@
 	
 	<select id = "getPurchaseList" parameterType="pager" resultType="purchase">
 		<![CDATA[  
-		SELECT rnum, purchaseNumber, purchaseDate, email, deliveryManagement
+		SELECT rnum, purchaseNumber, purchaseDate, email, deliveryManagement, paymentAmount, purchaseQuantity
 		    from(
-		    	SELECT ROWNUM as rnum, purchaseNumber, purchaseDate, email, deliveryManagement
+		    	SELECT ROWNUM as rnum, purchaseNumber, purchaseDate, email, deliveryManagement, paymentAmount, purchaseQuantity
 			    FROM (
-				        SELECT PURCHASE_NUMBER as purchaseNumber, PURCHASE_DATE as purchaseDate, 
-                                email, DELIVERY_MANAGEMENT as deliveryManagement
+				        SELECT  PURCHASE_NUMBER as purchaseNumber, PURCHASE_DATE as purchaseDate, 
+                                email, DELIVERY_MANAGEMENT as deliveryManagement,
+                                PAYMENT_AMOUNT as paymentAmount, PURCHASE_QUANTITY as purchaseQuantity
 				        from purchase
                         where email = #{stringEmail}
 				        ORDER BY purchaseNumber DESC 
