@@ -49,7 +49,8 @@ public class PortfolioDentalControll {
 		log.info("실행");
 		return "portfolio_dental/portfolio_dental";
 	}
-
+	
+	//ajax에서 값 받아와서 다시 넣어주기
 	@GetMapping(value = "/goPortfolioDental", produces = "application/json; charset=UTF-8")
 	public String goPortfolioDental(Model model, @RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "styleArr[]", required = false) List<String> styleArr,
@@ -100,13 +101,15 @@ public class PortfolioDentalControll {
 	
 		return "portfolio_dental/portfolio_dental";
 	}
-
-	@RequestMapping("/portfolioDentalDeatail3")
+	
+	
+	/*@RequestMapping("/portfolioDentalDeatail3")
 	public String portfolioDentalDeatail3() {
 		log.info("실행");
 		return "portfolio_dental/portfolio_dental_detail3";
-	}
-
+	}*/
+	
+	//이미지 가져오기
 	@GetMapping("/portfolio_dental/portfolioDisplay")
 	public ResponseEntity<byte[]> getImage22(String fileName) {
 		// log.info(" getImage()..........");
@@ -127,14 +130,17 @@ public class PortfolioDentalControll {
 		}
 		return result;
 	}
-
+	
+	//포폴 상세창 가기
 	@GetMapping("/portfolio_dental/portfolio_dental_detail")
 	public String portfolioDentalDetail(@RequestParam("ino") int ino, Model model) {
 		log.info("디테일 가보자고~~~~~~~~~~~~~~~~");
 		log.info(ino);
+		//포폴 상세 간략 내용
 		InteriorDto interiorDetail = interiorService.detailPortfolio(ino);
 		model.addAttribute("interiorDetail", interiorDetail);
-
+		
+		//포폴 상세 내용
 		List<InteriorDetailDto> interiorDList = interiorDetailService.selectPortfolio(interiorDetail.getIno());
 		for (InteriorDetailDto s : interiorDList) {
 			log.info("interiorDList : " + s);
@@ -144,6 +150,7 @@ public class PortfolioDentalControll {
 		log.info(interiorDetail.getIno());
 		log.info(interiorDetail.getIstyle());
 		log.info(interiorDetail.getDarea());
+		//여기부터 아래까지 포폴 상세창 추천 플로팅 메뉴 데이터 가져오기
 		List<InteriorDto> recommandStyleList = interiorService.recommendStyle(ino, interiorDetail.getIstyle());
 		model.addAttribute("recommandStyleList", recommandStyleList);
 		for (InteriorDto s : recommandStyleList) {

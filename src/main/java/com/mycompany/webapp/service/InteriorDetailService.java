@@ -26,7 +26,8 @@ public class InteriorDetailService {
 	public void insertInteriorDetail(InteriorDetailDto interiorDetailDto) {	
 		interiorDetailDao.insertInteriorD(interiorDetailDto);
 	}
-
+	
+	//인테리어 디테일 가져오기
 	public List<InteriorDetailDto> selectPortfolio(int ino) {
 		log.info(ino);
 		return interiorDetailDao.selectPortfolioD(ino);

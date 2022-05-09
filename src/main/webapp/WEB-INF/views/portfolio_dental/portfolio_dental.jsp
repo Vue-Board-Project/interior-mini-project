@@ -29,7 +29,7 @@
 			      	  </div>
 			          <div style="position: relative">
 			          	  <b class="mt-3 portfolio_dental_content_b">${list.isummary}</b>
-				          <div style="position:absolute; width: 70px; top: 10px;"><i class="far fa-eye"></i><span class="ml-1">${list.ihits}</span></div>
+				          <div style="position:absolute; width: 70px; top: 10px; right: 10px;"><i class="far fa-eye"></i><span class="ml-1">${list.ihits}</span></div>
 				          <small class="d-block portfolio_dental_content_sm"><span># ${list.istyle}</span> <span># ${list.allColor}</span></small>
 			          </div>
 			      </a>

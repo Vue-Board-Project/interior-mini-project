@@ -2,6 +2,7 @@
 #main_footer_wrap{
     background-color: #e8e8db; 
     height: 240px;
+    z-index: 700;
 }
 #main_footer{
     position: relative;

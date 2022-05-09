@@ -62,15 +62,18 @@ public class InteriorService {//인테리어 서비스
 	public int updateCnt(int ino) {
 		return interiorDao.updateCnt(ino);
 	}
-
+	
+	//모델 최신순 리스트
 	public List<InteriorDto> modelList() {
 		return interiorDao.modelList();
 	}
-
+	
+	//모델 필터링
 	public List<InteriorDto> modelFilter(Map<String, Object> param) {
 		return interiorDao.modelFilter(param);
 	}
-
+	
+	//모델 조회순 리스트
 	public List<InteriorDto> interiorBestList() {
 		return interiorDao.interiorBestList();
 	}

@@ -35,7 +35,7 @@
 		                        </div>
 		                        <div>
 		                        	<b class="model_dental_content_b">${list.isummary}</b>
-		                        	<div style="position:absolute; width: 70px; top: 10px;"><i class="fa-regular fa-heart" style="color: white;"></i><span style="color: white;" class="ml-1">${list.ihits}</span></div>
+		                        	<div style="position:absolute; width: 70px; top: 10px;"><i class="far fa-eye" style="color: white;"></i><span style="color: white;" class="ml-1">${list.ihits}</span></div>
 		                        	<small class="d-block model_dental_content_sm"><span># ${list.istyle}</span> <span># ${list.allColor}</span></small>
 		                        </div>
 		                    </a>

@@ -105,12 +105,14 @@
                         <sec:authorize access="isAuthenticated()">
 		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/device_AS" style="border: none; outline: none; box-shadow: none;">
 		                        <%-- <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/> --%>
+		                        <i class="fa-solid fa-image-portrait"></i>
 		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
 		                    </a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
 		                    <a id="main_header_cart" class="btn" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase" style="border: none; outline: none; box-shadow: none;">
 		                        <%-- <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/> --%>
+		                        <i class="fa-solid fa-cart-arrow-down"></i>
 		                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
 		                    </a>
 	                    </sec:authorize>

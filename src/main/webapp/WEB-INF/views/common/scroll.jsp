@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<div id="scroll">
+<div id="scroll" style="z-index: 1000;">
      <style>
 	    .scoll_btn{
 			   font-size: 12px;    
@@ -70,8 +70,10 @@
      });
      $("#MOVE_BOTTOM_BTN").click(function() {
          $('html, body').animate({
-             scrollTop :   $(document).height() - $(window).height()
+             scrollTop :   $(document).height()
          }, 400);
+	     console.log($(document).height());
+	     console.log($(window).height());
          return false;
      });
  });
