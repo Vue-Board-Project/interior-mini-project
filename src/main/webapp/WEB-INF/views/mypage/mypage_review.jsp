@@ -12,29 +12,7 @@
 	          	<span class="sub_text">장비들의 후기를 남기거나 확인할 수 있습니다.</span>
 	          <hr width = 90%>
 	         </div>
-	         
-	         <div id = "mypage_review_date_selection" class="btn-group btn-group-toggle" data-toggle="buttons">
-				  <label class="btn btn-secondary active">
-				    <input type="radio" name="options" id="orderlist_today" autocomplete="off" checked> 오늘
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_1month" autocomplete="off"> 1개월
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_3month" autocomplete="off"> 3개월
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_6month" autocomplete="off"> 6개월
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_1year" autocomplete="off"> 1년
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_date_all" autocomplete="off"> 전체
-				  </label>
-				</div>
-				
-	          <hr width = 90%>
+
 	          
 	     	<div class="content_section">
 		     	<div class = "mypage_review_contents_wrap">
@@ -52,25 +30,25 @@
 						      <!-- <div id = "mypage_review_tab_available_null">작성 가능한 후기가 없습니다.</div> -->
 						     
 						     
-						      <c:forEach var="reviewBefore" items="${reviewBefore}">
+						      <c:forEach var="orderReview" items="${orderReview}">
 							      <div class = "mypage_review_before_element">
 							      	<div class = "image_slot">
-							      		<img class = "mypage_review_product_img" src = ""></img>
+							      		<img class = "mypage_review_product_img" src = "/springframework-mini-project/equipment/display?fileName=${orderReview.stringPatchoName}"></img>
 							      	</div>
-							      	<div class = "mypage_review_product_title">제품명 : ${reviewBefore.product.productName}</div>
-							      	<div class = "mypage_review_model_name">모델명 : ${reviewBefore.modelNumber}</div>
-							      	<div class = "mypage_review_product_number">갯수 : ${reviewBefore.purchase.paymentAmount} 개</div>
-							      	<div class = "mypage_review_product_date"><fmt:formatDate value="${reviewBefore.purchase.purchaseDate}" pattern="yyyy-MM-dd"/></div>
+							      	<div class = "mypage_review_product_title">제품명 : ${orderReview.stringProductName}</div>
+							      	<div class = "mypage_review_model_name">모델명 : ${orderReview.stringModelNumber}</div>
+							      	<div class = "mypage_review_product_number">갯수 : ${orderReview.modelPurchaseQuantity} 개</div>
+							      	<div class = "mypage_review_product_date"><fmt:formatDate value="${orderReview.datePurchaseDate}" pattern="yyyy-MM-dd"/></div>
 							      	<div class = "mypage_review_product_button">  
 							      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button" 
-							      		onClick = "reviewButton(${reviewBefore.purchaseNumber}, '${reviewBefore.modelNumber}')">
+							      		onClick = "reviewButton(${orderReview.intPurchaseNumber}, '${orderReview.stringModelNumber}', '${orderReview.stringProductName}', '${orderReview.stringPatchoName}')">
 							      		후기 쓰기
 							      		</button>
 							      	
 							      	</div>
 							      </div>
 						      </c:forEach>
-					<table>
+					<%-- <table>
 						 <tr>
 				            <td colspan="4" class="text-center">
 				               <div>
@@ -95,7 +73,7 @@
 				               </div>
 				            </td>
 				         </tr>
-				      </table>
+				      </table> --%>
 						    
 						    
 						    </div>
@@ -103,48 +81,20 @@
 						    
 						    <div id="mypage_review_tab_finished" class="tabmenu_content">
 						    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
-						    	 <c:forEach var="reviewAfter" items="${reviewAfter}">
-						    	<div class = "mypage_user_review_element">
-					    			<div class = "user_product_title">${reviewAfter.stringProductName}
-					    			<span class = "user_product_modelName">모델명 : ${reviewAfter.modelNumber}</span>
-					    			</div>
-						    		<div class = "user_review_contents">
-						    			<div class = "user_review_title">${reviewAfter.reviewTitle}</div>
-						    			<div class = "user_product_bought_date"><fmt:formatDate value="${reviewAfter.reviewWriteDate}" pattern="yyyy-MM-dd"/></div>
-						    			<div class = "user_review_image">
-						    				<img src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg"></img>
-						    			</div>
-						    			<div class = "user_review_text">${reviewAfter.reviewContent}</div>
-						    		</div>
-						    	</div>
-						    	</c:forEach>
+						    	<div id = "mypage_review_list_finished">
+							    	<script>
+									function selectReviewList(){
+										$.ajax({
+								                url : "mypageReviewAfter",
+								                method: "get"
+								            }).done((data) => {
+												$('#mypage_review_list_finished').html(data);
+								            });
+								    }
+								</script>
 						    	
-						<table>
-						 <tr>
-				            <td colspan="4" class="text-center">
-				               <div>
-				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=1">처음</a>
-				                  <c:if test="${pager.groupNo>1}">
-				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.startPageNo-1}">이전</a>
-				                  </c:if>
-				                  
-				                  <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-				                     <c:if test="${pager.pageNo != i}">
-				                        <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-				                     </c:if>
-				                     <c:if test="${pager.pageNo == i}">
-				                        <a class="btn btn-danger btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-				                     </c:if>
-				                  </c:forEach>
-				                  
-				                  <c:if test="${pager.groupNo<pager.totalGroupNo}">
-				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.endPageNo+1}">다음</a>
-				                  </c:if>
-				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=${pager.totalPageNo}">맨끝</a>
-				               </div>
-				            </td>
-				         </tr>
-				      </table>
+						    	</div>
+						    	 
 						    </div>
 					    </div>
 					      
@@ -399,12 +349,14 @@
 
 <script>
 
-function reviewButton(purchaseNumber, modelNumber) {
+function reviewButton(purchaseNumber, modelNumber, name, imgName) {
 	 $("#mypage_review_mask").css("display", "block");
   	 $(".mypage_popup_wrap").css("display", "block");
   	 
   	$('input[name=purchaseNumber]').attr('value', purchaseNumber);
 	$('input[name=modelNumber]').attr('value', modelNumber);
+	$("#mypage_review_popup_product_info_name").text(name); 
+	$("#mypage_review_popup_product_info_image").attr("src", "/springframework-mini-project/equipment/display?fileName=" + imgName);
 	
 }
 

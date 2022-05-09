@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dto.product;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -12,4 +14,8 @@ public class PurchaseDetailDto {
 	
 	private int intPurchaseNumber;
 	private String stringModelNumber;
+	private String stringEmail;
+	private Date datePurchaseDate;
+	private String stringProductName;
+	private String stringPatchoName;
 }

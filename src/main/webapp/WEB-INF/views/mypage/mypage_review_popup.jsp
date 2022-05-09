@@ -14,49 +14,48 @@
 	 	
 	 	<div class = "mypage_review_popup_content">
 	 		<div class = "mypage_review_popup_product_info">
-	 			<img class = "mypage_review_popup_product_info_image" src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg" style = "width : 60px; height : 80px; margin-top : 11px; margin-left : 10px;" />
-	 			<div class = "mypage_review_popup_product_info_name">유니트 체어</div>
-	 		</div>
-	 		
-	 		
-	 	<form id="mypageReviewForm" method="post" action="insertReview" enctype="multipart/form-data">
-			<div class = "mypage_review_popup_user_title">
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
-					<textarea id="review_title" type="text" name="reviewTitle" class="form-control"></textarea>
-				</div>
-			</div>
-			<div class = "mypage_review_popup_user_content">
-				<div class="input-group">
-					<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
-					<textarea id="review_content" type="text" name="reviewContent" class="form-control"></textarea>
-				</div>
-			</div>
-			<div class = "mypage_review_popup_image_input">
-				<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text">사진 첨부</span></div>
-					 	<input type="file" class="form-control" id="attach_img" name="uploadFile"> <!-- DB연결될 때 name적기 -->
-				</div>
-			</div>
-				<div class="input-group">
-					<input type="number" id = "input_purchaseNumber" name = "purchaseNumber"  class="form-control" value = ""></input>
-				</div>
-				<div class="input-group">
-					<input type="text" id = "input_modelNumber" name = "modelNumber"  class="form-control" value = ""></input>
-				</div>
-			<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg" style = "margin-top : 40px; margin-left :200px;">작성하기</button>
-		</form>
+			 			<img id = "mypage_review_popup_product_info_image" src = "" style = "width : 60px; height : 80px; margin-top : 11px; margin-left : 10px;" />
+			 			<div id = "mypage_review_popup_product_info_name"div>
+			 		</div>
+			 		
+			 		
+			 	<form id="mypageReviewForm" method="post" action="insertReview" enctype="multipart/form-data">
+					<div class = "mypage_review_popup_user_title">
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
+							<textarea id="review_title" type="text" name="reviewTitle" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class = "mypage_review_popup_user_content">
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
+							<textarea id="review_content" type="text" name="reviewContent" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class = "mypage_review_popup_image_input">
+						<div class="input-group">
+								<div class="input-group-prepend"><span class="input-group-text">사진 첨부</span></div>
+							 	<input type="file" class="form-control" id="attach_img" name="uploadFile"> <!-- DB연결될 때 name적기 -->
+						</div>
+					</div>
+						<div class="input-group">
+							<input type="number" id = "input_purchaseNumber" name = "purchaseNumber"  class="form-control" value = ""></input>
+						</div>
+						<div class="input-group">
+							<input type="text" id = "input_modelNumber" name = "modelNumber"  class="form-control" value = ""></input>
+						</div>
+					<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg" style = "margin-top : 40px; margin-left :200px;">작성하기</button>
+				</form>
 	 		</div>
 	 			
 	 </div>
 	 
+	</div>
 </div>
 <div id="mypage_review_mask"></div>
 <script>
 /* 이미지 업로드 */
 	$("input[type='file']").on("change", function(e){
-		
-		
 		
 		let formData = new FormData();
 		let fileInput = $('input[name="uploadFile"]');
@@ -155,13 +154,13 @@
  		flex-direction: row;
  	} 
  	
- 	.mypage_review_popup .mypage_review_popup_content .mypage_review_popup_product_info .mypage_review_popup_product_info_image{
+ 	.mypage_review_popup .mypage_review_popup_content .mypage_review_popup_product_info #mypage_review_popup_product_info_image{
  		width : 80px;
  		height : 102px;
  		
  	}
  	
- 	.mypage_review_popup .mypage_review_popup_content .mypage_review_popup_product_info .mypage_review_popup_product_info_name{
+ 	.mypage_review_popup .mypage_review_popup_content .mypage_review_popup_product_info #mypage_review_popup_product_info_name{
  		font-family: 'MinSans-Medium';
  		width : 420px;
  		height : 102px;

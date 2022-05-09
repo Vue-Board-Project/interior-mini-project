@@ -262,6 +262,35 @@ public class MypageService {
 		return mypageDao.getProgressStep6(conNum);
 	}
 
+	public List<PurchaseDetailDto> getOrderReview(String email) {
+		
+		List<PurchaseDetailDto> orderReview =  mypageDao.getOrderReview(email);
+		List<PurchaseDetailDto> orderReviewFin = mypageDao.getOrderReviewFin(email);
+		
+		log.info("order Review : before :  " + orderReview);
+		for(PurchaseDetailDto p1 : orderReview) {
+			for(PurchaseDetailDto p2 : orderReviewFin) {
+				if(p1.getIntPurchaseNumber() == p2.getIntPurchaseNumber()) {
+					if(p1.getModelNumber().equals(p2.getModelNumber())){
+						orderReview.remove(p1.getIntPurchaseNumber());
+					}
+				}
+				
+			}
+		}
+		
+		log.info("order Review : after :  " + orderReview);
+		
+		return orderReview;
+	}
+
+	public List<PurchaseDetailDto> getOrderReviewFin(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getOrderReviewFin(email);
+	}
+	
+	
+
 	
 
 	

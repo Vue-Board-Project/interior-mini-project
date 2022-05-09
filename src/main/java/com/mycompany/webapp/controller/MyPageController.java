@@ -55,7 +55,7 @@ import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
 import com.mycompany.webapp.service.MypageService;
-import com.mycompany.webapp.test.AttachImageDto;
+
 
 import lombok.extern.log4j.Log4j2;
 
@@ -204,12 +204,15 @@ public class MyPageController {
 		 
 		 /* 인테리어 진행 내역 */
 		@RequestMapping("/mypage_interior_progress")
-		public String mypageInteriorProgress(@RequestParam(defaultValue = "0") int consultNo,  Authentication authentication, Model model){
+		public String mypageInteriorProgress(@RequestParam(defaultValue = "0") int consultNo,
+				Authentication authentication, Model model){
 		
 			if (consultNo == 0) {
 				String email = authentication.getName();
 				consultNo = mypageService.getLatestInteriorNo(email);
 			}
+			
+			log.info("no data Number : " + consultNo);
 			
 			InteriorProgressDto progress = mypageService.getProgressStep(consultNo);
 			model.addAttribute("progress", progress);
@@ -224,10 +227,10 @@ public class MyPageController {
 			return "/mypage/interiorProgress/mypage_interior_progress";
 		}
 		
+		
 		@GetMapping("/showImage")
 		   public ResponseEntity<byte[]> getImage(String fileName) {
-		      // 반환 타입 : ResponseEntity 객체를 통해 body에 byte [] 데이터를 보내 / 파라미터 : '파일 경로' + '파일
-		      // 이름'을 전달받아
+		      
 		      log.info(" getImage()..........");
 		      File file = new File("C:/Temp/mypage/"+ fileName);
 		      ResponseEntity<byte[]> result = null;
@@ -235,11 +238,9 @@ public class MyPageController {
 		      try {
 
 		         HttpHeaders header = new HttpHeaders();
-		         header.add("Content-type", Files.probeContentType(file.toPath()));// 대상 파일의 MIME TYPE을 부여
-		         // 대상 이미지 파일, header 객체, 상태 코드를 인자 값으로 부여한 생성자를 통해 ResponseEntity 객체를 생성하여 앞서
-		         // 선언한 ResponseEntity 참조 변수에 대입
+		         header.add("Content-type", Files.probeContentType(file.toPath()));
 		         result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
-		         // 대상 파일을 복사하여 Byte 배열로 반환해주는 클래스
+		         
 
 		      } catch (IOException e) {
 		         e.printStackTrace();
@@ -460,34 +461,55 @@ public class MyPageController {
 	
 	
 	@RequestMapping("/mypageReview")
-	public String mypageReviewSelectReviews(Authentication authentication,
-			@RequestParam(defaultValue = "1") int pageNo, Model model){
+	public String mypageReviewSelectReviews(Authentication authentication, Model model){
 		
-		 String email = authentication.getName();
-		//리뷰 작성 전
-		int totalReviewBeforeNum = mypageService.getTotalReviewBeforeNum(email);
-		
-		Pager pager = new Pager(4, 4, totalReviewBeforeNum, pageNo, email);
-		model.addAttribute("pager", pager);
-		
-		List<ReviewDto> reviewBefore = mypageService.getReviewBeforeList(pager);
-		model.addAttribute("reviewBefore", reviewBefore);
-		
-		
-		//리뷰 작성 후
-		int totalReviewAfterNum = mypageService.getTotalReviewAfterNum(email);
-		pager = new Pager(4, 4, totalReviewAfterNum, pageNo, email);
-		model.addAttribute("pager", pager);
-		
-		List<ReviewDto> reviewAfter = mypageService.getReviewAfterList(pager);
-		log.info("Eroor fix  :  " + reviewAfter);
-		model.addAttribute("reviewAfter", reviewAfter);
+			String email = authentication.getName();
+			
+			List<PurchaseDetailDto> orderReview = mypageService.getOrderReview(email);
+			log.info("write review : " + orderReview);
+			model.addAttribute("orderReview", orderReview);
+		/*
+		 * String email = authentication.getName(); //리뷰 작성 전 int totalReviewBeforeNum =
+		 * mypageService.getTotalReviewBeforeNum(email);
+		 * 
+		 * Pager pager = new Pager(4, 4, totalReviewBeforeNum, pageNo, email);
+		 * model.addAttribute("pager", pager);
+		 * 
+		 * List<ReviewDto> reviewBefore = mypageService.getReviewBeforeList(pager);
+		 * model.addAttribute("reviewBefore", reviewBefore);
+		 * 
+		 * 
+		 * //리뷰 작성 후 int totalReviewAfterNum =
+		 * mypageService.getTotalReviewAfterNum(email); pager = new Pager(4, 4,
+		 * totalReviewAfterNum, pageNo, email); model.addAttribute("pager", pager);
+		 * 
+		 * List<ReviewDto> reviewAfter = mypageService.getReviewAfterList(pager);
+		 * log.info("Eroor fix  :  " + reviewAfter); model.addAttribute("reviewAfter",
+		 * reviewAfter);
+		 */
 		
 		return "/mypage/mypage_review";
 	}
 	
+	@RequestMapping("/mypageReviewAfter")
+	public String mypageReviewSelectAfter(Authentication authentication, Model model){
+		String email = authentication.getName();
+		
+		List<PurchaseDetailDto> reviewFin = mypageService.getOrderReviewFin(email);
+		model.addAttribute("reviewFin", reviewFin);
+		return "mypage/mypage_review_list";
+	}
+	
+	
+	@PostMapping("/insertReview")
+	public String mypageReview(ReviewDto review, Authentication authentication){
+
+		mypageService.insertReview(review);
+		return "redirect:/mypage/mypageReview";
+	}
+	
 	@PostMapping(value = "/insertImage", produces = "application/json; charset=UTF-8;")
-	public ResponseEntity<List<AttachImageDto>> insertImage(MultipartFile[] uploadFile) {
+	public ResponseEntity<List<ReviewDto>> insertImage(MultipartFile[] uploadFile) {
 		
 		log.info("uploadAjaxActionPOST..........");
 		/*  전달 받은 파일이 이미지 인지 아닌지 체크 */
@@ -501,7 +523,7 @@ public class MyPageController {
 				e.printStackTrace();
 			}
 			if (!type.startsWith("image")) {// 이미지가 이닌 경우 400에러 생성
-				List<AttachImageDto> list = null;
+				List<ReviewDto> list = null;
 				return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
 
 			}
@@ -527,12 +549,12 @@ public class MyPageController {
 		
 
 		/* 이미저 정보 담는 객체 */
-		List<AttachImageDto> list = new ArrayList<AttachImageDto>();
+		List<ReviewDto> list = new ArrayList<ReviewDto>();
 
 		for (MultipartFile multipartFile : uploadFile) {
 
 			// 이미지 정보 객체
-			AttachImageDto dto = new AttachImageDto();
+			ReviewDto dto = new ReviewDto();
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
 			dto.setFileName(uploadFileName);
@@ -578,16 +600,11 @@ public class MyPageController {
 
 		} // for
 
-		ResponseEntity<List<AttachImageDto>> result = new ResponseEntity<List<AttachImageDto>>(list, HttpStatus.OK);
+		ResponseEntity<List<ReviewDto>> result = new ResponseEntity<List<ReviewDto>>(list, HttpStatus.OK);
 		return result;
 	}
 	
-	@PostMapping("/insertReview")
-	public String mypageReview(ReviewDto review, Authentication authentication){
 
-		mypageService.insertReview(review);
-		return "redirect:/";
-	}
 	
 	@RequestMapping("/popupSample")
 	public String mypagePopupSample() {

@@ -108,6 +108,10 @@ public interface MypageDao {
 
 	public int getProgressStep6(int conNum);
 
+	public List<PurchaseDetailDto> getOrderReview(String email);
+
+	public List<PurchaseDetailDto> getOrderReviewFin(String email);
+
 	
 
 
