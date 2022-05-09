@@ -70,8 +70,10 @@
      });
      $("#MOVE_BOTTOM_BTN").click(function() {
          $('html, body').animate({
-             scrollTop :   $(document).height() - $(window).height()
+             scrollTop :   $(document).height()
          }, 400);
+	     console.log($(document).height());
+	     console.log($(window).height());
          return false;
      });
  });

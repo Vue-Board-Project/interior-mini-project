@@ -11,10 +11,10 @@ var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
 var navbarHeight = 215;
-console.log("didScroll : "+didScroll);
+/*console.log("didScroll : "+didScroll);
 console.log("lastScrollTop : "+lastScrollTop);
 console.log("delta : "+delta);
-console.log("navbarHeight : "+navbarHeight);
+console.log("navbarHeight : "+navbarHeight);*/
   
 $(window).scroll(function(event){
     didScroll = true;
@@ -49,10 +49,10 @@ function hasScrolled() {
     }
     
     lastScrollTop = st;
-	console.log("didScroll : "+didScroll);
+	/*console.log("didScroll : "+didScroll);
 	console.log("lastScrollTop : "+lastScrollTop);
 	console.log("delta : "+delta);
-	console.log("navbarHeight : "+navbarHeight);
+	console.log("navbarHeight : "+navbarHeight);*/
 }
 
 /* 추가로 웹페이지의 스크롤을 내렸을때를 감지해 코드를 실행시키는 함수입니다.
