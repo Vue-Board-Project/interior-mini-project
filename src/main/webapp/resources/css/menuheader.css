@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'MinSans-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@keyframes big {
+    from {
+      width: 0;
+      opacity : 0;
+    }
+    to {
+      width: 10%;
+      opacity : 1;
+    }
+}
+.menuheaderleft{
+    animation-name: big;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes biRight {
+    from {
+      width: 70%;
+      opacity : 0;
+    }
+    to {
+      width: 89%;
+      opacity : 1;
+    }
+}
+.menuheaderright{
+    animation-name: biRight;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes biBottom {
+    from {
+        left:10px;
+        top: 0;
+        opacity : 0;
+    }
+    to {
+        left:10px;
+        top: -33px;
+        opacity : 1;
+    }
+}
+.menuheadertitle{
+    animation-name: biBottom;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}

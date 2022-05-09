@@ -12,256 +12,71 @@
           font-weight: normal;
           font-style: normal;
         }
+        @font-face {
+            font-family: 'MinSans-Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'MinSans-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'MinSans-Light';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        /*장비 전체 감싸기*/
         #dentalequipmentmain_wrapper{
             font-family: "MinSans-Medium";
             font-size: 20px;
-            background-color: #faf9f6;
+            width: 100%; 
+            padding: 0;
         }
-        #eq_main_image_list{
-            margin-top: 150px;
-            float: center;
-        }
-        .eq_main_image{
-            margin-top: 200px;
-            width: 28%;
-            height: 500px;
-            overflow: hidden;
-        }
-        #eq_main_image1{
-            margin-left: 9%;
-        }
-
+        /*장비 컨텐츠 감싸기*/
         #dentalequipmentmain_content{
-            margin-top: 100px;
-            margin-bottom: 100px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: 100%;
+            display: flex;
+            padding: 0;
         }
-        #makeline{
+        #makeline{  
             border-bottom: 1px solid #ccc;
-            width: 1200px;
-            margin-bottom: 80px;
+            width: 100%;
+            margin-bottom: 40px;
+            height: 3px;
         }
+        /*어사이드바*/
         #dentalequipmentmain_left{
-            float: left;
-            width: 24%;
-        }
-        .dropdown-button {
-			background-color: #ca5c0d;
-            color: #faf9f6;
-            padding-top: 20px;
-            padding-bottom: 20px;
-			border: none;
-            width: 200px;
-            margin-right: 70px;
-		}
-		.dropdown {
-			float: right;
-			display: inline-block;
-		}
-		.dropdown-content {
-			min-width: 75px;
-			padding: 5px;
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            width: 200px;
-		}
-		.dropdown-content a {
-			color: black;
-			padding: 8px;
-			text-decoration: none;
-			display: block;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            text-align: center;
-            border: none;
-			width: 190px;
-			background-color: #FAF9F6;
-		}
-		.dropdown-content a:hover { 
-            background-color: #CD853F; 
-        }
-		.dropdown:hover .dropdown-content { 
-            display: block; 
-            
-        }
-		.dropdown:hover .dropdown-button { 
-            background-color: #CD853F; 
-        }
-        .dropdown-content-element{
-            
-        }
-        #dentalequipmentmain_right{
-            float: right;
-            width: 75%;
-        }
-        #best_product_content{
-            font-size: 30px;
-            font-family: "MinSans-Black";
-        }
-        #eq_list1{
-            display: flex;
-            margin-bottom: 100px;
-        }
-        #eq_list1 .card{
-            width: 300px;
-            height: 550px;
-            border: none;
-            text-align: left;
-            margin-left: 50px;
-        }
-        #eq_list2 .card{
-            width: 300px;
-            height: 550px;
-            border: none;
-            text-align: left;
-            margin-left: 50px;
-        } */
-		.eq_list{
-            display:flex;
-            margin-bottom: 100px;
-        }
-        #eq_list2{
-       		display:flex;
-            flex-wrap: wrap;
-        }
-
-        .eq_list .card{
-            width: 300px;
-            height: 550px;
-            border: none;
-            text-align: left;
-            margin-left: 50px;
-        }
-        /* #eq_list2{
-            display: flex;
-            margin-bottom: 100px;
-        }
-        #eq_list3{
-            display: flex;
-            margin-bottom: 100px;
-        } */
-        
-        .gotolink{
-            text-decoration: none;
-            color: #000;
-            padding-right: 10px;
-            background-color: #ffffff;
-            box-shadow: 2px 3px 5px 0px #ccc;
-            margin-right: 40px;
-            
-        }
-        .gotolink:hover{
-            text-decoration: none;
-            color: #000;
-            border: 1px solid #ccc;
-        }
-        #go_k3chair{
-            
-        }
-        #go_k3chair:hover{
-            
-        }
-        #eq_list_content1{
-
-        }
-        #eq_list_content1_element1{
-            font-size: 30px;
-            font-family: "MinSans-Black";
-        }
-        #eq_list_content1_element2{
-            font-size: 15px;
-        }
-        #eq_list_content1_element3{
-            padding-top: 10px;
-        }
-        #eq_list_content1_image{
-            width: 260px;
-            height: 300px;
-            margin-left: 20px;
-            margin-top:20px;
-        }
-        #eq_best_icon{
-            width: 30px;
-            margin-right: 20px;
-            margin-bottom: 15px;
-        }
-        #eq_price_icon{
-            width: 40px;
-        }
-        #product_filter{
-            text-align: right;
-            margin-right: 240px;
-        }
-        .eq_slider{
-            width: 800px;
-            height: 480px;
-            position: relative;
-            margin: 0 auto;
-            overflow: hidden; /* 현재 슬라이드 오른쪽에 위치한 나머지 슬라이드 들이 보이지 않도록 가림 */
-        }
-        .eq_slider input[type=radio]{
-            display: none;
-        }
-        .eq_slider ul.imgs{
-            padding: 0;
-            margin: 0;
-            list-style: none;    
-        }
-        .eq_slider ul.imgs li{
-            position: absolute;
-            left: 640px;
-            transition-delay: 1s; /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
-
-            padding: 0;
-            margin: 0;
-        }
-        .eq_slider .bullets{
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 20px;
-            z-index: 2;
-        }
-        .eq_slider .bullets label{
+            width: 20%;
             display: inline-block;
-            border-radius: 50%;
-            background-color: rgba(0,0,0,0.55);
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
+            border-right: 1px solid #ccc;
         }
-        /* 현재 선택된 불릿 배경 흰색으로 구분 표시 */
-        .eq_slider input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1){
-            background-color: #CD853F;
+        
+        .productAsideUl, .productInsideAsideUl{
+            list-style:none;
         }
-        .eq_slider input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2){
-            background-color: #CD853F;
+        .productAsideUl >li{
+            font-family: 'MinSans-Medium'; 
+            font-size:25px;
+            padding-bottom: 20px;
+            padding-left:0px;
         }
-        .eq_slider input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
-            background-color: #CD853F;
+        .productInsideAsideUl li{
+            font-family: 'MinSans-Light';
+            font-size: 18px;;
         }
-        .eq_slider input[type=radio]:nth-child(4):checked~.bullets>label:nth-child(4){
-            background-color: #CD853F;
+        
+	
+        /*메인섹션*/
+        #dentalequipmentmain_right{
+            width: 80%;  
+            display: inline-block;
         }
-        .eq_slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1){
-            left: 0;
-            transition: 0.5s;
-            z-index:1;
-        }
-        .eq_slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2){
-            left: 0;
-            transition: 0.5s;
-            z-index:1;
-        }
-        .eq_slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3){
-            left: 0;
-            transition: 0.5s;
-            z-index:1;
-        }
-        .eq_slider input[type=radio]:nth-child(4):checked~ul.imgs>li:nth-child(4){
-            left: 0;
-            transition: 0.5s;
-            z-index:1;
-        }
-        .eq_slider img{
-            width: 800px;
-            height: 480px;
-        }
+      
+        

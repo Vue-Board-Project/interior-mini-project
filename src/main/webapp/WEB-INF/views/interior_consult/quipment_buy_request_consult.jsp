@@ -1,5 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
+<section class="container-fluid p-0">
+    <div style="display: flex; justify-content: space-between;position: relative;">
+        <div style="display: inline-block; width: 10%; height: 100px;" class="bg-dark menuheaderleft" ></div>
+        <div style="display: inline-block; width: 89%; height: 100px;" class=" menuheaderright">
+            <img src="${pageContext.request.contextPath}/resources/images/productConsult.png" width="100%" height="100%" >
+        </div>
+    </div>
+    <div style="width: 65%;position: relative; left:10px; top: -33px;" class="mx-auto menuheadertitle">
+        <span style="font-size: 50px; font-family: 'MinSans-Bold'; border-bottom: 5px solid coral; letter-spacing: 1.4px;">장비 구매 상담</span>
+    </div>
+</section>
 <main style="background-color: #faf9f6">
 <link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/cssHeader.css" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quik.css" rel="stylesheet" type="text/css"/>

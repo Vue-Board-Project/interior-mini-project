@@ -8,7 +8,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quipment_buy_request_consult.css" rel="stylesheet" type="text/css" /> 
 <link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/remodeling_price.css" rel="stylesheet" type="text/css"/>
 <%-- 로딩창 --%>
-<style>
+<style> 
     #allloading {
       width: 100%;    
       height: 100%;    
@@ -23,7 +23,7 @@
     }
     
     #allloading > img{
-      position: absolute;
+      position: absolute; 
       top: 35%;
       left: 40%;
       z-index: 100;

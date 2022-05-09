@@ -47,7 +47,7 @@ import com.mycompany.webapp.service.ProductService;
 
 import lombok.extern.log4j.Log4j2;
 import oracle.net.aso.h;
-
+ 
 @Controller
 @RequestMapping("/interior_consult")
 @Log4j2
@@ -57,8 +57,8 @@ public class InteriorConsultController {
 
 	@Resource // 상담 서비스 객체
 	private ConsultService consultService;
-	
-	@Resource //장비 서비스 객체
+	 
+	@Resource //장비 서비스 객체 
 	private ProductService productService;
 	
 	//새로운 새션 저장소 객체 생성
@@ -80,7 +80,6 @@ public class InteriorConsultController {
 		
 		if(email != null) {
 			UsersDto userDto = consultService.loginUser(email);
-			log.info(userDto.getPhone());
 			model.addAttribute("user", userDto);
 		}
 		return "/interior_consult/quick_consultation";

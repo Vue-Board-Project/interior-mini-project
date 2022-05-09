@@ -2,111 +2,160 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/dental_equipment_main.css" rel="stylesheet" type="text/css"/>
-<div id="dentalequipmentmain_wrapper">
+<link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
+<div class="container-fluid p-0" >
 
-        <div id="eq_main_image_list" class="eq_slider">
-            <input type="radio" name="slide" id="slide1" checked>
-            <input type="radio" name="slide" id="slide2">
-            <input type="radio" name="slide" id="slide3">
-            <input type="radio" name="slide" id="slide4">
-            <ul id="imgholder" class="imgs">
-                <li><img src="${pageContext.request.contextPath}/resources/subinimage/eqimage2.PNG"></li>
-                <li><img src="${pageContext.request.contextPath}/resources/subinimage/eqimage3.PNG"></li>
-                <li><img src="${pageContext.request.contextPath}/resources/subinimage/eqimage4.PNG"></li>
-                <li><img src="${pageContext.request.contextPath}/resources/subinimage/chair_slider.PNG"></li>
-            </ul>
-            <div class="bullets">
-                <label for="slide1">&nbsp;</label>
-                <label for="slide2">&nbsp;</label>
-                <label for="slide3">&nbsp;</label>
-                <label for="slide4">&nbsp;</label>
-            </div>
-            <!--<img id="eq_main_image1" class="eq_main_image" src="/subinimage/eqimage3.jpg">
-            <img id="eq_main_image2" class="eq_main_image" src="/subinimage/eqimage3.PNG">
-            <img id="eq_main_image3" class="eq_main_image" src="/subinimage/eqimage4.PNG">-->
+
+<section class=" p-0">
+    <div style="display: flex; justify-content: space-between;position: relative;">
+        <div style="display: inline-block; width: 10%; height: 100px;" class="bg-dark menuheaderleft" ></div>
+        <div style="display: inline-block; width: 89%; height: 100px;" class=" menuheaderright">
+            <img src="${pageContext.request.contextPath}/resources/images/productmeunheader.png" width="100%" height="100%" >
         </div>
+    </div>
+    <div style="width: 65%;position: relative; left:10px; top: -33px;" class="mx-auto menuheadertitle">
+        <span style="font-size: 50px; font-family: 'MinSans-Bold'; border-bottom: 5px solid coral; letter-spacing: 1.4px;">치과장비</span>
+    </div>
+</section>
+
+<div id="dentalequipmentmain_wrapper">
+ 
             <div id="dentalequipmentmain_content"><!-- 본문 작성 시작-->
                 <div id="dentalequipmentmain_left">
-                    <div class="dropdown">
-                        <button class="dropdown-button">Category</button>
-                        <div class="dropdown-content">
-                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=unitchair">유니트 체어</a>
-                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=largecamera">대형 영상 장비</a>
-                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/testCategory?category=washingmachine">멸균 및 세척기</a>
-                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=smallcamera">소형 영상 장비</a>
-                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=etc">기타 장비</a>
-                        </div>
+                    
+                    <div >
+                       <ul class="productAsideUl">
+                           <li >Category</li>
+                           <li>
+                               <ul class="productInsideAsideUl">
+                                   <li>
+                                    <label>
+                                        <input type="radio" name="category" value="unitchair">
+                                        <span >유니트 체어</span> 
+                                    </label>
+                                   </li>
+                                   <li>
+                                    <label >
+                                        <input type="radio" name="category" value="washingmachine">
+                                        <span >멸균 및 세척기</span>
+                                    </label>
+                                   </li>
+                                   <li>
+                                    <label >
+                                        <input type="radio" name="category" value="smallcamera">
+                                        <span>소형 영상 장비</span>
+                                    </label>
+                                   </li>
+                                   <li>
+                                    <label>
+                                        <input type="radio" name="category" value="etc">
+                                        <span >기타 장비</span>
+                                    </label>
+                                   </li>
+                               </ul>
+                           </li>
+                           <li>Filter</li>
+                           <li>
+                               <ul class="productInsideAsideUl">
+                                   <li>
+                                    <label>
+                                        <input type="radio" name="sort" value="popular">
+                                        <span class="ml-2">인기순</span>
+                                    </label>
+                                   </li>
+                                   <li>
+                                    <label>
+                                        <input type="radio" name="sort" value="views">
+                                        <span class="ml-2">조회순</span>
+                                    </label>
+                                   </li>
+                                   <li>
+                                    <label>
+                                        <input type="radio" name="sort" value="reviews">
+                                        <span class="ml-2">리뷰순</span>
+                                    </label>
+                                   </li>
+                                   <li>
+                                    <label>
+                                        <input type="radio" name="sort" value="new">
+                                        <span class="ml-2">최신 등록순</span>
+                                    </label>
+                                   </li>
+                               </ul>
+                           </li>
+                       </ul>   
+                           
                     </div>
-                </div>
-                <div id="dentalequipmentmain_right">
-                    <p id="best_product_content">BEST ITEM</p>
+            </div>
+    
+                    
+            <div id="dentalequipmentmain_right">
+                <section style="width: 90%;" class="mx-auto">
+                    <p  style="font-size: 25px; font-family: 'MinSans-Medium';">BEST ITEM</p>
                     <div id="makeline">　</div>
-                    <div id="eq_list1" class="eq_list"><!--베스트 상품-->
-                    <c:forEach var="bestchair" items="${bestchairList}" begin="0" end="2">
-                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail_consult?modelNumber=${bestchair.modelNumber}" class="gotolink">
-                            <div id="eq_list_content1" class="card">
-                                <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${bestchair.pattachoname}" class="card-img-top">
-                                <div class="card-body">
-                                    <p id="eq_list_content1_element1" class="card-text"><img id="eq_best_icon"src="${pageContext.request.contextPath}/resources/subinimage/popularity.png"/>${bestchair.productName}</p>
-                                    <hr/>
-                                    <p id="eq_list_content1_element2" class="card-text">${bestchair.productIntro}</p>
-                                    <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
-                                </div>
+                    <div style="width: 95%;" class="mx-auto">
+                        <div style="display: flex;" ><!--베스트 상품-->
+                            <c:forEach var="bestchair" items="${bestchairList}" begin="0" end="3">
+                                <a  href="${pageContext.request.contextPath}/equipment/equipment_detail_consult?modelNumber=${bestchair.modelNumber}" style="text-decoration: none; color: black;font-family: 'MinSans-Regular'; font-size: 15px;">
+                                    <div style="display: inline-block; width: 270px;" class="mx-4">
+                                        <div>
+                                            <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${bestchair.pattachoname}" width="270px" height="270px" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+                                        </div>
+                                        
+                                        <div class="mt-2">
+                                            <div style="color: darkgray;">${bestchair.modelNumber}</div>
+                                            <div style="display: flex; ">
+                                                <div style="display: inline-block" class="pt-1 mr-3">
+                                                    <b style="font-size: 18px;">${bestchair.productName}</b>
+                                                </div> 
+                                                <div style="display: inline-block" >
+                                                    <img src="${pageContext.request.contextPath}/resources/subinimage/popularity.png" width="20px"/>
+                                                </div>
+                                            </div>
+                                            <div>${bestchair.productIntro}</div>
+                                            <p><img src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png" width="20px"/><span style="font-size: 18px; box-shadow: inset 0 -5px 0 lightgray; ">가격 문의</span></p>
+                                        </div>
+                                    </div> 
+                                </a>
+                            </c:forEach>
+        
                             </div>
-                        </a>
-                    </c:forEach>
-
                     </div>
-
-                    <form id="product_filter" action="Sort" method="get">
-                    	<input type="hidden"
-                    	name="sort" value="1"></input><input class="btn btn-link-dark" type="submit" value="인기순"/>　　|　　
-                    	<a 
-                    	name="sort" value="2">조회순</a> 　　| 　　
-                    	<a 
-                    	name="sort" value="3">리뷰순</a> 　　| 　　
-                    	<a 
-                    	name="sort" value="4">최신 등록순</a>
-                    </form>    
-                    <p id="best_product_content" >전체 상품</p>
-                    <div id="makeline">　</div>
-					<div id="eq_list2" class="eq_list"><!--전체 상품-->
-                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
-                    <c:forEach var="chair" items="${chairList}">
-                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail_consult?modelNumber=${chair.modelNumber}" class="gotolink">
-                            <div id="eq_list_content1" class="card">
-                                <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" class="card-img-top">
-                                <div class="card-body">
-                                    <p id="eq_list_content1_element1" class="card-text">${chair.productName}</p>
-                                    <hr/>
-                                    <p id="eq_list_content1_element2" class="card-text">${chair.productIntro}</p>
-                                    <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-
-                  </div>
-                  <!-- 장바구니 테스트용입니당 추후 카테고리 구분되면 지울게용가리 -->
-                  <div id="eq_list3" class="eq_list"><!--전체 상품-->
-                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
-                    <c:forEach var="chair" items="${chairList}" begin="0" end="1">
-                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="gotolink">
-                            <div id="eq_list_content1" class="card">
-                                <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" class="card-img-top">
-                                <div class="card-body">
-                                    <p id="eq_list_content1_element1" class="card-text">${chair.productName}</p>
-                                    <hr/>
-                                    <p id="eq_list_content1_element2" class="card-text">${chair.productIntro}</p>
-                                    <div id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격　<fmt:formatNumber pattern="###,###,###,###" value="${chair.price}"/>원</div>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-
-                  </div>
+                    <div style="width: 100%;" class="mt-4">
+                        <p  style="font-size: 25px; font-family: 'MinSans-Medium';" >전체 상품</p>
+                        <div id="makeline">　</div>
+                        <div id="eq_list2" class="eq_list"><!--전체 상품-->
+                            <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
+                        <c:forEach var="chair" items="${chairList}">
+                                <div style="display: inline-block; width: 270px; height: 450px;" class="mx-4 ">
+                                    <a  href="${pageContext.request.contextPath}/equipment/equipment_detail_consult?modelNumber=${chair.modelNumber}" style="text-decoration: none; color: black;font-family: 'MinSans-Regular'; font-size: 15px;">
+                                    <div>
+                                        <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" width="270px" height="270px" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+                                    </div> 
+                                    <div class="mt-2">
+                                        <div style="color: darkgray;">${chair.modelNumber}</div>
+                                        <div style="display: flex; ">
+                                            <div style="display: inline-block" class="pt-1 mr-3">
+                                                <b style="font-size: 18px;">${chair.productName}</b>
+                                            </div> 
+                                        </div>
+                                        <div>${chair.productIntro}</div>
+                                        <p><img src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png" width="20px"/><span style="font-size: 18px; box-shadow: inset 0 -5px 0 lightgray; ">가격 문의</span></p>
+                                    </div>
+                                </a>
+                                </div> 
+                            
+                        </c:forEach>
+    
+                      </div>
+                     
+                    </div>
+                   
+                </section>
+                    
             </div>
         </div>
 <script src="${pageContext.request.contextPath}/resources/js/equipment/dental_equipment_main.js"></script>
     </div>
+</div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

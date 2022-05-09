@@ -2,13 +2,23 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/customerService.css" rel="stylesheet" type="text/css"/>   
+<link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
+<section class=" p-0">
+    <div style="display: flex; justify-content: space-between;position: relative;">
+        <div style="display: inline-block; width: 10%; height: 100px;" class="bg-dark menuheaderleft" ></div>
+        <div style="display: inline-block; width: 89%; height: 100px;" class=" menuheaderright">
+            <img src="${pageContext.request.contextPath}/resources/images/quest.png" width="100%" height="100%" >
+        </div>
+    </div>
+    <div style="width: 65%;position: relative; left:10px; top: -33px;" class="mx-auto menuheadertitle">
+        <span style="font-size: 50px; font-family: 'MinSans-Bold'; border-bottom: 5px solid coral; letter-spacing: 1.4px;">자주 묻는 질문</span>
+    </div>
+</section>
 
-
-    <div id="c_service_wrapper">
+    <div id="c_service_wrapper">  
         <div id="c_service_content"><!-- 본문 작성 시작-->
-            
+              
             <div id="c_service_first">
-                <div id="c_service_c1">자주 묻는 질문</div>
                 <div id="makeline">　</div>
                 <div id="board_information_list">
                     <div id="board_information_list1" class="card" onclick="showcontent1()">

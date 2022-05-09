@@ -87,7 +87,7 @@
 /*가격 아래 붙어있게 하기*/
 #rPirceResultWrap{
     position: sticky;
-    bottom:0;
+    top:0;
     width: 100%;
     text-align: center; 
     height: 60px; 

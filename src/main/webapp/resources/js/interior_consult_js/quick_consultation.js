@@ -226,13 +226,12 @@ $("#qcf_button").click(function(){
 
 //빠른 상담 버튼 클릭하여 submit 
 $("#qcf_button").click(function(){
-	$('#allloading').show();
-    var lastInsertQ =  lastInsertQuick();
+    $('#allloading').show();
+    var lastInsertQ =  lastInsertQuick();    
     if(lastInsertQ){
-        console.log("빠른 상담 보내랏!");
-        return true; 
-    $("#quik_consult_send_form").submit();
-	 
+        console.log("빠른 상담 보내랏!!!");
+
+        $("#quik_consult_send_form").submit();
     }else{
         nonLastInput();
         $('#allloading').hide();

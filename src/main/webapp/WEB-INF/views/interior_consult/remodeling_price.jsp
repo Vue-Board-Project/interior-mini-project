@@ -6,7 +6,14 @@
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quick_consultation.css" rel="stylesheet" type="text/css"/>
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/detail_consultation.css" rel="stylesheet" type="text/css"/> 
 	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/quipment_buy_request_consult.css" rel="stylesheet" type="text/css" /> 
-	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/remodeling_price.css" rel="stylesheet" type="text/css"/>
+	<link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/remodeling_price.css" rel="stylesheet" type="text/css"/>\
+    <div id="rPirceResultWrap" >
+        <div class="container" style="height: 100%;">
+            <div style="width: 100%; height: 100%; display: flex; color: white; justify-content: center;" class="mx-auto" id="rPirceResult">
+                <div style="color: white; font-family: 'MinSans-Medium'; font-size: 20px;" class="pt-3">모든 값을 입력해주세요.</div>
+            </div>
+        </div>
+  </div> 
         <div class="container">
             <article class="mx-auto" style="width: 100%; background-color: white; display: flex;">
                 <section style="display: inline-block; width: 15%;" class="border">
@@ -1104,13 +1111,7 @@
                 </section>
             </article>
         </div>
-        <div id="rPirceResultWrap" >
-        	<div class="container" style="height: 100%;">
-        		<div style="width: 100%; height: 100%; display: flex; color: white; justify-content: center;" class="mx-auto" id="rPirceResult">
-        			<div style="color: white; font-family: 'MinSans-Medium'; font-size: 20px;" class="pt-3">모든 값을 입력해주세요.</div>
-        		</div>
-        	</div>
-      </div>  	
+        	
           <!--   -->
           
           <!-- <div  style=" display: inline-block; padding:20px 0 0 90px; font-family: 'MinSans-Medium'; font-size: 17px;">리모델링 견적 계산 결과&nbsp;&nbsp;<i class="fas fa-comment-dollar"></i></div>

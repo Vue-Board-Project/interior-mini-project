@@ -10,6 +10,12 @@
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	width: 350px;
 }
+@font-face {
+  font-family: 'MinSans-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 .portfolio_dental_content_a{
 	text-decoration: none; color: black;
 }
