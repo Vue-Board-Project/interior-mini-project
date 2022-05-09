@@ -25,14 +25,13 @@
 		price,
 		PATTACHONAME as pattachoname
 		from product
-		<include refid='category'></include>
+		<!-- <include refid='category'></include> -->
 		order by REGISTRATION_DATE desc
 	</select>
 	<!--베스트 상품 3순위-->
 	<select id="selectbestlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
 		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category, PATTACHONAME
 		from product
-		<include refid='category'></include>
 		order by PRODUCT_SALES_VOLUME desc
 	</select>
 	
@@ -45,41 +44,29 @@
 		order by REGISTRATION_DATE desc
 	</select>
 	
-	<select id="soltsalesCount" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
-		select product_name as productName, product_intro as productIntro
+	<!-- 리뷰순 가져오기 -->
+	<select id="selectreviewslist" resultType="product">
+		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
+		price, PATTACHONAME as pattachoname
 		from product
-		where CATEGORY='unitchair' and rownum le 3
-		ORDER BY PRODUCT_SALES_VOLUME DESC
+		order by REVIEW_COUNT desc
 	</select>
-	<select id="soltviewCount" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
-		select product_name as productName, product_intro as productIntro
-		from product
-		where CATEGORY='unitchair'
-		ORDER BY PRODUCT_HITS DESC
-	</select>
-	<select id="soltreviewCount" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
-		select product_name as productName, product_intro as productIntro
-		from product
-		where CATEGORY='unitchair'
-		ORDER BY REVIEW_COUNT DESC
-	</select>
-	<select id="solttime" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
-		select product_name as productName, product_intro as productIntro
-		from product
-		where CATEGORY='unitchair'
-		order by REGISTRATION_DATE desc
-	</select>
-	<sql id="category">
-		<!-- <if test="category == null">
-			'unitchair'
-		</if> -->
-		<if test="category == 'unitchair'">
-			where CATEGORY='unitchair'
-		</if>
-		
-	</sql>
 	
+	<!-- 조회순 가져오기 -->
+	<select id="selectviewslist" resultType="product">
+		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
+		price, PATTACHONAME as pattachoname
+		from product
+		order by PRODUCT_HITS desc
+	</select>
 	
+	<!-- 판매량순 가져오기 -->
+	<select id="selectpopularlist" resultType="product">
+		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
+		price, PATTACHONAME as pattachoname
+		from product
+		order by PRODUCT_SALES_VOLUME desc
+	</select>
 	<!--상품 상세보기-->
 	<select id="selectDetailProduct" parameterType="string" resultType="product">
 		select 

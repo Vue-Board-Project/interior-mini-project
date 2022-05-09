@@ -70,5 +70,14 @@ public class ProductService {
 	public List<ProductDto> selectproductlist(String category) {
 		return productDao.selectproductlist(category);
 	}
+	public List<ProductDto> selectreviewslist() {
+		return productDao.selectreviewslist();
+	}
+	public List<ProductDto> selectviewslist() {
+		return productDao.selectviewslist();
+	}
+	public List<ProductDto> selectpopularlist() {
+		return productDao.selectpopularlist();
+	}
 	
 }

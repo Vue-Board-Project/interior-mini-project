@@ -81,7 +81,7 @@
 
                     </div>
 
-                    <form id="product_filter" action="Sort" method="get">
+                    <!-- <form id="product_filter" action="Sort" method="get">
                     	<input type="hidden"
                     	name="sort" value="1"></input><input class="btn btn-link-dark" type="submit" value="인기순"/>　　|　　
                     	<a 
@@ -90,26 +90,47 @@
                     	name="sort" value="3">리뷰순</a> 　　| 　　
                     	<a 
                     	name="sort" value="4">최신 등록순</a>
-                    </form>    
+                    </form>   -->  
+                    <div class="p-2 d-flex">
+				       <label>
+				           <input type="radio" name="sort" value="popular">
+				           <span class="ml-2">인기순</span>
+				       </label>
+				       <label>
+				           <input type="radio" name="sort" value="views">
+				           <span class="ml-2">조회순</span>
+				       </label>
+				       <label>
+				           <input type="radio" name="sort" value="reviews">
+				           <span class="ml-2">리뷰순</span>
+				       </label>
+				       <label>
+				           <input type="radio" name="sort" value="new">
+				           <span class="ml-2">최신 등록순</span>
+				       </label>
+			       </div>
                     <p id="best_product_content" >전체 상품</p>
                     <div id="makeline">　</div>
-					<div id="eq_list2" class="eq_list"><!--전체 상품-->
-                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
-                    <c:forEach var="chair" items="${chairList}">
-                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail_consult?modelNumber=${chair.modelNumber}" class="gotolink">
-                            <div id="eq_list_content1" class="card">
-                                <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" class="card-img-top">
-                                <div class="card-body">
-                                    <p id="eq_list_content1_element1" class="card-text">${chair.productName}</p>
-                                    <hr/>
-                                    <p id="eq_list_content1_element2" class="card-text">${chair.productIntro}</p>
-                                    <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-
-                  </div>
+                    <div id="product_all_list_sort">
+						<div id="eq_list2" class="eq_list"><!--전체 상품-->
+	                        <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->
+	                    <c:forEach var="chair" items="${chairList}">
+	                        <a id="go_k3chair" href="${pageContext.request.contextPath}/equipment/equipment_detail_consult?modelNumber=${chair.modelNumber}" class="gotolink">
+	                            <div id="eq_list_content1" class="card">
+	                                <img id="eq_list_content1_image"src="/springframework-mini-project/equipment/display?fileName=${chair.pattachoname}" class="card-img-top">
+	                                <div class="card-body">
+	                                    <p id="eq_list_content1_element1" class="card-text">${chair.productName}</p>
+	                                    <hr/>
+	                                    <p id="eq_list_content1_element2" class="card-text">${chair.productIntro}</p>
+	                                    <p id="eq_list_content1_element3" class="card-text"><img id="eq_price_icon"src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png"/>가격</p>
+	                                </div>
+	                            </div>
+	                        </a>
+	                    </c:forEach>
+	
+	                  </div>
+                    
+                    </div>
                   <!-- 장바구니 테스트용입니당 추후 카테고리 구분되면 지울게용가리 -->
                   <div id="eq_list3" class="eq_list"><!--전체 상품-->
                         <!--href="${pageContext.request.contextPath}/equipment/dental_equipment_main?sort='salesCount'"  -->

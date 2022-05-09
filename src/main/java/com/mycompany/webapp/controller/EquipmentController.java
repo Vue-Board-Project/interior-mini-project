@@ -124,6 +124,30 @@ public class EquipmentController {
 		model.addAttribute("chairList", productList);
 		return "/equipment/productList";
 	}
+	
+	@RequestMapping("/equipment/allProductListAjax")
+	public String allProductListAjax(Model model, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
+		log.info("컨트롤러 연결 됐냐???");
+		log.info(sort);
+		if(sort.equals("new")) {
+			log.info("새로운거 가보자고~~~~~~~~~~~");
+			List<ProductDto> allProductList=productService.selectchairlist();
+			model.addAttribute("allProductList", allProductList);	
+			
+		} else if(sort.equals("reviews")) {//리뷰순
+			List<ProductDto> allProductList=productService.selectreviewslist();
+			model.addAttribute("allProductList", allProductList);	
+			
+		} else if(sort.equals("views")) {//조회순
+			List<ProductDto> allProductList=productService.selectviewslist();
+			model.addAttribute("allProductList", allProductList);
+			
+		}  else if(sort.equals("popular")) {//판매량순
+			List<ProductDto> allProductList=productService.selectpopularlist();
+			model.addAttribute("allProductList", allProductList);	
+		}
+		return "/equipment/allProductList";
+	}
 
 	
 	/*@RequestMapping("/getByteImage")

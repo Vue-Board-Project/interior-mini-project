@@ -38,4 +38,27 @@ $(document).ready(function(){
 	
 	});
 	
+	$("input[name='sort']").on("click",function(){
+		var sort = $('input[name="sort"]:checked').val();
+		
+		console.log(sort);
+		
+		$.ajax({
+			url: "allProductListAjax",
+			method: "get",
+			data: {sort:sort},
+			success: function(data) {
+				if(data.result === "fail"){
+					console.log("되냐2????");
+					window.location.href = "${pageContext.request.contextPath}/equipment/dental_equipment_main";		
+				} else {
+					console.log("되냐3????");
+					/*console.log(data);*/
+					$("#product_all_list_sort").html(data);
+				}
+			},
+			error : function(request, status, error) { 
+				alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + error); }
+		})
+	});
 });

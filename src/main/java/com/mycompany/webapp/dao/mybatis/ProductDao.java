@@ -29,4 +29,7 @@ public interface ProductDao {
 
 	//카트에 담을 장비 선택
 	public ProductDto selectProduct(String modelNumber);
+	public List<ProductDto> selectreviewslist();
+	public List<ProductDto> selectviewslist();
+	public List<ProductDto> selectpopularlist();
 }
