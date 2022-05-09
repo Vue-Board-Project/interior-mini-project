@@ -62,7 +62,7 @@ $(document).ready(function(){
 				result += '</div>';
 				result += '<div>';
 				result += '<b class="model_dental_content_b">'+item.isummary+'</b>';
-				result += '<div style="position:absolute; width: 70px; top: 10px;"><i class="fa-regular fa-heart" style="color: white;"></i><span style="color: white;" class="ml-1">'+item.ihits+'</span></div>';
+				result += '<div style="position:absolute; width: 70px; top: 10px;"><i class="far fa-eye" style="color: white;"></i><span style="color: white;" class="ml-1">'+item.ihits+'</span></div>';
 				result += '<small class="d-block model_dental_content_sm"><span>#'+item.istyle+' </span> <span># '+item.allColor+'</span></small>';
 				result += '</div>';
 				result += '</a></li>';

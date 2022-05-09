@@ -57,7 +57,7 @@ $(document).ready(function(){
 				result += '</div>';
 				result += '<div style="position: relative">';
 				result += '<b class="mt-3 portfolio_dental_content_b">'+item.isummary+'</b>';
-				result += '<div style="position:absolute; width: 70px; top: 10px;"><i class="fa-regular fa-heart"></i><span class="ml-1">'+item.ihits+'</span></div>';
+				result += '<div style="position:absolute; width: 70px; top: 10px; right: 10px;"><i class="far fa-eye"></i><span class="ml-1">'+item.ihits+'</span></div>';
 				result += '<small class="d-block portfolio_dental_content_sm"><span># '+item.istyle+'</span> <span># '+item.allColor+'</span></small>';
 				result += '</div>';
 				result += '</a></li>';
