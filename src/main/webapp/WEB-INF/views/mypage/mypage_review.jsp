@@ -48,33 +48,6 @@
 							      	</div>
 							      </div>
 						      </c:forEach>
-					<%-- <table>
-						 <tr>
-				            <td colspan="4" class="text-center">
-				               <div>
-				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=1">처음</a>
-				                  <c:if test="${pager.groupNo>1}">
-				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.startPageNo-1}">이전</a>
-				                  </c:if>
-				                  
-				                  <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-				                     <c:if test="${pager.pageNo != i}">
-				                        <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-				                     </c:if>
-				                     <c:if test="${pager.pageNo == i}">
-				                        <a class="btn btn-danger btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-				                     </c:if>
-				                  </c:forEach>
-				                  
-				                  <c:if test="${pager.groupNo<pager.totalGroupNo}">
-				                     <a class="btn btn-outline-info btn-sm" href="mypageReview?pageNo=${pager.endPageNo+1}">다음</a>
-				                  </c:if>
-				                  <a class="btn btn-outline-primary btn-sm" href="mypageReview?pageNo=${pager.totalPageNo}">맨끝</a>
-				               </div>
-				            </td>
-				         </tr>
-				      </table> --%>
-	    
 			    </div>
 
 			    	<div id="mypage_review_tab_finished" class="tabmenu_content">
@@ -150,7 +123,9 @@
      		border : 1px solid #e8e8db;
      		background-color : #fff;
       		color:#272723;
-      		height : 100%;
+      		/* height : 100%; */
+      		overflow:hidden;
+			height:auto;
      }
      
      .mypage_review_before_element{

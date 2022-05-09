@@ -472,6 +472,8 @@ public class MyPageController {
 			List<PurchaseDetailDto> orderReview = mypageService.getOrderReview(email);
 			log.info("write review : " + orderReview);
 			model.addAttribute("orderReview", orderReview);
+		
+			
 		/*
 		 * String email = authentication.getName(); //리뷰 작성 전 int totalReviewBeforeNum =
 		 * mypageService.getTotalReviewBeforeNum(email);
