@@ -27,6 +27,8 @@ $(document).ready(function(){
 		$("#main_nav_list_icon_home").css("background-color","#272723");
 		$(".main_nav_list span").css("color","#6a6a6a");
 		$("#main_nav_list_home span").css("color","black");
+		$("#main_content_wrap").css("background-color","#faf9f6");
+		$("#main_back_round").hide();
 	});
 	$("#main_nav_list_interior").click(function(){
 		$("#main_interior_content").show();
@@ -38,7 +40,9 @@ $(document).ready(function(){
 		$(".main_nav_list_icon").css("background-color","#6a6a6a");
 		$("#main_nav_list_icon_interior").css("background-color","#272723");
 		$(".main_nav_list span").css("color","#6a6a6a");
-		$("#main_nav_list_interior span").css("color","black");
+		$("#main_content_wrap").css("background-color","#ffd4b1");
+		$("#main_back_round").show();
+
 	});
 	$("#main_nav_list_product").click(function(){
 		$("#main_product_content").show();
@@ -50,7 +54,9 @@ $(document).ready(function(){
 		$(".main_nav_list_icon").css("background-color","#6a6a6a");
 		$("#main_nav_list_icon_product").css("background-color","#272723");
 		$(".main_nav_list span").css("color","#6a6a6a");
-		$("#main_nav_list_product span").css("color","black")
+		$("#main_nav_list_product span").css("color","black");
+		$("#main_content_wrap").css("background-color","#faf9f6");
+		$("#main_back_round").hide();
 	});
 	$("#main_nav_list_news").click(function(){
 		$("#main_news_content").show();
@@ -63,5 +69,7 @@ $(document).ready(function(){
 		$("#main_nav_list_icon_news").css("background-color","#272723");
 		$(".main_nav_list span").css("color","#6a6a6a");
 		$("#main_nav_list_news span").css("color","black");
+		$("#main_content_wrap").css("background-color","#faf9f6");
+		$("#main_back_round").hide();
 	});
 }); 

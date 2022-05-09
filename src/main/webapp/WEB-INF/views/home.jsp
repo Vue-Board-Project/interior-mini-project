@@ -30,6 +30,18 @@ padding-top: 7px;
  margin-left: 0; padding-left: 0;
  margin-right: 0; padding-right: 0;
 }
+.main_home_ads{
+background-color: white; width: 600px; height: 300px; position: relative; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
+ z-index: 2;
+}
+.main_home_ads_a{
+position: absolute; 
+padding-left:20px; padding-right: 20px; padding-top:10px; padding-bottom:10px;
+bottom:0; background-color: rgba(0,0,0,.2); text-decoration: none; color: black; border-top-right-radius: 10px;
+}
+.main_home_ads_a:hover{
+text-decoration: none; color: black;
+}
 
 /* 인테리어 */
 #portfolio_model_wrap{margin: 0 auto; font-family: 'MinSans-Regular';}
@@ -52,7 +64,7 @@ padding-top: 7px;
 </style>
 <main class="pt-5 pb-5 d-flex" id="main_content_wrap" style="background-color: #faf9f6; font-family: 'MinSans-Regular'; height: 837px;">
 	<aside id="mainNav" class="text-center" style="flex-grow: 1; margin: auto 0;">
-		<ul class="main_nav_list" style="list-style:none; text-decoration: none; color: black; margin-left: 0; padding-left: 0;">
+		<ul class="main_nav_list" style="list-style:none; text-decoration: none; color: black; margin-left: 0; padding-left: 0; position: relative; z-index: 60;">
 			<li class="d-flex" id="main_nav_home">
 				<hr style="border: thin solid black; width: 50px"/>
 				<div class="main_nav_list_icon" id="main_nav_list_icon_home"><i class="fa-solid fa-house"></i></div>
@@ -65,7 +77,7 @@ padding-top: 7px;
 				<hr style="border: thin solid black; width: 50px; visibility: hidden;"/>
 				<div class="main_nav_list_icon" id="main_nav_list_icon_interior"><i class="fa-solid fa-paint-roller"></i></div>
 				<a id="main_nav_list_interior" class="btn">
-					<span style="color: #6a6a6a">INTERIOR</span>
+					<span style="color: #6a6a6a;">INTERIOR</span>
 				</a>
 			</li>
 			
@@ -104,7 +116,7 @@ padding-top: 7px;
 			      	    </div>
 			   	    </div>
 			   	    <div class="d-flex">
-			   	    	<div><button id="main_before_btn" type="button" style="border: none; background: none; width: 30px;"><i class="fa-solid fa-arrow-left-long"></i></bu치과 종합 인테리어, 인테리어에 영혼을 불어넣다.tton></div>
+			   	    	<div><button id="main_before_btn" type="button" style="border: none; background: none; width: 30px;"><i class="fa-solid fa-arrow-left-long"></i></button></div>
 				   	    <div class="ml-1" style="width: 50px;">
 							<p><span id="main_content_btn_1">01</span>·<span id="main_content_btn_2">02</span></p>
 						</div>
@@ -112,27 +124,47 @@ padding-top: 7px;
 			   	    </div>
 				</div>
 				
-		   	    <div class="d-flex flex-column">
-			   	    <div class="d-flex" style="background-color: white; width: 800px; height: 220px; position: relative; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);">
-			   	    	<h3 class="m-3">O'Molaire Osstem</h3>
-			   	    	<img style="height: 200px; width: 350px; position: absolute; right: 0; bottom: 0;" src="${pageContext.request.contextPath}/resources/illustration/art_164915725959_5bbc07.jpg">
-			   	    	<a style="position: absolute; left: 10px; bottom: 10px; background-color: ">인테리어로 바로가기</a>
+		   	    <div class="d-flex flex-column" style="position: relative;">
+			   	    <div class="d-flex mb-3 main_home_ads">
+			   	    	<div class="d-flex flex-column" style="width: 240px;">
+				   	    	<b class="ml-3 mt-5 mb-3" style="font-size: 24px;">오몰레어 인테리어</b>
+				   	    	<div class="ml-3 mb-3" style="white-space: pre-line;">치과 종합 인테리어,
+				   	    	 인테리어에 영혼을 불어넣다.</div>
+				   	    	<p class="ml-3">국내 최초 2년 a/s 보장</p>
+			   	    	</div>
+			   	    	<img style="height: 270px; width: 350px; position: absolute; right: 0; bottom: 0; border-top-left-radius: 15px;" src="${pageContext.request.contextPath}/resources/illustration/art_164915725959_5bbc07.jpg">
+			   	    	<a class="main_home_ads_a" href="${pageContext.request.contextPath}/goPortfolioDental">바로가기<span style="margin-left: 100px;"><i class="fa-solid fa-arrow-right-to-bracket"></i></span></a>
 			   	    </div>
-			   	    <div class="d-flex" style="background-color: white; width: 800px; height: 220px; position: relative; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);">
-			   	    	<h3 class="m-3">Osstem Medical Equipment</h3>
-			   	    	<img style="height: 200px; width: 350px; position: absolute; right: 0; bottom: 0;" src="${pageContext.request.contextPath}/resources/illustration/k2chair.png">
-						<a style="position: absolute; left: 10px; bottom: 10px;">치과장비로 바로가기</a>			   	    	
-			   	    </div>        
+			   	    <div class="d-flex main_home_ads" style="margin-left: 300px;">
+			   	    	<div class="d-flex flex-column" style="width: 240px;">
+				   	    	<b class="ml-3 mt-5 mb-3" style="font-size: 24px;">오몰레어 치과장비</b>
+				   	    	<p class="ml-3">장비 설치부터 a/s까지</p>
+				   	    	<div class="ml-3" style="white-space: pre-line;">오몰레어에서 장비 설치부터
+				   	    	 관리까지 한번에 하세요!</div>
+			   	    	</div>
+			   	    	<img style="height: 270px; width: 350px; position: absolute; right: 0; bottom: 0; border-top-left-radius: 15px;" src="${pageContext.request.contextPath}/resources/illustration/k2chair.png">
+						<a class="main_home_ads_a" href="${pageContext.request.contextPath}/equipment/dental_equipment_main">바로가기<span style="margin-left: 100px;"><i class="fa-solid fa-arrow-right-to-bracket"></i></span></a>			   	    	
+			   	    </div>
+			   	    <div style="position: absolute;top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ca5c0d; width: 700px; height: 500px; z-index: 0;"></div>        
 		   	    </div>
 	   	    </div>
 		</div>
    	    <div id="main_interior_content" style="display: none;">
-	   	    <section class="d-flex flex-column text-center">
-		       <h2>O'Molaire Osstem Interior</h2>
-		       <p>오스템 인테리어</p>
-		       <div class="d-flex" style=" margin:0 auto;">
-		       		<ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
-			            <c:forEach items="${homeInteriorList}" var="list" begin="0" end="5">
+	   	    <div class="d-flex">
+				<div class="d-flex flex-column">
+			 	    <div class="mr-5" style="width: 600px; height: 500px; z-index: 60;">
+			     	    <b style="font-size: 60px;">O'Molaire Osstem Interior</b>
+			      	    <p style="font-size: 20px;">오스템 인테리어</p>
+			      	    <div style="white-space: pre-line; width: 506px; letter-spacing: 1.3px;">
+			      	    	오몰레어 인테리어 연구소는 치과 인테리어 회사 중 최대 규모인 35명 전문가로 구성되어 있으며 건축, 실내디자인, 조명, 그래픽등 각 분야의 전문가로 구성되어 고객과의 높은 신뢰를 구축하고 있습니다.
+			      	    	
+			      	    	또한 고객에게 토탈 솔루션을 제공하기 위해 치과 환경 변화에 따른 디자인 트랜드와 치과만의 디테일 디자인을 지속적으로 연구 개발하고 있습니다.
+			      	    </div>
+				    </div>
+				</div>
+		   	    <div class="d-flex">
+			   		<ul id="portfolio_dental_content_wrap" class="d-flex text-center" style="padding-left:0px; flex-wrap: wrap; width:800px; z-index: 60;">
+			            <c:forEach items="${homeInteriorList}" var="list" begin="0" end="3">
 			            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);"> 
 			                    <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${list.ino}" class="portfolio_dental_content_a">
 			                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${list.imImgPath}"/>
@@ -142,15 +174,47 @@ padding-top: 7px;
 			                </li>
 			            </c:forEach>
 		            </ul>
-		       </div>
-		    </section>
+		   	    </div>
+		   	 </div>
    	    </div>
    	    <div id="main_product_content" style="display: none;">
+   	    	<div class="d-flex">
+				<div class="d-flex flex-column">
+			 	    <div class="mr-5" style="width: 600px; height: 500px;">
+			     	    <b style="font-size: 60px;">Osstem Medical Equipment</b>
+			      	    <p style="font-size: 20px;">오스템 치과장비</p>
+				    </div>
+				</div>
+		   	    <div class="d-flex">
+			   		 <ul id="portfolio_dental_content_wrap" class="d-flex text-center" style="padding-left:0px; flex-wrap: wrap; width:800px;">
+			            <c:forEach items="${homeProductList}" var="productList" begin="0" end="3">
+			            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);"> 
+			                    <a href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="portfolio_dental_content_a">
+			                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/mainHome/productDisplay?fileName=${productList.pattachoname}"/>
+			                        <b class="mt-3 ml-5 mr-5 portfolio_dental_content_b">${productList.productName}</b>
+			                        <small class="d-block portfolio_dental_content_sm">subin</small>
+			                    </a>
+			                </li>
+			            </c:forEach>
+		            </ul>
+		   	    </div>
+		   	 </div>
    	    </div>
    	    <div id="main_news_content" style="display: none;">
+   	 		<div class="d-flex">
+				<div class="d-flex flex-column">
+			 	    <div class="mr-5" style="width: 600px; height: 500px;">
+			     	    <b style="font-size: 60px;">O'Molaire Osstem News</b>
+			      	    <p style="font-size: 20px;">치과에 최적화된 인테리어로 고객의 눈높이에 맞는 맞춤제안을 제공합니다.</p>
+				    </div>
+				</div>
+		   	    <div>
+					<iframe width="850" height="500" src="https://www.youtube.com/embed/I_XEXqWZPBQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		   	    </div>
+		   	 </div>
    	    </div> 
     </div>
-   
+    <div id="main_back_round" style="background-color: white; height: 800px; width: 100%; z-index: 50; position: absolute; top:70%; left: 50%; transform: translate(-50%, -50%); border-top-left-radius: 800px; border-top-right-radius: 800px; display: none;"></div>
 </main>
 <script src="${pageContext.request.contextPath}/resources/js/jsHome.js"></script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
