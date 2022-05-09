@@ -54,8 +54,8 @@
 </div>
 <div id="mypage_review_mask"></div>
 <script>
-/* 이미지 업로드 */
-	$("input[type='file']").on("change", function(e){
+/* 이미지 업로드 "input[type='file']" */
+	$("#attach_img").on("change", function(e){
 		
 		let formData = new FormData();
 		let fileInput = $('input[name="uploadFile"]');
