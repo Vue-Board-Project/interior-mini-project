@@ -36,13 +36,6 @@ public class PaymentController {
 	@Resource
 	private ProductConsultService pcService;
 
-	@ModelAttribute("payInfoForm")
-	public List<PurchaseDto> getPayInForm() {
-		log.info("구매 정보세션 생성");
-		List<PurchaseDto> payInfoForm = new ArrayList<PurchaseDto>();
-		return payInfoForm;
-	}
-
 	// 상품 상세보기 창에서 주문 페이지로 데이터 전송
 	@PostMapping(value = "/equipment/detailToPayment")
 	public String detailToPayment(String purchaseModelNumber, String countQua, String purchasePrice, Model model,
@@ -87,6 +80,7 @@ public class PaymentController {
 		return "/equipment/paymentpage";
 	}
 
+	//결제 확인하기
 	@PostMapping(value = "/equipment/paymentVerify")
 	public String paymentVerify(String PriceFin, String QuantityFin, PurchaseDto purchaseDto,
 			Authentication authentication, @ModelAttribute("cartForm") List<ProductDto> cartList){

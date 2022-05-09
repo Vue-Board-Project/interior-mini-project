@@ -50,14 +50,14 @@ public class EquipmentController {
 	public String customerService() {
 		return "/equipment/CustomerService";// view 이름만 전달
 	}
-
+	//장비 상세(상담 제품)
 	@RequestMapping("/equipment/equipment_detail_consult")
 	public String equipment_detail_consult(String modelNumber, Model model) {
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
 		return "/equipment/equipment_detail_consult";// view 이름만 전달
 	}
-
+	//장비 상세(구매 제품)
 	@RequestMapping("/equipment/equipment_detail")
 	public String equipment_detail(String modelNumber, Model model, Authentication authentication
 			, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
@@ -69,7 +69,7 @@ public class EquipmentController {
 		return "/equipment/equipment_detail";
 	}
 	
-	
+	//장비 메인창
 	@RequestMapping(value ="/equipment/dental_equipment_main", produces = "application/json; charset=UTF-8")//겟
 	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, 
 			 ModelMap modelmap, Model model, @RequestParam(value = "category", required = false) String category, HttpServletResponse response) throws IOException {
@@ -114,7 +114,7 @@ public class EquipmentController {
 		model.addAttribute("chairmap",new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK));*/
 		return "/equipment/dental_equipment_main";
 	}
-	
+	//장비 정렬 및 카테고리 작업들
 	/*@RequestMapping(value = "/equipment/productListAjax", produces = "application/json; charset=UTF-8")*/
 	@RequestMapping("/equipment/productListAjax")
 	public String productList(Model model, @RequestParam(value = "category", required = false) String category, HttpServletResponse response) {

@@ -139,18 +139,6 @@ public class CartController {
 		}
 		model.addAttribute("cartForm", cartList);
 		log.info(cartList);
-		/*	List<ProductDto> upproductList = new ArrayList<ProductDto>();
-			for(ProductDto dto:cartList) {	
-				if(dto.getModelNumber().equals(modelNum)) {
-					log.info("hey~~~~2");
-					ProductDto productDto = productService.detailProduct(dto.getModelNumber());
-					productDto.setCartQua(hey);
-					cartList.add(productDto);
-				}
-			}
-			log.info("변경 되셨나요?"+ upproductList);
-			model.addAttribute("productList", upproductList);
-			model.addAttribute("cartForm", cartList);*/
 		
 	}
 }
