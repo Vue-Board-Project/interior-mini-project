@@ -1,0 +1,17 @@
+$(document).ready(function(){ 
+	$("#main_content_btn_1").css("color","#ca5c0d");
+	$("#main_before_btn").click(function(){
+		console.log("전으로");
+		$("#main_content_1").show();
+		$("#main_content_2").hide();
+		$("#main_content_btn_1").css("color","#ca5c0d");
+		$("#main_content_btn_2").css("color","black");
+	});
+	$("#main_next_btn").click(function(){
+		console.log("다음으로");
+		$("#main_content_2").show();
+		$("#main_content_1").hide();
+		$("#main_content_btn_2").css("color","#ca5c0d");
+		$("#main_content_btn_1").css("color","black");
+	});
+}); 

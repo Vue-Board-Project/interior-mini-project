@@ -1,5 +1,5 @@
 @charset "UTF-8";
-#model_dental_wrap{margin: 0 auto; width: 996px; font-family: 'MinSans-Regular';}
+#model_dental_wrap{margin: 0 auto; width: 996px; font-family: 'MinSans-Regular'; background-color: #faf9f6;}
 .model_dental_cnt{font-size:14px; color:#7c7c7c;}
 .model_dental_cnt_p{line-height: 0; margin:0; padding:0;}
 .model_dental_content{margin:0 auto;}

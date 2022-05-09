@@ -57,20 +57,24 @@
     그레이베이지 #faf9f6
     베이지 #fef8d4
  -->
-<body id="body_id" class="body_class">
+<body id="body_id" class="body_class" style="background-color: #faf9f6;">
     <div id="main_wrapper" class="d-flex flex-column">
         <header id="main_header_wrap" class="nav-down">
 	        <%@ include file="/WEB-INF/views/common/header_ad.jsp"%>
             <div id="main_header" class="d-flex align-items-center justify-content-end">
                 <a id="main_header_logo" href="${pageContext.request.contextPath}">
-                    <img id="main_header_logo_img" src="${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png"/>
+                    <img style="height: 50px;" id="main_header_logo_img" src="${pageContext.request.contextPath}/resources/pngs/orange_logo.png"/>
                 </a>
+                
+                <%@include file="/WEB-INF/views/common/header_nav.jsp" %>
+                
                 <div id="main_header_img">
                     <div id="main_header_login_wrap" style="display: inline;">
                     
 	                    <sec:authorize access="isAnonymous()">
 	                        <a id="login_popup_open" class="btn" style="border: none; outline: none;">
-	                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
+	                            <%-- <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/> --%>
+	                            <i class="fa-regular fa-user"></i>
 	                            <span id="main_header_login_text" class="main_header_text">로그인</span>
 	                        </a>
 	                    </sec:authorize>
@@ -80,7 +84,8 @@
 		                    <form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline-block">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		                  	    <a id="logout" href="${pageContext.request.contextPath}/logout" class="btn" style="border: none; outline: none; box-shadow: none;">
-		                            <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/>
+		                           <%--  <img src="${pageContext.request.contextPath}/resources/pngs/login_icon.png"/> --%>
+		                            <i class="fa-regular fa-user"></i>
 		                            <span id="main_header_logout_text" class="main_header_text">로그아웃</span>
 		                        </a>
 		                    </form>
@@ -92,23 +97,24 @@
                         
                         <sec:authorize access="isAnonymous()">
 		                    <a id="main_header_signUp" class="btn" href="${pageContext.request.contextPath}/mainSignUp" style="border: none; outline: none; box-shadow: none;">
-		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
+		                        <%-- <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/> --%>
+		                        <i class="fa-solid fa-user"></i>
 		                        <span id="main_header_signUp_text" class="main_header_text">회원가입</span>
 		                    </a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
 		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/device_AS" style="border: none; outline: none; box-shadow: none;">
-		                        <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/>
+		                        <%-- <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/> --%>
 		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
 		                    </a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
 		                    <a id="main_header_cart" class="btn" href="${pageContext.request.contextPath}/equipment/shoppingcart_rentalandpurchase" style="border: none; outline: none; box-shadow: none;">
-		                        <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/>
+		                        <%-- <img src="${pageContext.request.contextPath}/resources/pngs/shopping_basket_icon.png"/> --%>
 		                        <span id="main_header_cart_text" class="main_header_text">장바구니</span>
 		                    </a>
 	                    </sec:authorize>
                 </div>
             </div>
-            <%@include file="/WEB-INF/views/common/header_nav.jsp" %>
+            <%-- <%@include file="/WEB-INF/views/common/header_nav.jsp" %> --%>
         </header>   

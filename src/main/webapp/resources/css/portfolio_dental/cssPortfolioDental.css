@@ -1,5 +1,5 @@
 @charset "UTF-8";
-#portfolio_model_wrap{margin: 0 auto; font-family: 'MinSans-Regular';}
+#portfolio_model_wrap{margin: 0 auto; font-family: 'MinSans-Regular'; background-color: #faf9f6;}
 .portfolio_dental_content_cnt{font-size:14px; color:#7c7c7c;}
 .portfolio_dental_content_cnt_p{line-height: 0; margin:0; padding:0;}
 .portfolio_dental_content_b{line-height: 3;}

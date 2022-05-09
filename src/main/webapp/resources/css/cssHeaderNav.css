@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #main_header_nav{
-    background-color: white; 
+    background-color: #faf9f6; 
     height: 45px;
 }
 .main_header_nav_dropdown_group {
@@ -27,17 +27,17 @@
     outline: none;
     color: #272723;
     padding: 9.75px 17px;
-    background-color: white;
+    background-color: #faf9f6;
     font-family: inherit;
     margin: 0;
     width: 220px;
 }
-.main_header_nav_btn_group{
+ .main_header_nav_btn_group{
     float: left;
     overflow: hidden;
-    color: #272723;
+    /* color: #ca5c0d; */
     width: 220px;
-}
+} 
 .main_header_nav_btn{
     font-size: 16px;    
     border: none;
@@ -48,12 +48,15 @@
     height: 35px;
     border-radius: 50px;
     width: 150px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05), 0 3px 3px rgba(0, 0, 0, 0.08);
+    box-shadow:  0px 0px 5px 0px rgba(0,0,0,0.2);
     cursor: pointer; /* 마우스 포인터를 올렸을 때 손가락으로 바뀜 */
     transition: box-shadow 0.1s linear;
+    background-color: #ca5c0d;
+    color : #faf9f6;
 }
 .main_header_nav_btn:hover{
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 4px rgba(0, 0, 0, 0.2);
+    box-shadow:  0px 0px 5px 0px rgba(0,0,0,0.5);
+    color : #faf9f6;
 }
 .main_header_nav_dropdown_content {
     display: none;
@@ -70,10 +73,16 @@
     display: block;
     text-align: left;
 }
-.main_header_nav_dropdown_content a:hover, .main_header_nav_dropdown:hover .main_header_nav_dropbtn {
+.main_header_nav_dropdown_content a:hover {
     background-color: #555;
     color: white;
 }
+
+.main_header_nav_dropdown:hover .main_header_nav_dropbtn {
+	background-color: #272723;
+    color: white;
+}
+
 .main_header_nav_dropdown_content a:hover {
     background-color: #d5d5d8;
     color: black;
