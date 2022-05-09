@@ -25,12 +25,12 @@ public class SignUpController {
 	public String signup() {
 		return "signUp";
 	}
-	
+	//메인화면에서 회원가입가기	
 	@RequestMapping("/mainSignUp")
 	public String mainSignUp() {
 		return "signUp";
 	}
-	
+	//로그인창에서 회원가입가기
 	@RequestMapping("/loginSignUp")
 	public String loginSignUp() {
 		return "signUp";

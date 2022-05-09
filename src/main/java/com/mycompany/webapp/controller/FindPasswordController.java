@@ -25,6 +25,7 @@ public class FindPasswordController {
 	@Resource
 	private UsersService usersService;
 	
+	//비번찾기 인풋값 post
 	@PostMapping("/findPassword")
 	public String findPassword(UsersDto users, HttpServletResponse response, Model model) {
 		log.info("실행");
@@ -50,8 +51,8 @@ public class FindPasswordController {
 			return "home";
 		}
 	}
-	@GetMapping("/findPassword")
+	/*@GetMapping("/findPassword")
 	public String redirectHome() {
 		return "redirect:/";
-	}
+	}*/
 }
