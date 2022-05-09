@@ -37,7 +37,7 @@ public class ModelDentalController {
 	@Resource // 인테리어 서비스 객체
 	private InteriorService interiorService;
 	
-	@Resource
+	@Resource// 상세창 서비스
 	private InteriorDetailService interiorDetailService;
 	
 	@RequestMapping("/model_dental")
@@ -46,6 +46,7 @@ public class ModelDentalController {
 		return "model_dental/model_dental";
 	}
 	
+	//ajax에서 값 받아와서 다시 넣어주기
 	@RequestMapping(value = "/goModelDental", produces = "application/json; charset=UTF-8")
 	public String goModelDental(Model model, @RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "styleArr[]", required = false) List<String> styleArr,
@@ -86,6 +87,7 @@ public class ModelDentalController {
 		return "model_dental/model_dental";
 	}
 	
+	//모델 상세창 가는 거 디비에서 데이터 넣어줌
 	@RequestMapping("/model_dental/model_dental_detail")
 	public String modelDentalDetail(@RequestParam("ino") int ino, Model model) {
 		log.info("실행");
@@ -108,6 +110,7 @@ public class ModelDentalController {
 		return "model_dental/model_dental_detail1";
 	}*/
 	
+	//파일 불러오기
 	@GetMapping("/model_dental/display")
 	public ResponseEntity<byte[]> getImage(String fileName) {
 		// log.info(" getImage()..........");

@@ -32,6 +32,7 @@ public class InteriorController {
 			return "interior/interior";
 		}*/
 	
+	//신경 안써도 됨
 	@GetMapping("/interior")
 	public String interior2(InteriorDto interiors, Model model) {
 			log.info("실행");
@@ -117,6 +118,7 @@ public class InteriorController {
 	      return "interior/interior";
 	}
 	
+	//신경 안써도 됨
 	@PostMapping("/interior/GointeriorDataUpload")
 	public String interiorDataUpload(InteriorDto interior) {
 		  log.info("너 뭐.. 돼/");

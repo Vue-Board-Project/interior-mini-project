@@ -19,7 +19,7 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 @Log4j2
 public class InteriorDetailController {
-	
+	//이거 다 신경 ㄴ
 	@Resource
 	private InteriorDetailService interiorDetailService;
 	
