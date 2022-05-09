@@ -30,9 +30,9 @@
 		<security:csrf disabled="true"/>
 		
 		<!-- 요청 url 권한 설정, 요청 권한 가로채서 체크, 로그인되어있다면 접근 허용 -->
-		<!-- <security:intercept-url pattern="/equipment/**" access="isAuthenticated()"/> -->
+		<security:intercept-url pattern="/equipment/**" access="isAuthenticated()"/>
 		<security:intercept-url pattern="/interior_consult/**" access="isAuthenticated()"/>
-		<!-- <security:intercept-url pattern="/productConsult/**" access="isAuthenticated()"/> -->
+		<security:intercept-url pattern="/productConsult/**" access="isAuthenticated()"/>
 		<security:intercept-url pattern="/mypage/**" access="isAuthenticated()"/>
 		
 		<!-- 로그인 안되어있을 때 -->

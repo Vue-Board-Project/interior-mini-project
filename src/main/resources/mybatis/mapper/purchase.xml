@@ -7,7 +7,6 @@
             <result column = "purchase_quantity" property = "purchaseQuantity" />
          <association property="pDetail" javaType="pDetail">
             <result column = "model_purchase_quantity" property = "modelPurchaseQuantity" />
-       	 	<result column = "detail_price" property = "detailPrice" />
          </association>
          <association property="product" javaType="product">
          	<result column = "model_number" property = "modelNumber" />
@@ -37,42 +36,46 @@
 	         select PURCHASE_SEQUENCE.nextval from dual
 	    </selectKey>
 		insert into purchase(
-			purchase_Number
+			PURCHASE_NUMBER 
 			, PURCHASE_DATE
 			, PAYMENT_AMOUNT
-			, PAYMENT_METHOD
 			, PURCHASE_QUANTITY
 			, DELIVERY_MANAGEMENT
 			, EMAIL
+			, BANK
+			, CARDNUMBER
+			, CARDDATE
 			)
 		values(
 			#{purchaseNumber}
 			, sysdate
 			, #{paymentAmount}
-			, #{paymentMethod}
 			, #{purchaseQuantity}
 			, '배송 준비중'
-			, #{stringEmail}
+			, #{stringEmail},
+			  #{bank},
+			  #{cardnumber},
+			  #{carddate}
 		)
 	</insert>
-	<!-- <insert id="insertPurchaseDetailInfo" parameterType="pDetail">
-		insert into PurchaseDetail(
+	<insert id="insertPurchaseDetailInfo" parameterType="pDetail">
+		
+		insert into PURCHASE_DETAIL(
 			PURCHASE_NUMBER
 			, MODEL_NUMBER
 			, MODEL_PURCHASE_QUANTITY
-			, DETAIL_PRICE
 			)
 		values(
-			#{purchaseNumber}
-			, #{modelNumber}
+			#{intPurchaseNumber}
+			, #{stringModelNumber}
 			, #{modelPurchaseQuantity}
-			, #{detailPrice}
 			)
 	</insert>
+
 	<update id="updateProductInfo" parameterType="product">
 		update product set 
-			PRODUCT_QUANTITY=PRODUCT_QUANTITY-1
-			, PRODUCT_SALES_VOLUME=PRODUCT_SALES_VOLUME+#{productSalesVolume}
+			PRODUCT_QUANTITY=#{productQuantity}
+			, PRODUCT_SALES_VOLUME=#{productSalesVolume}
 		where model_Number = #{modelNumber}
-	</update> -->
+	</update>
 </mapper>

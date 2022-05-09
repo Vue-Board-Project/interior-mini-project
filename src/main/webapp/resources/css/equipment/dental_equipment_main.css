@@ -63,19 +63,20 @@
 			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             width: 200px;
 		}
-		.dropdown-content a {
+		.dropdown-content label {
 			color: black;
 			padding: 8px;
 			text-decoration: none;
 			display: block;
             padding-top: 20px;
             padding-bottom: 20px;
+            margin-right: 10px;
             text-align: center;
             border: none;
-			width: 190px;
+			width: 180px;
 			background-color: #FAF9F6;
 		}
-		.dropdown-content a:hover { 
+		.dropdown-content label:hover { 
             background-color: #CD853F; 
         }
 		.dropdown:hover .dropdown-content { 
@@ -85,8 +86,9 @@
 		.dropdown:hover .dropdown-button { 
             background-color: #CD853F; 
         }
-        .dropdown-content-element{
-            
+        #dentalequipmentmain_left input[type=radio]{
+        	display:none;
+        	/*라디오 원형 버튼 숨김*/
         }
         #dentalequipmentmain_right{
             float: right;
@@ -244,22 +246,22 @@
         .eq_slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1){
             left: 0;
             transition: 0.5s;
-            z-index:1;
+            z-index:0;
         }
         .eq_slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2){
             left: 0;
             transition: 0.5s;
-            z-index:1;
+            z-index:0;
         }
         .eq_slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3){
             left: 0;
             transition: 0.5s;
-            z-index:1;
+            z-index:0;
         }
         .eq_slider input[type=radio]:nth-child(4):checked~ul.imgs>li:nth-child(4){
             left: 0;
             transition: 0.5s;
-            z-index:1;
+            z-index:0;
         }
         .eq_slider img{
             width: 800px;

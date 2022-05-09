@@ -17,6 +17,17 @@ function selectUserInfo(name, email, phone, postcode, address, addressDetail){
 		$('#purchase_userdetaildaar').attr("value", "");
 	}
 }
+$(document).ready(function(){
+	var priceSum=0;
+	count=parseInt($("#directQua"));
+	if(count>1){
+		for(var i=0; i<count; i++){
+			priceSum+=parseInt($("#directPrice"));
+			$('#directPrice').attr("value", priceSum);
+		}
+	}
+	
+})
 //결제 버튼을 누른다면
 function sendPurchaseInfo(){
 	console.log("결제 정보를 전송합니당");
