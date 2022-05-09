@@ -74,34 +74,27 @@
 				            </td>
 				         </tr>
 				      </table> --%>
-						    
-						    
-						    </div>
-						    
-						    
-						    <div id="mypage_review_tab_finished" class="tabmenu_content">
-						    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
-						    	<div id = "mypage_review_list_finished">
-							    	<script>
-									function selectReviewList(){
-										$.ajax({
-								                url : "mypageReviewAfter",
-								                method: "get"
-								            }).done((data) => {
-												$('#mypage_review_list_finished').html(data);
-								            });
-								    }
-								</script>
-						    	
-						    	</div>
-						    	 
-						    </div>
-					    </div>
-					      
-					      
-					  </div>
-			</div>
-	</div>
+	    
+			    </div>
+
+			    	<div id="mypage_review_tab_finished" class="tabmenu_content">
+			    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
+			    	<div id = "mypage_review_list_finished"></div>
+				    	<script>
+						function selectReviewList(){
+							console.log("finished review");
+							$.ajax({
+					                url : "mypageReviewAfter",
+					                method: "get"
+					            }).done((data) => {
+									$('#mypage_review_list_finished').html(data);
+					            });
+					    }
+					</script>
+			    	</div>
+			    </div>
+		    </div>   
+		</div>
 </div>
 <%@ include file="/WEB-INF/views/mypage/mypage_review_popup.jsp" %>
 <style>
@@ -370,6 +363,7 @@ function mypage_review_avaliable() {
 function mypage_review_finished() {
 	$('#mypage_review_tab_available').hide();
 	$('#mypage_review_tab_finished').show();
+	selectReviewList();
 }
 
 

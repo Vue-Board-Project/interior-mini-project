@@ -265,17 +265,21 @@ public class MypageService {
 	public List<PurchaseDetailDto> getOrderReview(String email) {
 		
 		List<PurchaseDetailDto> orderReview =  mypageDao.getOrderReview(email);
-		List<PurchaseDetailDto> orderReviewFin = mypageDao.getOrderReviewFin(email);
+		List<PurchaseDetailDto> orderReviewFin = mypageDao.getOrderReviewFinList(email);
 		
 		log.info("order Review : before :  " + orderReview);
-		for(PurchaseDetailDto p1 : orderReview) {
-			for(PurchaseDetailDto p2 : orderReviewFin) {
-				if(p1.getIntPurchaseNumber() == p2.getIntPurchaseNumber()) {
-					if(p1.getModelNumber().equals(p2.getModelNumber())){
-						orderReview.remove(p1.getIntPurchaseNumber());
+		int i = 0;
+		while(i >= orderReviewFin.size()) {
+			for(PurchaseDetailDto p1 : orderReview) {
+				for(PurchaseDetailDto p2 : orderReviewFin) {
+					if(p1.getIntPurchaseNumber() == p2.getIntPurchaseNumber()) {
+						if(p1.getStringModelNumber().equals(p2.getStringModelNumber())){
+							orderReview.remove(p1.getIntPurchaseNumber());
+							i++;
+						}
 					}
+					
 				}
-				
 			}
 		}
 		
@@ -284,10 +288,22 @@ public class MypageService {
 		return orderReview;
 	}
 
-	public List<PurchaseDetailDto> getOrderReviewFin(String email) {
+	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager) {
 		// TODO Auto-generated method stub
-		return mypageDao.getOrderReviewFin(email);
+		return mypageDao.getOrderReviewFin(pager);
 	}
+
+	public int getCheckNull(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getCheckNull(email);
+	}
+
+	public int getTotalReviewFin(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getTotalReviewFin(email);
+	}
+
+	
 	
 	
 

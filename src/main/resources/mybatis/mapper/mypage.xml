@@ -150,6 +150,12 @@
 		)WHERE rnum >= #{startRowNo}
 		 ]]>
 	</select>
+	<select id = "getCheckNull"  parameterType="String" resultType="int">
+	 SELECT count(*)
+	 FROM MAIN_CONSULT
+	 where  CONSULT_TYPE = 1 and
+	    	EMAIL = #{email}    
+	</select>
 	
 	<!-- 인테리어 진행내역 getLatestInteriorNo-->
 	<select id="getLatestInteriorNo" parameterType="String" resultType="int">
@@ -260,8 +266,9 @@
 		    from(
 		    	SELECT ROWNUM as rnum, receiptNumber, productName, EMAIL, applicationDate
 			    FROM (
-				        SELECT RECEIPT_NUMBER as receiptNumber, PRODUCT_NAME as productName,  EMAIL, APPLICATION_DATE as applicationDate
+				        SELECT RECEIPT_NUMBER as receiptNumber, PRODUCT_NAME as productName, EMAIL, APPLICATION_DATE as applicationDate
 				        from AFTERSERVICE
+				        where email = #{stringEmail}
 				        ORDER BY RECEIPT_NUMBER DESC
 			     )  WHERE ROWNUM <= #{endRowNo}    
 		)WHERE rnum >= #{startRowNo} ]]>
@@ -328,6 +335,8 @@
 			<result column = "DETAIL_PRICE" property = "detailPrice" />
 			<association property="product" javaType="product">
 				<result column = "PRODUCT_NAME" property = "productName" />
+				<result column = "price" property = "price" />
+				<result column = "PATTACHONAME" property = "pattachoname" />
 				<!-- <result column = "MAINIMAGE" property = "mainImage" /> -->
 			</association>
 	</resultMap>
@@ -341,14 +350,13 @@
 	
 	<select id="getOrderDetailList" parameterType="pager" resultMap="selecePurDetailWithProduct">
 		<![CDATA[  
-		SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, PRODUCT_NAME
+		SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
 		    from(
-		        SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, PRODUCT_NAME
+		        SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
 		        FROM (
 		               select 
 		               		PURCHASE_NUMBER, pd.MODEL_NUMBER,
-					     	MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, 
-					        PRODUCT_NAME
+					     	MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
 					   from purchase_detail pd, product p
 					   where pd.MODEL_NUMBER = p.MODEL_NUMBER and PURCHASE_NUMBER = #{intPurchaseNumber}
 					   ORDER BY PURCHASE_NUMBER DESC 
@@ -391,10 +399,10 @@
 	<insert id="insertReview" parameterType="mReview">
 		insert into
 	    review(
-	        email, PURCHASE_NUMBER, MODEL_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, REVIEW_FILE
+	        email, PURCHASE_NUMBER, MODEL_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, FILENAME
 			)
 	    values(
-	        #{email}, #{purchaseNumber}, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, null
+	        #{email}, #{purchaseNumber}, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, #{fileName}
         )
 	</insert>
 	
@@ -407,15 +415,35 @@
 		        p.purchase_number = pd.purchase_number and
 		        pd.MODEL_NUMBER = d.MODEL_NUMBER
 	</select>
+	<select id = "getOrderReviewFinList" parameterType = "string" resultType = "pDetail">
+	SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, d.model_number as stringModelNumber
+	from purchase p, review r, product d
+	where r.email = #{email} and
+			r.model_number = d.model_number and
+			r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+	</select>
 	
+	<select id = "getTotalReviewFin" parameterType = "string" resultType = "int"> 
+		SELECT count(*)
+   		FROM review
+   		where EMAIL = #{email}
+	</select>
 	
-	<select id = "getOrderReviewFin" parameterType = "string" resultType = "pDetail">
-		select  p.PURCHASE_NUMBER as , d.model_number, 
-				REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, FILENAME, UPLOADPATH
-		from purchase p, review r, product d
-		    where p.email = #{email} and  
-		    r.model_number = d.model_number and
-		    r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+	<select id = "getOrderReviewFin" parameterType = "pager" resultType = "mReview">
+		<![CDATA[  
+		SELECT rnum, intPurchaseNumber, stringModelNumber, reviewTitle, reviewContent, reviewWriteDate, fileName
+			from(
+				SELECT ROWNUM as rnum, intPurchaseNumber, stringModelNumber, reviewTitle, reviewContent, reviewWriteDate, fileName
+				FROM (
+						SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, d.model_number as stringModelNumber, 
+						REVIEW_TITLE as reviewTitle, REVIEW_CONTENT as reviewContent, REVIEW_WRITE_DATE as reviewWriteDate, FILENAME as fileName
+						from purchase p, review r, product d
+						where r.email = #{stringEmail} and
+						r.model_number = d.model_number and
+						r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+				 )  WHERE ROWNUM <= #{endRowNo}   
+		)WHERE rnum >= #{startRowNo}
+		]]>
 	</select>
 	
 	

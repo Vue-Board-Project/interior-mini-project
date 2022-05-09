@@ -20,11 +20,14 @@ public class ReviewDto {
 	private Date reviewWriteDate;
 	private Date write_date;
 	private MultipartFile reviewFile;
-	private String stringProductName;
+	
 	private PurchaseDto purchase;
 	private ProductDto product;
 	
+	private int intPurchaseNumber;
 	private String uploadPath;
 	private String fileName;
+	private String stringProductName;
+	private String stringModelNumber;
 
 }

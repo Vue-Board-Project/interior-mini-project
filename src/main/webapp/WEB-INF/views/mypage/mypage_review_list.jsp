@@ -4,13 +4,13 @@
 <c:forEach var="reviewFin" items="${reviewFin}">
 	    	<div class = "mypage_user_review_element">
     			<div class = "user_product_title">${reviewFin.stringProductName}
-    			<span class = "user_product_modelName">모델명 : ${reviewFin.modelNumber}</span>
+    			<span class = "user_product_modelName">모델명 : ${reviewFin.stringModelNumber}</span>
     			</div>
 	    		<div class = "user_review_contents">
 	    			<div class = "user_review_title">${reviewFin.reviewTitle}</div>
 	    			<div class = "user_product_bought_date"><fmt:formatDate value="${reviewFin.reviewWriteDate}" pattern="yyyy-MM-dd"/></div>
 	    			<div class = "user_review_image">
-	    				<img src = "${pageContext.request.contextPath}/resources/images/mypage/chair.jpg"></img>
+	    				<img src="/springframework-mini-project/mypage/showImage?fileName=${reviewFin.fileName}"></img>
 	    			</div>
 	    			<div class = "user_review_text">${reviewFin.reviewContent}</div>
 	    		</div>

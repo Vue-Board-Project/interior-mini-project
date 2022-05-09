@@ -110,9 +110,13 @@ public interface MypageDao {
 
 	public List<PurchaseDetailDto> getOrderReview(String email);
 
-	public List<PurchaseDetailDto> getOrderReviewFin(String email);
+	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager);
 
-	
+	public int getCheckNull(String email);
+
+	public int getTotalReviewFin(String email);
+
+	public List<PurchaseDetailDto> getOrderReviewFinList(String email);
 
 
 }

@@ -55,7 +55,7 @@ import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
 import com.mycompany.webapp.service.MypageService;
-
+import com.mycompany.webapp.test.AttachImageDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -204,14 +204,18 @@ public class MyPageController {
 		 
 		 /* 인테리어 진행 내역 */
 		@RequestMapping("/mypage_interior_progress")
-		public String mypageInteriorProgress(@RequestParam(defaultValue = "0") int consultNo,
-				Authentication authentication, Model model){
-		
-			if (consultNo == 0) {
-				String email = authentication.getName();
-				consultNo = mypageService.getLatestInteriorNo(email);
-			}
+		public String mypageInteriorProgress(@RequestParam(defaultValue = "0") int consultNo, Authentication authentication, Model model){
 			
+			String email = authentication.getName();
+			if (consultNo == 0) {
+				int chkNull = mypageService.getCheckNull(email);
+				if(chkNull == 0) {
+					
+					return "/mypage/interiorProgress/mypage_interior_progress";
+				}
+			}	
+			
+			consultNo = mypageService.getLatestInteriorNo(email);
 			log.info("no data Number : " + consultNo);
 			
 			InteriorProgressDto progress = mypageService.getProgressStep(consultNo);
@@ -225,6 +229,8 @@ public class MyPageController {
 			model.addAttribute("solution", solution);
 			 
 			return "/mypage/interiorProgress/mypage_interior_progress";
+			
+			
 		}
 		
 		
@@ -317,7 +323,6 @@ public class MyPageController {
 		@RequestMapping("/mypage_interior_progress/fileList")
 		public String fileList() {
 			
-			log.info("파일을 읽어와야 합니다ㅠㅠ");
 			return "mypageFileListView";
 		}
 		
@@ -429,7 +434,6 @@ public class MyPageController {
 	 }
 	 
 	//구매내역 상세 창
-	 
 	@GetMapping("/mypage_orderlist/detail")
 	public String mypageOrderListDetail(int purchaseNumber,
 			@RequestParam(defaultValue = "1") int pageNo, Model model) {
@@ -492,10 +496,15 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("/mypageReviewAfter")
-	public String mypageReviewSelectAfter(Authentication authentication, Model model){
+	public String mypageReviewSelectAfter(Authentication authentication, Model model,
+			@RequestParam(defaultValue = "1") int pageNo){
 		String email = authentication.getName();
 		
-		List<PurchaseDetailDto> reviewFin = mypageService.getOrderReviewFin(email);
+		int totalReviewFin = mypageService.getTotalReviewFin(email);
+		Pager pager = new Pager(4, 4, totalReviewFin, pageNo, email);
+	    model.addAttribute("pager", pager);
+		
+	    List<PurchaseDetailDto> reviewFin = mypageService.getOrderReviewFin(pager);
 		model.addAttribute("reviewFin", reviewFin);
 		return "mypage/mypage_review_list";
 	}
@@ -503,14 +512,17 @@ public class MyPageController {
 	
 	@PostMapping("/insertReview")
 	public String mypageReview(ReviewDto review, Authentication authentication){
-
+		
+		review.setEmail(authentication.getName());
+		log.info("filled with joy : " + review);
+		
 		mypageService.insertReview(review);
 		return "redirect:/mypage/mypageReview";
 	}
 	
 	@PostMapping(value = "/insertImage", produces = "application/json; charset=UTF-8;")
-	public ResponseEntity<List<ReviewDto>> insertImage(MultipartFile[] uploadFile) {
-		
+	public ResponseEntity<List<AttachImageDto>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
+
 		log.info("uploadAjaxActionPOST..........");
 		/*  전달 받은 파일이 이미지 인지 아닌지 체크 */
 		for (MultipartFile multipartFile : uploadFile) {
@@ -523,7 +535,7 @@ public class MyPageController {
 				e.printStackTrace();
 			}
 			if (!type.startsWith("image")) {// 이미지가 이닌 경우 400에러 생성
-				List<ReviewDto> list = null;
+				List<AttachImageDto> list = null;
 				return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
 
 			}
@@ -537,52 +549,35 @@ public class MyPageController {
 			log.info("파일 크기 : " + multipartFile.getSize());
 		}
 
-		// 오늘 날짜의 'yyyy/MM/dd ' 형식의 String 데이터를 얻기
-		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
-		String str = sdf.format(date);
-		String datePath = str.replace("-", File.separator);*/
-
-		// 업로드를 수행하는 url 매핑 메서드(uploadAjaxActionPOST)에 파일을 저장할 기본적 경로
+		
 		String uploadFolder = "C:/Temp/mypage/";
 
 		
 
 		/* 이미저 정보 담는 객체 */
-		List<ReviewDto> list = new ArrayList<ReviewDto>();
+		List<AttachImageDto> list = new ArrayList<AttachImageDto>();
 
 		for (MultipartFile multipartFile : uploadFile) {
 
-			// 이미지 정보 객체
-			ReviewDto dto = new ReviewDto();
-			/* 파일 이름 */
+			AttachImageDto dto = new AttachImageDto();
 			String uploadFileName = multipartFile.getOriginalFilename();
 			dto.setFileName(uploadFileName);
 			dto.setUploadPath(uploadFolder);
-			/* uuid 적용 파일 이름 
-			String uuid = UUID.randomUUID().toString();
-			dto.setUuid(uuid);*/
-
-
-			/* 파일 위치, 파일 이름을 합친 File 객체 */
+			
 			File saveFile = new File(uploadFolder, uploadFileName);
 
 			/* 파일 저장 */
 			try {
 				multipartFile.transferTo(saveFile);
 
-				/*썸네일 이미지 만들기 -> 파일 
-				ImageIO: 이미지를 읽어오거나 생성(작성?) 할 수 있도록 도와주는 메서드
-				BufferedImage : 이미지 데이터를 처리하거나 조작에 필요한 값과 메서드를 제공
-				Graphics2D의 : 그림을 그리는데 필요로 한 설정값과 메서드를 제공하는 클래스*/
+				
 				File thumbnailFile = new File(uploadFolder, "s_" + uploadFileName);
 
-				// 원본 이미지 파일을 BufferedImage 타입으로 변경
-				// 1. 도화지 생성
+				
 				BufferedImage bo_image = ImageIO.read(saveFile);
-				// 비율
+				
 				double ratio = 3;
-				// 넓이 높이
+				
 				int width = (int) (bo_image.getWidth() / ratio);
 				int height = (int) (bo_image.getHeight() / ratio);
 				BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);// 개변수로 '넓이',
@@ -598,10 +593,11 @@ public class MyPageController {
 			}
 			list.add(dto);
 
-		} // for
-
-		ResponseEntity<List<ReviewDto>> result = new ResponseEntity<List<ReviewDto>>(list, HttpStatus.OK);
+		} 
+		
+		ResponseEntity<List<AttachImageDto>> result = new ResponseEntity<List<AttachImageDto>>(list, HttpStatus.OK);
 		return result;
+
 	}
 	
 
@@ -618,20 +614,22 @@ public class MyPageController {
 	}
 	
 	
-		@GetMapping("/device_AS")
-	   public String mypageDeviceASList(
-			   @RequestParam(defaultValue = "1") int pageNo, Model model) {
+	@GetMapping("/device_AS")
+   public String mypageDeviceASList(
+		   @RequestParam(defaultValue = "1") int pageNo, Model model, Authentication authentication) {
+	
+		String email = authentication.getName();
 		
-		   int totalAsNum = mypageService.getTotalDeviceAsListNum();
-		   Pager pager = new Pager(5, 5, totalAsNum, pageNo);
-		   model.addAttribute("pager", pager);
-		   log.info("as 내역 : " + totalAsNum);
-		   log.info("pageNo 입력 : "  + pageNo);
-		   
-		   List<AfterServiceDto> asList = mypageService.getASList(pager);
-		   model.addAttribute("asList", asList);
-		   
-		   return "/mypage/mypage_device_AS";
+	   int totalAsNum = mypageService.getTotalDeviceAsListNum();
+	   Pager pager = new Pager(5, 5, totalAsNum, pageNo, email);
+	   model.addAttribute("pager", pager);
+	   log.info("as 내역 : " + totalAsNum);
+	   log.info("pageNo 입력 : "  + pageNo);
+	   
+	   List<AfterServiceDto> asList = mypageService.getASList(pager);
+	   model.addAttribute("asList", asList);
+	   
+	   return "/mypage/mypage_device_AS";
 		   
 	 }
 		

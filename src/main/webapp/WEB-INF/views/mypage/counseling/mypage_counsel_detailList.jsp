@@ -30,7 +30,32 @@
                <td style="padding-left:10px;">${userInteriorList.consultNo}</td>
                <td style="padding-left:10px;"><a href="javascript:void(0)" onClick="showInteriorPopup(${userInteriorList.consultNo})" style = "text-decoration : none; color : black;">
                <b>${userInteriorList.consultInteriorStyle}</b></a></td>
-               <td style="padding-left:10px;"><fmt:formatDate value="${userInteriorList.consultDate}" pattern="yyyy-MM-dd"/> ${userInteriorList.consultTime}</td>
+               <td style="padding-left:10px;"><fmt:formatDate value="${userInteriorList.consultDate}" pattern="yyyy-MM-dd"/> 
+	               <c:if test="${userRemodelingList.consultTime eq 'am1'}">
+	                <span> 09:10 </span>
+	               </c:if>
+	               <c:if test="${userInteriorList.consultTime eq 'am2'}">
+	                <span> 10:10 </span>
+	               </c:if>
+	               <c:if test="${userInteriorList.consultTime eq 'am3'}">
+	                <span> 11:10 </span>
+	               </c:if>
+	               <c:if test="${userInteriorList.consultTime eq 'pm1'}">
+	                <span> 13:10 </span>
+	               </c:if>
+	               <c:if test="${userInteriorList.consultTime eq 'pm2'}">
+	                <span> 14:10 </span>
+	               </c:if>
+	               <c:if test="${userInteriorList.consultTime eq 'pm3'}">
+	                <span> 15:10 </span>
+	               </c:if>
+	               <c:if test="${userInteriorList.consultTime eq 'pm4'}">
+	                <span> 16:10 </span>
+	               </c:if>
+	               <c:if test="${userInteriorList.consultTime eq 'pm5'}">
+	                <span> 17:10 </span>
+	               </c:if>
+             </td>
             </tr>
          </c:forEach>
          
