@@ -30,14 +30,37 @@
                     <div class="dropdown">
                         <button class="dropdown-button">Category</button>
                         <div class="dropdown-content">
-                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=unitchair">유니트 체어</a>
+                        	<div class="p-2 d-flex flex-column">
+						       <label class="dropdown-content-element">
+						           <input type="radio" name="category" value="unitchair">
+						           <span class="ml-2">유니트 체어</span>
+						       </label>
+						       <label class="dropdown-content-element">
+						           <input type="radio" name="category" value="largecamera">
+						           <span class="ml-2">대형 영상 장비</span>
+						       </label>
+						       <label class="dropdown-content-element">
+						           <input type="radio" name="category" value="washingmachine">
+						           <span class="ml-2">멸균 및 세척기</span>
+						       </label>
+						       <label class="dropdown-content-element">
+						           <input type="radio" name="category" value="smallcamera">
+						           <span class="ml-2">소형 영상 장비</span>
+						       </label>
+						       <label class="dropdown-content-element">
+						           <input type="radio" name="category" value="etc">
+						           <span class="ml-2">기타 장비</span>
+						       </label>
+					       </div>
+                            <%-- <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=unitchair">유니트 체어</a>
                             <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=largecamera">대형 영상 장비</a>
                             <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/testCategory?category=washingmachine">멸균 및 세척기</a>
                             <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=smallcamera">소형 영상 장비</a>
-                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=etc">기타 장비</a>
+                            <a type="button" class="dropdown-content-element" name="category" href="${pageContext.request.contextPath}/equipment/dental_equimpent_main?category=etc">기타 장비</a> --%>
                         </div>
                     </div>
                 </div>
+            <div id="dental_product_list_wrap">
                 <div id="dentalequipmentmain_right">
                     <p id="best_product_content">BEST ITEM</p>
                     <div id="makeline">　</div>
@@ -106,7 +129,8 @@
 
                   </div>
             </div>
+         </div>
         </div>
-<script src="${pageContext.request.contextPath}/resources/js/equipment/dental_equipment_main.js"></script>
     </div>
+<script src="${pageContext.request.contextPath}/resources/js/equipment/dental_equipment_main.js"></script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

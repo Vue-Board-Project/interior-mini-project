@@ -67,5 +67,8 @@ public class ProductService {
 			
 			return productDao.selectProduct(modelNumber);
 		}
+	public List<ProductDto> selectproductlist(String category) {
+		return productDao.selectproductlist(category);
+	}
 	
 }

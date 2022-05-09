@@ -36,6 +36,15 @@
 		order by PRODUCT_SALES_VOLUME desc
 	</select>
 	
+	<select id="selectproductlist" resultType="product">
+		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
+		price,
+		PATTACHONAME as pattachoname
+		from product
+		where category = #{category}
+		order by REGISTRATION_DATE desc
+	</select>
+	
 	<select id="soltsalesCount" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
 		select product_name as productName, product_intro as productIntro
 		from product
