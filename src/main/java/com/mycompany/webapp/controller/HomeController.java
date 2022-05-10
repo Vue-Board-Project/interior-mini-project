@@ -74,4 +74,10 @@ public class HomeController {
 		return result;
 	}
 	
+	@RequestMapping("/error/403")
+	public String error403() {
+		  logger.warn("dddddd");
+	      return "error/403";
+	   }
+	
 }
