@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.http.HttpStatus;
 
 import lombok.extern.log4j.Log4j2;
@@ -20,7 +21,20 @@ public class AllExceptionHandler {
 	public String handleExcepion(Exception e) {
 		log.info("실행:"+e.getMessage());
 		e.printStackTrace();
-		return "/equipment/CustomerService";
+		return "error/500";
 	}
+	
+	@ExceptionHandler(NoHandlerFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)//자바 스크립트에서 return을 하면 200 으로 정상 상태로 전송하니 에러 상태로 변경하여 전송
+	public String NoHandlerFoundException(NoHandlerFoundException e) {	
+		log.info("실행 " + e.getMessage());
+		return "error/404";
+	}
+	@ExceptionHandler(NullPointerException.class)
+	public String handleNullPointerException(NullPointerException e) {	
+		log.info("실행 " + e.getMessage());
+		return "error/null";
+	}
+	
 
 }

@@ -62,4 +62,10 @@ public class SignUpController {
 			return "redirect:/signUp";
 		}
 	}
+	@RequestMapping("/error403")
+	public String error403() {
+	      log.info("실행");
+	      return "error/403";
+	   }
+	
 }

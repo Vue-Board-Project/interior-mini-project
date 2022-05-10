@@ -19,12 +19,12 @@
 	     		 <!-- 각 제품 요소들 -->
 	     			<div class= "product_list_element">
 	     				<div class = "element_img_slot">
-	     					<img class = "element_img" src = "" />
+	     					<img class = "element_img" src = "/springframework-mini-project/equipment/display?fileName=${orderDetail.product.pattachoname}" style = "height : 120px; width : 80px;"/>
 	     				</div>
 	     				<div class = "element_product_name">제품 이름 : ${orderDetail.product.productName} </div>
 	     				<div class = "element_model_name">모델 이름 : ${orderDetail.stringModelNumber} </div>
 	     				<div class = "element_price">
-		     				<div class = "element_price_money">금액 : ${orderDetail.detailPrice}</div>
+		     				<div class = "element_price_money">금액 : ${orderDetail.product.price}</div>
 		     				<span class = "element_price_unit">원</span>  
 		     				<span class = "element_product_num">개수 :  ${orderDetail.modelPurchaseQuantity}</span>
 	     				</div>

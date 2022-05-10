@@ -150,6 +150,12 @@
 		)WHERE rnum >= #{startRowNo}
 		 ]]>
 	</select>
+	<select id = "getCheckNull"  parameterType="String" resultType="int">
+	 SELECT count(*)
+	 FROM MAIN_CONSULT
+	 where  CONSULT_TYPE = 1 and
+	    	EMAIL = #{email}    
+	</select>
 	
 	<!-- 인테리어 진행내역 getLatestInteriorNo-->
 	<select id="getLatestInteriorNo" parameterType="String" resultType="int">
@@ -260,8 +266,9 @@
 		    from(
 		    	SELECT ROWNUM as rnum, receiptNumber, productName, EMAIL, applicationDate
 			    FROM (
-				        SELECT RECEIPT_NUMBER as receiptNumber, PRODUCT_NAME as productName,  EMAIL, APPLICATION_DATE as applicationDate
+				        SELECT RECEIPT_NUMBER as receiptNumber, PRODUCT_NAME as productName, EMAIL, APPLICATION_DATE as applicationDate
 				        from AFTERSERVICE
+				        where email = #{stringEmail}
 				        ORDER BY RECEIPT_NUMBER DESC
 			     )  WHERE ROWNUM <= #{endRowNo}    
 		)WHERE rnum >= #{startRowNo} ]]>
@@ -327,6 +334,8 @@
 			<result column = "MODEL_PURCHASE_QUANTITY" property = "modelPurchaseQuantity" />
 			<association property="product" javaType="product">
 				<result column = "PRODUCT_NAME" property = "productName" />
+				<result column = "price" property = "price" />
+				<result column = "PATTACHONAME" property = "pattachoname" />
 				<!-- <result column = "MAINIMAGE" property = "mainImage" /> -->
 			</association>
 	</resultMap>
@@ -340,14 +349,13 @@
 	
 	<select id="getOrderDetailList" parameterType="pager" resultMap="selecePurDetailWithProduct">
 		<![CDATA[  
-		SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, PRODUCT_NAME
+		SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
 		    from(
-		        SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, PRODUCT_NAME
+		        SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
 		        FROM (
 		               select 
 		               		PURCHASE_NUMBER, pd.MODEL_NUMBER,
-					     	MODEL_PURCHASE_QUANTITY, DETAIL_PRICE, 
-					        PRODUCT_NAME
+					     	MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
 					   from purchase_detail pd, product p
 					   where pd.MODEL_NUMBER = p.MODEL_NUMBER and PURCHASE_NUMBER = #{intPurchaseNumber}
 					   ORDER BY PURCHASE_NUMBER DESC 
@@ -390,112 +398,64 @@
 	<insert id="insertReview" parameterType="mReview">
 		insert into
 	    review(
-	        email, PURCHASE_NUMBER, MODEL_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, REVIEW_FILE
+	        email, PURCHASE_NUMBER, MODEL_NUMBER, REVIEW_TITLE, REVIEW_CONTENT, REVIEW_WRITE_DATE, FILENAME
 			)
 	    values(
-	        ${email}, ${purchaseNumber}, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, null
+	        #{email}, #{purchaseNumber}, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, #{fileName}
         )
+       
 	</insert>
 	
-	<!-- 리뷰 작성 이전 창 -->
-	<select id="getTotalReviewBeforeNum" parameterType="string" resultType="int">
-		select  count(*)
-		from purchase p, review r, product d
-			where p.email = #{email} and  
-			r.model_number = d.model_number and
-			r.PURCHASE_NUMBER != p.PURCHASE_NUMBER
+	<update id = "updateReviewList" parameterType="mReview">
+	update PURCHASE_DETAIL 
+		set REVIEW_AVAILABLE = 1
+		where purchase_number = #{purchaseNumber}
+		and model_number = #{modelNumber}
+		and email = #{email}
+	</update>
+	
+	
+	<select id = "getOrderReview" parameterType = "string" resultType = "pDetail">
+		select p.PURCHASE_NUMBER as intPurchaseNumber, p.email as stringEmail, p.PURCHASE_DATE as datePurchaseDate,
+	        p.PURCHASE_QUANTITY as modelPurchaseQuantity, pd.MODEL_NUMBER as stringModelNumber,
+	        d.PRODUCT_NAME as stringProductName, d.PATTACHONAME as stringPatchoName
+		from purchase p, PURCHASE_DETAIL pd, product d
+		where p.email = #{email} and
+		        p.purchase_number = pd.purchase_number and
+		        pd.MODEL_NUMBER = d.MODEL_NUMBER and
+                REVIEW_AVAILABLE = 0
 	</select>
 	
-	<resultMap id = "seleceReviewWithPurandProd" type = "mReview">
-			<result column = "PURCHASE_NUMBER" property = "purchaseNumber" />
-			<result column = "MODEL_NUMBER" property = "modelNumber" />
-			<result column = "EMAIL" property = "email" />
-			<result column = "REVIEW_TITLE" property = "reviewTitle" />
-			<result column = "REVIEW_CONTENT" property = "email" />
-			<association property="purchase" javaType="purchase">
-				<result column = "PURCHASE_DATE" property = "purchaseDate" />
-				<!-- <result column = "DELIVERY_MANAGEMENT" property = "deliveryManagement" /> -->
-				<result column = "PURCHASE_QUANTITY" property = "purchaseQuantity" />
-				<!-- <result column = "PAYMENT_AMOUNT" property = "paymentAmount" /> -->
-			</association>
-			<association property="product" javaType="product">
-				<result column = "product_name" property = "productName" />
-			</association>
-	</resultMap>
-	
-	<select id="getReviewBeforeList" parameterType="pager" resultMap="seleceReviewWithPurandProd">
-	<![CDATA[ 
-	SELECT rnum, PURCHASE_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY
-		    from(
-		    	SELECT ROWNUM as rnum, PURCHASE_NUMBER, email, PURCHASE_DATE, PURCHASE_QUANTITY
-			    FROM (
-                    select p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.PURCHASE_QUANTITY
-					from purchase p, review r
-					where p.email =  #{stringEmail} and  
-						r.PURCHASE_NUMBER != p.PURCHASE_NUMBER AND
-   					 	DELIVERY_MANAGEMENT = '배송완료'
-			     )  WHERE ROWNUM <= #{endRowNo}    
-		)WHERE rnum >=#{startRowNo}
-		]]>
-	</select>
-	
-	<!-- 리뷰 작성 이후 창 -->
-	<select id="getTotalReviewAfterNum" parameterType="string" resultType="int">
-		select  count(*)
-		from purchase p, review r, product d
-			where p.email = #{email} and  
+	<select id = "getOrderReviewFinList" parameterType = "string" resultType = "pDetail">
+	SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, d.model_number as stringModelNumber
+	from purchase p, review r, product d
+	where r.email = #{email} and
 			r.model_number = d.model_number and
 			r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
 	</select>
 	
-	<select id="getReviewAfterList" parameterType="pager" resultType="mReview">
-		<![CDATA[ 
-	SELECT rnum, modelNumber, stringProductName, reviewTitle, reviewContent
-		    from(
-		    	SELECT ROWNUM as rnum, modelNumber, stringProductName, reviewTitle, reviewContent
-			    FROM (
-                    select d.MODEL_NUMBER as modelNumber, d.product_name as stringProductName,
-					 	r.REVIEW_TITLE as reviewTitle, r.REVIEW_CONTENT as reviewContent
-					from purchase p, review r, product d
-					where p.email = #{stringEmail} and  
-					    DELIVERY_MANAGEMENT = '배송완료' and
-					    r.model_number = d.model_number and
-					    r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
-			      )  WHERE ROWNUM <= #{endRowNo}    
-		)WHERE rnum >=#{startRowNo}
+	<select id = "getTotalReviewFin" parameterType = "string" resultType = "int"> 
+		SELECT count(*)
+   		FROM review
+   		where EMAIL = #{email}
+	</select>
+	
+	<select id = "getOrderReviewFin" parameterType = "pager" resultType = "mReview">
+		<![CDATA[  
+		SELECT rnum, intPurchaseNumber, stringModelNumber, reviewTitle, reviewContent, reviewWriteDate, fileName
+			from(
+				SELECT ROWNUM as rnum, intPurchaseNumber, stringModelNumber, reviewTitle, reviewContent, reviewWriteDate, fileName
+				FROM (
+						SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, d.model_number as stringModelNumber, 
+						REVIEW_TITLE as reviewTitle, REVIEW_CONTENT as reviewContent, REVIEW_WRITE_DATE as reviewWriteDate, FILENAME as fileName
+						from purchase p, review r, product d
+						where r.email = #{stringEmail} and
+						r.model_number = d.model_number and
+						r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+				 )  WHERE ROWNUM <= #{endRowNo}   
+		)WHERE rnum >= #{startRowNo}
 		]]>
 	</select>
 	
 	
-	<!-- 
-	리뷰 안 쓴(후기써야하는) 목록
-	select p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, 
-	       p.PURCHASE_QUANTITY,
-	       r.REVIEW_WRITE_DATE
-	from purchase p, review r
-	where p.email = 'gvhv@dgfv.sad' and  
-	r.PURCHASE_NUMBER != p.PURCHASE_NUMBER; 
-	
-	select  p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, 
-	       p.PURCHASE_QUANTITY, r.model_number, r.REVIEW_WRITE_DATE,
-           d.product_name
-from purchase p, review r, product d
-where p.email = 'gvhv@dgfv.sad' and  
- 밑에 코드 건드리는 거 아님 
-r.model_number = d.model_number and
-리뷰 유무는 밑 코드만 쓰세요
-r.PURCHASE_NUMBER != p.PURCHASE_NUMBER; 
-	
-	리뷰 쓴 목록
-	select p.PURCHASE_NUMBER, p.email, p.PURCHASE_DATE, p.DELIVERY_MANAGEMENT, 
-	       p.PURCHASE_QUANTITY,
-	       r.REVIEW_WRITE_DATE
-	from purchase p, review r
-	where p.email = 'gvhv@dgfv.sad' and  
-	r.PURCHASE_NUMBER != p.PURCHASE_NUMBER; 
-	
-	
-	
-	
-	 -->
 </mapper>

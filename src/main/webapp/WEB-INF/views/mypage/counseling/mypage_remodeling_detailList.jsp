@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
@@ -29,7 +30,33 @@
             <tr>
                <td style="padding-left:10px;">${userRemodelingList.consultNo}</td>
                <td style="padding-left:10px;"><a href="javascript:void(0)" onClick="showRemodelingPopup(${userRemodelingList.consultNo})" style = "text-decoration : none; color : black;"><b>${userRemodelingList.consultInteriorStyle}</b></a></td>
-               <td style="padding-left:10px;"><fmt:formatDate value="${userRemodelingList.consultDate}" pattern="yyyy-MM-dd"/> ${userRemodelingList.consultTime}</td>
+               <td style="padding-left:10px;"><fmt:formatDate value="${userRemodelingList.consultDate}" pattern="yyyy-MM-dd"/> 
+               <c:if test="${userRemodelingList.consultTime eq 'am1'}">
+                <span> 09:10 </span>
+               </c:if>
+               <c:if test="${userRemodelingList.consultTime eq 'am2'}">
+                <span> 10:10 </span>
+               </c:if>
+               <c:if test="${userRemodelingList.consultTime eq 'am3'}">
+                <span> 11:10 </span>
+               </c:if>
+               <c:if test="${userRemodelingList.consultTime eq 'pm1'}">
+                <span> 13:10 </span>
+               </c:if>
+               <c:if test="${userRemodelingList.consultTime eq 'pm2'}">
+                <span> 14:10 </span>
+               </c:if>
+               <c:if test="${userRemodelingList.consultTime eq 'pm3'}">
+                <span> 15:10 </span>
+               </c:if>
+               <c:if test="${userRemodelingList.consultTime eq 'pm4'}">
+                <span> 16:10 </span>
+               </c:if>
+               <c:if test="${userRemodelingList.consultTime eq 'pm5'}">
+                <span> 17:10 </span>
+               </c:if>
+               
+               </td>
             </tr>
          </c:forEach>
          

@@ -23,6 +23,8 @@ public interface MypageDao {
 	
 
 	public int insertReview(ReviewDto review);
+	
+	public int updateReviewList(ReviewDto review);
 
 	public UsersDto selectUserName(String email);
 
@@ -108,7 +110,17 @@ public interface MypageDao {
 
 	public int getProgressStep6(int conNum);
 
-	
+	public List<PurchaseDetailDto> getOrderReview(String email);
+
+	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager);
+
+	public int getCheckNull(String email);
+
+	public int getTotalReviewFin(String email);
+
+	public List<PurchaseDetailDto> getOrderReviewFinList(String email);
+
+
 
 
 }

@@ -42,7 +42,7 @@
 		<security:intercept-url pattern="/**" access="permitAll"/>
 		
 		<!-- 권한이 없을 경우 보여줄 페이지 설정 -->
-		<!-- <security:access-denied-handler error-page="/ch17/error403"/> --><!-- 403은 권한이 없는 사람이 요청 할때 -->
+		<security:access-denied-handler error-page="/error403"/> <!-- 403은 권한이 없는 사람이 요청 할때 -->
 		
 	    <!-- 로그인 중복 방지를 위한 설정 -->
         <security:session-management>

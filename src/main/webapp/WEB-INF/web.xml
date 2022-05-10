@@ -24,6 +24,11 @@
 			<!-- <param-value>/WEB-INF/spring/appServlet/*.xml</param-value> -->
 			<param-value>classpath:spring/dispatcher/*.xml</param-value>
 		</init-param>
+		<!-- 404일 경우 500에러로 발생 -->
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
 		<!-- 배치할 때  DispatcherServlet 이 객체를 생성함-->
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>

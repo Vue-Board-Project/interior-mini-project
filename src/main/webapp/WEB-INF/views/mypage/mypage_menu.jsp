@@ -37,33 +37,30 @@
 	/*  마이페이지 사이드바  */
 	
       #sidebar_mypage{
-        position: fixed;
+       /*  position: fixed;
         left: 0;
         height: 400px; 
         width: 250px;
         padding: 3px 14px; 
         top : 215px;
-        background: white;
+        background: white; */
       }
 
 
  	.mypage_list{
-     	position: relative;
+     	
       	
       }
       
     #sidebar_mypage .mypage_list .mypage_list_element {
-    	height : 50px;   
+    	
        
     }
       
     #sidebar_mypage .mypage_list .mypage_list_element .links_name {
 		  pointer-events: none;
           color: #272723;
-          font-size: 20px;
-          font-weight: 400;
           white-space: nowrap;
-          pointer-events: none;
           font-family: 'MinSans-Medium';
           
           
@@ -77,7 +74,7 @@
 
       .mypage_list li{
       		list-style: none;
-      		 margin: 20px 0;
+      		/*  margin: 20px 0; */
       }
 
 		/* 마이페이지 제목 형식 통일을 위한 코드. 수정시 보현에게 연락 꼭 해야 함. 시작 */
@@ -102,17 +99,17 @@
         
 </style>
 
- <div id="sidebar_mypage">
+ <!-- <div id="sidebar_mypage">
    <div class="mypage_list">  
      <div class = "mypage_list_element">
        <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_counseling">
-       <!-- onclick시 각 링크로 연결하기 -->
+       onclick시 각 링크로 연결하기
          <span id = "list_counseling" class="links_name">상담 내역</span>
        </a>
      </div>
      <div class = "mypage_list_element">
        <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_interior_progress">
-       <!-- onclick시 각 링크로 연결하기 -->
+       onclick시 각 링크로 연결하기
          <span id = "list_interior_progress" class="links_name">인테리어 진행내역</span>
        </a>
      </div>
@@ -137,7 +134,7 @@
       </a>
     </div>
    </div>
- </div>
+ </div> -->
  
         
         

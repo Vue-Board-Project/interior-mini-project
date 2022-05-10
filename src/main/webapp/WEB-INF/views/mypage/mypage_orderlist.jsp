@@ -10,28 +10,7 @@
 	          <span class="sub_text">지난 구매 내역을 조회합니다.</span>
 	          <hr width = 90%>
 	         </div>
-	         
-	         <div id = "mypage_orderlist_date_selection" class="btn-group btn-group-toggle" data-toggle="buttons">
-				  <label class="btn btn-secondary active">
-				    <input type="radio" name="options" id="orderlist_today" autocomplete="off" checked> 오늘
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_1month" autocomplete="off"> 1개월
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_3month" autocomplete="off"> 3개월
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_6month" autocomplete="off"> 6개월
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_1year" autocomplete="off"> 1년
-				  </label>
-				  <label class="btn btn-secondary">
-				    <input type="radio" name="options" id="orderlist_date_all" autocomplete="off"> 전체
-				  </label>
-			</div>
-	           <hr width = 90%>
+
 	     	<div class="content_section">
 	     	
 	     	<!-- 재품 받기 -->
