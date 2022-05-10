@@ -1,6 +1,7 @@
 package com.mycompany.webapp.dto.product;
 
 import java.util.Date;
+import java.util.List;
 
 import com.mycompany.webapp.dto.UsersDto;
 
@@ -22,4 +23,6 @@ public class PurchaseDto{
 	private String bank;//카드사 또는은행
 	private String cardnumber;
 	private String carddate;
+	
+	private List<PurchaseDto> purchaseInfo;
 }

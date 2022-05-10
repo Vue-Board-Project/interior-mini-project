@@ -5,15 +5,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.mycompany.webapp.dao.mybatis.ProductDao;
 import com.mycompany.webapp.dao.mybatis.PurchaseDao;
 import com.mycompany.webapp.dao.mybatis.UsersDao;
-import com.mycompany.webapp.dto.UsersDto;
+import com.mycompany.webapp.dto.product.AfterServiceDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.dto.product.PurchaseDetailDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
@@ -57,6 +55,16 @@ public class PurchaseService {
 	}
 	public int updateProductInfo(ProductDto product) {
 		return purchaseDao.updateProductInfo(product);
+	}
+	
+	/*	//as에서 불러오는 구매내역
+		public ProductDto asVerifyProduct(String email) {
+			return purchaseDao.asVerifyProduct(email);
+		}
+		*/
+	//as db insert
+	public int insertAS(AfterServiceDto after) {
+		return purchaseDao.insertAS(after);
 	}
 	//장바구니에서 구매 하는 트랜잭션 서비스
 	@Transactional

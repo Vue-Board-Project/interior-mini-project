@@ -78,4 +78,71 @@
 			, PRODUCT_SALES_VOLUME=#{productSalesVolume}
 		where model_Number = #{modelNumber}
 	</update>
+	<insert id="insertAS" parameterType="asList">
+		<selectKey keyProperty="receiptNumber" resultType="int" order="BEFORE">
+	         select AS_SEQUENCE.nextval from dual
+	    </selectKey>
+	    <if test="asAttachedFile!=null">
+		insert into AFTERSERVICE(
+			RECEIPT_NUMBER
+			, BASIC_SYMPTOMS
+			, DETAILED_SYMPTOMS
+			, APPLICATION_DATE
+			, AS_ATTACHED_FILE
+			, SCHEDULED_SERVICE_DATE
+			, MODEL_NUMBER
+			, EMAIL
+			, TIMEORDER
+			)
+		values(
+			#{receiptNumber}
+			, #{basicSymptoms}
+			, #{detailedSymptoms}
+			, #{applicationDate}
+			, #{asAttachedFile}
+			, #{scheduledServiceDate}
+			, #{stringModelNumber}
+			, #{email}
+			, #{timeorder}
+			)
+		</if>
+		<if test="asAttachedFile==null">
+		insert into AFTERSERVICE(
+			RECEIPT_NUMBER
+			, BASIC_SYMPTOMS
+			, DETAILED_SYMPTOMS
+			, APPLICATION_DATE
+			, SCHEDULED_SERVICE_DATE
+			, MODEL_NUMBER
+			, EMAIL
+			, TIMEORDER
+			)
+		values(
+			#{receiptNumber}
+			, #{basicSymptoms}
+			, #{detailedSymptoms}
+			, #{applicationDate}
+			, #{scheduledServiceDate}
+			, #{stringModelNumber}
+			, #{email}
+			, #{timeorder}
+			)
+		</if>		
+	</insert>
+<!-- 	<resultMap id="testResult" type="">
+		<result column="purchase_Number" property="purchaseNumber"/>
+		<result column="model_Number" property="modelNumber"/>
+		<collection property="purchaseInfo" ofType="purchase" column="purchase_number" select="test"/>
+	</resultMap>
+	<select id="test">
+		select pu.purchase_Number pud.model_Number
+		from purchase pu, purchase_detail pud
+		where pu.purchase_number=pud.purchase_number
+	</select> -->
+	
+<!-- 	<select id="asVerifyProduct" parameterType="string" resultMap="selectForCart">
+		select pr.model_number, pr.product_Name, pr.pattachoname, pu.PURCHASE_DATE
+		from purchase pu, purchase_Detail pd, product pr
+    	where pd.purchase_number=pu.purchase_number and pu.email=#{email} and pd.model_number=pr.model_Number
+	</select> -->
 </mapper>

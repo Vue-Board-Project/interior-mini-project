@@ -41,11 +41,6 @@ public class EquipmentController {
 	@Resource
 	private ProductService productService;
 
-	@RequestMapping("/equipment/AfterService")
-	public String afterService() {
-		return "/equipment/AfterService";// view 이름만 전달
-	}
-
 	@RequestMapping("/equipment/CustomerService")
 	public String customerService() {
 		return "/equipment/CustomerService";// view 이름만 전달
@@ -76,42 +71,13 @@ public class EquipmentController {
 			
 			log.info("컨트롤러 연결 됐냐???");
 			log.info(category);
-			
-			/*if(category == null) {*/
-				List<ProductDto> chairList=productService.selectchairlist();
-				List<ProductDto> bestchairList=productService.selectbestlist();
-				
-				model.addAttribute("chairList",chairList);
-				model.addAttribute("bestchairList",bestchairList);				
-			/*} else {
-				JSONObject jsonObject = new JSONObject();
-				jsonObject.put("category", category);
-				String json = jsonObject.toString();
-				response.setContentType("application/json; charset=UTF-8");
-				//출력스트림 얻어냄
-				PrintWriter pw = response.getWriter();
-				pw.write(json);
-				pw.flush();
-				pw.close();				
-			}*/
-			
 
-		//log.info(sort);
-		//String sort=product.getSort();
-		/*Map<String,Object> resultMap = productService.getByteImage(); 
-		
-		byte[] arr = (byte[]) resultMap.get("getByteImage");
-		log.info("바이트"+arr);
-		String getimageToString = Base64.getEncoder().encodeToString(arr);
-		
-		modelmap.addAttribute("imgSrc",getimageToString);
+			List<ProductDto> chairList=productService.selectchairlist();
+			List<ProductDto> bestchairList=productService.selectbestlist();
+			
+			model.addAttribute("chairList",chairList);
+			model.addAttribute("bestchairList",bestchairList);				
 
-		/*Map<String, Object> chairmap = productService.getByteImage();
-		byte[] imageContent = (byte[]) chairmap.get("mainimage");
-		final HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.IMAGE_PNG);
-		
-		model.addAttribute("chairmap",new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK));*/
 		return "/equipment/dental_equipment_main";
 	}
 	//장비 정렬 및 카테고리 작업들
@@ -148,17 +114,6 @@ public class EquipmentController {
 		}
 		return "/equipment/allProductList";
 	}
-
-	
-	/*@RequestMapping("/getByteImage")
-	public ResponseEntity<byte[]> getByteImage() {
-		Map<String, Object> map = productService.getByteImage();
-	       byte[] imageContent = (byte[]) map.get("mainimage");
-	       final HttpHeaders headers = new HttpHeaders();
-	       headers.setContentType(MediaType.IMAGE_PNG);
-	       return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
-	}
-	*/
 
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
@@ -197,11 +152,6 @@ public class EquipmentController {
 
 		return "redirect:/equipment/productAdd";
 	}
-
-	/*	@RequestMapping("/equipment/paymentpage")
-		public String paymentpage() {
-			return "/equipment/paymentpage";// view 이름만 전달
-		}*/
 
 	@RequestMapping("/equipment/paymentsuccess")
 	public String paymentsuccess() {

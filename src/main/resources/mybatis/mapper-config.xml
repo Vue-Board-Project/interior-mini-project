@@ -34,6 +34,7 @@
 	      	<typeAlias type="com.mycompany.webapp.dto.product.PurchaseDto" alias="purchase"/>
 	      	<typeAlias type="com.mycompany.webapp.dto.product.PurchaseDetailDto" alias="pDetail"/>
 	      	
+	      	<typeAlias type="com.mycompany.webapp.dto.product.AfterServiceDto" alias="as"/>
 	  </typeAliases>
 
 		 

@@ -89,7 +89,7 @@ public class PaymentController {
 		log.info(PriceFin);
 		log.info(QuantityFin);
 		String email = authentication.getName();
-
+		
 		// purchase db insesrt
 		purchaseDto.setStringEmail(email);
 		purchaseDto.setPaymentAmount(PriceFin);// 전체 가격
