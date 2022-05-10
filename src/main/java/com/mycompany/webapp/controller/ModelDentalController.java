@@ -112,12 +112,12 @@ public class ModelDentalController {
 	
 	//파일 불러오기
 	@GetMapping("/model_dental/display")
-	public ResponseEntity<byte[]> getImage(String fileName) {
+	public ResponseEntity<byte[]> getImage(String fileName) throws IOException {
 		// log.info(" getImage()..........");
 		File file = new File("c:\\Temp\\portfolio\\" + fileName);
 		ResponseEntity<byte[]> result = null;
 
-		try {
+		/*try {*/
 
 			HttpHeaders header = new HttpHeaders();
 			header.add("Content-type", Files.probeContentType(file.toPath()));// 대상 파일의 MIME TYPE을 부여
@@ -126,9 +126,9 @@ public class ModelDentalController {
 			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 			// 대상 파일을 복사하여 Byte 배열로 반환해주는 클래스
 
-		} catch (IOException e) {
+		/*} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		return result;
 	}
 }
