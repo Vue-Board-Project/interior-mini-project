@@ -1,8 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 
-<div id = "mypage_device_AS_reservation">
-            <div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2>예약 정보</h2></div>
+<div id = "mypage_device_AS_reservation" style = "display : inline-block; width : 90%; margin-left : 5%;">
+            <div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2 style = "margin-left : 10px;">
+            <span style = "margin-left : 50px;">예약 정보</span>
+            </h2></div>
             <hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
             
             <div id = "mypage_device_AS_reservation_content">
@@ -14,12 +16,16 @@
                
                <div class = "request_date">
                   <div class = "request_date_title">접수일</div>
-                  <div class = "request_date_content">${asInfo.applicationDate}</div>
+                  <div class = "request_date_content">
+                  	${asInfo.applicationDate}
+              	  </div>
                </div>
                
                <div class = "visit_date">
                   <div class = "visit_date_title">서비스 예정일</div>
-                  <div class = "visit_date_content">${asInfo.scheduledServiceDate}</div>
+                  <div class = "visit_date_content">
+                  	${asInfo.scheduledServiceDate}
+                  </div>
                </div>
             
                <div class = "product_name">
@@ -48,8 +54,10 @@
          </div>
          
          
-         <div id = "mypage_device_AS_customer">
-            <div id = "mypage_device_AS_customer_title"><h2>고객 정보</h2></div>
+         <div id = "mypage_device_AS_customer"  style = "display : inline-block; width : 90%; margin-left : 5%; margin-top : 50px;">
+            <div id = "mypage_device_AS_customer_title"><h2 style = "margin-left : 10px;">
+             <span style = "margin-left : 50px;">고객 정보</span>
+             </h2></div>
             <hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
             
             <div id = "mypage_device_AS_reservation_content">

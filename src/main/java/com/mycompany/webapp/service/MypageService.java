@@ -269,31 +269,9 @@ public class MypageService {
 		return mypageDao.getProgressStep6(conNum);
 	}
 
-	public List<PurchaseDetailDto> getOrderReview(String email) {
+	public List<PurchaseDetailDto> getOrderReview(Pager pager) {
 		
-		//List<PurchaseDetailDto> orderReview =  
-		/*
-		 * List<PurchaseDetailDto> orderReviewFin =
-		 * mypageDao.getOrderReviewFinList(email);
-		 * 
-		 * log.info("order Review : before :  " + orderReview);
-		 * log.info("order Review : minus :  " + orderReviewFin); int i = 0;
-		 * List<PurchaseDetailDto> beforeReview = new ArrayList<PurchaseDetailDto>();
-		 * List<PurchaseDetailDto> AfterReview = new ArrayList<PurchaseDetailDto>();
-		 * 
-		 * while(i >= orderReviewFin.size()) { for(PurchaseDetailDto p1 : orderReview) {
-		 * for(PurchaseDetailDto p2 : orderReviewFin) { if(p1.getIntPurchaseNumber() ==
-		 * p2.getIntPurchaseNumber()) {
-		 * if(p1.getStringModelNumber().equals(p2.getStringModelNumber())){ i++;
-		 * orderReview.remove(p1.getPurchaseNumber()); } }
-		 * 
-		 * } } }
-		 */
-		
-		
-		//log.info("order Review : after :  " + orderReview);
-		
-		return mypageDao.getOrderReview(email);
+		return mypageDao.getOrderReview(pager);
 	}
 
 	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager) {
@@ -309,6 +287,12 @@ public class MypageService {
 	public int getTotalReviewFin(String email) {
 		// TODO Auto-generated method stub
 		return mypageDao.getTotalReviewFin(email);
+	}
+
+
+	public int getTotalOrderReviewList(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getTotalOrderReviewList(email);
 	}
 
 	

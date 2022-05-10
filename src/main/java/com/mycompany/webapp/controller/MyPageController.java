@@ -68,7 +68,6 @@ public class MyPageController {
 	/****첫 창 상담창 *****/
 	 @RequestMapping("/mypage_counseling") 
 	 public String mypageCounseling(){ 
-		 log.info("구매내역");
 		 return "/mypage/mypage_counseling";
 	 }
 	 
@@ -120,7 +119,6 @@ public class MyPageController {
 		 model.addAttribute("user", user);
 		 
 		 int totalUserInteriorList = mypageService.getTotalUserInteriorList(email);
-		 log.info("숫자 읽어오는지 확인 : " + totalUserInteriorList);
 		 
 		 Pager pager = new Pager(8, 4, totalUserInteriorList, pageNo, email);
 		 model.addAttribute("pager", pager);
@@ -158,24 +156,6 @@ public class MyPageController {
 	 }
 	 
 	 
-	 
-	 /*	 
-	 @GetMapping("/mypage_counseling/selectInteriorInfo") 
-	 public String mypageCounselingEInterior(
-			 @RequestParam(defaultValue = "1") int pageNo, Authentication authentication, Model model){ 
-		 
-		 //String email = authentication.getName();
-		 String email = "gvhv@dgfv.sad";
-		 Pager pager = new Pager(1, 1, mpinterior, pageNo, email);
-		 model.addAttribute("pager", pager);
-		 
-		 List<MainConsultDto> mainConList = mypageService.getMpInteriorList(pager); 
-		 model.addAttribute("mainConList", mainConList);
-		 log.info("111111111111111111111111111111111111mainConList11111111111111111111111111111111111111");
-	
-		 return "mypage/mypage_counseling";
-	 }
-	*/
  
 	 /*인테리어 각 요소(팝업창으로) 읽어오기 */
 		 @GetMapping(value = "/readInteriorList")
@@ -183,7 +163,7 @@ public class MyPageController {
 
 			MainConsultDto mainCon = mypageService.getMainConElement(selNum); 
 
-			log.info("mypage Interior List : " + mainCon);
+			
 			model.addAttribute("mainCon", mainCon);
 		      
 		    return "/mypage/counseling/myinfo_counsel_detail_popup";		
@@ -218,14 +198,13 @@ public class MyPageController {
 			}	
 			
 			consultNo = mypageService.getLatestInteriorNo(email);
-			log.info("no data Number : " + consultNo);
 			
 			InteriorProgressDto progress = mypageService.getProgressStep(consultNo);
 			model.addAttribute("progress", progress);
 			
 			List<InteriorProgressFileDto> step1File =  mypageService.getStep1Files(consultNo);
 			model.addAttribute("step1File", step1File);
-			log.info("step1 file : " + step1File);
+			
 			
 			List<SolutionDto> solution = mypageService.getSolutionList(consultNo);
 			model.addAttribute("solution", solution);
@@ -239,7 +218,7 @@ public class MyPageController {
 		@GetMapping("/showImage")
 		   public ResponseEntity<byte[]> getImage(String fileName) {
 		      
-		      log.info(" getImage()..........");
+		    
 		      File file = new File("C:/Temp/mypage/"+ fileName);
 		      ResponseEntity<byte[]> result = null;
 
@@ -278,7 +257,7 @@ public class MyPageController {
 
 			InteriorProgressDto step3 = mypageService.getProgressStep3(conNum);
 			model.addAttribute("step3", step3);
-			log.info("step3 : " + step3);
+			
 			
 			List<InteriorProgressFileDto> step3File =  mypageService.getStep3Files(conNum);
 			model.addAttribute("step3File", step3File);
@@ -321,7 +300,7 @@ public class MyPageController {
 
 			int step6 =  mypageService.getProgressStep6(conNum);
 			model.addAttribute("step6", step6);
-			log.info("step 6 is ... " + step6);
+			
 			
 			return "mypage/interiorProgress/interiorProgressStep6";
 		}
@@ -393,7 +372,7 @@ public class MyPageController {
 	/*개인정보 삭제 창 */
 	@PostMapping("/mypage_infosetting/delete")
 	public String mypageInfoDelete(Authentication authentication, RedirectAttributes redirectAttr) {
-		log.info("삭제합니다~");
+		
 		String email = authentication.getName();
 		int result = mypageService.deleteUserInfo(email);
 		
@@ -424,13 +403,13 @@ public class MyPageController {
 		 //이메일 주소 가져오는 코드
 		 
 		 int totalOrderNum = mypageService.getTotalOrderListNum(email);
-		 log.info("구매내역 확인중 : " + totalOrderNum);
+		
 		 
 		 Pager pager = new Pager(4, 4, totalOrderNum, pageNo, email);
 		 model.addAttribute("pager", pager);
 		 
 		 List<PurchaseDto> orderList = mypageService.getPurchaseList(pager);
-		 log.info("prob : " + orderList);
+	
 
 		 model.addAttribute("orderList", orderList);
 		 return "mypage/mypage_orderlist";
@@ -443,15 +422,12 @@ public class MyPageController {
 		
 		
 		 int totalOrderDetailNum = mypageService.getTotalOrderDetailNum(purchaseNumber);
-		 log.info("totalOrderDetailNum : " + totalOrderDetailNum);
-		 
+		
 		
 		 Pager pager = new Pager(4, 4, totalOrderDetailNum, pageNo, purchaseNumber);
 		 model.addAttribute("pager", pager);
 		 
 		 List<PurchaseDetailDto> orderDetail = mypageService.getOrderDetailList(pager);
-		 log.info("purchase Number : "  + purchaseNumber);
-		 log.info("111111111000011111111111111 : " + orderDetail);
 		 model.addAttribute("orderDetail", orderDetail);
 
 		return "/mypage/mypage_orderlist_detail";
@@ -468,12 +444,17 @@ public class MyPageController {
 	
 	//마이페이지 리뷰 창
 	@RequestMapping("/mypageReview")
-	public String mypageReviewSelectReviews(Authentication authentication, Model model){
+	public String mypageReviewSelectReviews(Authentication authentication, Model model,
+												@RequestParam(defaultValue = "1") int pageNo){
 		
 		String email = authentication.getName();
 		
-		List<PurchaseDetailDto> orderReview = mypageService.getOrderReview(email);
-		log.info("write review : " + orderReview);
+		int totalOrderReviewList = mypageService.getTotalOrderReviewList(email);
+		Pager pager = new Pager(3, 4, totalOrderReviewList, pageNo, email);
+	    model.addAttribute("pager", pager);
+		
+		List<PurchaseDetailDto> orderReview = mypageService.getOrderReview(pager);
+		
 		model.addAttribute("orderReview", orderReview);
 		
 			
@@ -508,7 +489,7 @@ public class MyPageController {
 		String email = authentication.getName();
 		
 		int totalReviewFin = mypageService.getTotalReviewFin(email);
-		Pager pager = new Pager(4, 4, totalReviewFin, pageNo, email);
+		Pager pager = new Pager(3, 4, totalReviewFin, pageNo, email);
 	    model.addAttribute("pager", pager);
 		
 	    List<PurchaseDetailDto> reviewFin = mypageService.getOrderReviewFin(pager);
@@ -525,6 +506,7 @@ public class MyPageController {
 	
 		mypageService.insertReview(review);
 		mypageService.updateReviewList(review);
+		
 		return "redirect:/mypage/mypageReview";
 	}
 	
@@ -532,14 +514,13 @@ public class MyPageController {
 	@PostMapping(value = "/insertImage", produces = "application/json; charset=UTF-8;")
 	public ResponseEntity<List<AttachImageDto>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
 
-		log.info("uploadAjaxActionPOST..........");
 		/*  전달 받은 파일이 이미지 인지 아닌지 체크 */
 		for (MultipartFile multipartFile : uploadFile) {
 			File checkfile = new File(multipartFile.getOriginalFilename());
 			String type = null;
 			try {
 				type = Files.probeContentType(checkfile.toPath());
-				log.info("MIME TYPE : " + type);
+			
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -550,15 +531,7 @@ public class MyPageController {
 			}
 		}
 
-		// 파일 제대로 들어왔는지 확인
-		for (MultipartFile multipartFile : uploadFile) {
-			log.info("-----------------------------------------------");
-			log.info("파일 이름 : " + multipartFile.getOriginalFilename());
-			log.info("파일 타입 : " + multipartFile.getContentType());
-			log.info("파일 크기 : " + multipartFile.getSize());
-		}
 
-		
 		String uploadFolder = "C:/Temp/mypage/";
 
 		
@@ -632,8 +605,6 @@ public class MyPageController {
 	   int totalAsNum = mypageService.getTotalDeviceAsListNum();
 	   Pager pager = new Pager(5, 5, totalAsNum, pageNo, email);
 	   model.addAttribute("pager", pager);
-	   log.info("as 내역 : " + totalAsNum);
-	   log.info("pageNo 입력 : "  + pageNo);
 	   
 	   List<AfterServiceDto> asList = mypageService.getASList(pager);
 	   model.addAttribute("asList", asList);
@@ -645,7 +616,6 @@ public class MyPageController {
 		@GetMapping("/device_AS/asDetail")
 		public String mypageAsDetail(int receiptNo, Model model) {
 				
-		 log.info("000000000000000000 00000000 receiptNo 입력 : " + receiptNo);
 		 AfterServiceDto asInfo = mypageService.getAsInfoDetail(receiptNo);
 		 model.addAttribute("asInfo", asInfo);
 				
