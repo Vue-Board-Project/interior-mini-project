@@ -29,6 +29,7 @@ $(document).ready(function(){
 		$("#main_nav_list_home span").css("color","black");
 		$("#main_content_wrap").css("background-color","#faf9f6");
 		$("#main_back_round").hide();
+		$(".ocean").hide();
 	});
 	$("#main_nav_list_interior").click(function(){
 		$("#main_interior_content").show();
@@ -42,6 +43,8 @@ $(document).ready(function(){
 		$(".main_nav_list span").css("color","#6a6a6a");
 		$("#main_content_wrap").css("background-color","#ffd4b1");
 		$("#main_back_round").show();
+		$("#main_back_round").css("background-color","#faf9f6");
+		$(".ocean").hide();
 
 	});
 	$("#main_nav_list_product").click(function(){
@@ -56,7 +59,9 @@ $(document).ready(function(){
 		$(".main_nav_list span").css("color","#6a6a6a");
 		$("#main_nav_list_product span").css("color","black");
 		$("#main_content_wrap").css("background-color","#faf9f6");
-		$("#main_back_round").hide();
+		$("#main_back_round").show();
+		$("#main_back_round").css("background-color","#ffd4b1");
+		$(".ocean").hide();
 	});
 	$("#main_nav_list_news").click(function(){
 		$("#main_news_content").show();
@@ -71,5 +76,7 @@ $(document).ready(function(){
 		$("#main_nav_list_news span").css("color","black");
 		$("#main_content_wrap").css("background-color","#faf9f6");
 		$("#main_back_round").hide();
+		$("body").css("overflow", "hidden");
+		$(".ocean").show();
 	});
 }); 

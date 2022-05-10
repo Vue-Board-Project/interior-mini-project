@@ -62,8 +62,54 @@ text-decoration: none; color: black;
 .portfolio_dental_content_a:hover{
 	text-decoration: none; color: black;
 }
+.ocean { 
+	height: 5%;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	left:0;
+	background: #015871;
+	}
+	
+	.wave {
+	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x; 
+	position: absolute;
+	top: -198px;
+	width: 6400px;
+	height: 198px;
+	animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+	transform: translate3d(0, 0, 0);
+	}
+	
+	.wave:nth-of-type(2) {
+	top: -175px;
+	animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+	opacity: 1;
+	}
+	
+	@keyframes wave {
+	0% {
+	    margin-left: 0;
+	}
+	100% {
+	    margin-left: -1600px;
+	}
+	}
+	
+	@keyframes swell {
+	0%, 100% {
+	    transform: translate3d(0,-25px,0);
+	}
+	50% {
+	    transform: translate3d(0,5px,0);
+	}
+	}
 </style>
-<main class="pt-5 pb-5 d-flex" id="main_content_wrap" style="background-color: #faf9f6; font-family: 'MinSans-Regular'; height: 837px;">
+<main class="pt-5 pb-5 d-flex" id="main_content_wrap" style="background-color: #faf9f6; font-family: 'MinSans-Regular'; height: 837px; position: relative;">
+	<div class="ocean" style="margin: 0; padding: 0; position: absolute; bottom: 0; display: none; z-index: 50;">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
 	<aside id="mainNav" class="text-center" style="flex-grow: 1; margin: auto 0;">
 		<ul class="main_nav_list" style="list-style:none; text-decoration: none; color: black; margin-left: 0; padding-left: 0; position: relative; z-index: 60;">
 			<li class="d-flex" id="main_nav_home">
@@ -218,13 +264,18 @@ text-decoration: none; color: black;
    	    <div id="main_product_content" style="display: none;">
    	    	<div class="d-flex">
 				<div class="d-flex flex-column">
-			 	    <div class="mr-5" style="width: 600px; height: 500px;">
+			 	    <div class="mr-5" style="width: 600px; height: 500px; z-index: 60;">
 			     	    <b style="font-size: 60px;">Osstem Medical Equipment</b>
 			      	    <p style="font-size: 20px;">오스템 치과장비</p>
+			      	    <div style="white-space: pre-line; width: 506px; letter-spacing: 1.3px;">
+			      	    	오몰레어는 K5의 전신인 K3는 출시 후 1년만에 국내 최고 판매량을 기록했고, 현재 7년 연속 국내 유니트체어 판매량 1위 자리를 놓치지 않고 있습니다.
+			      	    	
+			      	    	오스템임플란트의 유니트체어 품질과 기술, 상품성은 이미 시장에서 입증됐으며, 올해 K5의 대대적인 해외 인허가 획득을 통해 글로벌 유니트체어 시장에서 더욱더 맹활약할 것입니다.
+			      	    </div>
 				    </div>
 				</div>
 		   	    <div class="d-flex">
-			   		 <ul id="portfolio_dental_content_wrap" class="d-flex text-center" style="padding-left:0px; flex-wrap: wrap; width:800px;">
+			   		 <ul id="portfolio_dental_content_wrap" class="d-flex text-center" style="padding-left:0px; flex-wrap: wrap; width:800px; z-index: 60;">
 			            <c:forEach items="${homeProductList}" var="productList" begin="0" end="3">
 			            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);"> 
 			                    <a href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="portfolio_dental_content_a">
@@ -238,15 +289,21 @@ text-decoration: none; color: black;
 		   	    </div>
 		   	 </div>
    	    </div>
-   	    <div id="main_news_content" style="display: none;">
+	   	<div id="main_news_content" style="display: none;">
    	 		<div class="d-flex">
 				<div class="d-flex flex-column">
-			 	    <div class="mr-5" style="width: 600px; height: 500px;">
+			 	    <div class="mr-5" style="width: 600px; height: 500px; z-index: 60;">
 			     	    <b style="font-size: 60px;">O'Molaire Osstem News</b>
 			      	    <p style="font-size: 20px;">치과에 최적화된 인테리어로 고객의 눈높이에 맞는 맞춤제안을 제공합니다.</p>
+			      	    <div style="white-space: pre-line; width: 506px; letter-spacing: 1.3px;">
+			      	    	성공 개원을 위한 파트너! 오몰레어가 디자이하면 다릅니다.
+			      	    	신속진행, 시공 품질 보장, 고객 맞춤 디자인, 믿음직한 A/S까지
+			      	    	
+			      	    	인테리어 접수부터 사후 관리까지 체계적인 프로세스로 운영되어 믿고 맡길 수 있습니다.
+			      	    </div>
 				    </div>
 				</div>
-		   	    <div>
+		   	    <div style="z-index: 60;">
 					<iframe width="850" height="500" src="https://www.youtube.com/embed/I_XEXqWZPBQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		   	    </div>
 		   	 </div>
