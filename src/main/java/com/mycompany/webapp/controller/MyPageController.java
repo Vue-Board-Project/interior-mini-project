@@ -467,11 +467,11 @@ public class MyPageController {
 	@RequestMapping("/mypageReview")
 	public String mypageReviewSelectReviews(Authentication authentication, Model model){
 		
-			String email = authentication.getName();
-			
-			List<PurchaseDetailDto> orderReview = mypageService.getOrderReview(email);
-			log.info("write review : " + orderReview);
-			model.addAttribute("orderReview", orderReview);
+		String email = authentication.getName();
+		
+		List<PurchaseDetailDto> orderReview = mypageService.getOrderReview(email);
+		log.info("write review : " + orderReview);
+		model.addAttribute("orderReview", orderReview);
 		
 			
 		/*
@@ -519,6 +519,7 @@ public class MyPageController {
 		log.info("filled with joy : " + review);
 		
 		mypageService.insertReview(review);
+		mypageService.updateReviewList(review);
 		return "redirect:/mypage/mypageReview";
 	}
 	

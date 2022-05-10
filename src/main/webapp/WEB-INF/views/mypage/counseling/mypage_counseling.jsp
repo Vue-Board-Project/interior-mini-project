@@ -2,50 +2,13 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<div id = "mypage_counseling_jsp">
-	<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
-	
-	<div class="counseling_section">
-			<div class = "header_section">
-	          <div class="text">상담 내역</div>
-	          <span class="sub_text">상담 신청 내역을 보여드립니다.</span>
-	          <hr width = 90%>
-	         </div>
-	          
-	     	<div class="content_section">
-	     	<!-- 각 조건문을 위한 항목 설정 -->
-	     	<jsp:useBean id="now" class="java.util.Date" />
-			<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" /> 
-
-	     	<c:if test="${interiorChk != 0}">
-	     		<%@ include file="/WEB-INF/views/mypage/counseling/mypage_counseling_interior.jsp" %>
-	     	</c:if>
-	     	<c:if test="${remodelingChk != 0}">
-	     		<%@ include file="/WEB-INF/views/mypage/counseling/mypage_counseling_remodeling.jsp" %>
-	     	</c:if>
-	     	<c:if test="${asChk != 0}">
-	     		<%@ include file="/WEB-INF/views/mypage/counseling/mypage_counseling_AS.jsp" %>
-	     	</c:if>
-	     	<c:if test="${interiorChk == 0 && remodelingChk == 0 && remodelingChk == 0}">
-	     		<div class = "mypage_no_counseling_info">
-		     
-		     		<%-- <div class = "mp_noinfo_logo"><img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_nocounseling_img.png" style = "width : 60px; height : 60px;"></div> --%>
-		     		<div class = "mp_noinfo_title" style = "font-size : 1.5rem; font-family: 'MinSans-Regular'; text-align : center;">상담 내역이 없습니다.</div>
-	     			<div class = "mp_noinfo_content" style = "font-size : 1.5rem; font-family: 'MinSans-Regular'; margin-top :50px; text-align : center;">치과에 최적화된 인테리어로 고객의 눈높이에 맞는 맞춤제안을 제공합니다.</div>	
-		     			<button type="button" class="btn btn-primary btn-lg" style = "margin-top :50px; background-color : #ca5c0d; border : 0; outline : 0; margin-left : 350px; "
-		     			onclick="location.href='/springframework-mini-project/interior_consult/quick_consultation'"> 인테리어 견적 보기 </button>
-		     			<button type="button" class="btn btn-primary btn-lg" style = "margin-top :50px; background-color : #ca5c0d; border : 0; outline : 0; margin-left : 50px; "
-		     			onclick="location.href='/springframework-mini-project/goPortfolioDental'">포트폴리오 구경하기</button>
-	     		</div>
-	     	</c:if>
-	     	
-			</div>
-		</div>
-			
-			
-
+<div class = "container-fluid p-0">
+	<div style = "display:flex; width : 100%; height: 100px;">
+		<%-- <%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %> --%>
+		<div class= "border"  style = "display : inline-block; width : 20%;"></div>
+		<div class= "border" style = "display : inline-block; width : 80%;"></div>
+	</div>
 </div>
-
 <style>
 
 	#sidebar_mypage .mypage_list #list_counseling{
@@ -53,18 +16,28 @@
         	color : #ca5c0d;
         	font-weight: 800;
         }
+        
     #mypage_counseling_jsp {
-    	width : 100%;
-    	/*나중에 높이값 바꿔야함 */
-    	height : 800px;
-    	background: #faf9f6;
     } 
-       
-    .counseling_section{
-          position: relative;
-          top: 0;
-          left: 249px;
-          width: calc(100% - 250px);
+    
+    #mypage_counseling_jsp .mypage_counseling_display{
+    	display: flex;
+ 		/* flex-direction: row;  */
+ 		width : 100%;
+ 		border : 3px solid 6A67CE;
+    }
+    
+    #mypage_counseling_jsp .mypage_counseling_display .mypage_menu_space{
+      	display: inline-block;
+      	width : 20%;
+        background-color : #fff;
+        /* border : 3px solid 6A67CE; */
+     }
+    
+    #mypage_counseling_jsp .mypage_counseling_display .counseling_section{
+    	  display: inline-block;
+          width : 80%;
+          /* border : 3px solid 6A67CE; */
      }
      
      .mypage_no_counseling_info{

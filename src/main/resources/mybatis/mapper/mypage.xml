@@ -404,7 +404,17 @@
 	    values(
 	        #{email}, #{purchaseNumber}, #{modelNumber}, #{reviewTitle}, #{reviewContent}, SYSDATE, #{fileName}
         )
+       
 	</insert>
+	
+	<update id = "updateReviewList" parameterType="mReview">
+	update PURCHASE_DETAIL 
+		set REVIEW_AVAILABLE = 1
+		where purchase_number = #{purchaseNumber}
+		and model_number = #{modelNumber}
+		and email = #{email}
+	</update>
+	
 	
 	<select id = "getOrderReview" parameterType = "string" resultType = "pDetail">
 		select p.PURCHASE_NUMBER as intPurchaseNumber, p.email as stringEmail, p.PURCHASE_DATE as datePurchaseDate,
@@ -413,8 +423,10 @@
 		from purchase p, PURCHASE_DETAIL pd, product d
 		where p.email = #{email} and
 		        p.purchase_number = pd.purchase_number and
-		        pd.MODEL_NUMBER = d.MODEL_NUMBER
+		        pd.MODEL_NUMBER = d.MODEL_NUMBER and
+                REVIEW_AVAILABLE = 0
 	</select>
+	
 	<select id = "getOrderReviewFinList" parameterType = "string" resultType = "pDetail">
 	SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, d.model_number as stringModelNumber
 	from purchase p, review r, product d

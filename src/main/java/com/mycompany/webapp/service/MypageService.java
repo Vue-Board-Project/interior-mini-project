@@ -2,6 +2,7 @@
 
 package com.mycompany.webapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -34,11 +35,17 @@ public class MypageService {
 	@Resource
 	private MypageDao mypageDao;
 	
-	public void insertReview(ReviewDto review){
+	public int insertReview(ReviewDto review){
 		log.info("hhhhh " + review);
-		mypageDao.insertReview(review);
+		return mypageDao.insertReview(review);
 	}
 
+	
+	public int updateReviewList(ReviewDto review) {
+		
+		return mypageDao.updateReviewList(review);
+	}
+	
 	public UsersDto getUserName(String email) {
 		log.info("read user's name info : " + email);
 		return mypageDao.selectUserName(email);
@@ -264,28 +271,29 @@ public class MypageService {
 
 	public List<PurchaseDetailDto> getOrderReview(String email) {
 		
-		List<PurchaseDetailDto> orderReview =  mypageDao.getOrderReview(email);
-		List<PurchaseDetailDto> orderReviewFin = mypageDao.getOrderReviewFinList(email);
+		//List<PurchaseDetailDto> orderReview =  
+		/*
+		 * List<PurchaseDetailDto> orderReviewFin =
+		 * mypageDao.getOrderReviewFinList(email);
+		 * 
+		 * log.info("order Review : before :  " + orderReview);
+		 * log.info("order Review : minus :  " + orderReviewFin); int i = 0;
+		 * List<PurchaseDetailDto> beforeReview = new ArrayList<PurchaseDetailDto>();
+		 * List<PurchaseDetailDto> AfterReview = new ArrayList<PurchaseDetailDto>();
+		 * 
+		 * while(i >= orderReviewFin.size()) { for(PurchaseDetailDto p1 : orderReview) {
+		 * for(PurchaseDetailDto p2 : orderReviewFin) { if(p1.getIntPurchaseNumber() ==
+		 * p2.getIntPurchaseNumber()) {
+		 * if(p1.getStringModelNumber().equals(p2.getStringModelNumber())){ i++;
+		 * orderReview.remove(p1.getPurchaseNumber()); } }
+		 * 
+		 * } } }
+		 */
 		
-		log.info("order Review : before :  " + orderReview);
-		int i = 0;
-		while(i >= orderReviewFin.size()) {
-			for(PurchaseDetailDto p1 : orderReview) {
-				for(PurchaseDetailDto p2 : orderReviewFin) {
-					if(p1.getIntPurchaseNumber() == p2.getIntPurchaseNumber()) {
-						if(p1.getStringModelNumber().equals(p2.getStringModelNumber())){
-							orderReview.remove(p1.getIntPurchaseNumber());
-							i++;
-						}
-					}
-					
-				}
-			}
-		}
 		
-		log.info("order Review : after :  " + orderReview);
+		//log.info("order Review : after :  " + orderReview);
 		
-		return orderReview;
+		return mypageDao.getOrderReview(email);
 	}
 
 	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager) {
@@ -302,6 +310,8 @@ public class MypageService {
 		// TODO Auto-generated method stub
 		return mypageDao.getTotalReviewFin(email);
 	}
+
+	
 
 	
 	
