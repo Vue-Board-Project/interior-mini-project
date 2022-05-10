@@ -325,7 +325,6 @@
 			<result column = "PURCHASE_NUMBER" property = "intPurchaseNumber" /> 
 			<result column = "MODEL_NUMBER" property = "stringModelNumber" />
 			<result column = "MODEL_PURCHASE_QUANTITY" property = "modelPurchaseQuantity" />
-			<result column = "DETAIL_PRICE" property = "detailPrice" />
 			<association property="product" javaType="product">
 				<result column = "PRODUCT_NAME" property = "productName" />
 				<!-- <result column = "MAINIMAGE" property = "mainImage" /> -->

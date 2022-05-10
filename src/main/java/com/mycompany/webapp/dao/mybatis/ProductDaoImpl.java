@@ -68,6 +68,30 @@ public class ProductDaoImpl implements ProductDao{
 		return sqlSession.selectOne("sqlSession.getByteImage");
 	}*/
 
+	@Override
+	public List<ProductDto> selectproductlist(String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductDto> selectreviewslist() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductDto> selectviewslist() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductDto> selectpopularlist() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }

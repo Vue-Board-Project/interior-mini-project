@@ -33,7 +33,7 @@
 	<img  src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/load.gif" alt="loading">  
 </div>
    
-   <div class="container">
+   <div class="container" >
        <article id="read_precautions" class="mx-auto" style="width: 430px; padding: 80px 0 100px 0;">
                <h3 id="read_precau_title">종합 인테리어 상담</h3>
                <p class="read_precau_text"><span id="raed_precau_text_highlight">잠깐! <b style="color: #ca5c0d;">대면 상담</b>이 필요하다는 것 알고 계신가요?</span><br/>
@@ -386,6 +386,7 @@
            </article>
 
    </div>
+   
     <script src="${pageContext.request.contextPath}/resources/js/interior_consult_js/quick_consultation.js"></script>
 </main>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

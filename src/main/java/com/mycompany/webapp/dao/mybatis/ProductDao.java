@@ -21,10 +21,15 @@ public interface ProductDao {
 	public List<ProductDto> soltreviewCount();
 	public List<ProductDto> solttime();
 	public List<ProductDto> selectbestlist();
+	public List<ProductDto> selectproductlist(String category);
+	
 	
 	//상세보기
 	public ProductDto selectDetailProduct(String modelNumber);
 
 	//카트에 담을 장비 선택
 	public ProductDto selectProduct(String modelNumber);
+	public List<ProductDto> selectreviewslist();
+	public List<ProductDto> selectviewslist();
+	public List<ProductDto> selectpopularlist();
 }

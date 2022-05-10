@@ -106,33 +106,38 @@
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">카드사</label>
                                   <select name="bank">
-                                  	<option value="수빈 은행">수빈 은행</option>
-                                    <option value="보현 은행">보현 은행</option>
-                                    <option value="하현 은행">하현 은행</option>
-                                    <option value="보경 은행">보경 은행</option>
+                                  	<option value="수빈은행">수빈 은행</option>
+                                    <option value="보현은행">보현 은행</option>
+                                    <option value="하현은행">하현 은행</option>
+                                    <option value="보경은행">보경 은행</option>
                                   
                                   </select>
                                     
                                 </div>
                                 <div class="form-group">
                                   <label for="input_cardnum">카드 번호</label>
-                                  <input type="text" class="form-control" id="input_card_num">
+                                  <input type="text" class="form-control" id="input_card_num" name="cardnumber">
                                 </div>
                                 <div class="form-group">
                                     <label for="input_card_date">유효 기간</label>
-                                    <input type="text" class="form-control" id="input_card_date">
+                                    <input type="text" class="form-control" id="input_card_date" name="carddate">
                                   </div>
                                 <ul>
                                     <li><small>결제 정보는 계약자와 동일한 명의의 카드나 은행계좌만 이체 가능 합니다.</small></li>
                                     <li><small>월요금 납부일의 경우, 계약일 기준으로 자동 적용됩니다.</small></li>
                                 </ul>
                                 <c:choose>
-								<c:when test="${empty sum}">
-									<input name="QuantityFin" type="hidden" value="${countQua}"/>
-									<input name="PriceFin" type="hidden" value="${purchasePrice}"/>	
-								</c:when>
+									<c:when test="${empty sum}">
+										<input id="directQua" name="QuantityFin" type="hidden" value="${countQua}"/>
+										<input id="directPrice" name="PriceFin" type="hidden" value="${purchasePrice}"/>	
+									</c:when>
 								<c:otherwise>
 									<input name="QuantityFin" type="hidden" value="${fn:length(cartForm)}"/>
+									<%-- <c:forEach items="${productList}" var="cartproduct">
+										<input name="elmodel" type="hidden" value="${cartproduct.modelNumber}"/>
+										<input name="elQua" type="hidden" value="${cartproduct.cartQua}"/>
+										<input name="elPrice" type="hidden" value="${cartproduct.price}"/>
+									</c:forEach> --%>
 									<input name="PriceFin" type="hidden" value="${sum}"/>
 								</c:otherwise>
 								</c:choose>

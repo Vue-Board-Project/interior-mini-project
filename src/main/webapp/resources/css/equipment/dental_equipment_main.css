@@ -53,10 +53,20 @@
         }
         /*어사이드바*/
         #dentalequipmentmain_left{
-            width: 20%;
-            display: inline-block;
-            border-right: 1px solid #ccc;
+            float: left;
+            width: 24%;
         }
+       
+        #dentalequipmentmain_left input[type=radio]{
+        	display:none;
+        	/*라디오 원형 버튼 숨김*/
+        }
+        #dentalequipmentmain_right{
+            float: right;
+            width: 75%;
+        }
+      
+       
         
         .productAsideUl, .productInsideAsideUl{
             list-style:none;
@@ -78,5 +88,27 @@
             width: 80%;  
             display: inline-block;
         }
-      
-        
+        .eq_slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1){
+            left: 0;
+            transition: 0.5s;
+            z-index:0;
+        }
+        .eq_slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2){
+            left: 0;
+            transition: 0.5s;
+            z-index:0;
+        }
+        .eq_slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3){
+            left: 0;
+            transition: 0.5s;
+            z-index:0;
+        }
+        .eq_slider input[type=radio]:nth-child(4):checked~ul.imgs>li:nth-child(4){
+            left: 0;
+            transition: 0.5s;
+            z-index:0;
+        }
+        .eq_slider img{
+            width: 800px;
+            height: 480px;
+        }

@@ -4,8 +4,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/equipment/dental_equipment_main.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
 <div class="container-fluid p-0" >
-
-
 <section class=" p-0">
     <div style="display: flex; justify-content: space-between;position: relative;">
         <div style="display: inline-block; width: 10%; height: 100px;" class="bg-dark menuheaderleft" ></div>
@@ -154,8 +152,8 @@
                 </section>
                     
             </div>
+         </div>
         </div>
-<script src="${pageContext.request.contextPath}/resources/js/equipment/dental_equipment_main.js"></script>
     </div>
 </div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
