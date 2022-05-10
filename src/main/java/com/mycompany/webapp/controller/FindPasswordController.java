@@ -52,6 +52,6 @@ public class FindPasswordController {
 	}
 	@GetMapping("/findPassword")
 	public String redirectHome() {
-		return "redirect:/";
+		return "home";
 	}
 }
