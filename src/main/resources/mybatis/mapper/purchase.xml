@@ -129,18 +129,39 @@
 			)
 		</if>		
 	</insert>
-<!-- 	<resultMap id="testResult" type="">
+ 	<resultMap id="purchaseResult" type="purchase">
 		<result column="purchase_Number" property="purchaseNumber"/>
-		<result column="model_Number" property="modelNumber"/>
-		<collection property="purchaseInfo" ofType="purchase" column="purchase_number" select="test"/>
+		<result column="PURCHASE_DATE" property="purchaseDate"/>
+		<collection property="purchaseInfo" ofType="pDetail" column="purchase_number" select="selectpurchaseDetailInfo"/>
 	</resultMap>
-	<select id="test">
-		select pu.purchase_Number pud.model_Number
-		from purchase pu, purchase_detail pud
-		where pu.purchase_number=pud.purchase_number
-	</select> -->
+
+	<select id="selectPurchaseInfo" parameterType="string" resultMap="purchaseResult">
+		select purchase_Number, PURCHASE_DATE
+		from purchase
+		where email=#{stringEmail}
+	</select>
 	
-<!-- 	<select id="asVerifyProduct" parameterType="string" resultMap="selectForCart">
+	<resultMap id="purchaseDetailResult" type="pDetail">
+		<result column="purchase_Number" property="intPurchaseNumber"/>
+		<result column="model_Number" property="stringModelNumber"/>
+		<association property="product" javaType="product" column="model_Number" select="selectProductInfo"/>
+	</resultMap>
+	
+	<select id="selectpurchaseDetailInfo" parameterType="int" resultMap="purchaseDetailResult">
+		select model_Number
+		from purchase_detail
+		where purchase_number=#{intPurchaseNumber}
+	</select>
+	
+	<resultMap id="productResult" type="product">
+		<result column="PRODUCT_NAME" property="productName"/>
+	</resultMap>
+	<select id="selectProductInfo" parameterType="string" resultMap="productResult">
+		select distinct model_number, PRODUCT_NAME, PATTACHONAME
+		from product
+		where model_Number=#{modelNumber}
+	</select>
+ 	<!--<select id="asVerifyProduct" parameterType="string" resultMap="selectForCart">
 		select pr.model_number, pr.product_Name, pr.pattachoname, pu.PURCHASE_DATE
 		from purchase pu, purchase_Detail pd, product pr
     	where pd.purchase_number=pu.purchase_number and pu.email=#{email} and pd.model_number=pr.model_Number

@@ -23,4 +23,8 @@ public interface PurchaseDao {
 	//product db의 판매량과 재고 수 업데이트
 	public int updateProductInfo(ProductDto product);
 	public int insertAS(AfterServiceDto after);
+	
+	public List<PurchaseDto> selectPurchaseInfo(String stringEmail);
+	public List<PurchaseDetailDto> selectpurchaseDetailInfo(int purchaseNumber);
+	public ProductDto selectProductInfo(String modelNumber);
 }

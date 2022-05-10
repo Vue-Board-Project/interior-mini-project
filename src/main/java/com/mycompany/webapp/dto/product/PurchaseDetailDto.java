@@ -12,6 +12,6 @@ public class PurchaseDetailDto {
 	private PurchaseDto purchaseNumber;//구매번호 (외래키)
 	private ProductDto modelNumber;//모델명 (외래키)
 	private ProductDto product;	
-	
+	private PurchaseDto purchase;
 	
 }
