@@ -125,6 +125,7 @@ public class UsersService {
 	public FindPWResult findPW(HttpServletResponse response, UsersDto users) throws Exception {
 		log.info("실행");
 		log.info(users.getEmail());
+		log.fatal(users.getEmail());
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		// 가입된 이메일이 없으면

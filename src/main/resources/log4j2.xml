@@ -7,11 +7,11 @@
   </Appenders>
   
   <Loggers>
-    <Logger name="com.mycompany.webapp" level="info" additivity="false">
+    <Logger name="com.mycompany.webapp" level="warn" additivity="false">
       <AppenderRef ref="Out"/>
     </Logger>
     <!-- SQL문을 로깅 -->
-	<Logger name="jdbc.sqltiming" level="info" additivity="false">
+	<Logger name="jdbc.sqltiming" level="warn" additivity="false">
 		<AppenderRef ref="Out" />
 	</Logger>
     <Root level="error">
