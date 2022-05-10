@@ -36,15 +36,7 @@
 	
 	/*  마이페이지 사이드바  */
 	
-      #sidebar_mypage{
-       /*  position: fixed;
-        left: 0;
-        height: 400px; 
-        width: 250px;
-        padding: 3px 14px; 
-        top : 215px;
-        background: white; */
-      }
+
 
 
  	.mypage_list{
@@ -53,15 +45,19 @@
       }
       
     #sidebar_mypage .mypage_list .mypage_list_element {
-    	
-       
+    	width : 100%;
+    	height : 40px;
+ 
     }
       
     #sidebar_mypage .mypage_list .mypage_list_element .links_name {
+    	  font-family: 'MinSans-Medium';
 		  pointer-events: none;
           color: #272723;
           white-space: nowrap;
           font-family: 'MinSans-Medium';
+          margin-left : 30px;
+        
           
           
           
@@ -99,17 +95,15 @@
         
 </style>
 
- <!-- <div id="sidebar_mypage">
+<div id="sidebar_mypage" style = "display : inline-block; width : 100%; margin-top : 20px;">
    <div class="mypage_list">  
      <div class = "mypage_list_element">
        <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_counseling">
-       onclick시 각 링크로 연결하기
          <span id = "list_counseling" class="links_name">상담 내역</span>
        </a>
      </div>
      <div class = "mypage_list_element">
        <a class = "mypage_menubar_link" href="/springframework-mini-project/mypage/mypage_interior_progress">
-       onclick시 각 링크로 연결하기
          <span id = "list_interior_progress" class="links_name">인테리어 진행내역</span>
        </a>
      </div>
@@ -134,7 +128,7 @@
       </a>
     </div>
    </div>
- </div> -->
+ </div>
  
         
         
