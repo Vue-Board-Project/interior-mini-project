@@ -132,4 +132,8 @@
 		where PRODUCT_MODEL_NUMBER=#{modelNumber}
 		order by IMAGE_ORDER	
 	</select>
+	<!-- 제품 상세보기 할 때마다 조회 수 추가 -->
+	<update id="updatehits" parameterType="string">
+		update product set product_hits=product_hits+1 where model_number=#{modelNumber}
+	</update>
 </mapper>

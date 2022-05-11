@@ -31,6 +31,9 @@ public interface ProductDao {
 	//상세보기 이미지 가져옵니당
 	public List<ProductDetailDto> detailProductPhoto(String stringmodelNumber);
 	
+	//상세 클릭할 때 마다 조회수 추가
+	public int updatehits(String modelNumber);
+	
 	//카트에 담을 장비 선택
 	public ProductDto selectProduct(String modelNumber);
 	public List<ProductDto> selectreviewslist(String category);
