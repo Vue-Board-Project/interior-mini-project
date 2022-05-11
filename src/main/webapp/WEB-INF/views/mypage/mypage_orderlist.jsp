@@ -28,34 +28,47 @@
 		     	<!-- 재품 받기 -->
 	     		<div class = "prouducts" style = "display : inline-block; width : 90%; margin-left : 5%;">
 	     		
-	     		<c:if test = "${orderList eq null}" >
-	     			<div style = "display : inline-block; width : 100%; height : 400px;">
-	     			<span>구매 목록이 없습니다.</span>
-	     			<button onclick="location.href='/springframework-mini-project/equipment/dental_equipment_main'">장비 구매하러 가기</button>
-	     			</div>
+	     		<c:if test = "${empty orderList}" >
+	     			<%@ include file="/WEB-INF/views/mypage/mypage_orderlist_no_data.jsp" %>
 	     		</c:if>
 	     		
-	     		<c:forEach var="orderList" items="${orderList}">
-	     		 <!-- 각 제품 요소들 -->
-	     			<div class= "product_list_element">
-	     				<div class = "element_img_slot">
-	     					<a href="/springframework-mini-project/mypage/mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
-	     					<img class = "element_img" src = "${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png" />
-	     					</a> 
-	     				</div>
-	     				<div class = "element_title_explain">구매번호</div>
-	     				<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
-	     				<div class = "element_title">${orderList.purchaseNumber}</div>
-	     				</a> 
-	     				<div class = "element_price">
-		     				<div class = "element_price_money">금액 : ${orderList.paymentAmount}</div>
-		     				<span class = "element_price_unit">원</span>  
-	     				</div>
-	     				<div class = "element_date">날짜 :  <fmt:formatDate value="${orderList.purchaseDate}" pattern="yyyy-MM-dd"/></div>
-	     				<div class = "element_delivery_status">${orderList.deliveryManagement}</div>
-	     			</div>	
-	     		</c:forEach> 
-	     			<table>
+	     		
+	     		<c:if test = "${!empty orderList}" >
+	     		 
+	     			<table class="table table-sm table-bordered">
+			     		<tr>
+				        	<th style="width:15%; padding-left:10px;">구매번호</th>
+				           	<th style="width:30%; padding-left:10px;">금액</th>
+				           	<th style="width:30%; padding-left:10px;">날짜</th>
+							<th style="width:15%; padding-left:10px;">배송상태</th>
+				         </tr>
+		         
+		         <c:forEach var="orderList" items="${orderList}">
+		            <tr>
+						<a href="mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+						   <td>
+							   <a style = "text-decoration : none; color : black; padding-left:10px;" href="/springframework-mini-project/mypage/mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+							   ${orderList.purchaseNumber}
+							   </a>
+						   </td>
+						   <td>
+						   <a style = "text-decoration : none; color : black; padding-left:10px;" href="/springframework-mini-project/mypage/mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}" >
+						    ${orderList.paymentAmount} <span>원</span>
+						   </a>					  
+						   </td>
+						   <td>
+						   <a style = "text-decoration : none; color : black; padding-left:10px;" href="/springframework-mini-project/mypage/mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+						   <fmt:formatDate value="${orderList.purchaseDate}" pattern="yyyy-MM-dd"/>
+						   </a>
+						   </td>
+						   <td>
+						   <a style = "text-decoration : none; color : black; padding-left:10px;" href="/springframework-mini-project/mypage/mypage_orderlist/detail?purchaseNumber=${orderList.purchaseNumber}">
+						   ${orderList.deliveryManagement}
+						   </a>
+						   </td>
+						</a>
+		            </tr>
+		         </c:forEach>
 					 <tr>
 				           <td colspan="4" class="text-center">
 				              <div style = "width : 400px; margin-left : 450px; margin-top : 30px;">
@@ -69,7 +82,7 @@
 				                       <a class="btn btn-outline-secondary btn-sm" href="mypage_orderlist?pageNo=${i}">${i}</a>
 				                    </c:if>
 				                    <c:if test="${pager.pageNo == i}">
-				                       <a class="btn btn-outline-success btn-sm" href="mypage_orderlist?pageNo=${i}">${i}</a>
+				                       <a class="btn btn-secondary btn-sm" href="mypage_orderlist?pageNo=${i}">${i}</a>
 				                    </c:if>
 				                 </c:forEach>
 				                 
@@ -80,9 +93,9 @@
 				              </div>
 				           </td>
 				        </tr>
-						     </table>
+				</table>
 	     		
-	     		
+	     		</c:if>
 	     		
 	     		</div>
 		     

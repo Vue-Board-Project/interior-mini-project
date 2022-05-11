@@ -222,10 +222,11 @@
 	</select>
 	
 	<select id = "getPortfolioList" parameterType="int" resultType="mPreference">
-		SELECT r.ino, isummary as stringISummary, im_img_path as stringImImgPath
+		SELECT r.ino, ISUMMARY as stringISummary, im_img_path as stringImImgPath, ISTYLE as stringIStyle,
+			ALL_COLOR as  stringAllColor, ihits as intIHits
 		FROM REFERENCE_MODEL r, interior i
 		WHERE r.ino = i.ino and
-		CONSULT_NO =  #{conNum}
+		CONSULT_NO = #{conNum}
 	</select>
 	
 	<select id = "getProgressStep4" parameterType="int" resultType="mpProgress">
@@ -253,20 +254,28 @@
 		where interior_step = 5 and 
 		consult_no = #{conNum}
 	</select>
-	
-	<select id = "getProgressStep6" parameterType="int" resultType="int">
-		select ino 
+	<select id = "getIno6" parameterType="int" resultType="int">
+	 	select ino 
 		from INTERIOR_PROGRESS 
 		where CONSULT_NO = #{conNum}
 	</select>
 	
 	
+	<select id = "getProgressStep6" parameterType="int" resultType="mPreference">
+		SELECT r.ino, ISUMMARY as stringISummary, im_img_path as stringImImgPath, ISTYLE as stringIStyle,
+			ALL_COLOR as  stringAllColor, ihits as intIHits
+		FROM REFERENCE_MODEL r, interior i
+		where r.ino = i.ino and r.ino =  #{ino6}
+	</select>
+	
+	
 	<select id="selectByAsPage" parameterType="pager" resultType="asList">
-		<![CDATA[ SELECT rnum, receiptNumber, productName, EMAIL, applicationDate
+		<![CDATA[ SELECT rnum, receiptNumber, productName, EMAIL, applicationDate, stringModelNumber
 		    from(
-		    	SELECT ROWNUM as rnum, receiptNumber, productName, EMAIL, applicationDate
+		    	SELECT ROWNUM as rnum, receiptNumber, productName, EMAIL, applicationDate, stringModelNumber
 			    FROM (
-				        SELECT RECEIPT_NUMBER as receiptNumber, PRODUCT_NAME as productName, EMAIL, APPLICATION_DATE as applicationDate
+				        SELECT RECEIPT_NUMBER as receiptNumber, PRODUCT_NAME as productName, EMAIL, 
+				        APPLICATION_DATE as applicationDate, MODEL_NUMBER as stringModelNumber
 				        from AFTERSERVICE
 				        where email = #{stringEmail}
 				        ORDER BY RECEIPT_NUMBER DESC

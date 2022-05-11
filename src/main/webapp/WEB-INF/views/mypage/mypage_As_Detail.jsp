@@ -30,7 +30,14 @@
             
                <div class = "product_name">
                   <div class = "product_name_title">제품명</div>
-                  <div class = "product_name_content">${asInfo.productName}</div>
+                  <div class = "product_name_content"> 
+	                   <c:if test = "${asInfo.productName ne null}">
+	                  		${asInfo.productName}
+	                  	</c:if>
+	                  	<c:if test = "${asInfo.productName eq null}">
+	                  		unknown
+	                  	</c:if>
+                  	</div>
                </div>
                
                <div class = "product_code_name">

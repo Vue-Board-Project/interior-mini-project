@@ -3,15 +3,15 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <div class = "container-fluid p-0">
-	<div style = "display:flex; width : 100%; height: 1750px;">
+	<div style = "display:flex; width : 100%; height: 1850px;">
 		<%-- <%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %> --%>
 		<div class= "mypage_menu"  style = "display : inline-block;  width : 15%; height : 1750px; background-color : #faf9f6; border-right : 1px solid #ccc;">
 			<div style="display : inline-block; width : 100%; height : 300px;" >
 				<div style = "width : 90%; height : 300px; float : right; border-bottom : 3px solid #ca5c0d;">
-					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 140px;">마이페이지</p>
+					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 140px; margin-left : 20px;">마이페이지</p>
 				</div>
 			</div>
-			<div style = "display : inline-block; width : 100%; height : 1450px; ">
+			<div style = "display : inline-block; width : 100%; height : 1550px; ">
 				<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
 			</div>
 		</div>
@@ -23,89 +23,100 @@
 					</div>
 				</div>
 			</div>
-			<div style = "display :inline-block; width : 100%; height : 1450px;">
+			<div style = "display :inline-block; width : 100%; height : 1550px;">
 		     	
 		     <div style = "display : inline-block; width : 90%; margin-left : 5%; margin-top : 30px;">	
-		     	<!-- 장비 AS 내역 확인 -->
-		      <table class="table table-sm table-bordered" id = "mypage_table_as_list">
-		         <tr>
-		        	<th style="width:15%; padding-left:10px;">접수번호</th>
-		           	<th style="width:60%; padding-left:10px;">제품명</th>
-		           	<th style="width:15%; padding-left:10px;">날짜</th>
-		         </tr>
-		         
-		         <c:forEach var="asList" items="${asList}">
-		            <tr>
-		               <td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;">${asList.receiptNumber}</a></td>
-		               <td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;"><b>${asList.productName}</b></a></td>
-		               <td style ="padding-left:10px;">${asList.applicationDate}</td>
-		            </tr>
-		         </c:forEach>
-		         
-			 <tr>
-		           <td colspan="4" class="text-center">
-		              <div>
-		                 <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=1">처음</a>
-		                 <c:if test="${pager.groupNo>1}">
-		                    <a class="btn btn-outline-success btn-sm" href="device_AS?pageNo=${pager.startPageNo-1}">이전</a>
-		                 </c:if>
-		                 
-		                 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-		                    <c:if test="${pager.pageNo != i}">
-		                       <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${i}">${i}</a>
-		                    </c:if>
-		                    <c:if test="${pager.pageNo == i}">
-		                       <a class="btn btn-outline-success btn-sm" href="device_AS?pageNo=${i}">${i}</a>
-		                    </c:if>
-		                 </c:forEach>
-		                 
-		                 <c:if test="${pager.groupNo<pager.totalGroupNo}">
-		                    <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${pager.endPageNo+1}">다음</a>
-		                 </c:if>
-		                 <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${pager.totalPageNo}">맨끝</a>
-		              </div>
-		           </td>
-		        </tr>
-		     </table>
-      
-      </div>
-      
-      <div class = "mypage_device_AS_detail_slot">
-      		<script>
-	       
-		        function ajaxAsDetail(receiptNo){
-					$.ajax({
-			                url : "device_AS/asDetail",
-			                data : {receiptNo},
-			                method: "get"
-			            }).done((data) => {
-			            	console.log("finish?");
-			            	console.log(data);
-							$('.mypage_device_AS_detail_slot').html(data);
-			            });
-		        }
-			</script>
-         
-      </div>
-      <div id = "mypage_device_AS_warning" style = "display : inline-block; width : 90%; margin-left : 5%;">
-         <div id = "warning_header">
-            <img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_warning_logo.png" style = "width : 20px; height : 20px; margin : 30px;"/>
-            <div style = "margin-top : 20px;"><b>주의사항</b></div>
-         </div>
-         <div id = "warning_content" style = "margin-left : 10px; margin-top : 20px; ">
-            <ul>
-               <li>진행사항 확인의 경우 전화번호와 접수번호로 조회하실 수 있습니다</li>
-               <li>천재지변, 침수, 파손 및 자재가 없을 경우 서비스가 다소 지연될 수 있습니다.</li>
-               <li>센터 방문시 엔지니어가 바뀔 수 있습니다.</li>
-            </ul>
-         </div>
-      </div>
 		     	
+		<c:if test = "${empty asList}" >
+			<%@ include file="/WEB-INF/views/mypage/mypage_As_no_data.jsp" %>
+		</c:if>
+		
+		<c:if test = "${!empty asList}" >
+			      <!-- 장비 AS 내역 확인 -->
+			      <table class="table table-sm table-bordered" id = "mypage_table_as_list">
+			         <tr>
+			        	<th style="width:15%; padding-left:10px;">접수번호</th>
+			           	<th style="width:60%; padding-left:10px;">제품명</th>
+			           	<th style="width:15%; padding-left:10px;">날짜</th>
+			         </tr>
+			         <c:forEach var="asList" items="${asList}">
+			            <tr>
+			               <td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;">${asList.receiptNumber}</a></td>
+			               <c:if test = "${asList.productName ne null}">
+			               		<td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;"><b>${asList.productName}</b></a></td>
+			               </c:if>
+			               <c:if test = "${asList.productName eq null && asList.stringModelNumber ne null}">
+			               		<td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;"><b>${asList.stringModelNumber}</b></a></td>
+			               </c:if>
+			               <c:if test = "${asList.productName eq null && asList.stringModelNumber eq null}">
+			               		<td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;"><b>unknown</b></a></td>
+			               </c:if>
+			               <td style ="padding-left:10px;">${asList.applicationDate}</td>
+			            </tr>
+			         </c:forEach>
+			         
+				 <tr>
+			           <td colspan="4" class="text-center">
+			              <div>
+			                 <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=1">처음</a>
+			                 <c:if test="${pager.groupNo>1}">
+			                    <a class="btn btn-outline-success btn-sm" href="device_AS?pageNo=${pager.startPageNo-1}">이전</a>
+			                 </c:if>
+			                 
+			                 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+			                    <c:if test="${pager.pageNo != i}">
+			                       <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${i}">${i}</a>
+			                    </c:if>
+			                    <c:if test="${pager.pageNo == i}">
+			                       <a class="btn btn-secondary btn-sm" href="device_AS?pageNo=${i}">${i}</a>
+			                    </c:if>
+			                 </c:forEach>
+			                 
+			                 <c:if test="${pager.groupNo<pager.totalGroupNo}">
+			                    <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${pager.endPageNo+1}">다음</a>
+			                 </c:if>
+			                 <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${pager.totalPageNo}">맨끝</a>
+			              </div>
+			           </td>
+			        </tr>
+			     </table>
+	      
+	      </div>
+	      
+	      <div class = "mypage_device_AS_detail_slot">
+	      		<script>
+		       
+			        function ajaxAsDetail(receiptNo){
+						$.ajax({
+				                url : "device_AS/asDetail",
+				                data : {receiptNo},
+				                method: "get"
+				            }).done((data) => {
+				            	console.log("finish?");
+				            	console.log(data);
+								$('.mypage_device_AS_detail_slot').html(data);
+				            });
+			        }
+				</script>
+	      	</div>
+			      <div id = "mypage_device_AS_warning" style = "display : inline-block; width : 90%; margin-left : 5%; margin-bottom : 50px;">
+			         <div id = "warning_header" style = "display: flex; flex-direction: row; margin-left : 30px; margin-top : 30px;">
+			            <img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_warning_logo.png" style = "width : 20px; height : 20px;"/>
+			            <div style = "margin-left : 10px;"><b>주의사항</b></div>
+			         </div>
+			         <div id = "warning_content" style = "margin-left : 10px; margin-top : 10px; ">
+			            <ul>
+			               <li>진행사항 확인의 경우 전화번호와 접수번호로 조회하실 수 있습니다</li>
+			               <li>천재지변, 침수, 파손 및 자재가 없을 경우 서비스가 다소 지연될 수 있습니다.</li>
+			               <li>센터 방문시 엔지니어가 바뀔 수 있습니다.</li>
+			            </ul>
+			         </div>
+			      </div>
+			 </c:if>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
@@ -437,19 +448,12 @@ a:active {
  
  #mypage_device_AS_warning {
     width : 1400px;
-    height : 215px;
+    height : 170px;
     background-color :  #e8e8db;
     border-radius: 10px;
  }
  
   
- #mypage_device_AS_warning #warning_header {
-    display: flex;
-    flex-direction: row;
- 
- }
- 
- 
    
 
 </style>

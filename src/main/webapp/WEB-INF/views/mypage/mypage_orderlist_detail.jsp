@@ -34,15 +34,18 @@
 	     				<div class = "element_img_slot">
 	     					<img class = "element_img" src = "/springframework-mini-project/equipment/display?fileName=${orderDetail.product.pattachoname}" style = "height : 120px; width : 80px;"/>
 	     				</div>
-	     				<div class = "element_product_name">제품 이름 : ${orderDetail.product.productName} </div>
-	     				<div class = "element_model_name">모델 이름 : ${orderDetail.stringModelNumber} </div>
-	     				<div class = "element_price">
-		     				<div class = "element_price_money">금액 : ${orderDetail.product.price}</div>
-		     				<span class = "element_price_unit">원</span>  
-		     				<span class = "element_product_num">개수 :  ${orderDetail.modelPurchaseQuantity}</span>
+	     				<div style = "display: flex; flex-direction: row; width : 87%; margin-left : 13%;">
+		     				<div style = "display : inline-block; width : 66%; height : 150px;">
+			     				<div class = "element_product_name" style = "font-family: 'MinSans-Regular'; margin-top : 50px; font-size : 1.3rem;">제품 이름 : ${orderDetail.product.productName} </div>
+			     				<div class = "element_model_name" style = "margin-top : 50px; font-family: 'MinSans-Regular'; font-size : 1.3rem;">모델 이름 : ${orderDetail.stringModelNumber} </div>
+			     			</div>
+		     				<div style = "display : inline-block; width : 34%;  height : 150px;">
+			     				<div class = "element_price" style = "margin-top : 70px; margin-left : 60px; font-family: 'MinSans-Regular';">
+				     				<div class = "element_price_money">금액 : ${orderDetail.product.price} 원</div> 
+				     				<span class = "element_product_num">개수 :  ${orderDetail.modelPurchaseQuantity}</span>
+			     				</div>
+		     				</div>
 	     				</div>
-	     				
-	     				<div class = "element_delivery_status">배송중</div>
 	     			</div>	
 	     		</c:forEach> 
 	     		
@@ -51,24 +54,24 @@
 	     		<tr>
 		           <td colspan="4" class="text-center">
 		              <div style = "width : 400px; margin-left : 500px; margin-top : 30px;">
-		                 <a class="btn btn-outline-secondary btn-sm" href="/detail?pageNo=1">처음</a>
+		                 <a class="btn btn-outline-secondary btn-sm" href="mypage/mypage_orderlist/detail?pageNo=1">처음</a>
 		                 <c:if test="${pager.groupNo>1}">
-		                    <a class="btn btn-outline-success btn-sm" href="/detail?pageNo=${pager.startPageNo-1}">이전</a>
+		                    <a class="btn btn-outline-success btn-sm" href="mypage/mypage_orderlist/detail?pageNo=${pager.startPageNo-1}">이전</a>
 		                 </c:if>
 		                 
 		                 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 		                    <c:if test="${pager.pageNo != i}">
-		                       <a class="btn btn-outline-secondary btn-sm" href="/detail?pageNo=${i}">${i}</a>
+		                       <a class="btn btn-outline-secondary btn-sm" href="mypage/mypage_orderlist/detail?pageNo=${i}">${i}</a>
 		                    </c:if>
 		                    <c:if test="${pager.pageNo == i}">
-		                       <a class="btn btn-outline-success btn-sm" href="/detail?pageNo=${i}">${i}</a>
+		                       <a class="btn btn-secondary btn-sm" href="mypage/mypage_orderlist/detail?pageNo=${i}">${i}</a>
 		                    </c:if>
 		                 </c:forEach>
 		                 
 		                 <c:if test="${pager.groupNo<pager.totalGroupNo}">
-		                    <a class="btn btn-outline-secondary btn-sm" href="/detail?pageNo=${pager.endPageNo+1}">다음</a>
+		                    <a class="btn btn-outline-secondary btn-sm" href="mypage/mypage_orderlist/detail?pageNo=${pager.endPageNo+1}">다음</a>
 		                 </c:if>
-		                 <a class="btn btn-outline-secondary btn-sm" href="/detail?pageNo=${pager.totalPageNo}">맨끝</a>
+		                 <a class="btn btn-outline-secondary btn-sm" href="mypage/mypage_orderlist/detail?pageNo=${pager.totalPageNo}">맨끝</a>
 		              </div>
 		           </td>
 		        </tr>
@@ -105,67 +108,22 @@
      		position : absolute;
      		height : 120px;
      		width : 80px;
-     		border : 1px solid #ccc;
      		margin-top : 15px;
-     		margin-left : 50px;
+     		margin-left : 70px;
+     		box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
      }
      
        .product_list_element .element_product_name{
         	font-family: 'MinSans-Regular';
-     		position : absolute;
-     		height : 30px;
-     		width : 600px;
-     		margin-top : 15px;
-     		margin-left : 180px;
-     		
+        	display : inline-block;
+        	margin-left : 100px;
      }
      
      .product_list_element .element_model_name{
       		font-family: 'MinSans-Regular';
-     		position : absolute;
-     		height : 30px;
-     		width : 600px;
-     		margin-top : 55px;
-     		margin-left : 180px;
-     		
+      		display : inline-block;
+        	margin-left : 210px;
      }
      
-      .product_list_element .element_price{
-      		position : absolute;
-      		display: flex;
- 			flex-direction: row;
-     		position : absolute;
-     		height : 30px;
-     		width : 600px;
-     		margin-top : 95px;
-     		margin-left : 180px;
-     		
-     }
-     
-     
-      .product_list_element .element_price .element_price_money{
-      		font-family: 'MinSans-Regular';
-     		margin-left : 0px;
-     		
-     }
-     
-      .product_list_element .element_price .element_price_unit{
-      		font-family: 'MinSans-Light';
-     }
-     
-      .product_list_element .element_price .element_product_num{
-      		 font-family: 'MinSans-Regular';
-     		width : 200px;
-     		margin-left : 200px;
-     }
-     
-     .product_list_element .element_delivery_status{
-      		font-family: 'MinSans-Regular';
-      		position : absolute;
-     		height : 30px;
-     		width : 100px;
-     		margin-left : 900px;
-     		margin-top : 60px;
-     }
 
 </style>

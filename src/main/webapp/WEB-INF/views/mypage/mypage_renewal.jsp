@@ -14,9 +14,9 @@
 	 	
 	 	<div class = "mypage_review_popup_content">
 	 		<div class = "mypage_review_popup_product_info">
-	 			<img id = "mypage_review_popup_product_info_image" src = "" style = "width : 60px; height : 80px; margin-top : 11px; margin-left : 10px;" />
-	 			<div id = "mypage_review_popup_product_info_name"></div>
-	 		</div>
+			 			<img id = "mypage_review_popup_product_info_image" src = "" style = "width : 60px; height : 80px; margin-top : 11px; margin-left : 10px;" />
+			 			<div id = "mypage_review_popup_product_info_name"div>
+			 		</div>
 			 		
 			 		
 			 	<form id="mypageReviewForm" method="post" action="insertReview" enctype="multipart/form-data">
@@ -47,11 +47,10 @@
 						<div class="input-group" style = "display : none;">
 							<input type="text" id = "input_modelNumber" name = "modelNumber"  class="form-control" value = ""></input>
 						</div>
-						<div class="input-group" style = "display : none;">
+						<div class="input-group">
 							<input type="text" id = "input_Filename" name = "fileName"  class="form-control" value = ""></input>
 						</div>
-					<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg" style = "padding : auto; border : none; background-color : #ca5c0d;
-					margin-bottom : 20px; margin-top : 10px; margin-left :200px;">작성하기</button>
+					<button id = "mypage_review_popup_button" type="submit" class="btn btn-primary btn-lg" style = "margin-top : 40px; margin-left :200px;">작성하기</button>
 				</form>
 				
 	 		</div>
@@ -65,14 +64,13 @@
 <style>
 
 	.mypage_popup_wrap{
-		z-index : 1000;
 		position:fixed;
 		display : none;
 		background-color :  #fff;
- 		top: 200px; 
+ 		top: 100px; 
  		left: 400px;
  		width : 530px;
-		height : 730px;
+		height : 830px;
 		
 	}
 	
@@ -84,7 +82,7 @@
  	}
 
 	#mypage_review_mask{
-		z-index : 999;
+	
 		width:100%; 
 		height:100%; 
 		position:fixed; 
@@ -173,6 +171,16 @@
  	}
  	
  	
+	
+ 	
+ 	.mypage_review_popup #mypage_review_popup_button {
+ 		padding : auto;
+ 		border : none;
+ 		background-color : #ca5c0d;
+ 		margin-top : 50px;
+ 	
+ 	}
+
 </style>
 
 

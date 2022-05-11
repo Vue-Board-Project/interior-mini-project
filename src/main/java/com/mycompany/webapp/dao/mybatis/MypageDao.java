@@ -107,8 +107,10 @@ public interface MypageDao {
 	public InteriorProgressDto getProgressStep5(int conNum);
 
 	public List<InteriorProgressFileDto> getStep5Files(int conNum);
+	
+	public int getIno6(int conNum);
 
-	public int getProgressStep6(int conNum);
+	public ReferenceModelDto getProgressStep6(int ino6);
 
 	public List<PurchaseDetailDto> getOrderReview(Pager pager);
 
@@ -121,6 +123,8 @@ public interface MypageDao {
 	public List<PurchaseDetailDto> getOrderReviewFinList(String email);
 
 	public int getTotalOrderReviewList(String email);
+
+
 
 
 

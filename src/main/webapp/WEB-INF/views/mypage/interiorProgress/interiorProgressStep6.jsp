@@ -7,17 +7,20 @@
 		<div style="border-bottom: 2px solid darkgrey; width: 230px;" class="text-center mb-2">
 			<h3>치과 포트폴리오</h3>
 		</div>
-		<div class="d-flex" style=" margin:0 auto;">
-			<div class="m-3 text-center" style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); width: 350px; height: 300px;">
-				<a href="portfolioDentalDeatail3" style="text-decoration: none; color: black;">
-					<div>
-						<img src="${pageContext.request.contextPath}/resources/model_dental_images/photos/black_6.PNG" style="width: 350px; height: 200px;"/>
-					</div>
-					<div>
-						<b class="mt-3" style="line-height: 3;">블랙 포인트를 준 시크한 인테리어</b>
-						<small class="d-block" style="line-height: 1;">manok</small>
-					</div>
-				</a>
-			</div>
-	</div>
+		
+		<div class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px; display : flex;"> 
+			      <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${step6.intIno}" class="portfolio_dental_content_a">
+			      	  <div class="portfolio_dental_content_img_div">
+			          	  <img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${step6.stringImImgPath}"/>
+			      	  </div>
+			          <div style="position: relative; text-align : center;">
+			          	  <b class="mt-3 portfolio_dental_content_b" >${step6.stringISummary}</b>
+				          <div style="position:absolute; width: 70px; top: 10px; right: 10px;"><i class="far fa-eye"></i><span class="ml-1">${step6.intIHits}</span></div>
+				          <small class="d-block portfolio_dental_content_sm"><span># ${step6.stringIStyle}</span> <span># ${step6.stringAllColor}</span></small>
+			          </div>
+			      </a>
+		</div>
 </section>
+
+<link href="${pageContext.request.contextPath}/resources/css/portfolio_dental/cssPortfolioDental.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>

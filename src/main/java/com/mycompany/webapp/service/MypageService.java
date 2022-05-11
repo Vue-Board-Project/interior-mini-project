@@ -263,10 +263,16 @@ public class MypageService {
 		// TODO Auto-generated method stub
 		return mypageDao.getStep5Files(conNum);
 	}
+	
 
-	public int getProgressStep6(int conNum) {
+	public int getIno6(int conNum) {
 		// TODO Auto-generated method stub
-		return mypageDao.getProgressStep6(conNum);
+		return mypageDao.getIno6(conNum);
+	}
+
+	public ReferenceModelDto getProgressStep6(int ino6) {
+		// TODO Auto-generated method stub
+		return mypageDao.getProgressStep6(ino6);
 	}
 
 	public List<PurchaseDetailDto> getOrderReview(Pager pager) {
@@ -294,6 +300,8 @@ public class MypageService {
 		// TODO Auto-generated method stub
 		return mypageDao.getTotalOrderReviewList(email);
 	}
+
+
 
 	
 

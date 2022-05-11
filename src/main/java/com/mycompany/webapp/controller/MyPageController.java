@@ -297,8 +297,9 @@ public class MyPageController {
 		/* 마이페이지 내 인테리어 진행 내역 창(Step6) */
 		@RequestMapping("/step6")
 		public String ajaxInteriorProgressStep6(int conNum, Model model){
-
-			int step6 =  mypageService.getProgressStep6(conNum);
+			
+			int ino6 = mypageService.getIno6(conNum);
+			ReferenceModelDto step6 =  mypageService.getProgressStep6(ino6);
 			model.addAttribute("step6", step6);
 			
 			
@@ -405,7 +406,7 @@ public class MyPageController {
 		 int totalOrderNum = mypageService.getTotalOrderListNum(email);
 		
 		 
-		 Pager pager = new Pager(4, 4, totalOrderNum, pageNo, email);
+		 Pager pager = new Pager(8, 4, totalOrderNum, pageNo, email);
 		 model.addAttribute("pager", pager);
 		 
 		 List<PurchaseDto> orderList = mypageService.getPurchaseList(pager);
@@ -489,10 +490,10 @@ public class MyPageController {
 		String email = authentication.getName();
 		
 		int totalReviewFin = mypageService.getTotalReviewFin(email);
-		Pager pager = new Pager(3, 4, totalReviewFin, pageNo, email);
-	    model.addAttribute("pager", pager);
+		Pager pager1 = new Pager(3, 4, totalReviewFin, pageNo, email);
+	    model.addAttribute("pager1", pager1);
 		
-	    List<PurchaseDetailDto> reviewFin = mypageService.getOrderReviewFin(pager);
+	    List<PurchaseDetailDto> reviewFin = mypageService.getOrderReviewFin(pager1);
 		model.addAttribute("reviewFin", reviewFin);
 		return "mypage/mypage_review_list";
 	}

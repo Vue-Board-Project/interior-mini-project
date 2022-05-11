@@ -40,10 +40,15 @@
 		         	<div class = "popup_info_visit_date_title">시공일자</div>
 		            <div class = "popup_info_visit_date_content">${mainConList.constructionDate}</div>
 		         </div> 
-		         <button type="button" class="btn" id = "interior_detail_btn"
-		          style = "margin-left : 30px; font-family: 'MinSans-Bold';"
-		         onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress?consultNo=${mainConList.consultNo}'">진행 상세 보기</button>
+		          <c:if test="${interiorChk == 1}">
+			           <button type="button" class="btn" id = "interior_detail_btn"
+			          style = "font-family: 'MinSans-Bold'; margin-left: 115px;"
+			         onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress?consultNo=${mainConList.consultNo}'">진행 상세 보기</button>
+		          </c:if>
 		         <c:if test="${interiorChk >= 2}">
+		         <button type="button" class="btn" id = "interior_detail_btn"
+		          style = "margin-left : 55px; font-family: 'MinSans-Bold';"
+		         onclick="location.href='/springframework-mini-project/mypage/mypage_interior_progress?consultNo=${mainConList.consultNo}'">진행 상세 보기</button>
 		         	<button type="button" class="btn btn-outline-secondary"  
 		         	style = "font-family: 'MinSans-Bold';"
 		         	onclick="location.href='/springframework-mini-project/mypage/mypage_interior_list' ">이전 내역 보기</button>
@@ -59,17 +64,17 @@
  <style>
  	 /*팝업 선택시 회색 레이어 */
     #mypage_counseling_mask02{
-    	 z-index: 99;
+    	 z-index: 999;
     }
     
     .mypage_interior_popup_wrap {
-    	z-index: 100; 
+    	z-index: 1000; 
     }
  
  	.mypage_interior_popup_wrap {
  		background:#faf9f6;
- 		height : 500px;
- 		width : 350px;
+ 		height : 550px;
+ 		width : 400px;
  		position:fixed;
  		display : none;
  		align-item : center;
@@ -110,7 +115,7 @@
  
  /*각 영역 분할*/	
  .personal_info #mypage_counsel_popup_infomations .popup_info_name{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -124,12 +129,12 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_name .popup_info_name_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
   .personal_info #mypage_counsel_popup_infomations .popup_info_phone_num{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -143,7 +148,7 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_phone_num .popup_info_phone_num_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
@@ -152,7 +157,7 @@
  
  
   .personal_info #mypage_counsel_popup_infomations .popup_info_space_type{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -166,14 +171,14 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_space_type .popup_info_space_type_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
  
  
    .personal_info #mypage_counsel_popup_infomations .popup_info_width{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -187,13 +192,13 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_width .popup_info_width_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_request{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -207,14 +212,14 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_request .popup_info_request_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
  
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_date{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -228,13 +233,13 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_date .popup_info_date_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_budget{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -248,13 +253,13 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_budget .popup_info_budget_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
  
   .personal_info #mypage_counsel_popup_infomations .popup_info_spot{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -268,13 +273,13 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_spot .popup_info_spot_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  
 
     .personal_info #mypage_counsel_popup_infomations .popup_info_visit_date{
- 	width : 350px;
+ 	width : 400px;
  	height : 50px;
  	display: flex;
  	flex-direction: row;
@@ -288,7 +293,7 @@
  
  .personal_info #mypage_counsel_popup_infomations .popup_info_visit_date .popup_info_visit_date_content{
  	font-family: 'MinSans-Regular';
- 	width : 250px;
+ 	width : 300px;
  	height : 50px;
  }
  

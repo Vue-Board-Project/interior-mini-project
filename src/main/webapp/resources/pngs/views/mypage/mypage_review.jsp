@@ -17,7 +17,7 @@
 		</div>
 		<div class= "counseilng_content" style = "display : inline-block; width : 85%; height : 1300px;  background-color : #faf9f6;">
 			<div style = "display :inline-block; width : 100%; height : 300px;">
-				<div style = "width : 90%; height : 160px; margin : auto;">
+				<div style = "width : 90%; height : 160px; border-bottom : 1px solid #ccc; margin : auto;">
 					<div style = "font-family: 'MinSans-Bold'; font-size : 3rem; margin-top : 140px; margin-left : 2%;">
 						<span class ="pb-1" style ="border-bottom : 5px solid #ca5c0d;">리뷰 관리</span>
 					</div>
@@ -39,32 +39,26 @@
 						   <div id="mypage_review_tab_available" class="tabmenu_content ">
 						      <!-- <div id = "mypage_review_tab_available_null">작성 가능한 후기가 없습니다.</div> -->
 						     
-				     <c:if test = "${empty orderReview}">
-				     	<%@ include file="/WEB-INF/views/mypage/mypage_review_no_data.jsp" %>
-				     </c:if>
-				     
-				     <c:if test = "${!empty orderReview}">
-						      <c:forEach var="orderReview" items="${orderReview}"> 
-						      <div class = "mypage_review_before_element" style = "position : relative; height : 250px; border : 1px solid #ccc;">
-							      	<div class = "image_slot" style = "position : absolute; width : 200px; height : 200px; margin-left : 50px; margin-top : 25px; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);">
+						     <c:if test = "${orderReview eq null}">
+						     	<span>작성할 리뷰가 없습니다.</span>
+						     </c:if>
+						      <c:forEach var="orderReview" items="${orderReview}">
+							      <div class = "mypage_review_before_element">
+							      	<div class = "image_slot">
 							      		<img class = "mypage_review_product_img" src = "/springframework-mini-project/equipment/display?fileName=${orderReview.stringPatchoName}"></img>
 							      	</div>
-							      	<div style = "position : absolute; margin-left : 350px; ">
-							      		<div style = "margin-top : 30px;  font-size : 1.7rem; font-family: 'MinSans-Bold';">구매번호 : ${orderReview.intPurchaseNumber}</div>
-								      	<div class = "mypage_review_product_title" style = "margin-top : 20px; font-family: 'MinSans-Medium';">제품명 : ${orderReview.stringProductName}</div>
-								      	<div class = "mypage_review_model_name" style = "margin-top : 10px; font-family: 'MinSans-Medium';">모델명 : ${orderReview.stringModelNumber}</div>
-								      	<div class = "mypage_review_product_number" style = "margin-top : 10px; font-family: 'MinSans-Medium';">갯수 : ${orderReview.modelPurchaseQuantity} 개</div>
-								      	<div class = "mypage_review_product_date" style = "margin-top : 10px; font-family: 'MinSans-Medium';"><fmt:formatDate value="${orderReview.datePurchaseDate}" pattern="yyyy-MM-dd"/></div>
-								      	<div class = "mypage_review_product_button">
-								      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button" 
-								      			style = "position : absolute; background-color : #ca5c0d; border : none;  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
-								      			 width : 120px; height : 40px; top : 0; margin-left : 900px; margin-top : 190px;" 
-									      		onclick = "reviewButton(${orderReview.intPurchaseNumber}, '${orderReview.stringModelNumber}', '${orderReview.stringProductName}', '${orderReview.stringPatchoName}')">
-									      		후기 쓰기
-								      		</button>
-								      </div> 
+							      	<div class = "mypage_review_product_title">제품명 : ${orderReview.stringProductName}</div>
+							      	<div class = "mypage_review_model_name">모델명 : ${orderReview.stringModelNumber}</div>
+							      	<div class = "mypage_review_product_number">갯수 : ${orderReview.modelPurchaseQuantity} 개</div>
+							      	<div class = "mypage_review_product_date"><fmt:formatDate value="${orderReview.datePurchaseDate}" pattern="yyyy-MM-dd"/></div>
+							      	<div class = "mypage_review_product_button">  
+							      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button" 
+							      		onClick = "reviewButton(${orderReview.intPurchaseNumber}, '${orderReview.stringModelNumber}', '${orderReview.stringProductName}', '${orderReview.stringPatchoName}')">
+							      		후기 쓰기
+							      		</button>
+							      	
+							      	</div>
 							      </div>
-							   </div>
 						      </c:forEach>
   
 			  			  </div>
@@ -72,7 +66,7 @@
 			    		<table id = "mp_review_pager">
 							 <tr>
 						           <td colspan="4" class="text-center">
-						              <div style = "width : 400px; margin-left : 520px; margin-top : 30px;">
+						              <div style = "width : 400px; margin-left : 450px; margin-top : 30px;">
 						                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=1">처음</a>
 						                 <c:if test="${pager.groupNo>1}">
 						                    <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${pager.startPageNo-1}">이전</a>
@@ -83,7 +77,7 @@
 						                       <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
 						                    </c:if>
 						                    <c:if test="${pager.pageNo == i}">
-						                       <a class="btn btn-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+						                       <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
 						                    </c:if>
 						                 </c:forEach>
 						                 
@@ -95,7 +89,6 @@
 						           </td>
 						        </tr>
 						     </table>
-				</c:if>
 
 			    	<div id="mypage_review_tab_finished" class="tabmenu_content">
 			    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
@@ -164,17 +157,28 @@
      }
      
      .mypage_review_contents_menu .tabmenu_content{
-    	/* border : 1px solid #e8e8db; */
-    	background-color : #fff;
-     	color:#272723;
-     	/* height : 100%; */
-     	overflow:hidden;
-		height:auto;
+     		border : 1px solid #e8e8db;
+     		background-color : #fff;
+      		color:#272723;
+      		/* height : 100%; */
+      		overflow:hidden;
+			height:auto;
      }
      
-   
+     .mypage_review_before_element{
+     	width : 1200px;
+     	height : 250px;
+     	display: flex;
+     	flex-direction: row; 
+     }
      
-    
+    .mypage_review_before_element .image_slot {
+    	width : 200px;
+    	height : 200px;
+    	border : 1px solid #ccc;
+    	margin-left : 50px;
+    	margin-top : 25px;
+    }
     
     .mypage_review_before_element img {
     	width : 200px;
@@ -182,6 +186,60 @@
     
     }
     
+     .mypage_review_before_element .mypage_review_product_title {
+     	font-family: 'MinSans-Bold';
+     	font-size : 1.5rem;
+     	width : 500px;
+     	height : 2rem;
+     	margin-left : 80px;
+     	margin-top : 60px;
+     	
+     }
+    
+    .mypage_review_before_element .mypage_review_model_name{
+    	font-family: 'MinSans-Medium';
+    	position : absolute;
+    	font-size : 1rem;
+    	width : 300px;
+    	height : 50px;
+    	margin-top : 100px;
+    	margin-left : 330px;
+    }
+    
+    
+    .mypage_review_before_element .mypage_review_product_number{
+    	font-family: 'MinSans-Medium';
+    	position : absolute;
+    	font-size : 1rem;
+    	width : 100px;
+    	height : 50px;
+    	margin-top : 150px;
+    	margin-left : 330px;
+    }
+    
+    
+     .mypage_review_before_element .mypage_review_product_date {
+     	font-family: 'MinSans-Medium';
+     	position : absolute;
+     	font-size : 1rem;
+     	width : 200px;
+     	height : 100px;
+     	text-align : left;
+     	margin-top : 200px;
+     	margin-left : 900px;
+     	
+     
+     }
+     .mypage_review_before_element .mypage_review_product_button {
+     	position : absolte;
+     	width : 250px;
+     	height : 110px;
+     	float : right;
+     	margin-top : 85px;
+     	margin-left : 500px;
+     
+     }
+     
   
      .mypage_review_contents_menu #mypage_review_tab_finished{
       		display:none;

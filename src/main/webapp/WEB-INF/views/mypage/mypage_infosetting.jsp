@@ -53,8 +53,9 @@
 								    ${error}
 								  </div>			
 							  </c:if>
-					              <!-- content-->
-					              <form method="post" action="mypage_infosetting" id="content" style="position: absolute; left: 55%; transform: translate(-50%); width: 700px;">
+					              <!-- content--><!-- 옆에 left 줬엇음 -->
+					              <div style = "display : inline-block; width : 100%;">
+					              <form method="post" action="mypage_infosetting" id="content" style="display : inline-block; position : absolute; transform: translateX(50%); left : 20%; width: 700px;">
 					  
 					                   <!-- EMAIL -->
 					                   <div>
@@ -132,7 +133,7 @@
 						                  </small>
 					                  </div>
 					              </form>
-					              
+					              </div>
 					          </div> 
 					      </div>
 					</div>

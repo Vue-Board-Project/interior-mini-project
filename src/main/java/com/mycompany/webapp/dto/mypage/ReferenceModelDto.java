@@ -13,4 +13,7 @@ public class ReferenceModelDto {
 	private int intIno;
 	private String stringISummary;
 	private String stringImImgPath;
+	private String stringIStyle;
+	private String stringAllColor;
+	private int intIHits;
 }
