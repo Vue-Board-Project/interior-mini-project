@@ -215,7 +215,7 @@ text-decoration: none; color: black;
 				   	    	<div class="ml-3 mb-3" style="white-space: pre-line;">치과 종합 인테리어,
 				   	    	 인테리어에 영혼을 불어넣다.</div>
 				   	    	<p class="ml-3">국내 최초 2년 a/s 보장</p>
-			   	    	</div>
+			   	    	</div> 
 			   	    	<img style="height: 270px; width: 350px; position: absolute; right: 0; bottom: 0; border-top-left-radius: 15px;" src="${pageContext.request.contextPath}/resources/illustration/art_164915725959_5bbc07.jpg">
 			   	    	<a class="main_home_ads_a" href="${pageContext.request.contextPath}/goPortfolioDental">바로가기<span style="margin-left: 100px;"><i class="fa-solid fa-arrow-right-to-bracket"></i></span></a>
 			   	    </div>
@@ -278,7 +278,7 @@ text-decoration: none; color: black;
 			   		 <ul id="portfolio_dental_content_wrap" class="d-flex text-center" style="padding-left:0px; flex-wrap: wrap; width:800px; z-index: 60;">
 			            <c:forEach items="${homeProductList}" var="productList" begin="0" end="3">
 			            	<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px; box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);"> 
-			                    <a href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${chair.modelNumber}" class="portfolio_dental_content_a">
+			                    <a href="${pageContext.request.contextPath}/equipment/equipment_detail?modelNumber=${productList.modelNumber}" class="portfolio_dental_content_a">
 			                        <img class="portfolio_dental_content_img" src="/springframework-mini-project/mainHome/productDisplay?fileName=${productList.pattachoname}"/>
 			                        <b class="mt-3 ml-5 mr-5 portfolio_dental_content_b">${productList.productName}</b>
 			                        <small class="d-block portfolio_dental_content_sm">subin</small>
