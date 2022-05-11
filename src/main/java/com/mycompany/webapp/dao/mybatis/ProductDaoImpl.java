@@ -7,9 +7,8 @@ import javax.annotation.Resource;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 
 @Mapper
@@ -91,7 +90,10 @@ public class ProductDaoImpl implements ProductDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Override
+	public List<ProductDetailDto> detailProductPhoto(String modelNumber){
+		return sqlSession.selectList("product.detailProductPhoto");
+	}
 	
 	
 }

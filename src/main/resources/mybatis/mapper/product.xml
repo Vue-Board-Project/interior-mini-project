@@ -80,4 +80,11 @@
 		from PRODUCT
 		where MODEL_NUMBER=#{modelNumber}
 	</select>
+	<!-- 상세보기에서 제품 사진 가져오기 -->
+	<select id="detailProductPhoto" parameterType="string" resultType="detailproduct">
+		select PRODUCT_FILENAME as productFilename
+		from product_detail
+		where PRODUCT_MODEL_NUMBER=#{modelNumber}
+		order by IMAGE_ORDER	
+	</select>
 </mapper>

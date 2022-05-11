@@ -2,7 +2,6 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +21,11 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
 
@@ -49,6 +46,10 @@ public class EquipmentController {
 	@RequestMapping("/equipment/equipment_detail_consult")
 	public String equipment_detail_consult(String modelNumber, Model model) {
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
+		List<ProductDetailDto> detailPhoto=productService.detailProductPhoto(modelNumber);
+		log.fatal("1111 : " + detailPhoto);
+		log.fatal(modelNumber);
+		model.addAttribute("detailPhoto", detailPhoto);
 		model.addAttribute("detailProduct", detailProduct);
 		return "/equipment/equipment_detail_consult";// view 이름만 전달
 	}

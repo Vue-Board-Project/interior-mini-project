@@ -6,10 +6,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.mycompany.webapp.dao.mybatis.ProductDao;
+import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 
 import lombok.extern.log4j.Log4j2;
@@ -79,5 +78,12 @@ public class ProductService {
 	public List<ProductDto> selectpopularlist() {
 		return productDao.selectpopularlist();
 	}
+	
+	//상품 상세 이미지 불러오기
+	public List<ProductDetailDto> detailProductPhoto(String modelNumber){
+		log.fatal("제품 상세 이미지 불러오기....");
+		return productDao.detailProductPhoto(modelNumber);
+	}
+	
 	
 }

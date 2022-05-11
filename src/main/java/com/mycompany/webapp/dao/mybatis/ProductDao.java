@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 
 @Mapper
@@ -26,7 +27,10 @@ public interface ProductDao {
 	
 	//상세보기
 	public ProductDto selectDetailProduct(String modelNumber);
-
+	
+	//상세보기 이미지 가져옵니당
+	public List<ProductDetailDto> detailProductPhoto(String stringmodelNumber);
+	
 	//카트에 담을 장비 선택
 	public ProductDto selectProduct(String modelNumber);
 	public List<ProductDto> selectreviewslist();
