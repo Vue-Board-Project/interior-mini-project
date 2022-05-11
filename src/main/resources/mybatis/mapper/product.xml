@@ -30,7 +30,7 @@
 	</select>
 	<!--베스트 상품 3순위-->
 	<select id="selectbestlist" resultType="product"> <!-- PATTACHONAME, PATTACHSNAME, PATTACHTYPE -->
-		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category, PATTACHONAME
+		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category, PATTACHONAME, price
 		from product
 		order by PRODUCT_SALES_VOLUME desc
 	</select>
