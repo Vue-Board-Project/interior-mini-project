@@ -421,14 +421,7 @@ public class MyPageController {
 	public String mypageOrderListDetail(int purchaseNumber,
 			@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		
-		
-		 int totalOrderDetailNum = mypageService.getTotalOrderDetailNum(purchaseNumber);
-		
-		
-		 Pager pager = new Pager(4, 4, totalOrderDetailNum, pageNo, purchaseNumber);
-		 model.addAttribute("pager", pager);
-		 
-		 List<PurchaseDetailDto> orderDetail = mypageService.getOrderDetailList(pager);
+		 List<PurchaseDetailDto> orderDetail = mypageService.getOrderDetailList(purchaseNumber);
 		 model.addAttribute("orderDetail", orderDetail);
 
 		return "/mypage/mypage_orderlist_detail";

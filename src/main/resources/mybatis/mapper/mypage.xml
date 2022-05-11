@@ -262,10 +262,10 @@
 	
 	
 	<select id = "getProgressStep6" parameterType="int" resultType="mPreference">
-		SELECT r.ino, ISUMMARY as stringISummary, im_img_path as stringImImgPath, ISTYLE as stringIStyle,
-			ALL_COLOR as  stringAllColor, ihits as intIHits
-		FROM REFERENCE_MODEL r, interior i
-		where r.ino = i.ino and r.ino =  #{ino6}
+		SELECT i.ino as intIno, ISUMMARY as stringISummary, im_img_path as stringImImgPath, ISTYLE as stringIStyle,
+			ALL_COLOR as stringAllColor, ihits as intIHits
+		FROM interior i
+		where i.ino = #{ino6}
 	</select>
 	
 	
@@ -350,27 +350,14 @@
 	</resultMap>
 	
 	
-	<select id = "getTotalOrderDetailNum" parameterType="int" resultType="int">
-		 select count(*) 
-			from purchase_detail prd, product p
-		WHERE prd.MODEL_NUMBER = p.MODEL_NUMBER and PURCHASE_NUMBER = #{purchaseNumber}
-	</select>
-	
-	<select id="getOrderDetailList" parameterType="pager" resultMap="selecePurDetailWithProduct">
-		<![CDATA[  
-		SELECT rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
-		    from(
-		        SELECT ROWNUM as rnum, PURCHASE_NUMBER, MODEL_NUMBER, MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
-		        FROM (
-		               select 
-		               		PURCHASE_NUMBER, pd.MODEL_NUMBER,
-					     	MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
-					   from purchase_detail pd, product p
-					   where pd.MODEL_NUMBER = p.MODEL_NUMBER and PURCHASE_NUMBER = #{intPurchaseNumber}
-					   ORDER BY PURCHASE_NUMBER DESC 
-		         )  WHERE ROWNUM <= #{endRowNo} 
-		)WHERE rnum >=  #{startRowNo}
-		]]> 
+	<select id="getOrderDetailList" parameterType="int" resultMap="selecePurDetailWithProduct">
+       select 
+            PURCHASE_NUMBER, pd.MODEL_NUMBER,
+	     	MODEL_PURCHASE_QUANTITY, PRODUCT_NAME, price, PATTACHONAME
+	   from purchase_detail pd, product p
+	   where pd.MODEL_NUMBER = p.MODEL_NUMBER and PURCHASE_NUMBER = #{purchaseNumber}
+	   ORDER BY PURCHASE_NUMBER DESC 
+		         
 	</select>
 	
 	

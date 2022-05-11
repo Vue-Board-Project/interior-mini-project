@@ -82,16 +82,11 @@ public class MypageService {
 		return mypageDao.getPurchaseList(pager);
 	}
 
-	public int getTotalOrderDetailNum(int purchaseNumber) {
-		return mypageDao.getTotalOrderDetailNum(purchaseNumber);
-		
-	}
 
 	
-	 public List<PurchaseDetailDto> getOrderDetailList(Pager pager) { 
-	
-		 log.info("serviceIntPurchaseNumber : " + pager.getIntPurchaseNumber());
-		 return mypageDao.getOrderDetailList(pager);
+	 public List<PurchaseDetailDto> getOrderDetailList(int purchaseNumber) { 
+
+		 return mypageDao.getOrderDetailList(purchaseNumber);
 	 }
 
 	public int getTotalReviewBeforeNum(String email) {

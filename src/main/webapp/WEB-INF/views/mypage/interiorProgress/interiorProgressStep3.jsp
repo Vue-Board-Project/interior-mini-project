@@ -53,10 +53,11 @@
 			      </a>
 			  </li>
 			</c:forEach>
-         </ul>
-			</div>
+         </ul>		
+         </div>
 		</div>
 	</section>
+	
 	
 <link href="${pageContext.request.contextPath}/resources/css/portfolio_dental/cssPortfolioDental.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
