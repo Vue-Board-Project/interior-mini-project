@@ -69,18 +69,13 @@
         }
 
         #paymentpage_content_right{
-            float: right;
-            width: 30%;
-            background-color: #f3f0ef;
-            border-radius: 10px;
-            padding: 40px;
-            margin-top: 50px;
+
         }
         #paymentpage_content_right .btn{
             background-color: #ca5c0d;
             color: #ffffff;
-            width: 200px;
-            margin-left: 50px;
+            width: 100px;
+            margin-left: 30px;
             margin-top: 20px;
         }
         
@@ -138,6 +133,8 @@
 			padding: 20px 20px 0px 20px;
         }
         
+
+        /*팝업*/
         .purchase_el{
         	 width: 230px;
             height: 150px;

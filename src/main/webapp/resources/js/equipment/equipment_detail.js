@@ -225,3 +225,18 @@ function showReview(){
       detail_style.style.backgroundColor="#ccc";
   }
 }
+
+
+function showReviewDetail(){
+  var count=$('.review_title_show').length;
+  console.log(count);
+  //for(){
+
+  //}
+  if($('.review_content_hide').css('display')=='none'){
+    $('.review_content_hide').show();
+  }else{
+    $('.review_content_hide').hide();
+  }
+  
+}

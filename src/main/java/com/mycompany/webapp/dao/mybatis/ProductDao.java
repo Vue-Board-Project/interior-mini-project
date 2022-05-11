@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 
@@ -40,5 +41,8 @@ public interface ProductDao {
 	public List<ProductDto> selectviewslist(String category);
 	public List<ProductDto> selectpopularlist(String category);
 	public List<ProductDto> selectnewlist(String category);
+	
+	//상세 창에서 리뷰 보기
+	public List<ReviewDto> selectReview(String modelNumber);
 
 }

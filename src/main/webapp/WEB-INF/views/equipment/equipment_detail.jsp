@@ -133,8 +133,19 @@
                         </if>
                     </c:forEach>
                 </div>
+                <!-- 리뷰 입니다요 -->
                 <div id="product_detail_review">
-                    여기에는 리뷰가 들어가야 합니다요!
+                    <div class="review_ul">
+                        <h3>Review</h3>
+                        
+                        <ul>
+                            <li style="">제목<span>날짜</span></li>
+                            <c:forEach items="${reviewList}" var="review">
+                                <li style="padding-top: 10px; padding-bottom:10px;">${review.reviewTitle}<span><fmt:formatDate value="${review.reviewWriteDate}" pattern="yyyy.MM.dd"/></span></li>
+                            </c:forEach>
+                        </ul>
+ 
+                    </div>
                 </div>
             </div>
         </div>    

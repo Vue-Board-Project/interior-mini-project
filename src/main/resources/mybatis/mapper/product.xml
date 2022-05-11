@@ -136,4 +136,19 @@
 	<update id="updatehits" parameterType="string">
 		update product set product_hits=product_hits+1 where model_number=#{modelNumber}
 	</update>
+	
+	<!-- 상세 창에서 리뷰 불러오기 -->
+	<select id="selectReview" parameterType="string" resultType="mReview">
+		select 
+			EMAIL as stringemail
+			, MODEL_NUMBER as stringModelNumber
+			, REVIEW_TITLE as reviewTitle
+			, REVIEW_CONTENT as reviewContent
+			, REVIEW_WRITE_DATE as reviewWriteDate
+			, FILENAME as fileName
+		from review
+		where model_number=#{modelNumber}
+		order by purchase_Number desc
+	</select>
+
 </mapper>

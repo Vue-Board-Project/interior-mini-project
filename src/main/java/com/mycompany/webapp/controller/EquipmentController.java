@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -19,15 +18,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mycompany.webapp.dto.product.ProductDetailDto;
+import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.ProductCategoryDto;
+import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
 
@@ -50,8 +49,6 @@ public class EquipmentController {
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		List<ProductDetailDto> detailPhoto=productService.detailProductPhoto(modelNumber);
 		productService.updatehits(modelNumber);
-		log.fatal("1111 : " + detailPhoto);
-		log.fatal(modelNumber);
 		model.addAttribute("detailPhoto", detailPhoto);
 		model.addAttribute("detailProduct", detailProduct);
 		return "/equipment/equipment_detail_consult";// view 이름만 전달
@@ -64,8 +61,11 @@ public class EquipmentController {
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		productService.updatehits(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
-		log.info(modelNumber);
-		
+		log.fatal(modelNumber);
+		//리뷰 시작
+		List<ReviewDto> reviewList=productService.selectReview(modelNumber);
+		log.fatal(reviewList);
+		model.addAttribute("reviewList", reviewList);
 		return "/equipment/equipment_detail";
 	}
 	
