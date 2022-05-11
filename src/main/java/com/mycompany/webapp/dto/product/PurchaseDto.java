@@ -24,5 +24,5 @@ public class PurchaseDto{
 	private String cardnumber;
 	private String carddate;
 	
-	private List<PurchaseDto> purchaseInfo;
+	private List<PurchaseDetailDto> purchaseInfo;
 }

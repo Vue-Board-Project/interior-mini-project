@@ -104,43 +104,15 @@ public class PurchaseService {
 		
 	}
 	
-	/*@Transactional
-	public PurchaseResult PurchaseRequest(List<ProductDto> cartList, PurchaseDto purchase,
-			Authentication authentication) {
-		//유저 정보
-		String email=authentication.getName();
-		UsersDto user=usersDao.selectByEmail(email);
-		
-		//구매할 제품 정보
-		List<ProductDto> productList=new ArrayList<ProductDto>();
-		if(cartList.size()!=0) {
-			for(ProductDto dto:cartList) {
-				ProductDto productDto=productDao.selectDetailProduct(dto.getModelNumber());
-				productDto.setCartQua(dto.getCartQua());
-				productList.add(productDto);
-			}	
-		}
-		
-		
-		//purchaseDetail db insesrt
-		int purchseDetialInsert=0;
-		List<PurchaseDetailDto> dpurList=new ArrayList<PurchaseDetailDto>();
-		purchseDetialInsert=purchaseDao.insertPurchaseDetailInfo(null);
-		for(PurchaseDetailDto puddto:dpurList) {
-			PurchaseDetailDto purchaseDetailDto=null;
-			purchaseDetailDto.setPurchaseNumber(null);
-			purchaseDetailDto.setModelNumber(null);
-			purchaseDetailDto.setModelNumber(null);
-			purchaseDetailDto.setDetailPrice(null);
-		}
-		//product db update(재고 빼기, 판매량 증가 시키기)
-		int updateProduct=purchaseDao.updateProductInfo(null);
-		for(ProductDto prdto:cartList) {
-			//prdto.set
-		}
-		if(purchseInsert==0 || purchseDetialInsert==0||updateProduct==0) {
-			return PurchaseResult.FAIL;
-		}
-		return PurchaseResult.SUCCESS;
-	}*/
+	public List<PurchaseDto> selectPurchaseInfo(String stringEmail) {
+		return purchaseDao.selectPurchaseInfo(stringEmail);
+	}
+	public List<PurchaseDetailDto> selectpurchaseDetailInfo(int purchaseNumber) {
+		// TODO Auto-generated method stub
+		return purchaseDao.selectpurchaseDetailInfo(purchaseNumber);
+	}
+	public ProductDto selectProductInfo(String modelNumber) {
+		return purchaseDao.selectProductInfo(modelNumber);
+	}
+
 }

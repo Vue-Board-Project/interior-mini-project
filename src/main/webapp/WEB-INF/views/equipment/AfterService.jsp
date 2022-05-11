@@ -15,72 +15,94 @@
                 <div>제품 선택<a id="red_star"> *</a> <span class="as_font_color_ccc">아래 제품을 선택해주세요</span></div>
                 <hr/>
                 <div>모델명 
-                	<c:if test="">
-                		힝......
-                	</c:if>
                 	<input id="as_model_input" type="text" name="modelNum" value="모델명을 입력해주세요." onFocus="clearText(this)"/>
                     <a id="howToVerifyModel" style="border: 1px solid black; border-radius: 15px;" class="btn btn-light">모델명 확인 방법
                         <span>모델명은 제품에 부착되어 있는 에너지 효율 등급표 스티커에서 확인할 수 있습니다.</span></a>
                 </div>
+                <div id="myModelCheck" style="margin-top: 50px;">
+                    <label>보유 제품 확인하기</label>
+                    <c:choose>
+                        <c:when test="${empty modelList}">
+                            <option>선택하실 수 있는 제품이 없습니다.</option>
+                        </c:when>
+                        <c:otherwise>
+                            <select name="myModelSelect">
+                                <option>서비스를 원하는 제품을 선택해주세요</option>
+                                <c:forEach items="${modelList}" var="model">
+                                    <option onclick="selectModelInfo('${model.modelNumber}', '${productDto.productName}', '${purchaseDto.inputPurchaseDate}')" 
+                                    id="selectModel">${model.stringModelNumber}</option>
+                                </c:forEach>
+                            </select>
+                        </c:otherwise>
+                    </c:choose>		
+            	</div>
+                <div id="selectModelInfo">
+                   <img style="width: 300px;"src="/springframework-mini-project/equipment/display?fileName=${productDto.pattachoname}"/>
+                    <div>${productDto.productName}</div>
+                </div>	
+
                 <ul class="as_title1_content2" style="margin-top: 20px;">
                     <li>모델명(코드)를 입력하시면 정확한 수리에 도움이 됩니다.(3자리 이상 입력)</li>
                     <li>모델명(코드)가 정확하지 않은 경우 제품을 선택 후 예약을 진행해 주세요.</li>
                 </ul>
-                <div id="as_btn_list" class="d-flex text-center" style="min-height:500px">
-                    <div id="categoryList">
-                        <div id="as_choice_chair" class="as_btn_list_el">
-                            <input type="radio" name="category" class="as_btn_list_text_el_a" id="inputaschair">
-                                <label for="inputaschair">
-                                    <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/dentist-chair.png">
-                                    <p class="as_btn_list_text_el">유니트체어</p>
-                                </label>
-                            
-                        </div>  
-                        <div id="as_choice_largeCam" class="as_btn_list_el">
-                            <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputaslargeCam">
-                                <label for="inputaslargeCam">
-                                    <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/ct-scan-image.png">
-                                    <p class="as_btn_list_text_el">대형 영상 장비</p>
-                                </label>
-                            
-                        </div>  
-                        <div id="as_choice_smallCam" class="as_btn_list_el">
-                            <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputassmallCam">
-                                <label for="inputassmallCam">
-                                    <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/smallxray.png">
-                                    <p class="as_btn_list_text_el">소형 영상 장비</p>
-                                </label>
-                            
-                        </div>  
-                        <div id="as_choice_cleaning" class="as_btn_list_el">
-                            <input type="radio" name="category" class="as_btn_list_text_el_a" id="inputascleaning">
-                                <label for="inputascleaning">
-                                    <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/cleaning.png">
-                                    <p class="as_btn_list_text_el">멸균 및 세척기</p>
-                                </label>
-                            
-                        </div>  
-                        <div id="as_choice_otherequip" class="as_btn_list_el">
-                            <input type="radio"  name="category" class="as_btn_list_text_el_a" id="inputasotherequip">
-                                <label for="inputasotherequip">
-                                    <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/otherequip.png">
-                                    <p class="as_btn_list_text_el">기타 장비</p>
-                                </label>
-                            
-                        </div>  
+                <div id="as_btn_list" class="d-flex text-center" >
+                    <div>
+                        <div id="categoryList">
+                            <div id="as_choice_chair" class="as_btn_list_el">
+                                <input type="radio" name="category" class="as_btn_list_text_el_a" checked id="inputaschair">
+                                    <label for="inputaschair">
+                                        <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/dentist-chair.png">
+                                        <p class="as_btn_list_text_el">유니트체어</p>
+                                    </label>
+                                
+                            </div>  
+                            <div id="as_choice_largeCam" class="as_btn_list_el">
+                                <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputaslargeCam">
+                                    <label for="inputaslargeCam">
+                                        <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/ct-scan-image.png">
+                                        <p class="as_btn_list_text_el">대형 영상 장비</p>
+                                    </label>
+                                
+                            </div>  
+                            <div id="as_choice_smallCam" class="as_btn_list_el">
+                                <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputassmallCam">
+                                    <label for="inputassmallCam">
+                                        <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/smallxray.png">
+                                        <p class="as_btn_list_text_el">소형 영상 장비</p>
+                                    </label>
+                                
+                            </div>  
+                            <div id="as_choice_cleaning" class="as_btn_list_el">
+                                <input type="radio" name="category" class="as_btn_list_text_el_a" id="inputascleaning">
+                                    <label for="inputascleaning">
+                                        <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/cleaning.png">
+                                        <p class="as_btn_list_text_el">멸균 및 세척기</p>
+                                    </label>
+                                
+                            </div>  
+                            <div id="as_choice_otherequip" class="as_btn_list_el">
+                                <input type="radio"  name="category" class="as_btn_list_text_el_a" id="inputasotherequip">
+                                    <label for="inputasotherequip">
+                                        <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/otherequip.png">
+                                        <p class="as_btn_list_text_el">기타 장비</p>
+                                    </label>
+                                
+                            </div>  
+                        </div>
                     </div> 
+                    
                     <hr>
-                    <div id="simpleSymList" style="margin-top:50px">
-                        <p>상세 증상</p>
-                        <input id="sim_power" class="simpleSymEl" name="simpleSym" type="radio" checked value="전원이상"/><label for="sim_power">전원 이상</label>
-                       <input id="sim_noise" class="simpleSymEl" name="simpleSym" type="radio" value="소음발생"/><label for="sim_noise">소음 발생</label>
-                       <input id="sim_smell" class="simpleSymEl" name="simpleSym" type="radio" value="악취발생"/><label for="sim_smell">악취 발생</label>
-                       <input id="sim_strange" class="simpleSymEl" name="simpleSym" type="radio" value="작동이상"/><label for="sim_strange">작동 이상</label>
-                       <input id="sim_equ" class="simpleSymEl" name="simpleSym" type="radio" value="부품외관이상"/><label for="sim_equ">부품 외관 이상</label>
-                       <input id="sim_danger" class="simpleSymEl" name="simpleSym" type="radio" value="화재및스파크"/><label for="sim_danger">화재 및 스파크</label>
-                     </div>
+                    
                 </div>
-                
+                <div id="simpleSymList" class="d-flex" style="margin-top:50px; margin-bottom:50px">
+                    <p style="width: 163px;">증상 선택<span id="red_star">*</span></p>
+                    <input id="sim_power" class="simpleSymEl" name="simpleSym" type="radio" checked value="전원이상"/><label for="sim_power">전원 이상</label>
+                    <input id="sim_noise" class="simpleSymEl" name="simpleSym" type="radio" value="소음발생"/><label for="sim_noise">소음 발생</label>
+                    <input id="sim_smell" class="simpleSymEl" name="simpleSym" type="radio" value="악취발생"/><label for="sim_smell">악취 발생</label>
+                    <input id="sim_strange" class="simpleSymEl" name="simpleSym" type="radio" value="작동이상"/><label for="sim_strange">작동 이상</label>
+                    <input id="sim_equ" class="simpleSymEl" name="simpleSym" type="radio" value="부품외관이상"/><label for="sim_equ">부품 외관 이상</label>
+                    <input id="sim_danger" class="simpleSymEl" name="simpleSym" type="radio" value="화재및스파크"/><label for="sim_danger">화재 및 스파크</label>
+                </div>
                     <div id="as_detail" class="d-flex">
                         <p style="width: 183px;">상세 증상<span id="red_star">*</span></p>
                         <input id="as_detail_input" name="detailSym" type="text" placeholder="고장 증상 상세 내용만 입력해주세요." onFocus="clearText(this)"/>
@@ -123,49 +145,12 @@
                     <div id="checked_user_update_info">
                         <!--회원정보 수정 버튼 눌렀을 경우 출력될 정보-->
                         <div class="left">
-                            <div class="mb-3"><span style="margin-right: 135px;">성명</span><input type="text"/></div>
-                            <div class="mb-3"><span style="margin-right: 117px;">이메일</span><input type="text"/></div>
-                            <div class="mb-3"><span style="margin-right: 99px;">전화번호</span><input type="text"/></div>
-                            <div class="mb-3"><span style="margin-right: 40px;">전화번호 재확인</span><input type="text"/></div>
-                            <div class="mb-3">
-                                <span style="margin-right: 130px;">주소</span>
-                                <input class="checked_user_update_info_adr" id="member_post"  type="text" placeholder="우편번호" readonly onclick="findAddr()"/>
-                                <input class="checked_user_update_info_adr" id="member_addr" type="text" placeholder="도로명 주소" readonly/> <br>
-                                <input class="checked_user_update_info_adr mt-2" style="margin-left: 170px;" type="text" placeholder="상세 주소"/>
+                            <div style="margin-bottom: 100px; margin-top: 100px; margin-left: 100px; text-align: center; ">
+                                회원님의 정보에 변동사항이 있을 경우 마이페이지에서 변경해주세요!
+                                <a id="btn_goto_userinfo" style="background-color: #ca5c0d; color: white; margin-left: 20px; "class="btn btn-light" href="/springframework-mini-project/mypage/mypage_infosetting">마이페이지 바로가기</a>
                             </div>
-                            <script>
-                                function findAddr(){
-                                    new daum.Postcode({
-                                        oncomplete: function(data) {
-                                            
-                                            console.log(data);
-                                            
-                                            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-                                            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-                                            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                                            var roadAddr = data.roadAddress; // 도로명 주소 변수
-                                            var jibunAddr = data.jibunAddress; // 지번 주소 변수
-                                            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                                            document.getElementById('member_post').value = data.zonecode;
-                                            if(roadAddr !== ''){
-                                                document.getElementById("member_addr").value = roadAddr;
-                                            } 
-                                            else if(jibunAddr !== ''){
-                                                document.getElementById("member_addr").value = jibunAddr;
-                                            }
-                                        }
-                                    }).open();
-                                }
-                            </script>
+                            
                         </div>
-                        <!-- <div class="right">
-                            <p><input type="text"/></p>
-                            <p><input type="text"/></p>
-                            <p><input type="text"/></p>
-                            <p><input type="text"/></p>
-                            <p><input type="text"/>daum 주소 설정 api 추가해보자고~</p>
-                        </div> -->
-                        
                     </div>
                     <div id="before_verify_as">
                         <ul>
@@ -180,18 +165,9 @@
                     </div>
                 </div>
                 <hr/>
-                <p><a id="btn_select_reservation_date" class="btn btn-light">예약 가능일 조회</a></p> 
+                <div><a id="btn_select_reservation_date" class="btn btn-light">예약 가능일 조회</a></div> 
             </div> 
-            <script>
-               $(document).ready(function(){ 
-                    $("#btn_select_reservation_date").click(function(){ 
-                    $("#as_reservation_date_ch").css("display", "block"); 
-                    }); 
-                    $("#login-popup-close").click(function(){ 
-                    $("#as_reservation_date_ch").css("display", "none"); 
-                    }); 
-                }); 
-            </script>
+
             <!--예약 가능일 조회하기 버튼을 눌러야 해당 div가 보이도록-->
             <div id="as_reservation_date_ch">
                 <p class="as_title">3. 예약 일/시간 선택 <a id="red_star"> *</a> <a id="as_title1_content1"> 필수 입력 사항</a></p>
@@ -236,26 +212,26 @@
                 <p id="as_reservation_date_ch_left_content">예약시간</p>
                 <div id="check_as_time">
                     <p>오전</p>
-                        <input type="radio" id="am_time1" name="timeorder" value="am1" checked="checked">
+                        <input class="wandAsTime" type="radio" id="am_time1" name="timeorder" value="am1" checked="checked">
                         <label for="am_time1">09:00</label>
-                        <input type="radio" id="am_time2" name="timeorder" value="am2">
+                        <input class="wandAsTime" type="radio" id="am_time2" name="timeorder" value="am2">
                         <label for="am_time2" >10:00</label>
-                        <input type="radio" id="am_time3" name="timeorder" value="am3">
+                        <input class="wandAsTime" type="radio" id="am_time3" name="timeorder" value="am3">
                         <label for="am_time3">11:00</label>
                        
                     <hr>
                     <p>오후</p>
-                    <input type="radio" id="pm_time1" name="timeorder" value="pm1">
+                    <input class="wandAsTime" type="radio" id="pm_time1" name="timeorder" value="pm1">
                     <label for="pm_time1">12:00</label>
-                    <input type="radio" id="pm_time2" name="timeorder" value="pm2">
+                    <input class="wandAsTime" type="radio" id="pm_time2" name="timeorder" value="pm2">
                     <label for="pm_time2">13:00</label>
-                    <input type="radio" id="pm_time3" name="timeorder" value="pm3">
+                    <input class="wandAsTime" type="radio" id="pm_time3" name="timeorder" value="pm3">
                     <label for="pm_time3">14:00</label>
-                    <input type="radio" id="pm_time4" name="timeorder" value="pm4">
+                    <input class="wandAsTime" type="radio" id="pm_time4" name="timeorder" value="pm4">
                     <label for="pm_time4">15:00</label>
-                    <input type="radio" id="pm_time5" name="timeorder" value="pm5">
+                    <input class="wandAsTime" type="radio" id="pm_time5" name="timeorder" value="pm5">
                     <label for="pm_time5">16:00</label>
-                    <input type="radio" id="pm_time6" name="timeorder" value="pm6">
+                    <input class="wandAsTime" type="radio" id="pm_time6" name="timeorder" value="pm6">
                     <label for="pm_time6">17:00</label>
 
                     <hr>

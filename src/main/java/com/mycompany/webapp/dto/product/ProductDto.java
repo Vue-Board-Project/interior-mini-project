@@ -34,5 +34,6 @@ public class ProductDto {
 	private String consultCount;
 	//카트에 담을 개수
 	private String cartQua;
+	
 
 }
