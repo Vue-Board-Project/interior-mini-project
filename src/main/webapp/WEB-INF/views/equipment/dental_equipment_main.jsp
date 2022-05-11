@@ -191,7 +191,9 @@
                                             </div> 
                                         </div>
                                         <div>${chair.productIntro}</div>
-                                        <p><img src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png" width="20px"/><span style="font-size: 18px; box-shadow: inset 0 -5px 0 lightgray; "><fmt:formatNumber pattern="###,###,###,###" value="${chair.price}"/></span></p>
+                                        <p><img src="${pageContext.request.contextPath}/resources/subinimage/price_icon.png" width="20px"/>
+                                        	<span style="font-size: 18px; box-shadow: inset 0 -5px 0 lightgray; "><fmt:formatNumber pattern="###,###,###,###" value="${chair.price}"/></fmt></span>
+                                        </p>
                                     </div>
                                 </a>
                                 </div> 
