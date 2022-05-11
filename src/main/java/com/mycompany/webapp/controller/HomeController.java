@@ -32,7 +32,10 @@ import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.InteriorService;
 import com.mycompany.webapp.service.ProductService;
 
+import lombok.extern.log4j.Log4j2;
+
 @Controller
+@Log4j2
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -42,17 +45,6 @@ public class HomeController {
 	
 	@Resource //장비 서비스
 	private ProductService productService;
-
-	@RequestMapping("/")
-	public String home(Model model) {
-		logger.info("실행");
-		List<InteriorDto> homeInteriorList = interiorService.interiorBestList();
-		model.addAttribute("homeInteriorList", homeInteriorList);
-		
-		List<ProductDto> homeProductList=productService.selectbestlist();
-		model.addAttribute("homeProductList", homeProductList);
-		return "home";//view 이름만 전달
-	}
 	
 	@GetMapping("/mainHome/productDisplay")
 	public ResponseEntity<byte[]> getImage22(String fileName) {
@@ -79,6 +71,15 @@ public class HomeController {
 	@GetMapping("/")
 	public String reLogin(String reLogin, Model model) {
 		logger.info("실행");
+		logger.info("실행");
+		List<InteriorDto> homeInteriorList = interiorService.interiorBestList();
+		model.addAttribute("homeInteriorList", homeInteriorList);
+		log.fatal("interior : " + homeInteriorList);
+		
+		List<ProductDto> homeProductList=productService.selectbestlist();
+		model.addAttribute("homeProductList", homeProductList);
+		
+		
 		logger.info(reLogin);
 		if(reLogin != null) {
 			logger.info("!!!!!!!!!!!!!!!");
