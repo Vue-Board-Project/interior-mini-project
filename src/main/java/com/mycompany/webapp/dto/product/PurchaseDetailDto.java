@@ -6,10 +6,8 @@ import lombok.Data;
 
 @Data
 public class PurchaseDetailDto {
-	private PurchaseDto purchaseNumber;// 구매번호 (외래키)
-	private ProductDto modelNumber;// 모델명 (외래키)
-	private int modelPurchaseQuantity;// 개수
-	private ProductDto product;
+	
+	private String modelPurchaseQuantity;// 개수
 
 	private int intPurchaseNumber;
 	private String stringModelNumber;
@@ -20,5 +18,8 @@ public class PurchaseDetailDto {
 	private String stringPatchoName;
 
 	private PurchaseDto purchase;
+	private ProductDto product;
+	private PurchaseDto purchaseNumber;// 구매번호 (외래키)
+	private ProductDto modelNumber;// 모델명 (외래키)
 
 }
