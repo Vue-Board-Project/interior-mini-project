@@ -85,8 +85,12 @@ public class ProductService {
 	
 	//상품 상세 이미지 불러오기
 	public List<ProductDetailDto> detailProductPhoto(String modelNumber){
-		log.fatal("제품 상세 이미지 불러오기....");
 		return productDao.detailProductPhoto(modelNumber);
+	}
+	
+	//조회수 ++
+	public int updatehits(String modelNumber) {
+		return productDao.updatehits(modelNumber);
 	}
 	
 	

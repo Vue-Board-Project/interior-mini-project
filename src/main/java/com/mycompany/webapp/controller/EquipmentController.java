@@ -49,6 +49,7 @@ public class EquipmentController {
 	public String equipment_detail_consult(String modelNumber, Model model) {
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		List<ProductDetailDto> detailPhoto=productService.detailProductPhoto(modelNumber);
+		productService.updatehits(modelNumber);
 		log.fatal("1111 : " + detailPhoto);
 		log.fatal(modelNumber);
 		model.addAttribute("detailPhoto", detailPhoto);
@@ -61,6 +62,7 @@ public class EquipmentController {
 			, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		//상품 정보 불러오기
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
+		productService.updatehits(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
 		log.info(modelNumber);
 		

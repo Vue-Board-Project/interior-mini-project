@@ -39,15 +39,6 @@
         #as_product_choice{
             margin-bottom: 100px;
         }
-        #btn_my_product{
-            margin-left: 84%;
-            font-family: "MinSans-Medium";
-            border-radius: 20px;
-            padding: 10px;
-            padding-left: 14px;
-            padding-right: 14px;
-        }
-
         #red_star{
             color: red;
             font-size: 15px;
@@ -57,7 +48,7 @@
             font-family: "MinSans-Medium";
         }
         #as_model_input{
-            margin-left: 100px;
+            margin-left: 107px;
             margin-right: 50px;
             width: 600px;
             font-size: 15px;
@@ -65,13 +56,14 @@
             color: #7c7c7c;
         }
         #myModelCheck select{
-            margin-left: 10px;
+            margin-left: 8px;
             margin-right: 50px;
             width: 600px;
             font-size: 15px;
             padding: 10px;
             color: #7c7c7c;
         }
+        
         .as_title1_content2{
             margin-left: 140px;
             font-size: 15px;
@@ -163,11 +155,19 @@
             margin-left: 180px;
             font-size: 15px;
         }
-        .underline{
+        #as_product_choice .underline{
             background-color: white;
             border: 1px solid #7c7c7c;
             width: 300px;
             margin-left: 90px;
+            font-size: 15px;
+            padding: 10px;
+            text-align: center;
+        }
+        #as_reservation_date_ch .underline{
+            background-color: white;
+            border: 1px solid #7c7c7c;
+            width: 300px;
             font-size: 15px;
             padding: 10px;
             text-align: center;
@@ -235,7 +235,7 @@
         }
         #as_reservation_date_ch_left_content{
             float: left;
-            margin-right: 100px;
+            margin-right: 60px;
         }
         #check_as_date{
             float: left;

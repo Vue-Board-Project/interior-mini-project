@@ -100,6 +100,10 @@ public class ProductDaoImpl implements ProductDao{
 	public List<ProductDetailDto> detailProductPhoto(String modelNumber){
 		return sqlSession.selectList("product.detailProductPhoto");
 	}
+	@Override
+	public int updatehits(String modelNumber) {
+		return 0;
+	}
 	
 	
 }

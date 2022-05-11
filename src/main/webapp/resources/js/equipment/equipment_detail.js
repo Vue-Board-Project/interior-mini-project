@@ -183,3 +183,45 @@ function showcontent(){
         $('#pagination_wrap ul li').removeClass('active');
         $('#pagination_wrap ul li:eq('+pos+')').addClass('active');
       }
+
+// Scroll Animation (sa, 스크롤 애니메이션)
+const saTriggerMargin = 300;
+const saElementList = document.querySelectorAll('.productPhoto');
+
+const saFunc = function() {
+  for (const element of saElementList) {
+    if (!element.classList.contains('show')) {
+      if (window.innerHeight > element.getBoundingClientRect().top + saTriggerMargin) {
+        element.classList.add('show');
+      }
+    }
+  }
+}
+
+window.addEventListener('load', saFunc);
+window.addEventListener('scroll', saFunc);
+
+//장비 상세보기와 리뷰 보기 나누기
+var detail_style=document.getElementById("detail_style");
+var review_style=document.getElementById("review_style");
+function showDetail(){
+  if($('#product_detail_content_showhide').css('display')=='none'){
+      $('#product_detail_content_showhide').show();
+      $('#product_detail_review').hide();
+      detail_style.style.fontFamily="MinSans-Black";
+      review_style.style.backgroundColor="#ccc";
+      review_style.style.fontFamily="MinSans-Medium";
+  }
+}
+
+//장비 상세보기와 리뷰 보기 나누기2
+function showReview(){
+  if($('#product_detail_review').css('display')=='none'){
+      $('#product_detail_review').show();
+      $('#product_detail_content_showhide').hide();
+      review_style.style.fontFamily="MinSans-Medium";
+      detail_style.style.fontFamily="MinSans-Black";
+      review_style.style.backgroundColor="white";
+      detail_style.style.backgroundColor="#ccc";
+  }
+}

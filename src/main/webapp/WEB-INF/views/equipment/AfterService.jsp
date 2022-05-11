@@ -8,7 +8,7 @@
         <div id="as_content">
         
             <div id="as_product_choice">
-                <div id="as_title1" class="as_title">1. 제품/증상 선택 <button id="btn_my_product" class="btn btn-outline-dark" onclick="javascript:openPop()">보유 제품 선택</button> 
+                <div id="as_title1" class="as_title">1. 제품/증상 선택
                     <a id="red_star"> *</a> <a id="as_title1_content1"> 필수 입력 사항</a>
                 </div>
                 <hr id="pxup_line"/>
@@ -16,7 +16,7 @@
                 <hr/>
                 <div>모델명 
                 	<input id="as_model_input" type="text" name="modelNum" value="모델명을 입력해주세요." onFocus="clearText(this)"/>
-                    <a id="howToVerifyModel" style="border: 1px solid black; border-radius: 15px;" class="btn btn-light">모델명 확인 방법
+                    <a id="howToVerifyModel" style="border: 1px solid black; border-radius: 15px;" class="btn btn-dark">모델명 확인 방법
                         <span>모델명은 제품에 부착되어 있는 에너지 효율 등급표 스티커에서 확인할 수 있습니다.</span></a>
                 </div>
                 <div id="myModelCheck" style="margin-top: 50px;">
@@ -43,7 +43,7 @@
 
                 <ul class="as_title1_content2" style="margin-top: 20px;">
                     <li>모델명(코드)를 입력하시면 정확한 수리에 도움이 됩니다.(3자리 이상 입력)</li>
-                    <li>모델명(코드)가 정확하지 않은 경우 제품을 선택 후 예약을 진행해 주세요.</li>
+                    <li>모델명(코드)가 정확하지 않은 경우 하단에서 제품의 종류를 꼭 선택 후 예약을 진행해 주세요.</li>
                 </ul>
                 <div id="as_btn_list" class="d-flex text-center" >
                     <div>
@@ -174,42 +174,17 @@
                 <hr id="pxup_line"/>
                 <p>예약 일시 <a id="red_star"> *</a><span class="as_font_color_ccc">예약 일과 시간을 선택해주세요</span></p>
                 <hr/>
-                <p id="as_reservation_date_ch_left_content">예약일　</p>
+                <p id="as_reservation_date_ch_left_content">예약일<a id="red_star"> *</a> 　</p>
 
                 	<input type="date" name="inputwantASDate" id="wantASDate" class="underline" style="margin-bottom:50px"/>
-                    <!-- <p>4월</p>
-                    <hr>
-                    <input type="radio" id="option1" name="date" value="as_month1" checked="checked">
-                    <label for="option1">25일</label>
-                    <input type="radio" id="option2" name="date" value="as_month2">
-                    <label for="option2" >26일</label>
-                    <input type="radio" id="option3" name="date" value="as_month3">
-                    <label for="option3">27일</label>
-                    <input type="radio" id="option4" name="date" value="as_month4">
-                    <label for="option4">28일</label>
-                    <input type="radio" id="option5" name="date" value="as_month5">
-                    <label for="option5">29일</label>
- 
-                    <p style="margin-top: 20px;">5월</p>
-                    <hr>
-                    <input type="radio" id="option6" name="date" value="as_month6">
-                    <label for="option6">1일</label>
-                    <input type="radio" id="option7" name="date" value="as_month7">
-                    <label for="option7">2일</label>
-                    <input type="radio" id="option8" name="date" value="as_month8">
-                    <label for="option8">3일</label>
-                    <input type="radio" id="option9" name="date" value="as_month9">
-                    <label for="option9">4일</label>
-                    <input type="radio" id="option10" name="date" value="as_month10">
-                    <label for="option10">5일</label> -->
 
-                <ul id="as_reservation_date_ch_right_content" class="as_font_color_ccc" style="margin-left: 160px; margin-bottom: 40px;">
+                <ul id="as_reservation_date_ch_right_content" class="as_font_color_ccc" style="margin-left: 140px; margin-bottom: 30px;">
                     <li>AS문의량이 많을 경우 원하는 날짜에 서비스 예약이 어려울 수 있는 점 참고 부탁드립니다.</li>                   
                     <li>전국 실시간 접수 시스템으로 예약 가능한 일시에 서비스 예약이 어려울 수 있습니다.</li>
                     <li>예약 가능한 시간만 표시됩니다.</li>
                 </ul>
 
-                <p id="as_reservation_date_ch_left_content">예약시간</p>
+                <p id="as_reservation_date_ch_left_content">예약시간<a id="red_star"> *</a> </p>
                 <div id="check_as_time">
                     <p>오전</p>
                         <input class="wandAsTime" type="radio" id="am_time1" name="timeorder" value="am1" checked="checked">
