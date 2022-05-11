@@ -29,6 +29,7 @@ $(document).ready(function(){
 		$("#main_nav_list_home span").css("color","black");
 		$("#main_content_wrap").css("background-color","#faf9f6");
 		$("#main_back_round").hide();
+		$("#main_content_wrap").css("overflow", "visible");
 		$(".ocean").hide();
 	});
 	$("#main_nav_list_interior").click(function(){
@@ -44,6 +45,7 @@ $(document).ready(function(){
 		$("#main_content_wrap").css("background-color","#ffd4b1");
 		$("#main_back_round").show();
 		$("#main_back_round").css("background-color","#faf9f6");
+		$("#main_content_wrap").css("overflow", "visible");
 		$(".ocean").hide();
 
 	});
@@ -61,6 +63,7 @@ $(document).ready(function(){
 		$("#main_content_wrap").css("background-color","#faf9f6");
 		$("#main_back_round").show();
 		$("#main_back_round").css("background-color","#ffd4b1");
+		$("#main_content_wrap").css("overflow", "visible");
 		$(".ocean").hide();
 	});
 	$("#main_nav_list_news").click(function(){
@@ -76,7 +79,7 @@ $(document).ready(function(){
 		$("#main_nav_list_news span").css("color","black");
 		$("#main_content_wrap").css("background-color","#faf9f6");
 		$("#main_back_round").hide();
-		$("body").css("overflow", "hidden");
+		$("#main_content_wrap").css("overflow", "hidden");
 		$(".ocean").show();
 	});
 }); 
