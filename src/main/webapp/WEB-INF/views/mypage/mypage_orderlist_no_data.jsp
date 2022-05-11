@@ -16,7 +16,7 @@
 			<button type="button" class="btn btn-primary btn-lg"
 			 style = "margin-top :50px; background-color : #ca5c0d; border : 0; outline : 0;
 			 width:250px; height:50px;"
-			onclick="location.href='/springframework-mini-project/equipment/dental_equipment_main'"> 
+			onclick="location.href='/springframework-mini-project/equipment/dental_equipment_main?category=all'"> 
 			장비 구매하러 가기 
 			</button>
 		</div>
