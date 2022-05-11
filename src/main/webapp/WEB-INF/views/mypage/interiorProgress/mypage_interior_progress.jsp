@@ -8,7 +8,7 @@
 		<div class= "mypage_menu"  style = "display : inline-block;  width : 15%; height : 1850px; background-color : #faf9f6; border-right : 1px solid #ccc;">
 			<div style="display : inline-block; width : 100%; height : 300px;" >
 				<div style = "width : 90%; height : 300px; float : right; border-bottom : 3px solid #ca5c0d;">
-					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 140px;">마이페이지</p>
+					<p style = "font-family: 'MinSans-Bold'; font-size : 1.2rem; margin-top : 140px; margin-left : 20px;">마이페이지</p>
 				</div>
 			</div>
 			<div style = "display : inline-block; width : 100%; height : 1550px; ">
@@ -17,7 +17,7 @@
 		</div>
 		<div class= "mypage_content" style = "display : inline-block; width : 85%; height : 1850px;  background-color : #faf9f6;">
 			<div style = "display :inline-block; width : 100%; height : 300px;">
-				<div style = "width : 90%; height : 160px; border-bottom : 1px solid #ccc; margin : auto;">
+				<div style = "width : 90%; height : 160px; margin : auto;">
 					<div style = "font-family: 'MinSans-Bold'; font-size : 3rem; margin-top : 140px; margin-left : 2%;">
 						<span class ="pb-1" style ="border-bottom : 5px solid #ca5c0d;">인테리어 진행내역</span>
 					</div>

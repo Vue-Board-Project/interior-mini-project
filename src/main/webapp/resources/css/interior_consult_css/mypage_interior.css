@@ -24,13 +24,14 @@
     width: 222px; 
     height: 150px;
     background-color: #f1f1f1;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #ccc;
 }
+
 .mypage_interior_step_btn[title="off_interview"]{
     background-color: white;
-	border-top: 1px solid black; 
-    border-left: 1px solid black; 
-    border-right: 1px solid black;
+	border-top: 1px solid #ccc; 
+    border-left: 1px solid #ccc; 
+    border-right: 1px solid #ccc;
     border-bottom: none;
 }
 .misbtn_button{

@@ -8,7 +8,7 @@
 		<div class= "counseling_menu"  style = "display : inline-block;  width : 15%; height : 1100px; background-color : #faf9f6; border-right : 1px solid #ccc;">
 			<div style="display : inline-block; width : 100%; height : 300px;" >
 				<div style = "width : 90%; height : 300px; float : right; border-bottom : 3px solid #ca5c0d;">
-					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 270px; margin-left : 20px;">마이페이지</p>
+					<p style = "font-family: 'MinSans-Bold'; font-size : 1.2rem; margin-top : 140px; margin-left : 20px;">마이페이지</p>
 				</div>
 			</div>
 			<div style = "display : inline-block; width : 100%; height : 800px; ">

@@ -7,7 +7,7 @@
 		<div class= "mypage_menu"  style = "display : inline-block;  width : 15%; height : 1000px; background-color : #faf9f6; border-right : 1px solid #ccc;">
 			<div tyle="display : inline-block; width : 100%; height : 300px;" >
 				<div style = "width : 90%; height : 300px; float : right; border-bottom : 3px solid #ca5c0d;">
-					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 140px;">마이페이지</p>
+					<p style = "font-family: 'MinSans-Bold'; font-size : 1.2rem; margin-top : 140px; margin-left : 20px;">마이페이지</p>
 				</div>
 			</div>
 			<div style = "display : inline-block; width : 100%; height : 700px; ">
@@ -82,7 +82,7 @@
 		                       <a class="btn btn-outline-secondary btn-sm" href="mypage_interior_list?pageNo=${i}">${i}</a>
 		                    </c:if>
 		                    <c:if test="${pager.pageNo == i}">
-		                       <a class="btn btn-outline-success btn-sm" href="mypage_interior_list?pageNo=${i}">${i}</a>
+		                       <a class="btn btn-secondary btn-sm" href="mypage_interior_list?pageNo=${i}">${i}</a>
 		                    </c:if>
 		                 </c:forEach>
 		                 
