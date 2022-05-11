@@ -139,9 +139,19 @@
                         <h3>Review</h3>
                         
                         <ul>
+                
                             <li style="">제목<span>날짜</span></li>
                             <c:forEach items="${reviewList}" var="review">
-                                <li style="padding-top: 10px; padding-bottom:10px;">${review.reviewTitle}<span><fmt:formatDate value="${review.reviewWriteDate}" pattern="yyyy.MM.dd"/></span></li>
+                            	<li class="mt-2 mb-2">
+	                            	<ul>
+		                                <li style="padding-top: 10px; padding-bottom:10px;">
+		                                		<a id="product_detail_review_list" class="btn"><span>${review.reviewTitle}</span></a>
+		                                		<span class="reviewWriteDate"><fmt:formatDate value="${review.reviewWriteDate}" pattern="yyyy.MM.dd"/></span>
+		                                </li>
+		                                <li class="reviewContent" style="display: none;">${review.reviewContent}</li>
+		                                <li class="fileName" style="display: none;"><img src="/springframework-mini-project/equipment/display?fileName=${review.fileName}"></li>
+	                            	</ul>
+                            	</li>
                             </c:forEach>
                         </ul>
  
