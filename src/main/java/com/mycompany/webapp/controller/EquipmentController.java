@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.webapp.dto.product.ProductCategoryDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.service.ProductService;
 
@@ -66,17 +68,51 @@ public class EquipmentController {
 	
 	//장비 메인창
 	@RequestMapping(value ="/equipment/dental_equipment_main", produces = "application/json; charset=UTF-8")//겟
-	public String dental_equipment_main(@RequestParam Map<String,Object> commandMap, 
-			 ModelMap modelmap, Model model, @RequestParam(value = "category", required = false) String category, HttpServletResponse response) throws IOException {
-			
-			log.info("컨트롤러 연결 됐냐???");
-			log.info(category);
-
-			List<ProductDto> chairList=productService.selectchairlist();
-			List<ProductDto> bestchairList=productService.selectbestlist();
-			
-			model.addAttribute("chairList",chairList);
-			model.addAttribute("bestchairList",bestchairList);				
+	public String dental_equipment_main( Model model, @RequestParam(value = "category", required = false) String category, HttpServletResponse response) throws IOException {
+		
+		//카테고리 리스트
+		List<ProductCategoryDto> categoryList = new ArrayList<>();
+		ProductCategoryDto productCategoryDto1 = new ProductCategoryDto();
+		productCategoryDto1.setEnName("all");
+		productCategoryDto1.setKoName("전체 상품");
+		categoryList.add(productCategoryDto1);
+		
+		ProductCategoryDto productCategoryDto2 = new ProductCategoryDto();
+		productCategoryDto2.setEnName("unitchair");
+		productCategoryDto2.setKoName("유니트 체어");
+		categoryList.add(productCategoryDto2);
+		
+		ProductCategoryDto productCategoryDto3 = new ProductCategoryDto();
+		productCategoryDto3.setEnName("largecamera");
+		productCategoryDto3.setKoName("대형 영상 장비");
+		categoryList.add(productCategoryDto3);
+		
+		ProductCategoryDto productCategoryDto4 = new ProductCategoryDto();
+		productCategoryDto4.setEnName("washingmachine");
+		productCategoryDto4.setKoName("멸균 및 세척기");
+		categoryList.add(productCategoryDto4);
+		
+		ProductCategoryDto productCategoryDto5 = new ProductCategoryDto();
+		productCategoryDto5.setEnName("smallcamera");
+		productCategoryDto5.setKoName("소형 영상 장비");
+		categoryList.add(productCategoryDto5);
+		
+		ProductCategoryDto productCategoryDto6 = new ProductCategoryDto();
+		productCategoryDto6.setEnName("etc");
+		productCategoryDto6.setKoName("기타 장비");
+		categoryList.add(productCategoryDto6);
+		
+        model.addAttribute("categoryList", categoryList);
+        
+        model.addAttribute("chkCategory",category);
+        
+		List<ProductDto> bestchairList=productService.selectbestlist();
+		model.addAttribute("bestchairList",bestchairList);	
+		
+		//인기순
+		List<ProductDto> productList=productService.selectpopularlist(category);
+		model.addAttribute("chairList", productList);
+				
 
 		return "/equipment/dental_equipment_main";
 	}
@@ -85,11 +121,11 @@ public class EquipmentController {
 	@RequestMapping("/equipment/productListAjax")
 	public String productList(Model model, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
 		log.info("컨트롤러 연결 됐냐???");
-		log.fatal(sort);
-		log.fatal(category);
-		if(sort == null) {//최신순
-			log.fatal("가냐?");
-			List<ProductDto> productList=productService.selectnewlist(category);
+		/*log.fatal(sort);
+		log.fatal(category);*/
+		if(sort == null) {//인기순
+			/*log.fatal("가냐?");*/
+			List<ProductDto> productList=productService.selectpopularlist(category);
 			model.addAttribute("chairList", productList);
 			
 		} else if(sort.equals("reviews")) {//리뷰순
@@ -110,30 +146,6 @@ public class EquipmentController {
 		}
 		return "/equipment/productList";
 	}
-	
-	/*	@RequestMapping("/equipment/allProductListAjax")
-		public String allProductListAjax(Model model, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
-			log.info("컨트롤러 연결 됐냐???");
-			log.info(sort);
-			if(sort.equals("new")) {
-				log.info("새로운거 가보자고~~~~~~~~~~~");
-				List<ProductDto> allProductList=productService.selectchairlist();
-				model.addAttribute("allProductList", allProductList);	
-				
-			} else if(sort.equals("reviews")) {//리뷰순
-				List<ProductDto> allProductList=productService.selectreviewslist();
-				model.addAttribute("allProductList", allProductList);	
-				
-			} else if(sort.equals("views")) {//조회순
-				List<ProductDto> allProductList=productService.selectviewslist();
-				model.addAttribute("allProductList", allProductList);
-				
-			}  else if(sort.equals("popular")) {//판매량순
-				List<ProductDto> allProductList=productService.selectpopularlist();
-				model.addAttribute("allProductList", allProductList);	
-			}
-			return "/equipment/allProductList";
-		}*/
 
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")

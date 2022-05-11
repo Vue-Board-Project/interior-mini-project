@@ -2,13 +2,13 @@
 <nav id="main_header_nav" class="d-flex justify-content-center">
 <div class="main_header_nav_dropdown_group h-100" id="my_main_header_nav_dropdown_group">
     <div class="main_header_nav_dropdown">
-      <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main" class="btn main_header_nav_dropbtn" style=" border-radius: 0px;">치과장비</a>
+      <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?category=all" class="btn main_header_nav_dropbtn" style=" border-radius: 0px;">치과장비</a>
   <div class="main_header_nav_dropdown_content">
-    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">유니트 체어</a>
-    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">대형 영상 장비</a>
-    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">멸균 및 세척기</a>
-    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">소형 영상 장비</a>
-    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main">기타 장비</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?category=unitchair">유니트 체어</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?category=largecamera">대형 영상 장비</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?category=washingmachine">멸균 및 세척기</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?category=smallcamera">소형 영상 장비</a>
+    <a href="${pageContext.request.contextPath}/equipment/dental_equipment_main?category=etc">기타 장비</a>
   </div>
 </div> 
 <div class="main_header_nav_dropdown">
@@ -34,3 +34,4 @@
 <a href="javascript:void(0);" class="main_header_nav_icon h-100" onclick="myFunction()">☰</a>
     </div>
 </nav>
+<script src="${pageContext.request.contextPath}/resources/js/equipment/dental_equipment_main.js"></script> 

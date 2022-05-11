@@ -40,42 +40,20 @@
                            <li >Category</li>
                            <li>
                                <ul class="productInsideAsideUl">
-                              	  <li>
-                                       <label class="dropdown-content-element">
-								           <input type="radio" name="category" value="all" checked="checked">
-								           <span class="ml-2">전체 상품</span>
-								       </label>
-                                  </li>
-                                  <li>
-                                       <label class="dropdown-content-element">
-								           <input type="radio" name="category" value="unitchair">
-								           <span class="ml-2">유니트 체어</span>
-								       </label>
+                                   <c:forEach var="category" items="${categoryList}" varStatus="status">
+									<li>
+	                                    <label class="dropdown-content-element">
+											<input type="radio" name="category" value="${category.enName}"
+												<c:forEach var="temp" items="${category.enName}">
+										  		 	<c:if test="${temp == chkCategory}">
+										  		 		checked
+										  		 	</c:if>
+										  		</c:forEach>
+											/>
+											<span class="ml-2">${category.koName}</span>
+							  		 	</label>
                                    </li>
-                                   <li>
-	                                   <label class="dropdown-content-element">
-								           <input type="radio" name="category" value="largecamera">
-								           <span class="ml-2">대형 영상 장비</span>
-								       </label>
-                                   </li>
-                                   <li>
-	                                   <label class="dropdown-content-element">
-								           <input type="radio" name="category" value="washingmachine">
-								           <span class="ml-2">멸균 및 세척기</span>
-								       </label>
-                                   </li>
-                                   <li>
-	                                   <label class="dropdown-content-element">
-								           <input type="radio" name="category" value="smallcamera">
-								           <span class="ml-2">소형 영상 장비</span>
-								       </label>
-                                   </li>
-                                    <li>
-	                                   <label class="dropdown-content-element">
-								           <input type="radio" name="category" value="etc">
-								           <span class="ml-2">기타 장비</span>
-								       </label>
-                                   </li>
+							  	</c:forEach>
                                </ul>
                            </li>
                            <li>Filter</li>
