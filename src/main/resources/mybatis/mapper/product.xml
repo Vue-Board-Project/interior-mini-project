@@ -120,7 +120,8 @@
 			PRICE,
 			PRODUCT_COLOR as productColor,
 			REVIEW_COUNT as reviewCount,
-			PATTACHONAME
+			PATTACHONAME,
+			category
 		from PRODUCT
 		where MODEL_NUMBER=#{modelNumber}
 	</select>

@@ -12,10 +12,7 @@ format("woff");
 font-weight: normal;
 font-style: normal;
 }
-#detail_c_wrapper{
 
-
-}
 #go_productlist{
     /*margin-left: 370px;*/
     float: right;
@@ -75,9 +72,6 @@ accent-color: purple;
 #colorcheck_green{
 accent-color: green;
 }
-#eq_detail_c_main_content4{
-
-}
 #count_up_down{
 width: 50px;
 margin-left: 20px;
@@ -134,7 +128,7 @@ body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
 
 #eq_detail_c_main_left #wrapper{
 width:900px;
-height:650;
+height:650px;
 position:relative;
 color:#fff;
 text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
@@ -160,7 +154,7 @@ left:0;
 float:left;
 position:relative;
 width:900px;
-height:650px; 
+height:650px;
 }
 
 #eq_detail_c_main_left #slider_wrap ul#slider li > div{
@@ -274,9 +268,7 @@ width:100%;
             margin-top:20px;
             margin-bottom: 30px;
         }
-        #eq_detail_c_main_content3{
-            
-        }
+  
         #colorcheck{
             border: 1px solid #ccc;
             border-radius: 20px;
@@ -318,9 +310,6 @@ width:100%;
         #colorcheck_white{
             accent-color: #ffffff;
         }
-        #eq_detail_c_main_content4{
-            
-        }
         #count_up_down{
             width: 50px;
             margin-left: 20px;
@@ -355,21 +344,22 @@ width:100%;
         #able_delivery_loaction:hover .tooltip-content { 
             visibility: visible; 
         }
-        #eq_detail_c_main_right .btn-light{
-            background-color: #ca5c0d;
-            color: white;
-            width: 100px;
-            height: 50px;
-            padding-top: 15px;
-            font-size: 15px;
-            margin-top: 30px;
-        }
-        #eq_detail_c_main_right .btn-light:hover{
-            background-color: white;
-            color: black;
-        }
+
         #btn_go_counseling{
 	}
+    #pagination_wrap ul li{
+        margin: 0 4px;
+        display: inline-block;
+        width:5px;
+        height:5px;
+        border-radius:50%;
+        background:#fff;
+        opacity:0.5;
+        position:relative;
+        top:0;
+        
+        
+      }
 	#pagination_wrap ul li.active{
 	width:12px;
 	height:12px;
@@ -407,12 +397,13 @@ transition: all 0.3s cubic-bezier(1,.01,.32,1);
     background-color: white;
 }
 .productPhoto{
-    width: 1100px;
-    margin-bottom: 100px;
+    
 }
 
 /* Scroll Animation (sa, 스크롤 애니메이션) */
 .productPhoto {
+    width: 1100px;
+    margin-bottom: 100px;
     opacity: 0;
     transition: all .5s ease;
     transform: translate(0, 100px);
