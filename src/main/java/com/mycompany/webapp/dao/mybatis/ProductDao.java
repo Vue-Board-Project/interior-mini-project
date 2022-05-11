@@ -33,7 +33,9 @@ public interface ProductDao {
 	
 	//카트에 담을 장비 선택
 	public ProductDto selectProduct(String modelNumber);
-	public List<ProductDto> selectreviewslist();
-	public List<ProductDto> selectviewslist();
-	public List<ProductDto> selectpopularlist();
+	public List<ProductDto> selectreviewslist(String category);
+	public List<ProductDto> selectviewslist(String category);
+	public List<ProductDto> selectpopularlist(String category);
+	public List<ProductDto> selectnewlist(String category);
+
 }

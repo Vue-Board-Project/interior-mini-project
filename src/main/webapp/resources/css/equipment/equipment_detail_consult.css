@@ -12,8 +12,17 @@ format("woff");
 font-weight: normal;
 font-style: normal;
 }
+#detail_c_wrapper{
+
+
+}
+#go_productlist{
+    /*margin-left: 370px;*/
+    float: right;
+}
+
 #eq_detail_c_content{
-margin-top: 150px;
+margin-top: 20px;
 margin-bottom: 100px;
 display: flex;
 font-family: "MinSans-Medium";
@@ -25,25 +34,12 @@ border-bottom: 1px solid #ccc;
 width: 1300px;
 margin-bottom: 150px;
 }
-#eq_detail_c_main_right{
-padding-top: 2%;
-padding-left: 3%;
-padding-right: 3%;
-display: inline-block;
-width: 30%;
-margin-left: 200px;
-background-color: white;
-}
-#chair03_main_image{
-margin-left: 300px;
-width: 800px;
-height: 600px;
-}
+
 #icon_dentist{
 width: 50px;
 margin-left: 15px;
+margin-right: 10px;
 margin-bottom: 10px;
-
 }
 #eq_detail_c_main_content1{
 font-size: 2rem;
@@ -138,8 +134,7 @@ body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
 
 #eq_detail_c_main_left #wrapper{
 width:900px;
-margin:50px auto;
-height:600px;
+height:650;
 position:relative;
 color:#fff;
 text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
@@ -147,7 +142,7 @@ text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;
 
 #eq_detail_c_main_left #slider_wrap{
 width:900px;
-height:600px;
+height:650px;
 position:relative;
 overflow:hidden;
 }
@@ -165,7 +160,7 @@ left:0;
 float:left;
 position:relative;
 width:900px;
-height:600px; 
+height:650px; 
 }
 
 #eq_detail_c_main_left #slider_wrap ul#slider li > div{
@@ -238,7 +233,7 @@ position:absolute;
 #pagination_wrap{
 min-width:20px;
 margin-top:350px;
-margin-left: auto; 
+/*margin-left: auto; */
 margin-right: auto;
 height:15px;
 position:relative;
@@ -250,35 +245,30 @@ width:100%;
 }
 
         
-        #eq_detail_c_main_left{
-          
-
-        }
-        #eq_detail_c_main_right{
-            padding-top: 2%;
-            padding-left: 3%;
-            padding-right: 3%;
-            float: right;
-            width: 30%;
-            margin-left: 200px;
-            background-color: white;
-        }
-        #chair03_main_image{
-            margin-left: 300px;
-            width: 800px;
-            height: 600px;
-        }
-        #icon_dentist{
-            width: 50px;
-            margin-left: 15px;
-            margin-bottom: 10px;
-
+#eq_detail_c_main_left{
+    height: 650px;
+    margin-bottom: 5%;
+    margin-top: 2.8%;
+    margin-left: 150px;
 }
-        
-        #eq_detail_c_main_content1{
-            font-size: 2rem;
-            font-family: "MinSans-Black";
-        }
+#eq_detail_c_main_right{
+    margin-top: 2.8%;
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    display: inline-block;
+    float: right;
+    width: 30%;
+    margin-left: 150px;
+    background-color: white;
+    height: 650px;
+    }
+#chair03_main_image{
+    margin-left: 100px;
+    width: 800px;
+    height: 650px;
+}
+
         #eq_detail_c_main_content2{
             font-size: 0.8rem;
             margin-top:20px;
@@ -400,4 +390,47 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 -o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
 -ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
 transition: all 0.3s cubic-bezier(1,.01,.32,1); 
+}
+#goto_consult{
+    background-color:#ca5c0d;
+    border: 1px solid #ccc; 
+    width:100px
+}
+#product_detail_content{
+    padding-top: 100px;
+    padding-right: 50px;
+    padding-left: 150px;
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+    margin-left: 250px;
+    width: 1400px;
+    background-color: white;
+}
+.productPhoto{
+    width: 1100px;
+    margin-bottom: 100px;
+}
+
+/* Scroll Animation (sa, 스크롤 애니메이션) */
+.productPhoto {
+    opacity: 0;
+    transition: all .5s ease;
+    transform: translate(0, 100px);
+}
+
+.productPhoto.show {
+opacity: 1;
+transform: none;
+}
+#product_detail_content_click{
+    margin-top: 100px;
+    margin-left: 250px;
+    width: 1400px;
+    
+}
+#detail_click{
+    font-family: "MinSans-Black";
+}
+#product_detail_review{
+    display: none;
 }

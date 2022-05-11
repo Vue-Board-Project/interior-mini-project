@@ -10,5 +10,6 @@ public class ProductDetailDto {
 	private String productFilename;//장비 파일명
 	private ProductDto modelNumber;//모델명(외래키)
 	private MultipartFile productDetailImage;//장비 상세 사진 BLOB
-	
+	private String stringmodelNumber;
+	private String imageOrder;
 }

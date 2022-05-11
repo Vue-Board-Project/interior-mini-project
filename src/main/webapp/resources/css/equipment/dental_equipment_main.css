@@ -57,10 +57,10 @@
             width: 24%;
         }
        
-        #dentalequipmentmain_left input[type=radio]{
+        /* #dentalequipmentmain_left input[type=radio]{
         	display:none;
-        	/*라디오 원형 버튼 숨김*/
-        }
+        	라디오 원형 버튼 숨김
+        } */
         #dentalequipmentmain_right{
             float: right;
             width: 75%;

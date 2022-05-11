@@ -1,6 +1,20 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<style>
+	.productInsideAsideUl input[type="radio"] {
+		display: none;
+	}
+	.productInsideAsideUl input[type="radio"] + span {
+	  display: inline-block;
+	  cursor: pointer;
+	  font-size: 20px; 
+	}
+	.productInsideAsideUl input[type="radio"]:checked + span {
+	  color: #ca5c0d;
+	  font-weight: bold;
+	}
+</style>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/dental_equipment_main.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
 <div class="container-fluid p-0" >
@@ -26,30 +40,20 @@
                            <li >Category</li>
                            <li>
                                <ul class="productInsideAsideUl">
-                                   <li>
-                                    <label>
-                                        <input type="radio" name="category" value="unitchair">
-                                        <span >유니트 체어</span> 
-                                    </label>
+                                   <c:forEach var="category" items="${categoryList}" varStatus="status">
+									<li>
+	                                    <label class="dropdown-content-element">
+											<input type="radio" name="category" value="${category.enName}"
+												<c:forEach var="temp" items="${category.enName}">
+										  		 	<c:if test="${temp == chkCategory}">
+										  		 		checked
+										  		 	</c:if>
+										  		</c:forEach>
+											/>
+											<span class="ml-2">${category.koName}</span>
+							  		 	</label>
                                    </li>
-                                   <li>
-                                    <label >
-                                        <input type="radio" name="category" value="washingmachine">
-                                        <span >멸균 및 세척기</span>
-                                    </label>
-                                   </li>
-                                   <li>
-                                    <label >
-                                        <input type="radio" name="category" value="smallcamera">
-                                        <span>소형 영상 장비</span>
-                                    </label>
-                                   </li>
-                                   <li>
-                                    <label>
-                                        <input type="radio" name="category" value="etc">
-                                        <span >기타 장비</span>
-                                    </label>
-                                   </li>
+							  	</c:forEach>
                                </ul>
                            </li>
                            <li>Filter</li>
@@ -57,7 +61,7 @@
                                <ul class="productInsideAsideUl">
                                    <li>
                                     <label>
-                                        <input type="radio" name="sort" value="popular">
+                                        <input type="radio" name="sort" value="popular" checked="checked">
                                         <span class="ml-2">인기순</span>
                                     </label>
                                    </li>
@@ -156,4 +160,5 @@
         </div>
     </div>
 </div>
+<script src="${pageContext.request.contextPath}/resources/js/equipment/dental_equipment_main.js"></script> 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

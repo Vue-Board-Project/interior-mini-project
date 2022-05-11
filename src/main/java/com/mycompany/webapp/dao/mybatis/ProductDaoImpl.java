@@ -74,19 +74,25 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 	@Override
-	public List<ProductDto> selectreviewslist() {
+	public List<ProductDto> selectreviewslist(String category) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ProductDto> selectviewslist() {
+	public List<ProductDto> selectviewslist(String category) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ProductDto> selectpopularlist() {
+	public List<ProductDto> selectpopularlist(String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductDto> selectnewlist(String category) {
 		// TODO Auto-generated method stub
 		return null;
 	}
