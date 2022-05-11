@@ -42,7 +42,9 @@ import com.mycompany.webapp.dto.interior.ConsultDetailDto;
 import com.mycompany.webapp.dto.interior.ConsultRemodelingDto;
 import com.mycompany.webapp.dto.interior.MainConsultDto;
 import com.mycompany.webapp.dto.product.ProductDto;
+import com.mycompany.webapp.exception.ConsultExceptionHandler;
 import com.mycompany.webapp.service.ConsultService;
+import com.mycompany.webapp.service.ConsultService.ConsultResult;
 import com.mycompany.webapp.service.ProductService;
 
 import lombok.extern.log4j.Log4j2;
@@ -126,9 +128,15 @@ public class InteriorConsultController {
 		log.info(consultDetailDto.getConsultEstimation());
 		
 		
-		consultService.detailConsultTrans(mainConsult, consultDetailDto);
-
-		return "redirect:/interior_consult/consult_result";
+		ConsultResult cr = consultService.detailConsultTrans(mainConsult, consultDetailDto);
+		if(cr == ConsultResult.FAST_FAIL) {
+			throw new ConsultExceptionHandler("빠른 상담 전송 실패 ");
+		}else if(cr == ConsultResult.DETAIL_FAIL) {
+			throw new ConsultExceptionHandler("디테일 상담 전송 실패");
+		}else{
+			return "redirect:/interior_consult/consult_result";
+		}
+		
 	}
 	
 	//디테일 상담 완료 창 
@@ -145,24 +153,6 @@ public class InteriorConsultController {
 	}
 	
 	
-
-	// 장비상담 페이지 이동
-	@GetMapping("/quipment_buy_request_consult")
-	public String quipmentBuyRequestConsult(String modelNumber1,String modelNumber2, Model model) {
-		log.info("modelNumber1 : " + modelNumber1);
-		log.info("modelNumber2 : " + modelNumber2);
-		List<ProductDto> products = new ArrayList<ProductDto>();
-		ProductDto productDto1 = consultService.getProduct(modelNumber1);
-		log.info("modelNumberResult : " + productDto1.getPattachoname());
-		products.add(productDto1);
-		ProductDto productDto2 = consultService.getProduct(modelNumber2);
-		products.add(productDto2);
-		model.addAttribute("products", products);
-		
-		
-		return "/interior_consult/quipment_buy_request_consult";
-	}
-
 	
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName) {

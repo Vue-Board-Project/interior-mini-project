@@ -29,6 +29,7 @@ import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.product.ProductConsultDetailDto;
 import com.mycompany.webapp.dto.product.ProductConsultDto;
 import com.mycompany.webapp.dto.product.ProductDto;
+import com.mycompany.webapp.exception.ConsultExceptionHandler;
 import com.mycompany.webapp.service.ConsultService;
 import com.mycompany.webapp.service.ProductConsultService;
 import com.mycompany.webapp.service.ProductConsultService.ProductConsultResult;
@@ -180,7 +181,8 @@ public class ProductConsultController {
 	@PostMapping("sendProductConsultForm")
 	public String sendProductConsultForm(
 			@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList, 
-			ProductConsultDto productConsultDto, Authentication authentication) {
+			ProductConsultDto productConsultDto, Authentication authentication,
+			SessionStatus sessionStatus) {
 		
 		log.info("추가 요청 사항 : " + productConsultDto.getPcRequest());
 		
@@ -200,10 +202,11 @@ public class ProductConsultController {
 		
 		ProductConsultResult pcr = productConsultService.productConsultRequest(productConsultDto, pcdList);
 		if(pcr == ProductConsultResult.FAIL) {
-			return "/interior_consult/quipment_buy_request_consult";
+			throw new ConsultExceptionHandler("장비 상담신청 실패 ");
 		}else if(pcr == ProductConsultResult.FAIL_MODEL) {
-			return "/interior_consult/quipment_buy_request_consult";
+			throw new ConsultExceptionHandler("장비 세부 상담신청 실패");
 		}else {
+			sessionStatus.setComplete();
 			return "redirect:/productConsult/product_consult_result";
 		}
 

@@ -35,6 +35,10 @@ public class AllExceptionHandler {
 		log.info("실행 " + e.getMessage());
 		return "error/null";
 	}
-	
-
+	//장비 상담 신청 실패
+	@ExceptionHandler(ConsultExceptionHandler.class)
+	public String handleCh10SoldOutException(ConsultExceptionHandler  e) {	
+		log.info("실행 " + e.getMessage());
+		return "error/500";
+	}
 }

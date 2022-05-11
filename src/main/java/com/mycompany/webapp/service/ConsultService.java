@@ -22,25 +22,36 @@ import lombok.extern.log4j.Log4j2;
 @Service
 @Log4j2
 public class ConsultService {//상담 신청 서비스
-	@Resource
-	private ConsultDao consultDao;//상담 dao
+	
+	public enum ConsultResult{
+		FAST_FAIL, SUCCESS, DETAIL_FAIL
+	}
 	
 	@Resource
-	private ProductConsultDao productConsultDao;
-	
+	private ConsultDao consultDao;//상담 dao	
+	@Resource
+	private ProductConsultDao productConsultDao;	
 	@Resource
 	private UsersDao usersDao;
 	
 	//상세 상담 추가
-	public void detailConsultTrans(MainConsultDto mainConsultDto, ConsultDetailDto consultDetailDto) {
+	@Transactional
+	public  ConsultResult detailConsultTrans(MainConsultDto mainConsultDto, ConsultDetailDto consultDetailDto) {
 		log.info("실행");
 		//빠른 상담
-		consultDao.insertMainConsult(mainConsultDto);
+		int consult1 = consultDao.insertMainConsult(mainConsultDto);
+		if(consult1 != 1) {
+			return ConsultResult.FAST_FAIL;
+		}
 		
 		log.info("부모키 : " + mainConsultDto.getConsultNo());
 		//상세 상담
 		consultDetailDto.setConsultNo(mainConsultDto.getConsultNo());
-		consultDao.insertDetailConsult(consultDetailDto);
+		int consult2 = consultDao.insertDetailConsult(consultDetailDto);
+		if(consult1 != 1) {
+			return ConsultResult.DETAIL_FAIL;
+		}
+		return ConsultResult.SUCCESS;
 	}
 	
 	//빠른 상담 
