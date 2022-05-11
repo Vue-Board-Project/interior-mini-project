@@ -28,7 +28,6 @@ public class ProductService {
 		productDao.saveImage(hmap);
 	}
 	public List<ProductDto> selectchairlist() {
-		
 		return productDao.selectchairlist();
 	}
 	
@@ -70,14 +69,19 @@ public class ProductService {
 	public List<ProductDto> selectproductlist(String category) {
 		return productDao.selectproductlist(category);
 	}
-	public List<ProductDto> selectreviewslist() {
-		return productDao.selectreviewslist();
+	
+	public List<ProductDto> selectnewlist(String category) {
+		return productDao.selectnewlist(category);
 	}
-	public List<ProductDto> selectviewslist() {
-		return productDao.selectviewslist();
+	public List<ProductDto> selectreviewslist(String category) {
+		return productDao.selectreviewslist(category);
 	}
-	public List<ProductDto> selectpopularlist() {
-		return productDao.selectpopularlist();
+	public List<ProductDto> selectviewslist(String category) {
+		return productDao.selectviewslist(category);
 	}
+	public List<ProductDto> selectpopularlist(String category) {
+		return productDao.selectpopularlist(category);
+	}
+
 	
 }

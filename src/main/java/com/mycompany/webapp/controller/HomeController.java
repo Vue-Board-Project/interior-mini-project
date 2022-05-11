@@ -74,7 +74,7 @@ public class HomeController {
 		logger.info("실행");
 		List<InteriorDto> homeInteriorList = interiorService.interiorBestList();
 		model.addAttribute("homeInteriorList", homeInteriorList);
-		log.fatal("interior : " + homeInteriorList);
+		//log.fatal("interior : " + homeInteriorList);
 		
 		List<ProductDto> homeProductList=productService.selectbestlist();
 		model.addAttribute("homeProductList", homeProductList);

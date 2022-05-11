@@ -83,37 +83,57 @@ public class EquipmentController {
 	//장비 정렬 및 카테고리 작업들
 	/*@RequestMapping(value = "/equipment/productListAjax", produces = "application/json; charset=UTF-8")*/
 	@RequestMapping("/equipment/productListAjax")
-	public String productList(Model model, @RequestParam(value = "category", required = false) String category, HttpServletResponse response) {
+	public String productList(Model model, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
 		log.info("컨트롤러 연결 됐냐???");
-		log.info(category);
-		List<ProductDto> productList=productService.selectproductlist(category);
-		model.addAttribute("chairList", productList);
+		log.fatal(sort);
+		log.fatal(category);
+		if(sort == null) {//최신순
+			log.fatal("가냐?");
+			List<ProductDto> productList=productService.selectnewlist(category);
+			model.addAttribute("chairList", productList);
+			
+		} else if(sort.equals("reviews")) {//리뷰순
+			List<ProductDto> productList=productService.selectreviewslist(category);
+			model.addAttribute("chairList", productList);
+			
+		} else if(sort.equals("views")) {//조회순
+			List<ProductDto> productList=productService.selectviewslist(category);
+			model.addAttribute("chairList", productList);
+			
+		}  else if(sort.equals("popular")) {//판매량순
+			List<ProductDto> productList=productService.selectpopularlist(category);
+			model.addAttribute("chairList", productList);
+		}  else if (sort.equals("new")) {//최신순
+			log.info("새로운거 가보자고~~~~~~~~~~~");
+			List<ProductDto> productList=productService.selectnewlist(category);
+			model.addAttribute("chairList", productList);
+		}
 		return "/equipment/productList";
 	}
 	
-	@RequestMapping("/equipment/allProductListAjax")
-	public String allProductListAjax(Model model, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
-		log.info("컨트롤러 연결 됐냐???");
-		log.info(sort);
-		if(sort.equals("new")) {
-			log.info("새로운거 가보자고~~~~~~~~~~~");
-			List<ProductDto> allProductList=productService.selectchairlist();
-			model.addAttribute("allProductList", allProductList);	
-			
-		} else if(sort.equals("reviews")) {//리뷰순
-			List<ProductDto> allProductList=productService.selectreviewslist();
-			model.addAttribute("allProductList", allProductList);	
-			
-		} else if(sort.equals("views")) {//조회순
-			List<ProductDto> allProductList=productService.selectviewslist();
-			model.addAttribute("allProductList", allProductList);
-			
-		}  else if(sort.equals("popular")) {//판매량순
-			List<ProductDto> allProductList=productService.selectpopularlist();
-			model.addAttribute("allProductList", allProductList);	
-		}
-		return "/equipment/allProductList";
-	}
+	/*	@RequestMapping("/equipment/allProductListAjax")
+		public String allProductListAjax(Model model, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
+			log.info("컨트롤러 연결 됐냐???");
+			log.info(sort);
+			if(sort.equals("new")) {
+				log.info("새로운거 가보자고~~~~~~~~~~~");
+				List<ProductDto> allProductList=productService.selectchairlist();
+				model.addAttribute("allProductList", allProductList);	
+				
+			} else if(sort.equals("reviews")) {//리뷰순
+				List<ProductDto> allProductList=productService.selectreviewslist();
+				model.addAttribute("allProductList", allProductList);	
+				
+			} else if(sort.equals("views")) {//조회순
+				List<ProductDto> allProductList=productService.selectviewslist();
+				model.addAttribute("allProductList", allProductList);
+				
+			}  else if(sort.equals("popular")) {//판매량순
+				List<ProductDto> allProductList=productService.selectpopularlist();
+				model.addAttribute("allProductList", allProductList);	
+			}
+			return "/equipment/allProductList";
+		}*/
 
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")

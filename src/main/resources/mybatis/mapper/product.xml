@@ -44,27 +44,71 @@
 		order by REGISTRATION_DATE desc
 	</select>
 	
-	<!-- 리뷰순 가져오기 -->
-	<select id="selectreviewslist" resultType="product">
+	<!-- 최신순 가져오기 -->
+	<select id="selectnewlist" resultType="product" parameterType="string">
 		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
 		price, PATTACHONAME as pattachoname
 		from product
+		<choose>
+			<when test="category == null">
+			</when>
+			<when test="category == 'all'">
+			</when>
+			<otherwise>
+				where category = #{category}
+			</otherwise>
+		</choose>
+		order by REGISTRATION_DATE desc
+	</select>
+	
+	<!-- 리뷰순 가져오기 -->
+	<select id="selectreviewslist" resultType="product" parameterType="string">
+		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
+		price, PATTACHONAME as pattachoname
+		from product
+		<choose>
+			<when test="category == null">
+			</when>
+			<when test="category == 'all'">
+			</when>
+			<otherwise>
+				where category = #{category}
+			</otherwise>
+		</choose>
 		order by REVIEW_COUNT desc
 	</select>
 	
 	<!-- 조회순 가져오기 -->
-	<select id="selectviewslist" resultType="product">
+	<select id="selectviewslist" resultType="product" parameterType="string">
 		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
 		price, PATTACHONAME as pattachoname
 		from product
+		<choose>
+			<when test="category == null">
+			</when>
+			<when test="category == 'all'">
+			</when>
+			<otherwise>
+				where category = #{category}
+			</otherwise>
+		</choose>
 		order by PRODUCT_HITS desc
 	</select>
 	
 	<!-- 판매량순 가져오기 -->
-	<select id="selectpopularlist" resultType="product">
+	<select id="selectpopularlist" resultType="product" parameterType="string">
 		select MODEL_NUMBER as modelNumber, product_name as productName, product_intro as productIntro, category,
 		price, PATTACHONAME as pattachoname
 		from product
+		<choose>
+			<when test="category == null">
+			</when>
+			<when test="category == 'all'">
+			</when>
+			<otherwise>
+				where category = #{category}
+			</otherwise>
+		</choose>
 		order by PRODUCT_SALES_VOLUME desc
 	</select>
 	<!--상품 상세보기-->
