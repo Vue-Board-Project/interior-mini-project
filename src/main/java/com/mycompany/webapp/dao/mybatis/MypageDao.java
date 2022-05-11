@@ -40,9 +40,7 @@ public interface MypageDao {
 	
 	public List<PurchaseDto> getPurchaseList(Pager pager);
 
-	public int getTotalOrderDetailNum(int purchaseNumber);
-
-	public List<PurchaseDetailDto> getOrderDetailList(Pager pager);
+	public List<PurchaseDetailDto> getOrderDetailList(int purchaseNumber);
 
 	public int getTotalReviewBeforeNum(String email);
 
