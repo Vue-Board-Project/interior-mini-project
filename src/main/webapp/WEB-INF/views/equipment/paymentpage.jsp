@@ -102,7 +102,7 @@
                         <div class="mb-3">결제 수단<span style="margin-right: 90px;"></span>
                         카드<input type="radio" name="payment_method" checked="checked" style="margin-left: 20px; margin-right: 20px;"/>
                             　계좌이체<input type="radio" name="payment_method" style="margin-left: 20px;"/>
-<form method="post" id="card_payment" name="paymentVerify" action="paymentVerify">
+<form method="post" id="card_payment" name="paymentVerify" action="paymentVerify2">
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">카드사</label>
                                   <select name="bank">

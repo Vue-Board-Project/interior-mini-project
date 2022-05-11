@@ -80,14 +80,10 @@ public class PaymentController {
 		return "/equipment/paymentpage";
 	}
 
-	//결제 확인하기
+	//장바구니에서 오는 결제 확인하기
 	@PostMapping(value = "/equipment/paymentVerify")
 	public String paymentVerify(String PriceFin, String QuantityFin, PurchaseDto purchaseDto,
 			Authentication authentication, @ModelAttribute("cartForm") List<ProductDto> cartList){
-
-		log.info("결제를 db에 전송하는게 내 꿈이야");
-		log.info(PriceFin);
-		log.info(QuantityFin);
 		String email = authentication.getName();
 		
 		// purchase db insesrt
@@ -97,6 +93,20 @@ public class PaymentController {
 		log.info(purchaseDto.getPurchaseNumber());
 
 		purchaseService.PurchaseRequest(cartList, purchaseDto);
+		
+		return "redirect:/";
+	}
+	//다이렉트 구매에서 오는 결제 확인하기
+	@PostMapping(value = "/equipment/paymentVerify2")
+	public String paymentVerify2(String PriceFin, String QuantityFin, PurchaseDto purchaseDto,
+			Authentication authentication){
+		String email = authentication.getName();
+		
+		// purchase db insesrt
+		purchaseDto.setStringEmail(email);
+		purchaseDto.setPaymentAmount(PriceFin);// 전체 가격
+		purchaseDto.setPurchaseQuantity(QuantityFin);// 전체 구매 개수
+		purchaseService.insertPurchaseInfo(purchaseDto);
 		
 		return "redirect:/";
 	}
