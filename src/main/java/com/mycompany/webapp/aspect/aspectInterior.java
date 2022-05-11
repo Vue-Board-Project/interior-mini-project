@@ -12,7 +12,7 @@ import lombok.extern.log4j.Log4j2;
 @Component
 @Aspect
 @Log4j2
-public class InteriorAspect {
+public class aspectInterior {
 	
 	@AfterThrowing(
 			pointcut="execution(public * com.mycompany.webapp.controller.*.getImage*(..))",
