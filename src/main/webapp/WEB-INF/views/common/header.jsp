@@ -57,6 +57,31 @@
     그레이베이지 #faf9f6
     베이지 #fef8d4
  -->
+ <%-- 로딩창 --%>
+<style> 
+    #headerZloading {
+      width: 100%;    
+      height: 100%;    
+      top: 0;    
+      left: 0;    
+      position: fixed;   
+      opacity: 0.7;   
+      background: white;   
+      z-index: 10000;   
+      text-align: center; 
+      display: none;
+    }
+    
+    #headerZloading > img{
+      position: absolute; 
+      top: 35%;
+      left: 40%;
+      z-index: 100;
+    }
+</style>
+<div id="headerZloading">
+	<img  src="${pageContext.request.contextPath}/resources/images/interiorConsultImage/load.gif" alt="loading">  
+</div>
 <body id="body_id" class="body_class" style="background-color: #faf9f6;">
     <div id="main_wrapper" class="d-flex flex-column">
         <header id="main_header_wrap" class="nav-down">

@@ -30,8 +30,43 @@ $(document).ready(function(){
 }); 
 //input data 예약 신청
 function ReservationAdd(){
-	console.log("집에좀가자");
-	$("#ReservationAS").submit();
+    let modelNum = $("input[name='modelNum']").val();//모델명
+    let detailSym = $("textarea[name='detailSym']").val();//상세증상
+    let inputPurchaseDate = $("input[name='inputPurchaseDate']").val();//구매날짜
+    let inputPurchaseDateNon = $("input[name='inputPurchaseDateNon']:checked");//구매 모름
+    let inputwantASDate = $("input[name='inputwantASDate']").val();//수리 선택 날짜
+    
+    if(modelNum.length && detailSym.length && 
+        (inputPurchaseDate.length || inputPurchaseDateNon.length) 
+        && inputwantASDate.length){
+            console.log("집에좀가자");
+	    $("#ReservationAS").submit();
+    }else{
+        console.log("응 집에 못가" + detailSym);
+        if(!modelNum.length){//모델이 없음
+            $("#modelNumSpan").html("<i class='fas fa-exclamation-triangle'></i>&nbsp;존재하지 않는 모델");
+        }else{
+            $("#modelNumSpan").html("");
+        }
+        if(detailSym == ""){//상세 증상이 없음
+            $("#detailSymSpan").html("<i class='fas fa-exclamation-triangle'></i>&nbsp;상세 증상 미입력")
+        }else{
+            $("#detailSymSpan").html("");
+        }
+        if(!inputPurchaseDate.length && !inputPurchaseDateNon.length ){//구매 달력 미입력 
+            $("#inputPurchaseDateSpan").html("<i class='fas fa-exclamation-triangle'></i>&nbsp;달력 미입력");
+        }else{
+            $("#inputPurchaseDateSpan").html("");
+        }
+        if(!inputwantASDate.length){//as 달력
+            $("input[name='inputwantASDate']").css("border", "1px solid red");
+        }else{
+            $("input[name='inputwantASDate']").css("border", "1px solid lightgray");
+        }
+    }
+
+    
+	
 } 
 function openPop() {
     document.getElementById("popup_layer").style.display = "block";
@@ -42,22 +77,6 @@ function closePop() {
     document.getElementById("popup_layer").style.display = "none";
 }
 
-//보유 제품 선택 시
-function selectModelInfo(modelNumber, productName, inputPurchaseDate){
-	var chkuser=$("#selectModel").prop("checked");
-	if(chkuser){
-        $("#selectModelInfo").show();
-        $('#as_model_input').attr("value", modelNumber);
-		$('#purchase_username').attr("value", productName);
-		$('#purchase_useremail').attr("value", pattahoname);
-		$('#purchase_usertel').attr("value", inputPurchaseDate);
-	}else{
-        $("#selectModelInfo").hide(); 
-		$('#purchase_username').attr("value", "");
-		$('#purchase_useremail').attr("value", "");
-
-	}
-}
 $(document).ready(function(){
     var checkText = ""; 
     var thisVal = $(this).val();
@@ -98,3 +117,14 @@ $(document).ready(function(){
     }
 
 })
+//보유 제품 선택이나 종류 선택 시 모델명에 반영
+$("#myModelSelectcheck").on('change', function(){
+    let nowVal = $(this).val();
+    $("input[name='modelNum']").val(nowVal);
+   
+});
+$("input[name='category']").on('change', function(){
+    let nowVal = $(this).val();
+    $("input[name='modelNum']").val(nowVal);
+   
+});

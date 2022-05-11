@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.mycompany.webapp.aspect.aspectTransactionChk;
 import com.mycompany.webapp.dao.mybatis.ConsultDao;
 import com.mycompany.webapp.dao.mybatis.ProductConsultDao;
 import com.mycompany.webapp.dao.mybatis.UsersDao;
@@ -114,6 +115,7 @@ public class InteriorConsultController {
 	
 	//디테일 상담 전송
 	@PostMapping("/detailConsultRequest")
+	@aspectTransactionChk
 	public String detailConsultRequest(Authentication authentication,
 			@ModelAttribute("mainConsult") MainConsultDto mainConsult,
 			ConsultDetailDto consultDetailDto, SessionStatus sessionStatus) {

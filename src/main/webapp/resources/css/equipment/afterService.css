@@ -32,8 +32,8 @@
             font-size: 30px;
         }
         #as_content{
-            margin-top: 150px;
-            margin-left: 10%;
+            margin-top: 50px;
+            margin: 50px 0;
             width: 80%;
         }
         #as_product_choice{
@@ -49,7 +49,7 @@
         }
         #as_model_input{
             margin-left: 107px;
-            margin-right: 50px;
+            margin-right: 20px;
             width: 600px;
             font-size: 15px;
             padding: 10px;
@@ -133,13 +133,8 @@
             float:left;
         }
         #as_detail_input{
-            /* margin-left: 100px;
-            margin-right: 50px; */
-            width: 1000px;
-            height: 300px;
             font-size: 15px;
             padding: 30px;
-            padding-bottom: 300px;
             color: #7c7c7c;
         }
         #as_photo_input{
@@ -180,6 +175,8 @@
         }
         #as_info_input{
             padding-bottom: 120px;
+            width: 80%;
+
         }
         #checked_user_update{
             margin-left: 100px;
@@ -232,6 +229,8 @@
         #as_reservation_date_ch{
             clear: both;
             display: none;
+            width: 80%;
+
         }
         #as_reservation_date_ch_left_content{
             float: left;

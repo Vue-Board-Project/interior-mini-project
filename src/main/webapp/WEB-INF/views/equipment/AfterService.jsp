@@ -2,11 +2,21 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/equipment/afterService.css" rel="stylesheet" type="text/css"/>
-
+<link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
+<section class="container-fluid p-0">
+    <div style="display: flex; justify-content: space-between;position: relative;">
+        <div style="display: inline-block; width: 10%; height: 100px;" class="bg-dark menuheaderleft" ></div>
+        <div style="display: inline-block; width: 89%; height: 100px;" class=" menuheaderright">
+            <img src="${pageContext.request.contextPath}/resources/images/productConsult.png" width="100%" height="100%" >
+        </div>
+    </div>
+    <div style="width: 65%;position: relative; left:10px; top: -33px;" class="mx-auto menuheadertitle">
+        <span style="font-size: 50px; font-family: 'MinSans-Bold'; border-bottom: 5px solid coral; letter-spacing: 1.4px;">장비 AS</span>
+    </div>
+</section>
 <div id="AfterService_wrapper">
 <form id="ReservationAS" action="ReservationAS" method="post">
-        <div id="as_content">
-        
+        <div id="as_content" class="mx-auto">        
             <div id="as_product_choice">
                 <div id="as_title1" class="as_title">1. 제품/증상 선택
                     <a id="red_star"> *</a> <a id="as_title1_content1"> 필수 입력 사항</a>
@@ -15,41 +25,55 @@
                 <div>제품 선택<a id="red_star"> *</a> <span class="as_font_color_ccc">아래 제품을 선택해주세요</span></div>
                 <hr/>
                 <div>모델명 
-                	<input id="as_model_input" type="text" name="modelNum" value="모델명을 입력해주세요." onFocus="clearText(this)"/>
+                	<input id="as_model_input" type="text" name="modelNum" placeholder="모델명을 입력해주세요." onFocus="clearText(this)"/>
                     <a id="howToVerifyModel" style="border: 1px solid black; border-radius: 15px;" class="btn btn-dark">모델명 확인 방법
                         <span>모델명은 제품에 부착되어 있는 에너지 효율 등급표 스티커에서 확인할 수 있습니다.</span></a>
                 </div>
-                <div id="myModelCheck" style="margin-top: 50px;">
-                    <label>보유 제품 확인하기</label>
-                    <c:choose>
-                        <c:when test="${empty modelList}">
-                            <option>선택하실 수 있는 제품이 없습니다.</option>
-                        </c:when>
-                        <c:otherwise>
-                            <select name="myModelSelect">
-                                <option>서비스를 원하는 제품을 선택해주세요</option>
-                                <c:forEach items="${modelList}" var="model">
-                                    <option onclick="selectModelInfo('${model.modelNumber}', '${productDto.productName}', '${purchaseDto.inputPurchaseDate}')" 
-                                    id="selectModel">${model.stringModelNumber}</option>
-                                </c:forEach>
-                            </select>
-                        </c:otherwise>
-                    </c:choose>		
-            	</div>
-                <div id="selectModelInfo">
-                   <img style="width: 300px;"src="/springframework-mini-project/equipment/display?fileName=${productDto.pattachoname}"/>
-                    <div>${productDto.productName}</div>
-                </div>	
+                <!-- 유효성 검사 코드 추출 부분 -->
+                <div style="width: 100%" >
+	                <div style="display:flex;">
+	                	<div style="width: 170px; height: 20px; display: inline-block;">
+	                	</div>
+	                	<div style=" height: 20px; display: inline-block;">
+	                	 <span style="font-size: 14px; font-family: 'MinSans-Regular';color: red" id="modelNumSpan">
+	                	 	
+	                	 </span>
+	                	</div>
+	                </div>
+                </div>
+                
 
                 <ul class="as_title1_content2" style="margin-top: 20px;">
-                    <li>모델명(코드)를 입력하시면 정확한 수리에 도움이 됩니다.(3자리 이상 입력)</li>
-                    <li>모델명(코드)가 정확하지 않은 경우 하단에서 제품의 종류를 꼭 선택 후 예약을 진행해 주세요.</li>
+                    <li>정확한 모델명이 필요합니다.</li>
+                    <li>모델명(코드)을 모를 경우 하단에서 제품 모델이나 종류를 선택하여  예약을 진행해 주세요.</li>
                 </ul>
+                <div class="mb-4">
+                	<div id="myModelCheck" style="margin-top: 50px;">
+	                    <label>보유 제품 확인하기</label>
+	                    <c:choose>
+	                        <c:when test="${empty modelList}">
+	                            <option>선택하실 수 있는 제품이 없습니다.</option>
+	                        </c:when>
+	                        <c:otherwise>
+	                            <select name="myModelSelect" id="myModelSelectcheck">
+	                                <option>서비스를 원하는 제품을 선택해주세요</option>
+	                                <c:forEach items="${modelList}" var="model" >
+	                                    <option id="selectModel" value="${model.stringModelNumber}">${model.stringModelNumber}</option>
+	                                </c:forEach>
+	                            </select>
+	                        </c:otherwise>
+	                    </c:choose>		
+	            	</div>
+	                <div id="selectModelInfo">
+	                   <img style="width: 300px;"src="/springframework-mini-project/equipment/display?fileName=${productDto.pattachoname}"/>
+	                    <div>${productDto.productName}</div>
+	                </div>
+                </div>
+                
                 <div id="as_btn_list" class="d-flex text-center" >
-                    <div>
                         <div id="categoryList">
                             <div id="as_choice_chair" class="as_btn_list_el">
-                                <input type="radio" name="category" class="as_btn_list_text_el_a" checked id="inputaschair">
+                                <input type="radio" name="category" class="as_btn_list_text_el_a" checked id="inputaschair" value="uc0002blu">
                                     <label for="inputaschair">
                                         <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/dentist-chair.png">
                                         <p class="as_btn_list_text_el">유니트체어</p>
@@ -57,7 +81,7 @@
                                 
                             </div>  
                             <div id="as_choice_largeCam" class="as_btn_list_el">
-                                <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputaslargeCam">
+                                <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputaslargeCam" value="lc0001whi">
                                     <label for="inputaslargeCam">
                                         <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/ct-scan-image.png">
                                         <p class="as_btn_list_text_el">대형 영상 장비</p>
@@ -65,7 +89,7 @@
                                 
                             </div>  
                             <div id="as_choice_smallCam" class="as_btn_list_el">
-                                <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputassmallCam">
+                                <input type="radio"  name="category"class="as_btn_list_text_el_a" id="inputassmallCam" value="sc0001bla">
                                     <label for="inputassmallCam">
                                         <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/smallxray.png">
                                         <p class="as_btn_list_text_el">소형 영상 장비</p>
@@ -73,7 +97,7 @@
                                 
                             </div>  
                             <div id="as_choice_cleaning" class="as_btn_list_el">
-                                <input type="radio" name="category" class="as_btn_list_text_el_a" id="inputascleaning">
+                                <input type="radio" name="category" class="as_btn_list_text_el_a" id="inputascleaning" value="lc0002whi">
                                     <label for="inputascleaning">
                                         <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/cleaning.png">
                                         <p class="as_btn_list_text_el">멸균 및 세척기</p>
@@ -81,7 +105,7 @@
                                 
                             </div>  
                             <div id="as_choice_otherequip" class="as_btn_list_el">
-                                <input type="radio"  name="category" class="as_btn_list_text_el_a" id="inputasotherequip">
+                                <input type="radio"  name="category" class="as_btn_list_text_el_a" id="inputasotherequip" value="lc0002whi">
                                     <label for="inputasotherequip">
                                         <img id="btn_aschair_image" class="as_btn_list_image" src="${pageContext.request.contextPath}/resources/subinimage/otherequip.png">
                                         <p class="as_btn_list_text_el">기타 장비</p>
@@ -91,7 +115,6 @@
                         </div>
                     </div> 
                     
-                    <hr>
                     
                 </div>
                 <div id="simpleSymList" class="d-flex" style="margin-top:50px; margin-bottom:50px">
@@ -103,23 +126,43 @@
                     <input id="sim_equ" class="simpleSymEl" name="simpleSym" type="radio" value="부품외관이상"/><label for="sim_equ">부품 외관 이상</label>
                     <input id="sim_danger" class="simpleSymEl" name="simpleSym" type="radio" value="화재및스파크"/><label for="sim_danger">화재 및 스파크</label>
                 </div>
-                    <div id="as_detail" class="d-flex">
-                        <p style="width: 183px;">상세 증상<span id="red_star">*</span></p>
-                        <input id="as_detail_input" name="detailSym" type="text" placeholder="고장 증상 상세 내용만 입력해주세요." onFocus="clearText(this)"/>
+                    
+                    <div id="as_detail" class="d-flex mt-2">
+                        <div style="display: inline-block; width: 183px;">   
+                            <p>
+                                상세 증상<span id="red_star">*</span><br/>
+                                <span style="font-size: 14px; font-family: 'MinSans-Regular';color: red" id="detailSymSpan">
+                                    
+                                </span>
+                            </p>
+                        </div>
+                        <div style="display: inline-block;">
+                            <textarea id="as_detail_input" name="detailSym" placeholder="고장 증상 상세 내용만 입력해주세요." onFocus="clearText(this)" cols="100" rows="7"></textarea>
+                            
+                        </div>
                     </div>
                     <p class="mt-3">첨부파일 <input id="as_photo_input" type="file" name="pattachoname"/></p>
                     <ul>
                     	<li class="as_detail_content">첨부 파일은 한 장씩만 첨부가 가능합니다.</li>
                     </ul>
-                    
-                    <p>구입년월<a id="red_star"> *</a>
-                        <input type="date" name="inputPurchaseDate" id="realPurchaseDate" class="underline"/>
+                    <div id="as_detail" class="d-flex mt-2">
+                        <div style="display: inline-block; width: 183px;">   
+                            <p>
+                                구입년월<span id="red_star"> *</span><br/>
+                                <span style="font-size: 14px; font-family: 'MinSans-Regular';color: red" id="inputPurchaseDateSpan">
+                                    
+                                </span>
+                          </p>
+                        </div>
+                        <div style="display: inline-block;">
+                            <input type="date" name="inputPurchaseDate" id="realPurchaseDate" class="underline"/>
                         <!-- <input id="buy_year_input" class="underline" value="선택"/> 년
                         <input id="buy_month_input" class="underline" value="선택"/> 월 -->
-                        <label id="text_whenyoudontknow">모름 <input id="checkwhenyoudontknow" type='checkbox' onclick='is_checked()'></label>
-                    </p>
-            </div>     
-            <div id="as_info_input">
+                        <label id="text_whenyoudontknow">모름 <input id="checkwhenyoudontknow" type='checkbox' onclick='is_checked()' name="inputPurchaseDateNon" ></label>
+                        </div>
+                    </div>
+        </div>     
+        <div id="as_info_input" class="mx-auto">
                 <p class="as_title">
                     2. 고객 정보<a id="red_star"> *</a> <a id="as_title1_content1"> 필수 입력 사항</a>
                 </p>
@@ -166,10 +209,10 @@
                 </div>
                 <hr/>
                 <div><a id="btn_select_reservation_date" class="btn btn-light">예약 가능일 조회</a></div> 
-            </div> 
+        </div> 
 
             <!--예약 가능일 조회하기 버튼을 눌러야 해당 div가 보이도록-->
-            <div id="as_reservation_date_ch">
+        <div id="as_reservation_date_ch" class="mx-auto">
                 <p class="as_title">3. 예약 일/시간 선택 <a id="red_star"> *</a> <a id="as_title1_content1"> 필수 입력 사항</a></p>
                 <hr id="pxup_line"/>
                 <p>예약 일시 <a id="red_star"> *</a><span class="as_font_color_ccc">예약 일과 시간을 선택해주세요</span></p>
@@ -214,37 +257,14 @@
             
                 <div id="as_reservation_final_button">
                     <a href="/springframework-mini-project/" id="btn_reservation_input_cancellation" style="box-shadow: none;" class="btn btn-light">예약 취소</a>
-                    <a id="btn_reservation_input_final"class="btn btn-light" onclick="ReservationAdd()">예약 신청</a>
-                            
+                    <a id="btn_reservation_input_final"class="btn btn-light" onclick="ReservationAdd()">예약 신청</a>            
                 </div>
-            </div>
         </div>
-  	<div class="popup_layer" id="popup_layer" style="display: none;">
-	  <div class="popup_box">
-	      <div style="height: 10px; width: 375px; float: top;">
-	        <a href="javascript:closePop();"><img src="${pageContext.request.contextPath}/resources/subinimage/wantclose.svg" class="m_header-banner-close" width="30px" height="30px"></a>
-	      </div>
-	      <!--팝업 컨텐츠 영역-->
-	      <div class="popup_cont">
-	          <h5>${udt.name}님의 보유 제품입니다</h5>
-	          <p>구매하신 제품 중 AS를 원하시는 상품이 있다면 체크 후 하단의 선택 버튼을 눌러주십시오.</p>
-	          <p>
-	          
-	
-	          </p>
-	
-	      </div>
-	      <!--팝업 버튼 영역-->
-	      <div class="popup_btn" style="float: bottom; margin-top: 200px;">
-	          <a onclick="javascript:closePop();">닫기</a>
-	          <a onclikc="">선택</a>
-	      </div>
-	  </div>
-	  
-	</div>
-	
+        
+
     <script src="${pageContext.request.contextPath}/resources/js/equipment/afterService.js"></script>
-</form>  
-  </div>
+    </form>  
+</div>
+  
   
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
