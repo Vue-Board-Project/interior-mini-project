@@ -22,14 +22,15 @@ import lombok.extern.log4j.Log4j2;
 @Service
 @Log4j2
 public class UsersService {
+	//회원가입 결과	
 	public enum JoinResult{
 		SUCCESS, FAIL, DUPLICATED
 	}
-	
+	//이건 안씀
 	public enum LoginResult{
 		SUCCESS, FAIL_EMAIL, FAIL_PASSWORD, FAIL
 	}
-	
+	//비번 찾기 결과
 	public enum FindPWResult{
 		SUCCESS, FAIL
 	}
@@ -158,27 +159,33 @@ public class UsersService {
 			return FindPWResult.SUCCESS;
 		}
 	}
-
+	
+	//로그인 틀린 횟수 추가
 	public void countFailure(String email) {
 		usersDao.updateFailureCount(email);
 	}
 
+	//로그인 틀린횟수 가져오기
 	public Integer checkFailureCount(String email) {
 		return usersDao.checkFailureCount(email);
 	}
 
+	//잠금계정 처리
 	public void disabledUsername(String email) {
 		usersDao.disabledUsername(email);
 	}
 
+	//로그인 틀린횟수 초기화
 	public void clearFailureCount(String email) {//email
 		usersDao.clearFailureCount(email);
 	}
 
+	//잠긴계정인지 아닌지
 	public int getIsEnabled(String email) {
 		return usersDao.getIsEnabled(email);
 	}
 	
+	//이메일로 유저 정보 가져오기
 	public UsersDto selectByEmail(String email) {
 		return usersDao.selectByEmail(email);
 	}

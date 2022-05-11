@@ -20,8 +20,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.Model; 
 import org.springframework.util.FileCopyUtils;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,10 +75,20 @@ public class HomeController {
 		return result;
 	}
 	
-	@RequestMapping("/error/403")
-	public String error403() {
-		  logger.warn("dddddd");
-	      return "error/403";
-	   }
+
+	@GetMapping("/")
+	public String reLogin(String reLogin, Model model) {
+		logger.info("실행");
+		logger.info(reLogin);
+		if(reLogin != null) {
+			logger.info("!!!!!!!!!!!!!!!");
+			model.addAttribute("errorMSG", "로그인을 해주세요.");
+			return "home";
+		} else {
+			logger.info("????????????????");
+			return "home";//view 이름만 전달
+		}
+		
+	}
 	
 }

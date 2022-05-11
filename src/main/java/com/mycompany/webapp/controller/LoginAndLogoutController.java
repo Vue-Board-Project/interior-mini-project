@@ -14,6 +14,7 @@ import com.mycompany.webapp.service.UsersService.LoginResult;
 
 import lombok.extern.log4j.Log4j2;
 
+//이거 사용안함 시큐리티에서 로그인 로그아웃 함
 @Controller
 @Log4j2
 public class LoginAndLogoutController {
