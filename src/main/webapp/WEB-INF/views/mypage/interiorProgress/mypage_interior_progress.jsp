@@ -2,18 +2,30 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-</div>
-<div id = "mypage_interior_progress_jsp">
-	<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
-	
-	<div class="mypage_interior_progress_section">
-			<div class = "header_section">
-				<div class="text">인테리어 진행내역</div>
-	          	<span class="sub_text">인테리어 진행 내역을 조회합니다.</span>
-	          	<hr width = 90%>
-	         </div>
-	         
-	         <input type = "hidden" name = "inputNm" value="${progress.intConsultNo}"/>
+<div class = "container-fluid p-0">
+	<div style = "display:flex; width : 100%; height: 1850px;">
+		<%-- <%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %> --%>
+		<div class= "mypage_menu"  style = "display : inline-block;  width : 15%; height : 1850px; background-color : #faf9f6; border-right : 1px solid #ccc;">
+			<div style="display : inline-block; width : 100%; height : 300px;" >
+				<div style = "width : 90%; height : 300px; float : right; border-bottom : 3px solid #ca5c0d;">
+					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 140px;">마이페이지</p>
+				</div>
+			</div>
+			<div style = "display : inline-block; width : 100%; height : 1550px; ">
+				<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
+			</div>
+		</div>
+		<div class= "mypage_content" style = "display : inline-block; width : 85%; height : 1850px;  background-color : #faf9f6;">
+			<div style = "display :inline-block; width : 100%; height : 300px;">
+				<div style = "width : 90%; height : 160px; border-bottom : 1px solid #ccc; margin : auto;">
+					<div style = "font-family: 'MinSans-Bold'; font-size : 3rem; margin-top : 140px; margin-left : 2%;">
+						<span class ="pb-1" style ="border-bottom : 5px solid #ca5c0d;">인테리어 진행내역</span>
+					</div>
+				</div>
+			</div>
+			<div style = "display :inline-block; width : 100%; height : 1550px;">
+		     	
+		     	<input type = "hidden" name = "inputNm" value="${progress.intConsultNo}"/>
 	         
 	         <!-- 보경 수정 -->
 			 <main style="width: 1400px;" class="mx-auto mb-5">
@@ -481,24 +493,24 @@
 				</div>
 
 			 </main> 
-	  
+		     	
+		     	
+			</div>
+		</div>
 	</div>
 </div>
 <link href="${pageContext.request.contextPath}/resources/css/interior_consult_css/mypage_interior.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/resources/js/interior_consult_js/mypage_interior.js"></script>
+
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
 <style>
 
 		#mypage_progress_mask{
 			 z-index: 3;
 		}
-		
-		.mp_progress_noData_text{
-			z-index: 4;
-			font-family: 'MinSans-Medium'; 
-			height : 500px; 
-			font-size : 1.5rem; 
-			
-		}
+
 		
 		#sidebar_mypage .mypage_list #list_interior_progress{
         	form :active;
@@ -551,5 +563,3 @@ $(document).ready(function(){
 	
 
 </script>
-
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>

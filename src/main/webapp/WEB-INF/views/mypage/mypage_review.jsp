@@ -1,27 +1,37 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<div id = "mypage_review_jsp">
-	<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
-	
-	<div class="review_section">
-			<div class = "header_section">
-	          <div class="text">리뷰 관리</div>
-	          	<span class="sub_text">장비들의 후기를 남기거나 확인할 수 있습니다.</span>
-	          <hr width = 90%>
-	         </div>
-
-	          
-	     	<div class="content_section">
-		     	<div class = "mypage_review_contents_wrap">
+<div class = "container-fluid p-0">
+	<div style = "display:flex; width : 100%; height: 1300px;">
+		<%-- <%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %> --%>
+		<div class= "counseling_menu"  style = "display : inline-block;  width : 15%; height : 1300px; background-color : #faf9f6; border-right : 1px solid #ccc;">
+			<div style="display : inline-block; width : 100%; height : 300px;" >
+				<div style = "width : 90%; height : 300px; float : right; border-bottom : 3px solid #ca5c0d;">
+					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 140px;">마이페이지</p>
+				</div>
+			</div>
+			<div style = "display : inline-block; width : 100%; height : 1000px; ">
+				<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
+			</div>
+		</div>
+		<div class= "counseilng_content" style = "display : inline-block; width : 85%; height : 1300px;  background-color : #faf9f6;">
+			<div style = "display :inline-block; width : 100%; height : 300px;">
+				<div style = "width : 90%; height : 160px; border-bottom : 1px solid #ccc; margin : auto;">
+					<div style = "font-family: 'MinSans-Bold'; font-size : 3rem; margin-top : 140px; margin-left : 2%;">
+						<span class ="pb-1" style ="border-bottom : 5px solid #ca5c0d;">리뷰 관리</span>
+					</div>
+				</div>
+			</div>
+			<div style = "display :inline-block; width : 100%; height : 1000px;">
+		     	
+		     	<div class = "mypage_review_contents_wrap"  style = "display : inline-block; width : 90%; margin-left : 5%;">
 			     	<div class = "mypage_review_tab_menu">
 					    <div id = "mypage_review_button_before" class="btn col-md-6" onclick = "mypage_review_avaliable()">
-					      <a id = "before_review">작성 가능 후기</a>
+					      <a id = "before_review" style = "color : #ca5c0d; font-family: 'MinSans-Medium'; font-size : 1.3rem;">작성 가능 후기</a>
 					    </div>
 					    <div id = "mypage_review_button_after" class="btn col-md-6" onclick = "mypage_review_finished()">
-					      <a id = "after_review">작성 완료 후기</a>
+					      <a id = "after_review" style = "font-size : 1.3rem; font-family:'MinSans-Medium';">작성 완료 후기</a>
 					    </div>
 					 </div>
 					  
@@ -29,7 +39,9 @@
 						   <div id="mypage_review_tab_available" class="tabmenu_content ">
 						      <!-- <div id = "mypage_review_tab_available_null">작성 가능한 후기가 없습니다.</div> -->
 						     
-						     
+						     <c:if test = "${orderReview eq null}">
+						     	<span>작성할 리뷰가 없습니다.</span>
+						     </c:if>
 						      <c:forEach var="orderReview" items="${orderReview}">
 							      <div class = "mypage_review_before_element">
 							      	<div class = "image_slot">
@@ -48,7 +60,35 @@
 							      	</div>
 							      </div>
 						      </c:forEach>
-			    </div>
+  
+			  			  </div>
+			    
+			    		<table id = "mp_review_pager">
+							 <tr>
+						           <td colspan="4" class="text-center">
+						              <div style = "width : 400px; margin-left : 450px; margin-top : 30px;">
+						                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=1">처음</a>
+						                 <c:if test="${pager.groupNo>1}">
+						                    <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${pager.startPageNo-1}">이전</a>
+						                 </c:if>
+						                 
+						                 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+						                    <c:if test="${pager.pageNo != i}">
+						                       <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+						                    </c:if>
+						                    <c:if test="${pager.pageNo == i}">
+						                       <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+						                    </c:if>
+						                 </c:forEach>
+						                 
+						                 <c:if test="${pager.groupNo<pager.totalGroupNo}">
+						                    <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager.endPageNo+1}">다음</a>
+						                 </c:if>
+						                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager.totalPageNo}">맨끝</a>
+						              </div>
+						           </td>
+						        </tr>
+						     </table>
 
 			    	<div id="mypage_review_tab_finished" class="tabmenu_content">
 			    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
@@ -67,32 +107,29 @@
 			    	</div>
 			    </div>
 		    </div>   
+		     	
+		     	
+			</div>
 		</div>
+	</div>
 </div>
+
 <%@ include file="/WEB-INF/views/mypage/mypage_review_popup.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
+
 <style>
 
 	#sidebar_mypage .mypage_list #mypage_review{
-        	form :active;
-        	color : #ca5c0d;
-        	font-weight: 800;
-        }
-        
-        
-    .review_section{
-          position: relative;
-          background: #faf9f6;
-          min-height: 100vh;
-          top: 0;
-          left: 250px;
-          width: calc(100% - 250px);
-          transition: all 0.5s ease;
-     }
-     
-     /*탭 버튼 포함해서 내용 창 묶기 */
+       	form :active;
+       	color : #ca5c0d;
+       	font-weight: 800;
+    }
+
+ /*탭 버튼 포함해서 내용 창 묶기 */
      .mypage_review_contents_wrap {
      	width : 1200px;
-     	height : 700px;
+     	height : 800px;
      	background-color : #fff;
      }
      
@@ -108,13 +145,13 @@
      
      /*각 탭 버튼 활성화하기*/
      #mypage_review_button_before{
-     	margin-top : 10px;
+     	padding-top : 10px; 
      	border : 1px solid #e8e8db;
      	background-color : #fff;
      }
      
      #mypage_review_button_after{
-     	margin-top : 10px;
+     	padding-top : 10px;
      	border : 1px solid #e8e8db;
      	background-color : #fff;
      }
@@ -154,7 +191,7 @@
      	font-size : 1.5rem;
      	width : 500px;
      	height : 2rem;
-     	margin-left : 50px;
+     	margin-left : 80px;
      	margin-top : 60px;
      	
      }
@@ -166,7 +203,7 @@
     	width : 300px;
     	height : 50px;
     	margin-top : 100px;
-    	margin-left : 300px;
+    	margin-left : 330px;
     }
     
     
@@ -177,7 +214,7 @@
     	width : 100px;
     	height : 50px;
     	margin-top : 150px;
-    	margin-left : 300px;
+    	margin-left : 330px;
     }
     
     
@@ -189,7 +226,7 @@
      	height : 100px;
      	text-align : left;
      	margin-top : 200px;
-     	margin-left : 800px;
+     	margin-left : 900px;
      	
      
      }
@@ -199,7 +236,7 @@
      	height : 110px;
      	float : right;
      	margin-top : 85px;
-     	margin-left : 380px;
+     	margin-left : 500px;
      
      }
      
@@ -215,15 +252,11 @@
       }
 
       .mypage_user_review_element .user_product_title {
-      		height : 49px;
-      		width : 1200px;
+      		height : 49px;;
       		font-family: 'MinSans-Bold';
-      		/* padding-left : 50px;
-      		padding-top : 10px; */
       		padding : auto;
-      		padding-left : 20px;
       		font-size : 1.5rem;
-      		border-bottom : 1px solid #ccc;  
+
       }
       
       .mypage_user_review_element .user_product_title .user_product_modelName{
@@ -279,11 +312,11 @@
       .mypage_user_review_element .user_review_text {
       		position : absolute;
       		font-family: 'MinSans-Regular';
-      		margin-left : 185px;
+      		margin-left : 285px;
       		width : 1000px;
       		height : 120px;
-      		margin-top : 50px;
-      
+      		margin-top : 60px;
+ 
       } 
      
       
@@ -307,17 +340,15 @@
     	z-index: 4;
     	
     }
-    
-    #mypage_review_jsp {
-    	 background-color: #faf9f6;
-    
-    }
-	
+
 </style>
+
 
 <script>
 
 function reviewButton(purchaseNumber, modelNumber, name, imgName) {
+	console.log("chk Working....");
+	
 	 $("#mypage_review_mask").css("display", "block");
   	 $(".mypage_popup_wrap").css("display", "block");
   	 
@@ -333,14 +364,20 @@ function reviewButton(purchaseNumber, modelNumber, name, imgName) {
 function mypage_review_avaliable() {
 	$('#mypage_review_tab_available').show();
 	$('#mypage_review_tab_finished').hide();
+	$('#mp_review_pager').show();
+	$('#before_review').css("color", "#ca5c0d");
+	$('#after_review').css("color", "#272723");
+	
 }
 
 function mypage_review_finished() {
 	$('#mypage_review_tab_available').hide();
 	$('#mypage_review_tab_finished').show();
+	$('#mp_review_pager').hide();
+	$('#before_review').css("color", "#272723");
+	$('#after_review').css("color", "#ca5c0d");
 	selectReviewList();
 }
-
 
 
  $(document).ready(function(){
@@ -368,9 +405,3 @@ function setReviewPhoto(event) {
 
 </script>
 
- <%-- 
- 이거 왜 갑자기 안됨???
- <script src="${pageContext.request.contextPath}/resources/js/mypage/jsMypageReview.js"></script>
- --%>
-
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>

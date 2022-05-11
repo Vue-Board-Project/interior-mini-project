@@ -411,19 +411,38 @@
 		set REVIEW_AVAILABLE = 1
 		where purchase_number = #{purchaseNumber}
 		and model_number = #{modelNumber}
-		and email = #{email}
 	</update>
 	
-	
-	<select id = "getOrderReview" parameterType = "string" resultType = "pDetail">
-		select p.PURCHASE_NUMBER as intPurchaseNumber, p.email as stringEmail, p.PURCHASE_DATE as datePurchaseDate,
-	        p.PURCHASE_QUANTITY as modelPurchaseQuantity, pd.MODEL_NUMBER as stringModelNumber,
-	        d.PRODUCT_NAME as stringProductName, d.PATTACHONAME as stringPatchoName
+	<select id = "getTotalOrderReviewList" parameterType = "string" resultType = "int">
+		select count(*) 
 		from purchase p, PURCHASE_DETAIL pd, product d
 		where p.email = #{email} and
 		        p.purchase_number = pd.purchase_number and
 		        pd.MODEL_NUMBER = d.MODEL_NUMBER and
-                REVIEW_AVAILABLE = 0
+		        REVIEW_AVAILABLE = 0
+	</select>
+	
+	
+	<select id = "getOrderReview" parameterType = "pager" resultType = "pDetail">
+  
+        <![CDATA[  
+		SELECT rnum, intPurchaseNumber, stringEmail, datePurchaseDate, modelPurchaseQuantity, stringModelNumber,
+                stringProductName, stringPatchoName
+			from(
+				SELECT ROWNUM as rnum, intPurchaseNumber, stringEmail, datePurchaseDate, modelPurchaseQuantity, stringModelNumber,
+                stringProductName, stringPatchoName
+				FROM (
+						select p.PURCHASE_NUMBER as intPurchaseNumber, p.email as stringEmail, p.PURCHASE_DATE as datePurchaseDate,
+                            p.PURCHASE_QUANTITY as modelPurchaseQuantity, pd.MODEL_NUMBER as stringModelNumber,
+                            d.PRODUCT_NAME as stringProductName, d.PATTACHONAME as stringPatchoName
+                        from purchase p, PURCHASE_DETAIL pd, product d
+                        where p.email = #{stringEmail} and
+                                p.purchase_number = pd.purchase_number and
+                                pd.MODEL_NUMBER = d.MODEL_NUMBER and
+                                REVIEW_AVAILABLE = 0
+				 )  WHERE ROWNUM <= #{endRowNo}   
+		)WHERE rnum >= #{startRowNo}
+		]]>
 	</select>
 	
 	<select id = "getOrderReviewFinList" parameterType = "string" resultType = "pDetail">

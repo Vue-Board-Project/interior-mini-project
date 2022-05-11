@@ -2,58 +2,73 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-<div id = "mypage_device_AS_jsp">
-   <%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
-   <div id = "mypage_device_AS_jsp_content">
-   
-   
-   <div class = "header_section">
-            <div class="text">장비 AS 조회</div>
-                <span class="sub_text">장비 AS 내역을 조회합니다.</span>
-                <hr style="width : 1400px;">
-   </div>
-   <div class="content_section">
-   <!-- 장비 AS 내역 확인 -->
-      <table class="table table-sm table-bordered" id = "mypage_table_as_list">
-         <tr>
-            <th style="width:30px">접수번호</th>
-            <th style="width:300px">제품명</th>
-            <th style="width:70px">날짜</th>
-         </tr>
-         
-         <c:forEach var="asList" items="${asList}">
-            <tr>
-               <td>${asList.receiptNumber}</td>
-               <td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black;"><b>${asList.productName}</b></a></td>
-               <td><fmt:formatDate value="${asList.applicationDate}" pattern="yyyy-MM-dd"/></td>
-            </tr>
-         </c:forEach>
-         
-         <tr>
-            <td colspan="4" class="text-center">
-               <div>
-                  <a class="btn btn-outline-primary btn-sm" href="device_AS?pageNo=1">처음</a>
-                  <c:if test="${pager.groupNo>1}">
-                     <a class="btn btn-outline-info btn-sm" href="device_AS?pageNo=${pager.startPageNo-1}">이전</a>
-                  </c:if>
-                  
-                  <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-                     <c:if test="${pager.pageNo != i}">
-                        <a class="btn btn-outline-success btn-sm" href="device_AS?pageNo=${i}">${i}</a>
-                     </c:if>
-                     <c:if test="${pager.pageNo == i}">
-                        <a class="btn btn-danger btn-sm" href="device_AS?pageNo=${i}">${i}</a>
-                     </c:if>
-                  </c:forEach>
-                  
-                  <c:if test="${pager.groupNo<pager.totalGroupNo}">
-                     <a class="btn btn-outline-info btn-sm" href="device_AS?pageNo=${pager.endPageNo+1}">다음</a>
-                  </c:if>
-                  <a class="btn btn-outline-primary btn-sm" href="device_AS?pageNo=${pager.totalPageNo}">맨끝</a>
-               </div>
-            </td>
-         </tr>
-      </table>
+<div class = "container-fluid p-0">
+	<div style = "display:flex; width : 100%; height: 1750px;">
+		<%-- <%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %> --%>
+		<div class= "mypage_menu"  style = "display : inline-block;  width : 15%; height : 1750px; background-color : #faf9f6; border-right : 1px solid #ccc;">
+			<div style="display : inline-block; width : 100%; height : 300px;" >
+				<div style = "width : 90%; height : 300px; float : right; border-bottom : 3px solid #ca5c0d;">
+					<p style = "font-family: 'MinSans-Bold'; font-size : 1rem; margin-top : 140px;">마이페이지</p>
+				</div>
+			</div>
+			<div style = "display : inline-block; width : 100%; height : 1450px; ">
+				<%@ include file="/WEB-INF/views/mypage/mypage_menu.jsp" %>
+			</div>
+		</div>
+		<div class= "mypage_content" style = "display : inline-block; width : 85%; height : 1750px;  background-color : #faf9f6;">
+			<div style = "display :inline-block; width : 100%; height : 300px;">
+				<div style = "width : 90%; height : 160px; border-bottom : 1px solid #ccc; margin : auto;">
+					<div style = "font-family: 'MinSans-Bold'; font-size : 3rem; margin-top : 140px; margin-left : 2%;">
+						<span class ="pb-1" style ="border-bottom : 5px solid #ca5c0d;">장비 AS 조회</span>
+					</div>
+				</div>
+			</div>
+			<div style = "display :inline-block; width : 100%; height : 1450px;">
+		     	
+		     <div style = "display : inline-block; width : 90%; margin-left : 5%; margin-top : 30px;">	
+		     	<!-- 장비 AS 내역 확인 -->
+		      <table class="table table-sm table-bordered" id = "mypage_table_as_list">
+		         <tr>
+		        	<th style="width:15%; padding-left:10px;">접수번호</th>
+		           	<th style="width:60%; padding-left:10px;">제품명</th>
+		           	<th style="width:15%; padding-left:10px;">날짜</th>
+		         </tr>
+		         
+		         <c:forEach var="asList" items="${asList}">
+		            <tr>
+		               <td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;">${asList.receiptNumber}</a></td>
+		               <td><a href="javascript:void(0)" onClick="ajaxAsDetail(${asList.receiptNumber})" style = "text-decoration : none; color : black; padding-left:10px;"><b>${asList.productName}</b></a></td>
+		               <td style ="padding-left:10px;">${asList.applicationDate}</td>
+		            </tr>
+		         </c:forEach>
+		         
+			 <tr>
+		           <td colspan="4" class="text-center">
+		              <div>
+		                 <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=1">처음</a>
+		                 <c:if test="${pager.groupNo>1}">
+		                    <a class="btn btn-outline-success btn-sm" href="device_AS?pageNo=${pager.startPageNo-1}">이전</a>
+		                 </c:if>
+		                 
+		                 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+		                    <c:if test="${pager.pageNo != i}">
+		                       <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${i}">${i}</a>
+		                    </c:if>
+		                    <c:if test="${pager.pageNo == i}">
+		                       <a class="btn btn-outline-success btn-sm" href="device_AS?pageNo=${i}">${i}</a>
+		                    </c:if>
+		                 </c:forEach>
+		                 
+		                 <c:if test="${pager.groupNo<pager.totalGroupNo}">
+		                    <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${pager.endPageNo+1}">다음</a>
+		                 </c:if>
+		                 <a class="btn btn-outline-secondary btn-sm" href="device_AS?pageNo=${pager.totalPageNo}">맨끝</a>
+		              </div>
+		           </td>
+		        </tr>
+		     </table>
+      
+      </div>
       
       <div class = "mypage_device_AS_detail_slot">
       		<script>
@@ -70,81 +85,9 @@
 			            });
 		        }
 			</script>
-      
-      
-         <%-- <div id = "mypage_device_AS_reservation">
-            <div id = "mypage_device_AS_reservation_title" style = "margin-top : 100px;"><h2>예약 정보</h2></div>
-            <hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
-            
-            <div id = "mypage_device_AS_reservation_content">
-               
-               <div class = "reservation_number">
-                  <div class = "reservation_number_title">접수번호</div>
-                  <div class = "reservation_number_content">${asInfo.receiptNumber}</div>
-               </div>
-               
-               <div class = "request_date">
-                  <div class = "request_date_title">접수일</div>
-                  <div class = "request_date_content">${asInfo.applicationDate}</div>
-               </div>
-               
-               <div class = "visit_date">
-                  <div class = "visit_date_title">서비스 예정일</div>
-                  <div class = "visit_date_content">${asInfo.scheduledServiceDate}</div>
-               </div>
-            
-               <div class = "product_name">
-                  <div class = "product_name_title">제품명</div>
-                  <div class = "product_name_content">${asInfo.productName}</div>
-               </div>
-               
-               <div class = "product_code_name">
-                  <div class = "product_code_name_title">모델명</div>
-                  <div class = "product_code_name_content">${asInfo.stringModelNumber}</div>
-               </div>
-               
-               <div class = "product_symptom">
-                  <div class = "product_symptom_title">고장증상</div>
-                  <div class = "product_symptom_content">${asInfo.basicSymptoms}</div>
-               </div>
-               
-               <div class = "product_symptom_detail">
-                  <div class = "product_symptom_detail_title">상세증상</div>
-                  <div class = "product_symptom_detail_content">${asInfo.detailedSymptoms}</div>
-               </div>
-               
-               
-            
-            </div>
-         </div>
-         
-         
-         <div id = "mypage_device_AS_customer">
-            <div id = "mypage_device_AS_customer_title"><h2>고객 정보</h2></div>
-            <hr style="width : 1400px; color: #ca5c0d; background-color: #ca5c0d; height:3px; border:none">
-            
-            <div id = "mypage_device_AS_reservation_content">
-               
-               <div class = "customer_name">
-                  <div class = "customer_name_title">고객명</div>
-                  <div class = "customer_name_content">${asInfo.user.name}</div>
-               </div>
-               
-               <div class = "customer_phone_number">
-                  <div class = "customer_phone_number_title">전화번호</div>
-                  <div class = "customer_phone_number_content">${asInfo.user.phone}</div>
-               </div>
-               
-               <div class = "customer_address">
-                  <div class = "customer_address_title">주소</div>
-                  <div class = "customer_address_content">${asInfo.user.address}</div>
-               </div>
-            
-            </div>
-         </div> --%>
          
       </div>
-      <div id = "mypage_device_AS_warning">
+      <div id = "mypage_device_AS_warning" style = "display : inline-block; width : 90%; margin-left : 5%;">
          <div id = "warning_header">
             <img src = "${pageContext.request.contextPath}/resources/images/mypage/mypage_warning_logo.png" style = "width : 20px; height : 20px; margin : 30px;"/>
             <div style = "margin-top : 20px;"><b>주의사항</b></div>
@@ -157,13 +100,14 @@
             </ul>
          </div>
       </div>
-   
-   </div>
+		     	
+			</div>
+		</div>
+	</div>
 </div>
-</div>
+
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
 
 <style>
 

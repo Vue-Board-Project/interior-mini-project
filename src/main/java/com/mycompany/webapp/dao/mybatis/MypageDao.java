@@ -110,7 +110,7 @@ public interface MypageDao {
 
 	public int getProgressStep6(int conNum);
 
-	public List<PurchaseDetailDto> getOrderReview(String email);
+	public List<PurchaseDetailDto> getOrderReview(Pager pager);
 
 	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager);
 
@@ -119,6 +119,8 @@ public interface MypageDao {
 	public int getTotalReviewFin(String email);
 
 	public List<PurchaseDetailDto> getOrderReviewFinList(String email);
+
+	public int getTotalOrderReviewList(String email);
 
 
 

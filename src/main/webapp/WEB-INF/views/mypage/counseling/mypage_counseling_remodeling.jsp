@@ -1,25 +1,34 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<div class = "mypage_remodeling_history">
-		<h4><b><span>${user.name}</span></b>님의 <br>
-			치과 리모델링 신청 내역입니다.</h4>
-		<button class = "info_button" id = "mypage_remodeling_button">확인하기</button>
+<div class = "mypage_counseling_slots">
+	<div class = "mypage_remodeling_history">
+		<b><span>${user.name}</span></b>님의 <br>
+			치과 리모델링 신청 내역입니다.
+	<button class = "info_button" id = "mypage_remodeling_button">확인하기</button>
+	</div>
 </div>
-
 <style>
 
 .mypage_remodeling_history{
-		margin-top : 15px;
-		padding-left : 5%;
-		padding-top : 5%;
+		display : inline-block;
 		border: 1px solid #ccc;
     	background-image : url("${pageContext.request.contextPath}/resources/images/mypage/mypage_counseling_remodeling.jpg");
     	background-size: cover;
 		background-repeat: no-repeat;
-		width : 95%;
-		height : 95%;
-    	color : #fff;
     	border-radius : 20px;
+    	width : 85%;
+    	height : 100%;
+    	margin-left : 7%;
+    	
+    	/* 신청내역 내의 글자 스타일 */
+    	padding-left : 100px;
+    	padding-top : 50px;
+    	color : #fff;
+    	
+    	font-family: 'MinSans-Regular';
+    	font-size : 1.5rem;
+    	font-weight : 400;
+    	
 	}
 
 </style>
