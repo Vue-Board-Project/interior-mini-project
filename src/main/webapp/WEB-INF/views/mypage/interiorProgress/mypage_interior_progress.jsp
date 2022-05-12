@@ -466,7 +466,7 @@
 										<fmt:formatDate value="${progress.cendDate}" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${progress.asEndDate}" pattern="yyyy-MM-dd"/>
 									</div>
 									<div style="display: inline-block;" class="ml-3 pt-2">
-										<button class="btn btn-secondary">장비 a/s 신청</button>
+										<button class="btn btn-secondary"  onclick="location.href='/springframework-mini-project/equipment/AfterService'">장비 a/s 신청</button>
 									</div>
 								</div>
 							</section>

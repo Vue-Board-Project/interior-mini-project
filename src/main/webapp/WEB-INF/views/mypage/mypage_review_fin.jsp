@@ -27,10 +27,10 @@
 		     	
 		     	<div class = "mypage_review_contents_wrap"  style = "display : inline-block; width : 90%; margin-left : 5%;">
 			     	<div class = "mypage_review_tab_menu">
-					    <div id = "mypage_review_button_before" class="btn col-md-6" onclick = "mypage_review_avaliable()">
+					    <div id = "mypage_review_button_before" class="btn col-md-6" onclick="location.href='/springframework-mini-project/mypage/mypageReview'">
 					      <a id = "before_review" style = "color : #272723; font-family: 'MinSans-Medium'; font-size : 1.3rem;">작성 가능 후기</a>
 					    </div>
-					    <div id = "mypage_review_button_after" class="btn col-md-6" onclick = "mypage_review_finished()">
+					    <div id = "mypage_review_button_after" class="btn col-md-6">
 					      <a id = "after_review" style = "font-size : 1.3rem; font-family:'MinSans-Medium'; color : #ca5c0d;">작성 완료 후기</a>
 					    </div>
 					 </div>
@@ -39,12 +39,24 @@
 						   <div id="mypage_review_tab_available" class="tabmenu_content ">
 			    	<div id="mypage_review_tab_finished" class="tabmenu_content">
 			    	<div id = "mypage_review_list_finished"></div>
+			    	
+			    	<c:if test = "${empty reviewFin}">
+			    		<div class = "mypage_no_review_info" 
+							style = "display : inline-block; width : 100%; height : 400px; padding-top : 50px;">
+							<div style = "display : inline-block; width : 85%; margin-left : 7%; margin-top : 30px;">
+								<div class = "mp_noinfo_title" 
+								style = "font-size : 1.5rem; font-family: 'MinSans-Regular'; text-align : center; margin-top : 60px;">
+									작성한 리뷰가 없습니다.
+								</div>
+							</div>
+						</div>
+					</c:if>
 					
 					<c:forEach var="reviewFin" items="${reviewFin}">
 					   	<div class = "mypage_user_review_element" style = "display : inline-block; width : 100%; border-bottom :1px solid #ccc;">
 					  			<div class = "user_product_title" style = "display : inline-block; width : 100%; border-bottom :1px solid #ccc;">
 					  				<span style = "float : left; margin-left : 20px; margin-top : 6px;">제목  :  ${reviewFin.reviewTitle}</span>
-					  				<span class = "user_product_modelName" style = "float : right; margin-right : 30px; margin-top : 10px;">모델명 : ${reviewFin.stringModelNumber}</span>
+					  				<span class = "user_product_modelName" style = "float : right; margin-right : 30px; margin-top : 12px;">모델명 : ${reviewFin.stringModelNumber}</span>
 					  				<span style = "float : right; margin-right : 50px;">${reviewFin.stringProductName}</span>
 					  			
 					  			</div>
@@ -64,7 +76,7 @@
 					   	</div>
 					  </c:forEach>
 					  
-				    	<c:if test = "${!empty reviewFin}">
+				    <c:if test = "${!empty reviewFin}">
 			    		<table id = "mp_review_pager">
 							 <tr>
 					           <td colspan="4" class="text-center">

@@ -32,11 +32,11 @@
 <style>
 	 /*팝업 선택시 회색 레이어 */
     #mypage_counseling_mask{
-    	 z-index: 3;
+    	 z-index: 999;
     }
     
     .mypage_remodeling_popup_wrap {
-    	z-index: 4; 
+    	z-index: 1000; 
     }
     
 

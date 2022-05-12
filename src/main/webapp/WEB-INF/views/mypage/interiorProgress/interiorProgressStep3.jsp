@@ -41,9 +41,9 @@
          <ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
 			<c:forEach items="${portfolioList}" var="portfolioList">
 			<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px; display : flex;"> 
-			      <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${portfolioList.intIno}" class="portfolio_dental_content_a">
+			      <a href="${pageContext.request.contextPath}/model_dental/model_dental_detail?ino=${portfolioList.intIno}" class="portfolio_dental_content_a">
 			      	  <div class="portfolio_dental_content_img_div">
-			          	  <img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${portfolioList.stringImImgPath}"/>
+			          	  <img class="portfolio_dental_content_img" src="/springframework-mini-project/model_dental/display?fileName=${portfolioList.stringImImgPath}"/>
 			      	  </div>
 			          <div style="position: relative; text-align : center;">
 			          	  <b class="mt-3 portfolio_dental_content_b" >${portfolioList.stringISummary}</b>

@@ -27,19 +27,14 @@
 		     	
 		     	<div class = "mypage_review_contents_wrap"  style = "display : inline-block; width : 90%; margin-left : 5%;">
 			     	<div class = "mypage_review_tab_menu">
-					    <div id = "mypage_review_button_before" class="btn col-md-6" onclick = "mypage_review_avaliable()">
+					    <div id = "mypage_review_button_before" class="btn col-md-6">
 					      <a id = "before_review" style = "color : #ca5c0d; font-family: 'MinSans-Medium'; font-size : 1.3rem;">작성 가능 후기</a>
 					    </div>
-					  <c:if test = "${chkFin >= 1}">  
-					    <div id = "mypage_review_button_after" class="btn col-md-6" onclick = "mypage_review_finished()">
+					    <div id = "mypage_review_button_after" class="btn col-md-6" onclick="location.href='/springframework-mini-project/mypage/mypageReviewFin'">
 					      <a id = "after_review" style = "font-size : 1.3rem; font-family:'MinSans-Medium';">작성 완료 후기</a>
 					    </div>
-					   </c:if>
-					   <c:if test = "${chkFin == 0}">  
-						    <div id = "mypage_review_button_after" class="btn col-md-6" onclick = "mypage_review_no()">
-						      	<a id = "after_review" style = "font-size : 1.3rem; font-family:'MinSans-Medium';">작성 완료 후기</a>
-						    </div>
-					   </c:if>
+				
+					  
 					   
 					 </div>
 					  <div class = "mypage_review_contents_menu">
@@ -103,78 +98,6 @@
 					     </table>
 				     </c:if>
 
-			    	<div id="mypage_review_tab_finished" class="tabmenu_content">
-			    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
-			    	<div id = "mypage_review_list_finished"></div>
-				    <c:if test = "${chkFin == 0}">  
-						<div id = "no_data_review_finished">
-						<div class = "mypage_no_review_info" style = "display : inline-block; width : 100%; height : 400px; padding-top : 50px;">
-								<div style = "display : inline-block; width : 85%; margin-left : 7%; margin-top : 30px;">
-								<div class = "mp_noinfo_title" style = "font-size : 1.5rem; font-family: 'MinSans-Regular'; text-align : center; margin-top : 60px;">
-										작성한 리뷰가 없습니다.
-								</div>
-							</div>
-						</div>
-						</div>
-					</c:if>	
-					
-					<c:forEach var="reviewFin" items="${reviewFin}">
-					   	<div class = "mypage_user_review_element" style = "display : inline-block; width : 100%; border-bottom :1px solid #ccc;">
-					  			<div class = "user_product_title" style = "display : inline-block; width : 100%; border-bottom :1px solid #ccc;">
-					  				<span style = "float : left; margin-left : 20px; margin-top : 6px;">제목  :  ${reviewFin.reviewTitle}</span>
-					  				<span class = "user_product_modelName" style = "float : right; margin-right : 30px; margin-top : 10px;">모델명 : ${reviewFin.stringModelNumber}</span>
-					  				<span style = "float : right; margin-right : 50px;">${reviewFin.stringProductName}</span>
-					  			
-					  			</div>
-					   		<div class = "user_review_contents">
-					   			<div class = "user_product_bought_date" style = "margin-top : 50px;"></div>
-					   			<div class = "user_review_image">
-					   			<c:if test = "${reviewFin.fileName ne null}">
-					   				<img src="/springframework-mini-project/mypage/showImage?fileName=${reviewFin.fileName}"></img>
-					   			</c:if>
-					   			<c:if test = "${reviewFin.fileName eq null}">
-					   				<img src="${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png""></img>
-					   			</c:if>
-					   			</div>
-					   			<div class = "user_review_text" style = "font-family: 'MinSans-Regular';">${reviewFin.reviewContent}</div>
-					   			<div style = "margin-left : 1200px; margin-top : 160px;">작성일자 : <fmt:formatDate value="${reviewFin.reviewWriteDate}" pattern="yyyy-MM-dd"/></div>
-					   		</div>
-					   	</div>
-					  </c:forEach>
-					  
-				    	<c:if test = "${!empty reviewFin}">
-			    		<table id = "mp_review_pager">
-							 <tr>
-					           <td colspan="4" class="text-center">
-					              <div style = "width : 400px; margin-left : 520px; margin-top : 30px;">
-					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=1">처음</a>
-					                 <c:if test="${pager1.groupNo>1}">
-					                    <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${pager1.startPageNo-1}">이전</a>
-					                 </c:if>
-					                 
-					                 <c:forEach var="i" begin="${pager1.startPageNo}" end="${pager1.endPageNo}">
-					                    <c:if test="${pager1.pageNo != i}">
-					                       <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-					                    </c:if>
-					                    <c:if test="${pager1.pageNo == i}">
-					                       <a class="btn btn-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-					                    </c:if>
-					                 </c:forEach>
-					                 
-					                 <c:if test="${pager1.groupNo<pager.totalGroupNo}">
-					                    <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager1.endPageNo+1}">다음</a>
-					                 </c:if>
-					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager1.totalPageNo}">맨끝</a>
-					              </div>
-					           </td>
-					        </tr>
-					     </table>
-				     </c:if>				    	
-				    	
-				    	
-						
-					
-			    	</div>
 			    </div>
 		    </div>   
 		     	
@@ -345,35 +268,6 @@ function reviewButton(purchaseNumber, modelNumber, name, imgName) {
 	$("#mypage_review_popup_product_info_name").text(name); 
 	$("#mypage_review_popup_product_info_image").attr("src", "/springframework-mini-project/equipment/display?fileName=" + imgName);
 	
-}
-
-
-
-function mypage_review_avaliable() {
-	$('#mypage_review_tab_available').show();
-	$('#mypage_review_tab_finished').hide();
-	$('#mp_review_pager').show();
-	$('#before_review').css("color", "#ca5c0d");
-	$('#after_review').css("color", "#272723");
-	
-}
-
-function mypage_review_finished() {
-	$('#mypage_review_tab_available').hide();
-	$('#mypage_review_tab_finished').show();
-	$('#mp_review_pager').hide();
-	$('#before_review').css("color", "#272723");
-	$('#after_review').css("color", "#ca5c0d");
-}
-
-function mypage_review_no() {
-	console.log("no data button is working...");
-	$('#mypage_review_tab_available').hide();
-	$('#mypage_review_tab_finished').show();
-	$('#no_data_review_finished').show();
-	$('#mp_review_pager').hide();
-	$('#before_review').css("color", "#272723");
-	$('#after_review').css("color", "#ca5c0d");
 }
 
 

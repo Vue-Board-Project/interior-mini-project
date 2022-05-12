@@ -205,15 +205,17 @@ public class MyPageController {
 			if (consultNo == 0) {
 				int chkNull = mypageService.getCheckNull(email);
 				if(chkNull == 0) {
-					
 					return "/mypage/interiorProgress/mypage_interior_progress";
+				}else {
+					consultNo = mypageService.getLatestInteriorNo(email);
 				}
+				
 			}	
 			
-			consultNo = mypageService.getLatestInteriorNo(email);
-			
+		
 			InteriorProgressDto progress = mypageService.getProgressStep(consultNo);
 			model.addAttribute("progress", progress);
+			log.fatal("progress : " + progress);
 			
 			List<InteriorProgressFileDto> step1File =  mypageService.getStep1Files(consultNo);
 			model.addAttribute("step1File", step1File);
