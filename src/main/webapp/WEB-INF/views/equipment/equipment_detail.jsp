@@ -152,7 +152,7 @@
 										       </label>
 		                                		<span class="reviewWriteDate mt-3"><fmt:formatDate value="${review.reviewWriteDate}" pattern="yyyy.MM.dd"/></span>
 		                                </li>
-		                                <li class="product_detail_review_list_${review.purchaseNumber} pt-2" style="display: none; border-top: 1px solid  rgba(106,106,106,0.2);">${review.reviewContent}</li>
+		                                <li class="product_detail_review_list_${review.purchaseNumber} pt-4 pb-3" style="display: none; border-top: 1px solid  rgba(106,106,106,0.2); width: 900px;">${review.reviewContent}</li>
 		                                <c:if test="${review.fileName != null}">
 			                                <li class="product_detail_review_list_${review.purchaseNumber} mt-2" style="display: none;"><img style="border-radius: 10px; border: 1px solid  rgba(106,106,106,0.2);" src="/springframework-mini-project/equipment/display?fileName=${review.fileName}"></li>
 		                                </c:if>
