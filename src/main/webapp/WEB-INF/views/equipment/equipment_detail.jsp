@@ -128,9 +128,9 @@
                 <div id="product_detail_content_showhide">
                     <c:forEach items="${detailPhoto}" var="photo">
                         <img class="productPhoto" src="/springframework-mini-project/equipment/display?fileName=${photo.productFilename}">
-                        <if test="${empty photo.productFilename}">
+                        <c:if test="${empty photo.productFilename}">
                             상품 준비중입니다.
-                        </if>
+                        </c:if>
                     </c:forEach>
                 </div>
                 <!-- 리뷰 입니다요 -->
