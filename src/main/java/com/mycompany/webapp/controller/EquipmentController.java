@@ -61,10 +61,8 @@ public class EquipmentController {
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
 		productService.updatehits(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
-		log.fatal(modelNumber);
 		//리뷰 시작
 		List<ReviewDto> reviewList=productService.selectReview(modelNumber);
-		log.fatal(reviewList);
 		model.addAttribute("reviewList", reviewList);
 		return "/equipment/equipment_detail";
 	}

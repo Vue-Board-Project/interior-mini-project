@@ -26,6 +26,9 @@ $(document).ready(function(){
 			$('#directPrice').attr("value", priceSum);
 		}
 	}
+
+	
+
 	
 })
 //결제 버튼을 누른다면
@@ -38,7 +41,7 @@ function payment_nextstep1(){
     $('#payment_step2').show();
     $('#step2_bt_list').show();
     $('#payment_step1').hide();
-    $('#next_page_go_to_payment_step1').hide();
+    $('#step1_bt_list').hide();
     $('#payment_step3').hide();
 }
 //step2=>3
@@ -51,7 +54,7 @@ function payment_nextstep2(){
 //step2=>1 
 function payment_backstep1(){
     $('#payment_step1').show();
-    $('#next_page_go_to_payment_step1').show();
+    $('#step1_bt_list').show();
     $('#payment_step2').hide();
     $('#step2_bt_list').hide();
 }
@@ -123,3 +126,4 @@ function payment_layer_popup(el3){
 		});
 
 	}
+

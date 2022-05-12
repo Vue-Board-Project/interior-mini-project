@@ -211,7 +211,5 @@ function showReview(){
       $('#product_detail_content_showhide').hide();
       review_style.style.fontFamily="MinSans-Medium";
       detail_style.style.fontFamily="MinSans-Black";
-      review_style.style.backgroundColor="white";
-      detail_style.style.backgroundColor="#ccc";
   }
 }
