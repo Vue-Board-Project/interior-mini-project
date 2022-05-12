@@ -61,25 +61,25 @@
                                <ul class="productInsideAsideUl">
                                    <li>
                                     <label>
-                                        <input type="radio" name="sort" value="popular" checked="checked">
+                                        <input type="radio" name="productSort" value="popular" checked="checked">
                                         <span class="ml-2">인기순</span>
                                     </label>
                                    </li>
                                    <li>
                                     <label>
-                                        <input type="radio" name="sort" value="views">
+                                        <input type="radio" name="productSort" value="views">
                                         <span class="ml-2">조회순</span>
                                     </label>
                                    </li>
                                    <li>
                                     <label>
-                                        <input type="radio" name="sort" value="reviews">
+                                        <input type="radio" name="productSort" value="reviews">
                                         <span class="ml-2">리뷰순</span>
                                     </label>
                                    </li>
                                    <li>
                                     <label>
-                                        <input type="radio" name="sort" value="new">
+                                        <input type="radio" name="productSort" value="new">
                                         <span class="ml-2">최신 등록순</span>
                                     </label>
                                    </li>

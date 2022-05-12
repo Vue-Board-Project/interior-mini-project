@@ -125,10 +125,10 @@ public class EquipmentController {
 	//장비 정렬 및 카테고리 작업들
 	/*@RequestMapping(value = "/equipment/productListAjax", produces = "application/json; charset=UTF-8")*/
 	@RequestMapping("/equipment/productListAjax")
-	public String productList(Model model, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
+	public String productList(Model model, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "productSort", required = false) String sort, HttpServletResponse response) {
 		log.info("컨트롤러 연결 됐냐???");
-		/*log.fatal(sort);
-		log.fatal(category);*/
+		log.fatal(sort);
+		log.fatal(category);
 		if(sort == null) {//인기순
 			/*log.fatal("가냐?");*/
 			List<ProductDto> productList=productService.selectpopularlist(category);
