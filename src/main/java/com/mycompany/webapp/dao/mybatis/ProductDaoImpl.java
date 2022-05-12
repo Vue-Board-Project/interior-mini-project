@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 
+import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 
@@ -104,6 +105,9 @@ public class ProductDaoImpl implements ProductDao{
 	public int updatehits(String modelNumber) {
 		return 0;
 	}
-	
+	@Override
+	public List<ReviewDto> selectReview(String modelNumber){
+		return sqlSession.selectList("product.selectReview");
+	}
 	
 }

@@ -133,8 +133,36 @@
                         </if>
                     </c:forEach>
                 </div>
+                <!-- 리뷰 입니다요 -->
                 <div id="product_detail_review">
-                    여기에는 리뷰가 들어가야 합니다요!
+                    <div class="review_ul">
+                        <h3>Review</h3>
+                        
+                        <ul>
+                
+                            <li style="border-top: 2px solid #6a6a6a; border-bottom: 2px solid #6a6a6a; padding-left: 150px;">제목<span>날짜</span></li>
+                            <c:forEach items="${reviewList}" var="review">
+                            	<li class="mt-2 mb-2 review_content_wrap">
+	                            	<ul>
+		                                <li style="padding-top: 10px; padding-bottom:10px;">
+		                                		<%-- <a class="product_detail_review_list_a btn"><span>${review.reviewTitle}</span></a> --%>
+		                                		<label class="product_detail_review_choice">
+										           <input type="checkbox" name="reviewTitle" value="${review.purchaseNumber}">
+										           <span class="ml-3 mt-3">${review.reviewTitle}</span>
+										       </label>
+		                                		<span class="reviewWriteDate mt-3"><fmt:formatDate value="${review.reviewWriteDate}" pattern="yyyy.MM.dd"/></span>
+		                                </li>
+		                                <li class="product_detail_review_list_${review.purchaseNumber} pt-4 pb-3" style="display: none; border-top: 1px solid  rgba(106,106,106,0.2); width: 900px;">${review.reviewContent}</li>
+		                                <c:if test="${review.fileName != null}">
+			                                <li class="product_detail_review_list_${review.purchaseNumber} mt-2" style="display: none;"><img style="border-radius: 10px; border: 1px solid  rgba(106,106,106,0.2);" src="/springframework-mini-project/equipment/display?fileName=${review.fileName}"></li>
+		                                </c:if>
+	                            	</ul>
+                            	</li>
+                            	<hr style="border: 1px solid rgba(106,106,106,0.2);"/>
+                            </c:forEach>
+                        </ul>
+ 
+                    </div>
                 </div>
             </div>
         </div>    

@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.mycompany.webapp.aspect.aspectTransactionChk;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.product.ProductConsultDetailDto;
 import com.mycompany.webapp.dto.product.ProductConsultDto;
@@ -179,6 +180,7 @@ public class ProductConsultController {
 	
 	//장비 상담 신청
 	@PostMapping("sendProductConsultForm")
+	@aspectTransactionChk
 	public String sendProductConsultForm(
 			@ModelAttribute("productConsultForm") List<ProductConsultDetailDto> pcdList, 
 			ProductConsultDto productConsultDto, Authentication authentication,
@@ -207,7 +209,8 @@ public class ProductConsultController {
 			throw new ConsultExceptionHandler("장비 세부 상담신청 실패");
 		}else {
 			sessionStatus.setComplete();
-			return "redirect:/productConsult/product_consult_result";
+		return "redirect:/productConsult/product_consult_result";
+			
 		}
 
 	}

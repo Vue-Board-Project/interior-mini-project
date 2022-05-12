@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.mybatis.ProductDao;
+import com.mycompany.webapp.dto.mypage.ReviewDto;
 import com.mycompany.webapp.dto.product.ProductDetailDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 
@@ -91,6 +92,11 @@ public class ProductService {
 	//조회수 ++
 	public int updatehits(String modelNumber) {
 		return productDao.updatehits(modelNumber);
+	}
+	
+	//상세보기에서 리뷰 보기
+	public List<ReviewDto> selectReview(String modelNumber){
+		return productDao.selectReview(modelNumber);
 	}
 	
 	

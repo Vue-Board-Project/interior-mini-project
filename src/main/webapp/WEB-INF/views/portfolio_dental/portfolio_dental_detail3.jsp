@@ -1,7 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <link href="${pageContext.request.contextPath}/resources/css/portfolio_dental/cssPortfolioDentalDetail3.css" rel="stylesheet" type="text/css">
-<div id="model_dental_main_img" class="text-center"><img class="vw-100" style="height: 400px;" src="${pageContext.request.contextPath}/resources/model_dental_images/photos/portfolio_dental_ad.PNG"/></div>
+<link href="${pageContext.request.contextPath}/resources/css/menuheader.css" rel="stylesheet" type="text/css"/>
+<section class="container-fluid p-0">
+    <div style="display: flex; justify-content: space-between;position: relative;">
+        <div style="display: inline-block; width: 10%; height: 100px;" class="bg-dark menuheaderleft" ></div>
+        <div style="display: inline-block; width: 89%; height: 100px;" class=" menuheaderright">
+            <img src="${pageContext.request.contextPath}/resources/images/interiormenuheader.png" width="100%" height="100%" >
+        </div>
+    </div>
+    <div style="width: 65%;position: relative; left:10px; top: -33px;" class="mx-auto menuheadertitle">
+        <span style="font-size: 50px; font-family: 'MinSans-Bold'; border-bottom: 5px solid coral; letter-spacing: 1.4px;">포트폴리오 상세</span>
+    </div>
+</section>
 <div class="d-flex pt-5" style="background-color: #faf9f6;  font-family: 'MinSans-Regular';">
 	<%@ include file="/WEB-INF/views/portfolio_dental/portfolio_dental_floating_menu.jsp" %>
         <div class="d-flex flex-column vw-100">

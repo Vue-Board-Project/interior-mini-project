@@ -1,9 +1,7 @@
 
 $(document).ready(function(){
-	console.log("광고 있지롱~~~~~~~~");
 	$("#main_header_ad_close").on("click", function() {
 		$('body').removeClass('body_class').addClass('body_class2');
-		console.log("광고 없지롱~~~~~~~~");
 	});
 });
 // Hide Header on on scroll down
@@ -62,5 +60,23 @@ $(window).scroll(function(){
    } 
 });
 */
+
+$(document).ready(function() {
+	$('#headerZloading').hide();
+	$(".headernavLoading").on("click",function(e){// a태그 클릭시 작동
+		
+		e.preventDefault();
+    	$('#headerZloading').show();
+    	setTimeout(function(){
+			window.location = e.target.href;
+		}, 70); 
+    	
+    	
+    	
+    	     
+    });
+
+
+});
 
 

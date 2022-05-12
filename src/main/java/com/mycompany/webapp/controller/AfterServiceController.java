@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.json.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dao.mybatis.UsersDao;
@@ -36,6 +38,7 @@ public class AfterServiceController {
 
 	@Resource
 	ProductService productService;
+	
 	//as에 사용할 정보들을 불러옵니다 PurchaseDto, PurchaseDetailDto, ProductDto 사용
 	@RequestMapping("/equipment/AfterService")
 	public String afterService(Authentication authentication, Model model) {
@@ -89,9 +92,8 @@ public class AfterServiceController {
 	@PostMapping(value = "/equipment/ReservationAS")
 	public String ReservationAS(Authentication authentication, AfterServiceDto as, MultipartFile pattachoname,
 			String modelNum, String simpleSym, String detailSym, String inputPurchaseDate, String inputwantASDate,
-			String timeorder) {
-		log.info(modelNum);
-
+			String timeorder, Model model) {
+		
 		String email = authentication.getName();
 		as.setStringModelNumber(modelNum);
 		as.setBasicSymptoms(simpleSym);
@@ -101,6 +103,28 @@ public class AfterServiceController {
 		as.setTimeorder(timeorder);
 		as.setEmail(email);
 		purchaseService.insertAS(as);
+		
 		return "redirect:/";
+		
 	}
+	
+	@PostMapping(value="/equipment/modelCheck", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String modelCheck(String modelNum) {
+		
+		ProductDto pro = productService.detailProduct(modelNum);
+		String result = null;
+		if(pro == null) {
+			result = "wrong";
+		}else {
+			
+			result = "success";
+		}
+		JSONObject jsonobject = new JSONObject();
+		jsonobject.put("result", result);
+		String json = jsonobject.toString();
+		return json;
+	}
+		
+	
 }

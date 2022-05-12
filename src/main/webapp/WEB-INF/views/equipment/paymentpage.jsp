@@ -150,7 +150,66 @@
             </div>
 
 
+            <section id="paymentpage_content_right"style="display: inline-block; width: 30%;">
+                <div style="width: 90%; box-shadow: 3px 3px 10px -5px;" class="bg-white rounded mx-auto mt-5">
+                    <div style="width: 100%;">
+                        <div style="width: 90%; padding: 10px 0;" class="mx-auto">
+                            <div style="width: 100%;" class="pt-3">
+                                <div style="font-family: 'MinSans-Black'; border-bottom: 2px solid darkgray;" class=",">
+                                    담은 상품
+                                </div>
+								
+										<div style="display: flex;font-family: 'MinSans-Regular'; justify-content: end;">
+											<div style="display: inline-block; font-size: 20px;" class="pt-2 pr-2">
+												총 <c:choose>
+                                                    <c:when test="${empty sum}">
+                                                        <span>${countQua}</span>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <span>${fn:length(cartForm)}</span>
+                                                    </c:otherwise>
+                                                </c:choose></span>건
+											</div>
+										</div>
+										<div style="width: 100%;" class="pt-3">
+											<div style="font-family: 'MinSans-Black'; border-bottom: 2px solid darkgray;">
+												주문서
+											</div>
+											<div style="font-family: 'MinSans-Regular'; font-size: 18px;" class="pt-3">
+												제품명: 
+												<c:forEach items="${productList}" var="cartproduct">
+													<a style="">　${cartproduct.productName}</a>
+												</c:forEach>
+												<p>주문 금액:　<c:choose>
+                                                    <c:when test="${empty sum}">
+                                                        <a>${purchasePrice} 원</a>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <span>${sum} 원</span>
+                                                    </c:otherwise>
+                                                </c:choose></p>
+                                                <div>
+                                                    <a id="back_page_go_to_payment_cart" class="btn" href="/springframework-mini-project/equipment/shoppingcart_rentalandpurchase?id=#">이전</a>
+                                                    <a id="next_page_go_to_payment_step1" class="btn" onclick="payment_nextstep1()">다음</a>
+                                                </div>
+                                                <div id="step2_bt_list">
+                                                    <a id="back_page_go_to_payment_step1" class="btn" onclick="payment_backstep1()">이전</a>
+                                                    <a id="next_page_go_to_payment_step2" class="btn" onclick="payment_nextstep2()">다음</a>
+                                                </div>
+                                                <div id="step3_bt_list">
+                                                    <a id="back_page_go_to_payment_step2" class="btn" onclick="payment_backstep2()">이전</a>
+                                                    <a id="next_page_go_to_payment_step3" class="btn" onclick="sendPurchaseInfo()">결제</a>
 
+                                                </div>
+											</div>
+										</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--
             <div id="paymentpage_content_right">
                 <p style="font-family: MinSans-Black">구매 제품</p>
                 <hr id="pxup_line">
@@ -179,7 +238,7 @@
                 </div>
                 
             </div>
-
+-->
         <%-- <div id="paymentsuccess_popup" class="layer_popup" style="font-family: 'MinSans-Regular'; display:none"> 
             <div class="layer">
                 <div class="text_area text-center">

@@ -36,7 +36,7 @@
                 전문적인 인테리어로 최상의 결과물을 제공하겠습니다.</p>
         </section>
         <section class="consult_result_section" style="padding: 20px 0 100px 0;">
-            <a class="btn consult_result_page_btn" >마이페이지</a>
+            <a class="btn consult_result_page_btn" href="/springframework-mini-project/mypage/mypage_counseling">마이페이지</a>
             <a class="btn consult_result_page_btn" href="${pageContext.request.contextPath}">홈으로</a>
         </section>
     </div>
