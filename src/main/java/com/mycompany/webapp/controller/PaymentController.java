@@ -17,9 +17,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.mycompany.webapp.dto.UsersDto;
 import com.mycompany.webapp.dto.product.ProductDto;
 import com.mycompany.webapp.dto.product.PurchaseDto;
+import com.mycompany.webapp.exception.ProductExceptionHandler;
 import com.mycompany.webapp.service.ProductConsultService;
 import com.mycompany.webapp.service.ProductService;
 import com.mycompany.webapp.service.PurchaseService;
+import com.mycompany.webapp.service.PurchaseService.PurchaseResult;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -99,15 +101,19 @@ public class PaymentController {
 	//다이렉트 구매에서 오는 결제 확인하기
 	@PostMapping(value = "/equipment/paymentVerify2")
 	public String paymentVerify2(String PriceFin, String QuantityFin, PurchaseDto purchaseDto,
-			Authentication authentication){
+			Authentication authentication, SessionStatus sessionStatus){
 		String email = authentication.getName();
 		
 		// purchase db insesrt
 		purchaseDto.setStringEmail(email);
 		purchaseDto.setPaymentAmount(PriceFin);// 전체 가격
 		purchaseDto.setPurchaseQuantity(QuantityFin);// 전체 구매 개수
-		purchaseService.insertPurchaseInfo(purchaseDto);
-		
-		return "redirect:/";
+		PurchaseResult purResult= purchaseService.insertPurchaseInfo(purchaseDto);
+		if(purResult==PurchaseResult.FAIL) {
+			throw new ProductExceptionHandler("구매 insert 실패");
+		}else {
+			sessionStatus.setComplete();
+			return "redirect:/equipment/productResult";
+		}
 	}
 }

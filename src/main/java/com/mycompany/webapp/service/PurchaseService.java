@@ -47,8 +47,13 @@ public class PurchaseService {
 		return productList;
 	}
 	//purchaseDto insert
-	public void insertPurchaseInfo(PurchaseDto purchase) {
-		purchaseDao.insertPurchaseInfo(purchase);
+	public PurchaseResult insertPurchaseInfo(PurchaseDto purchase) {
+		int insertResult=purchaseDao.insertPurchaseInfo(purchase);
+		if(insertResult==0) {
+			return PurchaseResult.FAIL;
+		}else {
+			return PurchaseResult.SUCCESS;
+		}
 	}
 	public int insertPurchaseDetailInfo(PurchaseDetailDto purchaseDetail) {
 		return purchaseDao.insertPurchaseDetailInfo(purchaseDetail);
