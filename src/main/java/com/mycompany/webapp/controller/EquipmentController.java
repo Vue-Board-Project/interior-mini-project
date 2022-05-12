@@ -43,6 +43,11 @@ public class EquipmentController {
 	public String customerService() {
 		return "/equipment/CustomerService";// view 이름만 전달
 	}
+	@RequestMapping("/equipment/productResult")
+	public String productResult() {
+		return "/equipment/productResult";
+	}
+	
 	//장비 상세(상담 제품)
 	@RequestMapping("/equipment/equipment_detail_consult")
 	public String equipment_detail_consult(String modelNumber, Model model) {

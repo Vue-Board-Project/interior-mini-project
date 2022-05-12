@@ -218,7 +218,7 @@
                                                 </c:choose></p>
                                                 <div id="step1_bt_list">
                                                     <a id="back_page_go_to_payment_cart" class="btn" onclick="history.back()">이전</a>
-                                                    <a id="next_page_go_to_payment_step3" class="btn" onclick="sendPurchaseInfo()">결제</a>
+                                                    <a id="next_page_go_to_payment_step3" class="btn" href="${pageContext.request.contextPath}/equipment/productResult" onclick="sendPurchaseInfo()">결제</a>
 
                                                 </div>
 
