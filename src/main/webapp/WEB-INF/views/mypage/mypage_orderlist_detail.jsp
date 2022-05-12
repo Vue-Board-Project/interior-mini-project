@@ -19,7 +19,10 @@
 			<div style = "display :inline-block; width : 100%; height : 300px;">
 				<div style = "width : 90%; height : 160px; border-bottom : 1px solid #ccc; margin : auto;">
 					<div style = "font-family: 'MinSans-Bold'; font-size : 3rem; margin-top : 140px; margin-left : 2%;">
-						<span class ="pb-1" style ="border-bottom : 5px solid #ca5c0d;">주문내역 상세</span>
+						<span class ="pb-1" style ="border-bottom : 5px solid #ca5c0d;">주문내역 상세
+						<span style = "font-family: 'MinSans-Bold'; font-size : 2rem;">(주문번호 : ${purchaseNumber})
+						</span>
+						</span> 
 					</div>
 				</div>
 			</div>
@@ -35,10 +38,10 @@
 	     					<img class = "element_img" src = "/springframework-mini-project/equipment/display?fileName=${orderDetail.product.pattachoname}" style = "height : 120px; width : 120px;"/>
 	     				</div>
 	     				<div style = "display: flex; flex-direction: row;">
-			     				<div class = "element_product_name" style = "font-family: 'MinSans-Regular'; margin-top : 65px; margin-left : 300px; font-size : 1rem;">제품 이름 : ${orderDetail.product.productName} </div>
-			     				<div class = "element_model_name" style = "font-family: 'MinSans-Regular'; margin-top : 65px; margin-left : 180px;  font-size : 1rem;">모델 이름 : ${orderDetail.stringModelNumber} </div>
-				     			<div class = "element_price_money" style = "margin-top : 65px; margin-left : 180px;">금액 : ${orderDetail.product.price} 원</div> 
-				     			<div class = "element_product_num"  style = "margin-top : 65px; margin-left : 180px;">개수 :  ${orderDetail.modelPurchaseQuantity}</div>
+			     				<div class = "element_product_name" style = "position : absolute; font-family: 'MinSans-Regular'; margin-top : 65px; margin-left : 300px; font-size : 1rem;">제품 이름 : ${orderDetail.product.productName} </div>
+			     				<div class = "element_model_name" style = "position : absolute; font-family: 'MinSans-Regular'; margin-top : 65px; margin-left : 600px;  font-size : 1rem;">모델 이름 : ${orderDetail.stringModelNumber} </div>
+				     			<div class = "element_price_money" style = "position : absolute; font-family: 'MinSans-Regular'; margin-top : 65px; margin-left : 1000px;">금액 : ${orderDetail.product.price} 원</div> 
+				     			<div class = "element_product_num"  style = "position : absolute; font-family: 'MinSans-Regular'; margin-top : 65px; margin-left : 1300px;">개수 :  ${orderDetail.modelPurchaseQuantity}</div>
 	     				</div>
 	     			</div>	
 	     		</c:forEach> 
@@ -63,6 +66,7 @@
         
          .product_list_element {
       		display : inline-block;
+      		position : relative;
       		width : 100%;
       		height : 150px;
       		border-bottom : 1px solid #ccc;
@@ -78,18 +82,5 @@
      		border : 1px solid #ccc;
      		/* box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2); */
      }
-     
-       .product_list_element .element_product_name{
-        	font-family: 'MinSans-Regular';
-        	display : inline-block;
-        	margin-left : 100px;
-     }
-     
-     .product_list_element .element_model_name{
-      		font-family: 'MinSans-Regular';
-      		display : inline-block;
-        	margin-left : 210px;
-     }
-     
 
 </style>

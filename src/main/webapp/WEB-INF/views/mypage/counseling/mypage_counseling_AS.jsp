@@ -3,7 +3,7 @@
 	<div class = "mypage_as_history">
 			<b><span>${user.name}</span>님의</b><br>
 				AS 신청 내역입니다.
-			<button class = "info_button" id = "mypage_As_button" onclick="location.href='/springframework-mini-project/mypage/device_AS'">확인하기</button>
+			<button class = "info_button" id = "mypage_As_button" onclick="location.href='/springframework-mini-project/mypage/recentAs'">확인하기</button>
 	</div>
 </div>
 

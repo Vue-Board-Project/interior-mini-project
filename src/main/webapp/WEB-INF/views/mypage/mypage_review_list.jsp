@@ -1,16 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:if test = "${!empty reviewFin}">
 	<div>
 	<c:forEach var="reviewFin" items="${reviewFin}">
 	   	<div class = "mypage_user_review_element" style = "display : inline-block; width : 100%; border-bottom :1px solid #ccc;">
 	  			<div class = "user_product_title" style = "display : inline-block; width : 100%; border-bottom :1px solid #ccc;">
-	  				<span style = "padding-left : 20px;">${reviewFin.stringProductName}</span>
-	  			<span class = "user_product_modelName"><span style = "border-bottom : 3px solid #ca5c0d;">모델명 : ${reviewFin.stringModelNumber}</span></span>
+	  				<span style = "float : left; margin-left : 20px; margin-top : 6px;">제목  :  ${reviewFin.reviewTitle}</span>
+	  				<span class = "user_product_modelName" style = "float : right; margin-right : 30px; margin-top : 10px;">모델명 : ${reviewFin.stringModelNumber}</span>
+	  				<span style = "float : right; margin-right : 50px;">${reviewFin.stringProductName}</span>
+	  			
 	  			</div>
 	   		<div class = "user_review_contents">
-	   			<div class = "user_review_title">${reviewFin.reviewTitle}</div>
-	   			<div class = "user_product_bought_date"><fmt:formatDate value="${reviewFin.reviewWriteDate}" pattern="yyyy-MM-dd"/></div>
+	   			<div class = "user_product_bought_date" style = "margin-top : 50px;"></div>
 	   			<div class = "user_review_image">
 	   			<c:if test = "${reviewFin.fileName ne null}">
 	   				<img src="/springframework-mini-project/mypage/showImage?fileName=${reviewFin.fileName}"></img>
@@ -19,32 +22,14 @@
 	   				<img src="${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png""></img>
 	   			</c:if>
 	   			</div>
-	   			<div class = "user_review_text">${reviewFin.reviewContent}</div>
+	   			<div class = "user_review_text" style = "font-family: 'MinSans-Regular';">${reviewFin.reviewContent}</div>
+	   			<div style = "margin-left : 1200px; margin-top : 160px;">작성일자 : <fmt:formatDate value="${reviewFin.reviewWriteDate}" pattern="yyyy-MM-dd"/></div>
 	   		</div>
 	   	</div>
 	   	</c:forEach>
 	</div>
-	  <%--  <div  style = "width : 400px; margin-left : 520px; margin-top : 30px;">
-	      <a class="btn btn-outline-secondary btn-sm" href="mypageReviewAfter?pageNo=1">처음</a>
-	      <c:if test="${pager1.groupNo>1}">
-	         <a class="btn btn-outline-success btn-sm" href="mypageReviewAfter?pageNo=${pager1.startPageNo-1}">이전</a>
-	      </c:if>
-	      
-	      <c:forEach var="i" begin="${pager1.startPageNo}" end="${pager1.endPageNo}">
-	         <c:if test="${pager1.pageNo != i}">
-	            <a class="btn btn-outline-secondary btn-sm" href="mypageReviewAfter?pageNo=${i}">${i}</a>
-	         </c:if>
-	         <c:if test="${pager1.pageNo == i}">
-	            <a class="btn btn-secondary btn-sm" href="mypageReviewAfter?pageNo=${i}">${i}</a>
-	         </c:if>
-	      </c:forEach>
-	      
-	      <c:if test="${pager1.groupNo<pager.totalGroupNo}">
-	         <a class="btn btn-outline-secondary btn-sm" href="mypageReviewAfter?pageNo=${pager1.endPageNo+1}">다음</a>
-	      </c:if>
-	      <a class="btn btn-outline-secondary btn-sm" href="mypageReviewAfter?pageNo=${pager1.totalPageNo}">맨끝</a>
-	   </div> --%>
 </c:if>
+
 <c:if test = "${empty reviewFin}">
 		<div class = "mypage_no_review_info" 
 		style = "display : inline-block; width : 100%; height : 400px; padding-top : 50px;">

@@ -105,7 +105,20 @@ public class MyPageController {
 		 int totalASCounseling = mypageService.getTotalASCounseling(email);
 		 model.addAttribute("asChk", totalASCounseling);
 		 
+		 
 		 return "mypage/counseling/mypage_counseling";
+	 }
+	 
+	 @GetMapping("/recentAs")
+	 public String recentAs(Authentication authentication, Model model) {
+		 
+		 String email = authentication.getName();
+		 
+		 AfterServiceDto asCon = mypageService.getAfterService(email);
+		 model.addAttribute("asCon", asCon);
+		 
+		 return "mypage/counseling/mypage_As_recent_detail";
+		 
 	 }
 	 
 	 /* 마이페이지 상담 내 인테리어 목록창*/
@@ -422,6 +435,7 @@ public class MyPageController {
 			@RequestParam(defaultValue = "1") int pageNo, Model model) {
 		
 		 List<PurchaseDetailDto> orderDetail = mypageService.getOrderDetailList(purchaseNumber);
+		 model.addAttribute("purchaseNumber", purchaseNumber);
 		 model.addAttribute("orderDetail", orderDetail);
 
 		return "/mypage/mypage_orderlist_detail";
@@ -451,46 +465,40 @@ public class MyPageController {
 		
 		model.addAttribute("orderReview", orderReview);
 		
-			
-		/*
-		 * String email = authentication.getName(); //리뷰 작성 전 int totalReviewBeforeNum =
-		 * mypageService.getTotalReviewBeforeNum(email);
-		 * 
-		 * Pager pager = new Pager(4, 4, totalReviewBeforeNum, pageNo, email);
-		 * model.addAttribute("pager", pager);
-		 * 
-		 * List<ReviewDto> reviewBefore = mypageService.getReviewBeforeList(pager);
-		 * model.addAttribute("reviewBefore", reviewBefore);
-		 * 
-		 * 
-		 * //리뷰 작성 후 int totalReviewAfterNum =
-		 * mypageService.getTotalReviewAfterNum(email); pager = new Pager(4, 4,
-		 * totalReviewAfterNum, pageNo, email); model.addAttribute("pager", pager);
-		 * 
-		 * List<ReviewDto> reviewAfter = mypageService.getReviewAfterList(pager);
-		 * log.info("Eroor fix  :  " + reviewAfter); model.addAttribute("reviewAfter",
-		 * reviewAfter);
-		 */
+		int chkFin = mypageService.getTotalReviewFin(email);
+		model.addAttribute("chkFin", chkFin);
+		log.fatal("chkFin : " + chkFin);
+		
+		
+		int totalReviewAfterNum = mypageService.getTotalReviewFin(email);
+		
+		Pager pager1 = new Pager(4, 4, totalReviewAfterNum, pageNo, email);
+		model.addAttribute("pager1", pager1);
+		
+		
+		 List<ReviewDto> reviewFin = mypageService.getOrderReviewFinList(pager1);
+		 model.addAttribute("reviewFin", reviewFin);
 		
 		return "/mypage/mypage_review";
 	}
 	
-	
-	//Ajax 통신 통한 리뷰 다 한 창 */
-	@RequestMapping("/mypageReviewAfter")
-	public String mypageReviewSelectAfter(Authentication authentication, Model model,
-			@RequestParam(defaultValue = "1") int pageNo){
+	@RequestMapping("/mypageReviewFin")
+	public String mypageReviewSelectReviewsFin(Authentication authentication, Model model,
+												@RequestParam(defaultValue = "1") int pageNo){
+		
 		String email = authentication.getName();
 		
-		int totalReviewFin = mypageService.getTotalReviewFin(email);
-		Pager pager1 = new Pager(3, 4, totalReviewFin, pageNo, email);
-	    model.addAttribute("pager1", pager1);
+		int totalReviewAfterNum = mypageService.getTotalReviewFin(email);
 		
-	    List<PurchaseDetailDto> reviewFin = mypageService.getOrderReviewFin(pager1);
-		model.addAttribute("reviewFin", reviewFin);
-		return "mypage/mypage_review_list";
+		Pager pager1 = new Pager(4, 4, totalReviewAfterNum, pageNo, email);
+		model.addAttribute("pager1", pager1);
+		
+		
+		 List<ReviewDto> reviewFin = mypageService.getOrderReviewFinList(pager1);
+		 model.addAttribute("reviewFin", reviewFin);
+		
+		return "/mypage/mypage_review_fin";
 	}
-	
 	
 	/*   리뷰 입력   */
 	@PostMapping("/insertReview")

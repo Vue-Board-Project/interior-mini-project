@@ -100,10 +100,6 @@ public class MypageService {
 		return mypageDao.getReviewBeforeList(pager);
 	}
 
-	public int getTotalReviewAfterNum(String email) {
-		// TODO Auto-generated method stub
-		return mypageDao.getTotalReviewAfterNum(email);
-	}
 
 	public List<ReviewDto> getReviewAfterList(Pager pager) {
 		// TODO Auto-generated method stub
@@ -275,9 +271,9 @@ public class MypageService {
 		return mypageDao.getOrderReview(pager);
 	}
 
-	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager) {
+	public List<PurchaseDetailDto> getOrderReviewFin(String email) {
 		// TODO Auto-generated method stub
-		return mypageDao.getOrderReviewFin(pager);
+		return mypageDao.getOrderReviewFin(email);
 	}
 
 	public int getCheckNull(String email) {
@@ -289,11 +285,21 @@ public class MypageService {
 		// TODO Auto-generated method stub
 		return mypageDao.getTotalReviewFin(email);
 	}
+	
+	public List<ReviewDto> getOrderReviewFinList(Pager pager) {
+		return mypageDao.getOrderReviewFinList(pager);
+	}
 
 
 	public int getTotalOrderReviewList(String email) {
 		// TODO Auto-generated method stub
 		return mypageDao.getTotalOrderReviewList(email);
+	}
+
+
+	public AfterServiceDto getAfterService(String email) {
+		// TODO Auto-generated method stub
+		return mypageDao.getAfterService(email);
 	}
 
 

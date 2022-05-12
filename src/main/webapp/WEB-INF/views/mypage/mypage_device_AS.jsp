@@ -122,23 +122,6 @@
 
 <style>
 
-a:link {
-    text-decoration: none;
-    color:black;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    color : blue;
-}
-
-a:active {
-    text-decoration: none;
-}
-
 #mypage_table_as_list{
    font-family: 'MinSans-Regular';
 }

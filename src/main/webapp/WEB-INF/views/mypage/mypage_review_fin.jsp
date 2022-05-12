@@ -28,95 +28,17 @@
 		     	<div class = "mypage_review_contents_wrap"  style = "display : inline-block; width : 90%; margin-left : 5%;">
 			     	<div class = "mypage_review_tab_menu">
 					    <div id = "mypage_review_button_before" class="btn col-md-6" onclick = "mypage_review_avaliable()">
-					      <a id = "before_review" style = "color : #ca5c0d; font-family: 'MinSans-Medium'; font-size : 1.3rem;">작성 가능 후기</a>
+					      <a id = "before_review" style = "color : #272723; font-family: 'MinSans-Medium'; font-size : 1.3rem;">작성 가능 후기</a>
 					    </div>
-					  <c:if test = "${chkFin >= 1}">  
 					    <div id = "mypage_review_button_after" class="btn col-md-6" onclick = "mypage_review_finished()">
-					      <a id = "after_review" style = "font-size : 1.3rem; font-family:'MinSans-Medium';">작성 완료 후기</a>
+					      <a id = "after_review" style = "font-size : 1.3rem; font-family:'MinSans-Medium'; color : #ca5c0d;">작성 완료 후기</a>
 					    </div>
-					   </c:if>
-					   <c:if test = "${chkFin == 0}">  
-						    <div id = "mypage_review_button_after" class="btn col-md-6" onclick = "mypage_review_no()">
-						      	<a id = "after_review" style = "font-size : 1.3rem; font-family:'MinSans-Medium';">작성 완료 후기</a>
-						    </div>
-					   </c:if>
-					   
 					 </div>
+					 
 					  <div class = "mypage_review_contents_menu">
 						   <div id="mypage_review_tab_available" class="tabmenu_content ">
-						      <!-- <div id = "mypage_review_tab_available_null">작성 가능한 후기가 없습니다.</div> -->
-						     
-						     <c:if test = "${empty orderReview}">
-						     	<%@ include file="/WEB-INF/views/mypage/mypage_review_no_data.jsp" %>
-						     </c:if>
-						   
-					      <c:forEach var="orderReview" items="${orderReview}"> 
-						      <div class = "mypage_review_before_element" style = "position : relative; height : 250px; border : 1px solid #ccc;">
-						      	<div class = "image_slot" style = "position : absolute; width : 200px; height : 200px; margin-left : 50px; margin-top : 25px; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);">
-						      	<img class = "mypage_review_product_img" src = "/springframework-mini-project/equipment/display?fileName=${orderReview.stringPatchoName}"></img>
-						      	</div>
-						      	<div style = "position : absolute; margin-left : 350px; ">
-						      		<div style = "margin-top : 30px;  font-size : 1.7rem; font-family: 'MinSans-Bold';">구매번호 : ${orderReview.intPurchaseNumber}</div>
-							      	<div class = "mypage_review_product_title" style = "margin-top : 20px; font-family: 'MinSans-Medium';">제품명 : ${orderReview.stringProductName}</div>
-							      	<div class = "mypage_review_model_name" style = "margin-top : 10px; font-family: 'MinSans-Medium';">모델명 : ${orderReview.stringModelNumber}</div>
-							      	<div class = "mypage_review_product_number" style = "margin-top : 10px; font-family: 'MinSans-Medium';">갯수 : ${orderReview.modelPurchaseQuantity} 개</div>
-							      	<div class = "mypage_review_product_date" style = "margin-top : 10px; font-family: 'MinSans-Medium';"><fmt:formatDate value="${orderReview.datePurchaseDate}" pattern="yyyy-MM-dd"/></div>
-							      	<div class = "mypage_review_product_button">
-						      		<button type="button" class="btn btn-primary" name = "mypage_review_product_button" 
-						      			style = "position : absolute; background-color : #ca5c0d; border : none;  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
-						      			 width : 120px; height : 40px; top : 0; margin-left : 900px; margin-top : 190px;" 
-							      		onclick = "reviewButton(${orderReview.intPurchaseNumber}, '${orderReview.stringModelNumber}', '${orderReview.stringProductName}', '${orderReview.stringPatchoName}')">
-							      		후기 쓰기
-						      		</button>
-							      </div> 
-							      </div>
-							   </div>
-					      </c:forEach>
-		  			  </div>    
-		  			  
-		  			 <c:if test = "${!empty orderReview}">
-			    		<table id = "mp_review_pager">
-							 <tr>
-					           <td colspan="4" class="text-center">
-					              <div style = "width : 400px; margin-left : 520px; margin-top : 30px;">
-					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=1">처음</a>
-					                 <c:if test="${pager.groupNo>1}">
-					                    <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${pager.startPageNo-1}">이전</a>
-					                 </c:if>
-					                 
-					                 <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-					                    <c:if test="${pager.pageNo != i}">
-					                       <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-					                    </c:if>
-					                    <c:if test="${pager.pageNo == i}">
-					                       <a class="btn btn-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
-					                    </c:if>
-					                 </c:forEach>
-					                 
-					                 <c:if test="${pager.groupNo<pager.totalGroupNo}">
-					                    <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager.endPageNo+1}">다음</a>
-					                 </c:if>
-					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager.totalPageNo}">맨끝</a>
-					              </div>
-					           </td>
-					        </tr>
-					     </table>
-				     </c:if>
-
 			    	<div id="mypage_review_tab_finished" class="tabmenu_content">
-			    	<!-- <div id = "mypage_review_tab_finished_null">작성 완료한 후기가 없습니다.</div> -->
 			    	<div id = "mypage_review_list_finished"></div>
-				    <c:if test = "${chkFin == 0}">  
-						<div id = "no_data_review_finished">
-						<div class = "mypage_no_review_info" style = "display : inline-block; width : 100%; height : 400px; padding-top : 50px;">
-								<div style = "display : inline-block; width : 85%; margin-left : 7%; margin-top : 30px;">
-								<div class = "mp_noinfo_title" style = "font-size : 1.5rem; font-family: 'MinSans-Regular'; text-align : center; margin-top : 60px;">
-										작성한 리뷰가 없습니다.
-								</div>
-							</div>
-						</div>
-						</div>
-					</c:if>	
 					
 					<c:forEach var="reviewFin" items="${reviewFin}">
 					   	<div class = "mypage_user_review_element" style = "display : inline-block; width : 100%; border-bottom :1px solid #ccc;">
@@ -147,24 +69,24 @@
 							 <tr>
 					           <td colspan="4" class="text-center">
 					              <div style = "width : 400px; margin-left : 520px; margin-top : 30px;">
-					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=1">처음</a>
+					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReviewFin?pageNo=1">처음</a>
 					                 <c:if test="${pager1.groupNo>1}">
-					                    <a class="btn btn-outline-success btn-sm" href="mypageReview?pageNo=${pager1.startPageNo-1}">이전</a>
+					                    <a class="btn btn-outline-success btn-sm" href="mypageReviewFin?pageNo=${pager1.startPageNo-1}">이전</a>
 					                 </c:if>
 					                 
 					                 <c:forEach var="i" begin="${pager1.startPageNo}" end="${pager1.endPageNo}">
 					                    <c:if test="${pager1.pageNo != i}">
-					                       <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+					                       <a class="btn btn-outline-secondary btn-sm" href="mypageReviewFin?pageNo=${i}">${i}</a>
 					                    </c:if>
 					                    <c:if test="${pager1.pageNo == i}">
-					                       <a class="btn btn-secondary btn-sm" href="mypageReview?pageNo=${i}">${i}</a>
+					                       <a class="btn btn-secondary btn-sm" href="mypageReviewFin?pageNo=${i}">${i}</a>
 					                    </c:if>
 					                 </c:forEach>
 					                 
-					                 <c:if test="${pager1.groupNo<pager.totalGroupNo}">
-					                    <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager1.endPageNo+1}">다음</a>
+					                 <c:if test="${pager1.groupNo<pager1.totalGroupNo}">
+					                    <a class="btn btn-outline-secondary btn-sm" href="mypageReviewFin?pageNo=${pager1.endPageNo+1}">다음</a>
 					                 </c:if>
-					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReview?pageNo=${pager1.totalPageNo}">맨끝</a>
+					                 <a class="btn btn-outline-secondary btn-sm" href="mypageReviewFin?pageNo=${pager1.totalPageNo}">맨끝</a>
 					              </div>
 					           </td>
 					        </tr>
@@ -239,11 +161,6 @@
     
     }
     
-  
-     .mypage_review_contents_menu #mypage_review_tab_finished{
-      		display:none;
-      
-      }
       
       .mypage_user_review_element {
      	height : 250px;
@@ -348,37 +265,10 @@ function reviewButton(purchaseNumber, modelNumber, name, imgName) {
 }
 
 
-
-function mypage_review_avaliable() {
-	$('#mypage_review_tab_available').show();
-	$('#mypage_review_tab_finished').hide();
-	$('#mp_review_pager').show();
-	$('#before_review').css("color", "#ca5c0d");
-	$('#after_review').css("color", "#272723");
-	
-}
-
-function mypage_review_finished() {
-	$('#mypage_review_tab_available').hide();
-	$('#mypage_review_tab_finished').show();
-	$('#mp_review_pager').hide();
-	$('#before_review').css("color", "#272723");
-	$('#after_review').css("color", "#ca5c0d");
-}
-
-function mypage_review_no() {
-	console.log("no data button is working...");
-	$('#mypage_review_tab_available').hide();
-	$('#mypage_review_tab_finished').show();
-	$('#no_data_review_finished').show();
-	$('#mp_review_pager').hide();
-	$('#before_review').css("color", "#272723");
-	$('#after_review').css("color", "#ca5c0d");
-}
-
-
-
  $(document).ready(function(){
+	$('#after_review').css("color", "#ca5c0d");
+		
+	 
 	 $("#mypage_review_popup_close").click(function(){
 	 $("#mypage_review_mask").css("display", "none");
 	 $(".mypage_popup_wrap").css("display", "none");

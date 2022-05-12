@@ -112,19 +112,16 @@ public interface MypageDao {
 
 	public List<PurchaseDetailDto> getOrderReview(Pager pager);
 
-	public List<PurchaseDetailDto> getOrderReviewFin(Pager pager);
+	public List<PurchaseDetailDto> getOrderReviewFin(String email);
 
 	public int getCheckNull(String email);
 
 	public int getTotalReviewFin(String email);
 
-	public List<PurchaseDetailDto> getOrderReviewFinList(String email);
+	public List<ReviewDto> getOrderReviewFinList(Pager pager);
 
 	public int getTotalOrderReviewList(String email);
 
-
-
-
-
+	public AfterServiceDto getAfterService(String email);
 
 }

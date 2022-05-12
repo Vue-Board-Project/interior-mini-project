@@ -74,6 +74,8 @@
 		where rownum = 1
 	</select>
 	
+	
+	
 	<!-- 상담내역(과거내역리스트) 창  -->
 	<select id = "getTotalUserInteriorList" parameterType="string" resultType="int">
 		select count(*) 
@@ -222,7 +224,7 @@
 	</select>
 	
 	<select id = "getPortfolioList" parameterType="int" resultType="mPreference">
-		SELECT r.ino, ISUMMARY as stringISummary, im_img_path as stringImImgPath, ISTYLE as stringIStyle,
+		SELECT r.ino as intIno, ISUMMARY as stringISummary, im_img_path as stringImImgPath, ISTYLE as stringIStyle,
 			ALL_COLOR as  stringAllColor, ihits as intIHits
 		FROM REFERENCE_MODEL r, interior i
 		WHERE r.ino = i.ino and
@@ -254,6 +256,7 @@
 		where interior_step = 5 and 
 		consult_no = #{conNum}
 	</select>
+	
 	<select id = "getIno6" parameterType="int" resultType="int">
 	 	select ino 
 		from INTERIOR_PROGRESS 
@@ -377,6 +380,22 @@
 			</association>
 	</resultMap>
 	
+	<!-- (상담내역창) AS 내역 간단 확인 -->
+	<select id = "getAfterService" parameterType="string" resultMap="seleceASWithUserResultMap">
+		select rownum as rnum, RECEIPT_NUMBER, APPLICATION_DATE, SCHEDULED_SERVICE_DATE, PRODUCT_NAME, MODEL_NUMBER,
+		   		BASIC_SYMPTOMS, DETAILED_SYMPTOMS,
+		  		NAME, phone, ADDRESS
+		from 
+			(  select 
+			   RECEIPT_NUMBER, APPLICATION_DATE, SCHEDULED_SERVICE_DATE, PRODUCT_NAME, MODEL_NUMBER,
+			   BASIC_SYMPTOMS, DETAILED_SYMPTOMS,
+			   u.NAME, u.phone, u.ADDRESS
+	            FROM AFTERSERVICE a, USERS u
+	            WHERE a.EMAIL = u.EMAIL and 
+	            a.EMAIL = #{email}
+	            ORDER BY RECEIPT_NUMBER DESC )
+		where rownum = 1
+	</select>
 	
 	<select id="getAsInfoDetail" parameterType="int" resultMap="seleceASWithUserResultMap">
 		select 
@@ -435,18 +454,11 @@
                         where p.email = #{stringEmail} and
                                 p.purchase_number = pd.purchase_number and
                                 pd.MODEL_NUMBER = d.MODEL_NUMBER and
+                                DELIVERY_MANAGEMENT = '배송완료' and
                                 REVIEW_AVAILABLE = 0
 				 )  WHERE ROWNUM <= #{endRowNo}   
 		)WHERE rnum >= #{startRowNo}
 		]]>
-	</select>
-	
-	<select id = "getOrderReviewFinList" parameterType = "string" resultType = "pDetail">
-	SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, d.model_number as stringModelNumber
-	from purchase p, review r, product d
-	where r.email = #{email} and
-			r.model_number = d.model_number and
-			r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
 	</select>
 	
 	<select id = "getTotalReviewFin" parameterType = "string" resultType = "int"> 
@@ -455,18 +467,23 @@
    		where EMAIL = #{email}
 	</select>
 	
-	<select id = "getOrderReviewFin" parameterType = "pager" resultType = "mReview">
-		<![CDATA[  
-		SELECT rnum, intPurchaseNumber, stringModelNumber, reviewTitle, reviewContent, reviewWriteDate, fileName
+	
+	<select id = "getOrderReviewFinList" parameterType = "pager" resultType = "mReview">
+		 <![CDATA[  
+		SELECT rnum, intPurchaseNumber, stringProductName, stringModelNumber, reviewTitle, reviewContent,
+                reviewWriteDate, fileName
 			from(
-				SELECT ROWNUM as rnum, intPurchaseNumber, stringModelNumber, reviewTitle, reviewContent, reviewWriteDate, fileName
+				SELECT ROWNUM as rnum, intPurchaseNumber, stringProductName, stringModelNumber, reviewTitle, reviewContent,
+                reviewWriteDate, fileName
 				FROM (
-						SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, d.model_number as stringModelNumber, 
-						REVIEW_TITLE as reviewTitle, REVIEW_CONTENT as reviewContent, REVIEW_WRITE_DATE as reviewWriteDate, FILENAME as fileName
-						from purchase p, review r, product d
-						where r.email = #{stringEmail} and
-						r.model_number = d.model_number and
-						r.PURCHASE_NUMBER = p.PURCHASE_NUMBER
+						SELECT  p.PURCHASE_NUMBER as intPurchaseNumber, PRODUCT_NAME as stringProductName, 
+                        d.model_number as stringModelNumber, REVIEW_TITLE as reviewTitle, REVIEW_CONTENT as reviewContent,
+                        REVIEW_WRITE_DATE as reviewWriteDate, FILENAME as fileName
+                        from purchase p, review r, product d
+                        where r.email = #{stringEmail} and
+                            r.model_number = d.model_number and
+                            r.PURCHASE_NUMBER = p.PURCHASE_NUMBER and
+                            DELIVERY_MANAGEMENT = '배송완료'
 				 )  WHERE ROWNUM <= #{endRowNo}   
 		)WHERE rnum >= #{startRowNo}
 		]]>

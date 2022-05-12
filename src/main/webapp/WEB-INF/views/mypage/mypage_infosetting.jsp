@@ -108,7 +108,7 @@
 					                   <div class="userInput">
 					                   <div style = "display: flex; flex-direction: row;">
 					                        <h3><label for="phoneNo">주소</label></h3>
-					                        <small style=" font-family: 'MinSans-Medium'; color: #ca5c0d; margin-left : 30px; margin-top : 18px;">주소가 없을 경우 인테리어, 리모델링 상담이 불가합니다.</small>
+					                        <small style=" font-family: 'MinSans-Medium'; color: red; margin-left : 30px; margin-top : 18px;">주소가 없을 경우 인테리어, 리모델링 상담이 불가합니다.</small>
 					                    </div>
 					                        <input style="width: 49.07%; height: 51px; border: solid 1px #dadada; margin-right: 1%; padding: 10px 14px 10px 14px;" id="member_post"  type="text" placeholder="우편번호"  name="postcode" readonly onclick="findAddr()"/>
 					                        <input style="width: 49.3%; height: 51px; border: solid 1px #dadada;  padding: 10px 14px 10px 14px;" id="member_addr" type="text" placeholder="도로명 주소" id="member_address"  name="address"  readonly/> <br>
