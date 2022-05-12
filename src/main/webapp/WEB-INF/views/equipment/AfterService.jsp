@@ -36,7 +36,7 @@
 	                	</div>
 	                	<div style=" height: 20px; display: inline-block;">
 	                	 <span style="font-size: 14px; font-family: 'MinSans-Regular';color: red" id="modelNumSpan">
-	                	 	
+	                	 	${modelNumbernone}
 	                	 </span>
 	                	</div>
 	                </div>

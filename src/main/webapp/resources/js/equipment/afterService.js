@@ -40,7 +40,21 @@ function ReservationAdd(){
         (inputPurchaseDate.length || inputPurchaseDateNon.length) 
         && inputwantASDate.length){
             console.log("집에좀가자");
-	    $("#ReservationAS").submit();
+            $.ajax({
+				url: "modelCheck",
+				data: {modelNum},
+				method: "post"
+			}).done((data) => {
+				
+				if(data.result==="success") {
+					 $("#ReservationAS").submit();
+				} else if(data.result==="wrong") {
+					$("#modelNumSpan").html("<i class='fas fa-exclamation-triangle'></i>&nbsp;잘못된 모델명");
+					$('html').scrollTop(0);
+				} 
+			});
+            
+	   	 
     }else{
         console.log("응 집에 못가" + detailSym);
         if(!modelNum.length){//모델이 없음

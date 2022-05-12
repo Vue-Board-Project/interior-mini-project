@@ -31,6 +31,7 @@ public class PurchaseService {
 	public enum PurchaseResult{
 		SUCCESS, FAIL
 	}
+	
 	//트랜잭션 도오저언
 	public List<ProductDto> transferPurchase(List<ProductDto> cartList,
 			String email) {
@@ -63,8 +64,10 @@ public class PurchaseService {
 		}
 		*/
 	//as db insert
-	public int insertAS(AfterServiceDto after) {
-		return purchaseDao.insertAS(after);
+	public void insertAS(AfterServiceDto after) {
+		
+		purchaseDao.insertAS(after);
+					
 	}
 	//장바구니에서 구매 하는 트랜잭션 서비스
 	@Transactional
