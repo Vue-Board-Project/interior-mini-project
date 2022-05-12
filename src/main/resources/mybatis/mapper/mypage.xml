@@ -152,6 +152,7 @@
 		)WHERE rnum >= #{startRowNo}
 		 ]]>
 	</select>
+	
 	<select id = "getCheckNull"  parameterType="String" resultType="int">
 	 SELECT count(*)
 	 FROM MAIN_CONSULT
@@ -484,6 +485,7 @@
                             r.model_number = d.model_number and
                             r.PURCHASE_NUMBER = p.PURCHASE_NUMBER and
                             DELIVERY_MANAGEMENT = '배송완료'
+                        ORDER BY REVIEW_WRITE_DATE DESC
 				 )  WHERE ROWNUM <= #{endRowNo}   
 		)WHERE rnum >= #{startRowNo}
 		]]>

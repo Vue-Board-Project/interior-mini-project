@@ -452,7 +452,7 @@
 							<section style="width: 100;" class="mb-4">
 								<div class="mx-auto" style="width: 90%;">
 									<div style="border-bottom: 2px solid #272723;" class="text-center mb-2">
-										<h3>2022.03.04 신청 인테리어</h3>
+										<h3><fmt:formatDate value="${progress.pexpectedDate}" pattern="yyyy-MM-dd"/> 신청 인테리어</h3>
 									</div>
 								</div>
 							</section>

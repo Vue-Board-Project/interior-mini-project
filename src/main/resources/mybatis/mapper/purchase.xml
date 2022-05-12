@@ -64,11 +64,13 @@
 			PURCHASE_NUMBER
 			, MODEL_NUMBER
 			, MODEL_PURCHASE_QUANTITY
+			, REVIEW_DETAIL
 			)
 		values(
 			#{intPurchaseNumber}
 			, #{stringModelNumber}
 			, #{modelPurchaseQuantity}
+			, 0
 			)
 	</insert>
 
