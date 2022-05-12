@@ -53,7 +53,7 @@ public class SignUpController {
 		//회원 가입 처리
 		JoinResult jr = usersService.join(users);
 		if(jr == JoinResult.SUCCESS) {
-			return "redirect:/home";
+			return "home";
 		} else if(jr ==JoinResult.DUPLICATED) {
 			model.addAttribute("error", "중복된 이메일이 있습니다.");
 			return "redirect:/signUp";
