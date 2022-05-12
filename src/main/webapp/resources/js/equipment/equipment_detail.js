@@ -240,3 +240,30 @@ function showReviewDetail(){
   }
   
 }
+
+$(document).ready(function(){
+
+	$("input[name='reviewTitle']").on("click",function(){
+		var reviewTitle2 = $('input[name="reviewTitle"]').each(function(){
+			var reviewTitleVal2 = '.product_detail_review_list_'+$(this).val();
+			var checked = $(this).prop('checked');
+			if(checked == false){
+				$(reviewTitleVal2).hide();
+				console.log(reviewTitleVal2);			
+			}
+		})
+
+		/*var reviewTitle = $('input[name="reviewTitle"]:checked').val();*/
+		var reviewTitleArrVal = [];
+        var reviewTitle = $('input[name="reviewTitle"]:checked').each(function(){
+			var reviewTitleVal = '.product_detail_review_list_'+$(this).val();
+			console.log(reviewTitleVal);
+			reviewTitleArrVal.push(reviewTitleVal);
+			$(reviewTitleVal).show();
+		})
+		
+		
+		console.log(reviewTitleArrVal);
+	})
+
+});

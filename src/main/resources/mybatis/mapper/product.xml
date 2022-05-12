@@ -146,6 +146,7 @@
 			, REVIEW_CONTENT as reviewContent
 			, REVIEW_WRITE_DATE as reviewWriteDate
 			, FILENAME as fileName
+			, purchase_Number as purchaseNumber
 		from review
 		where model_number=#{modelNumber}
 		order by purchase_Number desc
