@@ -51,7 +51,7 @@ $(document).ready(function(){
 			for(let item of data){
 				console.log(item);
 				result += '<li class="m-3 pb-3 model_dental_content" style="list-style:none; padding-left:0px; width:300px;">';
-				result += '<a style="position: relative" href="${pageContext.request.contextPath}/model_dental/model_dental_detail?ino='+item.ino+'" class="model_dental_content_a">';
+				result += '<a style="position: relative" href="/springframework-mini-project/model_dental/model_dental_detail?ino='+item.ino+'" class="model_dental_content_a">';
 				result += '<div class="model_dental_content_img_div">';
 				result += '<div class="model_dental_content_img_div_content" style="width: 280px; height: 180px; position: relative;">';
 				result += '<img class="model_dental_content_img" src="/springframework-mini-project/model_dental/display?fileName='+item.imImgPath+'"/>';

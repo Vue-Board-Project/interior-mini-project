@@ -64,8 +64,10 @@ public class EquipmentController {
 			, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		//상품 정보 불러오기
 		ProductDto detailProduct=productService.detailProduct(modelNumber);
+		List<ProductDetailDto> detailPhoto=productService.detailProductPhoto(modelNumber);
 		productService.updatehits(modelNumber);
 		model.addAttribute("detailProduct", detailProduct);
+		model.addAttribute("detailPhoto", detailPhoto);
 		//리뷰 시작
 		List<ReviewDto> reviewList=productService.selectReview(modelNumber);
 		model.addAttribute("reviewList", reviewList);
@@ -156,7 +158,6 @@ public class EquipmentController {
 	// 장비 추가 페이지
 	@RequestMapping("/equipment/productAdd")
 	public String productAdd() {
-		log.info("되냐");
 		return "/equipment/productAdd";
 		
 	}
@@ -164,8 +165,6 @@ public class EquipmentController {
 	// product 데이터 추가
 	@PostMapping("/equipment/productAdd")
 	public String productAdd(ProductDto product) throws IOException {
-		log.info("되냐1");
-
 		log.info(product.getModelNumber());
 		log.info(product.getProductName());
 		log.info(product.getProductQuantity());
