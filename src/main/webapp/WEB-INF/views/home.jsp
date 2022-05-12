@@ -265,7 +265,7 @@ text-decoration: none; color: black;
    	    	<div class="d-flex">
 				<div class="d-flex flex-column">
 			 	    <div class="mr-5" style="width: 600px; height: 500px; z-index: 60;">
-			     	    <b style="font-size: 60px;">Osstem Medical Equipment</b>
+			     	    <b style="font-size: 60px;">O'Molaire Osstem Medical Equipment</b>
 			      	    <p style="font-size: 20px;">오스템 치과장비</p>
 			      	    <div style="white-space: pre-line; width: 506px; letter-spacing: 1.3px;">
 			      	    	오몰레어는 K5의 전신인 K3는 출시 후 1년만에 국내 최고 판매량을 기록했고, 현재 7년 연속 국내 유니트체어 판매량 1위 자리를 놓치지 않고 있습니다.
