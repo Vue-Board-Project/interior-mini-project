@@ -103,7 +103,7 @@
 		                    </a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
-		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/device_AS" style="border: none; outline: none; box-shadow: none;">
+		                    <a id="mypage" class="btn" href="${pageContext.request.contextPath}/mypage/mypage_counseling" style="border: none; outline: none; box-shadow: none;">
 		                        <%-- <img src="${pageContext.request.contextPath}/resources/pngs/sign_up_icon.png"/> --%>
 		                        <i class="fa-solid fa-image-portrait"></i>
 		                        <span id="main_header_mypage_text" class="main_header_text">마이페이지</span>
