@@ -43,6 +43,11 @@ public class EquipmentController {
 	public String customerService() {
 		return "/equipment/CustomerService";// view 이름만 전달
 	}
+	@RequestMapping("/equipment/productResult")
+	public String productResult() {
+		return "/equipment/productResult";
+	}
+	
 	//장비 상세(상담 제품)
 	@RequestMapping("/equipment/equipment_detail_consult")
 	public String equipment_detail_consult(String modelNumber, Model model) {
@@ -120,10 +125,10 @@ public class EquipmentController {
 	//장비 정렬 및 카테고리 작업들
 	/*@RequestMapping(value = "/equipment/productListAjax", produces = "application/json; charset=UTF-8")*/
 	@RequestMapping("/equipment/productListAjax")
-	public String productList(Model model, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "sort", required = false) String sort, HttpServletResponse response) {
+	public String productList(Model model, @RequestParam(value = "category", required = false) String category, @RequestParam(value = "productSort", required = false) String sort, HttpServletResponse response) {
 		log.info("컨트롤러 연결 됐냐???");
-		/*log.fatal(sort);
-		log.fatal(category);*/
+		log.fatal(sort);
+		log.fatal(category);
 		if(sort == null) {//인기순
 			/*log.fatal("가냐?");*/
 			List<ProductDto> productList=productService.selectpopularlist(category);

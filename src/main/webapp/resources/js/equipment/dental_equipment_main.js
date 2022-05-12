@@ -1,18 +1,18 @@
 
 $(document).ready(function(){
 	console.log("~~~~~~~~~~~~~~~~~~~~~~~~");
-	$("input[name='category'], input[name='sort']").on("click",function(){
+	$("input[name='category'], input[name='productSort']").on("click",function(){
 		var category = $('input[name="category"]:checked').val();
 		console.log(category);
 		
-		var sort = $('input[name="sort"]:checked').val();
-		console.log(sort);
+		var productSort = $('input[name="productSort"]:checked').val();
+		console.log(productSort);
 		
 		$.ajax({
 			url: "productListAjax",
 			method: "get",
 			data: {category:category,
-					sort:sort},
+					productSort:productSort},
 			success: function(data) {
 				if(data.result === "fail"){
 					console.log("되냐2????");
