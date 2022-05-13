@@ -93,6 +93,7 @@ public class InteriorConsultController {
 	public String quickConsultForm(Authentication authentication,MainConsultDto mainConsultDto) {
 		String email = authentication.getName();
 		log.info(mainConsultDto);
+		log.fatal("실행");
 		mainConsultDto.setEmail(email);
 
 		// 기본 상담 서비스

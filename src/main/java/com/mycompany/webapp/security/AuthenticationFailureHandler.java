@@ -44,29 +44,23 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
 			HttpServletResponse response,
 			AuthenticationException exception) 
 			throws IOException, ServletException {
-		logger.info("실행");
 		
 		request.getParameter(email);
 		request.setAttribute(email, email);
 		
-		//log.info(request.getParameter(email));
-		
 		if(exception instanceof BadCredentialsException) {
-			log.info("email: "+request.getParameter(email));
 			UsersDto dbUsers = usersService.selectByEmail(request.getParameter(email));
+			//제대로된 이메일을 입력했을때만 실행
 			if(dbUsers != null) {
 				loginFailureCount(request.getParameter(email));				
-				log.info("되냐~?");
 			} else {
-				log.info("안뇽ㅎㅎ");
 			}
 		}
-		log.info(exception);
-		/*exception.printStackTrace();*/
+
 		super.onAuthenticationFailure(request, response, exception);
 	}
+	//로그인 실패 카운트
 	private void loginFailureCount(String email) {
-		log.info("되냐고~~~?");
 		usersService.countFailure(email);
 		int cnt = usersService.checkFailureCount(email);
 		if(cnt==3) {

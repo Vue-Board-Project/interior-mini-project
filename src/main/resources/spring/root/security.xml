@@ -27,7 +27,7 @@
 		success-handler-ref="logoutSuccessHandler"/>
 		
 		<!-- 사이트간 요청 위조 방지 비활성화 -->
-		<security:csrf disabled="true"/>
+		<security:csrf disabled="false"/>
 		
 		<!-- 요청 url 권한 설정, 요청 권한 가로채서 체크, 로그인되어있다면 접근 허용 -->
 		<security:intercept-url pattern="/equipment/**" access="isAuthenticated()"/>
@@ -52,9 +52,9 @@
 	         error-if-maximum-exceeded="true": 다른 곳에서 로그인을 할 수 없음
 	         expired-url: 인증이 무료화된 사용자가 이동하는 페이지
 	         -->
-           <security:concurrency-control max-sessions="1"
-                                  error-if-maximum-exceeded="false"
-                                  expired-url="/"/>
+        <security:concurrency-control max-sessions="1"
+                               error-if-maximum-exceeded="false"
+                               expired-url="/"/>
         </security:session-management>
 	</security:http>
 	

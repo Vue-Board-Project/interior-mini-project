@@ -105,12 +105,12 @@ public class UsersService {
 			HtmlEmail email = new HtmlEmail();
 			email.setDebug(true);
 			email.setCharset(charSet);
-			email.setSSL(true);
+			/*email.setSSL(true);*/
 			email.setHostName(hostSMTP);
 			email.setSmtpPort(465); //네이버 이용시 587
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
-			email.setTLS(true);
+			/*email.setTLS(true);*/
 			email.addTo(mail, charSet);
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
@@ -124,17 +124,12 @@ public class UsersService {
 	//비밀번호 찾기
 	@Transactional
 	public FindPWResult findPW(HttpServletResponse response, UsersDto users) throws Exception {
-		log.info("실행");
-		log.info(users.getEmail());
-		log.fatal(users.getEmail());
+
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		// 가입된 이메일이 없으면
 		if(usersDao.selectByEmail(users.getEmail()) == null) {
-			log.info("등록되지 않은 이메일입니다.");
 			return FindPWResult.FAIL;
-			//out.print("등록되지 않은 이메일입니다.");
-			//out.close();
 		} else {
 			UsersDto usersDto = usersDao.selectByEmail(users.getEmail());
 			log.info(usersDto.getName());
@@ -148,14 +143,12 @@ public class UsersService {
 			String realPW = pw; 
 			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 			users.setPassword(passwordEncoder.encode(realPW));
-			//users.setPassword(pw);
+
 			// 비밀번호 변경
 			usersDao.updatePW(users);
 			// 비밀번호 변경 메일 발송
 			sendmail(usersDto, "findPassword", realPW);
 
-			//out.print("이메일로 임시 비밀번호를 발송하였습니다.");
-			//out.close();
 			return FindPWResult.SUCCESS;
 		}
 	}
