@@ -52,9 +52,9 @@
 	         error-if-maximum-exceeded="true": 다른 곳에서 로그인을 할 수 없음
 	         expired-url: 인증이 무료화된 사용자가 이동하는 페이지
 	         -->
-           <security:concurrency-control max-sessions="1"
-                                  error-if-maximum-exceeded="false"
-                                  expired-url="/"/>
+        <security:concurrency-control max-sessions="1"
+                               error-if-maximum-exceeded="false"
+                               expired-url="/"/>
         </security:session-management>
 	</security:http>
 	

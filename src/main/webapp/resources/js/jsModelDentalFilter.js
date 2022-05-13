@@ -1,27 +1,21 @@
 $(document).ready(function(){
 	$("input[name='field']").on("click",function(){
 		if($('input[name="field"]').is(':checked')){
-			 console.log("**^^^***&&&^^^*****");
 		     $('input[type="checkbox"][name="field"]').prop('checked',false);
 		     $(this).prop('checked',true);
 	    }
 		var field = $('input[name="field"]:checked').val();
-        console.log(field);
 	})
 	$("input[name='sort'], input[name='style'], input[name='color'], input[name='field']").on("click",function(){
 		var sort = $('input[name="sort"]:checked').val();
-        console.log(sort);
         var styleArrVal = [];
         var style = $('input[name="style"]:checked').each(function(){
-			//var styleVal = $(this).val();
-			//console.log(styleVal);
+
 			styleArrVal.push($(this).val());
 		})
 		console.log(styleArrVal);
 		var colorArrVal = [];
 		var color = $('input[name="color"]:checked').each(function(){
-			//var colorVal = $(this).val();
-			//console.log(colorVal);
 			colorArrVal.push($(this).val());
 		})
 		console.log(colorArrVal);
@@ -40,9 +34,6 @@ $(document).ready(function(){
 			for(let item of data){
 				cnt = cnt+1;
 			}
-			console.log(data);
-			console.log(cnt);
-			//result = '<div class="text-center mt-5 mb-5">';
 			result = '<div class="ml-3 text-left model_dental_cnt">';
 			result += '<p class="model_dental_cnt_p">전체 '+cnt+'</p>';
 			result += '</div>';
@@ -72,6 +63,5 @@ $(document).ready(function(){
 			//result += '</div>';
 			$("#dental_model_filter_content_wrap").html(result);
 		});
-		console.log("~~~~~~~~~~~~~~~~~~");
 	});
 });

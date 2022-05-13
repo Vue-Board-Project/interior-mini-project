@@ -165,16 +165,12 @@ function checkAll() {
   function checkCRN() {
       //3078105564
       var crnValue = document.getElementById("crn").value;
-      console.log(crnValue);
 
       var valueMap = crnValue.replace(/-/gi,'').split('').map(function(item){
           return parseInt(item, 10);
       });
-
-      console.log(valueMap);
       
       if(valueMap.length===10){
-          console.log("10");
           var multiply = new Array(1,3,7,1,3,7,1,3,5);
           var checkSum = 0;
 
@@ -183,7 +179,6 @@ function checkAll() {
           }
 
           checkSum += parseInt((multiply[8]*valueMap[8])/10,10);
-          console.log(checkSum);
           if(Math.floor(valueMap[9]) === ((10-(checkSum%10))%10)){
               error[5].style.display = "none";
               return true;

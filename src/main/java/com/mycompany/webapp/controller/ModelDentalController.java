@@ -53,7 +53,7 @@ public class ModelDentalController {
 			@RequestParam(value = "colorArr[]", required = false) List<String> colorArr,
 			@RequestParam(value = "field", required = false) String field, HttpServletResponse response)
 					throws IOException {
-		log.info("실행");
+
 		Map<String, Object> param = new HashMap<>();
 		param.put("sort", sort);
 		param.put("istyle", styleArr);
