@@ -23,7 +23,7 @@
     	<ul id="portfolio_dental_content_wrap" class="d-flex" style="padding-left:0px; flex-wrap: wrap; width:1146px;">
 			<c:forEach items="${interiorList}" var="list">
 			<li class="m-3 pb-3 portfolio_dental_content" style="list-style:none; padding-left:0px;"> 
-			      <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${list.ino}" class="portfolio_dental_content_a">
+			      <a href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=41" class="portfolio_dental_content_a">
 			      	  <div class="portfolio_dental_content_img_div">
 			          	  <img class="portfolio_dental_content_img" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${list.imImgPath}"/>
 			      	  </div>

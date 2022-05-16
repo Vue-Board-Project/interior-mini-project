@@ -4,7 +4,7 @@
     <div class="d-flex flex-column mb-4">
         <p class="mr-1" style="font-size:20px;"><span style="color: #ff7513;">비슷한 스타일</span> 추천</p>
         <c:forEach items="${recommandStyleList}" var="styleList" begin="0" end="1">
-        	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${styleList.ino}"
+        	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=41"
         	 class="portfolio_dental_content_a">
         		<img style="width: 10rem; height: 6rem;" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${styleList.imImgPath}"/>
         	</a>
@@ -17,7 +17,7 @@
     <div class="d-flex flex-column mb-4">
         <p class="mr-2" style="font-size:20px;"><span style="color: #ff7513;">비슷한 평수</span> 추천</p>
         <c:forEach items="${recommandAreaList}" var="areaList" begin="0" end="1">
-        	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=${areaList.ino}"
+        	<a class="mb-1" href="${pageContext.request.contextPath}/portfolio_dental/portfolio_dental_detail?ino=41"
         	 class="portfolio_dental_content_a">
         	 	<img style="width: 10rem; height: 6rem;" src="/springframework-mini-project/portfolio_dental/portfolioDisplay?fileName=${areaList.imImgPath}"/>
         	 </a>

@@ -105,12 +105,12 @@ public class UsersService {
 			HtmlEmail email = new HtmlEmail();
 			email.setDebug(true);
 			email.setCharset(charSet);
-			/*email.setSSL(true);*/
+			email.setSSL(true);
 			email.setHostName(hostSMTP);
 			email.setSmtpPort(465); //네이버 이용시 587
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
-			/*email.setTLS(true);*/
+			email.setTLS(true);
 			email.addTo(mail, charSet);
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
