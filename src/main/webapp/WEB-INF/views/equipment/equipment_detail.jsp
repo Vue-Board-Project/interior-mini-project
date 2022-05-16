@@ -120,9 +120,6 @@
                 <li id="detail_click" class="nav-item" onclick="showDetail()">
                 <p id="detail_style" class="nav-link active">장비 상세보기</p>
                 </li>
-                <li id="review_click"class="nav-item" onclick="showReview()">
-                    <p id="review_style" style="background-color: #ccc;" class="nav-link active">리뷰 보기</p>
-                </li>
             </ul>
             <div id="product_detail_content" >
                 <div id="product_detail_content_showhide">
