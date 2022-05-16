@@ -63,11 +63,15 @@
 					   		<div class = "user_review_contents">
 					   			<div class = "user_product_bought_date" style = "margin-top : 50px;"></div>
 					   			<div class = "user_review_image">
-					   			<c:if test = "${reviewFin.fileName ne null}">
+					   			<!-- 리뷰 이미지 업로드를 위한 코드. 이후 접속을 위해 따로 처리함 -->
+					   			<%-- <c:if test = "${reviewFin.fileName ne null}">
 					   				<img src="/springframework-mini-project/mypage/showImage?fileName=${reviewFin.fileName}"></img>
-					   			</c:if>
+					   			</c:if> --%>
 					   			<c:if test = "${reviewFin.fileName eq null}">
-					   				<img src="${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png""></img>
+					   				<img src="${pageContext.request.contextPath}/resources/pngs/header_logo_icon.png"></img>
+					   			</c:if>
+					   			<c:if test = "${reviewFin.fileName ne null}">
+					   				<img src="${pageContext.request.contextPath}/resources/images/mypage/chair.jpg"></img>
 					   			</c:if>
 					   			</div>
 					   			<div class = "user_review_text" style = "font-family: 'MinSans-Regular';">${reviewFin.reviewContent}</div>
